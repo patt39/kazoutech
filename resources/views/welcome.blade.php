@@ -27,6 +27,7 @@
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">{{ __('Contact')}}</a></li>
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="/dashboard">{{ __('Dashboard')}}</a></li>
                         </ul>
                     </div>
                 </div>

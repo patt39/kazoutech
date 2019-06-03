@@ -1,0 +1,282 @@
+<template>
+    <div>
+        <vue-progress-bar/>
+        <NavAdmin/>
+        <div class="main-panel" id="javascriptComponents">
+            <TopNav/>
+            <div class="content">
+                <div class="container-fluid">
+                    <br>
+                    <StatusAdmin/>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 expo">
+                                        <div class="card">
+                                            <div :class="getColorCardUser()" style="margin-top: -18px;">
+                                                <div class="text-center">
+                                                    <router-link  title="back messages" :to="{ name: 'contacts.index' }" class="btn btn-secondary btn-round btn-just-icon btn-sm">
+                                                     <span class="btn-label">
+                                                        <i class="material-icons">keyboard_return</i>
+                                                     </span>
+                                                    </router-link>
+                                                    <a href="javascript:void(0)" @click="deleteItem(form.id)"
+                                                       class="btn btn-danger btn-round btn-just-icon btn-sm" title="Delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </a>
+
+                                                    <a  href="javascript:void(0)" v-if="form.status === 1" @click="disableItem(form.id)" class="btn btn-success btn-round btn-just-icon btn-sm" title="Mask as unread">
+                                                        <i class="material-icons">done_all</i>
+                                                    </a>
+                                                    <a href="javascript:void(0)" v-else-if="form.status === 0" @click="activeItem(form.id)" class="btn btn-info btn-round btn-just-icon btn-sm" title="Mask as read">
+                                                        <i class="material-icons">done</i>
+                                                    </a>
+
+                                                </div>
+                                                <div class="card-icon">
+                                                    <i class="material-icons">message</i>
+                                                </div>
+                                                <br>
+                                                <h4 class="card-title" style="margin-top: 0px;"><b>Message {{ form.first_name}}</b> -
+                                                    <small class="category" v-text="form.email"></small>
+                                                </h4>
+                                                <h4 class="card-title text-right" style="margin-top: 0px;">
+                                                    <small class="category">
+                                                        {{ form.created_at | myDate }} ({{ form.created_at | dateAgo }})
+                                                        <a :href="`mailto:${form.email}`" class="btn  btn-dribbble btn-round btn-just-icon btn-sm" title="reply">
+                                                            <i class="material-icons">reply</i>
+                                                        </a>
+                                                    </small>
+                                                </h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <!-- User Data -->
+                                                <div class="col-md-12">
+                                                    <h5 class="card-title">
+                                                        <b>{{ form.subject}}</b>
+                                                    </h5>
+                                                    <div class="card card-nav-tabs">
+                                                        <div class="card-body">
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane active" id="profile">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label>First name</label>
+                                                                                <input v-model="form.first_name" type="text" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label>Last name</label>
+                                                                                <input type="text" v-model="form.last_name" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label>Email</label>
+                                                                                <input type="email" v-model="form.email" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group text-justify">
+                                                                       <p class="title" v-html="form.message"></p>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="text-center">
+                                                                     <router-link  :to="{ name: 'contacts.index' }" class="btn btn-secondary btn-raised button_profile">
+                                                                                <span class="btn-label">
+                                                                                    <i class="material-icons">keyboard_return</i>
+                                                                                </span>
+                                                                        <b class="title_hover">Back all messages</b>
+                                                                    </router-link>
+                                                                    <a :href="`mailto:${form.email}`" class="btn btn-dribbble btn-raised button_profile">
+                                                                         <span class="btn-label">
+                                                                            <i class="material-icons">reply</i>
+                                                                        </span>
+                                                                        <b class="title_hover">Reply message</b>
+                                                                    </a>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <FooterAdmin/>
+        </div>
+    </div>
+</template>
+
+<script>
+    import api from '../../../api/mixins/collections';
+    import NavAdmin from "../../inc/admin/NavAdmin";
+    import TopNav from "../../inc/admin/TopNav";
+    import FooterAdmin from "../../inc/admin/FooterAdmin";
+    import StatusAdmin from "../../inc/admin/StatusAdmin";
+    export default {
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        data() {
+            return {
+                loaded: false,
+                color_user:'',
+                form: new Form({
+                    id: '',
+                    name: '',
+                    email: '',
+                    message: '',
+                    subject: '',
+                    last_name: '',
+                    first_name: '',
+                    created_at: '',
+                    slug: '',
+                    status: ''
+                })
+            }
+        },
+        methods: {
+            getColorCardUser(){
+                let colorCard = 'card-header card-header-icon card-header-' + this.color_user;
+                return colorCard;
+            },
+            getColorHeaderUser(){
+                let colorHeader = 'card-header card-header-' + this.color_user;
+                return colorHeader;
+            },
+            getMaterialIcon(color){
+                let icon = 'material-icons text-' + color;
+                return icon;
+            },
+            deleteItem() {
+                //Alert delete
+                Swal.fire({
+                    title: 'Delete Message Contact-us?',
+                    text: "Are you sure you want to delete this message?",
+                    type: 'warning',
+                    animation: false,
+                    customClass: 'animated shake',
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                    cancelButtonClass: 'btn btn-danger',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No',
+                    showCancelButton: true,
+                    reverseButtons: true
+                }).then((result) => {
+                    //Envoyer la requete au server
+                    if (result.value) {
+                        //Start Progress bar
+                        this.$Progress.start();
+                        this.form.delete('/dashboard/contacts/' + this.form.id).then(() => {
+                            /** Alert notify bootstrapp **/
+                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                                allow_dismiss: false,
+                                showProgressbar: true
+                            });
+                            setTimeout(function() {
+                                notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
+                            }, 2000);
+                            //Redirect after create
+                            setTimeout(() => this.$router.push({ name: 'contacts.index' }), 2000);
+                            /* End alert ***/
+
+                            //End Progress bar
+                            this.$Progress.finish();
+
+                            Fire.$emit('AfterCreate');
+                        }).catch(() => {
+                            //Failled message
+                            this.$Progress.fail();
+                            toastr.error('', 'Ooop! Something wrong. Try later');
+                        })
+                    }
+                })
+            },
+            /** Ici c'est l'activation de la couleur  **/
+            activeItem() {
+                //Start Progress bar
+                this.$Progress.start();
+
+                this.form.get('/dashboard/contacts/discard_red/' + this.form.id).then(() => {
+
+                    /** Alert notify bootstrapp **/
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Message contact read.</strong>', 'progress': 75});
+                    }, 2000);
+                    /** End alert **/
+
+                    //End Progress bar
+                    this.$Progress.finish();
+
+                    Fire.$emit('AfterCreate');
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    toastr.error('', 'Ooop! Something wrong. Try later');
+                })
+            },
+            /** Ici c'est la désactivation de la couleur **/
+            disableItem() {
+                //Start Progress bar
+                this.$Progress.start();
+
+                this.form.get('/dashboard/contacts/red_confirm/' + this.form.id).then(() => {
+
+                    /** Alert notify bootstrapp **/
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Message contact unread.</strong>', 'progress': 75});
+                    }, 2000);
+                    /** End alert **/
+
+                    //End Progress bar
+                    this.$Progress.finish();
+                    Fire.$emit('AfterCreate');
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    toastr.error('', 'Ooop! Something wrong. Try later');
+                })
+            },
+            loadItems() {
+                //Start Progress bar
+                this.$Progress.start();
+                api.contactshow(this.$route.params.contact).then(({data}) => this.form.fill(data.data));
+                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
+                //End Progress bar
+                this.$Progress.finish();
+            },
+
+        },
+        created() {
+            this.loadItems();
+            Fire.$on('AfterCreate', () => {
+                this.loadItems();
+            });
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

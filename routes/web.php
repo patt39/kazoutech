@@ -15,6 +15,72 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'Auth'], function () {
+
+    // Admin Invitation
+    Route::get('invite', 'AdmininviteController@invite')->name('invite');
+    Route::post('invite', 'AdmininviteController@process')->name('process');
+
+    // {token} is a required parameter that will be exposed to us in the controller method
+    Route::get('accept/{token}', 'AdmininviteController@accept')->name('accept');
+
+});
+
+Route::group(['namespace' => 'Admin'], function () {
+
+    // Dashboard
+    Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
+
+    Route::group(['namespace' => 'Partial'], function () {
+
+        // Admin Route categories
+        Route::resource('/dashboard/categories', 'CategoryController');
+        Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');
+        Route::get('/dashboard/disable_categories/{id}', 'CategoryController@disable')->name('disable_categories');
+
+        // Admin Route tags
+        Route::resource('/dashboard/tags', 'TagController');
+        Route::get('/dashboard/tags/show/{tag}', 'TagController@view')->name('tags.view');
+        Route::get('/dashboard/tags/api/{slug}', 'TagController@getview');
+        Route::get('/dashboard/active_tags/{id}', 'TagController@active')->name('active_tags');
+        Route::get('/dashboard/disable_tags/{id}', 'TagController@disable')->name('disable_tags');
+
+        //Admin Route colors
+        Route::resource('dashboard/colors', 'ColorController');
+        Route::get('/dashboard/active_color/{id}', 'ColorController@active')->name('active_color');
+        Route::get('/dashboard/disable_color/{id}', 'ColorController@disable')->name('disable_color');
+
+        // Admin Route country
+        Route::resource('/dashboard/countries', 'CountryController');
+
+        Route::get('/dashboard/account/profile', 'AccountController@index')->name('admin.account');
+        Route::get('/dashboard/profile/{username}', 'AccountController@show')->name('admin.view');
+        Route::get('/api/dashboard/profile/{username}', 'AccountController@userShow');
+        Route::get('/dashboard/user/update', 'AccountController@edit')->name('admin.edit_profile');
+        Route::put('/user/update', 'AccountController@update');
+
+        Route::get('api/account/user', 'AccountController@user');
+
+
+        //Change Password Route
+        Route::get('dashboard/change_password', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
+        Route::put('change_password', 'ChangePasswordController@changePassword');
+
+
+    });
+
+});
+
+Route::group(['namespace' => 'User'], function () {
+
+    //Admin Route contacts
+    Route::resource('dashboard/contacts', 'ContactController');
+    Route::get('dashboard/contacts/msg/{contact}', 'ContactController@contact')->name('contacts.view');
+    Route::get('dashboard/contacts/view/{slug}', 'ContactController@view');
+    Route::get('/dashboard/contacts/red_confirm/{id}', 'ContactController@active');
+    Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
+});
