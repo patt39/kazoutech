@@ -38,10 +38,18 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('/dashboard/users/profile/{username}', 'UserController@view')->name('users.view');
     Route::get('/users/profile/{username}', 'UserController@userShow');
 
+    //Route Administrator
+    Route::resource('/dashboard/administrators','AdministratorController');
+    Route::get('/dashboard/active_administrators/{id}', 'OccupationController@active')->name('active_occupations');
+    Route::get('/dashboard/disable_occupations/{id}', 'OccupationController@disable')->name('disable_occupations');
+
     //Route Occupation
     Route::resource('/dashboard/occupations','OccupationController');
     Route::get('/dashboard/active_occupations/{id}', 'OccupationController@active')->name('active_occupations');
     Route::get('/dashboard/disable_occupations/{id}', 'OccupationController@disable')->name('disable_occupations');
+
+    //Route Permission
+    Route::resource('/dashboard/permissions', 'PermissionController');
 
     //Route Faq
     Route::resource('/dashboard/faqs','FaqController');
@@ -79,6 +87,11 @@ Route::group(['namespace' => 'Admin'], function () {
 
         // Admin Route country
         Route::resource('/dashboard/countries', 'CountryController');
+
+        //Admin Route city
+        Route::resource('/dashboard/cities', 'CityController');
+        Route::get('/dashboard/active_cities/{id}', 'CityController@active')->name('active_cities');
+        Route::get('/dashboard/disable_cities/{id}', 'CityController@disable')->name('disable_cities');
 
         Route::get('/dashboard/account/profile', 'AccountController@index')->name('admin.account');
         Route::get('/dashboard/profile/{username}', 'AccountController@show')->name('admin.view');

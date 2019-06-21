@@ -5,6 +5,7 @@ namespace App\Model\admin;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class categoryfaq extends Model
 {
@@ -13,9 +14,10 @@ class categoryfaq extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'ip',
-    ];
+    use LogsActivity;
+
+    protected $fillable = ['name','user_id','ip'];
+    protected static $logAttributes = ['name','user_id','ip'];
 
 
     public function user()

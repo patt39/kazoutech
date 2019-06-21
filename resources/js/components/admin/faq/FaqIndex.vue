@@ -9,7 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
@@ -28,9 +28,9 @@
                         </div>
                     </div>
                     <div v-if="!loaded" class="submit">
-                        <Loaded/>
+                        <LoaderLdsDefault/>
                     </div>
-                    <div class="row">
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
                             <div class="card">
                                 <div :class="getColorHeaderUser()">
@@ -141,9 +141,9 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
-    import Loaded from "../../inc/animation/Loaded";
+    import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
     export default {
-        components: {Loaded, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
                 loaded: false,

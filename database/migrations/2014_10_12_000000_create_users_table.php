@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('age')->nullable();
             $table->string('color_name')->default('primary')->nullable();
             $table->string('phone')->nullable();
-            $table->string('my_status')->nullable();
+            $table->string('my_status')->nullable()->default('0');
             $table->longText('body')->nullable();
             $table->string('address')->nullable();
             $table->string('color_style')->nullable();

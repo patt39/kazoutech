@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Partial;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Gate;
 
 class ColorResource extends JsonResource
 {
@@ -21,8 +22,22 @@ class ColorResource extends JsonResource
             'status' => $this->status,
             'slug' => $this->slug,
             'user' => $this->user,
+            'can' => $this->permissions(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
+        ];
+    }
+    /**
+     * Returns the permissions of the resource.
+     *
+     * @return array
+     */
+    protected function permissions()
+    {
+        return [
+            'update' => Gate::allows('update', $this->resource),
+            'delete' => Gate::allows('delete', $this->resource),
+            'open' => Gate::allows('open', $this->resource),
         ];
     }
 }

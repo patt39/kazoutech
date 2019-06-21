@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\Permission\Models\Role;
 
 class UserResource extends JsonResource
 {
@@ -37,8 +38,10 @@ class UserResource extends JsonResource
             'instalink' => $this->instalink,
             'fblink' => $this->fblink,
             'email_verified_at' => $this->email_verified_at,
-            //'statusOnline' => $this->isOnline(),
+            'statusOnline' => $this->isOnline(),
             //'provider' => $this->provider,
+            //'roles' => $this->roles,
+            'roles' => RoleResource::collection($this->roles),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

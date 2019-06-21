@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b72e649a390d5176fe5ec648969d6e81",
+    "content-hash": "ca95b83753844a48349614294030e2cd",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -2544,6 +2544,70 @@
             "time": "2018-10-13T15:16:03+00:00"
         },
         {
+            "name": "qoraiche/laravel-mail-editor",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Qoraiche/laravel-mail-editor.git",
+                "reference": "2259ffd417adeaea553404e8bea22d36c9fbed5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Qoraiche/laravel-mail-editor/zipball/2259ffd417adeaea553404e8bea22d36c9fbed5a",
+                "reference": "2259ffd417adeaea553404e8bea22d36c9fbed5a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5",
+                "reecem/mocker": "1.1.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~7.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "qoraiche\\mailEclipse\\mailEclipseServiceProvider"
+                    ],
+                    "aliases": {
+                        "mailEclipse": "qoraiche\\mailEclipse\\Facades\\mailEclipse"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "qoraiche\\mailEclipse\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yassine qoraiche",
+                    "email": "qoraicheofficiel@hotmail.com",
+                    "homepage": "https://github.com/qoraiche"
+                }
+            ],
+            "description": "Laravel Mailable Editor",
+            "homepage": "https://github.com/Qoraiche/laravel-mail-editor",
+            "keywords": [
+                "laravel",
+                "laravel-mail",
+                "laravel-mailable",
+                "mailEclipse",
+                "mailable",
+                "mailable-editor",
+                "markdown"
+            ],
+            "time": "2019-06-10T22:06:23+00:00"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "2.0.5",
             "source": {
@@ -2666,6 +2730,55 @@
             "time": "2018-07-19T23:38:55+00:00"
         },
         {
+            "name": "reecem/mocker",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ReeceM/mocker.git",
+                "reference": "34bdd68e5f2ecf175171872b0e5fbd4df27f2b29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ReeceM/mocker/zipball/34bdd68e5f2ecf175171872b0e5fbd4df27f2b29",
+                "reference": "34bdd68e5f2ecf175171872b0e5fbd4df27f2b29",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^5.6",
+                "illuminate/support": "^5.6"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ReeceM\\Mocker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ReeceM",
+                    "email": "reecestevenmay@gmail.com",
+                    "homepage": "https://githib.com/reecem"
+                }
+            ],
+            "description": "Mock class constructor args based on the reflection class",
+            "homepage": "https://github.com/reecem/mocker",
+            "keywords": [
+                "helper",
+                "laravel",
+                "mockery",
+                "testing"
+            ],
+            "time": "2019-05-08T21:50:43+00:00"
+        },
+        {
             "name": "spatie/laravel-activitylog",
             "version": "3.6.1",
             "source": {
@@ -2736,6 +2849,71 @@
                 "user"
             ],
             "time": "2019-05-29T06:52:22+00:00"
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "2.37.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "81dbe9d372d70c255b66a2727a235076509f8d45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/81dbe9d372d70c255b66a2727a235076509f8d45",
+                "reference": "81dbe9d372d70c255b66a2727a235076509f8d45",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/container": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/contracts": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/database": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.4.2|~3.5.0|~3.6.0|~3.7.0",
+                "phpunit/phpunit": "^5.7|6.2|^7.0",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 5.4 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "security",
+                "spatie"
+            ],
+            "time": "2019-04-09T12:45:17+00:00"
         },
         {
             "name": "spatie/laravel-searchable",

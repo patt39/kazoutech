@@ -25,6 +25,10 @@ import CategoryFaqIndex from "../components/admin/faq/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/FaqIndex";
 import FaqCreate from "../components/admin/faq/FaqCreate";
 import FaqEdit from "../components/admin/faq/FaqEdit";
+import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
+import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
+import CityIndex from "../components/admin/partial/city/CityIndex";
+import PermissionIndex from "../components/admin/permission/PermissionIndex";
 
 
 export const routes = [
@@ -37,16 +41,25 @@ export const routes = [
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},
     {path: '/dashboard/countries/', name: 'countries.index', component: CountriesIndex},
 
+    //Route administrators
+    {path: '/dashboard/administrators/', name: 'administrators.index', component: AdministratorIndex},
+    {path: '/dashboard/administrators/:id/edit/', name: 'administrators.edit', component: AdministratorEdit},
+
     //Route occupations
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
 
+    //Route cities
+    {path: '/dashboard/cities/', name: 'cities.index', component: CityIndex},
+
     //Route categories FAQS
     {path: '/dashboard/category-faqs/', name: 'categoryfaqs.index', component: CategoryFaqIndex},
+    //Route permissions
+    {path: '/dashboard/permissions/', name: 'permissions.index', component: PermissionIndex},
 
     //Route FAQS
     {path: '/dashboard/faqs/', name: 'faqs.index', component: FaqIndex},
     {path: '/dashboard/faqs/create/', name: 'faqs.create', component: FaqCreate},
-    {path: '/dashboard/faqs/:id/edit', name: 'faqs.edit', component: FaqEdit},
+    {path: '/dashboard/faqs/:id/edit/', name: 'faqs.edit', component: FaqEdit},
 
     //Route categories
     {path: '/dashboard/categories/', name: 'categories.index', component: CategoryIndex},

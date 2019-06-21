@@ -29,9 +29,7 @@
                         </div>
                     </div>
                     <div v-if="!loaded" class="submit">
-                        <div class="text-center">
-                            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                        </div>
+                        <LoaderLdsDefault/>
                     </div>
                     <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
@@ -112,7 +110,7 @@
                                                     <router-link  :to="{ path: `/dashboard/tags/show/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View tag">
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>
-                                                    <router-link  :to="{ path: `/dashboard/tags/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <router-link  v-if="item.can.update"  :to="{ path: `/dashboard/tags/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
                                                     <a href="javascript:void(0)" @click="deleteItem(item.id)"
@@ -141,8 +139,9 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
                 loaded: false,

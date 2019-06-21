@@ -11,7 +11,9 @@
 @endsection
 
 @section('content')
-    <router-view></router-view>
+    <div class="submit text-center">
+        @include('inc.admin.alert_permission')
+    </div>
 @endsection
 
 @section('script')

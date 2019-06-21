@@ -214,7 +214,7 @@
                                                                                     :class="{ 'is-invalid': form.errors.has('my_status') }" style="margin-top: 15px;">
                                                                                 <option value="" disabled>Add user role</option>
                                                                                 <option value="active">Administrator</option>
-                                                                                <option value="null">User</option>
+                                                                                <option value="0">User</option>
                                                                             </select>
                                                                             <has-error :form="form" field="my_status"></has-error>
                                                                         </div>
@@ -327,7 +327,14 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Informations user incorrects.');
+                    //Alert
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
         },

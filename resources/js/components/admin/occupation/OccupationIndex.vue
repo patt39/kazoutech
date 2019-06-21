@@ -28,9 +28,7 @@
                         </div>
                     </div>
                     <div v-if="!loaded" class="submit">
-                        <div class="text-center">
-                            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                        </div>
+                        <LoaderLdsDefault/>
                     </div>
                     <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
@@ -122,7 +120,7 @@
                                         </table>
                                     </div>
 
-                                    <!-- Modal création/édition color -->
+                                    <!-- Modal création/édition occupation -->
                                     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -138,7 +136,7 @@
                                                     <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required/>
+                                                            <input v-model="form.name" type="text" name="name" placeholder="Name occupation" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required/>
                                                             <has-error :form="form" field="name"></has-error>
                                                         </div>
                                                         <div class="modal-footer">
@@ -184,8 +182,9 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
                 loaded: false,
@@ -262,7 +261,14 @@
                     .catch(() => {
                         //Failled message
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
             },
             editItem(item) {
@@ -317,7 +323,14 @@
 
                         }).catch(() => {
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            //Alert error
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
                         })
                     }
                 })
@@ -342,7 +355,14 @@
                     this.$Progress.finish();
                     Fire.$emit('AfterCreate');
                 }).catch(() => {
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
@@ -365,7 +385,14 @@
 
                     Fire.$emit('AfterCreate');
                 }).catch(() => {
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             loadItems() {
@@ -411,7 +438,14 @@
                     })
                     .catch(() => {
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
             }
         },

@@ -59,8 +59,6 @@ class AdmininviteController extends Controller
 
         // here you would probably log the user in and show them the dashboard, but we'll just prove it worked
 
-
-        //alert()->success('Welcome to you!','')->persistent('Close Me!');
-        return redirect(route('admin'))->with('success','Event update with success!');
+        return redirect(route('dashboard.index'))->with('success','Event update with success!');
     }
 }

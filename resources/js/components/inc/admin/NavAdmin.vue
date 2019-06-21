@@ -82,41 +82,6 @@
                             <p><b>Dashboard</b></p>
                         </router-link>
                     </li>
-                    <!-- Links -->
-                    <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/links' }" class="nav-link">
-                            <i class="material-icons">http</i>
-                            <p><b>Links</b></p>
-                        </router-link>
-                    </li>
-                    <!-- Countries -->
-                    <li class="nav-item">
-                        <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
-                            <i class="material-icons">flag</i>
-                            <p><b>Countries</b></p>
-                        </router-link>
-                    </li>
-                    <!-- Colors -->
-                    <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/colors' }" class="nav-link">
-                            <i class="material-icons">color_lens</i>
-                            <p><b>colors</b></p>
-                        </router-link>
-                    </li>
-                    <!-- Categories -->
-                    <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/categories/' }" class="nav-link">
-                            <i class="material-icons">local_offer</i>
-                            <p><b>Categories</b></p>
-                        </router-link>
-                    </li>
-                    <!-- Tags -->
-                    <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/tags/' }" class="nav-link">
-                            <i class="material-icons">local_offer</i>
-                            <p><b>Tags</b></p>
-                        </router-link>
-                    </li>
                     <!-- Occupations -->
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/occupations/' }" class="nav-link">
@@ -124,6 +89,62 @@
                             <p><b>Occupations</b></p>
                         </router-link>
                     </li>
+                    <!-- Links Partial -->
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#partialExamples">
+                            <i class="material-icons">contact_support</i>
+                            <p><b>Partials</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="partialExamples">
+                            <ul class="nav">
+                                <!-- Links -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/links' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>LI</b></span>
+                                        <span class="sidebar-normal"><b>Links</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Colors -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/colors' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>COL</b></span>
+                                        <span class="sidebar-normal"><b>Colors</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Countries -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
+                                        <span class="sidebar-mini"><b>COU</b></span>
+                                        <span class="sidebar-normal"><b>Country</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Cites -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'cities.index' }"  replace class="nav-link">
+                                        <span class="sidebar-mini"><b>CI</b></span>
+                                        <span class="sidebar-normal"><b>Cities</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Tags -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/tags/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>TA</b></span>
+                                        <span class="sidebar-normal"><b>Tags</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Categories -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/categories/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>CA</b></span>
+                                        <span class="sidebar-normal"><b>Categories</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                     <!-- Categories Faqs -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#faqsExamples">
@@ -156,12 +177,39 @@
                             <p><b>Contacts</b></p>
                         </router-link>
                     </li>
-                    <!-- Contacts -->
-                    <li class="nav-item">
-                        <router-link  :to="{ name: 'users.index' }" class="nav-link">
-                            <i class="material-icons">face</i>
-                            <p><b>Users</b></p>
-                        </router-link>
+                    <!-- Administrations -->
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#administrationExamples">
+                            <i class="material-icons">person_outline</i>
+                            <p><b>Administrations</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="administrationExamples">
+                            <ul class="nav">
+                                <!-- Administrators -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'administrators.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>AD</b></span>
+                                        <span class="sidebar-normal"><b>Administrators</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Users -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'users.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>US</b></span>
+                                        <span class="sidebar-normal"><b>Users</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Permissions -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'permissions.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>PM</b></span>
+                                        <span class="sidebar-normal"><b>Permissions</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>

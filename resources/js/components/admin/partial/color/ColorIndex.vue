@@ -28,9 +28,7 @@
                         </div>
                     </div>
                     <div v-if="!loaded" class="submit">
-                        <div class="text-center">
-                            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                        </div>
+                       <LoaderLdsDefault/>
                     </div>
                     <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
@@ -191,8 +189,9 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
                 loaded: false,

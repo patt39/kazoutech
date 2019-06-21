@@ -10,7 +10,7 @@
     <router-view></router-view>
 @else
 <div class="submit text-center">
-    @include('inc.admin.components.alert_permission')
+    @include('inc.admin.alert_permission')
 </div>
 @endif
 @endsection

@@ -33,7 +33,9 @@ class UserController extends Controller
 
     public function api()
     {
-        return UserResource::collection(User::latest()->get());
+        return UserResource::collection(User::with('my_country')
+            ->where('my_status','0')
+            ->latest()->get());
     }
 
     /**

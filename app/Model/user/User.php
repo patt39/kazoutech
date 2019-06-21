@@ -2,21 +2,25 @@
 
 namespace App\Model\user;
 
+use App\Model\admin\country;
 use App\Notifications\RegisteredUsers;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable,HasApiTokens;
+    use Notifiable,HasApiTokens,HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $guard_name = 'web';
     protected $fillable = [
         'name',
         'first_name',
@@ -64,4 +68,15 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
+
+
+    public function my_country()
+    {
+        return $this->belongsTo(country::class,'country_id');
+    }
 }
