@@ -34,6 +34,24 @@ Route::group(['namespace' => 'Admin'], function () {
 
     // Dashboard
     Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
+    Route::resource('/dashboard/users','UserController');
+    Route::get('/dashboard/users/profile/{username}', 'UserController@view')->name('users.view');
+    Route::get('/users/profile/{username}', 'UserController@userShow');
+
+    //Route Occupation
+    Route::resource('/dashboard/occupations','OccupationController');
+    Route::get('/dashboard/active_occupations/{id}', 'OccupationController@active')->name('active_occupations');
+    Route::get('/dashboard/disable_occupations/{id}', 'OccupationController@disable')->name('disable_occupations');
+
+    //Route Faq
+    Route::resource('/dashboard/faqs','FaqController');
+    Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');
+    Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
+
+    //Route Faq
+    Route::resource('/dashboard/faqs','FaqController');
+    Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');
+    Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
 
     Route::group(['namespace' => 'Partial'], function () {
 
@@ -41,6 +59,11 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::resource('/dashboard/categories', 'CategoryController');
         Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');
         Route::get('/dashboard/disable_categories/{id}', 'CategoryController@disable')->name('disable_categories');
+
+        // Admin Route categoryfaqs
+        Route::resource('/dashboard/category-faqs', 'CategoryfaqController');
+        Route::get('/dashboard/active_category-faqs/{id}', 'CategoryfaqController@active')->name('active_category-faqs');
+        Route::get('/dashboard/disable_category-faqs/{id}', 'CategoryfaqController@disable')->name('disable_category-faqs');
 
         // Admin Route tags
         Route::resource('/dashboard/tags', 'TagController');
@@ -67,7 +90,7 @@ Route::group(['namespace' => 'Admin'], function () {
 
 
         //Change Password Route
-        Route::get('dashboard/change_password', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
+        Route::get('dashboard/user/change_password', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
         Route::put('change_password', 'ChangePasswordController@changePassword');
 
 
@@ -83,4 +106,18 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('dashboard/contacts/view/{slug}', 'ContactController@view');
     Route::get('/dashboard/contacts/red_confirm/{id}', 'ContactController@active');
     Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
+
+
+    Route::resource('dashboard/messages', 'MessageController');
+    Route::get('/dashboard/messages/view/{slug}', 'MessageController@view');
+    Route::get('/dashboard/messages/m/send', 'MessageController@send')->name('messages.send');
+    Route::get('/messages/red_confirm/{id}', 'MessageController@active');
+    Route::get('/dashboard/user/search', 'MessageController@user');
+    Route::get('/messages/discard_red/{slug}', 'MessageController@disable');
+
+    Route::resource('dashboard/mails', 'MailController');
+
+
+
+    Route::get('dashboard/chat', 'MessageController@chat')->name('messages.chat');
 });

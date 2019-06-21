@@ -135,13 +135,13 @@ class ContactController extends Controller
 
     /**
      * cette parti consite a activer et a desactiver
-     * @param $id
+     * @param $slug
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function disable($id)
+    public function disable($slug)
     {
         DB::table('contacts')
-            ->where('id',$id)
+            ->where('slug',$slug)
             ->update([
                 'status' => 1,
                 'user_id' => auth()->user()->id,

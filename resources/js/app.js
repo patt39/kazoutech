@@ -18,7 +18,11 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
-
+/**
+ * Vue select
+ */
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect);
 /**
  * Router vuejs
  */
@@ -63,6 +67,7 @@ const toast = Swal.mixin({
     timer: 3000
 });
 window.toast = toast;
+
 
 /** Ici c'est pour configurer le progressbar se referer a la documentation
  * https://github.com/hilongjw/vue-progressbar#requirements

@@ -8,10 +8,10 @@
         -->
             <div class="logo">
                 <a href="/" class="simple-text logo-mini">
-                    <b>BT</b>
+                    <b>KT</b>
                 </a>
                 <a href="/" class="simple-text logo-normal">
-                    <b style="font-size: 80%;">Boclair Temgoua</b>
+                    <b style="font-size: 80%;">Kazoutech</b>
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -40,12 +40,12 @@
                                         <span class="sidebar-normal"><b>Edit Profile</b></span>
                                     </router-link>
                                 </li>
-                                <!--<li class="nav-item ">
-                                    <router-link :to="{ name: 'admin.change_password' }" class="nav-link">
-                                        <span class="sidebar-mini">CP</span>
-                                        <span class="sidebar-normal"><b>Change Password</b></span>
+                                <li class="nav-item ">
+                                    <router-link :to="{ name: 'messages.index' }" class="nav-link">
+                                        <span class="sidebar-mini">MB</span>
+                                        <span class="sidebar-normal"><b>Message Box</b></span>
                                     </router-link>
-                                </li>-->
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
                                         <span class="sidebar-mini"><b>MS</b></span>
@@ -105,7 +105,7 @@
                     </li>
                     <!-- Categories -->
                     <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/categories' }" class="nav-link">
+                        <router-link  :to="{ path: '/dashboard/categories/' }" class="nav-link">
                             <i class="material-icons">local_offer</i>
                             <p><b>Categories</b></p>
                         </router-link>
@@ -117,11 +117,50 @@
                             <p><b>Tags</b></p>
                         </router-link>
                     </li>
+                    <!-- Occupations -->
+                    <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/occupations/' }" class="nav-link">
+                            <i class="material-icons">assignment</i>
+                            <p><b>Occupations</b></p>
+                        </router-link>
+                    </li>
+                    <!-- Categories Faqs -->
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#faqsExamples">
+                            <i class="material-icons">contact_support</i>
+                            <p><b>FAQs</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="faqsExamples">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/category-faqs/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>CF</b></span>
+                                        <span class="sidebar-normal"><b>Category FAQs</b></span>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'faqs.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>FQ</b></span>
+                                        <span class="sidebar-normal"><b>FAQs</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <!-- Contacts -->
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/contacts' }" class="nav-link">
                             <i class="material-icons">message</i>
                             <p><b>Contacts</b></p>
+                        </router-link>
+                    </li>
+                    <!-- Contacts -->
+                    <li class="nav-item">
+                        <router-link  :to="{ name: 'users.index' }" class="nav-link">
+                            <i class="material-icons">face</i>
+                            <p><b>Users</b></p>
                         </router-link>
                     </li>
                 </ul>

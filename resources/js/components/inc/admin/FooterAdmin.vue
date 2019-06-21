@@ -4,9 +4,9 @@
             <nav class="pull-left">
                 <ul>
                     <li>
-                        <a href="/" target="_blank">
-                           kazoucoin
-                        </a>
+                        <router-link  :to="{ path: '/dashboard/' }" class="nav-link">
+                            kazoutech
+                        </router-link>
                     </li>
                     <li>
                         <a href="#" target="_blank">
@@ -24,15 +24,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/contact-us" target="_blank">
-                            Contact Us
-                        </a>
+                        <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
+                            Contacts
+                        </router-link>
                     </li>
                 </ul>
             </nav>
             <div class="copyright pull-right">
                 <h6 style="font-size=0.9em;">&copy; 2019 -
-                    {{ new Date().getFullYear() }}. Realized by <a href="/">kazoucoin</a></h6>
+                    {{ new Date().getFullYear() }}. Realized by <a href="/">TNP</a></h6>
             </div>
         </div>
     </footer>

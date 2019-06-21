@@ -9,7 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
@@ -32,7 +32,7 @@
                             <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
                             <div class="card">
                                 <div :class="getColorHeaderUser()">
@@ -92,9 +92,13 @@
                                                     <a href="javascript:void(0)" v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Confirm Read">
                                                         <i class="material-icons">done</i>
                                                     </a>
-                                                    <router-link  :to="{ path: `/dashboard/contacts/msg/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
+                                                    <!--<router-link  :to="{ path: `/dashboard/contacts/msg/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
                                                         <i class="material-icons">visibility</i>
-                                                    </router-link>
+                                                    </router-link>-->
+                                                    <a href="javascript:void(0)" @click="redItem(item.slug)"
+                                                       class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
+                                                        <i class="material-icons">visibility</i>
+                                                    </a>
                                                     <a href="javascript:void(0)" @click="deleteItem(item.id)"
                                                        class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
@@ -219,33 +223,6 @@
                     }
                 })
             },
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-
-                this.form.get('/dashboard/contacts/discard_red/' + id).then(() => {
-
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact read.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert **/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
-                })
-            },
             /** Ici c'est la désactivation de la couleur **/
             disableItem(id) {
                 //Start Progress bar
@@ -262,6 +239,25 @@
                         notify.update({'type': 'success', 'message': '<strong>Message contact unread.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert **/
+
+                    //End Progress bar
+                    this.$Progress.finish();
+                    Fire.$emit('AfterCreate');
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    toastr.error('', 'Ooop! Something wrong. Try later');
+                })
+            },
+            /** Ici c'est la désactivation de la couleur **/
+            redItem(slug) {
+                //Start Progress bar
+                this.$Progress.start();
+
+                this.form.get('/dashboard/contacts/discard_red/' + slug).then(() => {
+
+                    //Redirect after create
+                    setTimeout(() => this.$router.push({  path: `/dashboard/contacts/msg/${slug}` }));
 
                     //End Progress bar
                     this.$Progress.finish();

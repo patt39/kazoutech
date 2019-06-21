@@ -38,6 +38,18 @@ class CompileTableSeeder extends Seeder
 
             ]);
         }
+        for ($i = 0; $i < 1; $i++){
+            \Illuminate\Support\Facades\DB::table('users')->insert([
+                'username' =>'bokino10',
+                'name' =>'Mitofo Gogo',
+                'my_status' =>'active',
+                'email' => "temgoua2010@gmail.com",
+                "password" => bcrypt('0000000'),
+                'created_at' => Carbon\Carbon::now(),
+                'email_verified_at' => Carbon\Carbon::now(),
+
+            ]);
+        }
 
         for ($i = 3; $i < 10; $i++){
             \Illuminate\Support\Facades\DB::table('users')->insert([
@@ -49,6 +61,9 @@ class CompileTableSeeder extends Seeder
 
             ]);
         }
+
+
+
 
 
         // $this->call(UsersTableSeeder::class);

@@ -25,4 +25,16 @@ export default {
     contactshow(contact) {
         return axios.get(`/dashboard/contacts/view/${contact}`);
     },
+    userID(id) {
+        return axios.get(`/dashboard/users/${id}`);
+    },
+    userUsername(username) {
+        return axios.get(`/users/profile/${username}`);
+    },
+    faqID(id) {
+        return axios.get(`/dashboard/faqs/${id}`);
+    },
+    messageshow(message) {
+        return axios.get(`/dashboard/messages/view/${message}`);
+    },
 };
