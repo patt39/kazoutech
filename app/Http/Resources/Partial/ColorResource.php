@@ -22,6 +22,7 @@ class ColorResource extends JsonResource
             'status' => $this->status,
             'slug' => $this->slug,
             'user' => $this->user,
+            'statusOnline' => $this->user->isOnline(),
             'can' => $this->permissions(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

@@ -5,6 +5,7 @@ namespace App\Model\admin;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class color extends Model
@@ -32,6 +33,12 @@ class color extends Model
             $model->ip = request()->ip();
         });
     }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
+
     use Sluggable;
 
     /**

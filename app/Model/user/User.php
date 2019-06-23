@@ -3,6 +3,7 @@
 namespace App\Model\user;
 
 use App\Model\admin\country;
+use App\Model\admin\task;
 use App\Notifications\RegisteredUsers;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -78,5 +79,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function my_country()
     {
         return $this->belongsTo(country::class,'country_id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(task::class,'administrator_id');
     }
 }

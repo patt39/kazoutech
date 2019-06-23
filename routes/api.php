@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('users', 'Admin\UserController@api');
+Route::get('search', 'Admin\UserController@search');
 Route::get('administrators', 'Admin\AdministratorController@api');
 Route::get('occupations', 'Admin\OccupationController@api');
 Route::get('colors', 'Admin\Partial\ColorController@api');
@@ -21,6 +22,9 @@ Route::get('category-faqs', 'Admin\Partial\CategoryfaqController@api');
 Route::get('faqs', 'Admin\FaqController@api');
 Route::get('countries', 'Admin\Partial\CountryController@api');
 Route::get('cities', 'Admin\Partial\CityController@api');
+Route::get('notes', 'Admin\Partial\NoteController@api');
+Route::get('tasks', 'Admin\Partial\TaskController@api');
+Route::get('tasks/u/{username}', 'Admin\Partial\TaskController@usertask');
 Route::get('permissions', 'Admin\PermissionController@api');
 Route::get('roles', 'Admin\RoleController@api');
 Route::get('categories', 'Admin\Partial\CityController@api');

@@ -21,8 +21,6 @@ class ColorController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api']]);
-        // Middleware lock account
-        //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.

@@ -253,7 +253,7 @@
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating"></label>
-                                                                    <select name="name" v-model="form.email" id="name" class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
+                                                                    <select name="email" v-model="form.email" id="email" class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                                                                         <option value="" disabled >Select an administrator</option>
                                                                         <option v-for="user in users" :key="user.id" :value="user.email">{{user.name}}</option>
                                                                     </select>

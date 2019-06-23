@@ -38,6 +38,14 @@ class UserController extends Controller
             ->latest()->get());
     }
 
+
+    public function search(Request $request)
+    {
+        $users = User::where('name', $request->keywords)->get();
+
+        return response()->json($users);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

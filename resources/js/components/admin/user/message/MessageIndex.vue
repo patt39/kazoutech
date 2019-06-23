@@ -139,6 +139,13 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <input type="text" v-model.lazy="keywords" v-debounce="300">
+                                                            <ul v-if="users.length > 0">
+                                                                <li v-for="result in users" :key="result.id" v-text="result.name"></li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
                                                             <select name="name" v-model="form.to_id" id="name" class="form-control" :class="{ 'is-invalid': form.errors.has('to_id') }">
                                                                 <option value="" disabled >To</option>
@@ -195,6 +202,7 @@
         components: {LoaderLdsDefault, NavMessage, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                keywords: null,
                 loaded: false,
                 users: {},
                 options: {},
@@ -211,7 +219,23 @@
             };
         },
 
+        watch: {
+            keywords(after, before) {
+                this.fetch();
+            }
+        },
+
         methods: {
+
+            highlight(text) {
+                return text.replace(new RegExp(this.keywords, 'gi'), '<span class="highlighted">$&</span>');
+            },
+
+            fetch() {
+                axios.get('/api/search', { params: { keywords: this.keywords } })
+                    .then(response => this.users = response.data)
+                    .catch(error => {});
+            },
 
            //onSearch(search, loading) {
            //    loading(true);

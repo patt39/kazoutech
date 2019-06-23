@@ -19,6 +19,7 @@ class FaqResource extends JsonResource
             'ip' => $this->ip,
             'slug' => $this->slug,
             'user' => $this->user,
+            'statusOnline' => $this->user->isOnline(),
             'body' => $this->body,
             'title' => $this->title,
             'status' => $this->status,

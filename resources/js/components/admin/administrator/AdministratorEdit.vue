@@ -133,7 +133,7 @@
                                                                                         <option value="" disabled>Choose Role</option>
                                                                                         <option v-for="role in roles" :key="role.id" :value="role.name">{{role.name}}</option>
                                                                                     </select>
-                                                                                    <has-error :form="form" field="roles[]"></has-error>
+                                                                                    <has-error :form="form" field="roles"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

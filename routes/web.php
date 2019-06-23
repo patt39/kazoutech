@@ -106,6 +106,18 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('dashboard/user/change_password', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
         Route::put('change_password', 'ChangePasswordController@changePassword');
 
+        //Notes administrator Route
+        Route::resource('/dashboard/notes', 'NoteController');
+        Route::get('/dashboard/active_notes/{id}', 'NoteController@active')->name('active_notes');
+        Route::get('/dashboard/disable_notes/{id}', 'NoteController@disable')->name('disable_notes');
+
+        //Route Task
+        //Notes administrator Route
+        Route::resource('/dashboard/tasks', 'TaskController');
+        Route::put('/dashboard/update_progress_tasks/{id}', 'TaskController@updateProgress');
+        Route::put('/dashboard/update_description_tasks/{id}', 'TaskController@updateDescription');
+        Route::get('/dashboard/tasks/u/{username}', 'TaskController@view')->name('tasks.view');
+
 
     });
 

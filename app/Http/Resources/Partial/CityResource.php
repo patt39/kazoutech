@@ -19,6 +19,7 @@ class CityResource extends JsonResource
             'name' => $this->name,
             'status' => $this->status,
             'slug' => $this->slug,
+            'statusOnline' => $this->user->isOnline(),
             'user' => $this->user,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

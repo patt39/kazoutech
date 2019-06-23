@@ -37,4 +37,7 @@ export default {
     messageshow(message) {
         return axios.get(`/dashboard/messages/view/${message}`);
     },
+    tasksbyuser(username) {
+        return axios.get(`/api/tasks/u/${username}`);
+    },
 };

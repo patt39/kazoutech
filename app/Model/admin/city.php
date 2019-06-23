@@ -5,6 +5,7 @@ namespace App\Model\admin;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class city extends Model
 {
@@ -33,6 +34,12 @@ class city extends Model
             $model->ip = request()->ip();
         });
     }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
+
     use Sluggable;
 
     /**

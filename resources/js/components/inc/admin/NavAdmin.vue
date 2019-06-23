@@ -46,6 +46,12 @@
                                         <span class="sidebar-normal"><b>Message Box</b></span>
                                     </router-link>
                                 </li>
+                                <li class="nav-item ">
+                                    <router-link :to="{ name: 'tasks.index' }" class="nav-link">
+                                        <span class="sidebar-mini">TT</span>
+                                        <span class="sidebar-normal"><b>Tasks Todo</b></span>
+                                    </router-link>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
                                         <span class="sidebar-mini"><b>MS</b></span>
@@ -199,6 +205,13 @@
                                     <router-link  :to="{ name: 'users.index' }" class="nav-link">
                                         <span class="sidebar-mini"><b>US</b></span>
                                         <span class="sidebar-normal"><b>Users</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Notes -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'notes.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>NO</b></span>
+                                        <span class="sidebar-normal"><b>Notes</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Permissions -->

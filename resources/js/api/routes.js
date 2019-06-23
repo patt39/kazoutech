@@ -29,6 +29,9 @@ import AdministratorIndex from "../components/admin/administrator/AdministratorI
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
 import CityIndex from "../components/admin/partial/city/CityIndex";
 import PermissionIndex from "../components/admin/permission/PermissionIndex";
+import NoteIndex from "../components/admin/partial/note/NoteIndex";
+import TaskIndex from "../components/admin/partial/task/TaskIndex";
+import TaskUser from "../components/admin/partial/task/TaskUser";
 
 
 export const routes = [
@@ -94,5 +97,10 @@ export const routes = [
     {path: '/dashboard/messages/m/send/', name: 'messages.send', component: MessageSend},
 
     {path: '/dashboard/chat/', name: 'messages.chat', component: ChatIndex},
+
+
+    {path: '/dashboard/notes/', name: 'notes.index', component: NoteIndex},
+    {path: '/dashboard/tasks/', name: 'tasks.index', component: TaskIndex},
+    {path: '/dashboard/tasks/u/:username', name: 'tasks.view', component: TaskUser},
 
 ];

@@ -5,6 +5,7 @@ namespace App\Model\admin;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class faq extends Model
@@ -39,6 +40,11 @@ class faq extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 
     use Sluggable;

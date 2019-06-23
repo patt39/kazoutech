@@ -101,7 +101,8 @@
                                                 </td>
                                                 <td>
                                                     <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
-                                                        <!--<button  type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>-->
+                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </router-link>
                                                 </td>
@@ -113,7 +114,7 @@
                                                     <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                         <i class="material-icons">power_settings_new</i>
                                                     </button>
-                                                    <button @click="editItem(item)"
+                                                    <button v-if="item.can.update" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
@@ -269,7 +270,14 @@
                     .catch(() => {
                         //Failled message
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
             },
             editItem(item) {
@@ -324,7 +332,14 @@
 
                         }).catch(() => {
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            //Alert error
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
                         })
                     }
                 })
@@ -349,7 +364,14 @@
                     this.$Progress.finish();
                     Fire.$emit('AfterCreate');
                 }).catch(() => {
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
@@ -372,7 +394,14 @@
 
                     Fire.$emit('AfterCreate');
                 }).catch(() => {
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             loadItems() {
@@ -418,7 +447,14 @@
                     })
                     .catch(() => {
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
             }
         },
