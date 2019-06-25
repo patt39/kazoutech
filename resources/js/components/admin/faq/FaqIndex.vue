@@ -351,12 +351,12 @@
                 axios.get("/api/faqs").then(response => {
                     this.loaded = true;
                     this.faqs = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
                 axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
                 axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
-                this.$Progress.finish();
             },
         },
         created() {

@@ -221,6 +221,13 @@
                                         <span class="sidebar-normal"><b>Permissions</b></span>
                                     </router-link>
                                 </li>
+                                <!-- Roles -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/dashboard/roles">
+                                        <span class="sidebar-mini"><b>RO</b></span>
+                                        <span class="sidebar-normal"><b>Roles</b></span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

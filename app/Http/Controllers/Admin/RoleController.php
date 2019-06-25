@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Resources\RoleResource;
-use App\Http\Resources\UsersrolesResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -29,10 +28,10 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $roles = Role::orderBy('id','DESC')->get();
-        return view('admin.partials.role.show',compact('roles'));
+        return view('admin.role.index',compact('roles'));
     }
 
     public function api()
@@ -53,7 +52,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::get()->pluck('name', 'name');
-        return view('admin.partials.role.create',compact('permissions'));
+        return view('admin.role.create',compact('permissions'));
     }
 
     /**
@@ -77,7 +76,7 @@ class RoleController extends Controller
 
 
         //alert()->success('Success', "Role has ben created successfully");
-        toastr()->success('<b>Role has been created !</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
+        //toastr()->success('<b>Role has been created !</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
         return redirect()->route('roles.index');
     }
 
@@ -129,7 +128,7 @@ class RoleController extends Controller
         $role->syncPermissions($permissions);
 
 
-        toastr()->success('<b>Role has been updated !</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
+        //toastr()->success('<b>Role has been updated !</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
         return redirect()->route('roles.index');
     }
 
@@ -145,7 +144,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($request->role_id);
         $role->delete();
 
-        toastr()->success('<b>Role has been deleted!</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
+        //toastr()->success('<b>Role has been deleted!</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
         return back();
     }
 

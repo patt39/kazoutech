@@ -76,7 +76,7 @@
                                                 </div>
                                             </div>
                                             <div v-if="item.description != null" class="timeline-panel task-description">
-                                                <div class="timeline-heading text-right">
+                                                <div class="timeline-heading">
                                                     <span class="badge badge-danger">Description Task</span>
                                                 </div>
                                                 <div class="timeline-body" v-html="item.description"></div>
@@ -278,6 +278,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="header text-right">
+                        <div class="toolbar">
+                            <div class="submit text-center">
+                                <pagination-link v-if="pagination.last_page > 1"
+                                                 :pagination="pagination"
+                                                 :offset="5"
+                                                 @paginate="loadItems()"></pagination-link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <FooterAdmin/>
@@ -311,6 +321,9 @@
                     description: "",
                     progress: "",
                 }),
+                pagination:{
+                    current_page: 1,
+                },
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     [{ 'font': [] }],
@@ -449,17 +462,20 @@
                 //Masquer le modal après la création
                 $("#addNew").modal("show");
             },
-            loadItem() {
+            loadItems() {
                 //Progrs bar
                 this.$Progress.start();
-                api.tasksbyuser(this.$route.params.username).then((response) => {
-                    this.loaded = true;
-                    this.usertasks = response.data.data;
+                api.tasksbyuser(this.$route.params.username+'?page='+this.pagination.current_page)
+                    .then((response) => {
+                        this.loaded = true;
+                        this.usertasks = response.data.data;
+                        this.pagination = response.data.meta;
+                        //End Progress bar
+                        this.$Progress.finish();
                 });
                 axios.get("/api/notes").then(response => {this.notes = response.data.data});
                 axios.get("/api/administrators").then(response => {this.users = response.data.data;});
-                //End Progress bar
-                this.$Progress.finish();
+
             },
             createItem() {
                 this.$Progress.start();
@@ -502,9 +518,9 @@
             }
         },
         created() {
-            this.loadItem();
+            this.loadItems();
             Fire.$on("AfterCreate", () => {
-                this.loadItem();
+                this.loadItems();
             });
         }
     };

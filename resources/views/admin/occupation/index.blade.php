@@ -12,7 +12,9 @@
 
 @section('content')
     @if(Auth::user()->my_status === 'active')
-        <router-view></router-view>
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
     @else
         <div class="submit text-center">
             @include('inc.admin.alert_permission')

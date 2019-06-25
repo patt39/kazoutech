@@ -19,7 +19,7 @@ class TaskController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','usertask']]);
+        $this->middleware('auth',['except' => ['api','usertask','search']]);
     }
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TaskController extends Controller
     public function api()
     {
         return TaskResource::collection(Task::with('user','administrator','note')
-            ->orderBy('created_at','DESC')->get());
+            ->orderBy('created_at','DESC')->paginate(6));
     }
 
     /**
@@ -45,6 +45,14 @@ class TaskController extends Controller
     public function create()
     {
         //
+    }
+
+    public function search($field, $query)
+    {
+        //$colors = new ColorCollection(Color::with('user')->latest()->get());
+        $colors = TaskResource::collection(Task::where($field,'LIKE',"%$query%")
+            ->with('user')->latest()->get());
+        return $colors;
     }
 
     /**
@@ -100,7 +108,8 @@ class TaskController extends Controller
         } else {
             $user = User::findOrFail(auth()->user()->id);
         }
-        $usertasks = TaskResource::collection($user->tasks()->latest()->get());
+        $usertasks = TaskResource::collection($user->tasks()
+            ->orderBy('created_at','DESC')->paginate(6));
         return $usertasks;
     }
 

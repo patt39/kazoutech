@@ -354,14 +354,14 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.messages = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
                 axios.get("/api/users").then(response => {
                     this.loaded = true;
                     this.users = response.data.data;});
                 axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
-                this.$Progress.finish();
             },
             createItem() {
                 //Start Progress bar

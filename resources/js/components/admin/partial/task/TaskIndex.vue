@@ -20,6 +20,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="header text-right">
+                        <button value="Refresh Page" @click="reload" class="btn btn-warning btn-raised btn-round button_note" >
+                            <i class="material-icons">replay</i>
+                            <b class="title_hover">Refresh</b>
+                        </button>
+                    </div>
 
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
@@ -87,7 +93,7 @@
                                                 </div>
                                             </div>
                                             <div v-if="item.description != null" class="timeline-panel task-description">
-                                                <div class="timeline-heading text-right">
+                                                <div class="timeline-heading">
                                                     <span class="badge badge-danger">Description Task</span>
                                                 </div>
                                                 <div class="timeline-body" v-html="item.description"></div>
@@ -116,12 +122,6 @@
                                                                  title="Edit Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">edit</i>
-                                                            </span>
-                                                        </button>
-                                                        <button @click="deleteItem(item.id)" class="btn btn-danger btn-round btn-just-icon btn-sm"
-                                                                title="Delete Description">
-                                                            <span class="btn-label">
-                                                                <i class="material-icons">delete_forever</i>
                                                             </span>
                                                         </button>
                                                     </div>
@@ -289,6 +289,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="header text-right">
+                        <div class="toolbar">
+                            <div class="submit text-center">
+                                <pagination-link v-if="pagination.last_page > 1"
+                                                 :pagination="pagination"
+                                                 :offset="5"
+                                                 @paginate="loadItems()"></pagination-link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <FooterAdmin/>
@@ -321,6 +331,9 @@
                     description: "",
                     progress: "",
                 }),
+                pagination:{
+                    current_page: 1,
+                },
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     [{ 'font': [] }],
@@ -572,18 +585,19 @@
                     });
                 });
             },
-            loadItem() {
+            loadItems() {
                 //Progrs bar
                 this.$Progress.start();
-                const url = "/api/tasks";
-                axios.get(url).then(response => {
+                axios.get(`/api/tasks?page=${this.pagination.current_page}`).then(response => {
                     this.loaded = true;
-                    this.tasks = response.data.data
+                    this.tasks = response.data.data;
+                    this.pagination = response.data.meta;
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
                 axios.get("/api/notes").then(response => {this.notes = response.data.data});
                 axios.get("/api/administrators").then(response => {this.users = response.data.data;});
-                //End Progress bar
-                this.$Progress.finish();
+
             },
             createItem() {
                 this.$Progress.start();
@@ -623,12 +637,15 @@
                         }
                     });
                 });
+            },
+            reload(){
+                this.loadItems()
             }
         },
         created() {
-            this.loadItem();
+            this.loadItems();
             Fire.$on("AfterCreate", () => {
-                this.loadItem();
+                this.loadItems();
             });
         }
     };

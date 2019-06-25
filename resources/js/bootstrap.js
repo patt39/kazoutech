@@ -7,7 +7,10 @@ window.Vue = require('vue');
 window.bus = new Vue();
 
 /* Ici je recupere tous les information lier a l'utilisateur connecter */
-Vue.prototype.user = window.App.user;
+import Auth from './api/auth'
+Vue.prototype.$auth = new Auth(window.user);
+
+Vue.prototype.user = window.user.user;
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

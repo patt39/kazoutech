@@ -1,9 +1,9 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 require('./bootstrap');
 
@@ -11,12 +11,13 @@ window.Vue = require('vue');
 Vue.use(require('vue-resource'));
 
 
-import { Form, HasError, AlertError } from 'vform'
+import { Form, HasError, AlertError,AlertSuccess } from 'vform'
 
 window.Form = Form;
 
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+Vue.component(AlertSuccess.name, AlertSuccess);
 
 /**
  * Vue select
@@ -38,7 +39,6 @@ Vue.component('VueEditor', VueEditor);
 Vue.component('Quill', Quill);
 
 
-
 import {routes} from './api/routes';
 const router = new VueRouter({
     routes,
@@ -47,6 +47,8 @@ const router = new VueRouter({
     linkExactActiveClass: "active", // active class for *exact* links.
 
 });
+
+
 
 /**
  * Ici c'est pour le number
@@ -87,7 +89,6 @@ Vue.use(VueProgressBar, {
     location: 'top',
     inverse: false
 });
-
 
 
 Vue.filter('upText',function (text) {
@@ -157,6 +158,7 @@ window.Fire = new Vue();
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('pagination-link', require('./components/inc/vendor/PaginationComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

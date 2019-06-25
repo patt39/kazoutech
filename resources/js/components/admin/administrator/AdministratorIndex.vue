@@ -484,14 +484,14 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.users = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
                 axios.get('/api/account/user').then(({data}) => (this.color_user = data.color_name));//
                 axios.get("/api/colors").then(({data}) => (this.colors = data.data));
                 //const urlRoles = "/admin/api/roles";
                 //axios.get(urlRoles).then(({data}) => (this.roles = data.data));
-                //End Progress bar
-                this.$Progress.finish()
             },
         },
         created() {

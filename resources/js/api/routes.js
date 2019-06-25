@@ -32,6 +32,7 @@ import PermissionIndex from "../components/admin/permission/PermissionIndex";
 import NoteIndex from "../components/admin/partial/note/NoteIndex";
 import TaskIndex from "../components/admin/partial/task/TaskIndex";
 import TaskUser from "../components/admin/partial/task/TaskUser";
+import RoleIndex from "../components/admin/role/RoleIndex";
 
 
 export const routes = [
@@ -58,6 +59,8 @@ export const routes = [
     {path: '/dashboard/category-faqs/', name: 'categoryfaqs.index', component: CategoryFaqIndex},
     //Route permissions
     {path: '/dashboard/permissions/', name: 'permissions.index', component: PermissionIndex},
+    //Route roles
+    {path: '/dashboard/roles/', name: 'roles.index', component: RoleIndex},
 
     //Route FAQS
     {path: '/dashboard/faqs/', name: 'faqs.index', component: FaqIndex},
@@ -67,22 +70,22 @@ export const routes = [
     //Route categories
     {path: '/dashboard/categories/', name: 'categories.index', component: CategoryIndex},
     {path: '/dashboard/categories/create/', name: 'categories.create', component: CategoryCreate},
-    {path: '/dashboard/categories/:id/edit', name: 'categories.edit', component: CategoryEdit},
+    {path: '/dashboard/categories/:id/edit/', name: 'categories.edit', component: CategoryEdit},
 
     //Route tags
     {path: '/dashboard/tags/', name: 'tags.index', component: TagIndex},
     {path: '/dashboard/tags/create/', name: 'tags.create', component: TagCreate},
     {path: '/dashboard/tags/:id/edit/', name: 'tags.edit', component: TagEdit},
-    {path: '/dashboard/tags/show/:tag', name: 'tags.view', component: TagView},
+    {path: '/dashboard/tags/show/:tag/', name: 'tags.view', component: TagView},
 
     //Route users
     {path: '/dashboard/users/', name: 'users.index', component: UserIndex},
-    {path: '/dashboard/users/:id/edit', name: 'users.edit', component: UserEdit},
-    {path: '/dashboard/users/profile/:username', name: 'users.view', component: UserView},
+    {path: '/dashboard/users/:id/edit/', name: 'users.edit', component: UserEdit},
+    {path: '/dashboard/users/profile/:username/', name: 'users.view', component: UserView},
 
     //Route contacts
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
-    {path: '/dashboard/contacts/msg/:contact', name: 'contacts.view', component: ContactMessageShow},
+    {path: '/dashboard/contacts/msg/:contact/', name: 'contacts.view', component: ContactMessageShow},
 
 
     {
@@ -101,6 +104,6 @@ export const routes = [
 
     {path: '/dashboard/notes/', name: 'notes.index', component: NoteIndex},
     {path: '/dashboard/tasks/', name: 'tasks.index', component: TaskIndex},
-    {path: '/dashboard/tasks/u/:username', name: 'tasks.view', component: TaskUser},
+    {path: '/dashboard/tasks/u/:username/', name: 'tasks.view', component: TaskUser},
 
 ];

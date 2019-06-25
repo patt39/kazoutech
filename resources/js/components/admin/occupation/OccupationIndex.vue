@@ -293,7 +293,7 @@
                     text: "Are you sure you want to delete this occupations?",
                     type: 'warning',
                     animation: false,
-                    customClass: 'animated shake',
+                    customClass: 'animated pulse',
                     buttonsStyling: false,
                     confirmButtonClass: "btn btn-success",
                     cancelButtonClass: 'btn btn-danger',
@@ -305,7 +305,6 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-
                         //Envoyer la requete au server
                         axios.delete(`/dashboard/occupations/${id}`).then(() => {
                             /** Alert notify bootstrapp **/
@@ -403,11 +402,12 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.occupations = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    this.$Progress.finish()
                 });
                 axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
                 //End Progress bar
-                this.$Progress.finish()
+
             },
             createItem() {
                 //Start Progress bar

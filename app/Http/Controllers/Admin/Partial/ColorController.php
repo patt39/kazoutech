@@ -20,7 +20,7 @@ class ColorController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','search']]);
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +35,7 @@ class ColorController extends Controller
 
     public function api()
     {
+        //$colors = new ColorCollection(Color::with('user')->latest()->get());
         $colors = ColorResource::collection(Color::with('user')->latest()->get());
         return $colors;
     }

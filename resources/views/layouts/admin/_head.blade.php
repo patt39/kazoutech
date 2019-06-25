@@ -2,14 +2,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-<meta http-equiv="refresh" content="3600"  URL="{{ config('app.url') }}">
+<meta http-equiv="refresh" content="3600"  url="{{ config('app.url') }}">
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script>window.Kazoucoin = { csrfToken: '{{ csrf_token() }}' }; </script>
 <script>
-    window.App = {!! json_encode([
+    window.user = {!! json_encode([
     'user' => auth()->user(),
+    'roles' => auth()->user()->roles,
+    'permissions' => auth()->user()->getAllPermissions(),
     ]) !!}
 </script>
 
@@ -20,6 +22,7 @@
 <link rel="stylesheet" href="/assets/dashboard/assets/css/material-dashboard.min.css?v=2.1.0">
 <link rel="stylesheet" href="/assets/dashboard/assets/css/dashboard-style.css">
 <link rel="stylesheet" href="/assets/dashboard/assets/css/plugins/animate.css">
+<link rel="stylesheet" href="/assets/dashboard/assets/css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 

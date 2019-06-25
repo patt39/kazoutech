@@ -155,6 +155,7 @@
                                     </h5>
                                 </div>
                                 <div class="modal-body">
+                                    <alert-error :form="form"></alert-error>
                                     <form id="RegisterValidation" @keydown="form.onKeydown($event)" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action accept-charset="UTF-8">
                                         <div class="form-group">
                                             <label class="bmd-label-floating"></label>
@@ -174,13 +175,13 @@
                                             <b>Close</b>
                                         </span>
                                                 </button>
-                                                <button v-show="!editmode" type="submit" class="btn btn-success btn-raised" title="Edit">
+                                                <button :disabled="form.busy" v-show="!editmode" type="submit" class="btn btn-success btn-raised" title="Edit">
                                         <span class="btn-label">
                                             <i class="material-icons">check</i>
                                             <b>Yes, Save</b>
                                         </span>
                                                 </button>
-                                                <button v-show="editmode" type="submit" class="btn btn-success btn-raised" title="Delete">
+                                                <button :disabled="form.busy" v-show="editmode" type="submit" class="btn btn-success btn-raised" title="Delete">
                                         <span class="btn-label">
                                             <i class="material-icons">save_alt</i>
                                             <b>Yes, Update</b>
@@ -458,13 +459,13 @@
                 const url = "/api/notes";
                 axios.get(url).then(response => {
                         this.loaded = true;
-                        this.notes = response.data.data
+                        this.notes = response.data.data;
+                        this.$Progress.finish()
                 });
-                //End Progress bar
-                this.$Progress.finish();
             },
             createItem() {
                 this.$Progress.start();
+                this.form.busy = true;
                 // Submit the form via a POST request
                 this.form.post("/dashboard/notes").then(() => {
                     //Event

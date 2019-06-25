@@ -51,6 +51,9 @@ Route::group(['namespace' => 'Admin'], function () {
     //Route Permission
     Route::resource('/dashboard/permissions', 'PermissionController');
 
+    //Roles Route
+    Route::resource('/dashboard/roles', 'RoleController');
+
     //Route Faq
     Route::resource('/dashboard/faqs','FaqController');
     Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');

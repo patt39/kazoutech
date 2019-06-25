@@ -312,7 +312,6 @@
                     this.mydatatables()
                 });
                 axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                axios.get("/admin/api/account/user").then(({data}) => (this.color_user = data.color_name));
                 //End Progress bar
                 this.$Progress.finish()
             },

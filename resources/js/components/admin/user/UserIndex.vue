@@ -237,12 +237,12 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.users = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
                 const urlColorUser = "/api/account/user";
                 axios.get(urlColorUser).then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
-                this.$Progress.finish()
             },
         },
         created() {

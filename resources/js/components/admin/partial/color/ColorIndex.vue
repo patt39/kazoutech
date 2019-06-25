@@ -52,7 +52,7 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
-                                    <div class="toolbar">
+                                    <div v-if="$auth.can('create-color')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-warning btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
@@ -108,17 +108,19 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </button>
-                                                    <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </button>
-                                                    <button v-if="item.can.update" @click="editItem(item)"
+                                                    <di v-if="$auth.can('create-color')">
+                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                        <button  v-else-if="item.status === 2" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                    </di>
+                                                    <button v-if="$auth.can('edit-color')" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button @click="deleteItem(item.id)"
+                                                    <button v-if="$auth.can('delete-color')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
@@ -411,11 +413,11 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.colors = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
                 axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
-                this.$Progress.finish()
             },
             createItem() {
                 //Start Progress bar
