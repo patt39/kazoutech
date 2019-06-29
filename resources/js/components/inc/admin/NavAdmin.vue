@@ -47,7 +47,7 @@
                                     </router-link>
                                 </li>
                                 <li class="nav-item ">
-                                    <router-link :to="{ name: 'tasks.index' }" class="nav-link">
+                                    <router-link :to="{ path: `/dashboard/tasks/u/${user.username}`}" class="nav-link">
                                         <span class="sidebar-mini">TT</span>
                                         <span class="sidebar-normal"><b>Tasks Todo</b></span>
                                     </router-link>
@@ -196,35 +196,42 @@
                                 <!-- Administrators -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'administrators.index' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>AD</b></span>
+                                        <span class="sidebar-mini">AD</span>
                                         <span class="sidebar-normal"><b>Administrators</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Users -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'users.index' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>US</b></span>
+                                        <span class="sidebar-mini">US</span>
                                         <span class="sidebar-normal"><b>Users</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Notes -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'notes.index' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>NO</b></span>
+                                        <span class="sidebar-mini">NO</span>
                                         <span class="sidebar-normal"><b>Notes</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Tasks -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'tasks.index' }" class="nav-link">
+                                        <span class="sidebar-mini">TA</span>
+                                        <span class="sidebar-normal"><b>Tasks</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Permissions -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'permissions.index' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>PM</b></span>
+                                        <span class="sidebar-mini">PM</span>
                                         <span class="sidebar-normal"><b>Permissions</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Roles -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="/dashboard/roles">
-                                        <span class="sidebar-mini"><b>RO</b></span>
+                                        <span class="sidebar-mini">RO</span>
                                         <span class="sidebar-normal"><b>Roles</b></span>
                                     </a>
                                 </li>

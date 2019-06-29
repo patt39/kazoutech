@@ -110,7 +110,6 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
-                color_user:'',
                 form: new Form({
                     id: '',
                     title: ''
@@ -119,11 +118,11 @@
         },
         methods: {
             getColorCardUser(){
-                let colorCard = 'card-header card-header-icon card-header-' + this.color_user;
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
             },
             getColorHeaderUser(){
-                let colorHeader = 'card-header card-header-' + this.color_user;
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
             getMaterialIcon(color){
@@ -165,7 +164,6 @@
             //Start Progress bar
             this.$Progress.start();
             api.tag(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             //End Progress bar
             this.$Progress.finish();
         }

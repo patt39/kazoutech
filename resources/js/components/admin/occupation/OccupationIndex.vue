@@ -190,7 +190,6 @@
             return {
                 loaded: false,
                 editmode: false,
-                color_user:'',
                 occupations: {},
                 form: new Form({
                     id: '',
@@ -227,10 +226,10 @@
                 });
             },
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             getColor(item){
                 let colorStyle = 'badge badge-' + item.color_name;
@@ -405,8 +404,6 @@
                     this.mydatatables();
                     this.$Progress.finish()
                 });
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
 
             },
             createItem() {

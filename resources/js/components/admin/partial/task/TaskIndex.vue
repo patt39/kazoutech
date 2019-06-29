@@ -17,20 +17,31 @@
                                     <i class="material-icons">add_circle</i>
                                     <b class="title_hover">Give Task</b>
                                 </button>
+                                <router-link id="button_hover" class="btn btn-primary btn-raised btn-round btn-lg" :to="{ name: `notes.index` }">
+                                    <i class="material-icons">add_circle</i>
+                                    <b class="title_hover">Notes</b>
+                                </router-link>
                             </div>
                         </div>
                     </div>
                     <div class="header text-right">
-                        <button value="Refresh Page" @click="reload" class="btn btn-warning btn-raised btn-round button_note" >
-                            <i class="material-icons">replay</i>
-                            <b class="title_hover">Refresh</b>
-                        </button>
+                        <div class="header text-right">
+                            <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-warning btn-round btn-just-icon btn-sm" >
+                                <i class="material-icons">replay</i>
+                            </button>
+                        </div>
                     </div>
 
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
-
+                    <!-- Pagination -->
+                    <div class="submit text-center">
+                        <pagination-link v-if="pagination.last_page > 1"
+                                         :pagination="pagination"
+                                         :offset="5"
+                                         @paginate="loadItems()"></pagination-link>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card card-timeline card-plain">
@@ -113,7 +124,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="text-right">
-                                                        <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Description">
+                                                        <button @click="viewItem(item)" class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
@@ -192,6 +203,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <alert-error :form="form"></alert-error>
                                     <form @submit.prevent="updateDescriptionTaskItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
@@ -289,6 +301,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Pagination -->
                     <div class="header text-right">
                         <div class="toolbar">
                             <div class="submit text-center">
@@ -318,6 +331,8 @@
         components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin,},
         data() {
             return {
+                query:'',
+                queryFiled:'description',
                 loaded: false,
                 fullPage: true,
                 editmode: false,
@@ -519,70 +534,6 @@
                             });
                         });
                     }
-                });
-            },
-            /** Ici c'est l'activation  **/
-            activeItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-                this.form.get("/dashboard/active_notes/" + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Note not done successfully.</strong>', 'progress': 75});
-                    }, 2000);
-
-                    //End Progress bar
-                    this.$Progress.finish();
-
-                    Fire.$emit("AfterCreate");
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                });
-            },
-            /** Ici c'est la desactivation **/
-            disableItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-                this.form.get("/dashboard/disable_notes/" + id).then(() => {
-
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Note done successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert **/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-
-                    Fire.$emit("AfterCreate");
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
                 });
             },
             loadItems() {

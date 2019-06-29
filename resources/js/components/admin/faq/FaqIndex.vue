@@ -151,7 +151,6 @@
                 editmode: false,
                 categoryfaqs:{},
                 faqs: {},
-                color_user: '',
                 form: new Form({
                     id: '',
                     title: '',
@@ -211,10 +210,10 @@
                 });
             },
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             editItem(item) {
                 this.editmode = true;
@@ -356,7 +355,6 @@
                     this.$Progress.finish();
                 });
                 axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             },
         },
         created() {

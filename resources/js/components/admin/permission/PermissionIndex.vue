@@ -309,11 +309,11 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.permissions = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish()
                 });
                 axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
-                this.$Progress.finish()
             },
             createItem() {
                 this.$Progress.start();

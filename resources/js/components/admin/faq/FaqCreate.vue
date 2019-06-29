@@ -113,7 +113,6 @@
         data() {
             return {
                 categoryfaqs: {},
-                color_user: '',
                 form: new Form({
                     id: '',
                     title: '',
@@ -149,10 +148,10 @@
         },
         methods: {
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             createItem() {
                 //Start Progress bar
@@ -192,7 +191,6 @@
         },
         created() {
             this.$Progress.start();
-            axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
             //End Progress bar
             this.$Progress.finish()

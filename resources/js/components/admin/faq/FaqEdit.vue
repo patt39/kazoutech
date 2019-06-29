@@ -114,7 +114,6 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
-                color_user: '',
                 form: new Form({
                     id: '',
                     title: '',
@@ -151,7 +150,7 @@
         },
         methods: {
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
 
             updateItem() {
@@ -191,7 +190,6 @@
         created() {
             this.$Progress.start();
             api.faqID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
             //End Progress bar
             this.$Progress.finish()

@@ -21,22 +21,9 @@ class TagResource extends JsonResource
            'status' => $this->status,
            'slug' => $this->slug,
            'user' => $this->user,
-           'can' => $this->permissions(),
+           'statusOnline' => $this->user->isOnline(),
            'created_at' => (string) $this->created_at,
            'updated_at' => (string) $this->updated_at,
        ];
-    }
-    /**
-     * Returns the permissions of the resource.
-     *
-     * @return array
-     */
-    protected function permissions()
-    {
-        return [
-            'update' => Gate::allows('Edit-tag', $this->resource),
-            'delete' => Gate::allows('delete', $this->resource),
-            'open' => Gate::allows('open', $this->resource),
-        ];
     }
 }

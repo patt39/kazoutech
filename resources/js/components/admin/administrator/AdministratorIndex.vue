@@ -311,7 +311,6 @@
                 users: {},
                 colors:[],
                 roles:{},
-                color_user: '',
                 form: new Form({
                     id: '',
                     name: '',
@@ -359,10 +358,10 @@
                 });
             },
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             getRoleName(role) {
                 if (role == 'super-admin') {

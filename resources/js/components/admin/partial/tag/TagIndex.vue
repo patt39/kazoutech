@@ -111,7 +111,7 @@
                                                     <router-link  :to="{ path: `/dashboard/tags/show/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View tag">
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>
-                                                    <router-link  v-if="item.can.update"  :to="{ path: `/dashboard/tags/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <router-link  :to="{ path: `/dashboard/tags/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
                                                     <a href="javascript:void(0)" @click="deleteItem(item.id)"
@@ -148,7 +148,6 @@
                 loaded: false,
                 editmode: false,
                 tags: {},
-                color_user:'',
                 form: new Form({
                     id: '',
                     title: '',
@@ -184,11 +183,11 @@
                 });
             },
             getColorCardUser(){
-                let colorCard = 'card-header card-header-icon card-header-' + this.color_user;
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
             },
             getColorHeaderUser(){
-                let colorHeader = 'card-header card-header-' + this.color_user;
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
             getMaterialIcon(color){
@@ -293,11 +292,11 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.tags = response.data.data;
-                    this.mydatatables()
+                    this.mydatatables();
+                    //End Progress bar
+                    this.$Progress.finish();
                 });
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
-                //End Progress bar
-                this.$Progress.finish();
+
             },
         },
         created() {

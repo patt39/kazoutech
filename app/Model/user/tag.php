@@ -4,6 +4,7 @@ namespace App\Model\user;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class tag extends Model
 {
@@ -28,6 +29,11 @@ class tag extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 
     use Sluggable;

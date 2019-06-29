@@ -133,7 +133,6 @@
         data() {
             return {
                 colors:[],
-                color_user:'',
                 form: new Form({
                     id: '',
                     name: '',
@@ -147,11 +146,11 @@
         },
         methods: {
             getColorCardUser(){
-                let colorCard = 'card-header card-header-icon card-header-' + this.color_user;
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
             },
             getColorHeaderUser(){
-                let colorHeader = 'card-header card-header-' + this.color_user;
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
             getMaterialIcon(color){
@@ -192,7 +191,6 @@
         created() {
             //Start Progress bar
             this.$Progress.start();
-            axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             const urlColors = "/api/colors";
             axios.get(urlColors).then(({data}) => (this.colors = data.data));
             //End Progress bar

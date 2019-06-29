@@ -10,10 +10,38 @@
                     <StatusAdmin/>
                     <br>
                     <!-- Button Add New Note -->
+                    <div class="header text-center">
+                        <div class="toolbar">
+                            <div class="submit text-center">
+                                <router-link id="button_hover" class="btn btn-success btn-raised btn-round btn-lg" :to="{ name: `tasks.index` }">
+                                    <i class="material-icons">add_circle</i>
+                                    <b class="title_hover">Task</b>
+                                </router-link>
+                                <router-link id="button_hover" class="btn btn-primary btn-raised btn-round btn-lg" :to="{ name: `notes.index` }">
+                                    <i class="material-icons">add_circle</i>
+                                    <b class="title_hover">Notes</b>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header text-right">
+                        <div class="header text-right">
+                            <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-warning btn-round btn-just-icon btn-sm" >
+                                <i class="material-icons">replay</i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Button Add New Note -->
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
-
+                    <!-- Pagination -->
+                    <div class="submit text-center">
+                        <pagination-link v-if="pagination.last_page > 1"
+                                         :pagination="pagination"
+                                         :offset="5"
+                                         @paginate="loadItems()"></pagination-link>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card card-timeline card-plain">
@@ -476,6 +504,9 @@
                 axios.get("/api/notes").then(response => {this.notes = response.data.data});
                 axios.get("/api/administrators").then(response => {this.users = response.data.data;});
 
+            },
+            reload(){
+                this.loadItems()
             },
             createItem() {
                 this.$Progress.start();

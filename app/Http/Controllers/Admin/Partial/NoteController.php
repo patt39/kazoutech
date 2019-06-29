@@ -33,7 +33,8 @@ class NoteController extends Controller
 
     public function api()
     {
-        return NoteResource::collection(Note::with('user')->latest()->get());
+        return NoteResource::collection(Note::with('user')
+            ->orderBy('created_at','DESC')->paginate(6));
     }
 
     /**

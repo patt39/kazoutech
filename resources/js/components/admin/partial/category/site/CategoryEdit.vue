@@ -137,7 +137,6 @@
                 editmode: false,
                 categoryfaqs: {},
                 colors:[],
-                color_user:'',
                 form: new Form({
                     id: '',
                     name: '',
@@ -151,11 +150,11 @@
         },
         methods: {
             getColorCardUser(){
-                let colorCard = 'card-header card-header-icon card-header-' + this.color_user;
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
             },
             getColorHeaderUser(){
-                let colorHeader = 'card-header card-header-' + this.color_user;
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
             getMaterialIcon(color){
@@ -194,7 +193,6 @@
             //Start Progress bar
             this.$Progress.start();
             api.category(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             const urlColors = "/api/colors";
             axios.get(urlColors).then(({data}) => (this.colors = data.data));
             //End Progress bar

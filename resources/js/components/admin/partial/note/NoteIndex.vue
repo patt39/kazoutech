@@ -17,12 +17,29 @@
                                     <i class="material-icons">add_circle</i>
                                     <b class="title_hover">Add Note</b>
                                 </button>
+                                <router-link id="button_hover" class="btn btn-primary btn-raised btn-round btn-lg" :to="{ name: `tasks.index` }">
+                                    <i class="material-icons">build</i>
+                                    <b class="title_hover">Tasks</b>
+                                </router-link>
                             </div>
                         </div>
                     </div>
-
+                    <div class="header text-right">
+                        <div class="header text-right">
+                            <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-warning btn-round btn-just-icon btn-sm" >
+                                <i class="material-icons">replay</i>
+                            </button>
+                        </div>
+                    </div>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="submit text-center">
+                        <pagination-link v-if="pagination.last_page > 1"
+                                         :pagination="pagination"
+                                         :offset="5"
+                                         @paginate="loadItems()"></pagination-link>
                     </div>
                     <!-- Timeline Note -->
                     <div class="row">
@@ -141,7 +158,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Modal New/Update Note -->
                     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
@@ -223,7 +239,7 @@
                     <div class="header text-center">
                         <div class="toolbar">
                             <div class="submit text-center">
-                                <button value="Refresh Page" onClick="window.location.reload()" class="btn btn-warning btn-raised btn-round button_note" >
+                                <button value="Refresh Page" @click="reload" class="btn btn-warning btn-raised btn-round button_note" >
                                     <i class="material-icons">replay</i>
                                     <b class="title_hover">Refresh page</b>
                                 </button>
@@ -268,6 +284,9 @@
                     ip: "",
                     slug: ""
                 }),
+                pagination:{
+                    current_page: 1,
+                },
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     [{ 'font': [] }],
@@ -453,15 +472,19 @@
                     });
                 });
             },
-            loadItem() {
+            loadItems() {
                 //Progrs bar
                 this.$Progress.start();
-                const url = "/api/notes";
-                axios.get(url).then(response => {
+                axios.get(`/api/notes?page=${this.pagination.current_page}`).then(response => {
                         this.loaded = true;
                         this.notes = response.data.data;
-                        this.$Progress.finish()
+                        this.pagination = response.data.meta;
+                        //End Progress bar
+                        this.$Progress.finish();
                 });
+            },
+            reload(){
+                this.loadItems()
             },
             createItem() {
                 this.$Progress.start();
@@ -505,9 +528,9 @@
             }
         },
         created() {
-            this.loadItem();
+            this.loadItems();
             Fire.$on("AfterCreate", () => {
-                this.loadItem();
+                this.loadItems();
             });
         }
     };

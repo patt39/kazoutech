@@ -109,7 +109,7 @@ class TaskController extends Controller
             $user = User::findOrFail(auth()->user()->id);
         }
         $usertasks = TaskResource::collection($user->tasks()
-            ->orderBy('created_at','DESC')->paginate(6));
+            ->orderBy('updated_at','DESC')->paginate(6));
         return $usertasks;
     }
 

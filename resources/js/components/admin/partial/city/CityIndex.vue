@@ -134,6 +134,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
+                                                    <alert-error :form="form"></alert-error>
                                                     <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
@@ -190,7 +191,6 @@
             return {
                 loaded: false,
                 editmode: false,
-                color_user:'',
                 cities: {},
                 form: new Form({
                     id: '',
@@ -228,10 +228,10 @@
                 });
             },
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             getColor(item){
                 let colorStyle = 'badge badge-' + item.color_name;
@@ -408,7 +408,6 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             },
             createItem() {
                 //Start Progress bar

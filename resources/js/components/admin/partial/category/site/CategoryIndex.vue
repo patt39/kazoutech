@@ -147,7 +147,6 @@
                 loaded: false,
                 editmode: false,
                 categories: {},
-                color_user:'',
                 form: new Form({
                     id: '',
                     name: '',
@@ -185,11 +184,11 @@
                 });
             },
             getColorCardUser(){
-                let colorCard = 'card-header card-header-icon card-header-' + this.color_user;
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
             },
             getColorHeaderUser(){
-                let colorHeader = 'card-header card-header-' + this.color_user;
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
             getMaterialIcon(color){
@@ -298,7 +297,6 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
             },
         },
         created() {
