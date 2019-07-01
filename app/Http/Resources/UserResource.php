@@ -39,9 +39,8 @@ class UserResource extends JsonResource
             'fblink' => $this->fblink,
             'email_verified_at' => $this->email_verified_at,
             'statusOnline' => $this->isOnline(),
+            'roles' => $this->roles()->pluck('name'),
             //'provider' => $this->provider,
-            //'roles' => $this->roles,
-            'roles' => RoleResource::collection($this->roles),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

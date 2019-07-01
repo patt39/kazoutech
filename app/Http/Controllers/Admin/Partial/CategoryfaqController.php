@@ -7,6 +7,7 @@ use App\Model\admin\categoryfaq;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,7 +36,10 @@ class CategoryfaqController extends Controller
 
     public function api()
     {
-        return CategoryfaqResource::collection(categoryfaq::with('user')->latest()->get());
+        $categoryfaqs = Cache::rememberForever('categoryfaqs', function () {
+            return CategoryfaqResource::collection(categoryfaq::with('user')->latest()->get());
+        });
+        return $categoryfaqs;
     }
     /**
      * Show the form for creating a new resource.
@@ -65,7 +69,6 @@ class CategoryfaqController extends Controller
         $categoryfaq->name = $request->name;
         $categoryfaq->color_name = $request->color_name;
         $categoryfaq->icon = $request->icon;
-        $categoryfaq->user_id = auth()->user()->id;;
 
         $categoryfaq->save();
 
@@ -77,32 +80,25 @@ class CategoryfaqController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-
-    public function disable($id)
+    public function disable(categoryfaq $categoryfaq, $id)
     {
-        DB::table('categoryfaqs')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
+        $categoryfaq = categoryfaq::where('id', $id)->findOrFail($id);
+        $categoryfaq->update([
+            'status' => 0,
+        ]);
         return response('Deactivated',Response::HTTP_ACCEPTED);
     }
-
     /**
      * Active
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function active($id)
+    public function active(categoryfaq $categoryfaq, $id)
     {
-        DB::table('categoryfaqs')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-
+        $categoryfaq = categoryfaq::where('id', $id)->findOrFail($id);
+        $categoryfaq->update([
+            'status' => 1,
+        ]);
         return response('Activated',Response::HTTP_ACCEPTED);
     }
 
@@ -157,7 +153,6 @@ class CategoryfaqController extends Controller
         $categoryfaq->name = $request->name;
         $categoryfaq->color_name = $request->color_name;
         $categoryfaq->icon = $request->icon;
-        $categoryfaq->user_id = auth()->user()->id;;
 
         $categoryfaq->save();
 

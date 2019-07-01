@@ -230,10 +230,10 @@
                                 </li>
                                 <!-- Roles -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/dashboard/roles">
+                                    <router-link  :to="{ name: 'roles.index' }" class="nav-link">
                                         <span class="sidebar-mini">RO</span>
                                         <span class="sidebar-normal"><b>Roles</b></span>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>

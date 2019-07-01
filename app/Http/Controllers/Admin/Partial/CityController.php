@@ -66,8 +66,6 @@ class CityController extends Controller
 
         $city = new city;
         $city->name = $request->name;
-        $city->user_id = Auth::user()->id;
-
         $city->save();
 
 
@@ -75,27 +73,22 @@ class CityController extends Controller
     }
 
 
-    public function disable($id)
+    public function disable(city $city, $id)
     {
-        DB::table('cities')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        $city = city::where('id', $id)->findOrFail($id);
+        $city->update([
+            'status' => 0,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
-    {
-        DB::table('cities')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
 
+    public function active(city $city, $id)
+    {
+        $city = city::where('id', $id)->findOrFail($id);
+        $city->update([
+            'status' => 1,
+        ]);
         return response('Activated',Response::HTTP_ACCEPTED);
     }
 
@@ -139,8 +132,6 @@ class CityController extends Controller
         $city = city::findOrFail($id);
 
         $city->name = $request->name;
-        $city->user_id = auth()->user()->id;
-
         $city->save();
 
         return ['message' => 'city has ben updated'];

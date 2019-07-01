@@ -85,7 +85,9 @@
                                             <tr v-for="item in roles" :key="item.id">
                                                 <td>{{ item.name | upText }}</td>
                                                 <td>
-                                                    <span v-for="ip in item.permissions" :key="ip.id" class="badge badge-success  badge-pill">{{ ip.name }}</span>
+                                                     <span v-for="permission in item.permissions" class="badge badge-success badge-pill">
+                                                        {{permission}}
+                                                    </span>
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
@@ -127,9 +129,7 @@
                 loaded: false,
                 editmode: false,
                 roles: {},
-                permissions: {},
                 colors: {},
-                color_user: '',
                 form: new Form({
                     id: '',
                     name: '',
@@ -163,16 +163,16 @@
                 });
             },
             getColorCardUser(){
-                let colorUser = 'card-header card-header-icon card-header-' + this.color_user;
+                let colorUser = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorUser;
             },
             getColorHeaderUser(){
-                let colorUser = 'card-header card-header-' + this.color_user;
+                let colorUser = 'card-header card-header-' + this.user.color_name;
                 return colorUser;
             },
             deleteItem(id) {
                 Swal.fire({
-                    title: 'Delete Permission?',
+                    title: 'Delete Role?',
                     text: "Are you sure you want to delete this role?",
                     type: 'warning',
                     animation: false,
@@ -214,7 +214,7 @@
                     }
                 })
             },
-            loadPermissions() {
+            loadItems() {
                 //End Progress bar
                 this.$Progress.start();
                 const url = "/api/roles";
@@ -225,17 +225,13 @@
                     //End Progress bar
                     this.$Progress.finish()
                 });
-                axios.get("/api/permissions").then(response => {
-                    this.loaded = true;
-                    this.permissions = response.data.data;});
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
 
             },
         },
         created() {
-            this.loadPermissions();
+            this.loadItems();
             Fire.$on('AfterCreate', () => {
-                this.loadPermissions();
+                this.loadItems();
             });
         }
     }

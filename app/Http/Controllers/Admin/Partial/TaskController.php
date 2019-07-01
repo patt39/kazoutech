@@ -8,6 +8,7 @@ use App\Model\user\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
 class TaskController extends Controller
@@ -33,8 +34,11 @@ class TaskController extends Controller
 
     public function api()
     {
-        return TaskResource::collection(Task::with('user','administrator','note')
-            ->orderBy('created_at','DESC')->paginate(6));
+        $tasks = Cache::rememberForever('tasks', function () {
+            return TaskResource::collection(Task::with('user','administrator','note')
+                ->orderBy('created_at','DESC')->paginate(6));
+        });
+        return $tasks;
     }
 
     /**
@@ -71,7 +75,6 @@ class TaskController extends Controller
         $task = new Task;
         $task->administrator_id = $request->administrator_id;
         $task->note_id = $request->note_id;
-        $task->user_id = Auth::user()->id;
 
         $task->save();
 
@@ -132,7 +135,6 @@ class TaskController extends Controller
 
         $task = task::findOrFail($id);
         $task->progress = $request->progress;
-        $task->user_id = Auth::user()->id;
 
         $task->save();
 
@@ -148,7 +150,6 @@ class TaskController extends Controller
 
         $task = task::findOrFail($id);
         $task->description = $request->description;
-        $task->user_id = Auth::user()->id;
 
         $task->save();
 

@@ -7,6 +7,7 @@ use App\Model\admin\faq;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,7 +37,10 @@ class FaqController extends Controller
 
     public function api()
     {
-        return FaqResource::collection(Faq::with('user','categoryfaq')->latest()->get());
+        $faqs = Cache::rememberForever('faqs', function () {
+            return FaqResource::collection(Faq::with('user','categoryfaq')->latest()->get());
+        });
+        return $faqs;
     }
 
     /**
@@ -67,7 +71,6 @@ class FaqController extends Controller
         $faq->title = $request->title;
         $faq->body = $request->body;
         $faq->categoryfaq_id = $request->categoryfaq_id;
-        $faq->user_id = auth()->user()->id;
 
         $faq->save();
 
@@ -79,29 +82,22 @@ class FaqController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function disable($id)
+    public function disable(faq $faq, $id)
     {
-        DB::table('faqs')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-        return response('deactivated',Response::HTTP_ACCEPTED);
-
+        $faq = faq::where('id', $id)->findOrFail($id);
+        $faq->update([
+            'status' => 0,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
+    public function active(faq $faq, $id)
     {
-        DB::table('faqs')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-
+        $faq = faq::where('id', $id)->findOrFail($id);
+        $faq->update([
+            'status' => 1,
+        ]);
         return response('Activated',Response::HTTP_ACCEPTED);
-
     }
     /**
      * Display the specified resource.
@@ -172,7 +168,6 @@ class FaqController extends Controller
         $faq->title = $request->title;
         $faq->body = $request->body;
         $faq->categoryfaq_id = $request->categoryfaq_id;
-        $faq->user_id = auth()->user()->id;
 
         $faq->save();
 

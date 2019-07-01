@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -13,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        AuthorizationException::class,
     ];
 
     /**
@@ -44,8 +46,41 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $e)
     {
-        return parent::render($request, $exception);
+
+        if ($this->isHttpException($e)) {
+            if (view()->exists('errors.' . $e->getStatusCode())) {
+                return response()->view('errors.' . $e->getStatusCode(), [], $e->getStatusCode());
+            }
+        }
+
+        if($e instanceof \Illuminate\Session\TokenMismatchException){
+            return redirect()
+                ->back()
+                ->withInput($request->except('_token'))
+                ->withMessage('Your explanation message depending on how much you want to dumb it down, lol!');
+        }
+
+
+        return parent::render($request, $e);
+    }
+
+    public function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()){
+            return response()->json(['error' => 'Unauthenticated.'],401);
+        }
+
+        $guard = array_get($exception->guards(),0);
+
+        switch ($guard){
+
+            default:
+                return redirect()->guest(route('login'));
+                break;
+        }
+
+
     }
 }

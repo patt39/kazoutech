@@ -7,6 +7,7 @@ use App\Http\Resources\Partial\NoteResource;
 use App\Model\admin\note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -33,8 +34,14 @@ class NoteController extends Controller
 
     public function api()
     {
+        //$notes = Cache::rememberForever('notes', function () {
+        //    return NoteResource::collection(Note::with('user')
+        //        ->orderBy('updated_at','DESC')->paginate(6));
+        //});
+        //return $notes;
+
         return NoteResource::collection(Note::with('user')
-            ->orderBy('created_at','DESC')->paginate(6));
+            ->orderBy('updated_at','DESC')->paginate(6));
     }
 
     /**
@@ -64,7 +71,6 @@ class NoteController extends Controller
         $note->title = $request->title;
         $note->body = $request->body;
         $note->color_name = $request->color_name;
-        $note->user_id = Auth::user()->id;
 
         $note->save();
 
@@ -77,29 +83,22 @@ class NoteController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function disable($id)
+    public function disable(note $note, $id)
     {
-        DB::table('notes')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-        return response('deactivated',Response::HTTP_ACCEPTED);
-
+        $note = note::where('id', $id)->findOrFail($id);
+        $note->update([
+            'status' => 0,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
+    public function active(note $note, $id)
     {
-        DB::table('notes')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-
+        $note = note::where('id', $id)->findOrFail($id);
+        $note->update([
+            'status' => 1,
+        ]);
         return response('Activated',Response::HTTP_ACCEPTED);
-
     }
     /**
      * Display the specified resource.
@@ -141,7 +140,6 @@ class NoteController extends Controller
         $note->title = $request->title;
         $note->body = $request->body;
         $note->color_name = $request->color_name;
-        $note->user_id = Auth::user()->id;
 
         $note->save();
 

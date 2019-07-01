@@ -6,6 +6,7 @@ use App\Http\Resources\OccupationResource;
 use App\Model\admin\occupation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -34,7 +35,9 @@ class OccupationController extends Controller
 
     public function api()
     {
-        $occupations = OccupationResource::collection(occupation::with('user')->latest()->get());
+        $occupations = Cache::rememberForever('occupations', function () {
+            return OccupationResource::collection(occupation::with('user')->latest()->get());
+        });
         return $occupations;
     }
 
@@ -62,7 +65,6 @@ class OccupationController extends Controller
 
         $occupation = new occupation;
         $occupation->name = $request->name;
-        $occupation->user_id = auth()->user()->id;
 
         $occupation->save();
 
@@ -94,27 +96,22 @@ class OccupationController extends Controller
         return view('admin.occupation.edit', compact('occupation'));
     }
 
-    public function disable($id)
+    public function disable(occupation $occupation, $id)
     {
-        DB::table('occupations')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
+        $occupation = occupation::where('id', $id)->findOrFail($id);
+        $occupation->update([
+            'status' => 0,
             ]);
-
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
-    {
-        DB::table('occupations')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
 
+    public function active(occupation $occupation, $id)
+    {
+        $occupation = occupation::where('id', $id)->findOrFail($id);
+        $occupation->update([
+            'status' => 1,
+            ]);
         return response('Activated',Response::HTTP_ACCEPTED);
     }
 
@@ -134,8 +131,6 @@ class OccupationController extends Controller
         $occupation = occupation::findOrFail($id);
 
         $occupation->name = $request->name;
-        $occupation->user_id = auth()->user()->id;
-
         $occupation->save();
 
         return ['message' => 'color has ben updated'];

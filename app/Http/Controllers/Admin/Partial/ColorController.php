@@ -7,6 +7,7 @@ use App\Model\admin\color;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,7 +37,9 @@ class ColorController extends Controller
     public function api()
     {
         //$colors = new ColorCollection(Color::with('user')->latest()->get());
-        $colors = ColorResource::collection(Color::with('user')->latest()->get());
+        $colors = Cache::rememberForever('colors', function () {
+            return ColorResource::collection(Color::with('user')->latest()->get());
+        });
         return $colors;
     }
 
@@ -67,7 +70,7 @@ class ColorController extends Controller
         $color = new Color;
         $color->name = $request->name;
         $color->color_name = $request->color_name;
-        $color->user_id = Auth::user()->id;
+
 
         $color->save();
 
@@ -141,7 +144,6 @@ class ColorController extends Controller
 
         $color->name = $request->name;
         $color->color_name = $request->color_name;
-        $color->user_id = auth()->user()->id;
 
         $color->save();
 
