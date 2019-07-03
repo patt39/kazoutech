@@ -33,6 +33,9 @@ import NoteIndex from "../components/admin/partial/note/NoteIndex";
 import TaskIndex from "../components/admin/partial/task/TaskIndex";
 import TaskUser from "../components/admin/partial/task/TaskUser";
 import RoleIndex from "../components/admin/role/RoleIndex";
+import AboutIndex from "../components/admin/partial/about/AboutIndex";
+import AboutCreate from "../components/admin/partial/about/AboutCreate";
+import AboutEdit from "../components/admin/partial/about/AboutEdit";
 
 
 export const routes = [
@@ -71,6 +74,11 @@ export const routes = [
     {path: '/dashboard/categories/', name: 'categories.index', component: CategoryIndex},
     {path: '/dashboard/categories/create/', name: 'categories.create', component: CategoryCreate},
     {path: '/dashboard/categories/:id/edit/', name: 'categories.edit', component: CategoryEdit},
+
+    //Route Abouts
+    {path: '/dashboard/abouts/', name: 'abouts.index', component: AboutIndex},
+    {path: '/dashboard/abouts/create/', name: 'abouts.create', component: AboutCreate},
+    {path: '/dashboard/abouts/:id/edit/', name: 'abouts.edit', component: AboutEdit},
 
     //Route tags
     {path: '/dashboard/tags/', name: 'tags.index', component: TagIndex},

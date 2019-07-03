@@ -412,7 +412,7 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get("/dashboard/active_notes/" + id).then(() => {
+                this.form.get(`/dashboard/active_notes/${id}`).then(() => {
                     /** Alert notify bootstrapp **/
                       var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                           allow_dismiss: false,
@@ -443,8 +443,8 @@
             disableItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get("/dashboard/disable_notes/" + id).then(() => {
-                    
+                this.form.get(`/dashboard/disable_notes/${id}`).then(() => {
+
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,

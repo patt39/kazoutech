@@ -119,6 +119,13 @@
                                         <span class="sidebar-normal"><b>Colors</b></span>
                                     </router-link>
                                 </li>
+                                <!-- Abouts -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
+                                        <span class="sidebar-mini"><b>AM</b></span>
+                                        <span class="sidebar-normal"><b>About Member</b></span>
+                                    </router-link>
+                                </li>
                                 <!-- Countries -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">

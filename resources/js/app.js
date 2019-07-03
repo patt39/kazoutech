@@ -158,6 +158,7 @@ window.Fire = new Vue();
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('error-404', require('./components/inc/alert/Error404').default);
 Vue.component('pagination-link', require('./components/inc/vendor/PaginationComponent').default);
 
 /**

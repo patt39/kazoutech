@@ -9,7 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="loaded" class="row">
+                    <div class="row">
                         <div class="col-md-12 expo">
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
@@ -28,9 +28,9 @@
                         </div>
                     </div>
                     <div v-if="!loaded" class="submit">
-                       <LoaderLdsDefault/>
+                        <LoaderLdsDefault/>
                     </div>
-                    <div v-if="loaded" class="row">
+                    <div class="row">
                         <div class="col-md-12 expo">
                             <div class="card">
                                 <div :class="getColorHeaderUser()">
@@ -40,7 +40,7 @@
                                                 <b>Datatables Colors</b>
                                             </h4>
                                             <p class="card-title">
-                                                Color choice for buttons
+                                                Color Choice For Buttons
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -52,6 +52,11 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
+                                    <div class="header text-right">
+                                        <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-warning btn-round btn-just-icon btn-sm" >
+                                            <i class="material-icons">replay</i>
+                                        </button>
+                                    </div>
                                     <div v-if="$auth.can('create-color')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-warning btn-raised btn-round " @click="newModal">
@@ -72,7 +77,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th v-if="$auth.can('publish-color')" class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -82,15 +87,15 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
+                                                <th v-if="$auth.can('publish-color')" class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in colors" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
+                                                <td>{{ item.color_name | upText }}</td>
                                                 <td>
                                                     <div class="timeline-heading">
-                                                        <span :class="getColor(item)"><b>{{ item.color_name }}</b></span>
+                                                        <span :class="getColor(item)"><b>{{ item.slug }}</b></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -100,7 +105,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                    <router-link  :to="{ path: `/admin/profile/${item.user.username}` }">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
@@ -108,14 +113,14 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <di v-if="$auth.can('create-color')">
+                                                    <template v-if="$auth.can('publish-color')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
-                                                        <button  v-else-if="item.status === 2" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
-                                                    </di>
+                                                    </template>
                                                     <button v-if="$auth.can('edit-color')" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
@@ -129,26 +134,23 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                     <!-- Modal création/édition color -->
                                     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new Color</b></h5>
-                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update Color</b></h5>
+                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add New Color</b></h5>
+                                                    <h5 v-show="editmode" class="modal-title" id="updateNewLabel"><b>Update Color</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <alert-error :form="form"></alert-error>
                                                     <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
+                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('color_name') }" required>
                                                             <has-error :form="form" field="name"></has-error>
                                                         </div>
                                                         <div class="modal-footer">
@@ -347,7 +349,6 @@
                     }
                 })
             },
-
             /** Ici c'est l'activation de la couleur  **/
             activeItem(id) {
                 //Progress bar star
@@ -418,6 +419,9 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+            },
+            reload(){
+                this.loadItems()
             },
             createItem() {
                 //Start Progress bar

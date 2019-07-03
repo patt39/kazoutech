@@ -1,6 +1,20 @@
 <template>
     <div class="text-center">
-        <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="lds-default">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="loading">Please wait a moment ...</div>
     </div>
 </template>
 
@@ -11,6 +25,11 @@
 </script>
 
 <style scoped>
+    .loading {
+        font-size: 16px;
+        font-weight: 400;
+        color: black;
+    }
     .lds-default {
         display: inline-block;
         position: relative;

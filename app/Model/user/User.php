@@ -38,8 +38,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'cap',
         'avatar',
         'avatarcover',
+        'password',
         'address',
         'country_id'
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     protected static function boot()

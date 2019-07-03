@@ -21,7 +21,7 @@ class ColorController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','search']]);
+        $this->middleware('auth',['except' => ['api']]);
     }
     /**
      * Display a listing of the resource.
@@ -78,28 +78,22 @@ class ColorController extends Controller
         return response('Created',Response::HTTP_CREATED);
     }
 
-
-    public function disable($id)
+    public function disable(color $color, $id)
     {
-        DB::table('colors')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        $color = color::where('id', $id)->findOrFail($id);
+        $color->update([
+            'status' => 0,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
-    {
-        DB::table('colors')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
 
+    public function active(color $color, $id)
+    {
+        $color = color::where('id', $id)->findOrFail($id);
+        $color->update([
+            'status' => 1,
+        ]);
         return response('Activated',Response::HTTP_ACCEPTED);
     }
 

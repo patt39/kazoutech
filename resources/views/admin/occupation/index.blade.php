@@ -17,7 +17,7 @@
         </transition>
     @else
         <div class="submit text-center">
-            @include('inc.admin.alert_permission')
+            <error-404></error-404>
         </div>
     @endif
 @endsection

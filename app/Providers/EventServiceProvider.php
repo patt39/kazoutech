@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Model\admin\about;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\color;
 use App\Model\admin\faq;
 use App\Model\admin\note;
 use App\Model\admin\occupation;
 use App\Model\admin\task;
+use App\Observers\Admin\AboutObserver;
 use App\Observers\Admin\CategoryfaqObserver;
 use App\Observers\Admin\ColorObserver;
 use App\Observers\Admin\FaqObserver;
@@ -40,6 +42,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+        about::observe(AboutObserver::class);
         categoryfaq::observe(CategoryfaqObserver::class);
         color::observe(ColorObserver::class);
         faq::observe(FaqObserver::class);

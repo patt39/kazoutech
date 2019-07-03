@@ -13,11 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::get('users', 'Admin\UserController@api');
 Route::get('search', 'Admin\UserController@search');
 Route::get('administrators', 'Admin\AdministratorController@api');
 Route::get('occupations', 'Admin\OccupationController@api');
 Route::get('colors', 'Admin\Partial\ColorController@api');
+Route::get('abouts', 'Admin\Partial\AboutController@api');
 Route::get('category-faqs', 'Admin\Partial\CategoryfaqController@api');
 Route::get('faqs', 'Admin\FaqController@api');
 Route::get('countries', 'Admin\Partial\CountryController@api');

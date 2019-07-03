@@ -371,7 +371,7 @@
             disableItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get('/dashboard/disable_color/' + id).then(() => {
+                axios.get('/dashboard/disable_cities/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,

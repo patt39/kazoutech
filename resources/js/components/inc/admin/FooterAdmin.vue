@@ -4,9 +4,9 @@
             <nav class="pull-left">
                 <ul>
                     <li>
-                        <router-link  :to="{ path: '/dashboard/' }" class="nav-link">
+                        <a href="/dashboard" class="nav-link">
                             kazoutech
-                        </router-link>
+                        </a>
                     </li>
                     <li>
                         <a href="#" target="_blank">

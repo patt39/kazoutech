@@ -83,6 +83,11 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_tags/{id}', 'TagController@active')->name('active_tags');
         Route::get('/dashboard/disable_tags/{id}', 'TagController@disable')->name('disable_tags');
 
+        //Admin Route Abouts
+        Route::resource('dashboard/abouts', 'AboutController');
+        Route::get('/dashboard/active_abouts/{id}', 'AboutController@active')->name('active_abouts');
+        Route::get('/dashboard/disable_abouts/{id}', 'AboutController@disable')->name('disable_abouts');
+
         //Admin Route colors
         Route::resource('dashboard/colors', 'ColorController');
         Route::get('/dashboard/active_color/{id}', 'ColorController@active')->name('active_color');

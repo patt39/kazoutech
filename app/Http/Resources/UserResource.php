@@ -38,6 +38,7 @@ class UserResource extends JsonResource
             'instalink' => $this->instalink,
             'fblink' => $this->fblink,
             'email_verified_at' => $this->email_verified_at,
+            'provider' => $this->provider,
             'statusOnline' => $this->isOnline(),
             'roles' => $this->roles()->pluck('name'),
             //'provider' => $this->provider,

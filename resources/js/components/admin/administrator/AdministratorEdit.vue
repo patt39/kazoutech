@@ -272,7 +272,6 @@
             //Start Progress bar
             this.$Progress.start();
             api.userID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/colors").then(({data}) => (this.colors = data.data));
             axios.get("/api/countries").then((response) => ( this.countries = response.data.data));
             axios.get("/api/roles").then(({data}) => (this.roles = data.data));
             //End Progress bar
