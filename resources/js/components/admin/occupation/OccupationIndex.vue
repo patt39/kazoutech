@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-warning btn-raised btn-round " @click="newModal">
+                                            <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">assignment</i>
                                     </span>
@@ -190,6 +190,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 occupations: {},
                 form: new Form({
                     id: '',
@@ -401,9 +402,11 @@
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.occupations = response.data.data;
-                    this.mydatatables();
-                    this.$Progress.finish()
+                    this.mydatatables()
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                //End Progress bar
+                this.$Progress.finish();
 
             },
             createItem() {

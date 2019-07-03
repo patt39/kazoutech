@@ -205,6 +205,7 @@
                 keywords: null,
                 loaded: false,
                 users: {},
+                user: {},
                 options: {},
                 messages: {},
                 color_user: '',
@@ -275,10 +276,10 @@
                 });
             },
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             deleteItem(id) {
                 //Alert delete
@@ -361,7 +362,7 @@
                 axios.get("/api/users").then(response => {
                     this.loaded = true;
                     this.users = response.data.data;});
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
             createItem() {
                 //Start Progress bar

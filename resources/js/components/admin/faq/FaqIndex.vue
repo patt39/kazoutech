@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round ">
+                                            <router-link :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
                                                   <span class="btn-label">
                                         <i class="material-icons">forum</i>
                                     </span>
@@ -149,6 +149,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 categoryfaqs:{},
                 faqs: {},
                 form: new Form({
@@ -351,10 +352,11 @@
                     this.loaded = true;
                     this.faqs = response.data.data;
                     this.mydatatables();
-                    //End Progress bar
-                    this.$Progress.finish();
                 });
                 axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                //End Progress bar
+                this.$Progress.finish();
             },
         },
         created() {

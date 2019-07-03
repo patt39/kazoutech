@@ -152,6 +152,7 @@
             return {
                 loaded: false,
                 users: {},
+                user: {},
             }
         },
         methods: {
@@ -240,6 +241,7 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
         },
         created() {

@@ -186,6 +186,7 @@
             return {
                 editmode: false,
                 loaded: false,
+                user: {},
                 form: new Form({
                     id: '',
                     role: '',
@@ -289,7 +290,7 @@
             }
         },
         created() {
-          //
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
         }
     }
 </script>

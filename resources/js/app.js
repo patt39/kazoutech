@@ -49,6 +49,9 @@ const router = new VueRouter({
 });
 
 
+import VuePageTransition from 'vue-page-transition'
+Vue.use(VuePageTransition);
+
 
 /**
  * Ici c'est pour le number

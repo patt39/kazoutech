@@ -6,6 +6,9 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
+@auth
+    <meta name="userID" content="{{ auth()->user()->id }}">
+@endauth
 <script>window.Kazoucoin = { csrfToken: '{{ csrf_token() }}' }; </script>
 <script>
     window.user = {!! json_encode([

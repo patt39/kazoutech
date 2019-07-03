@@ -185,6 +185,7 @@
         data() {
             return {
                 loaded: false,
+                user: {},
                 form: new Form({
                     id: '',
                     role: '',
@@ -287,6 +288,7 @@
         created() {
             this.$Progress.start();
             api.aboutID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish()
         }

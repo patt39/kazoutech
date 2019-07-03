@@ -113,6 +113,7 @@
         data() {
             return {
                 categoryfaqs: {},
+                user: {},
                 form: new Form({
                     id: '',
                     title: '',
@@ -192,6 +193,7 @@
         created() {
             this.$Progress.start();
             axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish()
         }

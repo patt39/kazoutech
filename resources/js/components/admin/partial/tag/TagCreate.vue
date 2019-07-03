@@ -109,6 +109,7 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                user:{},
                 form: new Form({
                     id: '',
                     title: ''
@@ -160,7 +161,7 @@
             }
         },
         created() {
-            //Start Progress bar
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
         }
     }
 </script>

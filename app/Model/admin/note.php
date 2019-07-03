@@ -13,8 +13,6 @@ class note extends Model
     use LogsActivity;
 
 
-    protected $table = 'notes';
-
     protected $fillable = ['body','title','ip','slug','status'];
     protected static $logAttributes = ['user_id','body','title','ip','status'];
 

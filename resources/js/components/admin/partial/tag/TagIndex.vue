@@ -55,7 +55,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'tags.create' }" class="btn btn-info btn-raised btn-round" append>
+                                            <router-link :to="{ name: 'tags.create' }" class="btn btn-success btn-raised btn-round" append>
                                                <span class="btn-label">
                                                     <i class="material-icons">forum</i>
                                                 </span>
@@ -148,6 +148,7 @@
                 loaded: false,
                 editmode: false,
                 tags: {},
+                user: {},
                 form: new Form({
                     id: '',
                     title: '',
@@ -296,6 +297,7 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
 
             },
         },

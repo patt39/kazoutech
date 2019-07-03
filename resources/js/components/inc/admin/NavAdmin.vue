@@ -287,7 +287,7 @@
             },
         },
         created() {
-            axios.get("/api/account/user").then((response) => ( this.user = response.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //setInterval(() => this.loadItems(),3000);
         }
     }

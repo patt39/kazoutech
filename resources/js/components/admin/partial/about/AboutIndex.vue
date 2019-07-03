@@ -59,7 +59,7 @@
                                     </div>
                                     <div v-if="$auth.can('create-about')" class="toolbar">
                                         <div class="submit text-center">
-                                           <router-link :to="{ name: 'abouts.create' }" id="button_hover" class="btn btn-info btn-raised btn-round ">
+                                           <router-link :to="{ name: 'abouts.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
                                                <span class="btn-label">
                                                    <i class="material-icons">person_outline</i>
                                                </span>
@@ -259,6 +259,7 @@
                 loaded: false,
                 editmode: false,
                 abouts:{},
+                user: {},
                 form: new Form({
                     id: '',
                     role: '',
@@ -450,6 +451,7 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
 
             },
             reload(){

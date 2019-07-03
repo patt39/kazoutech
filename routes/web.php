@@ -108,6 +108,7 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::put('/user/update', 'AccountController@update');
 
         Route::get('api/account/user', 'AccountController@user');
+        Route::get('api/account/profile', 'AccountController@userEdit');
 
 
         //Change Password Route

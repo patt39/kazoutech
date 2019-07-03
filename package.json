@@ -42,6 +42,7 @@
         "v-money": "^0.8.1",
         "vform": "^1.0.0",
         "vue-flash-message": "^0.7.2",
+        "vue-page-transition": "^0.2.2",
         "vue-progressbar": "^0.7.5",
         "vue-recaptcha": "^1.1.1",
         "vue-resource": "^1.5.1",

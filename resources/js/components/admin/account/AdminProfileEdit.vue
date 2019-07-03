@@ -392,14 +392,21 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Informations user incorrects.');
+                    //Alert
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
         },
         created(){
             //Start Progress bar
             this.$Progress.start();
-            const url = "/api/account/user";
+            const url = "/api/account/profile";
             axios.get(url).then(({data}) => (this.form.fill(data)));
             axios.get("/api/colors").then(({data}) => (this.colors = data.data));
             axios.get("/api/countries").then((response) => ( this.countries = response.data.data));

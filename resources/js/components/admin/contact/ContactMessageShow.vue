@@ -132,6 +132,7 @@
         data() {
             return {
                 loaded: false,
+                user: {},
                 form: new Form({
                     id: '',
                     name: '',
@@ -261,6 +262,7 @@
                 //Start Progress bar
                 this.$Progress.start();
                 api.contactshow(this.$route.params.contact).then(({data}) => this.form.fill(data.data));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();
             },

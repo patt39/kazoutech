@@ -168,8 +168,7 @@
         created(){
             //Start Progress bar
             this.$Progress.start();
-            const url = "/api/account/user";
-            axios.get(url).then((response) => ( this.user = response.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
            // axios.get("https://www.kazoucoin.com/api/countries").then(({data}) => (this.countries = data.data));
             //End Progress bar
             this.$Progress.finish()

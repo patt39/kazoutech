@@ -208,6 +208,7 @@
                 loaded: false,
                 editmode: false,
                 users: {},
+                user: {},
                 colors:[],
                 roles:{},
                 form: new Form({
@@ -386,10 +387,8 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
-                axios.get('/api/account/user').then(({data}) => (this.color_user = data.color_name));//
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 axios.get("/api/colors").then(({data}) => (this.colors = data.data));
-                //const urlRoles = "/admin/api/roles";
-                //axios.get(urlRoles).then(({data}) => (this.roles = data.data));
             },
         },
         created() {

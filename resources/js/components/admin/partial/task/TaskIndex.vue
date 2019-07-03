@@ -48,10 +48,10 @@
                                 <div class="card-body">
                                     <ul class="timeline">
                                         <li v-for="item in tasks" :key="item.id">
-                                            <div class="timeline-badge success" v-if="item.note.status === 1">
+                                            <div class="timeline-badge success" v-if="item.note.status === 0">
                                                 <i class="material-icons">swap_horiz</i>
                                             </div>
-                                            <div class="timeline-panel" v-if="item.note.status === 1">
+                                            <div class="timeline-panel" v-if="item.note.status === 0">
                                                 <div class="timeline-heading">
                                                     <span v-text="item.note.title" class="badge badge-info"></span>
                                                 </div>
@@ -258,7 +258,7 @@
                                                     <label class="bmd-label-floating"></label>
                                                     <select  v-model="form.note_id" id="note_id" class="form-control" :class="{ 'is-invalid': form.errors.has('note_id') }">
                                                         <option value="" disabled >Select Title note </option>
-                                                        <option v-for="note in notes" :key="note.id" :value="note.id" v-if="note.status === 1">{{note.title}}</option>
+                                                        <option v-for="note in notes" :key="note.id" :value="note.id" v-if="note.status === 0">{{note.title}}</option>
                                                     </select>
                                                     <has-error :form="form" field="note_id"></has-error>
                                                 </div>

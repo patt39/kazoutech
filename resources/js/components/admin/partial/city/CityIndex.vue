@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-warning btn-raised btn-round " @click="newModal">
+                                            <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">location_city</i>
                                     </span>
@@ -192,6 +192,7 @@
                 loaded: false,
                 editmode: false,
                 cities: {},
+                user: {},
                 form: new Form({
                     id: '',
                     name: '',
@@ -408,6 +409,7 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
             createItem() {
                 //Start Progress bar

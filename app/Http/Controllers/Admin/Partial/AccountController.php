@@ -71,6 +71,12 @@ class AccountController extends Controller
 
     public function user()
     {
+        $user = new UserResource(auth()->user());
+        return $user;
+    }
+
+    public function userEdit()
+    {
         $user = auth()->user();
         return $user;
     }

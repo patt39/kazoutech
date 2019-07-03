@@ -1,49 +1,49 @@
 <template>
 <div>
-    <div v-if="user.role_user === 'super-admin'" class="submit">
+    <div v-for="role in user.roles" class="submit">
         <div class="text-center">
-            <button class="btn btn-info btn-raised btn-lg btn-round">
+            <button :class="getRoleName(role)">
                 <i class="material-icons">supervisor_account</i>
-                <b>Super Admin</b>
+                <b>{{role}}</b>
             </button>
         </div>
-    </div>
-    <div v-if="user.role_user === 'admin'" class="submit text-center">
-        <button class="btn btn-success btn-raised btn-lg btn-round">
-            <i class="material-icons">supervisor_account</i>
-            <b>Admin</b>
-        </button>
-    </div>
-    <div v-if="user.role_user === 'editor'" class="submit text-center">
-        <button class="btn btn-warning btn-raised btn-lg btn-round">
-            <i class="material-icons">supervisor_account</i>
-            <b>Editor</b>
-        </button>
-    </div>
-    <div v-if="user.role_user === 'moderator'" class="submit text-center">
-        <button class="btn btn-info btn-raised btn-lg btn-round">
-            <i class="material-icons">supervisor_account</i>
-            <b>Moderator</b>
-        </button>
-    </div>
-    <div v-if="user.role_user === 'advertiser'" class="submit text-center">
-        <button class="btn btn-danger btn-raised btn-lg btn-round">
-            <i class="material-icons">supervisor_account</i>
-            <b>Advertiser</b>
-        </button>
-    </div>
-    <div v-if="user.role_user === 'visitor'" class="submit text-center">
-        <button class="btn btn-primary btn-raised btn-lg btn-round">
-            <i class="material-icons">supervisor_account</i>
-            <b>Visitor</b>
-        </button>
     </div>
 </div>
 </template>
 
 <script>
     export default {
-        name: "StatusAdmin"
+        name: "StatusAdmin",
+        data() {
+            return {
+                user: {},
+            }
+        },
+        methods:{
+            getRoleName(role) {
+                if (role == 'super-admin') {
+                    return 'btn btn-info btn-raised btn-lg btn-round';
+                }
+                if (role == 'admin') {
+                    return 'btn btn-success btn-raised btn-lg btn-round';
+                }
+                if (role == 'visitor') {
+                    return 'btn btn-secondary btn-raised btn-lg btn-round';
+                }
+                if (role == 'editor') {
+                    return 'btn btn-warning btn-raised btn-lg btn-round';
+                }
+                if (role == 'advertiser') {
+                    return 'btn btn-danger btn-raised btn-lg btn-round';
+                }
+                if (role == 'moderator') {
+                    return 'btn btn-primary btn-raised btn-lg btn-round';
+                }
+            },
+        },
+        created() {
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
+        }
     }
 </script>
 

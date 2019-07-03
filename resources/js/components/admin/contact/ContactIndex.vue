@@ -129,6 +129,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 contacts: {},
                 form: new Form({
                     id: '',
@@ -277,6 +278,7 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
         },
         created() {

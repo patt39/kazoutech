@@ -175,6 +175,7 @@
             return {
                 loaded: false,
                 users: {},
+                user: {},
                 messages: {},
                 color_user: '',
                 form: new Form({
@@ -213,10 +214,10 @@
                 });
             },
             getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.color_user;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                return 'card-header card-header-' + this.color_user;
+                return 'card-header card-header-' + this.user.color_name;
             },
             deleteItem(id) {
                 //Alert delete
@@ -275,8 +276,7 @@
                     this.messages = response.data.data;
                     this.mydatatables()
                 });
-               // axios.get("/admin/api/all/users").then(response => {this.users = response.data.data;});
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();
             },

@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-warning btn-raised btn-round" @click="newModal">
+                                            <button id="button_hover" class="btn btn-success btn-raised btn-round" @click="newModal">
                                     <span class="btn-label">
                                         <i class="material-icons">playlist_add_check</i>
                                     </span>
@@ -171,6 +171,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 permissions: {},
                 colors: {},
                 color_user: '',
@@ -207,11 +208,11 @@
                 });
             },
             getColorCardUser(){
-				let colorUser = 'card-header card-header-icon card-header-' + this.color_user;
+				let colorUser = 'card-header card-header-icon card-header-' + this.user.color_name;
 				return colorUser;
 			},
             getColorHeaderUser(){
-				let colorUser = 'card-header card-header-' + this.color_user;
+				let colorUser = 'card-header card-header-' + this.user.color_name;
 				return colorUser;
 			},
             updateItem() {
@@ -313,7 +314,7 @@
                     //End Progress bar
                     this.$Progress.finish()
                 });
-                axios.get("/api/account/user").then(({data}) => (this.color_user = data.color_name));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
             createItem() {
                 this.$Progress.start();

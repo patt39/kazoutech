@@ -114,6 +114,7 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                user: {},
                 form: new Form({
                     id: '',
                     title: '',
@@ -191,6 +192,7 @@
             this.$Progress.start();
             api.faqID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
             axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish()
         }

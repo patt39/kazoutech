@@ -199,7 +199,7 @@
         created(){
             //Start Progress bar
             this.$Progress.start();
-            const url = "/api/account/user";
+            const url = "/api/account/profile";
             axios.get(url).then(({data}) => (this.form.fill(data)));
             //End Progress bar
             this.$Progress.finish()
