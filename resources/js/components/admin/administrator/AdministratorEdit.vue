@@ -129,7 +129,7 @@
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
                                                                                     <label>Role</label>
-                                                                                    <select  v-model="form.roles" id="role" class="form-control" :class="{ 'is-invalid': form.errors.has('roles[]') }" style="margin-top: 15px;">
+                                                                                    <select   v-model="form.roles" id="role" class="form-control" :class="{ 'is-invalid': form.errors.has('roles[]') }" style="margin-top: 15px;">
                                                                                         <option value="" disabled>Choose Role</option>
                                                                                         <option v-for="role in roles" :key="role.id" :value="role.name">{{role.name}}</option>
                                                                                     </select>
@@ -195,6 +195,7 @@
             return {
                 colors:{},
                 countries:{},
+                user:{},
                 roles:[],
                 form: new Form({
                     id: '',
@@ -202,7 +203,7 @@
                     first_name: '',
                     last_name: '',
                     work: '',
-                    roles: '',
+                    roleUser: '',
                     sex: '',
                     age: '',
                     email: '',

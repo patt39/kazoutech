@@ -40,7 +40,7 @@ class UserResource extends JsonResource
             'email_verified_at' => $this->email_verified_at,
             'provider' => $this->provider,
             'statusOnline' => $this->isOnline(),
-            'roles' => $this->roles()->pluck('name'),
+            'roleUser' => $this->roles()->pluck('name'),
             //'provider' => $this->provider,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

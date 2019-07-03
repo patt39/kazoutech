@@ -94,7 +94,7 @@
                                                 <td>{{ item.sex }}</td>
                                                 <td v-if="item.statusOnline"><span class="badge badge-success" title="Administrator Online">Online</span></td>
                                                 <td v-else="item.statusOnline"><span class="badge badge-danger" title="Administrator Offline">Offline</span></td>
-                                                <td><span v-for="role in item.roles" :class="getRoleName(role)"><b>{{role}}</b></span></td>
+                                                <td><span v-for="role in item.roleUser" :class="getRoleName(role)"><b>{{role}}</b></span></td>
                                                 <td>
                                                     <router-link  :to="{ path: `/admin/profile/${item.username}` }">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>

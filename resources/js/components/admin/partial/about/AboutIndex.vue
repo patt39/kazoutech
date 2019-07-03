@@ -9,7 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">

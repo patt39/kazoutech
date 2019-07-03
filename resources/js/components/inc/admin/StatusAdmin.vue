@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div v-for="role in user.roles" class="submit">
+    <div v-for="role in user.roleUser" class="submit">
         <div class="text-center">
             <button :class="getRoleName(role)">
                 <i class="material-icons">supervisor_account</i>

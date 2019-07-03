@@ -48,6 +48,5 @@ class EventServiceProvider extends ServiceProvider
         faq::observe(FaqObserver::class);
         note::observe(NoteObserver::class);
         occupation::observe(OccupationObserver::class);
-        task::observe(TaskObserver::class);
     }
 }
