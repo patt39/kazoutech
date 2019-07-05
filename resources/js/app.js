@@ -163,6 +163,8 @@ window.Fire = new Vue();
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('error-404', require('./components/inc/alert/Error404').default);
 Vue.component('pagination-link', require('./components/inc/vendor/PaginationComponent').default);
+Vue.component('follow-user', require('./components/inc/vendor/Follow').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

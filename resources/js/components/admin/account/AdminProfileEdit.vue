@@ -72,19 +72,19 @@
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">face</i>
-                                                                                    <b>My Profile</b>
+                                                                                    <b>Mon profile</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
-                                                                                    <b>Edit Profile</b>
+                                                                                    <b>Editer le profile</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.change_password' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">vpn_key</i>
-                                                                                    <b>Change Password</b>
+                                                                                    <b>Changer mot de passe</b>
                                                                                 </router-link>
                                                                             </li>
                                                                         </ul>

@@ -16,7 +16,6 @@ import TagView from "../components/admin/partial/tag/TagView";
 import ChatIndex from "../components/site/chat/ChatIndex";
 import UserIndex from "../components/admin/user/UserIndex";
 import UserEdit from "../components/admin/user/UserEdit";
-import UserView from "../components/admin/user/UserView";
 import MessageIndex from "../components/admin/user/message/MessageIndex";
 import MessageSend from "../components/admin/user/message/MessageSend";
 import MessageView from "../components/admin/user/message/MessageView";
@@ -36,6 +35,8 @@ import RoleIndex from "../components/admin/role/RoleIndex";
 import AboutIndex from "../components/admin/partial/about/AboutIndex";
 import AboutCreate from "../components/admin/partial/about/AboutCreate";
 import AboutEdit from "../components/admin/partial/about/AboutEdit";
+import AdministratorShow from "../components/admin/account/AdministratorShow";
+import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 
 
 export const routes = [
@@ -44,7 +45,8 @@ export const routes = [
     {path: '/dashboard/account/profile/', name: 'admin.account', component: AdminAccount},
     {path: '/dashboard/profile/:username', name: 'admin.view', component: AdminAccount},
     {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileEdit},
-    {path: '/dashboard/user/change_password/', name: 'admin.change_password', component: AdminChangePassword,},
+    {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
+    {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},
     {path: '/dashboard/countries/', name: 'countries.index', component: CountriesIndex},
 
@@ -89,7 +91,7 @@ export const routes = [
     //Route users
     {path: '/dashboard/users/', name: 'users.index', component: UserIndex},
     {path: '/dashboard/users/:id/edit/', name: 'users.edit', component: UserEdit},
-    {path: '/dashboard/users/profile/:username/', name: 'users.view', component: UserView},
+    {path: '/dashboard/users/profile/:username/', name: 'users.view', component: AdministratorShow},
 
     //Route contacts
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},

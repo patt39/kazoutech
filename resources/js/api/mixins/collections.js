@@ -2,10 +2,12 @@ import axios from 'axios';
 
 export default {
 
-    user(username) {
+    userShow(username) {
         return axios.get(`/api/dashboard/profile/${username}`);
     },
-
+    userID(id) {
+        return axios.get(`/dashboard/users/${id}`);
+    },
     category(id) {
         return axios.get(`/dashboard/categories/${id}`);
     },
@@ -25,15 +27,9 @@ export default {
     contactshow(contact) {
         return axios.get(`/dashboard/contacts/view/${contact}`);
     },
-    userID(id) {
-        return axios.get(`/dashboard/users/${id}`);
-    },
 
     aboutID(id) {
         return axios.get(`/dashboard/abouts/${id}`);
-    },
-    userUsername(username) {
-        return axios.get(`/users/profile/${username}`);
     },
     faqID(id) {
         return axios.get(`/dashboard/faqs/${id}`);

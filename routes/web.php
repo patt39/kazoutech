@@ -35,8 +35,7 @@ Route::group(['namespace' => 'Admin'], function () {
     // Dashboard
     Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
     Route::resource('/dashboard/users','UserController');
-    Route::get('/dashboard/users/profile/{username}', 'UserController@view')->name('users.view');
-    Route::get('/users/profile/{username}', 'UserController@userShow');
+    Route::get('/dashboard/users/profile/{user}', 'UserController@view')->name('users.view');
 
     //Route Administrator
     Route::resource('/dashboard/administrators','AdministratorController');
@@ -112,15 +111,19 @@ Route::group(['namespace' => 'Admin'], function () {
 
 
         //Change Password Route
-        Route::get('dashboard/user/change_password', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
+        Route::get('dashboard/user/password/change', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
         Route::put('change_password', 'ChangePasswordController@changePassword');
+        //Reset Password Route
+        Route::get('dashboard/user/password/reset', 'ChangePasswordController@showResetPasswordForm')->name('admin.reset_password');
 
         //Notes administrator Route
         Route::resource('/dashboard/notes', 'NoteController');
         Route::get('/dashboard/active_notes/{id}', 'NoteController@active')->name('active_notes');
         Route::get('/dashboard/disable_notes/{id}', 'NoteController@disable')->name('disable_notes');
 
-        //Route Task
+        //Route Following
+        Route::post('user/follow/{id}', 'FollowerController@store')->name('user.follow');
+
         //Notes administrator Route
         Route::resource('/dashboard/tasks', 'TaskController');
         Route::put('/dashboard/update_progress_tasks/{id}', 'TaskController@updateProgress');

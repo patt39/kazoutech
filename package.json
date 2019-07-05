@@ -33,6 +33,7 @@
         "animate.css": "^3.7.2",
         "babel-runtime": "^6.26.0",
         "laravel-echo": "^1.5.3",
+        "laravel-vue-pagination": "^2.3.0",
         "moment": "^2.24.0",
         "pusher-js": "^4.4.0",
         "sass-loader": "^7.1.0",

@@ -1,0 +1,40 @@
+<template>
+    <button type="button" @click="followUser" class="btn btn-info btn-sm btn-round" v-text="buttonText"></button>
+</template>
+
+<script>
+    export default {
+        props: ['userId', 'follows'],
+        mounted() {
+            console.log('Component mounted.')
+        },
+        data: function () {
+            return {
+                status: this.follow,
+            }
+        },
+        methods: {
+            followUser() {
+                axios.post('/user/follow/' + this.userId)
+                    .then(response => {
+                        this.status = ! this.status;
+                        console.log(response.data);
+                    })
+                    .catch(errors => {
+                        if (errors.response.status == 401) {
+                            window.location = '/login';
+                        }
+                    });
+            }
+        },
+        computed: {
+            buttonText() {
+                return (this.status) ? 'Unfollow' : 'Follow';
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

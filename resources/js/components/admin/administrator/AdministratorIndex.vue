@@ -96,7 +96,7 @@
                                                 <td v-else="item.statusOnline"><span class="badge badge-danger" title="Administrator Offline">Offline</span></td>
                                                 <td><span v-for="role in item.roleUser" :class="getRoleName(role)"><b>{{role}}</b></span></td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/admin/profile/${item.username}` }">
+                                                    <router-link  :to="{ path: `/dashboard/users/profile/${item.username}` }">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}
@@ -104,9 +104,9 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <button @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                    <router-link  :to="{ path: `/dashboard/users/profile/${item.username}`}" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
-                                                    </button>
+                                                    </router-link>
                                                     <router-link  :to="{ path: `/dashboard/administrators/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
@@ -212,22 +212,7 @@
                 colors:[],
                 roles:{},
                 form: new Form({
-                    id: '',
-                    name: '',
-                    first_name: '',
-                    work: '',
-                    sex: '',
-                    roles: '',
-                    role_user: '',
-                    age: '',
                     email: '',
-                    username: '',
-                    avatar: '',
-                    my_status: '',
-                    created_at: '',
-                    last_sign_in_at: '',
-                    current_sign_in_at: '',
-                    edited_by: ''
                 })
             }
         },
@@ -360,21 +345,6 @@
                         }
                     });
                 })
-            },
-            editItem(item) {
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#newAdmin').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            viewItem(item) {
-                this.viewmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#viewNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
             },
             loadItems() {
                 //Start Progress bar

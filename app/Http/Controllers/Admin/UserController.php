@@ -92,20 +92,15 @@ class UserController extends Controller
     }
 
 
-    public function view($username)
+    public function view(User $user)
     {
-        if($username) {
-            $user = User::where('username', $username)->firstOrFail();
-        } else {
-            $user = User::findOrFail(auth()->user()->id);
-        }
-        return view("admin.user.view")->withUser($user);
+        return view("admin.user.view",compact('user','follows'));
     }
 
     public function userShow($username)
     {
-        $user = new UserResource(User::where('username', $username)->firstOrFail());
-        return $user;
+        //$user = new UserResource(User::where('username', $username)->firstOrFail());
+        //return $user;
     }
 
     /**

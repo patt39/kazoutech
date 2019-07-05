@@ -10,11 +10,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelFollow\Traits\CanFollow;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable,HasApiTokens,HasRoles;
+    use Notifiable,HasApiTokens,HasRoles,CanFollow, CanBeFollowed;
 
     /**
      * The attributes that are mass assignable.
@@ -85,6 +87,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(country::class,'country_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
 
     public function tasks()
     {

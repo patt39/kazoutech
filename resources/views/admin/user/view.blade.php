@@ -12,7 +12,7 @@
 
 @section('content')
     @if(Auth::user()->my_status === 'active')
-        <router-view></router-view>
+        <router-view follow="{{auth()->user()->isFollowing($user)}}"></router-view>
     @else
         <div class="submit text-center">
             @include('inc.admin.alert_permission')
