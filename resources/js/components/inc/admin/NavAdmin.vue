@@ -190,6 +190,13 @@
                             <p><b>Contacts</b></p>
                         </router-link>
                     </li>
+                    <!-- Technician -->
+                    <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/technicians' }" class="nav-link">
+                            <i class="material-icons">meeting_room</i>
+                            <p><b>Technicien</b></p>
+                        </router-link>
+                    </li>
                     <!-- Administrations -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#administrationExamples">
@@ -280,8 +287,29 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
+
                         //Envoyer la requet au server
-                        window.location.href = '/user/logout';
+                        axios.post('/logout').then(() => {
+
+                            /** Alert notify bootstrapp **/
+                            // var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            //     allow_dismiss: false,
+                            //     showProgressbar: true
+                            // });
+                            // setTimeout(function() {
+                            //     notify.update({'type': 'success', 'message': '<strong>User deleted successfully.</strong>', 'progress': 75});
+                            // }, 2000);
+
+                            location.replace(`/`);
+                            //End Progress bar
+                            this.$Progress.finish();
+
+                            Fire.$emit('AfterSave');
+                        }).catch(() => {
+                            //Failled message
+                            this.$Progress.fail();
+                            //toastr.error('', 'Ooop! Something wrong. Try later');
+                        });
                     }
                 })
             },

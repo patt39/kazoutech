@@ -109,12 +109,12 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
-
     export default {
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
                 user: {},
+                categoryfaqs: {},
                 form: new Form({
                     id: '',
                     title: '',

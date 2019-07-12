@@ -21,7 +21,17 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','store']]);
+        $this->middleware('auth',['except' => ['api','store','contatPage']]);
+    }
+
+    /**
+     *Get page contact user site
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function contatPage()
+    {
+        return view('user.contact.index');
     }
     /**
      * Display a listing of the resource.

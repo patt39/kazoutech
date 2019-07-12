@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div v-for="role in user.roleUser" class="submit">
+    <div v-for="role in user.roles" class="submit">
         <div class="text-center">
             <button :class="getRoleName(role)">
                 <i class="material-icons">supervisor_account</i>
@@ -21,22 +21,22 @@
         },
         methods:{
             getRoleName(role) {
-                if (role == 'super-admin') {
+                if (role === 'super-admin') {
                     return 'btn btn-info btn-raised btn-lg btn-round';
                 }
-                if (role == 'admin') {
+                if (role === 'admin') {
                     return 'btn btn-success btn-raised btn-lg btn-round';
                 }
-                if (role == 'visitor') {
+                if (role === 'visitor') {
                     return 'btn btn-secondary btn-raised btn-lg btn-round';
                 }
-                if (role == 'editor') {
+                if (role === 'editor') {
                     return 'btn btn-warning btn-raised btn-lg btn-round';
                 }
-                if (role == 'advertiser') {
+                if (role === 'advertiser') {
                     return 'btn btn-danger btn-raised btn-lg btn-round';
                 }
-                if (role == 'moderator') {
+                if (role === 'moderator') {
                     return 'btn btn-primary btn-raised btn-lg btn-round';
                 }
             },

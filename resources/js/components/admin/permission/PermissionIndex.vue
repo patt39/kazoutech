@@ -83,7 +83,7 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in permissions" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
+                                                <td>{{ item.name }}</td>
                                                 <td>{{ item.guard_name}}</td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">

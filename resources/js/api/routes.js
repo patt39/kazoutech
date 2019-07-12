@@ -37,6 +37,11 @@ import AboutCreate from "../components/admin/partial/about/AboutCreate";
 import AboutEdit from "../components/admin/partial/about/AboutEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
+import TechnicianIndex from "../components/user/technician/TechnicianIndex";
+import TechnicianCreate from "../components/user/technician/TechnicianCreate";
+import TechnicianEdit from "../components/user/technician/TechnicianEdit";
+import TasktechnicianIndex from "../components/admin/tasktechnician/TasktechnicianIndex";
+import TasktechnicianCreate from "../components/admin/tasktechnician/TasktechnicianCreate";
 
 
 export const routes = [
@@ -115,5 +120,14 @@ export const routes = [
     {path: '/dashboard/notes/', name: 'notes.index', component: NoteIndex},
     {path: '/dashboard/tasks/', name: 'tasks.index', component: TaskIndex},
     {path: '/dashboard/tasks/u/:username/', name: 'tasks.view', component: TaskUser},
+
+    //Route technicians
+    {path: '/dashboard/technicians/', name: 'technicians.index', component: TechnicianIndex},
+    {path: '/dashboard/technicians/create/', name: 'technicians.create', component: TechnicianCreate},
+    {path: '/dashboard/technicians/:id/edit/', name: 'technicians.edit', component: TechnicianEdit},
+
+    //Route tasks technicians
+    {path: '/dashboard/task_technicians/', name: 'task_technicians.index', component: TasktechnicianIndex},
+    {path: '/dashboard/task_technicians/create/', name: 'task_technicians.create', component: TasktechnicianCreate},
 
 ];

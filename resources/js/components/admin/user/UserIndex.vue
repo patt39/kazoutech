@@ -52,6 +52,13 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
+                                    <div class="header text-right">
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                    </div>
                                     <div class="toolbar">
                                     </div>
                                     <div class="material-datatables">
@@ -106,9 +113,9 @@
                                                     </div>
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <router-link  :to="{ path: `/dashboard/users/profile/${item.username}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                    <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
-                                                    </router-link>
+                                                    </a>
                                                     <router-link  :to="{ path: `/dashboard/users/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
@@ -188,6 +195,13 @@
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/profile/${item.username}`);
+                //Progres bar
+                this.$Progress.finish()
+            },
             deleteItem(id) {
                 Swal.fire({
                     title: 'Delete User?',
@@ -242,6 +256,9 @@
                     this.$Progress.finish();
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            },
+            reload(){
+                this.loadItems()
             },
         },
         created() {

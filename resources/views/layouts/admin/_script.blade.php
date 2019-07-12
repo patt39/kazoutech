@@ -40,7 +40,10 @@
 
 
 <script src="{{ mix('/js/app.js') }}"></script>
-
+<script type="text/javascript">
+    var timer = setInterval("autoRefresher()", 60 * 10000);
+    function autoRefresher(){self.location.reload(true);}
+</script>
 <script type="text/javascript">
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip();

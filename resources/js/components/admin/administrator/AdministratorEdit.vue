@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -189,10 +192,12 @@
     import NavAdmin from "../../inc/admin/NavAdmin";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../inc/animation/LoaderEllipsis";
     export default {
-        components: {StatusAdmin, FooterAdmin, NavAdmin, TopNav},
+        components: {LoaderEllipsis, StatusAdmin, FooterAdmin, NavAdmin, TopNav},
         data() {
             return {
+                loaded: false,
                 colors:{},
                 countries:{},
                 user:{},
@@ -208,6 +213,7 @@
                     age: '',
                     email: '',
                     body: '',
+                    roles: "",
                     username: '',
                     color_name: '',
                     color_style: '',
@@ -252,7 +258,8 @@
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Administrator updated Successfully.</strong>', 'progress': 75});
                         }, 2000);
-                        setTimeout(() => this.$router.push({ name: 'administrators.index' }), 1000);
+                        //setTimeout(() => this.$router.push({ name: 'administrators.index' }), 1000);
+                        location.replace(`/dashboard/administrators/`);
                         //End Progress bar
                         this.$Progress.finish();
                     }).catch(() => {
@@ -273,10 +280,13 @@
             //Start Progress bar
             this.$Progress.start();
             api.userID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/countries").then((response) => ( this.countries = response.data.data));
+            axios.get("/api/countries").then((response) => {
+                this.loaded = true;
+                this.countries = response.data.data;
+                //End Progress bar
+                this.$Progress.finish();
+            });
             axios.get("/api/roles").then(({data}) => (this.roles = data.data));
-            //End Progress bar
-            this.$Progress.finish()
         }
     }
 </script>

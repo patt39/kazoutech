@@ -121,14 +121,11 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-user']);
         Permission::create(['guard_name' => 'web' , 'name' => 'view-user']);
 
-        //Create permissions colors
+        // create permissions colors
         Permission::create(['guard_name' => 'web' , 'name' => 'create-color']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-color']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edit_by-color']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-color']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-color']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-color']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-color']);
 
         //Create permissions specialities
         Permission::create(['guard_name' => 'web' , 'name' => 'create-speciality']);

@@ -38,6 +38,9 @@ export default {
         return axios.get(`/dashboard/messages/view/${message}`);
     },
     tasksbyuser(username) {
-        return axios.get(`/api/tasks/u/${username}`);
+        return axios.get(`/api/dashboard/tasks/u/${username}`);
+    },
+    technicianID(id) {
+        return axios.get(`/dashboard/technicians/${id}`);
     },
 };

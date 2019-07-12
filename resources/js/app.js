@@ -49,10 +49,6 @@ const router = new VueRouter({
 });
 
 
-import VuePageTransition from 'vue-page-transition'
-Vue.use(VuePageTransition);
-
-
 /**
  * Ici c'est pour le number
  */
@@ -163,8 +159,9 @@ window.Fire = new Vue();
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('error-404', require('./components/inc/alert/Error404').default);
 Vue.component('pagination-link', require('./components/inc/vendor/PaginationComponent').default);
-Vue.component('follow-user', require('./components/inc/vendor/Follow').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('alert-permission', require('./components/inc/admin/components/AlertPermission').default);
+Vue.component('contact-user', require('./components/user/contact/ContactUser').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

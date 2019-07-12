@@ -50,6 +50,9 @@ Route::group(['namespace' => 'Admin'], function () {
     //Route Permission
     Route::resource('/dashboard/permissions', 'PermissionController');
 
+    //Route Task Technicians
+    Route::resource('dashboard/task_technicians','TasktechnicianController');
+
     //Roles Route
     Route::resource('/dashboard/roles', 'RoleController');
 
@@ -126,6 +129,7 @@ Route::group(['namespace' => 'Admin'], function () {
 
         //Notes administrator Route
         Route::resource('/dashboard/tasks', 'TaskController');
+        Route::get('/api/dashboard/tasks/u/{username}', 'TaskController@usertask');
         Route::put('/dashboard/update_progress_tasks/{id}', 'TaskController@updateProgress');
         Route::put('/dashboard/update_description_tasks/{id}', 'TaskController@updateDescription');
         Route::get('/dashboard/tasks/u/{username}', 'TaskController@view')->name('tasks.view');
@@ -143,6 +147,13 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('dashboard/contacts/view/{slug}', 'ContactController@view');
     Route::get('/dashboard/contacts/red_confirm/{id}', 'ContactController@active');
     Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
+
+    //User Route Contact
+    Route::get('/contact_us', 'ContactController@contatPage')->name('contact_us');
+
+    //Admin Route technicians
+    Route::resource('dashboard/technicians','TechnicianController');
+    Route::get('dashboard/technicians/t/{user}','TechnicianController@view')->name('technicians.view');
 
 
     Route::resource('dashboard/messages', 'MessageController');

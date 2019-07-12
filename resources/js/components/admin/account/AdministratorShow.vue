@@ -235,6 +235,7 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+
     export default {
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         props: ['follow','company'],
@@ -249,8 +250,7 @@
                 return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getPillsColorName(){
-                let colorpills = 'nav nav-pills nav-pills-icons justify-content-center nav-pills-' + this.user.color_name;
-                return colorpills;
+                return 'nav nav-pills nav-pills-icons justify-content-center nav-pills-' + this.user.color_name;
             },
             getRoleName(role) {
                 if (role === 'super-admin') {
@@ -281,7 +281,7 @@
                         Fire.$emit('AfterCreate');
                     })
                     .catch(errors => {
-                        if (errors.response.status == 401) {
+                        if (errors.response.status === 401) {
                             window.location = '/login';
                         }
                     });

@@ -42,7 +42,7 @@ class UserResource extends JsonResource
             'statusOnline' => $this->isOnline(),
             'followings' => $this->followings()->get()->count(),
             'followers' => $this->followers()->get()->count(),
-            'roleUser' => $this->roles()->pluck('name'),
+            'roles' => $this->roles()->pluck('name'),
             //'provider' => $this->provider,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

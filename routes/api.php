@@ -27,14 +27,15 @@ Route::get('cities', 'Admin\Partial\CityController@api');
 Route::get('notes', 'Admin\Partial\NoteController@api');
 Route::get('tasks', 'Admin\Partial\TaskController@api');
 Route::get('search/tasks/{field}/{query}', 'Admin\Partial\TaskController@search');
-Route::get('tasks/u/{username}', 'Admin\Partial\TaskController@usertask');
 Route::get('permissions', 'Admin\PermissionController@api');
+Route::get('task_technicians', 'Admin\TasktechnicianController@api');
 Route::get('roles', 'Admin\RolesController@api');
 Route::get('roles', 'Admin\RoleController@api');
 Route::get('categories', 'Admin\Partial\CityController@api');
 Route::get('contacts', 'User\ContactController@api');
 Route::get('mails', 'User\MailController@api');
 Route::get('messages', 'User\MessageController@api');
+Route::get('technicians', 'User\TechnicianController@api');
 Route::get('tags', 'Admin\Partial\TagController@api');
 
 

@@ -94,7 +94,7 @@ class UserController extends Controller
 
     public function view(User $user)
     {
-        return view("admin.user.view",compact('user','follows'));
+        return view("admin.user.view",compact('user'));
     }
 
     public function userShow($username)

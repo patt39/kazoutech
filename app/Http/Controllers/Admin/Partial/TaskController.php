@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','usertask','search']]);
+        $this->middleware('auth',['except' => ['api','search']]);
     }
     /**
      * Display a listing of the resource.

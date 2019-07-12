@@ -9,39 +9,27 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <!-- Button Add New Note -->
                     <div class="header text-center">
                         <div class="toolbar">
                             <div class="submit text-center">
                                 <router-link id="button_hover" class="btn btn-success btn-raised btn-round btn-lg" :to="{ name: `tasks.index` }">
-                                    <i class="material-icons">add_circle</i>
-                                    <b class="title_hover">Task</b>
-                                </router-link>
-                                <router-link id="button_hover" class="btn btn-primary btn-raised btn-round btn-lg" :to="{ name: `notes.index` }">
-                                    <i class="material-icons">add_circle</i>
-                                    <b class="title_hover">Notes</b>
+                                    <b class="title_hover">All Task</b>
                                 </router-link>
                             </div>
                         </div>
                     </div>
                     <div class="header text-right">
-                        <div class="header text-right">
-                            <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-warning btn-round btn-just-icon btn-sm" >
-                                <i class="material-icons">replay</i>
-                            </button>
-                        </div>
+                        <button @click="reload" class="btn btn-warning btn-raised btn-round button_note btn-sm"
+                                title="Refresh Page">
+                            <i class="material-icons">replay</i>
+                            <b class="title_hover">Refresh</b>
+                        </button>
                     </div>
                     <!-- Button Add New Note -->
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
-                    <!-- Pagination -->
-                    <div class="submit text-center">
-                        <pagination-link v-if="pagination.last_page > 1"
-                                         :pagination="pagination"
-                                         :offset="5"
-                                         @paginate="loadItems()"></pagination-link>
-                    </div>
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card card-timeline card-plain">
@@ -83,48 +71,50 @@
                                                             <b>{{ item.updated_at | dateAgo }}</b>
                                                         </div>
                                                     </div>
-                                                    <div v-if="item.administrator.id === user.id" class="text-right">
-                                                        <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
+                                                    <div class="text-right">
+                                                        <button @click="viewItem(item)" class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
                                                         </button>
-                                                        <button @click="addProgress(item)" class="restore-lk btn btn-success btn-round btn-just-icon btn-sm" title="Add Progress Task">
+                                                        <template v-if="item.administrator.id === user.id">
+                                                            <button @click="addProgress(item)" class="restore-lk btn btn-success btn-round btn-just-icon btn-sm" title="Add Progress Task">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">add</i>
                                                             </span>
-                                                        </button>
-                                                        <button v-if="item.description === null"  @click="addDescription(item)" class="btn btn-info btn-round btn-just-icon btn-sm"
-                                                                title="Add Description">
+                                                            </button>
+                                                            <button v-if="item.description === null"  @click="addDescription(item)" class="btn btn-info btn-round btn-just-icon btn-sm"
+                                                                    title="Add Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">description</i>
                                                             </span>
-                                                        </button>
+                                                            </button>
+                                                        </template>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div v-if="item.description != null" class="timeline-panel task-description">
-                                                <div class="timeline-heading">
+                                            <div v-if="item.description !== null" class="timeline-panel task-description">
+                                                <div class="timeline-heading text-left">
                                                     <span class="badge badge-danger">Description Task</span>
                                                 </div>
-                                                <div class="timeline-body" v-html="item.description"></div>
+                                                <div class="timeline-body" v-html="item.description.substr(0 ,150) + '...'"></div>
                                                 <hr>
                                                 <div class="timeline-footer">
                                                     <div class="card-footer">
-                                                        <div class="author">
+                                                        <!--<div class="author">
                                                             <button class="btn btn-info btn-round btn-just-icon btn-sm" title="Done Task">
                                                                 <span class="btn-label">
                                                                     <i class="material-icons">done_all</i>
                                                                 </span>
                                                             </button>
-                                                        </div>
+                                                        </div>-->
                                                         <div class="stats ml-auto">
                                                             <i class="material-icons">schedule</i>
                                                             <b>{{ item.updated_at | dateAgo }}</b>
                                                         </div>
                                                     </div>
                                                     <div class="text-right">
-                                                        <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Description">
+                                                        <button @click="viewProgressTask(item)" class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
@@ -163,6 +153,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <alert-error :form="form"></alert-error>
                                     <form @submit.prevent="updateProgressTaskItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                         <div class="form-group">
                                             <label class="bmd-label-floating"></label>
@@ -209,6 +200,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <alert-error :form="form"></alert-error>
                                     <form @submit.prevent="updateDescriptionTaskItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
@@ -302,6 +294,55 @@
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal View Note -->
+                    <div class="modal fade" id="viewNew" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <div class="timeline-heading text-center">
+                                        <span v-text="form.title" class="badge badge-info"></span>
+                                    </div>
+                                    <br>
+                                    <div class="form-group text-justify">
+                                        <span v-html="form.body"></span>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            <span class="btn-label">
+                                <i class="material-icons">clear</i>
+                                <b>Close</b>
+                            </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal View Description Task -->
+                    <div class="modal fade" id="viewProgressTaskNew" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
+                                        <vue-editor v-model="form.description" :editorToolbar="customToolbar"></vue-editor>
+                                        <has-error :form="form" field="description"></has-error>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            <span class="btn-label">
+                                <i class="material-icons">clear</i>
+                                <b>Close</b>
+                            </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -33,7 +33,7 @@
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
                                                                 <input v-model="form.first_name" type="text" name="first_name"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="First Name">
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="Prénom">
                                                                 <has-error :form="form" field="first_name"></has-error>
                                                             </div>
                                                         </div>
@@ -41,7 +41,7 @@
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
                                                                 <input v-model="form.last_name" type="text" name="last_name"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="Last Name">
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="Nom">
                                                                 <has-error :form="form" field="last_name"></has-error>
                                                             </div>
                                                         </div>
