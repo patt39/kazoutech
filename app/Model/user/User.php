@@ -68,6 +68,11 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new RegisteredUsers());
     }
 
+    public function visits()
+    {
+        return visits($this);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

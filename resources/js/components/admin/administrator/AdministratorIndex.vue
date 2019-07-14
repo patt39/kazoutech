@@ -105,6 +105,9 @@
                                                     </td>
                                                     <td><b>{{ item.updated_at | myDate }}</b></td>
                                                     <td class="td-actions text-right">
+                                                        <a href="javascript:void(0)" @click="sendItem(item)" class="btn btn-link btn-info btn-round btn-just-icon" title="Send mail">
+                                                            <i class="material-icons">near_me</i>
+                                                        </a>
                                                         <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                             <i class="material-icons">visibility</i>
                                                         </a>
@@ -124,7 +127,50 @@
                                                 <b>Get Excel Admins</b>
                                             </button>
                                         </div>
-
+                                        <!-- send invitation user -->
+                                        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5  class="modal-title" id="updateNewLabel"><b>Invite Administrator</b></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form id="RegisterValidation" @submit.prevent="inviteAdmin()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating"></label>
+                                                                <input v-model="form.name" type="text" name="name" placeholder="Name administrator" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
+                                                                <has-error :form="form" field="name"></has-error>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating"></label>
+                                                                <input v-model="form.email" type="email" name="email" placeholder="Email administrator" class="form-control" :class="{ 'is-invalid': form.errors.has('email') }" required>
+                                                                <has-error :form="form" field="email"></has-error>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <div class="text-center">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        <span class="btn-label">
+                                                            <i class="material-icons">clear</i>
+                                                            <b>Close</b>
+                                                        </span>
+                                                                    </button>
+                                                                    <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                        <span class="btn-label">
+                                                            <i class="material-icons">near_me</i>
+                                                            <b>Yes, Send</b>
+                                                        </span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Modal Invite Administrator -->
                                         <div class="modal fade" id="inviteAdmin" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                              aria-hidden="true">
@@ -218,6 +264,7 @@
                 roles:{},
                 form: new Form({
                     email: '',
+                    name: '',
                 })
             }
         },
@@ -280,6 +327,13 @@
                     return 'badge badge-primary';
                 }
             },
+            sendItem(item) {
+                this.form.reset();
+                //Afficher le modal de la création
+                $('#addNew').modal('show');
+                //On passe les informations
+                this.form.fill(item);
+            },
             modalInvite() {
                 this.form.reset();
                 //Masquer le modal après la création
@@ -292,6 +346,7 @@
                     .then(() => {
                         //Masquer le modal après la création
                         $('#inviteAdmin').modal('hide');
+                        $('#addNew').modal('hide');
 
                         //Insertion de l'alert !
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {

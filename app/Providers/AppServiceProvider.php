@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Model\user\User;
 use Carbon\Carbon;
-use Diplodocker\Services\Contracts\AuthorizationInterface;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 

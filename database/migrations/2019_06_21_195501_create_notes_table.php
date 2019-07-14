@@ -20,6 +20,7 @@ class CreateNotesTable extends Migration
             $table->longText('body')->nullable();
             $table->string('color_name')->nullable();
             $table->integer('status')->default('0')->nullable();
+            $table->integer('status_task')->default('0')->nullable();
             $table->string('ip')->nullable();
             $table->timestamps();
 

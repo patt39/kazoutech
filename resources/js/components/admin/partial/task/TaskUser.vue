@@ -119,18 +119,12 @@
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
                                                         </button>
-                                                        <button  @click="addDescription(item)"  class="btn btn-success btn-round btn-just-icon btn-sm"
+                                                        <button v-if="item.administrator.id === user.id" @click="addDescription(item)"  class="btn btn-success btn-round btn-just-icon btn-sm"
                                                                  title="Edit Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">edit</i>
                                                             </span>
                                                         </button>
-                                                        <!--<button @click="deleteItem(item.id)" class="btn btn-danger btn-round btn-just-icon btn-sm"
-                                                                title="Delete Description">
-                                                            <span class="btn-label">
-                                                                <i class="material-icons">delete_forever</i>
-                                                            </span>
-                                                        </button>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,69 +229,6 @@
                         </div>
                     </div>
 
-                    <!-- Modal New/Update Note -->
-                    <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel">
-                                        <b>Give New Task</b>
-                                    </h5>
-                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel">
-                                        <b>Update Task</b>
-                                    </h5>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="RegisterValidation" @keydown="form.onKeydown($event)" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action accept-charset="UTF-8">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating"></label>
-                                                    <select  v-model="form.note_id" id="note_id" class="form-control" :class="{ 'is-invalid': form.errors.has('note_id') }">
-                                                        <option value="" disabled >Select Title note </option>
-                                                        <option v-for="note in notes" :key="note.id" :value="note.id" v-if="note.status === 1">{{note.title}}</option>
-                                                    </select>
-                                                    <has-error :form="form" field="note_id"></has-error>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating"></label>
-                                                    <select name="administrator_id" v-model="form.administrator_id" id="administrator_id" class="form-control" :class="{ 'is-invalid': form.errors.has('administrator_id') }">
-                                                        <option value="" disabled >Select an administrator</option>
-                                                        <option v-for="user in users" :key="user.id" :value="user.id">{{user.name}}</option>
-                                                    </select>
-                                                    <has-error :form="form" field="administrator_id"></has-error>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="text-center">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                        <span class="btn-label">
-                                            <i class="material-icons">clear</i>
-                                            <b>Close</b>
-                                        </span>
-                                                </button>
-                                                <button v-show="!editmode" type="submit" class="btn btn-success btn-raised" title="Edit">
-                                        <span class="btn-label">
-                                            <i class="material-icons">check</i>
-                                            <b>Yes, Save</b>
-                                        </span>
-                                                </button>
-                                                <button v-show="editmode" type="submit" class="btn btn-success btn-raised" title="Delete">
-                                        <span class="btn-label">
-                                            <i class="material-icons">save_alt</i>
-                                            <b>Yes, Update</b>
-                                        </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- Modal View Note -->
                     <div class="modal fade" id="viewNew" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-lg" role="document">
@@ -380,8 +311,7 @@
                 loaded: false,
                 fullPage: true,
                 editmode: false,
-                notes: {},
-                users: {},
+                user: {},
                 usertasks: {},
                 form: new Form({
                     id: "",
@@ -542,52 +472,12 @@
                         //End Progress bar
                         this.$Progress.finish();
                 });
-                axios.get("/api/notes").then(response => {this.notes = response.data.data});
-                axios.get("/api/administrators").then(response => {this.users = response.data.data;});
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
 
             },
             reload(){
                 this.loadItems()
             },
-            createItem() {
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/tasks").then(() => {
-                    //Event
-                    Fire.$emit("AfterCreate");
-
-                    //Masquer le modal après la création
-                    $("#addNew").modal("hide");
-
-                    //Insertion de l'alert !
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true,
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        },
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Task Created Successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    //Fin insertion de l'alert !
-
-                    //End Progress bar
-                    this.$Progress.finish();
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                });
-            }
         },
         created() {
             this.loadItems();

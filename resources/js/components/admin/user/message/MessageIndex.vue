@@ -119,30 +119,23 @@
 
 
                                                        <div class="form-group">
-                                                            <v-select label="name" :filterable="false" :options="options" @search="onSearch">
-                                                                <template slot="no-options">
-                                                                    type to search GitHub repositories..
-                                                                </template>
-                                                                <template slot="option" slot-scope="option">
-                                                                    <div class="d-center">
-                                                                        <img :src='option.owner.avatar_url'/>
-                                                                        {{ option.full_name }}
-                                                                    </div>
-                                                                </template>
-                                                                <template slot="selected-option" slot-scope="option">
-                                                                    <div class="selected d-center">
-                                                                        <img :src='option.owner.avatar_url'/>
-                                                                        {{ option.full_name }}
-                                                                    </div>
-                                                                </template>
-                                                            </v-select>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <input type="text" v-model.lazy="keywords" v-debounce="300">
-                                                            <ul v-if="users.length > 0">
-                                                                <li v-for="result in users" :key="result.id" v-text="result.name"></li>
-                                                            </ul>
+                                                           <v-select label="name" :filterable="false" :options="user in users" >
+                                                               <template slot="no-options">
+                                                                   type to search GitHub repositories..
+                                                               </template>
+                                                               <template slot="option" slot-scope="option">
+                                                                   <div class="d-center">
+                                                                       <img :src='option.avatar'/>
+                                                                       {{ option.full_name }}
+                                                                   </div>
+                                                               </template>
+                                                               <template slot="selected-option" slot-scope="option">
+                                                                   <div class="selected d-center">
+                                                                       <img :src='option.avatar'/>
+                                                                       {{ option.full_name }}
+                                                                   </div>
+                                                               </template>
+                                                           </v-select>
                                                         </div>
 
                                                         <div class="form-group">
@@ -227,16 +220,6 @@
         },
 
         methods: {
-
-            highlight(text) {
-                return text.replace(new RegExp(this.keywords, 'gi'), '<span class="highlighted">$&</span>');
-            },
-
-            fetch() {
-                axios.get('/api/search', { params: { keywords: this.keywords } })
-                    .then(response => this.users = response.data)
-                    .catch(error => {});
-            },
 
            //onSearch(search, loading) {
            //    loading(true);
@@ -351,7 +334,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/messages";
+                let url = "/api/messages";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.messages = response.data.data;

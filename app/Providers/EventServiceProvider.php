@@ -17,7 +17,6 @@ use App\Observers\Admin\ColorObserver;
 use App\Observers\Admin\FaqObserver;
 use App\Observers\Admin\NoteObserver;
 use App\Observers\Admin\OccupationObserver;
-use App\Observers\Admin\TaskObserver;
 use App\Observers\User\TasktechnicianObserver;
 use App\Observers\User\TechnicianObserver;
 use Illuminate\Support\Facades\Event;
