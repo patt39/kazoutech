@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="sidebar" data-color="azure" data-background-color="black"  :data-image="user.avatar">
+        <div class="sidebar" data-color="orange" data-background-color="black"  :data-image="user.avatar">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -46,8 +46,8 @@
                                         <span class="sidebar-normal"><b>Message Box</b></span>
                                     </router-link>
                                 </li>
-                                <li class="nav-item ">
-                                    <router-link :to="{ path: `/dashboard/tasks/u/${user.username}`}" class="nav-link">
+                                <li class="nav-item">
+                                    <router-link :to="{ path: `/dashboard/tasks/u/${user.username}/`}" class="nav-link">
                                         <span class="sidebar-mini">TT</span>
                                         <span class="sidebar-normal"><b>Tasks Todo</b></span>
                                     </router-link>
@@ -107,14 +107,14 @@
                             <ul class="nav">
                                 <!-- Links -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/links' }" class="nav-link">
+                                    <router-link  :to="{ path: '/dashboard/links/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>LI</b></span>
                                         <span class="sidebar-normal"><b>Links</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Colors -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/colors' }" class="nav-link">
+                                    <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>COL</b></span>
                                         <span class="sidebar-normal"><b>Colors</b></span>
                                     </router-link>
@@ -185,14 +185,14 @@
                     </li>
                     <!-- Contacts -->
                     <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/contacts' }" class="nav-link">
+                        <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
                             <i class="material-icons">message</i>
                             <p><b>Contacts</b></p>
                         </router-link>
                     </li>
                     <!-- Technician -->
                     <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/technicians' }" class="nav-link">
+                        <router-link  :to="{ path: '/dashboard/technicians/' }" class="nav-link">
                             <i class="material-icons">meeting_room</i>
                             <p><b>Technicien</b></p>
                         </router-link>
@@ -207,6 +207,13 @@
                         </a>
                         <div class="collapse" id="administrationExamples">
                             <ul class="nav">
+                                <!-- Activities -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'activities.index' }" class="nav-link">
+                                        <span class="sidebar-mini">AC</span>
+                                        <span class="sidebar-normal"><b>Activities site</b></span>
+                                    </router-link>
+                                </li>
                                 <!-- Administrators -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'administrators.index' }" class="nav-link">
@@ -291,32 +298,21 @@
                         //Envoyer la requet au server
                         axios.post('/logout').then(() => {
 
-                            /** Alert notify bootstrapp **/
-                            // var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            //     allow_dismiss: false,
-                            //     showProgressbar: true
-                            // });
-                            // setTimeout(function() {
-                            //     notify.update({'type': 'success', 'message': '<strong>User deleted successfully.</strong>', 'progress': 75});
-                            // }, 2000);
-
                             location.replace(`/`);
                             //End Progress bar
                             this.$Progress.finish();
-
-                            Fire.$emit('AfterSave');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            //toastr.error('', 'Ooop! Something wrong. Try later');
                         });
                     }
                 })
             },
         },
         created() {
-            axios.get("/api/account/user").then(response => {this.user = response.data.data});
-            //setInterval(() => this.loadItems(),3000);
+            axios.get("/api/account/user").then(
+                response => {this.user = response.data.data}
+                );
         }
     }
 </script>

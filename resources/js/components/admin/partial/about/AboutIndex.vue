@@ -311,7 +311,7 @@
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.user.username}`);
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },

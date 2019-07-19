@@ -9,6 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
+                    <errored-loading v-if="errored"/>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="container">
@@ -131,6 +132,7 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                errored: false,
                 loaded: false,
                 user: {},
                 form: new Form({
@@ -190,7 +192,7 @@
                                 notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             //Redirect after create
-                            setTimeout(() => this.$router.push({ name: 'contacts.index' }), 2000);
+                            setTimeout(() => this.$router.push({ name: 'contacts.index' }));
                             /* End alert ***/
 
                             //End Progress bar
@@ -261,7 +263,12 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                api.contactshow(this.$route.params.contact).then(({data}) => this.form.fill(data.data));
+                api.contactshow(this.$route.params.contact)
+                    .then(({data}) => this.form.fill(data.data)
+                    ).catch(error => {
+                    console.log(error);
+                    this.errored = true
+                });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();

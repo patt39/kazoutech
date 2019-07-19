@@ -156,8 +156,12 @@
                                                                     class="btn btn-info btn-sm btn-round"
                                                                     v-text="buttonText">
                                                             </button>
-                                                            <h6 class="card-title">Followers: {{user.followers}}</h6>
-                                                            <h6 class="card-title">Followings: {{user.followings}}</h6>
+                                                            <router-link  :to="{ path: `/dashboard/users/p/${user.username}/followers/` }">
+                                                                <h6 class="card-title">Followers: {{user.followers}}</h6>
+                                                            </router-link>
+                                                            <router-link  :to="{ path: `/dashboard/users/p/${user.username}/followings/` }">
+                                                                <h6 class="card-title">Followings: {{user.followings}}</h6>
+                                                            </router-link>
                                                             <h6><span v-for="role in user.roles" :class="getRoleName(role)"><b>{{role}}</b></span></h6>
                                                             <h6 v-if="user.statusOnline"><span class="badge badge-success" title="User online">Online</span></h6>
                                                             <h6 v-else="user.statusOnline"><span class="badge badge-danger" title="user offline">Offline</span></h6>

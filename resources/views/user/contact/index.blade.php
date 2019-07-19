@@ -1,9 +1,20 @@
-@extends('layouts.app')
+@extends('inc.user._main')
+@section('title', '| Contact')
+
+@section('style')
+
+@endsection
+
+@section('init')
+    <!-- Site wrapper -->
+@endsection
 
 @section('content')
-    <div class="container" id="app">
-        <div class="row justify-content-center">
-            <contact-user></contact-user>
-        </div>
+    <div id="app">
+        <router-view></router-view>
     </div>
+@endsection
+
+@section('script')
+
 @endsection

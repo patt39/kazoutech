@@ -199,7 +199,7 @@
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.user.username}`);
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },
@@ -332,12 +332,18 @@
                 //End Progress bar
                 this.$Progress.finish();
             },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 </script>

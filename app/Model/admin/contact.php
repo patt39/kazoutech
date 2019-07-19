@@ -4,6 +4,7 @@ namespace App\Model\admin;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class contact extends Model
 {
@@ -12,13 +13,10 @@ class contact extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'subject',
-        'email',
-        'message',
-    ];
+    use LogsActivity;
+
+    protected $fillable = ['first_name', 'last_name', 'subject', 'email', 'status', 'message'];
+    protected static $logAttributes = ['first_name', 'last_name','ip','subject', 'email', 'status', 'message'];
 
     protected static function boot()
     {

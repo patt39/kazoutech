@@ -20,7 +20,7 @@ export default {
         return axios.get(`/dashboard/tags/${id}`);
     },
     /* Ici c'est pour recuper un produit */
-    tagview(tag) {
+    tagView(tag) {
         return axios.get(`/dashboard/tags/api/${tag}`);
     },
 
@@ -42,5 +42,14 @@ export default {
     },
     technicianID(id) {
         return axios.get(`/dashboard/technicians/${id}`);
+    },
+    technicianSlug(technician) {
+        return axios.get(`/dashboard/technicians/j/${technician}`);
+    },
+    followerUsername(username) {
+        return axios.get(`/followers/${username}`);
+    },
+    followingUsername(username) {
+        return axios.get(`/followings/${username}`);
     },
 };

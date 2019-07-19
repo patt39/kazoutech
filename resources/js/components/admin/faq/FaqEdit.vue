@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -109,10 +112,12 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../inc/animation/LoaderEllipsis";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderEllipsis, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                loaded: false,
                 user: {},
                 categoryfaqs: {},
                 form: new Form({
@@ -190,7 +195,10 @@
         },
         created() {
             this.$Progress.start();
-            api.faqID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
+            api.faqID(this.$route.params.id).then(({data}) => {
+                this.loaded = true;
+                this.form.fill(data.data);
+            });
             axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar

@@ -7,6 +7,7 @@ use App\Http\Resources\User\ContactResource;
 use App\Model\admin\contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +47,10 @@ class ContactController extends Controller
 
     public function api()
     {
-        return ContactResource::collection(contact::orderBy('created_at','desc')->get());
+        $contacts = Cache::rememberForever('contacts', function () {
+            return ContactResource::collection(contact::orderBy('created_at','desc')->get());
+        });
+        return $contacts;
     }
     /**
      * Show the form for creating a new resource.
@@ -64,9 +68,16 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactFormRequest $request)
+    public function store(Request $request)
     {
         //dd(\request()->all());
+        $this->validate($request,[
+            'first_name'    => 'required|max:100',
+            'last_name'    => 'required|max:100',
+            'email'   => 'required|email',
+            'subject' => 'required|min:2|max:210',
+            'message'     => 'required|min:2|max:50000',
+        ]);
         $contact = new Contact;
 
         $contact->first_name = $request->first_name;
@@ -100,11 +111,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return ContactResource|\Illuminate\Http\Response
      */
-    public function show($slug)
-    {
-        $contact = new ContactResource(contact::where('slug', $slug)->findOrFail($slug));
-        return $contact;
-    }
+    //public function show($slug)
+    //{
+    //    $contact = new ContactResource(contact::where('slug', $slug)->findOrFail($slug));
+    //    return $contact;
+    //}
 
 
     public function view($slug)
@@ -148,27 +159,24 @@ class ContactController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function disable($slug)
+    public function disable(contact $contact, $id)
     {
-        DB::table('contacts')
-            ->where('slug',$slug)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-        return response('deactivated message read',Response::HTTP_ACCEPTED);
+        $contact = contact::where('id', $id)->findOrFail($id);
+        $contact->update([
+            'status' => 1,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated message read',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
+    public function active(contact $contact, $id)
     {
-        DB::table('contacts')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-
-        return response('Message read',Response::HTTP_ACCEPTED);
+        $contact = contact::where('id', $id)->findOrFail($id);
+        $contact->update([
+            'status' => 0,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Activated',Response::HTTP_ACCEPTED);
     }
     /**
      * Remove the specified resource from storage.

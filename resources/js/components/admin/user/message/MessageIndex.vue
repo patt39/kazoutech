@@ -119,24 +119,12 @@
 
 
                                                        <div class="form-group">
-                                                           <v-select label="name" :filterable="false" :options="user in users" >
-                                                               <template slot="no-options">
-                                                                   type to search GitHub repositories..
-                                                               </template>
-                                                               <template slot="option" slot-scope="option">
-                                                                   <div class="d-center">
-                                                                       <img :src='option.avatar'/>
-                                                                       {{ option.full_name }}
-                                                                   </div>
-                                                               </template>
-                                                               <template slot="selected-option" slot-scope="option">
-                                                                   <div class="selected d-center">
-                                                                       <img :src='option.avatar'/>
-                                                                       {{ option.full_name }}
-                                                                   </div>
-                                                               </template>
-                                                           </v-select>
-                                                        </div>
+                                                           <v-select
+                                                                   @input="myAction"
+                                                                   :options="$store.state.users"
+                                                                   :value="$store.state.selected"
+                                                           ></v-select>
+                                                       </div>
 
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>

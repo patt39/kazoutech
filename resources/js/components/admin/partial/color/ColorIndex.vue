@@ -27,6 +27,7 @@
                             </div>
                         </div>
                     </div>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
@@ -111,7 +112,7 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b>{{ item.updated_at | myDate }}</b></td>
+                                                <td><b>{{ item.updated_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
                                                     <template v-if="$auth.can('publish-color')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
@@ -203,6 +204,7 @@
         data() {
             return {
                 loaded: false,
+                errored: false,
                 editmode: false,
                 user: {},
                 colors: {},
@@ -253,7 +255,7 @@
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.user.username}`);
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },
@@ -357,6 +359,46 @@
                     }
                 })
             },
+            createItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/colors")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
+            },
             /** Ici c'est l'activation de la couleur  **/
             activeItem(id) {
                 //Progress bar star
@@ -426,58 +468,33 @@
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
             reload(){
                 this.loadItems()
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/colors")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            }
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
+            this.$storage.setOptions({
+                prefix: 'app_',
+                driver: 'local',
+                ttl: 60 * 60 * 24 * 1000 // 24 hours
+            });
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            // Run the intervalFetchData function once to set the interval time for later refresh
+            this.intervalFetchData();
         }
     }
 

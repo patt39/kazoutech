@@ -27,6 +27,7 @@
                             </div>
                         </div>
                     </div>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                        <LoaderLdsDefault/>
                     </div>
@@ -52,6 +53,13 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
+                                    <div class="header text-right">
+                                        <button  @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                 title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                    </div>
                                     <br>
                                     <div class="material-datatables">
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover"
@@ -82,7 +90,7 @@
                                                 </td>
                                                 <td>{{ (item.first_name.length > 15 ? item.first_name.substring(0,15)+ "..." : item.first_name) | upText }}</td>
                                                 <td>{{ item.email}}</td>
-                                                <td><b>{{ item.created_at | myDate }}</b></td>
+                                                <td><b>{{ item.created_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
                                                     <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-success btn-round btn-just-icon" title="Disable Read">
                                                         <i class="material-icons">done_all</i>
@@ -93,7 +101,7 @@
                                                     <!--<router-link  :to="{ path: `/dashboard/contacts/msg/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>-->
-                                                    <a href="javascript:void(0)" @click="redItem(item.slug)"
+                                                    <a href="javascript:void(0)" @click="redItem(item)"
                                                        class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
                                                         <i class="material-icons">visibility</i>
                                                     </a>
@@ -128,6 +136,7 @@
         data() {
             return {
                 loaded: false,
+                errored: false,
                 editmode: false,
                 user: {},
                 contacts: {},
@@ -178,48 +187,68 @@
                 return colorHeader;
             },
             deleteItem(id) {
-                //Alert delete
-                Swal.fire({
-                    title: 'Delete Message Contact-us?',
-                    text: "Are you sure you want to delete this message?",
-                    type: 'warning',
-                    animation: false,
-                    customClass: 'animated shake',
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success",
-                    cancelButtonClass: 'btn btn-danger',
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'No',
-                    showCancelButton: true,
-                    reverseButtons: true
-                }).then((result) => {
-                    //Envoyer la requete au server
-                    if (result.value) {
-                        //Start Progress bar
-                        this.$Progress.start();
-                        this.form.delete('/dashboard/contacts/' + id).then(() => {
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true
-                            });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
-                            }, 2000);
-                            //Redirect after create
-                            setTimeout(() => this.$router.push({ name: 'contacts.index' }), 2000);
-                            /* End alert ***/
+                //Start Progress bar
+                this.$Progress.start();
 
-                            //End Progress bar
-                            this.$Progress.finish();
+                this.form.delete('/dashboard/contacts/' + id).then(() => {
+                    /** Alert notify bootstrapp **/
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
+                    }, 2000);
+                    /* End alert ***/
 
-                            Fire.$emit('AfterCreate');
-                        }).catch(() => {
-                            //Failled message
-                            this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
-                        })
-                    }
+                    //End Progress bar
+                    this.$Progress.finish();
+
+                    Fire.$emit('AfterCreate');
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
+            /** Ici c'est l'activation de la couleur  **/
+            activeItem(id) {
+                //Start Progress bar
+                this.$Progress.start();
+
+                this.form.get(`/dashboard/contacts/discard_red/${id}`).then(() => {
+
+                    /** Alert notify bootstrapp **/
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Message contact read.</strong>', 'progress': 75});
+                    }, 2000);
+                    /** End alert **/
+
+                    //End Progress bar
+                    this.$Progress.finish();
+
+                    Fire.$emit('AfterCreate');
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
@@ -227,7 +256,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/dashboard/contacts/red_confirm/' + id).then(() => {
+                this.form.get(`/dashboard/contacts/red_confirm/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -245,18 +274,24 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
-            redItem(slug) {
+            redItem(item) {
                 //Start Progress bar
                 this.$Progress.start();
-
-                this.form.get('/dashboard/contacts/discard_red/' + slug).then(() => {
+                this.form.get(`/dashboard/contacts/discard_red/${item.id}`).then(() => {
 
                     //Redirect after create
-                    setTimeout(() => this.$router.push({  path: `/dashboard/contacts/msg/${slug}` }));
+                    setTimeout(() => this.$router.push({  path: `/dashboard/contacts/msg/${item.slug}` }));
 
                     //End Progress bar
                     this.$Progress.finish();
@@ -264,21 +299,39 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/contacts";
+                let url = "/api/contacts";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.contacts = response.data.data;
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            },
+            reload(){
+                this.loadItems();
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
             },
         },
         created() {
@@ -286,6 +339,7 @@
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 </script>

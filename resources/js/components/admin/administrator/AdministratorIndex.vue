@@ -303,7 +303,7 @@
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.username}`);
+                location.replace(`/dashboard/users/p/${item.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },

@@ -1,152 +1,94 @@
 <template>
-    <div class="col-md-7 ml-auto">
+    <div>
         <vue-progress-bar/>
-        <br>
-        <br>
-        <div class="card card-contact">
-            <form
-                    id="RegisterValidation"
-                    accept-charset="UTF-8"
-                    @keydown="form.onKeydown($event)"
-                    method="POST"
-                    @submit.prevent="createItem()"
-                    enctype="multipart/form-data"
-            >
-                <div class="card-header card-header-raised card-header-warning text-center">
-                    <h4 class="card-title">
-                        <i class="material-icons">call</i>
-                        <h4 class="card-title">
-                            <b>Contact Us</b>
-                        </h4>
-                    </h4>
-                </div>
+        <NavSite/>
+        <main class="py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">Contact CM</div>
 
-                <div class="card-body">
-                    <div class="submit text-center"></div>
-                    <div id="fooDiv">
-                        <label for="foo">Ce champ m'evite les spam dans le server</label>
-                        <input type="text" name="foo" id="foo">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group label-floating is-empty">
-                                <label class="bmd-label-floating">Prenom *</label>
-                                <input
-                                        v-model="form.last_name"
-                                        type="text"
-                                        name="last_name"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('last_name') }"
-                                        required
-                                >
-                                <has-error :form="form" field="last_name"></has-error>
-                                <span class="material-input"></span>
+                            <div class="card-body">
+                                <form id="RegisterValidation" accept-charset="UTF-8" @keydown="form.onKeydown($event)" method="POST" @submit.prevent="createItem()" enctype="multipart/form-data">
+
+                                    <div class="form-group row">
+                                        <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                                        <div class="col-md-6">
+                                            <input v-model="form.name"  id="name" type="text" :class="{ 'is-invalid': form.errors.has('name') }"  class="form-control" name="name">
+                                            <has-error :form="form" field="name"></has-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+
+                                        <div class="col-md-6">
+                                            <input v-model="form.email"  id="email" type="email" :class="{ 'is-invalid': form.errors.has('email') }"  class="form-control" name="email" >
+                                            <has-error :form="form" field="email"></has-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="first_name" class="col-md-4 col-form-label text-md-right">First name</label>
+
+                                        <div class="col-md-6">
+                                            <input v-model="form.first_name"  id="first_name" type="text" :class="{ 'is-invalid': form.errors.has('first_name') }" class="form-control" name="first_name" >
+                                            <has-error :form="form" field="first_name"></has-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name</label>
+
+                                        <div class="col-md-6">
+                                            <input v-model="form.last_name"  :class="{ 'is-invalid': form.errors.has('last_name') }" id="last_name" type="text" class="form-control" name="last_name" >
+                                            <has-error :form="form" field="last_name"></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="last_name" class="col-md-4 col-form-label text-md-right">Subject</label>
+
+                                        <div class="col-md-6">
+                                            <input v-model="form.subject" type="text" name="subject" class="form-control" :class="{ 'is-invalid': form.errors.has('subject') }" >
+                                            <has-error :form="form" field="subject"></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name</label>
+
+                                        <div class="col-md-6">
+                                            <textarea v-model="form.message" rows="8" name="message" class="form-control" :class="{ 'is-invalid': form.errors.has('message') }" style="height:200px;" ></textarea>
+                                            <has-error :form="form" field="message"></has-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-0">
+                                        <div class="col-md-6 offset-md-4">
+                                            <button :disabled="form.busy" type="submit" class="btn btn-primary">
+                                                Register
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group label-floating is-empty">
-                                <label class="bmd-label-floating">Nom *</label>
-                                <input
-                                        v-model="form.first_name"
-                                        type="text"
-                                        name="first_name"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('first_name') }"
-                                        required
-                                >
-                                <has-error :form="form" field="first_name"></has-error>
-                                <span class="material-input"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group label-floating is-empty">
-                                <label class="bmd-label-floating">youremail@example.com *</label>
-                                <input
-                                        v-model="form.email"
-                                        type="email"
-                                        name="email"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('email') }"
-                                        required
-                                >
-                                <has-error :form="form" field="email"></has-error>
-                                <span class="material-input"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group label-floating is-empty">
-                                <label class="bmd-label-floating">Phone Number</label>
-                                <input
-                                        v-model="form.phone"
-                                        type="number"
-                                        name="phone"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('phone') }"
-                                >
-                                <has-error :form="form" field="phone"></has-error>
-                                <span class="material-input"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group label-floating is-empty">
-                                <label class="bmd-label-floating">Objet *</label>
-                                <input
-                                        v-model="form.subject"
-                                        type="text"
-                                        name="subject"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('subject') }"
-                                        required
-                                >
-                                <has-error :form="form" field="subject"></has-error>
-                                <span class="material-input"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group label-floating is-empty">
-                        <label class="bmd-label-floating">Your Message *</label>
-                        <textarea
-                                v-model="form.message"
-                                rows="8"
-                                name="message"
-                                class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('message') }"
-                                style="height:200px;"
-                                required
-                                autofocus
-                        ></textarea>
-                        <has-error :form="form" field="message"></has-error>
-                        <span class="material-input"></span>
-                    </div>
-                    <br>
-                    <div class="submit text-center">
-                        <!--<vue-recaptcha sitekey="6LeYMZcUAAAAAC2KlJhO2hFgumdV-3f7tLt_fEUj">
-                        </vue-recaptcha>-->
-                        <button id="button_hover" :disabled="form.busy" class="btn btn-warning btn-raised btn-round" type="submit">
-                <span class="btn-label">
-                  <i class="material-icons">drafts</i>
-                </span>
-                            <b class="title_hover">Send Message</b>
-                        </button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </main>
     </div>
 </template>
 
 <script>
 //import VueRecaptcha from "vue-recaptcha";
+import NavSite from "../../inc/user/NavSite";
 export default {
+    components: {NavSite},
     //components: { VueRecaptcha },
     data() {
         return {
-            colors: {},
-            menucategoryorders: {},
             form: new Form({
                 first_name: "",
                 last_name: "",
@@ -161,28 +103,27 @@ export default {
     methods: {
         createItem() {
             //Progress bar star
+
             this.$Progress.start();
 
-            this.form
-                .post("contact-us/save")
-                .then(() => {
+            this.form.post('/contact-cm/save').then(() => {
                     /* debut de l'alert **/
-                    //var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                    //    allow_dismiss: false,
-                    //    showProgressbar: true,
-                    //    animate: {
-                    //        enter: 'animated bounceInDown',
-                    //        exit: 'animated bounceOutUp',
-                    //        align: 'center'
-                    //    },
-                    //});
-                    //setTimeout(function () {
-                    //    notify.update({
-                    //        'type': 'success',
-                    //        'message': '<strong>Thanks for your message...</strong>',
-                    //        'progress': 100
-                    //    });
-                    //}, 2000);
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true,
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp',
+                            align: 'center'
+                        },
+                    });
+                    setTimeout(function () {
+                        notify.update({
+                            'type': 'success',
+                            'message': '<strong>Thanks for your message...</strong>',
+                            'progress': 100
+                        });
+                    }, 2000);
 
                     /* fin **/
 
@@ -193,9 +134,7 @@ export default {
                 })
                 .catch(error => {
                     this.$Progress.fail();
-                    this.onFail(error.response.data);
-
-                    reject(error.response.data);
+                    //console.log(data)
                 });
 
             //console.log('mise a jour des donnees')

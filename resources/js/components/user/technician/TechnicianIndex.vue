@@ -53,26 +53,14 @@
                                 <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-success btn-round btn-just-icon btn-sm" >
+                                        <button  @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
                                         </button>
                                     </div>
                                     <div class="toolbar">
-                                        <div class="submit text-center">
-                                            <router-link :to="{ name: 'technicians.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
-                                                  <span class="btn-label">
-                                        <i class="material-icons">meeting_room</i>
-                                    </span>
-                                                <b class="title_hover">New Technician</b>
-                                            </router-link>
 
-                                            <router-link :to="{ name: 'task_technicians.index' }" id="button_hover" class="btn btn-info btn-raised btn-round ">
-                                                  <span class="btn-label">
-                                        <i class="material-icons">meeting_room</i>
-                                    </span>
-                                                <b class="title_hover">Task Technician</b>
-                                            </router-link>
-                                        </div>
                                     </div>
                                     <div class="material-datatables">
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover"
@@ -107,11 +95,14 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </router-link>
                                                 </td>
-                                                <td><b>{{ (item.city.name.length > 15 ? item.city.name.substring(0,15)+ "..." : item.city.name) | upText }}</b></td>
-                                                <td><b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b></td>
+                                                <td v-if="item.city_id !== null"><b>{{ (item.city.name.length > 15 ? item.city.name.substring(0,15)+ "..." : item.city.name) | upText }}</b></td>
+                                                <td v-else="item.city_id === null"><b>City don't select</b></td>
+                                                <td v-if="item.occupation_id !== null"><b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b></td>
+                                                <td v-else="item.occupation_id === null"><b>Occupation don't select</b></td>
                                                 <td><b>{{ item.updated_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <router-link  :to="{ path: `/dashboard/technicians/t/${item.username}/` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+
+                                                    <router-link  :to="{ path: `/dashboard/technicians/u/${item.slug}/` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>
 
@@ -190,17 +181,10 @@
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
             },
-            getUser(item){
-                //Progress bar star
-                this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.user.username}`);
-                //Progres bar
-                this.$Progress.finish()
-            },
             deleteItem(id) {
                 Swal.fire({
                     title: 'Delete Technician?',
-                    text: "Are you sure you want to delete this faq?",
+                    text: "Are you sure you want to delete this technician?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated shake',
@@ -239,7 +223,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooop! This action is unauthorized.", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -258,12 +242,20 @@
                     this.technicians = response.data.data;
                     this.mydatatables();
                 });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {
+                    this.loaded = true;
+                    this.user = response.data.data
+                });
                 //End Progress bar
                 this.$Progress.finish();
             },
             reload(){
                 this.loadItems();
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
             },
         },
         created() {
@@ -271,6 +263,7 @@
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 </script>

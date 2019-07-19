@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "TasktechnicianEdit"
+        name: "ProfileUserEdit"
     }
 </script>
 

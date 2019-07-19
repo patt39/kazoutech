@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "MessageFedd"
+        name: "ProfileUserIndex"
     }
 </script>
 

@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded"  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -26,6 +29,7 @@
                                             </div>
                                             <br>
                                             <div class="card-body">
+                                                <alert-error class="text-center" :form="form" message="Les informations ne peuvent etre edité que pas l'utilisteur bien vouloir le contacter par mail pour plus d'information"></alert-error>
                                                 <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                     <div class="row">
@@ -105,11 +109,13 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../inc/animation/LoaderEllipsis";
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderEllipsis, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                loaded: false,
                 user: {},
                 cities:{},
                 users:{},
@@ -161,7 +167,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooop! This action is unauthorized.", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -176,8 +182,14 @@
             api.technicianID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
             axios.get("/api/occupations").then(({data}) => (this.occupations = data.data));
             axios.get("/api/cities").then(({data}) => (this.cities = data.data));
-            axios.get("/api/users").then(({data}) => (this.users = data.data));
-            axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            axios.get("/api/users").then(({data}) => {
+                this.loaded = true;
+                this.users = data.data
+            });
+            axios.get("/api/account/user").then(response => {
+                this.loaded = true;
+                this.user = response.data.data
+            });
             //End Progress bar
             this.$Progress.finish()
         }

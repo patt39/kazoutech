@@ -1,5 +1,4 @@
 import DashboardIndex from "../components/admin/DashboardIndex";
-import AdminAccount from "../components/admin/account/AdminAccount";
 import AdminProfileEdit from "../components/admin/account/AdminProfileEdit";
 import ColorIndex from "../components/admin/partial/color/ColorIndex";
 import CountriesIndex from "../components/admin/partial/country/CountriesIndex";
@@ -13,7 +12,6 @@ import TagIndex from "../components/admin/partial/tag/TagIndex";
 import TagCreate from "../components/admin/partial/tag/TagCreate";
 import TagEdit from "../components/admin/partial/tag/TagEdit";
 import TagView from "../components/admin/partial/tag/TagView";
-import ChatIndex from "../components/site/chat/ChatIndex";
 import UserIndex from "../components/admin/user/UserIndex";
 import UserEdit from "../components/admin/user/UserEdit";
 import MessageIndex from "../components/admin/user/message/MessageIndex";
@@ -38,17 +36,22 @@ import AboutEdit from "../components/admin/partial/about/AboutEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 import TechnicianIndex from "../components/user/technician/TechnicianIndex";
-import TechnicianCreate from "../components/user/technician/TechnicianCreate";
 import TechnicianEdit from "../components/user/technician/TechnicianEdit";
-import TasktechnicianIndex from "../components/admin/tasktechnician/TasktechnicianIndex";
-import TasktechnicianCreate from "../components/admin/tasktechnician/TasktechnicianCreate";
+import FollowerIndex from "../components/admin/follow/FollowerIndex";
+import FollowingIndex from "../components/admin/follow/FollowingIndex";
+import AdminAccount from "../components/admin/account/AdminAccount";
+import ProfileUserEdit from "../components/user/account/ProfileUserEdit";
+import ProfileUserIndex from "../components/user/account/ProfileUserIndex";
+import RegisterIndex from "../components/user/auth/RegisterIndex";
+import ContactUser from "../components/user/contact/ContactUser";
+import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
+import TechnicianView from "../components/user/technician/TechnicianView";
 
 
 export const routes = [
 
     {path: '/dashboard/', name: 'dashboard.index', component: DashboardIndex},
     {path: '/dashboard/account/profile/', name: 'admin.account', component: AdminAccount},
-    {path: '/dashboard/profile/:username', name: 'admin.view', component: AdminAccount},
     {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileEdit},
     {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
     {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
@@ -58,6 +61,9 @@ export const routes = [
     //Route administrators
     {path: '/dashboard/administrators/', name: 'administrators.index', component: AdministratorIndex},
     {path: '/dashboard/administrators/:id/edit/', name: 'administrators.edit', component: AdministratorEdit},
+
+    //Route activities
+    {path: '/dashboard/activities/', name: 'activities.index', component: ActivityIndex},
 
     //Route occupations
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
@@ -96,7 +102,11 @@ export const routes = [
     //Route users
     {path: '/dashboard/users/', name: 'users.index', component: UserIndex},
     {path: '/dashboard/users/:id/edit/', name: 'users.edit', component: UserEdit},
-    {path: '/dashboard/users/profile/:username/', name: 'users.view', component: AdministratorShow},
+    {path: '/dashboard/users/p/:username/', name: 'users.view', component: AdministratorShow},
+
+    //Route followers
+    {path: '/dashboard/users/p/:username/followers/', name: 'follower.view', component: FollowerIndex},
+    {path: '/dashboard/users/p/:username/followings/', name: 'following.view', component: FollowingIndex},
 
     //Route contacts
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
@@ -114,8 +124,6 @@ export const routes = [
     {path: '/dashboard/messages/msg/:message/', name: 'messages.view', component: MessageView},
     {path: '/dashboard/messages/m/send/', name: 'messages.send', component: MessageSend},
 
-    {path: '/dashboard/chat/', name: 'messages.chat', component: ChatIndex},
-
 
     {path: '/dashboard/notes/', name: 'notes.index', component: NoteIndex},
     {path: '/dashboard/tasks/', name: 'tasks.index', component: TaskIndex},
@@ -123,11 +131,21 @@ export const routes = [
 
     //Route technicians
     {path: '/dashboard/technicians/', name: 'technicians.index', component: TechnicianIndex},
-    {path: '/dashboard/technicians/create/', name: 'technicians.create', component: TechnicianCreate},
     {path: '/dashboard/technicians/:id/edit/', name: 'technicians.edit', component: TechnicianEdit},
+    {path: '/dashboard/technicians/u/:technician', name: 'technicians.view', component: TechnicianView},
 
-    //Route tasks technicians
-    {path: '/dashboard/task_technicians/', name: 'task_technicians.index', component: TasktechnicianIndex},
-    {path: '/dashboard/task_technicians/create/', name: 'task_technicians.create', component: TasktechnicianCreate},
 
+
+
+    /** Ici je recupere les route du site **/
+
+    //Route auth
+    {path: '/register/', name: 'register', component: RegisterIndex},
+    //Route profile user
+
+    {path: '/:username', name: 'profile.view', component: ProfileUserIndex},
+    {path: '/profile/edit/', name: 'profile.edit', component: ProfileUserEdit},
+
+    //Route contact page
+    {path: '/cm/contact/', name: 'contact_cm', component: ContactUser},
 ];

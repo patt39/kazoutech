@@ -27,6 +27,7 @@
                             </div>
                         </div>
                     </div>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                        <LoaderLdsDefault/>
                     </div>
@@ -170,6 +171,7 @@
         data() {
             return {
                 loaded: false,
+                errored: false,
                 editmode: false,
                 user: {},
                 permissions: {},
@@ -259,6 +261,46 @@
                 //Masquer le modal après la création
                 $('#addNew').modal('show');
             },
+            createItem() {
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/permissions").then(() => {
+
+                    //Event
+                    Fire.$emit('AfterCreate');
+
+                    //Masquer le modal après la création
+                    $('#addNew').modal('hide');
+
+                    //Insertion de l'alert !
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true,
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        },
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Permission Created Successfully.</strong>', 'progress': 75});
+                    }, 2000);
+                    //Fin insertion de l'alert !
+
+                    //End Progress bar
+                    this.$Progress.finish()
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
             deleteItem(id) {
                 Swal.fire({
                     title: 'Delete Permission?',
@@ -303,8 +345,8 @@
                     }
                 })
             },
-            loadPermissions() {
-                //End Progress bar
+            loadItems() {
+                //Start Progress bar
                 this.$Progress.start();
                 const url = "/api/permissions";
                 axios.get(url).then(response => {
@@ -313,47 +355,17 @@
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish()
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
-            createItem() {
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/permissions").then(() => {
-
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Permission Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                        //Fin insertion de l'alert !
-                    
-                        //End Progress bar
-                        this.$Progress.finish()
-                    }).catch(() => {
-                        //Failled message
-                        this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
-                    })
-            }
         },
         created() {
-            this.loadPermissions();
+            this.loadItems();
             Fire.$on('AfterCreate', () => {
-                this.loadPermissions();
+                this.loadItems();
             });
         }
     }

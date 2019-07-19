@@ -41,7 +41,7 @@
 
 <script src="{{ mix('/js/app.js') }}"></script>
 <script type="text/javascript">
-    var timer = setInterval("autoRefresher()", 60 * 10000);
+    var timer = setInterval("autoRefresher()", 60 * 70000);
     function autoRefresher(){self.location.reload(true);}
 </script>
 <script type="text/javascript">

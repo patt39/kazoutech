@@ -99,7 +99,7 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b>{{ item.updated_at | myDate }}</b></td>
+                                                <td><b>{{ item.updated_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
                                                     <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
                                                         <i class="material-icons">power_settings_new</i>
@@ -293,6 +293,46 @@
                 //Masquer le modal après la création
                 $('#addNew').modal('show');
             },
+            createItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/occupations")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Occupations Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
+            },
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
@@ -416,52 +456,19 @@
                 this.$Progress.finish();
 
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/occupations")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Occupations Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            }
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            // Run the intervalFetchData function once to set the interval time for later refresh
+            this.intervalFetchData();
         }
     }
 

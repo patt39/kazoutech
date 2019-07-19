@@ -403,11 +403,21 @@
                 })
             },
         },
+        //Ici je recupere les donner avant que la page n'apparait pour le moment
+        //je n'ai pas besoin du created ici
+        beforeRouteEnter (to, from, next) {
+            axios.get('/api/account/profile')
+                .then(({data}) =>  {
+                    next(vm => {
+                        vm.$Progress.start();
+                        vm.form.fill(data);
+                        vm.$Progress.finish()
+                    })
+                });
+        },
         created(){
             //Start Progress bar
             this.$Progress.start();
-            const url = "/api/account/profile";
-            axios.get(url).then(({data}) => (this.form.fill(data)));
             axios.get("/api/colors").then(({data}) => (this.colors = data.data));
             axios.get("/api/countries").then((response) => ( this.countries = response.data.data));
             //End Progress bar

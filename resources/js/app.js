@@ -10,8 +10,18 @@ require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(require('vue-resource'));
 
+import 'es6-promise/auto';
+import Vuex from 'vuex';
+Vue.use(Vuex);
 
-import { Form, HasError, AlertError,AlertSuccess } from 'vform'
+import {Vue2Storage} from 'vue2-storage'
+Vue.use(Vue2Storage, {
+    prefix: 'app_',
+    driver: 'local',
+    ttl: 60 * 60 * 24 * 1000 // 24 часа
+});
+
+import {Form, HasError, AlertError, AlertSuccess} from 'vform'
 
 window.Form = Form;
 
@@ -23,11 +33,13 @@ Vue.component(AlertSuccess.name, AlertSuccess);
  * Vue select
  */
 import vSelect from 'vue-select'
+
 Vue.component('v-select', vSelect);
 /**
  * Router vuejs
  */
 import VueRouter from 'vue-router'
+
 Vue.use(VueRouter);
 
 
@@ -35,11 +47,13 @@ Vue.use(VueRouter);
  * VueEditor
  */
 import {VueEditor, Quill} from "vue2-editor";
+
 Vue.component('VueEditor', VueEditor);
 Vue.component('Quill', Quill);
 
 
 import {routes} from './api/routes';
+
 const router = new VueRouter({
     routes,
     mode: 'history',
@@ -53,6 +67,7 @@ const router = new VueRouter({
  * Ici c'est pour le number
  */
 import VueTheMask from 'vue-the-mask'
+
 Vue.use(VueTheMask);
 
 
@@ -60,6 +75,7 @@ Vue.use(VueTheMask);
  * Ici c'est pour configurer les alerts surtout le sweetalert2
  */
 import Swal from 'sweetalert2';
+
 window.swal = swal;
 const toast = Swal.mixin({
     toast: true,
@@ -74,6 +90,7 @@ window.toast = toast;
  * https://github.com/hilongjw/vue-progressbar#requirements
  */
 import VueProgressBar from 'vue-progressbar'
+
 Vue.use(VueProgressBar, {
     color: 'green',
     ailedColor: 'red',
@@ -90,7 +107,7 @@ Vue.use(VueProgressBar, {
 });
 
 
-Vue.filter('upText',function (text) {
+Vue.filter('upText', function (text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 });
 
@@ -101,35 +118,40 @@ Vue.filter('upText',function (text) {
  */
 
 import moment from 'moment'
+
 require("moment/min/locales.min");
 moment.locale('fr');
 
-Vue.filter('myDate',function (created) {
+Vue.filter('myDate', function (created) {
     return moment(created).format('ll');
 });
 
-Vue.filter('ageDate',function (created) {
+Vue.filter('ageDate', function (created) {
     return moment(created).format('l');
 });
 
-Vue.filter('formatDate', function(value) {
+Vue.filter('formatDate', function (value) {
     if (value) {
         return moment(String(value)).format('DD/MM/YYYY');
     }
 });
 
-Vue.filter('formatDateAndHour', function(value) {
+Vue.filter('formatDateAndHour', function (value) {
     if (value) {
         return moment(String(value)).format('DD/MM/YYYY HH:mm:ss');
     }
 });
 
-Vue.filter('dateFormat',function (created) {
+Vue.filter('dateFormat', function (created) {
     return moment(created).format('lll'); // mars 2 2019, 12:32:56 pm
 });
 
-Vue.filter('dateAgo',function (created) {
-    return moment(created).fromNow(); // date ago
+Vue.filter('dateAgo', function (created) {
+   return moment(created).fromNow(); // date ago
+});
+
+Vue.filter('dateCalendar', function (created) {
+    return moment(created).calendar();  // Today at 4:39 PM
 });
 
 Vue.filter('toCurrency', function (value) {
@@ -161,7 +183,8 @@ Vue.component('error-404', require('./components/inc/alert/Error404').default);
 Vue.component('pagination-link', require('./components/inc/vendor/PaginationComponent').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('alert-permission', require('./components/inc/admin/components/AlertPermission').default);
-Vue.component('contact-user', require('./components/user/contact/ContactUser').default);
+Vue.component('errored-loading', require('./components/inc/animation/Errored').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

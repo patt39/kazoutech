@@ -17,6 +17,7 @@ class CreateTechniciansTable extends Migration
             $table->bigIncrements('id');
             $table->string('district')->nullable();
             $table->string('ip')->nullable();
+            $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->integer('status')->nullable()->default('1');
             $table->unsignedBigInteger('city_id')->nullable();
@@ -24,6 +25,8 @@ class CreateTechniciansTable extends Migration
             $table->unsignedBigInteger('member_id')->nullable();
             $table->unsignedBigInteger('occupation_id')->nullable();
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

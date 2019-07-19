@@ -70,7 +70,7 @@
                                                 <th><b>Name</b></th>
                                                 <th><b>Confirmed</b></th>
                                                 <th><b>Connect with</b></th>
-                                                <th><b>Status Member</b></th>
+                                                <th><b>Followers</b></th>
                                                 <th class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
@@ -80,7 +80,7 @@
                                                 <th><b>Name</b></th>
                                                 <th><b>Confirmed</b></th>
                                                 <th><b>Connect with</b></th>
-                                                <th><b>Status Member</b></th>
+                                                <th><b>Followers</b></th>
                                                 <th class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
@@ -103,14 +103,13 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <b v-if="item.provider != null" v-text="item.provider"></b>
+                                                    <b v-if="item.provider !== null" v-text="item.provider"></b>
                                                     <b v-if="item.provider === null">kazoucoin</b>
                                                 </td>
                                                 <td>
-                                                    <div class="timeline-heading">
-                                                        <span v-if="item.my_status === 'active'" class="badge badge-primary"><b>Admin</b></span>
-                                                        <span v-if="item.my_status != 'active'" class="badge badge-warning"><b>User</b></span>
-                                                    </div>
+                                                  <router-link  :to="{ path: `/dashboard/users/p/${item.username}/followers/` }">
+                                                    <h6 class="card-title">{{item.followers}}</h6>
+                                                  </router-link>
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
@@ -198,7 +197,7 @@
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.username}`);
+                location.replace(`/dashboard/users/p/${item.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },
@@ -260,12 +259,18 @@
             reload(){
                 this.loadItems()
             },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
             Fire.$on('AfterSave', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 

@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Admin'], function () {
     // Dashboard
     Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
     Route::resource('/dashboard/users','UserController');
-    Route::get('/dashboard/users/profile/{user}', 'UserController@view')->name('users.view');
+    Route::get('/dashboard/users/p/{user}', 'UserController@view')->name('users.view');
 
     //Route Administrator
     Route::resource('/dashboard/administrators','AdministratorController');
@@ -67,6 +67,10 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
 
     Route::group(['namespace' => 'Partial'], function () {
+
+        // Admin Route activities
+        Route::get('/dashboard/activities', 'ActivitylogController@index')->name('activities.index');
+        Route::get('/dashboard/api/activities', 'ActivitylogController@api');
 
         // Admin Route categories
         Route::resource('/dashboard/categories', 'CategoryController');
@@ -126,6 +130,10 @@ Route::group(['namespace' => 'Admin'], function () {
 
         //Route Following
         Route::post('user/follow/{id}', 'FollowerController@store')->name('user.follow');
+        Route::get('dashboard/users/p/{username}/followers', 'FollowerController@followers')->name('follower.view');
+        Route::get('dashboard/users/p/{username}/followings', 'FollowerController@following')->name('following.view');
+        Route::get('followers/{username}', 'FollowerController@GetFollowersByUser');
+        Route::get('followings/{username}', 'FollowerController@GetFollowingsByUser');
 
         //Notes administrator Route
         Route::resource('/dashboard/tasks', 'TaskController');
@@ -141,6 +149,9 @@ Route::group(['namespace' => 'Admin'], function () {
 
 Route::group(['namespace' => 'User'], function () {
 
+    //User Route profile
+    Route::get('/{username}', 'UserController@index')->name('profile.view');
+    Route::get('/profile/edit', 'UserController@edit')->name('profile.edit');
     //Admin Route contacts
     Route::resource('dashboard/contacts', 'ContactController');
     Route::get('dashboard/contacts/msg/{contact}', 'ContactController@contact')->name('contacts.view');
@@ -149,11 +160,13 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
 
     //User Route Contact
-    Route::get('/contact_us', 'ContactController@contatPage')->name('contact_us');
+    Route::get('/cm/contact', 'ContactController@contatPage')->name('contact_cm');
+    Route::post('contact-cm/save', 'ContactController@store');
 
     //Admin Route technicians
     Route::resource('dashboard/technicians','TechnicianController');
-    Route::get('dashboard/technicians/t/{user}','TechnicianController@view')->name('technicians.view');
+    Route::get('dashboard/technicians/u/{technician}','TechnicianController@technician')->name('technicians.view');
+    Route::get('dashboard/technicians/j/{slug}','TechnicianController@view');
 
 
     Route::resource('dashboard/messages', 'MessageController');

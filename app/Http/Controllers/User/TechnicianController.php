@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Resources\User\TechnicianResource;
+use App\Http\Resources\UserResource;
 use App\Model\user\technician;
 use App\Model\user\User;
 use Illuminate\Http\Request;
@@ -83,15 +84,31 @@ class TechnicianController extends Controller
         return $technician;
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $slug
+     * @return TechnicianResource|\Illuminate\Http\Response
+     */
     //Ici nous recuperon tous les infirmation de l'utilisateur a traver l'API
-    public function view(User $user)
+    public function view($slug)
     {
-        return view('admin.tasktechnician.view',[
-            'user' => $user,
-            'usertasks' => $user->tasktechnicians()->latest()->get(),
-        ]);
+        $technician = new TechnicianResource(technician::where('slug',$slug)->firstOrFail());
+        return $technician;
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  @param  \App\Model\user\technician  $technician
+     * @return TechnicianResource|\Illuminate\Http\Response
+     */
+    public function technician(technician $technician)
+    {
+        return view('admin.technician.view', [
+            'technician' => $technician,
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -120,6 +137,8 @@ class TechnicianController extends Controller
         ]);
 
         $technician = technician::findOrFail($id);
+        $this->authorize('update', $technician);
+
         $technician->update($request->all());
 
         return ['message' => 'technician has been updated'];
@@ -129,10 +148,13 @@ class TechnicianController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *  @param  \App\Model\user\User  $user
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user,$id)
     {
+        $this->authorize('update', $user->technician);
+
         $technician = technician::findOrFail($id);
         $technician->delete();
 

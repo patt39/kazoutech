@@ -18,6 +18,7 @@ class technician extends Model
         'member_id',
         'city_id',
         'user_id',
+        'title',
         'slug',
         'occupation_id',
         'status'
@@ -85,14 +86,12 @@ class technician extends Model
     {
         return [
             'slug' => [
-                'source' => str_slug(date('YmdHis') . str_random(30)),
+                'source' => 'title'
+            ],
+            'title' => [
+                'source' => 'id'
             ]
 
         ];
-    }
-
-    public function tasktechnicians()
-    {
-        return $this->hasMany(tasktechnician::class,'technician_id');
     }
 }

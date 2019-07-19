@@ -198,7 +198,7 @@
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
-                location.replace(`/dashboard/users/profile/${item.user.username}`);
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },
@@ -307,12 +307,19 @@
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
 
             },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
+
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 
