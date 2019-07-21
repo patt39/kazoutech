@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\Page;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TasktechnicianResource extends JsonResource
+class TestimonialResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,16 +16,12 @@ class TasktechnicianResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'city_id' => $this->city_id,
-            'technician_id' => $this->technician_id,
-            'city' => $this->city,
-            'member' => $this->member,
-            'task' => $this->task,
-            'technician' => $this->technician->user,
-            'district' => $this->district,
+            'role' => $this->role,
+            'body' => $this->body,
+            'status' => $this->status,
             'slug' => $this->slug,
             'user' => $this->user,
+            'statusOnline' => $this->user->isOnline(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

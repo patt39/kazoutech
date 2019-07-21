@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
+                                            <router-link v-if="$auth.can('create-faq')" :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
                                                   <span class="btn-label">
                                         <i class="material-icons">forum</i>
                                     </span>
@@ -104,16 +104,18 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <router-link  :to="{ path: `/dashboard/faqs/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <template v-if="$auth.can('publish-faq')">
+                                                        <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                        <a href="javascript:void(0)"  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                    </template>
+                                                    <router-link  v-if="$auth.can('edit-faq')" :to="{ path: `/dashboard/faqs/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
-                                                    <button @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                    <button v-if="$auth.can('delete-faq')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
                                                 </td>

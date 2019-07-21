@@ -1,11 +1,9 @@
 @extends('inc.admin._main')
-<?php $usernameTag = htmlspecialchars($user->name); ?>
-@section('title',"- $usernameTag")
-@section('style')
-@endsection
+<?php $usernameTag = htmlspecialchars($testimonial->user->name); ?>
+@section('title',"- testimonial $usernameTag")
 
-@section('init')
-    <!-- Site wrapper -->
+@section('style')
+
 @endsection
 
 @section('content')

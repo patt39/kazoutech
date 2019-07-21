@@ -1,9 +1,12 @@
 @extends('inc.admin._main')
-@section('title', '- Admin Task Technicians')
-@section('sectionTitle', 'Task Technicians')
+@section('title', '| Dashboard diplomas')
+
 
 @section('style')
+@endsection
 
+@section('init')
+    <!-- Site wrapper -->
 @endsection
 
 @section('content')
@@ -11,7 +14,7 @@
         <router-view></router-view>
     @else
         <div class="submit text-center">
-            <error-404></error-404>
+          <error-404></error-404>
         </div>
     @endif
 @endsection

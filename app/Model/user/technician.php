@@ -4,6 +4,7 @@ namespace App\Model\user;
 
 use App\Model\admin\city;
 use App\Model\admin\occupation;
+use App\Model\admin\partial\diploma;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -19,11 +20,25 @@ class technician extends Model
         'city_id',
         'user_id',
         'title',
+        'year',
         'slug',
+        'speciality',
+        'diploma_id',
         'occupation_id',
         'status'
     ];
-    protected static $logAttributes = [ 'district','member_id','city_id','user_id','occupation_id','status'];
+    protected static $logAttributes = [
+        'district',
+        'member_id',
+        'city_id',
+        'user_id',
+        'title',
+        'year',
+        'speciality',
+        'diploma_id',
+        'occupation_id',
+        'status'
+    ];
 
 
     public function member()
@@ -43,7 +58,7 @@ class technician extends Model
         });
         static::updating(function($model){
             if (auth()->check()){
-                $model->member_id = auth()->id();
+                $model->user_id = auth()->id();
             }
             $model->ip = request()->ip();
         });
@@ -65,6 +80,11 @@ class technician extends Model
         return $this->belongsTo(occupation::class);
     }
 
+    public function diploma()
+    {
+        return $this->belongsTo(diploma::class);
+    }
+
 
     public function getRouteKeyName()
     {
@@ -74,24 +94,5 @@ class technician extends Model
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);
-    }
-
-    use Sluggable;
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ],
-            'title' => [
-                'source' => 'id'
-            ]
-
-        ];
     }
 }

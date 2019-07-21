@@ -53,7 +53,7 @@ class TechnicianPolicy
      */
     public function update(User $user, technician $technician)
     {
-        return $user->id === $technician->user_id;
+        return auth()->user()->id === $technician->user_id;
     }
 
     /**

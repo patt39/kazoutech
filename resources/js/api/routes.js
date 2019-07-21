@@ -30,13 +30,13 @@ import NoteIndex from "../components/admin/partial/note/NoteIndex";
 import TaskIndex from "../components/admin/partial/task/TaskIndex";
 import TaskUser from "../components/admin/partial/task/TaskUser";
 import RoleIndex from "../components/admin/role/RoleIndex";
-import AboutIndex from "../components/admin/partial/about/AboutIndex";
-import AboutCreate from "../components/admin/partial/about/AboutCreate";
-import AboutEdit from "../components/admin/partial/about/AboutEdit";
+import AboutIndex from "../components/admin/page/about/AboutIndex";
+import AboutCreate from "../components/admin/page/about/AboutCreate";
+import AboutEdit from "../components/admin/page/about/AboutEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
-import TechnicianIndex from "../components/user/technician/TechnicianIndex";
-import TechnicianEdit from "../components/user/technician/TechnicianEdit";
+import TechnicianIndex from "../components/admin/technician/TechnicianIndex";
+import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
@@ -45,7 +45,14 @@ import ProfileUserIndex from "../components/user/account/ProfileUserIndex";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
-import TechnicianView from "../components/user/technician/TechnicianView";
+import TechnicianView from "../components/admin/technician/TechnicianView";
+import TestimonialIndex from "../components/admin/page/testimonial/TestimonialIndex";
+import TestimonialCreate from "../components/admin/page/testimonial/TestimonialCreate";
+import TestimonialEdit from "../components/admin/page/testimonial/TestimonialEdit";
+import TestimonialShow from "../components/admin/page/testimonial/TestimonialShow";
+import DiplomaIndex from "../components/admin/partial/diploma/DiplomaIndex";
+import TechnicianProfileIndex from "../components/user/Profile/TechnicianProfileIndex";
+import TechnicianProfileEdit from "../components/user/Profile/TechnicianProfileEdit";
 
 
 export const routes = [
@@ -70,6 +77,8 @@ export const routes = [
 
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.index', component: CityIndex},
+    //Route diplomas
+    {path: '/dashboard/diplomas/', name: 'diplomas.index', component: DiplomaIndex},
 
     //Route categories FAQS
     {path: '/dashboard/category-faqs/', name: 'categoryfaqs.index', component: CategoryFaqIndex},
@@ -133,8 +142,14 @@ export const routes = [
     {path: '/dashboard/technicians/', name: 'technicians.index', component: TechnicianIndex},
     {path: '/dashboard/technicians/:id/edit/', name: 'technicians.edit', component: TechnicianEdit},
     {path: '/dashboard/technicians/u/:technician', name: 'technicians.view', component: TechnicianView},
+    {path: '/profile/t/:technician', name: 'technicians.profile', component: TechnicianProfileIndex},
+    {path: '/profile/t/:technician/edit', component: TechnicianProfileEdit},
 
-
+    //Route testimonials
+    { path: '/dashboard/testimonials', name: 'testimonials.index', component: TestimonialIndex },
+    { path: '/dashboard/testimonials/create', name: 'testimonials.create', component: TestimonialCreate },
+    { path: '/dashboard/testimonials/:id/edit', name: 'testimonials.edit', component: TestimonialEdit },
+    { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.show', component: TestimonialShow },
 
 
     /** Ici je recupere les route du site **/

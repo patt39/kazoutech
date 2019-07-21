@@ -68,6 +68,18 @@ class AccountController extends Controller
         return view('admin.account.edit_profile',compact('user'));
     }
 
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('user.profile.profileEdit',compact('user'));
+    }
+
+    public function view()
+    {
+        $user = Auth::user();
+        return view('user.profile.profileEdit',compact('user'));
+    }
+
 
     public function user()
     {

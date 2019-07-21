@@ -105,13 +105,13 @@
                                                     </td>
                                                     <td><b>{{ item.updated_at | myDate }}</b></td>
                                                     <td class="td-actions text-right">
-                                                        <a href="javascript:void(0)" @click="sendItem(item)" class="btn btn-link btn-info btn-round btn-just-icon" title="Send mail">
+                                                        <a href="javascript:void(0)" @click="sendItem(item)" class="btn btn-link btn-info btn-round btn-just-icon" title="Send invitation">
                                                             <i class="material-icons">near_me</i>
                                                         </a>
-                                                        <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                        <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View administrator">
                                                             <i class="material-icons">visibility</i>
                                                         </a>
-                                                        <router-link  :to="{ path: `/dashboard/administrators/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                        <router-link  v-if="$auth.can('edit-administrator')" :to="{ path: `/dashboard/administrators/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit administrator">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
                                                     </td>

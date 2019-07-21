@@ -53,7 +53,7 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
-                                    <div class="toolbar">
+                                    <div v-if="$auth.can('create-category')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-raised btn-round  btn-warning" @click="newModal">
                                      <span class="btn-label">
@@ -73,7 +73,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edit by</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-category') || $auth.can('edit-category') || $auth.can('delete-category'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -83,7 +83,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edit by</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-category') || $auth.can('edit-category') || $auth.can('delete-category'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
@@ -105,17 +105,19 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" @click="editItem(item)"
+                                                    <template v-if="$auth.can('publish-category')">
+                                                        <a href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                        <a href="javascript:void(0)"  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                    </template>
+                                                    <a v-if="$auth.can('edit-category')" href="javascript:void(0)" @click="editItem(item)"
                                                        class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="javascript:void(0)" @click="deleteItem(item.id)"
+                                                    <a v-if="$auth.can('delete-category')" href="javascript:void(0)" @click="deleteItem(item.id)"
                                                        class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </a>

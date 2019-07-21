@@ -82,7 +82,7 @@
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
-                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <button v-if="$auth.can('create-faq')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
                                                                 <i class="material-icons">save_alt</i>
                                                                 <b class="title_hover">Save</b>
                                                             </button>

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Partial;
+namespace App\Http\Controllers\Admin\Page;
 
-use App\Http\Resources\Partial\AboutResource;
+use App\Http\Resources\Page\AboutResource;
 use App\Model\admin\about;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,7 +31,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('admin.partial.about.index');
+        return view('admin.page.about.index');
     }
 
     public function api()
@@ -49,7 +49,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        return view('admin.partial.about.create');
+        return view('admin.page.about.create');
     }
 
     /**
@@ -140,7 +140,7 @@ class AboutController extends Controller
     public function edit($id)
     {
         $about = about::where('id', $id)->findOrFail($id);
-        return view('admin.partial.about.edit', compact('about'));
+        return view('admin.page.about.edit', compact('about'));
     }
 
     /**

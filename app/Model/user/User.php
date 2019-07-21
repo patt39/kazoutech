@@ -57,9 +57,14 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->ip = request()->ip();
 
             $user->technician()->create([
-                'title' => $user->username,
+                'slug' => $user->username,
             ]);
             //Mail::to($user->email)->send(new NewUserWelcomeMail());
+        });
+        static::updating(function($user){
+            $user->technician()->update([
+                'slug' => $user->username,
+            ]);
         });
     }
 

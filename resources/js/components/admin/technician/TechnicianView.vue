@@ -9,6 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderEllipsis/>
                     </div>
@@ -23,7 +24,7 @@
                                                     <i class="material-icons">perm_identity</i>
                                                 </div>
                                                 <br>
-                                                <h4 class="card-title" style="margin-top: 0px;"><b>Profile {{ form.user.name }}</b> -
+                                                <h4 class="card-title" style="margin-top: 0px;"><b>Profile {{ technician.user.name }}</b> -
                                                     <small class="category">Complete profile technician</small>
                                                 </h4>
                                             </div>
@@ -36,7 +37,7 @@
                                                                 <div class="fileinput fileinput-new text-center"
                                                                      data-provides="fileinput">
                                                                     <div class="fileinput-new thumbnail img-circle img-raised">
-                                                                        <img :src="form.user.avatar" :alt="form.user.name">
+                                                                        <img :src="technician.user.avatar" :alt="technician.user.name">
                                                                     </div>
                                                                     <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
                                                                 </div>
@@ -55,7 +56,7 @@
                                                                         <li class="nav-item">
                                                                             <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                 <i class="material-icons">face</i>
-                                                                                Profile <b v-text="form.user.name"></b>
+                                                                                Profile <b v-text="technician.user.name"></b>
                                                                             </router-link>
                                                                         </li>
                                                                     </ul>
@@ -78,19 +79,19 @@
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>Pseudo</label>
-                                                                                <input v-model="form.user.username" type="text" name="username" class="form-control"/>
+                                                                                <input v-model="technician.user.username" type="text" name="username" class="form-control"/>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>Last Name</label>
-                                                                                <input v-model="form.user.name" type="text" name="name" maxlength="25" class="form-control"/>
+                                                                                <input v-model="technician.user.name" type="text" name="name" maxlength="25" class="form-control"/>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>First Name</label>
-                                                                                <input v-model="form.user.email" type="text" maxlength="25" name="first_name" class="form-control"/>
+                                                                                <input v-model="technician.user.email" type="text" maxlength="25" name="first_name" class="form-control"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -98,21 +99,42 @@
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>City</label>
-                                                                                <input v-if="form.city_id !== null" v-model="form.city.name" type="text" name="username" class="form-control"/>
-                                                                                <input v-else="form.city_id === null" placeholder="don't exist" type="text" name="username" class="form-control"/>
+                                                                                <input v-if="technician.city_id !== null" v-model="technician.city.name" type="text" name="username" class="form-control"/>
+                                                                                <input v-else="technician.city_id === null" placeholder="don't exist" type="text" name="username" class="form-control"/>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>District</label>
-                                                                                <input v-model="form.district" type="text" name="name" maxlength="25" class="form-control"/>
+                                                                                <input v-model="technician.district" type="text" name="name" maxlength="25" class="form-control"/>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>Occupation</label>
-                                                                                <input v-if="form.occupation_id !== null"  v-model="form.occupation.name" type="text"  maxlength="25" name="first_name" class="form-control"/>
-                                                                                <input v-else="form.occupation_id === null"   type="text" placeholder="don't exist" maxlength="25" name="first_name" class="form-control"/>
+                                                                                <input v-if="technician.occupation_id !== null"  v-model="technician.occupation.name" type="text"  maxlength="25" name="first_name" class="form-control"/>
+                                                                                <input v-else="technician.occupation_id === null"   type="text" placeholder="don't exist" maxlength="25" name="first_name" class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label>Diploma technician</label>
+                                                                                <input v-if="technician.diploma_id !== null" v-model="technician.diploma.name" type="text" name="diploma" class="form-control"/>
+                                                                                <input v-else="technician.diploma_id === null" placeholder="don't exist" type="text" name="diploma" class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label>Speciality</label>
+                                                                                <input v-model="technician.speciality" type="text" name="name" maxlength="25" class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label>Years get diploma</label>
+                                                                                <input  v-model="technician.year" type="number"  maxlength="4" name="first_name" class="form-control"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -160,20 +182,14 @@
         data() {
             return {
                 loaded: false,
+                errored: false,
                 user:{},
-                technician:{},
-                form: new Form({
-                    id: '',
-                    city: '',
-                    occupation: '',
-                    district: '',
-                    user: '',
-                    city_id: '',
-                    occupation_id: '',
-                    created_at: '',
-                    slug: '',
-                    status: ''
-                })
+                technician:{
+                    user:'',
+                    city:'',
+                    diploma:'',
+                    occupation:'',
+                },
             }
         },
         methods:{
@@ -186,19 +202,26 @@
                 return colorPanel;
             },
 
+            loadItems() {
+                this.$Progress.start();
+                api.technicianSlug(this.$route.params.technician).then(response => {
+                    this.loaded = true;
+                    this.technician = response.data.data;
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
+                });
+                axios.get("/api/account/user").then(response => {
+                    this.loaded = true;
+                    this.user = response.data.data
+                });
+                //End Progress bar
+                this.$Progress.finish();
+            },
+
         },
         created(){
-            this.$Progress.start();
-            api.technicianSlug(this.$route.params.technician).then(({data}) => {
-                this.loaded = true;
-                this.form.fill(data.data);
-            });
-            axios.get("/api/account/user").then(response => {
-                this.loaded = true;
-                this.user = response.data.data
-            });
-            //End Progress bar
-            this.$Progress.finish();
+            this.loadItems();
         }
     }
 </script>

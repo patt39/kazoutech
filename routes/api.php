@@ -19,7 +19,8 @@ Route::get('search', 'Admin\UserController@search');
 Route::get('administrators', 'Admin\AdministratorController@api');
 Route::get('occupations', 'Admin\OccupationController@api');
 Route::get('colors', 'Admin\Partial\ColorController@api');
-Route::get('abouts', 'Admin\Partial\AboutController@api');
+Route::get('diplomas', 'Admin\Partial\DiplomaController@api');
+Route::get('abouts', 'Admin\Page\AboutController@api');
 Route::get('category-faqs', 'Admin\Partial\CategoryfaqController@api');
 Route::get('faqs', 'Admin\FaqController@api');
 Route::get('countries', 'Admin\Partial\CountryController@api');
@@ -36,6 +37,7 @@ Route::get('contacts', 'User\ContactController@api');
 Route::get('mails', 'User\MailController@api');
 Route::get('messages', 'User\MessageController@api');
 Route::get('technicians', 'User\TechnicianController@api');
+Route::get('testimonials', 'Admin\Page\TestimonialController@api');
 Route::get('tags', 'Admin\Partial\TagController@api');
 
 

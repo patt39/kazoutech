@@ -95,6 +95,34 @@
                             <p><b>Occupations</b></p>
                         </router-link>
                     </li>
+                    <!-- Links Pages -->
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#pageExamples">
+                            <i class="material-icons">list_alt</i>
+                            <p><b>Pages</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="pageExamples">
+                            <ul class="nav">
+                                <!-- Abouts -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
+                                        <span class="sidebar-mini"><b>AM</b></span>
+                                        <span class="sidebar-normal"><b>About Member</b></span>
+                                    </router-link>
+                                </li>
+                                <!--Testimonial-->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/testimonials/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>TS</b></span>
+                                        <span class="sidebar-normal"><b>Testimonials</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                     <!-- Links Partial -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#partialExamples">
@@ -119,11 +147,11 @@
                                         <span class="sidebar-normal"><b>Colors</b></span>
                                     </router-link>
                                 </li>
-                                <!-- Abouts -->
+                                <!-- Diplomas -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
-                                        <span class="sidebar-mini"><b>AM</b></span>
-                                        <span class="sidebar-normal"><b>About Member</b></span>
+                                    <router-link  :to="{ path: '/dashboard/diplomas/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>DI</b></span>
+                                        <span class="sidebar-normal"><b>Diplomas</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Countries -->

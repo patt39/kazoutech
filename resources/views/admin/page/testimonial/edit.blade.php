@@ -1,10 +1,11 @@
 @extends('inc.admin._main')
-@section('title', '- Admin Task Technician')
-@section('sectionTitle', 'Task Technician')
+@section('title', '- Edit Testimonials')
+@section('sectionTitle', 'Testimonials')
 
 @section('style')
 
 @endsection
+
 @section('content')
     @if(Auth::user()->my_status === 'active')
         <router-view></router-view>
@@ -18,4 +19,3 @@
 @section('script')
 
 @endsection
-

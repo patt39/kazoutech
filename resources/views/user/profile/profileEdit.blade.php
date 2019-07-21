@@ -1,7 +1,9 @@
-@extends('inc.admin._main')
+@extends('inc.user._main')
 <?php $usernameTag = htmlspecialchars($user->name); ?>
 @section('title',"- $usernameTag")
+
 @section('style')
+
 @endsection
 
 @section('init')
@@ -9,15 +11,7 @@
 @endsection
 
 @section('content')
-    @if(Auth::user()->my_status === 'active')
+    <div id="app">
         <router-view></router-view>
-    @else
-        <div class="submit text-center">
-            <error-404></error-404>
-        </div>
-    @endif
-@endsection
-
-@section('script')
-
+    </div>
 @endsection

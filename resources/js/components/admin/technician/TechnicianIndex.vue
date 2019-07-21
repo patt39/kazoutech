@@ -106,12 +106,9 @@
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>
 
-                                                    <router-link  :to="{ path: `/dashboard/technicians/${item.id}/edit/` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <!--<router-link  :to="{ path: `/dashboard/technicians/${item.id}/edit/` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
-                                                    </router-link>
-                                                    <button @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
+                                                    </router-link>-->
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -180,59 +177,6 @@
             },
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
-            },
-            deleteItem(id) {
-                Swal.fire({
-                    title: 'Delete Technician?',
-                    text: "Are you sure you want to delete this technician?",
-                    type: 'warning',
-                    animation: false,
-                    customClass: 'animated shake',
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success",
-                    cancelButtonClass: 'btn btn-danger',
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'No',
-                    showCancelButton: true,
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.value) {
-                        //Start Progress bar
-                        this.$Progress.start();
-                        //Envoyer la requet au server
-                        this.form.delete('/dashboard/technicians/' + id).then(() => {
-
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true,
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                },
-                            });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Technician deleted Successfully.</strong>', 'progress': 75});
-                            }, 2000);
-                            /** End alert ***/
-
-                            //End Progress bar
-                            this.$Progress.finish();
-
-                            Fire.$emit('AfterCreate');
-                        }).catch(() => {
-                            //Failled message
-                            this.$Progress.fail();
-                            $.notify("Ooop! This action is unauthorized.", {
-                                type: 'danger',
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                }
-                            });
-                        })
-                    }
-                })
             },
             loadItems() {
                 //Start Progress bar

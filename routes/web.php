@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify' => true]);
 
+Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Auth'], function () {
@@ -50,9 +47,6 @@ Route::group(['namespace' => 'Admin'], function () {
     //Route Permission
     Route::resource('/dashboard/permissions', 'PermissionController');
 
-    //Route Task Technicians
-    Route::resource('dashboard/task_technicians','TasktechnicianController');
-
     //Roles Route
     Route::resource('/dashboard/roles', 'RoleController');
 
@@ -66,6 +60,7 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');
     Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
 
+    //All Route Partials
     Route::group(['namespace' => 'Partial'], function () {
 
         // Admin Route activities
@@ -89,11 +84,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_tags/{id}', 'TagController@active')->name('active_tags');
         Route::get('/dashboard/disable_tags/{id}', 'TagController@disable')->name('disable_tags');
 
-        //Admin Route Abouts
-        Route::resource('dashboard/abouts', 'AboutController');
-        Route::get('/dashboard/active_abouts/{id}', 'AboutController@active')->name('active_abouts');
-        Route::get('/dashboard/disable_abouts/{id}', 'AboutController@disable')->name('disable_abouts');
-
         //Admin Route colors
         Route::resource('dashboard/colors', 'ColorController');
         Route::get('/dashboard/active_color/{id}', 'ColorController@active')->name('active_color');
@@ -111,6 +101,8 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/profile/{username}', 'AccountController@show')->name('admin.view');
         Route::get('/api/dashboard/profile/{username}', 'AccountController@userShow');
         Route::get('/dashboard/user/update', 'AccountController@edit')->name('admin.edit_profile');
+        Route::get('/{username}', 'AccountController@view')->name('profile.view');
+        Route::get('/profile/edit', 'AccountController@profile')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');
 
         Route::get('api/account/user', 'AccountController@user');
@@ -142,6 +134,28 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::put('/dashboard/update_description_tasks/{id}', 'TaskController@updateDescription');
         Route::get('/dashboard/tasks/u/{username}', 'TaskController@view')->name('tasks.view');
 
+        //Admin Route Diplomas
+        Route::resource('dashboard/diplomas', 'DiplomaController');
+        Route::get('/dashboard/active_diplomas/{id}', 'DiplomaController@active')->name('active_diplomas');
+        Route::get('/dashboard/disable_diplomas/{id}', 'DiplomaController@disable')->name('disable_diplomas');
+
+
+    });
+
+    //All Route Pages
+    Route::group(['namespace' => 'Page'], function () {
+
+        //Admin Route Abouts
+        Route::resource('dashboard/abouts', 'AboutController');
+        Route::get('/dashboard/active_abouts/{id}', 'AboutController@active')->name('active_abouts');
+        Route::get('/dashboard/disable_abouts/{id}', 'AboutController@disable')->name('disable_abouts');
+
+        //Testimonials Route
+        Route::resource('/dashboard/testimonials', 'TestimonialController');
+        Route::get('/dashboard/testimonials/tm/{testimonial}', 'TestimonialController@vector')->name('testimonials.view');
+        Route::get('/dashboard/testimonials/view/{slug}', 'TestimonialController@view');
+        Route::get('/dashboard/active_testimonials/{id}', 'TestimonialController@active');
+        Route::get('/dashboard/disable_testimonials/{id}', 'TestimonialController@disable');
 
     });
 
@@ -149,9 +163,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
 Route::group(['namespace' => 'User'], function () {
 
-    //User Route profile
-    Route::get('/{username}', 'UserController@index')->name('profile.view');
-    Route::get('/profile/edit', 'UserController@edit')->name('profile.edit');
     //Admin Route contacts
     Route::resource('dashboard/contacts', 'ContactController');
     Route::get('dashboard/contacts/msg/{contact}', 'ContactController@contact')->name('contacts.view');
@@ -167,6 +178,10 @@ Route::group(['namespace' => 'User'], function () {
     Route::resource('dashboard/technicians','TechnicianController');
     Route::get('dashboard/technicians/u/{technician}','TechnicianController@technician')->name('technicians.view');
     Route::get('dashboard/technicians/j/{slug}','TechnicianController@view');
+
+    //User Route technicians
+    Route::get('profile/t/{technician}','TechnicianController@profile')->name('technicians.profile');
+    Route::get('profile/t/{technician}/edit','TechnicianController@edit');
 
 
     Route::resource('dashboard/messages', 'MessageController');

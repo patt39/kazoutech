@@ -20,7 +20,7 @@ class TechnicianController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','profile']]);
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +37,7 @@ class TechnicianController extends Controller
     public function api()
     {
         $technicians = Cache::rememberForever('technicians', function () {
-            return TechnicianResource::collection(technician::with('user','member','city','occupation')
+            return TechnicianResource::collection(technician::with('user','member','city','occupation','diploma')
                 ->latest()->get());
         });
         return $technicians;
@@ -65,6 +65,7 @@ class TechnicianController extends Controller
             'user_id'=>'required|integer|unique:technicians',
             'city_id'=>'required',
             'occupation_id'=>'required',
+            'diploma_id'=>'required',
         ]);
 
         Technician::create($request->all());
@@ -109,16 +110,34 @@ class TechnicianController extends Controller
             'technician' => $technician,
         ]);
     }
+
+    /**
+     * Get slug technician
+     * @param technician $technician
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function profile(technician $technician)
+    {
+        return view("user.page.technician.technicianIndex",[
+            'technician' => $technician,
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(technician $technician)
     {
-        $technician = technician::where('id', $id)->findOrFail($id);
-        return view('admin.technician.edit', compact('technician'));
+        if(auth()->user()->id === $technician->user_id) {
+            return view("user.page.technician.technicianEdit",[
+                'technician' => $technician,
+            ]);
+        }else{
+            return back()
+                ->with('error',"Unauthorized edit this article contact Author.");
+        }
     }
 
     /**
@@ -134,14 +153,18 @@ class TechnicianController extends Controller
             'user_id'=> "required|integer|unique:technicians,user_id,{$id}",
             'city_id'=>'required',
             'occupation_id'=>'required',
+            'diploma_id'=>'required',
         ]);
 
         $technician = technician::findOrFail($id);
-        $this->authorize('update', $technician);
 
-        $technician->update($request->all());
-
-        return ['message' => 'technician has been updated'];
+        if(auth()->user()->id === $technician->user_id) {
+            $technician->update($request->all());
+            return ['message' => 'technician has been updated'];
+        }else{
+            return back()
+                ->with('error',"Unauthorized edit this article contact Author.");
+        }
     }
 
     /**

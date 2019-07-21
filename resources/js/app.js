@@ -184,6 +184,7 @@ Vue.component('pagination-link', require('./components/inc/vendor/PaginationComp
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('alert-permission', require('./components/inc/admin/components/AlertPermission').default);
 Vue.component('errored-loading', require('./components/inc/animation/Errored').default);
+Vue.component('loader-ellipsis', require('./components/inc/animation/LoaderEllipsis').default);
 
 
 /**

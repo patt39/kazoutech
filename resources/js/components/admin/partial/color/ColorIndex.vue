@@ -78,7 +78,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th v-if="$auth.can('publish-color')" class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -88,7 +88,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th v-if="$auth.can('publish-color')" class="text-right"><b>Actions</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b>></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
