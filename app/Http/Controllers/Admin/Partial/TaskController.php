@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','usertask','search']]);
+        $this->middleware('auth',['except' => ['api','search']]);
     }
     /**
      * Display a listing of the resource.
@@ -34,10 +34,8 @@ class TaskController extends Controller
 
     public function api()
     {
-        $tasks = Cache::rememberForever('tasks', function () {
-            return TaskResource::collection(Task::with('user','administrator','note')
+        $tasks = TaskResource::collection(Task::with('user','administrator','note')
                 ->orderBy('created_at','DESC')->paginate(6));
-        });
         return $tasks;
     }
 

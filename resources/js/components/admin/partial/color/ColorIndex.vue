@@ -27,8 +27,9 @@
                             </div>
                         </div>
                     </div>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
-                       <LoaderLdsDefault/>
+                        <LoaderLdsDefault/>
                     </div>
                     <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
@@ -40,7 +41,7 @@
                                                 <b>Datatables Colors</b>
                                             </h4>
                                             <p class="card-title">
-                                                Color choice for buttons
+                                                Color Choice For Buttons
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -52,9 +53,14 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
+                                    <div class="header text-right">
+                                        <button value="Refresh Page" title="update datatables" @click="reload" class="btn btn-warning btn-round btn-just-icon btn-sm" >
+                                            <i class="material-icons">replay</i>
+                                        </button>
+                                    </div>
                                     <div v-if="$auth.can('create-color')" class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-warning btn-raised btn-round " @click="newModal">
+                                            <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">color_lens</i>
                                     </span>
@@ -72,7 +78,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -82,15 +88,15 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b>></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in colors" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
+                                                <td>{{ item.color_name | upText }}</td>
                                                 <td>
                                                     <div class="timeline-heading">
-                                                        <span :class="getColor(item)"><b>{{ item.color_name }}</b></span>
+                                                        <span :class="getColor(item)"><b>{{ item.slug }}</b></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -100,22 +106,22 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </router-link>
+                                                    </a>
                                                 </td>
-                                                <td><b>{{ item.updated_at | myDate }}</b></td>
+                                                <td><b>{{ item.updated_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <di v-if="$auth.can('create-color')">
+                                                    <template v-if="$auth.can('publish-color')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
-                                                        <button  v-else-if="item.status === 2" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
-                                                    </di>
+                                                    </template>
                                                     <button v-if="$auth.can('edit-color')" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
@@ -129,26 +135,23 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                     <!-- Modal création/édition color -->
                                     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new Color</b></h5>
-                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update Color</b></h5>
+                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add New Color</b></h5>
+                                                    <h5 v-show="editmode" class="modal-title" id="updateNewLabel"><b>Update Color</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <alert-error :form="form"></alert-error>
                                                     <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
+                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('color_name') }" required>
                                                             <has-error :form="form" field="name"></has-error>
                                                         </div>
                                                         <div class="modal-footer">
@@ -195,12 +198,15 @@
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+
     export default {
         components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
                 loaded: false,
+                errored: false,
                 editmode: false,
+                user: {},
                 colors: {},
                 form: new Form({
                     id: '',
@@ -244,8 +250,14 @@
                 return 'card-header card-header-' + this.user.color_name;
             },
             getColor(item){
-                let colorStyle = 'badge badge-' + item.color_name;
-                return colorStyle;
+                return 'badge badge-' + item.color_name;
+            },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
             },
             updateItem() {
                 //Start Progress bar
@@ -347,7 +359,46 @@
                     }
                 })
             },
+            createItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/colors")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
 
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
+            },
             /** Ici c'est l'activation de la couleur  **/
             activeItem(id) {
                 //Progress bar star
@@ -417,54 +468,33 @@
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/colors")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            }
+            reload(){
+                this.loadItems()
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
+            this.$storage.setOptions({
+                prefix: 'app_',
+                driver: 'local',
+                ttl: 60 * 60 * 24 * 1000 // 24 hours
+            });
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            // Run the intervalFetchData function once to set the interval time for later refresh
+            this.intervalFetchData();
         }
     }
 

@@ -52,9 +52,9 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
-                                    <div class="toolbar">
+                                    <div v-if="$auth.can('create-occupation')" class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-warning btn-raised btn-round " @click="newModal">
+                                            <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">assignment</i>
                                     </span>
@@ -71,7 +71,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -80,7 +80,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
@@ -93,25 +93,27 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </router-link>
+                                                    </a>
                                                 </td>
-                                                <td><b>{{ item.updated_at | myDate }}</b></td>
+                                                <td><b>{{ item.updated_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </button>
-                                                    <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </button>
-                                                    <button @click="editItem(item)"
+                                                    <template v-if="$auth.can('publish-occupation')">
+                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                    </template>
+                                                    <button v-if="$auth.can('edit-occupation')" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button @click="deleteItem(item.id)"
+                                                    <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
@@ -190,6 +192,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 occupations: {},
                 form: new Form({
                     id: '',
@@ -234,6 +237,13 @@
             getColor(item){
                 let colorStyle = 'badge badge-' + item.color_name;
                 return colorStyle;
+            },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/profile/${item.user.username}`);
+                //Progres bar
+                this.$Progress.finish()
             },
             updateItem() {
                 //Start Progress bar
@@ -284,6 +294,46 @@
                 this.form.reset();
                 //Masquer le modal après la création
                 $('#addNew').modal('show');
+            },
+            createItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/occupations")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Occupations Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
             },
             deleteItem(id) {
                 //Alert delete
@@ -397,61 +447,30 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/occupations";
+                let url = "/api/occupations";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.occupations = response.data.data;
-                    this.mydatatables();
-                    this.$Progress.finish()
+                    this.mydatatables()
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                //End Progress bar
+                this.$Progress.finish();
 
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/occupations")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Occupations Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            }
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
+            },
         },
         created() {
             this.loadItems();
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            // Run the intervalFetchData function once to set the interval time for later refresh
+            this.intervalFetchData();
         }
     }
 

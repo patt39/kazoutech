@@ -34,14 +34,11 @@ class NoteController extends Controller
 
     public function api()
     {
-        //$notes = Cache::rememberForever('notes', function () {
-        //    return NoteResource::collection(Note::with('user')
-        //        ->orderBy('updated_at','DESC')->paginate(6));
-        //});
-        //return $notes;
-
-        return NoteResource::collection(Note::with('user')
-            ->orderBy('updated_at','DESC')->paginate(6));
+        $notes = Cache::rememberForever('notes', function () {
+            return NoteResource::collection(Note::with('user')
+                ->orderBy('updated_at','DESC')->paginate(6));
+        });
+        return $notes;
     }
 
     /**
@@ -87,7 +84,7 @@ class NoteController extends Controller
     {
         $note = note::where('id', $id)->findOrFail($id);
         $note->update([
-            'status' => 0,
+            'status' => 1,
         ]);
         return response('Deactivated',Response::HTTP_ACCEPTED);
     }
@@ -96,7 +93,7 @@ class NoteController extends Controller
     {
         $note = note::where('id', $id)->findOrFail($id);
         $note->update([
-            'status' => 1,
+            'status' => 0,
         ]);
         return response('Activated',Response::HTTP_ACCEPTED);
     }

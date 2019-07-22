@@ -72,19 +72,19 @@
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">face</i>
-                                                                                    <b>My Profile</b>
+                                                                                    <b>Mon profile</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
-                                                                                    <b>Edit Profile</b>
+                                                                                    <b>Editer le profile</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.change_password' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">vpn_key</i>
-                                                                                    <b>Change Password</b>
+                                                                                    <b>Changer mot de passe</b>
                                                                                 </router-link>
                                                                             </li>
                                                                         </ul>
@@ -392,15 +392,32 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Informations user incorrects.');
+                    //Alert
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
+        },
+        //Ici je recupere les donner avant que la page n'apparait pour le moment
+        //je n'ai pas besoin du created ici
+        beforeRouteEnter (to, from, next) {
+            axios.get('/api/account/profile')
+                .then(({data}) =>  {
+                    next(vm => {
+                        vm.$Progress.start();
+                        vm.form.fill(data);
+                        vm.$Progress.finish()
+                    })
+                });
         },
         created(){
             //Start Progress bar
             this.$Progress.start();
-            const url = "/api/account/user";
-            axios.get(url).then(({data}) => (this.form.fill(data)));
             axios.get("/api/colors").then(({data}) => (this.colors = data.data));
             axios.get("/api/countries").then((response) => ( this.countries = response.data.data));
             //End Progress bar

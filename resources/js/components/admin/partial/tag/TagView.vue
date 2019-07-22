@@ -100,6 +100,7 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                user:{},
                 form: new Form({
                     id: '',
                     title: ''
@@ -123,7 +124,8 @@
         created() {
             //Start Progress bar
             this.$Progress.start();
-            api.tagview(this.$route.params.tag).then(({data}) => this.form.fill(data.data));
+            api.tagView(this.$route.params.tag).then(({data}) => this.form.fill(data.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }

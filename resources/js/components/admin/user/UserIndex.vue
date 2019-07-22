@@ -52,6 +52,13 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
+                                    <div class="header text-right">
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                    </div>
                                     <div class="toolbar">
                                     </div>
                                     <div class="material-datatables">
@@ -63,7 +70,7 @@
                                                 <th><b>Name</b></th>
                                                 <th><b>Confirmed</b></th>
                                                 <th><b>Connect with</b></th>
-                                                <th><b>Status Member</b></th>
+                                                <th><b>Followers</b></th>
                                                 <th class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
@@ -73,7 +80,7 @@
                                                 <th><b>Name</b></th>
                                                 <th><b>Confirmed</b></th>
                                                 <th><b>Connect with</b></th>
-                                                <th><b>Status Member</b></th>
+                                                <th><b>Followers</b></th>
                                                 <th class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
@@ -96,19 +103,18 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <b v-if="item.provider != null" v-text="item.provider"></b>
+                                                    <b v-if="item.provider !== null" v-text="item.provider"></b>
                                                     <b v-if="item.provider === null">kazoucoin</b>
                                                 </td>
                                                 <td>
-                                                    <div class="timeline-heading">
-                                                        <span v-if="item.my_status === 'active'" class="badge badge-primary"><b>Admin</b></span>
-                                                        <span v-if="item.my_status != 'active'" class="badge badge-warning"><b>User</b></span>
-                                                    </div>
+                                                  <router-link  :to="{ path: `/dashboard/users/p/${item.username}/followers/` }">
+                                                    <h6 class="card-title">{{item.followers}}</h6>
+                                                  </router-link>
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <router-link  :to="{ path: `/dashboard/users/profile/${item.username}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                    <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
-                                                    </router-link>
+                                                    </a>
                                                     <router-link  :to="{ path: `/dashboard/users/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
@@ -152,6 +158,7 @@
             return {
                 loaded: false,
                 users: {},
+                user: {},
             }
         },
         methods: {
@@ -186,6 +193,13 @@
             getColorHeaderUser(){
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
+            },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.username}/`);
+                //Progres bar
+                this.$Progress.finish()
             },
             deleteItem(id) {
                 Swal.fire({
@@ -240,6 +254,15 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            },
+            reload(){
+                this.loadItems()
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
             },
         },
         created() {
@@ -247,6 +270,7 @@
             Fire.$on('AfterSave', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 

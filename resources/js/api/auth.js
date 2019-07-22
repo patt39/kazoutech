@@ -1,45 +1,46 @@
 export default class Auth {
 
-    constructor(user){
+    constructor(user) {
         this.user = user;
     }
 
     roles() {
 
-        return this.user.roles.map(role=>role.name);
+        return this.user.roles.map(role => role.name);
     }
 
     permissions() {
 
-        return this.user.permissions.map(permission=>permission.name);
+        return this.user.permissions.map(permission => permission.name);
     }
 
 
-    isSuperAdmin(){
+    isSuperAdmin() {
         return this.roles().includes("super-admin");
     }
-    isAdmin(){
+
+    isAdmin() {
         return this.roles().includes("admin");
     }
 
-    isAdvertiser(){
+    isAdvertiser() {
         return this.roles().includes("advertiser");
     }
 
-    isEditor(){
+    isEditor() {
         return this.roles().includes("editor");
     }
 
-    isModerator(){
+    isModerator() {
         return this.roles().includes("moderator");
     }
 
-    isVisitor(){
+    isVisitor() {
         return this.roles().includes("visitor");
     }
 
 
-    can($permissionName){
+    can($permissionName) {
         return this.permissions().includes($permissionName);
     }
 }

@@ -129,6 +129,7 @@
                 loaded: false,
                 editmode: false,
                 roles: {},
+                user: {},
                 colors: {},
                 form: new Form({
                     id: '',
@@ -225,7 +226,7 @@
                     //End Progress bar
                     this.$Progress.finish()
                 });
-
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
         },
         created() {

@@ -11,7 +11,7 @@
         <router-view></router-view>
     @else
         <div class="submit text-center">
-            @include('inc.admin.components.alert_permission')
+            <error-404></error-404>
         </div>
     @endif
 @endsection

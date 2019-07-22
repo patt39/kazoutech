@@ -9,15 +9,14 @@ use App\Http\Controllers\Controller;
 class AuthController extends Controller
 {
 
-
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            //'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             //'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            //'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            //'password' => ['required', 'string'],
         ]);
 
         $validatedData['password'] = bcrypt($request->password);

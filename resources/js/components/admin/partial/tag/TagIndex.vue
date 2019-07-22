@@ -55,7 +55,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'tags.create' }" class="btn btn-info btn-raised btn-round" append>
+                                            <router-link :to="{ name: 'tags.create' }" class="btn btn-success btn-raised btn-round" append>
                                                <span class="btn-label">
                                                     <i class="material-icons">forum</i>
                                                 </span>
@@ -94,11 +94,11 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </router-link>
+                                                    </a>
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
@@ -148,6 +148,7 @@
                 loaded: false,
                 editmode: false,
                 tags: {},
+                user: {},
                 form: new Form({
                     id: '',
                     title: '',
@@ -193,6 +194,13 @@
             getMaterialIcon(color){
                 let icon = 'material-icons text-' + color;
                 return icon;
+            },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
             },
             deleteItem(id) {
                 Swal.fire({
@@ -296,14 +304,22 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
 
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
             },
         },
         created() {
             this.loadItems();
+
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 

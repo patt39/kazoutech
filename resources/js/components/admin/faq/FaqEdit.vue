@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -81,7 +84,7 @@
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
-                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <button v-if="$auth.can('edit-faq')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
                                                                 <i class="material-icons">save_alt</i>
                                                                 <b class="title_hover">Update</b>
                                                             </button>
@@ -109,11 +112,14 @@
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
-
+    import LoaderEllipsis from "../../inc/animation/LoaderEllipsis";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderEllipsis, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
             return {
+                loaded: false,
+                user: {},
+                categoryfaqs: {},
                 form: new Form({
                     id: '',
                     title: '',
@@ -189,8 +195,12 @@
         },
         created() {
             this.$Progress.start();
-            api.faqID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
+            api.faqID(this.$route.params.id).then(({data}) => {
+                this.loaded = true;
+                this.form.fill(data.data);
+            });
             axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish()
         }

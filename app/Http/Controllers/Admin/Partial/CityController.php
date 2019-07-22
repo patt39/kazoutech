@@ -73,14 +73,14 @@ class CityController extends Controller
     }
 
 
-    public function disable(city $city, $id)
-    {
-        $city = city::where('id', $id)->findOrFail($id);
-        $city->update([
-            'status' => 0,
-        ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
-    }
+   public function disable(city $city, $id)
+   {
+       $city = city::where('id', $id)->findOrFail($id);
+       $city->update([
+           'status' => 0,
+       ]);
+       return response('Deactivated',Response::HTTP_ACCEPTED);
+   }
 
 
     public function active(city $city, $id)
@@ -91,6 +91,8 @@ class CityController extends Controller
         ]);
         return response('Activated',Response::HTTP_ACCEPTED);
     }
+
+
 
     /**
      * Display the specified resource.

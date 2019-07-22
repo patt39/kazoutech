@@ -80,7 +80,7 @@
                                     <div style="height: 22px; line-height: 22px; font-size: 20px;">&nbsp;</div>
                                     <font class="mob_title2" face="'Source Sans Pro', sans-serif" color="#5e5e5e" style="font-size: 10px; line-height: 20px; font-weight: 300; letter-spacing: -1px;">
                                         <span face="'Source Sans Pro', sans-serif" color="#767676" style="font-size: 17px; line-height: 23px;">
-                                            Cher adimistrator vous ete inviter a rejoindre notre site cliquer sur le lien ci-dessous pour reitialiser votre mot de passe
+                                            Cher administrateurs vous ete inviter a rejoindre notre site cliquer sur le lien ci-dessous pour  acceder
                                         </span>
                                     </font>
                                 </td>

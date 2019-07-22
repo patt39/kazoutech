@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="sidebar" data-color="azure" data-background-color="black"  :data-image="user.avatar">
+        <div class="sidebar" data-color="orange" data-background-color="black"  :data-image="user.avatar">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -46,8 +46,8 @@
                                         <span class="sidebar-normal"><b>Message Box</b></span>
                                     </router-link>
                                 </li>
-                                <li class="nav-item ">
-                                    <router-link :to="{ path: `/dashboard/tasks/u/${user.username}`}" class="nav-link">
+                                <li class="nav-item">
+                                    <router-link :to="{ path: `/dashboard/tasks/u/${user.username}/`}" class="nav-link">
                                         <span class="sidebar-mini">TT</span>
                                         <span class="sidebar-normal"><b>Tasks Todo</b></span>
                                     </router-link>
@@ -95,6 +95,34 @@
                             <p><b>Occupations</b></p>
                         </router-link>
                     </li>
+                    <!-- Links Pages -->
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#pageExamples">
+                            <i class="material-icons">list_alt</i>
+                            <p><b>Pages</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="pageExamples">
+                            <ul class="nav">
+                                <!-- Abouts -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
+                                        <span class="sidebar-mini"><b>AM</b></span>
+                                        <span class="sidebar-normal"><b>About Member</b></span>
+                                    </router-link>
+                                </li>
+                                <!--Testimonial-->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/testimonials/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>TS</b></span>
+                                        <span class="sidebar-normal"><b>Testimonials</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                     <!-- Links Partial -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#partialExamples">
@@ -107,16 +135,23 @@
                             <ul class="nav">
                                 <!-- Links -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/links' }" class="nav-link">
+                                    <router-link  :to="{ path: '/dashboard/links/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>LI</b></span>
                                         <span class="sidebar-normal"><b>Links</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Colors -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/colors' }" class="nav-link">
+                                    <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>COL</b></span>
                                         <span class="sidebar-normal"><b>Colors</b></span>
+                                    </router-link>
+                                </li>
+                                <!-- Diplomas -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/diplomas/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>DI</b></span>
+                                        <span class="sidebar-normal"><b>Diplomas</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Countries -->
@@ -178,9 +213,16 @@
                     </li>
                     <!-- Contacts -->
                     <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/contacts' }" class="nav-link">
+                        <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
                             <i class="material-icons">message</i>
                             <p><b>Contacts</b></p>
+                        </router-link>
+                    </li>
+                    <!-- Technician -->
+                    <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/technicians/' }" class="nav-link">
+                            <i class="material-icons">meeting_room</i>
+                            <p><b>Technicien</b></p>
                         </router-link>
                     </li>
                     <!-- Administrations -->
@@ -193,6 +235,13 @@
                         </a>
                         <div class="collapse" id="administrationExamples">
                             <ul class="nav">
+                                <!-- Activities -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'activities.index' }" class="nav-link">
+                                        <span class="sidebar-mini">AC</span>
+                                        <span class="sidebar-normal"><b>Activities site</b></span>
+                                    </router-link>
+                                </li>
                                 <!-- Administrators -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'administrators.index' }" class="nav-link">
@@ -273,15 +322,25 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
+
                         //Envoyer la requet au server
-                        window.location.href = '/user/logout';
+                        axios.post('/logout').then(() => {
+
+                            location.replace(`/`);
+                            //End Progress bar
+                            this.$Progress.finish();
+                        }).catch(() => {
+                            //Failled message
+                            this.$Progress.fail();
+                        });
                     }
                 })
             },
         },
         created() {
-            axios.get("/api/account/user").then((response) => ( this.user = response.data));
-            //setInterval(() => this.loadItems(),3000);
+            axios.get("/api/account/user").then(
+                response => {this.user = response.data.data}
+                );
         }
     }
 </script>

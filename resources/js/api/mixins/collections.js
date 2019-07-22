@@ -2,10 +2,12 @@ import axios from 'axios';
 
 export default {
 
-    user(username) {
+    userShow(username) {
         return axios.get(`/api/dashboard/profile/${username}`);
     },
-
+    userID(id) {
+        return axios.get(`/dashboard/users/${id}`);
+    },
     category(id) {
         return axios.get(`/dashboard/categories/${id}`);
     },
@@ -18,18 +20,16 @@ export default {
         return axios.get(`/dashboard/tags/${id}`);
     },
     /* Ici c'est pour recuper un produit */
-    tagview(tag) {
+    tagView(tag) {
         return axios.get(`/dashboard/tags/api/${tag}`);
     },
 
     contactshow(contact) {
         return axios.get(`/dashboard/contacts/view/${contact}`);
     },
-    userID(id) {
-        return axios.get(`/dashboard/users/${id}`);
-    },
-    userUsername(username) {
-        return axios.get(`/users/profile/${username}`);
+
+    aboutID(id) {
+        return axios.get(`/dashboard/abouts/${id}`);
     },
     faqID(id) {
         return axios.get(`/dashboard/faqs/${id}`);
@@ -38,6 +38,24 @@ export default {
         return axios.get(`/dashboard/messages/view/${message}`);
     },
     tasksbyuser(username) {
-        return axios.get(`/api/tasks/u/${username}`);
+        return axios.get(`/api/dashboard/tasks/u/${username}`);
     },
+    technicianID(id) {
+        return axios.get(`/dashboard/technicians/${id}`);
+    },
+    technicianSlug(technician) {
+        return axios.get(`/dashboard/technicians/j/${technician}`);
+    },
+    followerUsername(username) {
+        return axios.get(`/followers/${username}`);
+    },
+    followingUsername(username) {
+        return axios.get(`/followings/${username}`);
+    },
+    testimonialSlug(testimonial) {
+        return axios.get(`/dashboard/testimonials/view/${testimonial}`);
+    },
+    testimonialID(id) {
+        return axios.get(`/dashboard/testimonials/${id}`);
+    }
 };

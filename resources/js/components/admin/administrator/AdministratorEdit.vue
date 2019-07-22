@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -129,7 +132,7 @@
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
                                                                                     <label>Role</label>
-                                                                                    <select  v-model="form.roles" id="role" class="form-control" :class="{ 'is-invalid': form.errors.has('roles[]') }" style="margin-top: 15px;">
+                                                                                    <select   v-model="form.roles" id="role" class="form-control" :class="{ 'is-invalid': form.errors.has('roles[]') }" style="margin-top: 15px;">
                                                                                         <option value="" disabled>Choose Role</option>
                                                                                         <option v-for="role in roles" :key="role.id" :value="role.name">{{role.name}}</option>
                                                                                     </select>
@@ -189,12 +192,15 @@
     import NavAdmin from "../../inc/admin/NavAdmin";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../inc/animation/LoaderEllipsis";
     export default {
-        components: {StatusAdmin, FooterAdmin, NavAdmin, TopNav},
+        components: {LoaderEllipsis, StatusAdmin, FooterAdmin, NavAdmin, TopNav},
         data() {
             return {
+                loaded: false,
                 colors:{},
                 countries:{},
+                user:{},
                 roles:[],
                 form: new Form({
                     id: '',
@@ -202,11 +208,12 @@
                     first_name: '',
                     last_name: '',
                     work: '',
-                    roles: '',
+                    roleUser: '',
                     sex: '',
                     age: '',
                     email: '',
                     body: '',
+                    roles: "",
                     username: '',
                     color_name: '',
                     color_style: '',
@@ -251,7 +258,8 @@
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Administrator updated Successfully.</strong>', 'progress': 75});
                         }, 2000);
-                        setTimeout(() => this.$router.push({ name: 'administrators.index' }), 1000);
+                        //setTimeout(() => this.$router.push({ name: 'administrators.index' }), 1000);
+                        location.replace(`/dashboard/administrators/`);
                         //End Progress bar
                         this.$Progress.finish();
                     }).catch(() => {
@@ -272,11 +280,13 @@
             //Start Progress bar
             this.$Progress.start();
             api.userID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/colors").then(({data}) => (this.colors = data.data));
-            axios.get("/api/countries").then((response) => ( this.countries = response.data.data));
+            axios.get("/api/countries").then((response) => {
+                this.loaded = true;
+                this.countries = response.data.data;
+                //End Progress bar
+                this.$Progress.finish();
+            });
             axios.get("/api/roles").then(({data}) => (this.roles = data.data));
-            //End Progress bar
-            this.$Progress.finish()
         }
     }
 </script>

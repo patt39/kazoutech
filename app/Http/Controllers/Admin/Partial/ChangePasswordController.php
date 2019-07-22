@@ -36,6 +36,17 @@ class ChangePasswordController extends Controller
         return view('admin.account.change_password', compact('user'));
     }
 
+    /**
+     * Change password form
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showResetPasswordForm()
+    {
+        $user = auth()->user();
+        return view('admin.account.reset_password', compact('user'));
+    }
+
     public function showChangePasswordFormUser()
     {
         $user = auth()->user();
@@ -65,6 +76,11 @@ class ChangePasswordController extends Controller
         $user->save();
 
         return $user;
+    }
+
+    public function resetPassword()
+    {
+
     }
 
 }

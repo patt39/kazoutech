@@ -62,15 +62,15 @@
                                                 <div class="timeline-footer">
                                                     <div class="card-footer">
                                                         <div class="author">
-                                                            <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                            <a href="javascript:void(0)" @click="getUser(item)">
                                                                 <img :src="item.user.avatar" :alt="item.user.name" class="avatar img-raised">
                                                                 <span v-if="item.statusOnline" class="badge badge-success" title="Administrator Online">
                                                                     <b>{{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}</b>
                                                                 </span>
-                                                                            <span v-else="item.statusOnline" class="badge badge-danger" title="Administrator Offline">
+                                                                <span v-else="item.statusOnline" class="badge badge-danger" title="Administrator Offline">
                                                                     <b>{{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}</b>
                                                                 </span>
-                                                            </router-link>
+                                                            </a>
 
                                                         </div>
                                                         <div class="stats ml-auto">
@@ -116,15 +116,15 @@
                                                     <div class="submit">
                                                         <div class="card-footer">
                                                             <div class="author">
-                                                                <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                                <a href="javascript:void(0)" @click="getUser(item)">
                                                                     <img :src="item.user.avatar" :alt="item.user.name" class="avatar img-raised">
                                                                     <span v-if="item.statusOnline" class="badge badge-success" title="Administrator Online">
-                                                                    <b>{{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}</b>
-                                                                </span>
+                                                                         <b>{{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}</b>
+                                                                    </span>
                                                                     <span v-else="item.statusOnline" class="badge badge-danger" title="Administrator Offline">
-                                                                    <b>{{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}</b>
-                                                                </span>
-                                                                </router-link>
+                                                                         <b>{{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}</b>
+                                                                    </span>
+                                                                </a>
                                                             </div>
                                                             <div class="stats ml-auto">
                                                                 <i class="material-icons">schedule</i>
@@ -310,6 +310,13 @@
             };
         },
         methods: {
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/profile/${item.user.username}`);
+                //Progres bar
+                this.$Progress.finish()
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -412,7 +419,7 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get("/dashboard/active_notes/" + id).then(() => {
+                this.form.get(`/dashboard/active_notes/${id}`).then(() => {
                     /** Alert notify bootstrapp **/
                       var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                           allow_dismiss: false,
@@ -443,8 +450,8 @@
             disableItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get("/dashboard/disable_notes/" + id).then(() => {
-                    
+                this.form.get(`/dashboard/disable_notes/${id}`).then(() => {
+
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,

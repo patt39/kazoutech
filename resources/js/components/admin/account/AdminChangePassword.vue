@@ -54,19 +54,19 @@
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">face</i>
-                                                                                    <b>My Profile</b>
+                                                                                    <b>Mon profile</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
-                                                                                    <b>Edit Profile</b>
+                                                                                    <b>Editer le profile</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.change_password' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">vpn_key</i>
-                                                                                    <b>Change Password</b>
+                                                                                    <b>Changer mot de passe</b>
                                                                                 </router-link>
                                                                             </li>
                                                                         </ul>
@@ -86,22 +86,27 @@
                                                                         </div>
                                                                         <br>
                                                                         <div class="form-group">
-                                                                            <label class="bmd-label-floating">Current Password</label>
+                                                                            <label class="bmd-label-floating">Ancien mot de passe</label>
                                                                             <input v-model="form.old_password" type="password" name="old_password" class="form-control" :class="{ 'is-invalid': form.errors.has('old_password') }">
                                                                             <has-error :form="form" field="old_password"></has-error>
                                                                         </div>
                                                                         <br>
                                                                         <div class="form-group">
-                                                                            <label class="bmd-label-floating">New Password</label>
+                                                                            <label class="bmd-label-floating">Nouveau mot de passe</label>
                                                                             <input v-model="form.password" type="password" name="password" class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
                                                                             <has-error :form="form" field="password"></has-error>
                                                                         </div>
                                                                         <br>
                                                                         <div class="form-group">
-                                                                            <label class="bmd-label-floating">Confirm Password</label>
+                                                                            <label class="bmd-label-floating">Confirmer le nouveau mot de passe</label>
                                                                             <input v-model="form.password_confirmation" type="password" name="password_confirmation" class="form-control" :class="{ 'is-invalid': form.errors.has('password_confirmation') }">
                                                                             <has-error :form="form" field="password_confirmation"></has-error>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <router-link :to="{ name: 'admin.reset_password' }" style="cursor:pointer;" class="text-info">
+                                                                            <b>Mot de passe oublié ?</b>
+                                                                        </router-link>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -199,7 +204,7 @@
         created(){
             //Start Progress bar
             this.$Progress.start();
-            const url = "/api/account/user";
+            const url = "/api/account/profile";
             axios.get(url).then(({data}) => (this.form.fill(data)));
             //End Progress bar
             this.$Progress.finish()

@@ -85,10 +85,6 @@
                                                             <select name="country_id" v-model="user.country_id"
                                                                     id="country" class="form-control"
                                                                     style="margin-top: -15px;" disabled>
-                                                                <option v-for="country in countries"
-                                                                        :key="country.name"
-                                                                        :value="country.id">{{country.name}}
-                                                                </option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -123,6 +119,8 @@
                                                 </a>
                                             </div>
                                             <div class="card-body">
+                                                <h6 v-if="user.statusOnline"><span class="badge badge-success" title="User online">Online</span></h6>
+                                                <h6 v-else="user.statusOnline"><span class="badge badge-danger" title="user offline">Offline</span></h6>
                                                 <h6 class="card-category text-gray">{{ user.work }}</h6>
                                                 <h4 class="card-title"><b>Sex:</b> {{ user.sex }}</h4>
                                                 <h4 class="card-title"><b>Age:</b> {{ user.age }} ans</h4>
@@ -154,8 +152,6 @@
         props: ['company'],
         data() {
             return {
-                colors:{},
-                countries:{},
                 user:{}
             }
         },
@@ -165,14 +161,15 @@
                 return colorUser;
             },
         },
-        created(){
-            //Start Progress bar
-            this.$Progress.start();
-            const url = "/api/account/user";
-            axios.get(url).then((response) => ( this.user = response.data));
-           // axios.get("https://www.kazoucoin.com/api/countries").then(({data}) => (this.countries = data.data));
-            //End Progress bar
-            this.$Progress.finish()
+        beforeRouteEnter (to, from, next) {
+            axios.get('/api/account/user')
+                .then(response => {
+                    next(vm => {
+                        vm.$Progress.start();
+                        vm.user = response.data.data;
+                        vm.$Progress.finish()
+                    })
+                });
         }
     }
 </script>

@@ -48,96 +48,98 @@
                                 <div class="card-body">
                                     <ul class="timeline">
                                         <li v-for="item in tasks" :key="item.id">
-                                            <div class="timeline-badge success" v-if="item.note.status === 1">
-                                                <i class="material-icons">swap_horiz</i>
-                                            </div>
-                                            <div class="timeline-panel" v-if="item.note.status === 1">
-                                                <div class="timeline-heading">
-                                                    <span v-text="item.note.title" class="badge badge-info"></span>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p v-html="item.note.body.substr(0 ,250) + '...'"></p>
-                                                </div>
-                                                <hr><br>
-                                                <h5><b>Progress Task</b></h5>
-                                                <div :class="getProgressLine(item)">
-                                                    <div :class="getProgressBar(item)" role="progressbar"  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="getProgressStyle(item)">
-                                                        <span class="sr-only">{{item.progress}}% Complete</span>
-                                                    </div>
-                                                </div>
-                                                <div class="timeline-footer">
-                                                    <div class="card-footer">
-                                                        <div class="author">
-                                                            <router-link  :to="{ path: `/dashboard/tasks/u/${item.administrator.username}` }">
-                                                                <img :src="item.administrator.avatar" :alt="item.administrator.name" class="avatar img-raised">
-                                                                <span v-if="item.statusOnline" class="badge badge-success" title="Administrator Online">
+                                           <template v-if="item.note.status === 0">
+                                               <div class="timeline-badge success">
+                                                   <i class="material-icons">swap_horiz</i>
+                                               </div>
+                                               <div class="timeline-panel" v-if="item.note.status === 0">
+                                                   <div class="timeline-heading">
+                                                       <span v-text="item.note.title" class="badge badge-info"></span>
+                                                   </div>
+                                                   <div class="timeline-body">
+                                                       <p v-html="item.note.body.substr(0 ,250) + '...'"></p>
+                                                   </div>
+                                                   <hr><br>
+                                                   <h5><b>Progress Task</b></h5>
+                                                   <div :class="getProgressLine(item)">
+                                                       <div :class="getProgressBar(item)" role="progressbar"  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="getProgressStyle(item)">
+                                                           <span class="sr-only">{{item.progress}}% Complete</span>
+                                                       </div>
+                                                   </div>
+                                                   <div class="timeline-footer">
+                                                       <div class="card-footer">
+                                                           <div class="author">
+                                                               <router-link  :to="{ path: `/dashboard/tasks/u/${item.administrator.username}` }">
+                                                                   <img :src="item.administrator.avatar" :alt="item.administrator.name" class="avatar img-raised">
+                                                                   <span v-if="item.statusOnline" class="badge badge-success" title="Administrator Online">
                                                                     <b>{{ (item.administrator.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.administrator.name) | upText }}</b>
                                                                 </span>
-                                                                <span v-else="item.statusOnline" class="badge badge-danger" title="Administrator Offline">
+                                                                   <span v-else="item.statusOnline" class="badge badge-danger" title="Administrator Offline">
                                                                     <b>{{ (item.administrator.name.length > 15 ? item.administrator.name.substring(0,15)+ "..." : item.administrator.name) | upText }}</b>
                                                                 </span>
-                                                            </router-link>
-                                                        </div>
-                                                        <div class="stats ml-auto">
-                                                            <i class="material-icons">schedule</i>
-                                                            <b>{{ item.updated_at | dateAgo }}</b>
-                                                        </div>
-                                                    </div>
-                                                    <div v-if="item.administrator.id === user.id" class="text-right">
-                                                        <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
+                                                               </router-link>
+                                                           </div>
+                                                           <div class="stats ml-auto">
+                                                               <i class="material-icons">schedule</i>
+                                                               <b>{{ item.updated_at | dateAgo }}</b>
+                                                           </div>
+                                                       </div>
+                                                       <div v-if="item.administrator.id === user.id" class="text-right">
+                                                           <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
-                                                        </button>
-                                                        <button @click="addProgress(item)" class="restore-lk btn btn-success btn-round btn-just-icon btn-sm" title="Add Progress Task">
+                                                           </button>
+                                                           <button @click="addProgress(item)" class="restore-lk btn btn-success btn-round btn-just-icon btn-sm" title="Add Progress Task">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">add</i>
                                                             </span>
-                                                        </button>
-                                                        <button v-if="item.description === null"  @click="addDescription(item)" class="btn btn-info btn-round btn-just-icon btn-sm"
-                                                                title="Add Description">
+                                                           </button>
+                                                           <button v-if="item.description === null"  @click="addDescription(item)" class="btn btn-info btn-round btn-just-icon btn-sm"
+                                                                   title="Add Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">description</i>
                                                             </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div v-if="item.description != null" class="timeline-panel task-description">
-                                                <div class="timeline-heading">
-                                                    <span class="badge badge-danger">Description Task</span>
-                                                </div>
-                                                <div class="timeline-body" v-html="item.description"></div>
-                                                <hr>
-                                                <div class="timeline-footer">
-                                                    <div class="card-footer">
-                                                        <div class="author">
-                                                            <button class="btn btn-info btn-round btn-just-icon btn-sm" title="Done Task">
+                                                           </button>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div v-if="item.description != null" class="timeline-panel task-description">
+                                                   <div class="timeline-heading">
+                                                       <span class="badge badge-danger">Description Task</span>
+                                                   </div>
+                                                   <div class="timeline-body" v-html="item.description"></div>
+                                                   <hr>
+                                                   <div class="timeline-footer">
+                                                       <div class="card-footer">
+                                                           <div class="author">
+                                                               <button class="btn btn-info btn-round btn-just-icon btn-sm" title="Done Task">
                                                                 <span class="btn-label">
                                                                     <i class="material-icons">done_all</i>
                                                                 </span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="stats ml-auto">
-                                                            <i class="material-icons">schedule</i>
-                                                            <b>{{ item.updated_at | dateAgo }}</b>
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <button @click="viewItem(item)" class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
+                                                               </button>
+                                                           </div>
+                                                           <div class="stats ml-auto">
+                                                               <i class="material-icons">schedule</i>
+                                                               <b>{{ item.updated_at | dateAgo }}</b>
+                                                           </div>
+                                                       </div>
+                                                       <div class="text-right">
+                                                           <button @click="viewItem(item)" class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
-                                                        </button>
-                                                        <button  @click="addDescription(item)"  class="btn btn-success btn-round btn-just-icon btn-sm"
-                                                                 title="Edit Description">
+                                                           </button>
+                                                           <button  v-if="item.administrator.id === user.id" @click="addDescription(item)"  class="btn btn-success btn-round btn-just-icon btn-sm"
+                                                                    title="Edit Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">edit</i>
                                                             </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                           </button>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </template>
                                         </li>
                                     </ul>
                                 </div>
@@ -258,7 +260,7 @@
                                                     <label class="bmd-label-floating"></label>
                                                     <select  v-model="form.note_id" id="note_id" class="form-control" :class="{ 'is-invalid': form.errors.has('note_id') }">
                                                         <option value="" disabled >Select Title note </option>
-                                                        <option v-for="note in notes" :key="note.id" :value="note.id" v-if="note.status === 1">{{note.title}}</option>
+                                                        <option v-for="note in notes" :key="note.id" :value="note.id" v-if="note.status_task === 0">{{note.title}}</option>
                                                     </select>
                                                     <has-error :form="form" field="note_id"></has-error>
                                                 </div>
@@ -486,55 +488,6 @@
                 this.form.reset();
                 //Masquer le modal après la création
                 $("#addNew").modal("show");
-            },
-            deleteItem(id) {
-                Swal.fire({
-                    title: 'Delete Tasks?',
-                    text: "Are you sure you want to delete this task?",
-                    type: 'warning',
-                    animation: false,
-                    customClass: "animated shake",
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success",
-                    cancelButtonClass: "btn btn-danger",
-                    confirmButtonText: "Yes",
-                    cancelButtonText: "No",
-                    showCancelButton: true,
-                    reverseButtons: true
-                }).then(result => {
-                    //Envoyer la requete au server
-                    if (result.value) {
-                        //Start Progress bar
-                        this.$Progress.start();
-                        this.form.delete("/dashboard/tasks/" + id).then(() => {
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true
-                            });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Task deleted successfully.</strong>', 'progress': 75});
-                            }, 2000);
-                            /*** End alert ***/
-
-                            //End Progress bar
-                            this.$Progress.finish();
-
-                            Fire.$emit("AfterCreate");
-                        }).catch(() => {
-                            //Failled message
-                            this.$Progress.fail();
-                            //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
-                                type: 'danger',
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                }
-                            });
-                        });
-                    }
-                });
             },
             loadItems() {
                 //Progrs bar

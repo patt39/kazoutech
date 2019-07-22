@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify' => true]);
 
+Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Auth'], function () {
@@ -35,8 +32,7 @@ Route::group(['namespace' => 'Admin'], function () {
     // Dashboard
     Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
     Route::resource('/dashboard/users','UserController');
-    Route::get('/dashboard/users/profile/{username}', 'UserController@view')->name('users.view');
-    Route::get('/users/profile/{username}', 'UserController@userShow');
+    Route::get('/dashboard/users/p/{user}', 'UserController@view')->name('users.view');
 
     //Route Administrator
     Route::resource('/dashboard/administrators','AdministratorController');
@@ -64,7 +60,12 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');
     Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
 
+    //All Route Partials
     Route::group(['namespace' => 'Partial'], function () {
+
+        // Admin Route activities
+        Route::get('/dashboard/activities', 'ActivitylogController@index')->name('activities.index');
+        Route::get('/dashboard/api/activities', 'ActivitylogController@api');
 
         // Admin Route categories
         Route::resource('/dashboard/categories', 'CategoryController');
@@ -100,27 +101,61 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/profile/{username}', 'AccountController@show')->name('admin.view');
         Route::get('/api/dashboard/profile/{username}', 'AccountController@userShow');
         Route::get('/dashboard/user/update', 'AccountController@edit')->name('admin.edit_profile');
+        Route::get('/{username}', 'AccountController@view')->name('profile.view');
+        Route::get('/profile/edit', 'AccountController@profile')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');
 
         Route::get('api/account/user', 'AccountController@user');
+        Route::get('api/account/profile', 'AccountController@userEdit');
 
 
         //Change Password Route
-        Route::get('dashboard/user/change_password', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
+        Route::get('dashboard/user/password/change', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
         Route::put('change_password', 'ChangePasswordController@changePassword');
+        //Reset Password Route
+        Route::get('dashboard/user/password/reset', 'ChangePasswordController@showResetPasswordForm')->name('admin.reset_password');
 
         //Notes administrator Route
         Route::resource('/dashboard/notes', 'NoteController');
         Route::get('/dashboard/active_notes/{id}', 'NoteController@active')->name('active_notes');
         Route::get('/dashboard/disable_notes/{id}', 'NoteController@disable')->name('disable_notes');
 
-        //Route Task
+        //Route Following
+        Route::post('user/follow/{id}', 'FollowerController@store')->name('user.follow');
+        Route::get('dashboard/users/p/{username}/followers', 'FollowerController@followers')->name('follower.view');
+        Route::get('dashboard/users/p/{username}/followings', 'FollowerController@following')->name('following.view');
+        Route::get('followers/{username}', 'FollowerController@GetFollowersByUser');
+        Route::get('followings/{username}', 'FollowerController@GetFollowingsByUser');
+
         //Notes administrator Route
         Route::resource('/dashboard/tasks', 'TaskController');
+        Route::get('/api/dashboard/tasks/u/{username}', 'TaskController@usertask');
         Route::put('/dashboard/update_progress_tasks/{id}', 'TaskController@updateProgress');
         Route::put('/dashboard/update_description_tasks/{id}', 'TaskController@updateDescription');
         Route::get('/dashboard/tasks/u/{username}', 'TaskController@view')->name('tasks.view');
 
+        //Admin Route Diplomas
+        Route::resource('dashboard/diplomas', 'DiplomaController');
+        Route::get('/dashboard/active_diplomas/{id}', 'DiplomaController@active')->name('active_diplomas');
+        Route::get('/dashboard/disable_diplomas/{id}', 'DiplomaController@disable')->name('disable_diplomas');
+
+
+    });
+
+    //All Route Pages
+    Route::group(['namespace' => 'Page'], function () {
+
+        //Admin Route Abouts
+        Route::resource('dashboard/abouts', 'AboutController');
+        Route::get('/dashboard/active_abouts/{id}', 'AboutController@active')->name('active_abouts');
+        Route::get('/dashboard/disable_abouts/{id}', 'AboutController@disable')->name('disable_abouts');
+
+        //Testimonials Route
+        Route::resource('/dashboard/testimonials', 'TestimonialController');
+        Route::get('/dashboard/testimonials/tm/{testimonial}', 'TestimonialController@vector')->name('testimonials.view');
+        Route::get('/dashboard/testimonials/view/{slug}', 'TestimonialController@view');
+        Route::get('/dashboard/active_testimonials/{id}', 'TestimonialController@active');
+        Route::get('/dashboard/disable_testimonials/{id}', 'TestimonialController@disable');
 
     });
 
@@ -134,6 +169,19 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('dashboard/contacts/view/{slug}', 'ContactController@view');
     Route::get('/dashboard/contacts/red_confirm/{id}', 'ContactController@active');
     Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
+
+    //User Route Contact
+    Route::get('/cm/contact', 'ContactController@contatPage')->name('contact_cm');
+    Route::post('contact-cm/save', 'ContactController@store');
+
+    //Admin Route technicians
+    Route::resource('dashboard/technicians','TechnicianController');
+    Route::get('dashboard/technicians/u/{technician}','TechnicianController@technician')->name('technicians.view');
+    Route::get('dashboard/technicians/j/{slug}','TechnicianController@view');
+
+    //User Route technicians
+    Route::get('profile/t/{technician}','TechnicianController@profile')->name('technicians.profile');
+    Route::get('profile/t/{technician}/edit','TechnicianController@edit');
 
 
     Route::resource('dashboard/messages', 'MessageController');

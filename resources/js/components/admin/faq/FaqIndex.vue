@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round ">
+                                            <router-link v-if="$auth.can('create-faq')" :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
                                                   <span class="btn-label">
                                         <i class="material-icons">forum</i>
                                     </span>
@@ -96,24 +96,26 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </router-link>
+                                                    </a>
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <router-link  :to="{ path: `/dashboard/faqs/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <template v-if="$auth.can('publish-faq')">
+                                                        <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                        <a href="javascript:void(0)"  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                    </template>
+                                                    <router-link  v-if="$auth.can('edit-faq')" :to="{ path: `/dashboard/faqs/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
-                                                    <button @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                    <button v-if="$auth.can('delete-faq')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
                                                 </td>
@@ -149,6 +151,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 categoryfaqs:{},
                 faqs: {},
                 form: new Form({
@@ -162,26 +165,6 @@
                     status: '',
                     slug: ''
                 }),
-                customToolbar: [
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'font': [] }],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ 'align': [] }],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{ 'color': [] }, { 'background': [] }],
-                    ['link'],
-                    //['image', 'video'],
-                    //[{ 'direction': 'rtl' }],
-                    //['clean'],
-                    //['emoji'],
-                ]
             }
         },
         methods: {
@@ -215,18 +198,12 @@
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
             },
-            editItem(item) {
-                this.editmode = true;
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
             },
             deleteItem(id) {
                 Swal.fire({
@@ -351,10 +328,16 @@
                     this.loaded = true;
                     this.faqs = response.data.data;
                     this.mydatatables();
-                    //End Progress bar
-                    this.$Progress.finish();
                 });
                 axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                //End Progress bar
+                this.$Progress.finish();
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 120000);
             },
         },
         created() {
@@ -362,6 +345,7 @@
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 </script>

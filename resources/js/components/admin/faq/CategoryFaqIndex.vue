@@ -53,7 +53,7 @@
                                 </div>
                                 <br>
                                 <div class="card-body">
-                                    <div class="toolbar">
+                                    <div v-if="$auth.can('create-category')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-raised btn-round  btn-warning" @click="newModal">
                                      <span class="btn-label">
@@ -73,7 +73,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edit by</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-category') || $auth.can('edit-category') || $auth.can('delete-category'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -83,7 +83,7 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edit by</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-category') || $auth.can('edit-category') || $auth.can('delete-category'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
@@ -97,25 +97,27 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/profile/${item.user.username}` }">
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </router-link>
+                                                    </a>
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                        <i class="material-icons">power_settings_new</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" @click="editItem(item)"
+                                                    <template v-if="$auth.can('publish-category')">
+                                                        <a href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                        <a href="javascript:void(0)"  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </a>
+                                                    </template>
+                                                    <a v-if="$auth.can('edit-category')" href="javascript:void(0)" @click="editItem(item)"
                                                        class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="javascript:void(0)" @click="deleteItem(item.id)"
+                                                    <a v-if="$auth.can('delete-category')" href="javascript:void(0)" @click="deleteItem(item.id)"
                                                        class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </a>
@@ -209,6 +211,7 @@
             return {
                 loaded: false,
                 editmode: false,
+                user: {},
                 categoryfaqs: {},
                 colors:[],
                 form: new Form({
@@ -259,6 +262,13 @@
                 let icon = 'material-icons text-' + color;
                 return icon;
             },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -308,6 +318,46 @@
                 this.form.reset();
                 //Masquer le modal après la création
                 $('#addNew').modal('show');
+            },
+            createItem() {
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/category-faqs")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Category Faq Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+                        //Fin insertion de l'alert !
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
             },
             deleteItem(id) {
                 Swal.fire({
@@ -421,7 +471,7 @@
                     });
                 })
             },
-            loadcategoryfaqs() {
+            loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
                 const url = "/api/category-faqs";
@@ -433,52 +483,14 @@
                     this.$Progress.finish();
                 });
                 axios.get("/api/colors").then(({data}) => (this.colors = data.data));
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
-            createItem() {
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/category-faqs")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
 
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Category Faq Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                        //Fin insertion de l'alert !
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            }
         },
         created() {
-            this.loadcategoryfaqs();
+            this.loadItems();
             Fire.$on('AfterCreate', () => {
-                this.loadcategoryfaqs();
+                this.loadItems();
             });
         }
     }

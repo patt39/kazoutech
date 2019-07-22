@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('work')->nullable();
             $table->string('sex')->nullable();
             $table->string('age')->nullable();
-            $table->string('color_name')->default('primary')->nullable();
+            $table->string('color_name')->default('success')->nullable();
             $table->string('phone')->nullable();
             $table->string('my_status')->nullable()->default('0');
             $table->longText('body')->nullable();
@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
             $table->string('avatarcover')->nullable()->default('https://www.kazoucoin.com/assets/img/photo.jpg');
             $table->string('ip')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->rememberToken();
             $table->timestamps();
