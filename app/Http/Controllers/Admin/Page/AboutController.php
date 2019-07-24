@@ -160,7 +160,7 @@ class AboutController extends Controller
         ]);
 
         $about = about::findOrFail($id);
-
+        $about->slug = null;
         $currentPhoto = $about->photo;
 
         if ($request->photo != $currentPhoto){

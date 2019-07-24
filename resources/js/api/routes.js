@@ -53,6 +53,8 @@ import TestimonialShow from "../components/admin/page/testimonial/TestimonialSho
 import DiplomaIndex from "../components/admin/partial/diploma/DiplomaIndex";
 import TechnicianProfileIndex from "../components/user/Profile/TechnicianProfileIndex";
 import TechnicianProfileEdit from "../components/user/Profile/TechnicianProfileEdit";
+import TechnicianByCity from "../components/admin/technician/by/TechnicianByCity";
+import TechnicianByOccupation from "../components/admin/technician/by/TechnicianByOccupation";
 
 
 export const routes = [
@@ -142,6 +144,8 @@ export const routes = [
     {path: '/dashboard/technicians/', name: 'technicians.index', component: TechnicianIndex},
     {path: '/dashboard/technicians/:id/edit/', name: 'technicians.edit', component: TechnicianEdit},
     {path: '/dashboard/technicians/u/:technician', name: 'technicians.view', component: TechnicianView},
+    {path: '/dashboard/technicians/c/:city', name: 'city.technician', component: TechnicianByCity},
+    {path: '/dashboard/technicians/o/:occupation', name: 'occupation.technician', component: TechnicianByOccupation},
     {path: '/profile/t/:technician', name: 'technicians.profile', component: TechnicianProfileIndex},
     {path: '/profile/t/:technician/edit', component: TechnicianProfileEdit},
 

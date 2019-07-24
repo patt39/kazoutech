@@ -85,7 +85,11 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in cities" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
+                                                <td>
+                                                    <router-link  :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
+                                                        <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>

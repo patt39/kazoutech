@@ -151,6 +151,7 @@ class TagController extends Controller
         $tag = tag::findOrFail($id);
 
         $tag->title = $request->title;
+        $tag->slug = null;
         $tag->user_id = Auth::user()->id;
 
         $tag->save();

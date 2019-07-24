@@ -202,26 +202,22 @@
                 return colorPanel;
             },
 
-            loadItems() {
-                this.$Progress.start();
-                api.technicianSlug(this.$route.params.technician).then(response => {
-                    this.loaded = true;
-                    this.technician = response.data.data;
-                }).catch(error => {
-                    console.log(error);
-                    this.errored = true
-                });
-                axios.get("/api/account/user").then(response => {
-                    this.loaded = true;
-                    this.user = response.data.data
-                });
-                //End Progress bar
-                this.$Progress.finish();
-            },
-
         },
         created(){
-            this.loadItems();
+            this.$Progress.start();
+            api.technicianSlug(this.$route.params.technician).then(response => {
+                this.loaded = true;
+                this.technician = response.data.data;
+            }).catch(error => {
+                console.log(error);
+                this.errored = true
+            });
+            axios.get("/api/account/user").then(response => {
+                this.loaded = true;
+                this.user = response.data.data
+            });
+            //End Progress bar
+            this.$Progress.finish();
         }
     }
 </script>

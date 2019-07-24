@@ -4003,16 +4003,16 @@
         },
         {
             "name": "spatie/laravel-activitylog",
-            "version": "3.6.2",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-activitylog.git",
-                "reference": "d5fd05eb9edcb2416ada4f1e026d47ee9f8706a3"
+                "reference": "84072ceb7406913aaf783dcebe173ce1681d25ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/d5fd05eb9edcb2416ada4f1e026d47ee9f8706a3",
-                "reference": "d5fd05eb9edcb2416ada4f1e026d47ee9f8706a3",
+                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/84072ceb7406913aaf783dcebe173ce1681d25ed",
+                "reference": "84072ceb7406913aaf783dcebe173ce1681d25ed",
                 "shasum": ""
             },
             "require": {
@@ -4050,16 +4050,16 @@
             ],
             "authors": [
                 {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "name": "Freek Van der Herten",
+                    "role": "Developer",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be"
                 },
                 {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "name": "Sebastian De Deyne",
+                    "role": "Developer",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be"
                 }
             ],
             "description": "A very simple activity logger to monitor the users of your website or application",
@@ -4071,7 +4071,7 @@
                 "spatie",
                 "user"
             ],
-            "time": "2019-07-16T14:13:01+00:00"
+            "time": "2019-07-24T07:41:20+00:00"
         },
         {
             "name": "spatie/laravel-backup",

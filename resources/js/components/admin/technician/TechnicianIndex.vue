@@ -95,9 +95,17 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </router-link>
                                                 </td>
-                                                <td v-if="item.city_id !== null"><b>{{ (item.city.name.length > 15 ? item.city.name.substring(0,15)+ "..." : item.city.name) | upText }}</b></td>
+                                                <td v-if="item.city_id !== null">
+                                                    <router-link  :to="{ path: `/dashboard/technicians/c/${item.city.slug}/` }">
+                                                        <b>{{ (item.city.name.length > 15 ? item.city.name.substring(0,15)+ "..." : item.city.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
                                                 <td v-else="item.city_id === null"><b>City don't select</b></td>
-                                                <td v-if="item.occupation_id !== null"><b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b></td>
+                                                <td v-if="item.occupation_id !== null">
+                                                    <router-link  :to="{ path: `/dashboard/technicians/o/${item.occupation.slug}/` }">
+                                                        <b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
                                                 <td v-else="item.occupation_id === null"><b>Occupation don't select</b></td>
                                                 <td><b>{{ item.updated_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
@@ -199,7 +207,7 @@
             intervalFetchData: function () {
                 setInterval(() => {
                     this.loadItems();
-                }, 120000);
+                }, 360000);
             },
         },
         created() {

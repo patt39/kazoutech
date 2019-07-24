@@ -138,6 +138,7 @@ class ColorController extends Controller
 
         $color->name = $request->name;
         $color->color_name = $request->color_name;
+        $color->slug = null;
 
         $color->save();
 

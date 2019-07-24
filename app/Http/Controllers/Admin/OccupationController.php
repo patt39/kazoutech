@@ -131,6 +131,7 @@ class OccupationController extends Controller
         $occupation = occupation::findOrFail($id);
 
         $occupation->name = $request->name;
+        $occupation->slug = null;
         $occupation->save();
 
         return ['message' => 'color has ben updated'];
