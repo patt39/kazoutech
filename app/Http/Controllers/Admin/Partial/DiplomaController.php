@@ -134,7 +134,7 @@ class DiplomaController extends Controller
 
         $diploma->save();
 
-        return ['message' => 'diploma has ben updated'];
+        return ['message' => 'diploma has been updated'];
     }
 
     /**

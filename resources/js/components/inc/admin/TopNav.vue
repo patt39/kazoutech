@@ -61,7 +61,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#pablo">Message Contact Us</a>
-                            <a class="dropdown-item" href="#pablo">Message Aide & Conatct</a>
+                            <a class="dropdown-item" href="#pablo">Message Aide & Contact</a>
                             <a class="dropdown-item" href="#pablo">Message Work With Us</a>
                         </div>
                     </li>

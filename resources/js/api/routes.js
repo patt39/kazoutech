@@ -33,10 +33,14 @@ import RoleIndex from "../components/admin/role/RoleIndex";
 import AboutIndex from "../components/admin/page/about/AboutIndex";
 import AboutCreate from "../components/admin/page/about/AboutCreate";
 import AboutEdit from "../components/admin/page/about/AboutEdit";
+import HowregisterIndex from "../components/admin/infos/howregister/HowregisterIndex";
+import HowregisterCreate from "../components/admin/infos/howregister/HowregisterCreate";
+import HowregisterEdit from "../components/admin/infos/howregister/HowregisterEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 import TechnicianIndex from "../components/admin/technician/TechnicianIndex";
 import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
+import TechnicianPostIndex from "../components/admin/partial/posts/TechnicianPostIndex";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
@@ -45,6 +49,7 @@ import ProfileUserIndex from "../components/user/account/ProfileUserIndex";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
+import LinkIndex from "../components/admin/partial/link/LinkIndex";
 import TechnicianView from "../components/admin/technician/TechnicianView";
 import TestimonialIndex from "../components/admin/page/testimonial/TestimonialIndex";
 import TestimonialCreate from "../components/admin/page/testimonial/TestimonialCreate";
@@ -71,6 +76,10 @@ export const routes = [
 
     //Route activities
     {path: '/dashboard/activities/', name: 'activities.index', component: ActivityIndex},
+
+     //Route links
+     {path: '/dashboard/links/', name: 'links.index', component: LinkIndex},
+
 
     //Route occupations
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
@@ -101,6 +110,11 @@ export const routes = [
     {path: '/dashboard/abouts/', name: 'abouts.index', component: AboutIndex},
     {path: '/dashboard/abouts/create/', name: 'abouts.create', component: AboutCreate},
     {path: '/dashboard/abouts/:id/edit/', name: 'abouts.edit', component: AboutEdit},
+
+     //Route Infos
+     {path: '/dashboard/registrations/', name: 'registrations.index', component: HowregisterIndex},
+     {path: '/dashboard/registrations/create/', name: 'registrations.create', component: HowregisterCreate},
+     {path: '/dashboard/registrations/:id/edit/', name: 'registrations.edit', component: HowregisterEdit},
 
     //Route tags
     {path: '/dashboard/tags/', name: 'tags.index', component: TagIndex},
@@ -144,6 +158,8 @@ export const routes = [
     {path: '/dashboard/technicians/u/:technician', name: 'technicians.view', component: TechnicianView},
     {path: '/profile/t/:technician', name: 'technicians.profile', component: TechnicianProfileIndex},
     {path: '/profile/t/:technician/edit', component: TechnicianProfileEdit},
+    {path: '/dashboard/posts/', name: 'posts.index', component: TechnicianPostIndex},
+
 
     //Route testimonials
     { path: '/dashboard/testimonials', name: 'testimonials.index', component: TestimonialIndex },

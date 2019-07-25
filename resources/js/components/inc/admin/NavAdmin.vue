@@ -119,6 +119,13 @@
                                         <span class="sidebar-normal"><b>Testimonials</b></span>
                                     </router-link>
                                 </li>
+                                 <!--Registration-->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/registrations/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>RI</b></span>
+                                        <span class="sidebar-normal"><b>Registration Infos</b></span>
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -154,10 +161,17 @@
                                         <span class="sidebar-normal"><b>Diplomas</b></span>
                                     </router-link>
                                 </li>
+                                 <!-- Posts -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/posts/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>TP</b></span>
+                                        <span class="sidebar-normal"><b>Tech Posts</b></span>
+                                    </router-link>
+                                </li>
                                 <!-- Countries -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
-                                        <span class="sidebar-mini"><b>COU</b></span>
+                                        <span class="sidebar-mini"><b>CO</b></span>
                                         <span class="sidebar-normal"><b>Country</b></span>
                                     </router-link>
                                 </li>
@@ -222,7 +236,7 @@
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/technicians/' }" class="nav-link">
                             <i class="material-icons">meeting_room</i>
-                            <p><b>Technicien</b></p>
+                            <p><b>Technicians</b></p>
                         </router-link>
                     </li>
                     <!-- Administrations -->
