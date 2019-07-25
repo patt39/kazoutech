@@ -131,6 +131,7 @@ class DiplomaController extends Controller
         $diploma = diploma::findOrFail($id);
 
         $diploma->name = $request->name;
+        $diploma->slug = null;
 
         $diploma->save();
 

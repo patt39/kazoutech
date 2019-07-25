@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Resources\User\TechnicianResource;
 use App\Http\Resources\UserResource;
+use App\Model\admin\city;
+use App\Model\admin\occupation;
+use App\Model\admin\partial\diploma;
 use App\Model\user\technician;
 use App\Model\user\User;
 use Illuminate\Http\Request;
@@ -20,7 +23,7 @@ class TechnicianController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','profile']]);
+        $this->middleware('auth',['except' => ['api','profile','view','viewcity','viewoccupation','viewdiploma','viewoccupationcity']]);
     }
     /**
      * Display a listing of the resource.
@@ -40,6 +43,59 @@ class TechnicianController extends Controller
             return TechnicianResource::collection(technician::with('user','member','city','occupation','diploma')
                 ->latest()->get());
         });
+        return $technicians;
+    }
+
+    /**
+     * Ici on recupere tous les articles dans le orders/beautes
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function viewcity($city)
+    {
+        $citytechnicians = TechnicianResource::collection(city::whereSlug($city)->firstOrFail()->technicians()
+            ->with('user','member','city','occupation','diploma')
+            ->latest()->get());
+        return $citytechnicians;
+    }
+
+    public function bycity($occupation)
+    {
+        $citytechnicians = city::whereSlug($occupation)->firstOrFail()->technicians()
+            ->with('user','member','city','occupation','diploma')
+            ->latest()->get();
+        return view('admin.technician.bytechnician', compact('citytechnicians'));
+    }
+
+
+    /**
+     * Ici je recupere les technicians par occupation
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function viewoccupation($occupation)
+    {
+        $technicians = TechnicianResource::collection(occupation::whereSlug($occupation)->firstOrFail()->technicians()
+            ->with('user','member','city','occupation','diploma')
+            ->latest()->get());
+        return $technicians;
+    }
+
+    public function byoccupation($occupation)
+    {
+        $occupationtechnicians = occupation::whereSlug($occupation)->firstOrFail()->technicians()
+            ->with('user','member','city','occupation','diploma')
+            ->latest()->get();
+        return view('admin.technician.bytechnician', compact('occupationtechnicians'));
+    }
+
+    /**
+     * Ici je recupere les technicians par occupation
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function viewdiploma($slug)
+    {
+        $technicians = TechnicianResource::collection(diploma::whereSlug($slug)->firstOrFail()->technicians()
+            ->with('user','member','city','occupation','diploma')
+            ->latest()->get());
         return $technicians;
     }
 
@@ -92,9 +148,9 @@ class TechnicianController extends Controller
      * @return TechnicianResource|\Illuminate\Http\Response
      */
     //Ici nous recuperon tous les infirmation de l'utilisateur a traver l'API
-    public function view($slug)
+    public function view($technician)
     {
-        $technician = new TechnicianResource(technician::where('slug',$slug)->firstOrFail());
+        $technician = new TechnicianResource(technician::whereSlug($technician)->firstOrFail());
         return $technician;
     }
 
@@ -109,6 +165,14 @@ class TechnicianController extends Controller
         return view('admin.technician.view', [
             'technician' => $technician,
         ]);
+    }
+
+    public function viewoccupationcity($occupation, $city)
+    {
+        $technicians = TechnicianResource::collection(occupation::whereSlug($occupation)->whereSlug($city)->first()->technicians()
+            ->with('user','member','city','occupation','diploma')
+            ->latest()->get());
+        return $technicians;
     }
 
     /**

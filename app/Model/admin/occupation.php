@@ -2,6 +2,7 @@
 
 namespace App\Model\admin;
 
+use App\Model\user\technician;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -47,6 +48,11 @@ class occupation extends Model
         return Cache::has('user-is-online-' . $this->id);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     use Sluggable;
 
     /**
@@ -61,5 +67,15 @@ class occupation extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(city::class);
+    }
+
+    public function technicians()
+    {
+        return $this->hasMany(technician::class);
     }
 }

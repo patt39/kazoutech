@@ -2,6 +2,7 @@
 
 namespace App\Model\admin;
 
+use App\Model\user\technician;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,7 @@ class city extends Model
         'name',
         'user_id',
         'ip',
+        'slug',
         'status',
     ];
 
@@ -65,5 +67,15 @@ class city extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function occupation()
+    {
+        return $this->belongsTo(occupation::class);
+    }
+
+    public function technicians()
+    {
+        return $this->hasMany(technician::class);
     }
 }

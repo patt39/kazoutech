@@ -151,6 +151,7 @@ class CategoryfaqController extends Controller
         $categoryfaq = categoryfaq::findOrFail($id);
 
         $categoryfaq->name = $request->name;
+        $categoryfaq->slug = null;
         $categoryfaq->color_name = $request->color_name;
         $categoryfaq->icon = $request->icon;
 

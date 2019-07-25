@@ -136,6 +136,7 @@ class TestimonialController extends Controller
 
         $testimonial->body = $request->body;
         $testimonial->role = $request->role;
+        $testimonial->slug = null;
 
         $testimonial->save();
 

@@ -46,6 +46,12 @@ export default {
     technicianSlug(technician) {
         return axios.get(`/dashboard/technicians/j/${technician}`);
     },
+    technicianCity(city) {
+        return axios.get(`/api/technicians/c/${city}`);
+    },
+    technicianOccupation(occupation) {
+        return axios.get(`/api/technicians/o/${occupation}`);
+    },
     followerUsername(username) {
         return axios.get(`/followers/${username}`);
     },

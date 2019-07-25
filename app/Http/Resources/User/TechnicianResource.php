@@ -28,7 +28,7 @@ class TechnicianResource extends JsonResource
             'year' => $this->year,
             'slug' => $this->slug,
             'user' => $this->user,
-            'member' => $this->member,
+            //'member' => $this->member,
             'diploma_id' => $this->diploma_id,
             'statusOnline' => $this->user->isOnline(),
             'created_at' => (string) $this->created_at,

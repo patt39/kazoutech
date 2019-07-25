@@ -2,6 +2,7 @@
 
 namespace App\Model\admin\partial;
 
+use App\Model\user\technician;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -66,5 +67,10 @@ class diploma extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function technicians()
+    {
+        return $this->hasMany(technician::class);
     }
 }

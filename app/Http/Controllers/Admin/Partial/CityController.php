@@ -134,6 +134,7 @@ class CityController extends Controller
         $city = city::findOrFail($id);
 
         $city->name = $request->name;
+        $city->slug = null;
         $city->save();
 
         return ['message' => 'city has ben updated'];
