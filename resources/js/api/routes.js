@@ -55,6 +55,7 @@ import TechnicianProfileIndex from "../components/user/Profile/TechnicianProfile
 import TechnicianProfileEdit from "../components/user/Profile/TechnicianProfileEdit";
 import TechnicianByCity from "../components/admin/technician/by/TechnicianByCity";
 import TechnicianByOccupation from "../components/admin/technician/by/TechnicianByOccupation";
+import LoginIndex from "../components/user/auth/LoginIndex";
 
 
 export const routes = [
@@ -160,11 +161,14 @@ export const routes = [
 
     //Route auth
     {path: '/register/', name: 'register', component: RegisterIndex},
-    //Route profile user
+    {path: '/login/', name: 'login', component: LoginIndex},
 
+    //Route contact page
+    {path: '/c/contact/', name: 'contact_cm', component: ContactUser},
+
+    //Route profile user
     {path: '/:username', name: 'profile.view', component: ProfileUserIndex},
     {path: '/profile/edit/', name: 'profile.edit', component: ProfileUserEdit},
 
-    //Route contact page
-    {path: '/cm/contact/', name: 'contact_cm', component: ContactUser},
+
 ];

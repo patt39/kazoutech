@@ -13,25 +13,7 @@
                            <div class="card-body">
                                <form @keydown="form.onKeydown($event)" method="POST" @submit.prevent="createItem()">
 
-                                   <div class="form-group row">
-                                       <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
-                                       <div class="col-md-6">
-                                           <input v-model="form.name"  id="name" type="text" :class="{ 'is-invalid': form.errors.has('name') }"  class="form-control" name="name">
-                                           <has-error :form="form" field="name"></has-error>
-
-                                       </div>
-                                   </div>
-
-                                   <div class="form-group row">
-                                       <label class="col-md-4 col-form-label text-md-right">Username</label>
-
-                                       <div class="col-md-6">
-                                           <input v-model="form.username" type="text" :class="{ 'is-invalid': form.errors.has('username') }"  class="form-control" name="name">
-                                           <has-error :form="form" field="username"></has-error>
-
-                                       </div>
-                                   </div>
 
                                    <div class="form-group row">
                                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
@@ -51,19 +33,10 @@
                                        </div>
                                    </div>
 
-                                   <div class="form-group row">
-                                       <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
-
-                                       <div class="col-md-6">
-                                           <input v-model="form.password_confirmation" id="password-confirm" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" type="password" class="form-control" name="password_confirmation" required>
-                                           <has-error :form="form" field="password_confirmation"></has-error>
-                                       </div>
-                                   </div>
-
                                    <div class="form-group row mb-0">
                                        <div class="col-md-6 offset-md-4">
                                            <button :disabled="form.busy" type="submit" class="btn btn-primary">
-                                               Register
+                                               Login
                                            </button>
                                        </div>
                                    </div>
@@ -85,8 +58,6 @@
         data() {
             return {
                 form: new Form({
-                    username: "",
-                    name: "",
                     email: "",
                     password: "",
                 })
@@ -99,7 +70,7 @@
 
                 this.$Progress.start();
 
-                this.form.post('/register').then(() => {
+                this.form.post('/login').then(() => {
                     /* debut de l'alert **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
@@ -113,7 +84,7 @@
                     setTimeout(function () {
                         notify.update({
                             'type': 'success',
-                            'message': '<strong>Thanks for your registration...</strong>',
+                            'message': '<strong>Thanks for your message...</strong>',
                             'progress': 100
                         });
                     }, 2000);

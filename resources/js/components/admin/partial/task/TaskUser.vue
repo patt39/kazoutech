@@ -59,7 +59,7 @@
                                                             <router-link  :to="{ path: `/dashboard/tasks/u/${item.administrator.username}` }">
                                                                 <img :src="item.administrator.avatar" :alt="item.administrator.name" class="avatar img-raised">
                                                                 <span v-if="item.statusOnline" class="badge badge-success" title="Administrator Online">
-                                                                    <b>{{ (item.administrator.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.administrator.name) | upText }}</b>
+                                                                    <b>{{ (item.administrator.name.length > 15 ? item.administrator.name.substring(0,15)+ "..." : item.administrator.name) | upText }}</b>
                                                                 </span>
                                                                 <span v-else="item.statusOnline" class="badge badge-danger" title="Administrator Offline">
                                                                     <b>{{ (item.administrator.name.length > 15 ? item.administrator.name.substring(0,15)+ "..." : item.administrator.name) | upText }}</b>

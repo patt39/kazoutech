@@ -171,7 +171,7 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
 
     //User Route Contact
-    Route::get('/cm/contact', 'ContactController@contatPage')->name('contact_cm');
+    Route::get('/c/contact', 'ContactController@contatPage')->name('contact_cm');
     Route::post('contact-cm/save', 'ContactController@store');
 
     //Admin Route technicians
