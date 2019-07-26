@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
 class AccountController extends Controller
@@ -91,6 +92,35 @@ class AccountController extends Controller
     {
         $user = auth()->user();
         return $user;
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|\Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validate($request,[
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255','alpha_dash','unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+
+        ]);
+
+        User::create([
+            'name' => $request['name'],
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        return ['message' => 'user has ben create'];
+
+
     }
 
     /**

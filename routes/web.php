@@ -105,6 +105,7 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/profile/edit', 'AccountController@profile')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');
 
+        Route::post('auth/register', 'AccountController@register');
         Route::get('api/account/user', 'AccountController@user');
         Route::get('api/account/profile', 'AccountController@userEdit');
 
