@@ -67,6 +67,10 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/activities', 'ActivitylogController@index')->name('activities.index');
         Route::get('/dashboard/api/activities', 'ActivitylogController@api');
 
+         // Admin Route links
+         Route::get('/dashboard/links', 'LinkController@index')->name('links.index');
+         Route::get('/dashboard/api/links', 'LinkController@api');
+
         // Admin Route categories
         Route::resource('/dashboard/categories', 'CategoryController');
         Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');
@@ -88,6 +92,12 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::resource('dashboard/colors', 'ColorController');
         Route::get('/dashboard/active_color/{id}', 'ColorController@active')->name('active_color');
         Route::get('/dashboard/disable_color/{id}', 'ColorController@disable')->name('disable_color');
+
+
+         //Admin Route posts
+         Route::resource('dashboard/posts', 'PostController');
+         Route::get('/dashboard/active_posts/{id}', 'PostController@active')->name('active_Post');
+         Route::get('/dashboard/disable_posts/{id}', 'PostController@disable')->name('disable_Post');
 
         // Admin Route country
         Route::resource('/dashboard/countries', 'CountryController');
@@ -151,6 +161,11 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_abouts/{id}', 'AboutController@active')->name('active_abouts');
         Route::get('/dashboard/disable_abouts/{id}', 'AboutController@disable')->name('disable_abouts');
 
+         //Admin Route Abouts
+         Route::resource('dashboard/registrations', 'HowregisterController');
+         Route::get('/dashboard/active_registrations/{id}', 'HowregisterController@active')->name('active_registrations');
+         Route::get('/dashboard/disable_registrations/{id}', 'HowregisterController@disable')->name('disable_registrations');
+ 
         //Testimonials Route
         Route::resource('/dashboard/testimonials', 'TestimonialController');
         Route::get('/dashboard/testimonials/tm/{testimonial}', 'TestimonialController@vector')->name('testimonials.view');

@@ -96,17 +96,17 @@
                                                                             </div>
                                                                             <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
                                                                             <div>
-                                                                <span class="btn btn-raised btn-round btn-info btn-file">
-                                                                    <span class="fileinput-new">
-                                                                        <b> Add Photo</b>
-                                                                    </span>
-                                                                    <span class="fileinput-exists">
-                                                                        <i class="material-icons">edit</i>
-                                                                        <b> Change</b>
-                                                                    </span>
-                                                                    <input @change="updateImage" id="photo" type="file" name="photo"
-                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('photo') }"/>
-                                                                 </span>
+                                                                                <span class="btn btn-raised btn-round btn-info btn-file">
+                                                                                    <span class="fileinput-new">
+                                                                                        <b> Add Photo</b>
+                                                                                    </span>
+                                                                                    <span class="fileinput-exists">
+                                                                                        <i class="material-icons">edit</i>
+                                                                                        <b> Change</b>
+                                                                                    </span>
+                                                                                    <input @change="updateImage" id="photo" type="file" name="photo"
+                                                                                        class="form-control" :class="{ 'is-invalid': form.errors.has('photo') }"/>
+                                                                                </span>
                                                                                 <br/>
                                                                                 <a href="#pablo"
                                                                                    class="btn btn-danger btn-round fileinput-exists"

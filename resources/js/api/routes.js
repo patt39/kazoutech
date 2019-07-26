@@ -33,10 +33,14 @@ import RoleIndex from "../components/admin/role/RoleIndex";
 import AboutIndex from "../components/admin/page/about/AboutIndex";
 import AboutCreate from "../components/admin/page/about/AboutCreate";
 import AboutEdit from "../components/admin/page/about/AboutEdit";
+import HowregisterIndex from "../components/admin/page/howregister/HowregisterIndex";
+import HowregisterCreate from "../components/admin/page/howregister/HowregisterCreate";
+import HowregisterEdit from "../components/admin/page/howregister/HowregisterEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 import TechnicianIndex from "../components/admin/technician/TechnicianIndex";
 import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
+import TechnicianPostIndex from "../components/admin/partial/posts/TechnicianPostIndex";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
@@ -45,6 +49,7 @@ import ProfileUserIndex from "../components/user/account/ProfileUserIndex";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
+import LinkIndex from "../components/admin/partial/link/LinkIndex";
 import TechnicianView from "../components/admin/technician/TechnicianView";
 import TestimonialIndex from "../components/admin/page/testimonial/TestimonialIndex";
 import TestimonialCreate from "../components/admin/page/testimonial/TestimonialCreate";
@@ -56,6 +61,28 @@ import TechnicianProfileEdit from "../components/user/Profile/TechnicianProfileE
 import TechnicianByCity from "../components/admin/technician/by/TechnicianByCity";
 import TechnicianByOccupation from "../components/admin/technician/by/TechnicianByOccupation";
 import LoginIndex from "../components/user/auth/LoginIndex";
+
+/* Legal information dans la cartalla info */
+import LegalnoticeIndex from "../components/admin/info/legalnotice/LegalnoticeIndex";
+import LegalnoticeCreate from "../components/admin/info/legalnotice/LegalnoticeCreate";
+import LegalnoticeEdit from "../components/admin/info/legalnotice/LegalnoticeEdit";
+import LegalnoticeView from "../components/admin/info/legalnotice/LegalnoticeView";
+import LicenceIndex from "../components/admin/info/licence/LicenceIndex";
+import LicenceCreate from "../components/admin/info/licence/LicenceCreate";
+import LicenceEdit from "../components/admin/info/licence/LicenceEdit";
+import LicenceView from "../components/admin/info/licence/LicenceView";
+import CookieIndex from "../components/admin/info/cookie/CookieIndex";
+import CookieCreate from "../components/admin/info/cookie/CookieCreate";
+import CookieEdit from "../components/admin/info/cookie/CookieEdit";
+import CookieView from "../components/admin/info/cookie/CookieView";
+import TermsconditionsIndex from "../components/admin/info/conditions/TermsconditionsIndex";
+import TermsconditionsCreate from "../components/admin/info/conditions/TermsconditionsCreate";
+import TermsconditionsEdit from "../components/admin/info/conditions/TermsconditionsEdit";
+import TermsconditionsView from "../components/admin/info/conditions/TermsconditionsView";
+import PolicyprivacyIndex from "../components/admin/info/policyprivacy/PolicyprivacyIndex";
+import PolicyprivacyCreate from "../components/admin/info/policyprivacy/PolicyprivacyCreate";
+import PolicyprivacyEdit from "../components/admin/info/policyprivacy/PolicyprivacyEdit";
+import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
 
 
 export const routes = [
@@ -74,6 +101,10 @@ export const routes = [
 
     //Route activities
     {path: '/dashboard/activities/', name: 'activities.index', component: ActivityIndex},
+
+     //Route links
+     {path: '/dashboard/links/', name: 'links.index', component: LinkIndex},
+
 
     //Route occupations
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
@@ -104,6 +135,11 @@ export const routes = [
     {path: '/dashboard/abouts/', name: 'abouts.index', component: AboutIndex},
     {path: '/dashboard/abouts/create/', name: 'abouts.create', component: AboutCreate},
     {path: '/dashboard/abouts/:id/edit/', name: 'abouts.edit', component: AboutEdit},
+
+     //Route Infos
+     {path: '/dashboard/registrations/', name: 'registrations.index', component: HowregisterIndex},
+     {path: '/dashboard/registrations/create/', name: 'registrations.create', component: HowregisterCreate},
+     {path: '/dashboard/registrations/:id/edit/', name: 'registrations.edit', component: HowregisterEdit},
 
     //Route tags
     {path: '/dashboard/tags/', name: 'tags.index', component: TagIndex},
@@ -149,6 +185,8 @@ export const routes = [
     {path: '/dashboard/technicians/o/:occupation', name: 'occupation.technician', component: TechnicianByOccupation},
     {path: '/profile/t/:technician', name: 'technicians.profile', component: TechnicianProfileIndex},
     {path: '/profile/t/:technician/edit', component: TechnicianProfileEdit},
+    {path: '/dashboard/posts/', name: 'posts.index', component: TechnicianPostIndex},
+
 
     //Route testimonials
     { path: '/dashboard/testimonials', name: 'testimonials.index', component: TestimonialIndex },
@@ -156,7 +194,30 @@ export const routes = [
     { path: '/dashboard/testimonials/:id/edit', name: 'testimonials.edit', component: TestimonialEdit },
     { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.show', component: TestimonialShow },
 
+     
+     /* Legal Mention route  */
+     { path: '/dashboard/legal_notice', name: 'legal_notice.index', component: LegalnoticeIndex },
+     { path: '/dashboard/legal_notice/create', name: 'legal_notice.create', component: LegalnoticeCreate },
+     { path: '/dashboard/legal_notice/:id/edit', name: 'legal_notice.edit', component: LegalnoticeEdit },
+     { path: '/dashboard/legal_notice/lm/:legalnotice', name: 'legal_notice.view', component: LegalnoticeView, },
+     { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
+     { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
+     { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },
+     { path: '/dashboard/licence_site/lm/:licence', name: 'licence_site.view', component: LicenceView },
+     { path: '/dashboard/policy_privacy', name: 'policy_privacy.index', component: PolicyprivacyIndex },
+     { path: '/dashboard/policy_privacy/create', name: 'policy_privacy.create', component: PolicyprivacyCreate },
+     { path: '/dashboard/policy_privacy/:id/edit', name: 'policy_privacy.edit', component: PolicyprivacyEdit },
+     { path: '/dashboard/policy_privacy/lm/:policyprivacy', name: 'policy_privacy.view', component: PolicyprivacyView },
+     { path: '/dashboard/conditions', name: 'conditions.index', component: TermsconditionsIndex },
+     { path: '/dashboard/conditions/create', name: 'conditions.create', component: TermsconditionsCreate },
+     { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
+     { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
+     { path: '/dashboard/cookies-site', name: 'cookies-site.index', component: CookieIndex },
+     { path: '/dashboard/cookies-site/create', name: 'cookies-site.create', component: CookieCreate },
+     { path: '/dashboard/cookies-site/:id/edit', name: 'cookies-site.edit', component: CookieEdit },
+     { path: '/dashboard/cookies-site/lm/:cookie', name: 'cookies-site.view', component: CookieView },
 
+     
     /** Ici je recupere les route du site **/
 
     //Route auth

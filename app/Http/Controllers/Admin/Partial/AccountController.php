@@ -81,6 +81,12 @@ class AccountController extends Controller
         return view('user.profile.profileEdit',compact('user'));
     }
 
+    public function vector()
+    {
+        $user = Auth::user();
+        return view('user.profile.profileEdit',compact('user'));
+    }
+
 
     public function user()
     {

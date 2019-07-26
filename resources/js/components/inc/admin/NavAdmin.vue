@@ -119,6 +119,13 @@
                                         <span class="sidebar-normal"><b>Testimonials</b></span>
                                     </router-link>
                                 </li>
+                                 <!--Registration-->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/registrations/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>RI</b></span>
+                                        <span class="sidebar-normal"><b>Registration Infos</b></span>
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -154,10 +161,17 @@
                                         <span class="sidebar-normal"><b>Diplomas</b></span>
                                     </router-link>
                                 </li>
+                                 <!-- Posts -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/posts/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>TP</b></span>
+                                        <span class="sidebar-normal"><b>Tech Posts</b></span>
+                                    </router-link>
+                                </li>
                                 <!-- Countries -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
-                                        <span class="sidebar-mini"><b>COU</b></span>
+                                        <span class="sidebar-mini"><b>CO</b></span>
                                         <span class="sidebar-normal"><b>Country</b></span>
                                     </router-link>
                                 </li>
@@ -222,7 +236,7 @@
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/technicians/' }" class="nav-link">
                             <i class="material-icons">meeting_room</i>
-                            <p><b>Technicien</b></p>
+                            <p><b>Technicians</b></p>
                         </router-link>
                     </li>
                     <!-- Administrations -->
@@ -287,6 +301,49 @@
                             </ul>
                         </div>
                     </li>
+                     <!-- Legals Mentions -->
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="collapse" href="#legalsExamples">
+                                        <i class="material-icons">looks</i>
+                                        <p><b>Legal & Mention</b>
+                                            <b class="caret"></b>
+                                        </p>
+                                    </a>
+                                    <div class="collapse" id="legalsExamples">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <router-link  :to="{ path: '/dashboard/legal_notice' }" class="nav-link">
+                                                    <span class="sidebar-mini"><b>LN</b></span>
+                                                    <span class="sidebar-normal"><b>Legal Notice</b></span>
+                                                </router-link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <router-link  :to="{ path: '/dashboard/licence_site' }" class="nav-link">
+                                                    <span class="sidebar-mini"><b>LS</b></span>
+                                                    <span class="sidebar-normal"><b>Licence Site</b></span>
+                                                </router-link>
+                                            </li>
+                                            <li class="nav-item ">
+                                                <router-link  :to="{ path: '/dashboard/policy_privacy' }" class="nav-link">
+                                                    <span class="sidebar-mini"><b>PP</b></span>
+                                                    <span class="sidebar-normal"><b>Policy & Privacy</b></span>
+                                                </router-link>
+                                            </li>
+                                            <li class="nav-item ">
+                                                <router-link  :to="{ path: '/dashboard/conditions' }" class="nav-link">
+                                                    <span class="sidebar-mini"><b>TC</b></span>
+                                                    <span class="sidebar-normal"><b>Terms & Conditions</b></span>
+                                                </router-link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <router-link  :to="{ path: '/dashboard/cookies-site' }" class="nav-link">
+                                                    <span class="sidebar-mini"><b>CO</b></span>
+                                                    <span class="sidebar-normal"><b>Cookies</b></span>
+                                                </router-link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                 </ul>
             </div>
         </div>

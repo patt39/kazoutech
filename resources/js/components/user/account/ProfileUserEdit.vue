@@ -1,8 +1,6 @@
 <template>
     <div>
         <NavSite/>
-
-
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -51,7 +49,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row" style="padding-top: 10px; padding-bottom: 15px;">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Sex</label>
                                                             <select name="sex" v-model="form.sex" id="sex" class="form-control"
@@ -180,6 +178,12 @@
                                     <hr>
                                     <div class="submit">
                                         <div class="text-center">
+                                             <router-link  :to="{ path: `/:username` }" class="btn btn-info btn-round btn-raised" title="View">
+                                                       <span class="btn-label">
+                                            <i class="material-icons">visibility</i>
+                                                       </span>
+                                                <b class="title_hover">view profile</b>
+                                             </router-link>
                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
                                         <span class="btn-label">
                                             <i class="material-icons">save_alt</i>

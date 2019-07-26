@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Creative CV</title>
+        <title>Kazoutech</title>
         <meta name="description" content="Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skils and experience."/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
         <div class="profile-page sidebar-collapse">
             <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-warning" color-on-scroll="400">
                 <div class="container">
-                    <div class="navbar-translate"><a class="navbar-brand" href="/" rel="tooltip">Creative CV</a>
+                    <div class="navbar-translate"><a class="navbar-brand" href="/" rel="tooltip">Kazoutech</a>
                         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
                     </div>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -43,8 +43,8 @@
                         <div class="container">
                             <div class="content-center">
                                 <div class="cc-profile-image"><a href="#"><img src="/assets/images/anthony.jpg" alt="Image"/></a></div>
-                                <div class="h2 title">Zegue Temgoua Boclair</div>
-                                <p class="category text-white">Web Developer, Graphic Designer,  Photographer</p>
+                                <div class="h2 title">Noubissi Tafeng Darry Patrick</div>
+                                <p class="category text-white">Web Developer And Data Analyst</p>
                                 <a class="btn btn-primary btn-round btn-warning smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a>
                                 <a class="btn btn-primary btn-round " href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                             </div>
@@ -52,15 +52,15 @@
                         <div class="section">
                             <div class="container">
                                 <div class="button-container">
-                                    <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Facebook">
+                                    <a class="btn btn-facebook btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Facebook">
                                         <i class="fa fa-facebook"></i>
                                     </a>
-                                    <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Twitter">
-                                        <i class="fa fa-twitter"></i>
+                                    <a class="btn btn-linkedin btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Linkedin">
+                                        <i class="fa fa-linkedin"></i>
                                     </a>
-                                    <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Google+">
+                                    <a class="btn btn-google btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Google+">
                                         <i class="fa fa-google-plus"></i>
-                                    </a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Instagram">
+                                    </a><a class="btn btn-instagram btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Instagram">
                                         <i class="fa fa-instagram"></i>
                                     </a>
                                 </div>
@@ -75,9 +75,9 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <div class="card-body">
-                                    <div class="h4 mt-0 title">About</div>
-                                    <p>Hello! I am Anthony Barnett. Web Developer, Graphic Designer and Photographer.</p>
-                                    <p>Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience. <a href="https://templateflip.com/templates/creative-cv/" target="_blank">Learn More</a></p>
+                                    <div class="h4 mt-0 title">About Me</div>
+                                    <p>Hello! I am Patrick Noubissi. Web Developer and Data Analyst.</p>
+                                    <p><em style="font-weight: bold"> Patrick CV </em> is a simple website type blog which permit me to be more visible on the work market. Built by me with PHP using LARAVEL framework AND JAVASCRIPT using VUE.JS , Now UI Kit and FontAwesome, this modern and responsive design site is perfect to showcase my portfolio, skills and experience.</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
@@ -85,15 +85,15 @@
                                     <div class="h4 mt-0 title">Basic Information</div>
                                     <div class="row">
                                         <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-                                        <div class="col-sm-8">24</div>
+                                        <div class="col-sm-8">23</div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-                                        <div class="col-sm-8">anthony@company.com</div>
+                                        <div class="col-sm-8">patrick.noubissi@yahoo.com</div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-                                        <div class="col-sm-8">+1718-111-0011</div>
+                                        <div class="col-sm-8">+39 3881155086</div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-                                        <div class="col-sm-8">English, German, French</div>
+                                        <div class="col-sm-8">English, Italian, French</div>
                                     </div>
                                 </div>
                             </div>
@@ -116,14 +116,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
+                                    <div class="progress-container progress-primary"><span class="progress-badge">PHP</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">CSS</span>
+                                    <div class="progress-container progress-primary"><span class="progress-badge">LARAVEL</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
                                         </div>
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">SASS</span>
+                                    <div class="progress-container progress-primary"><span class="progress-badge">VUE.JS</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
                                         </div>
@@ -148,70 +148,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Bootstrap</span>
+                                    <div class="progress-container progress-primary"><span class="progress-badge">PYTHON</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Photoshop</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <div class="h4 text-center mb-4 title">Freamwork</div>
-                    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">CSS</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">JavaScript</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">SASS</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Bootstrap</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Photoshop</span>
+                                    <div class="progress-container progress-primary"><span class="progress-badge">TENSOFLOW</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
                                         </div>
@@ -231,7 +175,6 @@
                                 <ul class="nav nav-pills nav-pills-primary" role="tablist">
                                     <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#web-development" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Photography" role="tablist"><i class="fa fa-camera" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -313,44 +256,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="Photography" role="tabpanel">
-                            <div class="ml-auto mr-auto">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                                                <figure class="cc-effect"><img src="/assets/images/photography-1.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Photoshoot</div>
-                                                        <p>Photography</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                                                <figure class="cc-effect"><img src="/assets/images/photography-3.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Wedding Photoshoot</div>
-                                                        <p>Photography</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                                                <figure class="cc-effect"><img src="/assets/images/photography-2.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Beach Photoshoot</div>
-                                                        <p>Photography</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                                                <figure class="cc-effect"><img src="/assets/images/photography-4.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Nature Photoshoot</div>
-                                                        <p>Photography</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -375,7 +280,7 @@
                     </div>
                     <div class="card">
                         <div class="row">
-                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+                            <div class="col-md-3 bg-danger" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
                                 <div class="card-body cc-experience-header">
                                     <p>April 2014 - March 2016</p>
                                     <div class="h5">WebNote</div>
@@ -391,7 +296,23 @@
                     </div>
                     <div class="card">
                         <div class="row">
-                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+                            <div class="col-md-3 bg-info" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+                                <div class="card-body cc-experience-header">
+                                    <p>March 2016 - Mai 2016</p>
+                                    <div class="h5">Datacheck</div>
+                                </div>
+                            </div>
+                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+                                <div class="card-body">
+                                    <div class="h5">Data Analysis</div>
+                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-3 bg-warning" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
                                 <div class="card-body cc-experience-header">
                                     <p>April 2013 - February 2014</p>
                                     <div class="h5">WEBM</div>
@@ -410,23 +331,6 @@
             <div class="section">
                 <div class="container cc-education">
                     <div class="h4 text-center mb-4 title">Education</div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-education-header">
-                                    <p>2013 - 2015</p>
-                                    <div class="h5">Master's Degree</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Master of Information Technology</div>
-                                    <p class="category">University of Computer Science</p>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card">
                         <div class="row">
                             <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
@@ -523,7 +427,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="card-body">
-                                                    <form action="https://formspree.io/your@email.com" method="POST">
+                                                    <form action="#" method="POST">
                                                         <div class="p pb-3"><strong>Feel free to contact me </strong></div>
                                                         <div class="row mb-3">
                                                             <div class="col">
@@ -566,9 +470,9 @@
                                                     <p class="mb-0"><strong>Address </strong></p>
                                                     <p class="pb-2">140, City Center, New York, U.S.A</p>
                                                     <p class="mb-0"><strong>Phone</strong></p>
-                                                    <p class="pb-2">+1718-111-0011</p>
+                                                    <p class="pb-2">+39 3881155086</p>
                                                     <p class="mb-0"><strong>Email</strong></p>
-                                                    <p>anthony@company.com</p>
+                                                    <p>patrick.noubissi@yahoo.com</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -582,9 +486,12 @@
     </div>
     <footer class="footer">
         <div class="container text-center"><a class="cc-facebook btn btn-link" href="#"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a><a class="cc-twitter btn btn-link " href="#"><i class="fa fa-twitter fa-2x " aria-hidden="true"></i></a><a class="cc-google-plus btn btn-link" href="#"><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a><a class="cc-instagram btn btn-link" href="#"><i class="fa fa-instagram fa-2x " aria-hidden="true"></i></a></div>
-        <div class="h4 title text-center">Anthony Barnett</div>
-        <div class="text-center text-muted">
-            <p>&copy; Creative CV. All rights reserved.<br>Design - <a class="credit" href="https://templateflip.com" target="_blank">TemplateFlip</a></p>
+        <div class="h4 title text-center">Patrick Noubissi</div>
+        <div class="copyright pull-left">
+            <h6 style="font-size=0.9em;">&copy; 2018 -
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>. Realized by <a href="/">{!! config('app.author') !!}</a></h6>
         </div>
     </footer>
 

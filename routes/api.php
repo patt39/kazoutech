@@ -20,6 +20,7 @@ Route::get('administrators', 'Admin\AdministratorController@api');
 Route::get('occupations', 'Admin\OccupationController@api');
 Route::get('colors', 'Admin\Partial\ColorController@api');
 Route::get('diplomas', 'Admin\Partial\DiplomaController@api');
+Route::get('posts', 'Admin\Partial\PostController@api');
 Route::get('abouts', 'Admin\Page\AboutController@api');
 Route::get('category-faqs', 'Admin\Partial\CategoryfaqController@api');
 Route::get('faqs', 'Admin\FaqController@api');

@@ -142,7 +142,7 @@ class ColorController extends Controller
 
         $color->save();
 
-        return ['message' => 'color has ben updated'];
+        return ['message' => 'color has been updated'];
     }
 
     /**
