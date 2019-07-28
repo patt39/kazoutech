@@ -85,6 +85,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <div class="submit">
+                                            <div class="text-center">
+                                                <router-link v-if="technician.user.id === user.id" :to="{ path: `/profile/t/${technician.slug}/edit` }" class="btn btn-success btn-round" id="button_hover">
+                                                    <b class="title_hover">Edit profile technician</b>
+                                                </router-link>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +108,7 @@
     import NavSite from "../../inc/user/NavSite";
     import api from '../../../api/mixins/collections';
     export default {
-        name: "RegisterIndex",
+        props: ['auth','authcheck','userID'],
         components: {NavSite},
         data() {
             return {

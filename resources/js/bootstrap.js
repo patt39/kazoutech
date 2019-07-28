@@ -11,6 +11,8 @@ import Auth from './api/auth'
 Vue.prototype.$auth = new Auth(window.user);
 
 Vue.prototype.user = window.user.user;
+Vue.prototype.guest = window.user.guest;
+Vue.prototype.authcheck = window.user.authcheck;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

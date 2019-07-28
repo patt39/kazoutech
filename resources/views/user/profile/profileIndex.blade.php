@@ -1,6 +1,6 @@
 @extends('inc.user._main')
 <?php $usernameTag = htmlspecialchars($user->name); ?>
-@section('title',"-View profile $usernameTag")
+@section('title',"- $usernameTag")
 
 @section('style')
 

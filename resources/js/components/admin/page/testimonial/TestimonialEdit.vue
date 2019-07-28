@@ -31,12 +31,18 @@
                                                 <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
                                                                 <input v-model="form.role" type="text" name="role"
                                                                        class="form-control" :class="{ 'is-invalid': form.errors.has('role') }" placeholder="Qui ete vous ?">
                                                                 <has-error :form="form" field="role"></has-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <rate :length="5" :value="form.stars_evaluation" disabled
+                                                                      class="form-control" :ratedesc="['Very bad', 'bad', 'Normal', 'Good', 'Very good']" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -109,6 +115,7 @@
                     id: '',
                     ip: '',
                     user_id: '',
+                    stars_evaluation: '',
                     slug: '',
                     role: '',
                     body: ''

@@ -111,11 +111,12 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/profile/{username}', 'AccountController@show')->name('admin.view');
         Route::get('/api/dashboard/profile/{username}', 'AccountController@userShow');
         Route::get('/dashboard/user/update', 'AccountController@edit')->name('admin.edit_profile');
-        Route::get('/{username}', 'AccountController@view')->name('profile.view');
-        Route::get('/profile/edit', 'AccountController@profile')->name('profile.edit');
+        Route::get('/{username}', 'AccountController@profileView')->name('profile.view');
+        Route::get('/profile/edit', 'AccountController@profileEdit')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');
 
         Route::post('auth/register', 'AccountController@register');
+        Route::get('api/{username}', 'AccountController@view');
         Route::get('api/account/user', 'AccountController@user');
         Route::get('api/account/profile', 'AccountController@userEdit');
 
@@ -174,6 +175,36 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/disable_testimonials/{id}', 'TestimonialController@disable');
 
     });
+    Route::group(['namespace' => 'Info'], function () {
+
+        //Terms & Conditions Routes
+        Route::resource('/dashboard/conditions', 'ConditionController');
+        Route::get('/conditions/lm/{condition}', 'ConditionController@vector')->name('conditions.view');
+        Route::get('/conditions/view/{slug}', 'ConditionController@view');
+        Route::get('/disable_condition/{id}', 'ConditionController@unactive_condition');
+        Route::get('/active_condition/{id}', 'ConditionController@active_condition');
+
+        //Legal Notice Route
+        Route::resource('/legal_notice', 'LegalnoticeController');
+        Route::get('/legal_notice/lm/{legalnotice}', 'LegalnoticeController@vector')->name('legalnotice.view');
+        Route::get('/legal_notice/view/{slug}', 'LegalnoticeController@view');
+        Route::get('/active_legal_notice/{id}', 'LegalnoticeController@active');
+        Route::get('/disable_legal_notice/{id}', 'LegalnoticeController@disable');
+
+        //Policy & Privacy Route
+        Route::resource('/policy_privacy', 'PolicyprivacyController');
+        Route::get('/policy_privacy/lm/{policyprivacy}', 'PolicyprivacyController@vector')->name('policy_privacy.view');
+        Route::get('/policy_privacy/view/{slug}', 'PolicyprivacyController@view');
+        Route::get('/active_policy_privacy/{id}', 'PolicyprivacyController@active');
+        Route::get('/disable_policy_privacy/{id}', 'PolicyprivacyController@disable');
+
+        //Licence Site Route
+        Route::resource('/licence_site', 'LicencesiteController');
+        Route::get('/licence_site/lm/{licence}', 'LicencesiteController@vector')->name('licence_site.view');
+        Route::get('/licence_site/view/{slug}', 'LicencesiteController@view');
+        Route::get('/active_licence_site/{id}', 'LicencesiteController@active');
+        Route::get('/disable_licence_site/{id}', 'LicencesiteController@disable');
+    });
 
 });
 
@@ -214,35 +245,4 @@ Route::group(['namespace' => 'User'], function () {
 
 
     Route::get('dashboard/chat', 'MessageController@chat')->name('messages.chat');
-});
-
-Route::group(['namespace' => 'Info'], function () {
-    
-    //Terms & Conditions Routes
-    Route::resource('/conditions', 'ConditionController');
-    Route::get('/conditions/lm/{condition}', 'ConditionController@vector')->name('conditions.view');
-    Route::get('/conditions/view/{slug}', 'ConditionController@view');
-    Route::get('/unactive_condition/{id}', 'ConditionController@unactive_condition');
-    Route::get('/active_condition/{id}', 'ConditionController@active_condition');
-
-    //Legal Notice Route
-    Route::resource('/legal_notice', 'LegalnoticeController');
-    Route::get('/legal_notice/lm/{legalnotice}', 'LegalnoticeController@vector')->name('legalnotice.view');
-    Route::get('/legal_notice/view/{slug}', 'LegalnoticeController@view');
-    Route::get('/active_legal_notice/{id}', 'LegalnoticeController@active');
-    Route::get('/disable_legal_notice/{id}', 'LegalnoticeController@disable');
-
-    //Policy & Privacy Route
-    Route::resource('/policy_privacy', 'PolicyprivacyController');
-    Route::get('/policy_privacy/lm/{policyprivacy}', 'PolicyprivacyController@vector')->name('policy_privacy.view');
-    Route::get('/policy_privacy/view/{slug}', 'PolicyprivacyController@view');
-    Route::get('/active_policy_privacy/{id}', 'PolicyprivacyController@active');
-    Route::get('/disable_policy_privacy/{id}', 'PolicyprivacyController@disable');
-
-    //Licence Site Route
-    Route::resource('/licence_site', 'LicencesiteController');
-    Route::get('/licence_site/lm/{licence}', 'LicencesiteController@vector')->name('licence_site.view');
-    Route::get('/licence_site/view/{slug}', 'LicencesiteController@view');
-    Route::get('/active_licence_site/{id}', 'LicencesiteController@active');
-    Route::get('/disable_licence_site/{id}', 'LicencesiteController@disable');
 });

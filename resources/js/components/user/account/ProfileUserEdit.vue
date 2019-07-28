@@ -14,15 +14,7 @@
                                     <div class="card-body">
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="profile">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="bmd-label-floating">Company - kazoutech</label>
-                                                            <input type="text" class="form-control" disabled/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <br>
+
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
@@ -49,7 +41,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row" style="padding-top: 10px; padding-bottom: 15px;">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Sex</label>
                                                             <select name="sex" v-model="form.sex" id="sex" class="form-control"
@@ -61,7 +53,7 @@
                                                             <has-error :form="form" field="sex"></has-error>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Your Country</label>
                                                             <select name="country_id" v-model="form.country_id"
@@ -76,32 +68,6 @@
                                                                 </option>
                                                             </select>
                                                             <has-error :form="form" field="country_id"></has-error>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label>Header Color Card</label>
-                                                            <select name="color_name" v-model="form.color_name" id="color_name" class="form-control"
-                                                                    :class="{ 'is-invalid': form.errors.has('color_name') }" style="margin-top: 15px;">
-                                                                <option value="" disabled>Choose Your Color</option>
-                                                                <option v-for="color in colors" :key="color.id" :value="color.slug">{{color.color_name}}</option>
-                                                            </select>
-                                                            <has-error :form="form" field="color_name"></has-error>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label>Sidebar Filters Color Menu</label>
-                                                            <select name="color_style" v-model="form.color_style" id="color_style" class="form-control"
-                                                                    :class="{ 'is-invalid': form.errors.has('color_style') }" style="margin-top: 15px;">
-                                                                <option value="" disabled>Choose Your Color Style</option>
-                                                                <option value="purple">Purple</option>
-                                                                <option value="azure">Azure</option>
-                                                                <option value="green">Green</option>
-                                                                <option value="orange">Orange</option>
-                                                                <option value="danger">Danger</option>
-                                                            </select>
-                                                            <has-error :form="form" field="color_style"></has-error>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,16 +144,10 @@
                                     <hr>
                                     <div class="submit">
                                         <div class="text-center">
-                                             <router-link  :to="{ path: `/:username` }" class="btn btn-info btn-round btn-raised" title="View">
-                                                       <span class="btn-label">
-                                            <i class="material-icons">visibility</i>
-                                                       </span>
+                                             <router-link  :to="{ path: `/${form.username}` }" class="btn btn-info btn-round btn-raised" title="View">
                                                 <b class="title_hover">view profile</b>
                                              </router-link>
                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                        <span class="btn-label">
-                                            <i class="material-icons">save_alt</i>
-                                        </span>
                                                 <b class="title_hover">Update profile</b>
                                             </button>
                                         </div>

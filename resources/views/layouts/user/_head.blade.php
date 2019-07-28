@@ -12,6 +12,8 @@
 <script>
     window.user = {!! json_encode([
     'user' => auth()->user(),
+    'guest' => auth()->guest(),
+    'authcheck' => auth()->check(),
     ]) !!}
 </script>
 
