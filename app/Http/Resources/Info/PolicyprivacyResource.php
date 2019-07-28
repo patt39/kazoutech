@@ -4,7 +4,7 @@ namespace App\Http\Resources\Info;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Policyprivacy extends JsonResource
+class PolicyprivacyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

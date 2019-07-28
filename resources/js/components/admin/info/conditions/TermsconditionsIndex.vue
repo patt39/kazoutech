@@ -9,7 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="loaded" class="row">
+                   <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
@@ -17,7 +17,7 @@
                                         <i class="material-icons">indeterminate_check_box</i>
                                     </div>
                                     <p class="card-category"><b>All Terms & Conditions</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{termsconditions.length}}</b></h3>
+                                    <h3 class="card-title" style="color:red;"><b>{{conditions.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div v-if="!loaded" class="submit">
-                        <Loaded/>
+                        <LoaderLdsDefault/>
                     </div>
                     <div v-if="loaded" class="row">
                         <div class="col-md-12 expo">
@@ -53,7 +53,7 @@
                                 <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button @click="reload" class="btn btn-warning btn-raised btn-round button_note btn-sm"
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
@@ -65,7 +65,7 @@
                                         <div class="submit text-center">
                                             <router-link :to="{ name: 'conditions.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round ">
                                                <span class="btn-label">
-                                                    <i class="material-icons">branding_watermark</i>
+                                                    <i class="material-icons">indeterminate_check_box</i>
                                                 </span>
                                                 <b class="title_hover">New Condition</b>
                                             </router-link>
@@ -95,7 +95,7 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <tr v-for="item in termsconditions" :key="item.id">
+                                                <tr v-for="item in conditions" :key="item.id">
                                                     <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 10px"></td>
                                                     <td>{{ (item.title.length > 20 ? item.title.substring(0,20)+ "..." : item.title) | upText }}</td>
                                                     <td v-html="(item.body.length > 20 ? item.body.substring(0,20)+ '...' : item.body)"></td>
@@ -105,13 +105,13 @@
                                                             <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
                                                         </div>
                                                     </td>
-                                                    <td>
-                                                        <router-link  :to="{ path: `/admin/profile/${item.user.username}` }">
-                                                            <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                            <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                            {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                        </router-link>
-                                                    </td>
+                                                   <td>
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                    </a>
+                                                  </td>
                                                     <td class="td-actions text-right">
                                                         <template v-if="$auth.can('publish-condition_utilisation')">
                                                             <button v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
@@ -121,10 +121,10 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <router-link :to="{ path: `/admin/conditions/lm/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                        <router-link :to="{ path: `/dashboard/conditions/lm/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
                                                             <i class="material-icons">visibility</i>
                                                         </router-link>
-                                                        <router-link v-if="$auth.can('edit-condition_utilisation')" :to="{ path: `/admin/conditions/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                        <router-link v-if="$auth.can('edit-condition_utilisation')" :to="{ path: `/dashboard/conditions/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
                                                         <button v-if="$auth.can('delete-condition_utilisation')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
@@ -153,8 +153,10 @@
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import Loaded from "../../../inc/animation/Loaded";
+    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+   
     export default {
-        components: {Loaded, StatusAdmin, FooterAdmin, TopNav, NavAdmin },
+        components: {Loaded, StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderLdsDefault },
         data() {
             return {
                 loaded: false,
@@ -224,6 +226,13 @@
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
+            },
             getImagesave(){
                 let photo = (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
                 return photo;
@@ -269,7 +278,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/admin/conditions/' + id).then(() => {
+                        this.form.delete('/dashboard/conditions/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -302,7 +311,7 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get('/admin/active_condition/' + id).then(() => {
+                this.form.get('/dashboard/active_condition/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
@@ -334,7 +343,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/admin/unactive_condition/' + id).then(() => {
+                this.form.get('/dashboard/unactive_condition/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
@@ -365,13 +374,13 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/admin/api/conditions";
+                const url = "/api/conditions";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.termsconditions = response.data.data;
+                    this.conditions = response.data.data;
                     this.mydatatables();
                 });
-                axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();
             },

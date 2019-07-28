@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\ConditionResource;
 use App\Model\admin\info\condition;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\File;
 
 class ConditionController extends Controller
 {
@@ -89,7 +91,7 @@ class ConditionController extends Controller
 
         $condition->save();
 
-        return new TermsconditionsResource($condition);
+        return new ConditionResource($condition);
     }
 
     public function unactive_condition($id)
@@ -124,7 +126,7 @@ class ConditionController extends Controller
      */
     public function show($id)
     {
-        $condition = new TermsconditionsResource(condition::where('id', $id)->findOrFail($id));
+        $condition = new ConditionResource(condition::where('id', $id)->findOrFail($id));
         return $condition;
     }
 

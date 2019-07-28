@@ -2,6 +2,7 @@
 
 namespace App\Model\admin\info;
 
+use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 

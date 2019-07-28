@@ -2,6 +2,7 @@
 
 namespace App\Model\admin\info;
 
+use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -10,6 +11,8 @@ class licencesite extends Model
     protected $table = 'licencesites';
 
     protected $fillable = ['body','slug','user_id'];
+   
+
 
     public function user()
     {

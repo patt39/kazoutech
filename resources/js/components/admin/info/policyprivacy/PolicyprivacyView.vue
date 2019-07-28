@@ -9,7 +9,11 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <errored-loading v-if="errored"/>
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded"  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -33,7 +37,7 @@
                                                                 <div class="nav-tabs-wrapper">
                                                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                                                         <li v-if="$auth.can('edit-privacy')" class="nav-item">
-                                                                            <router-link :to="{ path: `/admin/policy_privacy/${form.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
+                                                                            <router-link :to="{ path: `/dashboard/policy_privacy/${form.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
                                                                                 <i class="material-icons">edit</i>
                                                                                 <b>Edit Privacy</b>
                                                                             </router-link>
@@ -63,7 +67,6 @@
                                                                                 <span class="form-check-sign"></span>
                                                                             </label>
                                                                         </div>
-                                                                        <has-error :form="form" field="body"></has-error>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -149,7 +152,7 @@
             //Start Progress bar
             this.$Progress.start();
             api.policyprivacySlug(this.$route.params.policyprivacy).then(({data}) => this.form.fill(data.data));
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }

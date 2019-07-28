@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded"  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -148,7 +151,7 @@
         //Start Progress bar
         this.$Progress.start();
         api.legalnoticeSlug(this.$route.params.legalnotice).then(({data}) => this.form.fill(data.data));
-        axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+        axios.get("/api/account/profile").then(response => {this.user = response.data.data});
         //End Progress bar
         this.$Progress.finish();
     }

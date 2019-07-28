@@ -9,7 +9,6 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -112,8 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                     </div>
                 </div>
             </div>
          <FooterAdmin/>
@@ -127,9 +125,10 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin },
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderEllipsis },
         data() {
             return {
                 editmode: false,
@@ -205,7 +204,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.put('/admin/conditions/' + this.form.id)
+                this.form.put('/dashboard/conditions/' + this.form.id)
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -239,7 +238,7 @@
             //Start Progress bar
             this.$Progress.start();
             api.conditionID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }

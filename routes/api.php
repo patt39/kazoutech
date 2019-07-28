@@ -43,10 +43,10 @@ Route::get('technicians/o/{occupation}', 'User\TechnicianController@viewoccupati
 Route::get('technicians/o/{occupation}/c/{city}', 'User\TechnicianController@viewoccupationcity');
 Route::get('testimonials', 'Admin\Page\TestimonialController@api');
 Route::get('tags', 'Admin\Partial\TagController@api');
-Route::get('conditions', 'ConditionController@api');
-Route::get('legal_notice', 'LegalnoticeController@api');
-Route::get('policy_privacy', 'PolicyprivacyController@api');
-Route::get('licence_site', 'LicencesiteController@api');
+Route::get('conditions', 'Admin\Info\ConditionController@api');
+Route::get('legal_notice', 'Admin\Info\LegalnoticeController@api');
+Route::get('policy_privacy', 'Admin\Info\PolicyprivacyController@api');
+Route::get('licence_site', 'Admin\Info\LicencesiteController@api');
 
 
 

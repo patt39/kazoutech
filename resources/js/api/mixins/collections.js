@@ -34,6 +34,21 @@ export default {
     faqID(id) {
         return axios.get(`/dashboard/faqs/${id}`);
     },
+    conditionID(id) {
+        return axios.get(`/dashboard/conditions/${id}`);
+    },
+    legalnoticeID(id) {
+        return axios.get(`/dashboard/legal_notices/${id}`);
+    },
+    policyprivacyID(id) {
+        return axios.get(`/dashboard/policyprivacy/${id}`);
+    },
+    legalnoticeSlug(legalnotice) {
+        return axios.get(`/dashboard/legal_notices/view/${legalnotice}`);
+    },
+    conditionSlug(condition) {
+        return axios.get(`/dashboard/conditions/view/${condition}`);
+    },
     messageshow(message) {
         return axios.get(`/dashboard/messages/view/${message}`);
     },

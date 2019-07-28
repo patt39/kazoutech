@@ -44,7 +44,7 @@ class LicencesiteController extends Controller
  
     public function api()
     {
-        return LicencesiteResource::collection(Licence::with('user')->latest()->get());
+        return LicencesiteResource::collection(Licencesite::with('user')->latest()->get());
     }
     /**
      * Store a newly created resource in storage.
@@ -58,12 +58,12 @@ class LicencesiteController extends Controller
             'body'=>'required|string'
         ]);
         
-        $licence = new licence;
-        $licence->body = $request->body;
-        $licence->user_id = auth()->user()->id;
-        $licence->status = '0';
+        $licencesite = new licence;
+        $licencesite->body = $request->body;
+        $licencesite->user_id = auth()->user()->id;
+        $licencesite->status = '0';
         
-        $licence->save();
+        $licencesite->save();
         
         return response('Created',Response::HTTP_CREATED);
     }
@@ -76,7 +76,7 @@ class LicencesiteController extends Controller
      */
     public function disable($id)
     {
-        DB::table('licences')
+        DB::table('licencesites')
             ->where('id',$id)
             ->update([
                 'status' => 0,
@@ -87,7 +87,7 @@ class LicencesiteController extends Controller
 
     public function active($id)
     {
-        DB::table('licences')
+        DB::table('licencesites')
             ->where('id',$id)
             ->update([
                 'status' => 1,
@@ -105,7 +105,7 @@ class LicencesiteController extends Controller
      */
     public function show($id)
     {
-        $licence = new LicenceResource(licence::where('id', $id)->findOrFail($id));
+        $licence = new LicencesiteResource(licence::where('id', $id)->findOrFail($id));
         return $licence;
     }
 
@@ -123,16 +123,16 @@ class LicencesiteController extends Controller
 
     public function view($slug)
     {
-        $licence = new LicenceResource(licence::where('slug',$slug)->firstOrFail());
-        return $licence;
+        $licencesite = new LicencesiteResource(licencesite::where('slug',$slug)->firstOrFail());
+        return $licencesite;
     }
 
 
 
-    public function vector(licence $licence)
+    public function vector(licencesite $licencesite)
     {
         return view('admin.info.licence.view', [
-            'licence' => $licence,
+            'licencesite' => $licencesite,
         ]);
     }
 
@@ -148,12 +148,12 @@ class LicencesiteController extends Controller
         $this->validate($request,[
             'body'=>'required|string'
         ]);
-        $licence = licence::first();
+        $licencesite = licencesite::first();
 
-        $licence->body = $request->body;
-        $licence->user_id = auth()->user()->id;
+        $licencesite->body = $request->body;
+        $licencesite->user_id = auth()->user()->id;
 
-        $licence->save();
+        $licencesite->save();
 
         return ['message' => 'updated successfully'];
     }

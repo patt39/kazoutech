@@ -9,7 +9,6 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -33,7 +32,7 @@
                                                                 <div class="nav-tabs-wrapper">
                                                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                                                         <li v-if="$auth.can('edit-condition_utilisation')" class="nav-item">
-                                                                            <router-link :to="{ path: `/admin/conditions/${form.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
+                                                                            <router-link :to="{ path: `/admin/conditions/${condition.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
                                                                                 <i class="material-icons">edit</i>
                                                                                 <b>Edit Condition</b>
                                                                             </router-link>
@@ -56,9 +55,8 @@
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label class="bmd-label-floating"></label>
-                                                                                    <input v-model="form.title" type="text" name="title"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" placeholder="Presentation title" disabled>
-                                                                                    <has-error :form="form" field="title"></has-error>
+                                                                                    <input v-model="condition.title" type="text" name="title"
+                                                                                           class="form-control" placeholder="Presentation title" disabled>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -68,27 +66,25 @@
                                                                                     <br>
                                                                                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                                                         <div class="fileinput-new thumbnail">
-                                                                                            <img :src="getImagesave()" :alt="form.slug">
+                                                                                            <img :src="getImagesave()" :alt="condition.slug">
                                                                                         </div>
                                                                                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                     </div>
-                                                                                    <has-error :form="form" field="photo"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="bmd-label-floating"></label>
-                                                                            <vue-editor :disabled=true v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                            <vue-editor :disabled=true v-model="condition.body" :editorToolbar="customToolbar"></vue-editor>
                                                                             <div class="form-check">
                                                                                 <label class="form-check-label pull-right">
                                                                                     Created by
-                                                                                    <router-link  :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
-                                                                                        {{ form.user.name}}
+                                                                                    <router-link  :to="{ path: `/admin/profile/${condition.user.username}` }" class="text-danger">
+                                                                                        {{ condition.user.name}}
                                                                                     </router-link>
                                                                                     <span class="form-check-sign"></span>
                                                                                 </label>
                                                                             </div>
-                                                                            <has-error :form="form" field="body"></has-error>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -110,8 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                     </div>
                 </div>
             </div>
         <FooterAdmin/>
@@ -125,14 +120,15 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin },
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderEllipsis },
         data() {
             return {
                 editmode: false,
                 user: '',
-                form: new Form({
+                condition: {
                     id: '',
                     ip: '',
                     title: '',
@@ -142,7 +138,7 @@
                     body: '',
                     user_id: '',
                     status: '',
-                }),
+                },
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     [{ 'font': [] }],
@@ -175,19 +171,22 @@
                 return colorHeader;
             },
             getImagesave(){
-                let photo = (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
+                let photo = (this.condition.photo.length > 200) ? this.condition.photo : this.condition.photo;
                 return photo;
             },
         },
         created() {
             //Start Progress bar
             this.$Progress.start();
-            api.conditionSlug(this.$route.params.condition).then(({data}) => this.form.fill(data.data));
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            api.conditionSlug(this.$route.params.condition).then(response => {
+                this.loaded = true;
+                this.condition = response.data.data;
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
-        }
+        })
     }
+}  
 </script>
 
 <style scoped>

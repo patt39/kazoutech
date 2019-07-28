@@ -246,6 +246,7 @@
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+    
     export default {
         components: {
             LoaderLdsDefault,

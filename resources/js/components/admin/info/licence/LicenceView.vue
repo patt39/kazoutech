@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div v-if="loaded"  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -97,9 +100,11 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
+
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderEllipsis},
         data() {
             return {
                 loaded: false,
@@ -150,11 +155,10 @@
             //api.licenceSlug(this.$route.params.id).then(({data}) => this.form.fill(data.data));
             api.licenceSlug(this.$route.params.licence).then(response => {
                 this.licence = response.data.data;
-            });
-            api.licenceSlug(this.$route.params.licence).then(({data}) => (this.form.fill(data.data)));
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            axios.get("/api/account/profile").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
+            });
         }
     }
 </script>

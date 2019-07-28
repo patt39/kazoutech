@@ -14,14 +14,14 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">assignment</i>
+                                        <i class="material-icons">copyright</i>
                                     </div>
-                                    <p class="card-category"><b>All Occupations</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{occupations.length}}</b></h3>
+                                    <p class="card-category"><b>All Policies & Privacies Site</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{policyprivacies.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">assignment</i><b>All occupations</b>
+                                        <i class="material-icons">copyright</i><b>All Policies & Privacies</b>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                 <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button  @click="reload" class="btn btn-warning btn-raised btn-round button_note btn-sm"
+                                        <button  @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
@@ -61,7 +61,7 @@
                                     </div>
                                 <br>
                                 <div class="card-body">
-                                    <div v-if="$auth.can('create-privacy')" class="toolbar">
+                                    <div class="toolbar">
                                         <div class="submit text-center">
                                             <router-link :to="{ name: 'policy_privacy.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round ">
                                                 <span class="btn-label">
@@ -102,15 +102,14 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <router-link  :to="{ path: `/admin/profile/${item.user.username}` }">
-                                                            <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                            <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                            {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                        </router-link>
-                                                    </td>
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                    </a>
                                                     <td>{{ item.updated_at | myDate }}</td>
                                                     <td class="td-actions text-right">
-                                                        <template v-if="$auth.can('publish-privacy')">
+                                                        <template>
                                                             <button v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon" title="Disable">
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
@@ -118,12 +117,12 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <router-link  :to="{ path: `/admin/policy_privacy/lm/${item.title}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                        <router-link  :to="{ path: `/dashboard/policy_privacy/lm/${item.title}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
                                                         </router-link>
-                                                        <router-link v-if="$auth.can('edit-privacy')" :to="{ path: `/admin/policy_privacy/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                        <router-link :to="{ path: `/dashboard/policy_privacy/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
                                                         <button v-if="$auth.can('delete-privacy')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
@@ -152,8 +151,10 @@
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import Loaded from "../../../inc/animation/Loaded";
+    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+
     export default {
-        components: {Loaded, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {Loaded, StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderLdsDefault},
         data() {
             return {
                 loaded: false,
@@ -221,12 +222,19 @@
             getColorHeaderUser(){
 				let colorUser = 'card-header card-header-' + this.user.color_name;
 				return colorUser;
-			},
+            },
+             getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
                 
-                this.form.put('/admin/policy_privacy/' + this.form.id)
+                this.form.put('/dashboard/policy_privacy/' + this.form.id)
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -297,7 +305,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/admin/policy_privacy/' + id).then(() => {
+                        this.form.delete('/dasboard/policy_privacy/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -330,7 +338,7 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get('/admin/active_policy_privacy/' + id).then(() => {
+                this.form.get('/dashboard/active_policy_privacy/' + id).then(() => {
                       /** Alert notify bootstrapp **/
                       var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                           allow_dismiss: false,
@@ -362,7 +370,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/admin/disable_policy_privacy/' + id).then(() => {
+                this.form.get('/dashboard/disable_policy_privacy/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
@@ -392,14 +400,13 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/admin/api/policy_privacy";
+                const url = "/api/policy_privacy";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.policyprivacies = response.data.data;
                     this.mydatatables();
                 });
-                axios.get("/admin/api/account/user").then(({data}) => (this.form.fill(data)));
-                axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();
             },
@@ -410,7 +417,7 @@
                 //Start Progress bar
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post("/admin/policy_privacy")
+                this.form.post("/dashboard/policy_privacy")
                     .then(() => {
                         //Event
                         Fire.$emit('AfterCreate');

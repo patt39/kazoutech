@@ -15,6 +15,11 @@ class CreatePolicyprivaciesTable extends Migration
     {
         Schema::create('policyprivacies', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('slug')->nullable();
+            $table->integer('status')->nullable()->default('0');
+            $table->longText('body')->nullable();
+            $table->string('ip')->nullable();
+            $table->unsignedInteger('user_id')->nullable()->index();
             $table->timestamps();
         });
     }

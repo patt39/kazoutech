@@ -14,6 +14,16 @@ class LicencesiteResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'body' =>  $this->body,
+            'ip' => $this->ip,
+            'slug' => $this->slug,
+            'status' => $this->status,
+            'user' => $this->user,
+            'statusOnline' => $this->user->isOnline(),
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at,
+        ];
     }
 }

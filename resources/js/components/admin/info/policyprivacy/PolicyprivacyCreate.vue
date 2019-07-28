@@ -132,7 +132,7 @@
                 //Start Progress bar
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post("/admin/policy_privacy")
+                this.form.post("/dashboard/policy_privacy")
                     .then(() => {
 
                         //Insertion de l'alert !
@@ -167,7 +167,7 @@
         created() {
             //Start Progress bar
             this.$Progress.start();
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }

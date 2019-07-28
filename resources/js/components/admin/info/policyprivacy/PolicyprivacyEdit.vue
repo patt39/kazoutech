@@ -9,7 +9,10 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div class="row">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderEllipsis/>
+                    </div>
+                    <div  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -84,10 +87,13 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
+
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin },
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderEllipsis},
         data() {
         return {
+            loaded: false,
             user:'',
             form: new Form({
                 id: '',

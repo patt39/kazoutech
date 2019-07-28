@@ -8,7 +8,7 @@
                 <div class="container-fluid">
                     <br>
                     <StatusAdmin/>
-                    <br>
+                   <br>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="container">
@@ -84,9 +84,10 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin,},
         data() {
             return {
                 user: '',
@@ -132,7 +133,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.put('/admin/legal_notice/' + this.form.id)
+                this.form.put('/dashboard/legal_notice/' + this.form.id)
                     .then(() => {
 
                         /** Debut de l'alert **/
@@ -164,7 +165,7 @@
         created() {
             this.$Progress.start();
             api.legalnoticeID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }

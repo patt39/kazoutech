@@ -115,8 +115,8 @@ class PolicyprivacyController extends Controller
 
     public function view($slug)
     {
-        $licence = new PolicyprivacyResource(policyprivacy::where('slug',$slug)->firstOrFail());
-        return $licence;
+        $policyprivacy = new PolicyprivacyResource(policyprivacy::where('slug',$slug)->firstOrFail());
+        return $policyprivacy;
     }
 
 
