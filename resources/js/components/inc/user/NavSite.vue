@@ -37,6 +37,20 @@
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="position: relative; padding-left: 50px;">
                                 <img :src="userData.avatar" :alt="userData.name"  class="img-raised rounded-circle img-fluid text-center" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%"> <b v-text="userData.name"></b>
                             </a>
+                            <div class="dropdown-menu dropdown-with-icons">
+                                <a href="#" class="dropdown-item">
+                                   <b>Dashboard</b>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <b>Profile</b>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <b>Paramètres</b>
+                                </a>
+                                <a href="javascript:void(0)" @click="navLogout()" class="dropdown-item">
+                                    <b>Deconnexion</b>
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <router-link  :to="{ name: 'contact_cm' }" class="nav-link">
@@ -57,6 +71,25 @@
             return {
                 userData: {},
             }
+        },
+        methods: {
+
+            /* ***** script logout navbar ****/
+            navLogout(){
+                //Start Progress bar
+                this.$Progress.start();
+
+                //Envoyer la requet au server
+                axios.post('/logout').then(() => {
+
+                    location.replace(`/`);
+                    //End Progress bar
+                    this.$Progress.finish();
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                });
+            },
         },
         created() {
             axios.get("/api/account/user").then(

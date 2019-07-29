@@ -4,7 +4,7 @@
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <div class="card">
                             <div class="card-header">Register</div>
                             <div class="card-body">
@@ -118,9 +118,11 @@
                                                         <router-link :to="{ path: `/profile/t/${userProfile.username}` }" class="btn btn-danger btn-round" id="button_hover">
                                                             <b class="title_hover">Technician profile</b>
                                                         </router-link>
-                                                        <router-link v-if="userProfile.id === user.id" :to="{ name: 'profile.edit' }" class="btn btn-success btn-round" id="button_hover">
-                                                            <b class="title_hover">Edit profile</b>
-                                                        </router-link>
+                                                       <template v-if="!guest">
+                                                           <router-link v-if="userProfile.id === user.id" :to="{ name: 'profile.edit' }" class="btn btn-success btn-round" id="button_hover">
+                                                               <b class="title_hover">Edit profile</b>
+                                                           </router-link>
+                                                       </template>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,7 +141,6 @@
     import api from '../../../api/mixins/collections';
     import NavSite from "../../inc/user/NavSite";
     export default {
-        props: ['auth','authcheck','userId'],
         components: {NavSite},
         data() {
             return {

@@ -47,7 +47,7 @@ export default {
         return axios.get(`/dashboard/technicians/${id}`);
     },
     technicianSlug(technician) {
-        return axios.get(`/dashboard/technicians/j/${technician}`);
+        return axios.get(`/api/technicians/p/${technician}`);
     },
     technicianCity(city) {
         return axios.get(`/api/technicians/c/${city}`);
