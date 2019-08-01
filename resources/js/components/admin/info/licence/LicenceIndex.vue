@@ -17,7 +17,7 @@
                                         <i class="material-icons">verified_user</i>
                                     </div>
                                     <p class="card-category"><b>All Licences site</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{licences.length}}</b></h3>
+                                    <h3 class="card-title" style="color:red;"><b>{{licencesites.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -93,7 +93,7 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <tr v-for="item in licences" :key="item.id">
+                                                <tr v-for="item in licencesites" :key="item.id">
                                                     <td v-html="item.body.length > 30 ? item.body.substring(0,30)+ '...' : item.body"></td>
                                                     <td>
                                                         <div class="timeline-heading">
@@ -123,7 +123,7 @@
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
                                                         </router-link>
-                                                        <router-link v-if="$auth.can('edit-licence')" :to="{ path: `/dasboard/licence_site/${item.id}/edit` }" class="btn btn-link btn-success btn-round btn-just-icon" title="Edit">
+                                                        <router-link :to="{ path: `/dasboard/licence_site/${item.id}/edit` }" class="btn btn-link btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
                                                         <button v-if="$auth.can('delete-licence')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
@@ -160,7 +160,7 @@
             return {
                 loaded: false,
                 editmode: false,
-                licences: {},
+                licencesites: {},
                 user:'',
                 form: new Form({
                     id: '',
@@ -330,7 +330,7 @@
                 const url = "/api/licence_site";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.licences = response.data.data;
+                    this.licencesites = response.data.data;
                     this.mydatatables();
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});

@@ -52,14 +52,23 @@
                                     </div>
                                 </div>
                                 <br>
+                             <div  class="card-body">
+                                 <div class="header text-right">
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                    </div>
+                                 <br>   
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'tags.create' }" class="btn btn-success btn-raised btn-round" append>
+                                            <router-link id="button_hover" :to="{ name: 'tags.create' }" class="btn btn-success btn-raised btn-round" append>
                                                <span class="btn-label">
                                                     <i class="material-icons">forum</i>
                                                 </span>
-                                                <b>New Tag</b>
+                                                <b class="title_hover">New Tag</b>
                                             </router-link>
                                         </div>
                                     </div>
@@ -126,6 +135,7 @@
 
                                 </div>
                             </div>
+                         </div>
                         </div>
                     </div>
                 </div>
@@ -306,6 +316,9 @@
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
 
+            },
+             reload(){
+                this.loadItems();
             },
             intervalFetchData: function () {
                 setInterval(() => {

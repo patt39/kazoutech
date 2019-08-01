@@ -93,12 +93,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_color/{id}', 'ColorController@active')->name('active_color');
         Route::get('/dashboard/disable_color/{id}', 'ColorController@disable')->name('disable_color');
 
-
-         //Admin Route posts
-         Route::resource('dashboard/posts', 'PostController');
-         Route::get('/dashboard/active_posts/{id}', 'PostController@active')->name('active_Post');
-         Route::get('/dashboard/disable_posts/{id}', 'PostController@disable')->name('disable_Post');
-
         // Admin Route country
         Route::resource('/dashboard/countries', 'CountryController');
 
@@ -200,10 +194,17 @@ Route::group(['namespace' => 'Admin'], function () {
     
         //Licence Site Route
         Route::resource('/dashboard/licence_site', 'LicencesiteController');
-        Route::get('/dashboard/licence_site/lm/{licence}', 'LicencesiteController@vector')->name('licence_site.view');
+        Route::get('/dashboard/licence_site/lm/{licencesite}', 'LicencesiteController@vector')->name('licence_site.view');
         Route::get('/dashboard/licence_site/view/{slug}', 'LicencesiteController@view');
         Route::get('/dashboard/active_licence_site/{id}', 'LicencesiteController@active');
         Route::get('/dashboard/disable_licence_site/{id}', 'LicencesiteController@disable');
+
+        //Cookie Site Route
+        Route::resource('/dashboard/cookies', 'CookieController');
+        Route::get('/dashboard/cookies/lm/{cookie}', 'CookieController@vector')->name('cookie_site.view');
+        Route::get('/dashboard/cookies/view/{slug}', 'CookieController@view');
+        Route::get('/dashboard/active_cookie/{id}', 'CookieController@active');
+        Route::get('/dashboard/disable_cookie/{id}', 'CookieController@disable');
     });
 
 });

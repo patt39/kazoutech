@@ -38,13 +38,22 @@ export default {
         return axios.get(`/dashboard/conditions/${id}`);
     },
     legalnoticeID(id) {
-        return axios.get(`/dashboard/legal_notices/${id}`);
-    },
-    policyprivacyID(id) {
-        return axios.get(`/dashboard/policyprivacy/${id}`);
+        return axios.get(`/dashboard/legal_notice/${id}`);
     },
     legalnoticeSlug(legalnotice) {
-        return axios.get(`/dashboard/legal_notices/view/${legalnotice}`);
+        return axios.get(`/dashboard/legal_notice/view/${legalnotice}`);
+    },
+    policyprivacyID(id) {
+        return axios.get(`/dashboard/policy_privacy/${id}`);
+    },
+    policyprivacySlug(policyprivacy) {
+        return axios.get(`/dashboard/policy_privacy/view/${policyprivacy}`);
+    },
+    licencesiteID(id) {
+        return axios.get(`/dashboard/licence_site/${id}`);
+    },
+    licencesiteSlug(licencesite) {
+        return axios.get(`/dashboard/licence_site/view/${licencesite}`);
     },
     conditionSlug(condition) {
         return axios.get(`/dashboard/conditions/view/${condition}`);

@@ -1,5 +1,5 @@
 @extends('inc.admin._main')
-<?php $usernameTag = htmlspecialchars($licencesite->title); ?>
+<?php $usernameTag = htmlspecialchars($cookie->title); ?>
 @section('title',"- $usernameTag")
 
 

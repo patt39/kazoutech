@@ -9,10 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderEllipsis/>
-                    </div>
-                    <div v-if="loaded"  class="row">
+                    <div  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -100,15 +97,11 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
-
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderEllipsis},
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin,},
         data() {
             return {
-                loaded: false,
-                licences: {},
                 user:'',
                 form: new Form({
                     id: '',
@@ -151,11 +144,10 @@
         },
         created() {
             this.$Progress.start();
-            this.loaded = false;
             //api.licenceSlug(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            api.licenceSlug(this.$route.params.licence).then(response => {
-                this.licence = response.data.data;
-            axios.get("/api/account/profile").then(response => {this.user = response.data.data});
+            api.licencesiteSlug(this.$route.params.licencesite).then(response => {
+                this.licencesite = response.data.data;
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
             });

@@ -117,7 +117,7 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <router-link  :to="{ path: `/dashboard/policy_privacy/lm/${item.title}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                        <router-link  :to="{ path: `/dashboard/policy_privacy/lm/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>

@@ -40,7 +40,6 @@ import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 import TechnicianIndex from "../components/admin/technician/TechnicianIndex";
 import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
-import TechnicianPostIndex from "../components/admin/partial/posts/TechnicianPostIndex";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
@@ -185,8 +184,6 @@ export const routes = [
     {path: '/dashboard/technicians/o/:occupation', name: 'occupation.technician', component: TechnicianByOccupation},
     {path: '/profile/t/:technician', name: 'technicians.profile', component: TechnicianProfileIndex},
     {path: '/profile/t/:technician/edit', component: TechnicianProfileEdit},
-    {path: '/dashboard/posts/', name: 'posts.index', component: TechnicianPostIndex},
-
 
     //Route testimonials
     { path: '/dashboard/testimonials', name: 'testimonials.index', component: TestimonialIndex },
@@ -203,7 +200,7 @@ export const routes = [
      { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
      { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
      { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },
-     { path: '/dashboard/licence_site/lm/:licence', name: 'licence_site.view', component: LicenceView },
+     { path: '/dashboard/licence_site/lm/:licencesite', name: 'licence_site.view', component: LicenceView },
      { path: '/dashboard/policy_privacy', name: 'policy_privacy.index', component: PolicyprivacyIndex },
      { path: '/dashboard/policy_privacy/create', name: 'policy_privacy.create', component: PolicyprivacyCreate },
      { path: '/dashboard/policy_privacy/:id/edit', name: 'policy_privacy.edit', component: PolicyprivacyEdit },
@@ -212,10 +209,10 @@ export const routes = [
      { path: '/dashboard/conditions/create', name: 'conditions.create', component: TermsconditionsCreate },
      { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
      { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
-     { path: '/dashboard/cookies-site', name: 'cookies-site.index', component: CookieIndex },
-     { path: '/dashboard/cookies-site/create', name: 'cookies-site.create', component: CookieCreate },
-     { path: '/dashboard/cookies-site/:id/edit', name: 'cookies-site.edit', component: CookieEdit },
-     { path: '/dashboard/cookies-site/lm/:cookie', name: 'cookies-site.view', component: CookieView },
+     { path: '/dashboard/cookies', name: 'cookies.index', component: CookieIndex },
+     { path: '/dashboard/cookies/create', name: 'cookies.create', component: CookieCreate },
+     { path: '/dashboard/cookies/:id/edit', name: 'cookies.edit', component: CookieEdit },
+     { path: '/dashboard/cookies/lm/:cookie', name: 'cookies.view', component: CookieView },
 
      
     /** Ici je recupere les route du site **/

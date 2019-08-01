@@ -86,13 +86,14 @@
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
+
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin, LoaderEllipsis},
         data() {
             return {
                 loaded: false,
-                licences: {},
                 user:'',
                 form: new Form({
                     id: '',
@@ -136,7 +137,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.put('/admin/licence_site/' + this.form.id)
+                this.form.put('/dasboard/licence_site/' + this.form.id)
                     .then(() => {
 
                         /** Debut de l'alert **/
@@ -167,15 +168,10 @@
             },
         },
         created() {
+            //Start Progress bar
             this.$Progress.start();
-            //this.loaded = false;
-            //api.licenceID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            api.licenceID(this.$route.params.id).then(response => {
-                //this.loaded = true;
-                this.licence = response.data.data;
-            });
-            api.licenceID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+            api.licencesiteID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }

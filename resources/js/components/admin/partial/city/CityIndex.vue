@@ -51,6 +51,15 @@
                                     </div>
                                 </div>
                                 <br>
+                            <div class="card-body">
+                                 <div class="header text-right">
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                    </div>
+                                 <br>   
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
@@ -175,7 +184,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                     </div>
+                  </div>
                 </div>
             </div>
             <FooterAdmin/>
@@ -462,12 +472,21 @@
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
+             reload(){
+                this.loadItems();
+            },
+            intervalFetchData: function () {
+                setInterval(() => {
+                    this.loadItems();
+                }, 360000);
+            },
         },
         created() {
             this.loadItems();
             Fire.$on('AfterCreate', () => {
                 this.loadItems();
             });
+            this.intervalFetchData();
         }
     }
 

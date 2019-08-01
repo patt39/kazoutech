@@ -161,13 +161,6 @@
                                         <span class="sidebar-normal"><b>Diplomas</b></span>
                                     </router-link>
                                 </li>
-                                 <!-- Posts -->
-                                <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/posts/' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>TP</b></span>
-                                        <span class="sidebar-normal"><b>Tech Posts</b></span>
-                                    </router-link>
-                                </li>
                                 <!-- Countries -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
@@ -336,7 +329,7 @@
                                                 </router-link>
                                             </li>
                                             <li class="nav-item">
-                                                <router-link  :to="{ path: '/dashboard/cookies-site' }" class="nav-link">
+                                                <router-link  :to="{ path: '/dashboard/cookies' }" class="nav-link">
                                                     <span class="sidebar-mini"><b>CO</b></span>
                                                     <span class="sidebar-normal"><b>Cookies</b></span>
                                                 </router-link>

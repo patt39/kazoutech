@@ -93,6 +93,7 @@
                 user: '',
                 form: new Form({
                     id: '',
+                    ip: '',
                     body: '',
                     color_name: '',
                     user_id: '',

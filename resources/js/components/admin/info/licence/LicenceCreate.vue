@@ -135,7 +135,7 @@
                 //Start Progress bar
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post("/dashbaord/licence_site")
+                this.form.post("/dashboard/licence_site")
                     .then(() => {
                         //Insertion de l'alert !
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {

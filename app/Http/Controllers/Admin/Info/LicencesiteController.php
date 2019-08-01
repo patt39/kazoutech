@@ -58,7 +58,7 @@ class LicencesiteController extends Controller
             'body'=>'required|string'
         ]);
         
-        $licencesite = new licence;
+        $licencesite = new Licencesite;
         $licencesite->body = $request->body;
         $licencesite->user_id = auth()->user()->id;
         $licencesite->status = '0';
@@ -105,8 +105,8 @@ class LicencesiteController extends Controller
      */
     public function show($id)
     {
-        $licence = new LicencesiteResource(licence::where('id', $id)->findOrFail($id));
-        return $licence;
+        $licencesite = new LicencesiteResource(licencesite::where('id', $id)->findOrFail($id));
+        return $licencesite;
     }
 
     /**
@@ -123,7 +123,7 @@ class LicencesiteController extends Controller
 
     public function view($slug)
     {
-        $licencesite = new LicencesiteResource(licencesite::where('slug',$slug)->firstOrFail());
+        $licencesite = new LicencesiteResource(licencesite::where('slug',$slug)->firstOrFail($slug));
         return $licencesite;
     }
 

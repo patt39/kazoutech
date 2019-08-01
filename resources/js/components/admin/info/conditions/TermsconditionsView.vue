@@ -66,7 +66,7 @@
                                                                                     <br>
                                                                                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                                                         <div class="fileinput-new thumbnail">
-                                                                                            <img :src="getImagesave()" :alt="condition.slug">
+                                                                                            <img :src="condition.photo" :alt="condition.slug">
                                                                                         </div>
                                                                                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                     </div>
@@ -129,15 +129,7 @@
                 editmode: false,
                 user: '',
                 condition: {
-                    id: '',
-                    ip: '',
-                    title: '',
                     user: '',
-                    color_name: '',
-                    photo: '',
-                    body: '',
-                    user_id: '',
-                    status: '',
                 },
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -170,16 +162,11 @@
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
-            getImagesave(){
-                let photo = (this.condition.photo.length > 200) ? this.condition.photo : this.condition.photo;
-                return photo;
-            },
         },
         created() {
             //Start Progress bar
             this.$Progress.start();
             api.conditionSlug(this.$route.params.condition).then(response => {
-                this.loaded = true;
                 this.condition = response.data.data;
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar

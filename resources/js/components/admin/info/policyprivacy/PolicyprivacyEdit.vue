@@ -12,7 +12,7 @@
                     <div v-if="!loaded" class="submit">
                         <LoaderEllipsis/>
                     </div>
-                    <div  class="row">
+                    <div v-if="loaded" class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -139,7 +139,7 @@
             //Start Progress bar
             this.$Progress.start();
 
-            this.form.put('/admin/policy_privacy/' + this.form.id)
+            this.form.put('/dashboard/policy_privacy/' + this.form.id)
                     .then(() => {
 
                 /** Debut de l'alert **/
@@ -172,7 +172,8 @@
         //Start Progress bar
         this.$Progress.start();
         api.policyprivacyID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-        axios.get("/admin/api/account/profile").then(response => {this.user = response.data.data});
+        axios.get("/api/account/user").then(response => {this.user = response.data.data});
+         this.loaded = true;
         //End Progress bar
         this.$Progress.finish();
     }

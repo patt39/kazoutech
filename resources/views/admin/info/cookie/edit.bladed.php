@@ -1,5 +1,6 @@
 @extends('inc.admin._main')
-@section('title', '| Dashboard posts')
+<?php $usernameTag = htmlspecialchars($cookie->title); ?>
+@section('title',"- $usernameTag")
 
 
 @section('style')
@@ -14,7 +15,7 @@
         <router-view></router-view>
     @else
         <div class="submit text-center">
-          <error-404></error-404>
+            <error-404></error-404>
         </div>
     @endif
 @endsection

@@ -52,7 +52,7 @@ class LinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LinkRequest $request)
+    public function store(Request $request)
     {
         $link = new Link;
         $link->link  =  $request->link;

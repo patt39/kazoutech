@@ -9,10 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderEllipsis/>
-                    </div>
-                    <div v-if="loaded"  class="row">
+                    <div  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -141,21 +138,25 @@
     },
     methods: {
         getColorCardUser(){
-            return 'card-header card-header-icon card-header-' + this.user.color_name;
-        },
-        getColorHeaderUser(){
-            return 'card-header card-header-' + this.user.color_name;
-        },
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
+                return colorCard;
+            },
+            getColorHeaderUser(){
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
+                return colorHeader;
+            },
     },
-    created() {
-        //Start Progress bar
-        this.$Progress.start();
-        api.legalnoticeSlug(this.$route.params.legalnotice).then(({data}) => this.form.fill(data.data));
-        axios.get("/api/account/profile").then(response => {this.user = response.data.data});
-        //End Progress bar
-        this.$Progress.finish();
+    created()  {
+            //Start Progress bar
+            this.$Progress.start();
+            api.legalnoticeSlug(this.$route.params.legalnotice).then(response => {
+                this.legalnotice = response.data.data;
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            //End Progress bar
+            this.$Progress.finish();
+        })
     }
-    }
+  }
 </script>
 
 <style scoped>

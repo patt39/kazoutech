@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Partial;
+namespace App\Http\Resources\Info\Page;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class HowtoregisterResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,16 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'status_user' => $this->status_user,
+            'ip' => $this->ip,
+            'icon' => $this->icon,
+            'title' => $this->title,
+            'icon_number' => $this->icon_number,
+            'body' => $this->body,
+            'image' => $this->image,
+            'color_name' => $this->color_name,
             'slug' => $this->slug,
+            'status' => $this->status,
             'user' => $this->user,
-            'status_admin' => $this->status_admin,
             'statusOnline' => $this->user->isOnline(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

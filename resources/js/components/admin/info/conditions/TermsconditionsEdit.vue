@@ -95,7 +95,7 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link id="button_hover" :to="{ name: 'conditions.index' }" class="btn btn-danger btn-round" data-toggle="tab">
+                                                            <router-link id="button_hover" :to="{ name: 'condition.index' }" class="btn btn-danger btn-round" data-toggle="tab">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
@@ -217,7 +217,7 @@
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Term & Condition updated successfully.</strong>', 'progress': 75});
                         }, 2000);
-                        setTimeout(() => this.$router.push({ name: 'conditions.index' }));
+                        setTimeout(() => this.$router.push({ name: 'condition.index' }));
                         /** Fin alert **/
                         //End Progress bar
                         this.$Progress.finish();

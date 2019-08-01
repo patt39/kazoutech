@@ -9,11 +9,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <errored-loading v-if="errored"/>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderEllipsis/>
-                    </div>
-                    <div v-if="loaded"  class="row">
+                    <div  class="row">
                         <div class="col-md-12">
                             <div class="container">
                                 <div class="row">
@@ -106,6 +102,7 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin },
         data() {
             return {
+                editmode: false,
                 user:'',
                 form: new Form({
                     id: '',
@@ -148,15 +145,17 @@
                 return colorUser;
             }
         },
-        created() {
+        created()  {
             //Start Progress bar
             this.$Progress.start();
-            api.policyprivacySlug(this.$route.params.policyprivacy).then(({data}) => this.form.fill(data.data));
+            api.policyprivacySlug(this.$route.params.policyprivacy).then(response => {
+                this.policyprivacy = response.data.data;
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
-        }
+        })
     }
+ }
 </script>
 
 <style scoped>

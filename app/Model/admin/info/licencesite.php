@@ -10,7 +10,7 @@ class licencesite extends Model
 {
     protected $table = 'licencesites';
 
-    protected $fillable = ['body','slug','user_id'];
+    protected $fillable = ['body','slug'];
    
 
 
@@ -48,7 +48,7 @@ class licencesite extends Model
     {
         return [
             'slug' => [
-                'source' => 'user_id',
+                'source' => 'ip',
                 'separator' => '+'
             ]
         ];

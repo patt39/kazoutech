@@ -51,6 +51,15 @@
                                     </div>
                                 </div>
                                 <br>
+                              <div class="card-body">
+                                 <div class="header text-right">
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                 </div>
+                                 <br>   
                                 <div class="card-body">
                                     <div v-if="$auth.can('create-occupation')" class="toolbar">
                                         <div class="submit text-center">
@@ -173,7 +182,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                  </div>
+                               </div>
                             </div>
                         </div>
                     </div>

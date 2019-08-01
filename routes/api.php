@@ -20,7 +20,6 @@ Route::get('administrators', 'Admin\AdministratorController@api');
 Route::get('occupations', 'Admin\OccupationController@api');
 Route::get('colors', 'Admin\Partial\ColorController@api');
 Route::get('diplomas', 'Admin\Partial\DiplomaController@api');
-Route::get('posts', 'Admin\Partial\PostController@api');
 Route::get('abouts', 'Admin\Page\AboutController@api');
 Route::get('category-faqs', 'Admin\Partial\CategoryfaqController@api');
 Route::get('faqs', 'Admin\FaqController@api');
@@ -44,6 +43,7 @@ Route::get('technicians/o/{occupation}/c/{city}', 'User\TechnicianController@vie
 Route::get('testimonials', 'Admin\Page\TestimonialController@api');
 Route::get('tags', 'Admin\Partial\TagController@api');
 Route::get('conditions', 'Admin\Info\ConditionController@api');
+Route::get('cookies', 'Admin\Info\CookieController@api');
 Route::get('legal_notice', 'Admin\Info\LegalnoticeController@api');
 Route::get('policy_privacy', 'Admin\Info\PolicyprivacyController@api');
 Route::get('licence_site', 'Admin\Info\LicencesiteController@api');

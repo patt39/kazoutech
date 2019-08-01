@@ -120,9 +120,11 @@ class LegalnoticeController extends Controller
         $legalnotice = Legalnotice::where('id',$id)->first();
         return view('admin.info.legalnotice.edit', compact('legalnotice'));
     }
+
+    
     public function view($slug)
     {
-        $legalnotice = new LegalnoticeResource(legalnotice::where('slug', $slug)->firstOrFail());
+        $legalnotice = new LegalnoticeResource(legalnotice::where('slug', $slug)->first());
         return $legalnotice;
     }
 
