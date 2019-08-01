@@ -159,7 +159,6 @@ export const routes = [
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
     {path: '/dashboard/contacts/msg/:contact/', name: 'contacts.view', component: ContactMessageShow},
 
-
     {
         path: '/dashboard/messages/',
         name: 'messages.index',
@@ -227,6 +226,5 @@ export const routes = [
     //Route profile user
     {path: '/:username', name: 'profile.view', component: ProfileUserIndex},
     {path: '/profile/edit/', name: 'profile.edit', component: ProfileUserEdit},
-
 
 ];

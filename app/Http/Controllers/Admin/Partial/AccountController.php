@@ -20,7 +20,7 @@ class AccountController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => ['view','profileView']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -56,6 +56,11 @@ class AccountController extends Controller
         $user = new UserResource(User::where('username', $username)->firstOrFail());
         return $user;
     }
+    public function view($username)
+    {
+        $user = new UserResource(User::where('username', $username)->firstOrFail());
+        return $user;
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,22 +74,20 @@ class AccountController extends Controller
         return view('admin.account.edit_profile',compact('user'));
     }
 
-    public function profile()
+    public function profileEdit()
     {
         $user = Auth::user();
         return view('user.profile.profileEdit',compact('user'));
     }
 
-    public function view()
+    public function profileView($username)
     {
-        $user = Auth::user();
-        return view('user.profile.profileEdit',compact('user'));
-    }
-
-    public function vector()
-    {
-        $user = Auth::user();
-        return view('user.profile.profileEdit',compact('user'));
+        if($username) {
+            $user = User::where('username', $username)->firstOrFail();
+        } else {
+            $user = User::findOrFail(auth()->user()->id);
+        }
+        return view("user.profile.profileIndex")->withUser($user);
     }
 
 

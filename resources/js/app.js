@@ -39,9 +39,13 @@ Vue.component('v-select', vSelect);
  * Router vuejs
  */
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter);
 
+/**
+ * Stars Rating
+ */
+import rate from 'vue-rate';
+Vue.use(rate);
 
 /**
  * VueEditor

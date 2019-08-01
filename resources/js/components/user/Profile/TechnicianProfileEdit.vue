@@ -75,7 +75,7 @@
                                     <hr>
                                     <div class="submit">
                                         <div class="text-center">
-                                            <router-link :to="{ name: 'technicians.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                            <router-link :to="{ path: `/profile/t/${form.slug}` }" class="btn btn-danger btn-round" id="button_hover">
                                                 <i class="material-icons">chevron_left</i>
                                                 <b class="title_hover">Back</b>
                                             </router-link>
@@ -104,7 +104,6 @@
         data() {
             return {
                 loaded: false,
-                user: {},
                 cities:{},
                 occupations:{},
                 diplomas: {},
@@ -169,10 +168,6 @@
             axios.get("/api/occupations").then(({data}) => (this.occupations = data.data));
             axios.get("/api/cities").then(({data}) => (this.cities = data.data));
             axios.get("/api/diplomas").then(({data}) => (this.diplomas = data.data));
-            axios.get("/api/account/user").then(response => {
-                this.loaded = true;
-                this.user = response.data.data
-            });
             //End Progress bar
             this.$Progress.finish()
         }

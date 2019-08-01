@@ -37,6 +37,7 @@ Route::get('contacts', 'User\ContactController@api');
 Route::get('mails', 'User\MailController@api');
 Route::get('messages', 'User\MessageController@api');
 Route::get('technicians', 'User\TechnicianController@api');
+Route::get('technicians/p/{technician}','User\TechnicianController@view');
 Route::get('technicians/c/{city}', 'User\TechnicianController@viewcity');
 Route::get('technicians/o/{occupation}', 'User\TechnicianController@viewoccupation');
 Route::get('technicians/o/{occupation}/c/{city}', 'User\TechnicianController@viewoccupationcity');

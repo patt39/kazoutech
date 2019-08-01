@@ -20,25 +20,38 @@
                         <!-- Authentication Links -->
 
 
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'login' }" class="nav-link">
-                                Login
-                            </router-link>
-                        </li>
+                        <template v-if="guest">
+                            <li class="nav-item">
+                                <router-link  :to="{ name: 'login' }" class="nav-link">
+                                    Login
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'register' }" class="nav-link">
-                                Register
-                            </router-link>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <span class="caret"></span>
+                            <li class="nav-item">
+                                <router-link  :to="{ name: 'register' }" class="nav-link">
+                                    Register
+                                </router-link>
+                            </li>
+                        </template>
+                        <li v-else="guest" class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="position: relative; padding-left: 50px;">
+                                <img :src="userData.avatar" :alt="userData.name"  class="img-raised rounded-circle img-fluid text-center" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%"> <b v-text="userData.name"></b>
                             </a>
-
+                            <div class="dropdown-menu dropdown-with-icons">
+                                <a href="#" class="dropdown-item">
+                                   <b>Dashboard</b>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <b>Profile</b>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <b>Paramètres</b>
+                                </a>
+                                <a href="javascript:void(0)" @click="navLogout()" class="dropdown-item">
+                                    <b>Deconnexion</b>
+                                </a>
+                            </div>
                         </li>
-
                         <li class="nav-item">
                             <router-link  :to="{ name: 'contact_cm' }" class="nav-link">
                                 Contact
@@ -54,15 +67,33 @@
 
 <script>
     export default {
-        name: "NavSite",
         data() {
             return {
-                user: {},
+                userData: {},
             }
+        },
+        methods: {
+
+            /* ***** script logout navbar ****/
+            navLogout(){
+                //Start Progress bar
+                this.$Progress.start();
+
+                //Envoyer la requet au server
+                axios.post('/logout').then(() => {
+
+                    location.replace(`/`);
+                    //End Progress bar
+                    this.$Progress.finish();
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                });
+            },
         },
         created() {
             axios.get("/api/account/user").then(
-                response => {this.user = response.data.data}
+                response => {this.userData = response.data.data}
             );
             //setInterval(() => this.loadItems(),3000);
         }
