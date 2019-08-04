@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\LegalnoticeResource;
 use App\Model\admin\info\legalnotice;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class LegalnoticeController extends Controller
@@ -61,7 +60,6 @@ class LegalnoticeController extends Controller
         $legalnotice = new Legalnotice;
         $legalnotice->body = $request->body;
         $legalnotice->user_id = auth()->user()->id;
-        $legalnotice->status = '0';
         
         $legalnotice->save();
         
@@ -73,27 +71,24 @@ class LegalnoticeController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function disable($id)
+    public function disable(legalnotice $legalnotice, $id)
     {
-        DB::table('legalnotices')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        $legalnotice = legalnotice::where('id', $id)->findOrFail($id);
+        $legalnotice->update([
+            'status' => 0,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
+    public function active(legalnotice $legalnotice, $id)
     {
-        DB::table('legalnotices')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-
-        return response('Activated',Response::HTTP_ACCEPTED);
+        $legalnotice = legalnotice::where('id', $id)->findOrFail($id);
+        $legalnotice->update([
+            'status' => 1,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
 
@@ -101,7 +96,7 @@ class LegalnoticeController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return LegalnoticeResource|\Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -122,25 +117,25 @@ class LegalnoticeController extends Controller
     }
 
     
-    public function view($slug)
+    public function view($id)
     {
-        $legalnotice = new LegalnoticeResource(legalnotice::where('slug', $slug)->first());
+        $legalnotice = new LegalnoticeResource(legalnotice::where('id', $id)->first());
         return $legalnotice;
     }
 
 
-    public function vector(legalnotice $legalnotice)
+    public function vector(legalnotice $legalnotice,$id)
     {
-        return view( 'admin.info.legalnotice.view', [
-            'legalnotice' => $legalnotice,
-        ]);
+
+        $legalnotice = Legalnotice::where('id',$id)->findOrFail($id);
+        return view('admin.info.legalnotice.view', compact('legalnotice'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -161,7 +156,7 @@ class LegalnoticeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function destroy($id)
     {

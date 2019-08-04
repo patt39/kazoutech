@@ -22,14 +22,25 @@
 
                         <template v-if="guest">
                             <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                   Demander un service
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    Devenir un bosseur
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <router-link  :to="{ name: 'login' }" class="nav-link">
-                                    Login
+                                    Connexion
                                 </router-link>
                             </li>
 
                             <li class="nav-item">
                                 <router-link  :to="{ name: 'register' }" class="nav-link">
-                                    Register
+                                    Inscription
                                 </router-link>
                             </li>
                         </template>
@@ -52,11 +63,11 @@
                                 </a>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <router-link  :to="{ name: 'contact_cm' }" class="nav-link">
                                 Contact
                             </router-link>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
             </div>

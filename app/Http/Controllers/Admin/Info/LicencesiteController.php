@@ -19,8 +19,6 @@ class LicencesiteController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api']]);
-        // Middleware lock account
-        //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.
@@ -61,7 +59,6 @@ class LicencesiteController extends Controller
         $licencesite = new Licencesite;
         $licencesite->body = $request->body;
         $licencesite->user_id = auth()->user()->id;
-        $licencesite->status = '0';
         
         $licencesite->save();
         
@@ -74,34 +71,32 @@ class LicencesiteController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function disable($id)
+
+    public function disable(licencesite $licencesite, $id)
     {
-        DB::table('licencesites')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        $licencesite = licencesite::where('id', $id)->findOrFail($id);
+        $licencesite->update([
+            'status' => 0,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
+    public function active(licencesite $licencesite, $id)
     {
-        DB::table('licencesites')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-
-        return response('Activated',Response::HTTP_ACCEPTED);
+        $licencesite = licencesite::where('id', $id)->findOrFail($id);
+        $licencesite->update([
+            'status' => 1,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return LicencesiteResource|\Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -121,27 +116,26 @@ class LicencesiteController extends Controller
         return view('admin.info.licence.edit', compact('licencesite'));
     }
 
-    public function view($slug)
+    public function view($id)
     {
-        $licencesite = new LicencesiteResource(licencesite::where('slug',$slug)->firstOrFail($slug));
+        $licencesite = new LicencesiteResource(licencesite::where('id',$id)->findOrFail($id));
         return $licencesite;
     }
 
 
 
-    public function vector(licencesite $licencesite)
+    public function vector(licencesite $legalnotice,$id)
     {
-        return view('admin.info.licence.view', [
-            'licencesite' => $licencesite,
-        ]);
-    }
 
+        $licencesite = licencesite::where('id',$id)->findOrFail($id);
+        return view('admin.info.licence.view', compact('licencesite'));
+    }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -162,7 +156,7 @@ class LicencesiteController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function destroy($id)
     {

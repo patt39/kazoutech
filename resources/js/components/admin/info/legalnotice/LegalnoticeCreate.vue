@@ -95,10 +95,6 @@
                 form: new Form({
                     id: '',
                     body: '',
-                    color_name: '',
-                    user_id: '',
-                    status: '',
-                    slug: ''
                 }),
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],

@@ -1,6 +1,6 @@
 @extends('inc.admin._main')
-<?php $usernameTag = htmlspecialchars($licence->title); ?>
-@section('title',"- $usernameTag")
+@section('title', '| Dashboard licence')
+
 
 
 @section('style')

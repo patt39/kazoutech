@@ -30,7 +30,7 @@ class TechnicianResource extends JsonResource
             'user' => $this->user,
             //'member' => $this->member,
             'diploma_id' => $this->diploma_id,
-            'statusOnline' => $this->user->isOnline(),
+            //'statusOnline' => $this->user->isOnline(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

@@ -63,7 +63,7 @@
                                 <div class="card-body">
                                     <div v-if="$auth.can('create-condition_utilisation')" class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'conditions.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round ">
+                                            <router-link :to="{ name: 'conditions.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
                                                <span class="btn-label">
                                                     <i class="material-icons">indeterminate_check_box</i>
                                                 </span>

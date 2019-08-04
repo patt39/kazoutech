@@ -295,48 +295,42 @@
                         </div>
                     </li>
                      <!-- Legals Mentions -->
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="collapse" href="#legalsExamples">
-                                        <i class="material-icons">looks</i>
-                                        <p><b>Legal & Mention</b>
-                                            <b class="caret"></b>
-                                        </p>
-                                    </a>
-                                    <div class="collapse" id="legalsExamples">
-                                        <ul class="nav">
-                                            <li class="nav-item">
-                                                <router-link  :to="{ path: '/dashboard/legal_notice' }" class="nav-link">
-                                                    <span class="sidebar-mini"><b>LN</b></span>
-                                                    <span class="sidebar-normal"><b>Legal Notice</b></span>
-                                                </router-link>
-                                            </li>
-                                            <li class="nav-item">
-                                                <router-link  :to="{ path: '/dashboard/licence_site' }" class="nav-link">
-                                                    <span class="sidebar-mini"><b>LS</b></span>
-                                                    <span class="sidebar-normal"><b>Licence Site</b></span>
-                                                </router-link>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <router-link  :to="{ path: '/dashboard/policy_privacy' }" class="nav-link">
-                                                    <span class="sidebar-mini"><b>PP</b></span>
-                                                    <span class="sidebar-normal"><b>Policy & Privacy</b></span>
-                                                </router-link>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <router-link  :to="{ path: '/dashboard/conditions' }" class="nav-link">
-                                                    <span class="sidebar-mini"><b>TC</b></span>
-                                                    <span class="sidebar-normal"><b>Terms & Conditions</b></span>
-                                                </router-link>
-                                            </li>
-                                            <li class="nav-item">
-                                                <router-link  :to="{ path: '/dashboard/cookies' }" class="nav-link">
-                                                    <span class="sidebar-mini"><b>CO</b></span>
-                                                    <span class="sidebar-normal"><b>Cookies</b></span>
-                                                </router-link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
+                   <li class="nav-item">
+                       <a class="nav-link" data-toggle="collapse" href="#legalsExamples">
+                           <i class="material-icons">looks</i>
+                           <p><b>Legal & Mention</b>
+                               <b class="caret"></b>
+                           </p>
+                       </a>
+                       <div class="collapse" id="legalsExamples">
+                           <ul class="nav">
+                               <li class="nav-item">
+                                   <router-link  :to="{ path: '/dashboard/legal_notice/' }" class="nav-link">
+                                       <span class="sidebar-mini"><b>LN</b></span>
+                                       <span class="sidebar-normal"><b>Legal Notice</b></span>
+                                   </router-link>
+                               </li>
+                               <li class="nav-item">
+                                   <router-link  :to="{ path: '/dashboard/licence_site/' }" class="nav-link">
+                                       <span class="sidebar-mini"><b>LS</b></span>
+                                       <span class="sidebar-normal"><b>Licence Site</b></span>
+                                   </router-link>
+                               </li>
+                               <li class="nav-item ">
+                                   <router-link  :to="{ path: '/dashboard/policy_privacy/' }" class="nav-link">
+                                       <span class="sidebar-mini"><b>PP</b></span>
+                                       <span class="sidebar-normal"><b>Policy & Privacy</b></span>
+                                   </router-link>
+                               </li>
+                               <li class="nav-item ">
+                                   <router-link  :to="{ path: '/dashboard/conditions/' }" class="nav-link">
+                                       <span class="sidebar-mini"><b>TC</b></span>
+                                       <span class="sidebar-normal"><b>Terms & Conditions</b></span>
+                                   </router-link>
+                               </li>
+                           </ul>
+                       </div>
+                   </li>
                 </ul>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\user\User;
 use Faker\Generator as Faker;
 
 /*
@@ -23,16 +24,29 @@ use Faker\Generator as Faker;
 //    ];
 //});
 
-$factory->define(\App\Model\user\message::class, function (Faker $faker) {
-
-    do{
-     $from = rand(1,10);
-     $to = rand(1,10);
-    }while ($from === $to);
-
-    return[
-        'from_id' =>$from,
-        'to_id' =>$to,
-        'message' =>$faker->sentence
+$factory->define(User::class, function (Faker $faker) {
+    return [
+        'username' => $faker->unique()->userName,
+        'first_name' => $faker->firstName,
+        'avatar' => $faker->imageUrl($width = 400, $height = 400),
+        'name' => $faker->firstName,
+        'email' => $faker->unique()->safeEmail,
+        'phone' => $faker->unique()->numerify('+393#########'),
+        'password' => bcrypt('0000000'),
     ];
 });
+
+
+//$factory->define(\App\Model\user\message::class, function (Faker $faker) {
+//
+//    do{
+//     $from = rand(1,10);
+//     $to = rand(1,10);
+//    }while ($from === $to);
+//
+//    return[
+//        'from_id' =>$from,
+//        'to_id' =>$to,
+//        'message' =>$faker->sentence
+//    ];
+//});

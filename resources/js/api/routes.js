@@ -70,10 +70,6 @@ import LicenceIndex from "../components/admin/info/licence/LicenceIndex";
 import LicenceCreate from "../components/admin/info/licence/LicenceCreate";
 import LicenceEdit from "../components/admin/info/licence/LicenceEdit";
 import LicenceView from "../components/admin/info/licence/LicenceView";
-import CookieIndex from "../components/admin/info/cookie/CookieIndex";
-import CookieCreate from "../components/admin/info/cookie/CookieCreate";
-import CookieEdit from "../components/admin/info/cookie/CookieEdit";
-import CookieView from "../components/admin/info/cookie/CookieView";
 import TermsconditionsIndex from "../components/admin/info/conditions/TermsconditionsIndex";
 import TermsconditionsCreate from "../components/admin/info/conditions/TermsconditionsCreate";
 import TermsconditionsEdit from "../components/admin/info/conditions/TermsconditionsEdit";
@@ -195,23 +191,19 @@ export const routes = [
      { path: '/dashboard/legal_notice', name: 'legal_notice.index', component: LegalnoticeIndex },
      { path: '/dashboard/legal_notice/create', name: 'legal_notice.create', component: LegalnoticeCreate },
      { path: '/dashboard/legal_notice/:id/edit', name: 'legal_notice.edit', component: LegalnoticeEdit },
-     { path: '/dashboard/legal_notice/lm/:legalnotice', name: 'legal_notice.view', component: LegalnoticeView, },
+     { path: '/dashboard/legal_notice/lm/:id', name: 'legal_notice.view', component: LegalnoticeView, },
      { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
      { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
      { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },
-     { path: '/dashboard/licence_site/lm/:licencesite', name: 'licence_site.view', component: LicenceView },
+     { path: '/dashboard/licence_site/lm/:id', name: 'licence_site.view', component: LicenceView },
      { path: '/dashboard/policy_privacy', name: 'policy_privacy.index', component: PolicyprivacyIndex },
      { path: '/dashboard/policy_privacy/create', name: 'policy_privacy.create', component: PolicyprivacyCreate },
      { path: '/dashboard/policy_privacy/:id/edit', name: 'policy_privacy.edit', component: PolicyprivacyEdit },
-     { path: '/dashboard/policy_privacy/lm/:policyprivacy', name: 'policy_privacy.view', component: PolicyprivacyView },
+     { path: '/dashboard/policy_privacy/lm/:id', name: 'policy_privacy.view', component: PolicyprivacyView },
      { path: '/dashboard/conditions', name: 'conditions.index', component: TermsconditionsIndex },
      { path: '/dashboard/conditions/create', name: 'conditions.create', component: TermsconditionsCreate },
      { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
      { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
-     { path: '/dashboard/cookies', name: 'cookies.index', component: CookieIndex },
-     { path: '/dashboard/cookies/create', name: 'cookies.create', component: CookieCreate },
-     { path: '/dashboard/cookies/:id/edit', name: 'cookies.edit', component: CookieEdit },
-     { path: '/dashboard/cookies/lm/:cookie', name: 'cookies.view', component: CookieView },
 
      
     /** Ici je recupere les route du site **/

@@ -18,7 +18,7 @@ class CreatePolicyprivaciesTable extends Migration
             $table->string('slug')->nullable();
             $table->integer('status')->nullable()->default('0');
             $table->longText('body')->nullable();
-            $table->string('ip')->nullable();
+            $table->string('ip')->default('127.0.0.1');
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->timestamps();
         });

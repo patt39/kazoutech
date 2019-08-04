@@ -118,14 +118,17 @@
                                                     <form id="RegisterValidation" @submit.prevent="createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
 
 
-                                                       <div class="form-group">
+                                                       <!--<div class="form-group">
                                                            <v-select
                                                                    @input="myAction"
                                                                    :options="$store.state.users"
                                                                    :value="$store.state.selected"
                                                            ></v-select>
-                                                       </div>
-
+                                                       </div>-->
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating"></label>
+                                                            <input  type="text" name="object" placeholder="Message à" class="form-control" >
+                                                        </div>
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
                                                             <select name="name" v-model="form.to_id" id="name" class="form-control" :class="{ 'is-invalid': form.errors.has('to_id') }">
@@ -136,7 +139,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.object" type="text" name="object" placeholder="Object" class="form-control" :class="{ 'is-invalid': form.errors.has('object') }" required>
+                                                            <input v-model="form.object" type="text" spellcheck="true" name="object" placeholder="Object" class="form-control" :class="{ 'is-invalid': form.errors.has('object') }" required>
                                                             <has-error :form="form" field="object"></has-error>
                                                         </div>
                                                         <div class="form-group">

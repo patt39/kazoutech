@@ -63,7 +63,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'policy_privacy.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round ">
+                                            <router-link :to="{ name: 'policy_privacy.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
                                                 <span class="btn-label">
                                                     <i class="material-icons">copyright</i>
                                                 </span>
@@ -117,7 +117,7 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <router-link  :to="{ path: `/dashboard/policy_privacy/lm/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                        <router-link  :to="{ path: `/dashboard/policy_privacy/lm/${item.id}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
@@ -160,35 +160,10 @@
                 loaded: false,
                 editmode: false,
                 policyprivacies: {},
-                user:'',
+                user:{},
                 form: new Form({
                     id: '',
-                    body: '',
-                    color_name: '',
-                    user_id: '',
-                    status: '',
-                    slug: ''
-                }), 
-                customToolbar: [
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'font': [] }],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ 'align': [] }],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{ 'color': [] }, { 'background': [] }],
-                    //['link', 'image', 'video', 'formula'],
-                    ['link'],
-                    //[{ 'direction': 'rtl' }],
-                    ['clean'],
-                    //['emoji'],
-                ]
+                }),
             }
         },
         methods: {
@@ -265,26 +240,7 @@
                          });
                     })
             },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les informations
-                this.form.fill(item);
-            },
-            viewItem(item) {
-                //Masquer le modal après la création
-                $('#viewNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-            },
+
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
@@ -305,7 +261,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/dasboard/policy_privacy/' + id).then(() => {
+                        this.form.delete('/dashboard/policy_privacy/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -413,45 +369,6 @@
              reload(){
                 this.loadItems();
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/policy_privacy")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Policy & Privacy Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish();
-                    }).catch(() => {
-                        //Failled message
-                        this.$Progress.fail();
-                        $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            }
         },
         created() {
             this.loadItems();

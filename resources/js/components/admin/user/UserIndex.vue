@@ -27,6 +27,7 @@
                             </div>
                         </div>
                     </div>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
@@ -115,10 +116,10 @@
                                                     <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
                                                     </a>
-                                                    <router-link  :to="{ path: `/dashboard/users/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <router-link  v-if="$auth.can('edit-user')" :to="{ path: `/dashboard/users/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
-                                                    <button @click="deleteItem(item.id)"
+                                                    <button v-if="$auth.can('delete-user')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
@@ -157,6 +158,7 @@
         data() {
             return {
                 loaded: false,
+                errored: false,
                 users: {},
                 user: {},
             }
@@ -220,7 +222,7 @@
                         this.$Progress.start();
 
                         //Envoyer la requet au server
-                        this.form.delete('/dashboard/users/' + id).then(() => {
+                        axios.delete('/dashboard/users/' + id).then(() => {
 
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -238,7 +240,14 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            //Alert error
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
                         })
                     }
                 })
@@ -251,10 +260,13 @@
                     this.loaded = true;
                     this.users = response.data.data;
                     this.mydatatables();
-                    //End Progress bar
-                    this.$Progress.finish();
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                //End Progress bar
+                this.$Progress.finish();
             },
             reload(){
                 this.loadItems()

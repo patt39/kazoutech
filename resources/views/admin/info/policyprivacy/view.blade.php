@@ -1,6 +1,5 @@
 @extends('inc.admin._main')
-<?php $usernameTag = htmlspecialchars($policyprivacy->title); ?>
-@section('title',"- $usernameTag")
+@section('title', '| Dashboard policyprivacy')
 
 
 @section('style')

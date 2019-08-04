@@ -94,15 +94,12 @@
         data() {
             return {
                 loaded: false,
-                user:'',
+                user:{},
                 form: new Form({
                     id: '',
                     body: '',
-                    color_name: '',
-                    user_id: '',
                     user:'',
                     status: '',
-                    slug: ''
                 }),
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -137,7 +134,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.put('/dasboard/licence_site/' + this.form.id)
+                this.form.put('/dashboard/licence_site/' + this.form.id)
                     .then(() => {
 
                         /** Debut de l'alert **/
@@ -170,7 +167,10 @@
         created() {
             //Start Progress bar
             this.$Progress.start();
-            api.licencesiteID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
+            api.licencesiteID(this.$route.params.id).then(({data}) => {
+                this.loaded = true;
+                this.form.fill(data.data);
+            });
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();

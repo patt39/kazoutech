@@ -27,12 +27,10 @@ class PermissionTableSeeder extends Seeder
 
 
         //Create permissions Administrations
-        Permission::create(['guard_name' => 'web' , 'name' => 'create-administrator']);
         Permission::create(['guard_name' => 'web' , 'name' => 'view-administrator']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'create-administrator']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-administrator']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-administrator']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-admin-administrator']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-administrator']);
 
 
 
@@ -42,13 +40,17 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-testimonial']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-testimonial']);
 
+        //Create Permissions Legal Notice
+        Permission::create(['guard_name' => 'web' , 'name' => 'create-legal']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'edit-legal']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'delete-legal']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'publish-legal']);
+
         // create permissions categories
         Permission::create(['guard_name' => 'web' , 'name' => 'create-category']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-category']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-category']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-category']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-category']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-category']);
 
         //Create Permissions Faqs
         Permission::create(['guard_name' => 'web' , 'name' => 'create-faq']);
@@ -72,66 +74,51 @@ class PermissionTableSeeder extends Seeder
         // create Aide & Contact Themes
         Permission::create(['guard_name' => 'web' , 'name' => 'create-aide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-aide']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-aide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-aide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-aide']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-aide']);
         
         // create permissions eventments
         Permission::create(['guard_name' => 'web' , 'name' => 'create-eventment']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-eventment']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-eventment']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-eventment']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-eventment']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-eventment']);
 
 
         // create permissions message-contacts
         Permission::create(['guard_name' => 'web' , 'name' => 'all-contact_message']);
         Permission::create(['guard_name' => 'web' , 'name' => 'view-contact_message']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-contact_message']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-contact_message']);
 
 
         // create permissions conditions and utilisation
         Permission::create(['guard_name' => 'web' , 'name' => 'create-condition_utilisation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-condition_utilisation']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-condition_utilisation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-condition_utilisation']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-condition_utilisation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-condition_utilisation']);
 
         // create permissions abouts
         Permission::create(['guard_name' => 'web' , 'name' => 'create-about']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-about']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-about']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-about']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-about']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-about']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-about']);
 
         // create permissions tags
         Permission::create(['guard_name' => 'web' , 'name' => 'create-tag']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-tag']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-tag']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-tag']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-tag']);
 
 
 
         // create permissions presentations
         Permission::create(['guard_name' => 'web' , 'name' => 'create-presentation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-presentation']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-presentation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-presentation']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-presentation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-presentation']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-presentation']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'view-presentation']);
 
 
         //Create permissions user
         Permission::create(['guard_name' => 'web' , 'name' => 'create-user']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'edit-user']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-user']);
         Permission::create(['guard_name' => 'web' , 'name' => 'view-user']);
 
@@ -144,36 +131,32 @@ class PermissionTableSeeder extends Seeder
         //Create permissions specialities
         Permission::create(['guard_name' => 'web' , 'name' => 'create-speciality']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-speciality']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edit_by-speciality']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-speciality']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-speciality']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-speciality']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-speciality']);
 
         //Create permissions works
         Permission::create(['guard_name' => 'web' , 'name' => 'create-work']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-work']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edit_by-work']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-work']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-work']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-work']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-work']);
+
+        //Create permissions privacy
+        Permission::create(['guard_name' => 'web' , 'name' => 'create-privacy']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'edit-privacy']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'delete-privacy']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'publish-privacy']);
 
         //Create permissions roles
         Permission::create(['guard_name' => 'web' , 'name' => 'all-role']);
         Permission::create(['guard_name' => 'web' , 'name' => 'create-role']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-role']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-role']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-role']);
 
         //Create permissions roles
         Permission::create(['guard_name' => 'web' , 'name' => 'all-slide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'create-slide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-slide']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'edited_by-slide']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-slide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-slide']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'unpublish-slide']);
 
 
         //Create permissions permissions
@@ -181,7 +164,6 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'create-permission']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-permission']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-permission']);
-        Permission::create(['guard_name' => 'web' , 'name' => 'delete-multiple-permission']);
         
         //Viea Subcribe Newletters permissions
         Permission::create(['guard_name' => 'web' , 'name' => 'view-email']);

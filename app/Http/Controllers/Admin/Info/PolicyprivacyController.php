@@ -60,40 +60,43 @@ class PolicyprivacyController extends Controller
         
         $policyprivacy = new policyprivacy;
         $policyprivacy->body = $request->body;
-        $policyprivacy->status = '0';
         
         $policyprivacy->save();
 
         return response('Created',Response::HTTP_CREATED);
     }
 
-    public function disable($id)
+    /**
+     * cette partie consite a activer et a desactiver
+     * @param $id
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+
+    public function disable(policyprivacy $policyprivacy, $id)
     {
-        DB::table('policyprivacies')
-            ->where('id',$id)
-            ->update([
-                'status' => 0,
-                'user_id' => auth()->user()->id,
-            ]);
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        $policyprivacy = policyprivacy::where('id', $id)->findOrFail($id);
+        $policyprivacy->update([
+            'status' => 0,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
 
-    public function active($id)
+    public function active(policyprivacy $policyprivacy, $id)
     {
-        DB::table('policyprivacies')
-            ->where('id',$id)
-            ->update([
-                'status' => 1,
-                'user_id' => auth()->user()->id,
-            ]);
-
-        return response('Activated',Response::HTTP_ACCEPTED);
+        $policyprivacy = policyprivacy::where('id', $id)->findOrFail($id);
+        $policyprivacy->update([
+            'status' => 1,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Deactivated',Response::HTTP_ACCEPTED);
     }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return PolicyprivacyResource|\Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -113,26 +116,24 @@ class PolicyprivacyController extends Controller
         return view('admin.info.policyprivacy.edit', compact('policyprivacy'));
     }
 
-    public function view($slug)
+    public function view($id)
     {
-        $policyprivacy = new PolicyprivacyResource(policyprivacy::where('slug',$slug)->firstOrFail());
+        $policyprivacy = new PolicyprivacyResource(policyprivacy::where('id',$id)->findOrFail($id));
         return $policyprivacy;
     }
 
-
-
-    public function vector(policyprivacy $policyprivacy)
+    public function vector(policyprivacy $policyprivacy,$id)
     {
-        return view('admin.info.policyprivacy.view', [
-            'policyprivacy' => $policyprivacy,
-        ]);
+
+        $policyprivacy = policyprivacy::where('id',$id)->findOrFail($id);
+        return view('admin.info.policyprivacy.view', compact('policyprivacy'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -140,9 +141,10 @@ class PolicyprivacyController extends Controller
             'body'=>'required|string',
         ]);
         
-        $policyprivacy = policyprivacy::findOrFail($id);
-        
-        $policyprivacy->update($request->all());
+        $policyprivacy = policyprivacy::first();
+        $policyprivacy->user_id = auth()->user()->id;
+
+        $policyprivacy->save();
 
         return ['message' => 'updated successfully'];
     }
@@ -151,7 +153,7 @@ class PolicyprivacyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function destroy($id)
     {

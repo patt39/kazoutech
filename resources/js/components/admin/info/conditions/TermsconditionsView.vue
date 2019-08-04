@@ -79,7 +79,7 @@
                                                                             <div class="form-check">
                                                                                 <label class="form-check-label pull-right">
                                                                                     Created by
-                                                                                    <router-link  :to="{ path: `/admin/profile/${condition.user.username}` }" class="text-danger">
+                                                                                    <router-link  :to="{ path: `/dashboard/profile/${condition.user.username}` }" class="text-danger">
                                                                                         {{ condition.user.name}}
                                                                                     </router-link>
                                                                                     <span class="form-check-sign"></span>
@@ -127,7 +127,7 @@
         data() {
             return {
                 editmode: false,
-                user: '',
+                user: {},
                 condition: {
                     user: '',
                 },

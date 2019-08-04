@@ -344,6 +344,9 @@
                 //End Progress bar
                 this.$Progress.finish();
             },
+            reload(){
+                this.loadItems()
+            },
             intervalFetchData: function () {
                 setInterval(() => {
                     this.loadItems();

@@ -33,7 +33,7 @@
                                                                 <div class="nav-tabs-wrapper">
                                                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                                                         <li v-if="$auth.can('edit-privacy')" class="nav-item">
-                                                                            <router-link :to="{ path: `/dashboard/policy_privacy/${form.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
+                                                                            <router-link :to="{ path: `/dashboard/policy_privacy/${policyprivacy.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
                                                                                 <i class="material-icons">edit</i>
                                                                                 <b>Edit Privacy</b>
                                                                             </router-link>
@@ -53,12 +53,12 @@
                                                                 <div class="tab-pane active" id="profile">
                                                                     <div class="form-group">
                                                                         <label class="bmd-label-floating">Description</label>
-                                                                        <vue-editor :disabled=true v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                        <vue-editor :disabled=true v-model="policyprivacy.body" :editorToolbar="customToolbar"></vue-editor>
                                                                         <div class="form-check">
                                                                             <label class="form-check-label pull-right">
                                                                                 Created by
-                                                                                <router-link  :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
-                                                                                    {{ form.user.name}}
+                                                                                <router-link  :to="{ path: `/dashboard/profile/${policyprivacy.user.username}` }" class="text-danger">
+                                                                                    {{ policyprivacy.user.name}}
                                                                                 </router-link>
                                                                                 <span class="form-check-sign"></span>
                                                                             </label>
@@ -103,16 +103,10 @@
         data() {
             return {
                 editmode: false,
-                user:'',
-                form: new Form({
-                    id: '',
-                    body: '',
-                    color_name: '',
+                user:{},
+                policyprivacy:{
                     user: '',
-                    user_id: '',
-                    status: '',
-                    slug: ''
-                }),
+                },
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     [{ 'font': [] }],
@@ -148,7 +142,7 @@
         created()  {
             //Start Progress bar
             this.$Progress.start();
-            api.policyprivacySlug(this.$route.params.policyprivacy).then(response => {
+            api.policyprivacyView(this.$route.params.id).then(response => {
                 this.policyprivacy = response.data.data;
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar

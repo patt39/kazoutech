@@ -29,12 +29,12 @@
                                                 <!-- User Data -->
                                                 <div class="col-md-12">
                                                     <div class="card card-nav-tabs">
-                                                        <div :class="getColorHeaderUser()" v-if="$auth.can('create-legal') || $auth.can('edit-legal')">
+                                                        <div :class="getColorHeaderUser()">
                                                             <div class="nav-tabs-navigation">
                                                                 <div class="nav-tabs-wrapper">
                                                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                                                         <li v-if="$auth.can('edit-legal')" class="nav-item">
-                                                                            <router-link  :to="{ path: `/admin/legal_notice/${form.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
+                                                                            <router-link  :to="{ path: `/dashboard/legal_notice/${legalnotice.id}/edit` }" class="nav-link active" style="cursor:pointer;" data-toggle="tab">
                                                                                 <i class="material-icons">edit</i>
                                                                                 <b>Edit Legal</b>
                                                                             </router-link>
@@ -54,12 +54,12 @@
                                                                 <div class="tab-pane active" id="profile">
                                                                     <div class="form-group">
                                                                         <label class="bmd-label-floating">Description</label>
-                                                                        <vue-editor :disabled=true v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                        <vue-editor :disabled=true v-model="legalnotice.body" :editorToolbar="customToolbar"></vue-editor>
                                                                         <div class="form-check">
                                                                             <label class="form-check-label pull-right">
                                                                                 Created by
-                                                                                <router-link  :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
-                                                                                    {{ form.user.name }}
+                                                                                <router-link  :to="{ path: `/admin/profile/${legalnotice.user.username}` }" class="text-danger">
+                                                                                    {{ legalnotice.user.name }}
                                                                                 </router-link>
                                                                             </label>
                                                                         </div>
@@ -104,16 +104,10 @@
         components: { StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
         return {
-            user: '',
-            form: new Form({
-                id: '',
-                body: '',
-                user_id: '',
-                user: '',
-                color_name:'',
-                status: '',
-                slug: ''
-            }),
+            legalnotice:{
+                user:'',
+            },
+            user: {},
             customToolbar: [
                 [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                 [{ 'font': [] }],
@@ -149,8 +143,8 @@
     created()  {
             //Start Progress bar
             this.$Progress.start();
-            api.legalnoticeSlug(this.$route.params.legalnotice).then(response => {
-                this.legalnotice = response.data.data;
+            api.legalnoticeView(this.$route.params.id).then(response => {
+            this.legalnotice = response.data.data;
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();

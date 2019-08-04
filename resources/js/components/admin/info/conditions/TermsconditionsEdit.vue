@@ -52,7 +52,7 @@
                                                                                             </div>
                                                                                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                             <div>
-                                                                                                <span class="btn btn-raised btn-round btn-warning btn-file">
+                                                                                                <span class="btn btn-raised btn-round btn-success btn-file">
                                                                                                    <span class="fileinput-new" style="cursor: pointer">
                                                                                                        <i class="material-icons">insert_photo</i>
                                                                                                            <b>Add Slide</b>
@@ -95,7 +95,7 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link id="button_hover" :to="{ name: 'condition.index' }" class="btn btn-danger btn-round" data-toggle="tab">
+                                                            <router-link id="button_hover" :to="{ name: 'conditions.index' }" class="btn btn-danger btn-round" data-toggle="tab">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
@@ -217,7 +217,7 @@
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Term & Condition updated successfully.</strong>', 'progress': 75});
                         }, 2000);
-                        setTimeout(() => this.$router.push({ name: 'condition.index' }));
+                        setTimeout(() => this.$router.push({ name: 'conditions.index' }));
                         /** Fin alert **/
                         //End Progress bar
                         this.$Progress.finish();

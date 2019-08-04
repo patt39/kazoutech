@@ -54,7 +54,7 @@
                                                                                             </div>
                                                                                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                             <div>
-                                                                                              <span class="btn btn-raised btn-round btn-warning btn-file">
+                                                                                              <span class="btn btn-raised btn-round btn-success btn-file">
                                                                                                  <span class="fileinput-new" style="cursor: pointer">
                                                                                                     <i class="material-icons">insert_photo</i>
                                                                                                              <b>Add Slide</b>

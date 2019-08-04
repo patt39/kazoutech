@@ -53,7 +53,7 @@ class ConditionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return ConditionResource|\Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -103,7 +103,7 @@ class ConditionController extends Controller
                 'user_id' => auth()->user()->id,
                 ]);
         
-        return response('deactivated', Response::HTTP_ACCEPTED);;
+        return response('deactivated', Response::HTTP_ACCEPTED);
     }
 
     public function active_condition($id)
@@ -122,7 +122,7 @@ class ConditionController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return ConditionResource|\Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -161,7 +161,7 @@ class ConditionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -186,7 +186,7 @@ class ConditionController extends Controller
             if(!file_exists($dir)){
                 mkdir($dir, 0775, true);
             }
-            Image::make($request->photo)->fit(400,400)->save(public_path('assets/img/condition/').$name);
+            Image::make($request->photo)->save(public_path('assets/img/condition/').$name);
 
 
             $request->merge(['photo' =>  "/assets/img/condition/{$name}"]);
@@ -204,7 +204,7 @@ class ConditionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function destroy(Request $request,$id)
     {

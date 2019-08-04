@@ -64,7 +64,7 @@
                                 <div class="card-body">
                                     <div v-if="$auth.can('create-category')" class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-raised btn-round  btn-warning" @click="newModal">
+                                            <button id="button_hover" class="btn btn-raised btn-round  btn-success" @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">forum</i>
                                     </span>
@@ -494,6 +494,9 @@
                 });
                 axios.get("/api/colors").then(({data}) => (this.colors = data.data));
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            },
+            reload(){
+                this.loadItems()
             },
 
         },

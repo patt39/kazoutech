@@ -63,7 +63,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'licence_site.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round">
+                                            <router-link :to="{ name: 'licence_site.create' }" id="button_hover" class="btn btn-success btn-raised btn-round">
                                                 <span class="btn-label">
                                                     <i class="material-icons">verified_user</i>
                                                 </span>
@@ -110,7 +110,7 @@
                                                     </td>
                                                     <td>{{ item.updated_at | myDate }}</td>
                                                     <td class="td-actions text-right">
-                                                        <template v-if="$auth.can('publish-licence')">
+                                                        <template>
                                                             <button v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon" title="Disable">
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
@@ -118,15 +118,15 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <router-link :to="{ path: `/dasboard/licence_site/lm/${item.slug}` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                        <router-link :to="{ path: `/dashboard/licence_site/lm/${item.id}` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
                                                         </router-link>
-                                                        <router-link :to="{ path: `/dasboard/licence_site/${item.id}/edit` }" class="btn btn-link btn-success btn-round btn-just-icon" title="Edit">
+                                                        <router-link :to="{ path: `/dashboard/licence_site/${item.id}/edit` }" class="btn btn-link btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
-                                                        <button v-if="$auth.can('delete-licence')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                        <button  @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
                                                     </td>
@@ -161,14 +161,9 @@
                 loaded: false,
                 editmode: false,
                 licencesites: {},
-                user:'',
+                user:{},
                 form: new Form({
                     id: '',
-                    body: '',
-                    color_name: '',
-                    user_id: '',
-                    status: '',
-                    slug: ''
                 }),
             }
         },
@@ -231,7 +226,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/dasboard/licence_site/' + id).then(() => {
+                        this.form.delete('/dashboard/licence_site/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -264,7 +259,7 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get('/dasboard/active_licence_site/' + id).then(() => {
+                this.form.get('/dashboard/active_licence_site/' + id).then(() => {
                       /** Alert notify bootstrapp **/
                       var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                           allow_dismiss: false,
@@ -296,7 +291,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/dasboard/disable_licence_site/' + id).then(() => {
+                this.form.get('/dashboard/disable_licence_site/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,

@@ -169,36 +169,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/disable_testimonials/{id}', 'TestimonialController@disable');
 
     });
-    Route::group(['namespace' => 'Info'], function () {
-
-        //Terms & Conditions Routes
-        Route::resource('/dashboard/conditions', 'ConditionController');
-        Route::get('/conditions/lm/{condition}', 'ConditionController@vector')->name('conditions.view');
-        Route::get('/conditions/view/{slug}', 'ConditionController@view');
-        Route::get('/disable_condition/{id}', 'ConditionController@unactive_condition');
-        Route::get('/active_condition/{id}', 'ConditionController@active_condition');
-
-        //Legal Notice Route
-        Route::resource('/legal_notice', 'LegalnoticeController');
-        Route::get('/legal_notice/lm/{legalnotice}', 'LegalnoticeController@vector')->name('legalnotice.view');
-        Route::get('/legal_notice/view/{slug}', 'LegalnoticeController@view');
-        Route::get('/active_legal_notice/{id}', 'LegalnoticeController@active');
-        Route::get('/disable_legal_notice/{id}', 'LegalnoticeController@disable');
-
-        //Policy & Privacy Route
-        Route::resource('/policy_privacy', 'PolicyprivacyController');
-        Route::get('/policy_privacy/lm/{policyprivacy}', 'PolicyprivacyController@vector')->name('policy_privacy.view');
-        Route::get('/policy_privacy/view/{slug}', 'PolicyprivacyController@view');
-        Route::get('/active_policy_privacy/{id}', 'PolicyprivacyController@active');
-        Route::get('/disable_policy_privacy/{id}', 'PolicyprivacyController@disable');
-
-        //Licence Site Route
-        Route::resource('/licence_site', 'LicencesiteController');
-        Route::get('/licence_site/lm/{licence}', 'LicencesiteController@vector')->name('licence_site.view');
-        Route::get('/licence_site/view/{slug}', 'LicencesiteController@view');
-        Route::get('/active_licence_site/{id}', 'LicencesiteController@active');
-        Route::get('/disable_licence_site/{id}', 'LicencesiteController@disable');
-    });
 
     Route::group(['namespace' => 'Info'], function () {
     
@@ -211,31 +181,25 @@ Route::group(['namespace' => 'Admin'], function () {
     
         //Legal Notice Route
         Route::resource('/dashboard/legal_notice', 'LegalnoticeController');
-        Route::get('/dashboard/legal_notice/lm/{legalnotice}', 'LegalnoticeController@vector')->name('legalnotice.view');
-        Route::get('/dashboard/legal_notice/view/{slug}', 'LegalnoticeController@view');
+        Route::get('/dashboard/legal_notice/lm/{id}', 'LegalnoticeController@vector')->name('legalnotice.view');
+        Route::get('/dashboard/legal_notice/view/{id}', 'LegalnoticeController@view');
         Route::get('/dashboard/active_legal_notice/{id}', 'LegalnoticeController@active');
         Route::get('/dashboard/disable_legal_notice/{id}', 'LegalnoticeController@disable');
     
         //Policy & Privacy Route
         Route::resource('/dashboard/policy_privacy', 'PolicyprivacyController');
-        Route::get('/dashboard/policy_privacy/lm/{policyprivacy}', 'PolicyprivacyController@vector')->name('policy_privacy.view');
-        Route::get('/dashboard/policy_privacy/view/{slug}', 'PolicyprivacyController@view');
+        Route::get('/dashboard/policy_privacy/lm/{id}', 'PolicyprivacyController@vector')->name('policy_privacy.view');
+        Route::get('/dashboard/policy_privacy/view/{id}', 'PolicyprivacyController@view');
         Route::get('/dashboard/active_policy_privacy/{id}', 'PolicyprivacyController@active');
         Route::get('/dashboard/disable_policy_privacy/{id}', 'PolicyprivacyController@disable');
     
         //Licence Site Route
         Route::resource('/dashboard/licence_site', 'LicencesiteController');
-        Route::get('/dashboard/licence_site/lm/{licencesite}', 'LicencesiteController@vector')->name('licence_site.view');
-        Route::get('/dashboard/licence_site/view/{slug}', 'LicencesiteController@view');
+        Route::get('/dashboard/licence_site/lm/{id}', 'LicencesiteController@vector')->name('licence_site.view');
+        Route::get('/dashboard/licence_site/view/{id}', 'LicencesiteController@view');
         Route::get('/dashboard/active_licence_site/{id}', 'LicencesiteController@active');
         Route::get('/dashboard/disable_licence_site/{id}', 'LicencesiteController@disable');
 
-        //Cookie Site Route
-        Route::resource('/dashboard/cookies', 'CookieController');
-        Route::get('/dashboard/cookies/lm/{cookie}', 'CookieController@vector')->name('cookie_site.view');
-        Route::get('/dashboard/cookies/view/{slug}', 'CookieController@view');
-        Route::get('/dashboard/active_cookie/{id}', 'CookieController@active');
-        Route::get('/dashboard/disable_cookie/{id}', 'CookieController@disable');
     });
 
 });

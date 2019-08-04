@@ -5,12 +5,13 @@ namespace App\Model\admin\info;
 use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\Cache;
 
 class legalnotice extends Model
 {
     protected $table = 'legalnotices';
 
-    protected $fillable = ['body', 'ip','slug'];
+    protected $fillable = ['body', 'ip','status','user_id'];
 
     public function user()
     {
@@ -29,27 +30,5 @@ class legalnotice extends Model
         self::creating(function ($model){
             $model->ip = request()->ip();
         });
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
-    use Sluggable;
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'ip',
-                'separator' => '+'
-            ]
-
-        ];
     }
 }

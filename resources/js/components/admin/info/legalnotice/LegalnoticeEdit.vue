@@ -90,16 +90,11 @@
         components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin,},
         data() {
             return {
-                user: '',
+                user: {},
                 form: new Form({
                     id: '',
-                    ip: '',
                     body: '',
-                    color_name: '',
-                    user_id: '',
-                    user:'',
-                    status: '',
-                    slug: ''
+                    user: ''
                 }),
                 customToolbar: [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],

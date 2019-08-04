@@ -20,7 +20,7 @@ class AccountController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['view','profileView']]);
+        $this->middleware('auth',['except' => ['api','view','profileView']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -33,6 +33,13 @@ class AccountController extends Controller
     {
         $user = Auth::user();
         return view('admin.account.profile',compact('user'));
+    }
+
+    public function api()
+    {
+        return UserResource::collection(User::with('my_country')
+            ->where('my_status','0')
+            ->latest()->get());
     }
 
     /**
@@ -165,7 +172,7 @@ class AccountController extends Controller
             if(!file_exists($dir)){
                 mkdir($dir, 0775, true);
             }
-            Image::make($request->avatar)->fit(300,300)->save(public_path('assets/img/avatars/user/').$name);
+            Image::make($request->avatar)->fit(400,400)->save(public_path('assets/img/avatars/user/').$name);
 
 
             $request->merge(['avatar' =>  "/assets/img/avatars/user/{$name}"]);

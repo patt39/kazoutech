@@ -6,6 +6,7 @@ use App\Http\Resources\UserResource;
 use App\Model\user\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -33,10 +34,14 @@ class UserController extends Controller
 
     public function api()
     {
-        return UserResource::collection(User::with('my_country')
-            ->where('my_status','0')
-            ->latest()->get());
+        $users = Cache::rememberForever('users', function () {
+            return UserResource::collection(User::with('my_country')
+                ->where('my_status','0')
+                ->latest()->get());
+        });
+        return $users;
     }
+
 
 
     public function search(Request $request)
@@ -137,10 +142,13 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return ['message' => 'Deleted successfully '];
     }
 }

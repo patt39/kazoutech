@@ -43,20 +43,20 @@ export default {
     legalnoticeID(id) {
         return axios.get(`/dashboard/legal_notice/${id}`);
     },
-    legalnoticeSlug(legalnotice) {
-        return axios.get(`/dashboard/legal_notice/view/${legalnotice}`);
+    legalnoticeView(id) {
+        return axios.get(`/dashboard/legal_notice/view/${id}`);
     },
     policyprivacyID(id) {
         return axios.get(`/dashboard/policy_privacy/${id}`);
     },
-    policyprivacySlug(policyprivacy) {
-        return axios.get(`/dashboard/policy_privacy/view/${policyprivacy}`);
+    policyprivacyView(id) {
+        return axios.get(`/dashboard/policy_privacy/view/${id}`);
     },
     licencesiteID(id) {
         return axios.get(`/dashboard/licence_site/${id}`);
     },
-    licencesiteSlug(licencesite) {
-        return axios.get(`/dashboard/licence_site/view/${licencesite}`);
+    licencesiteView(id) {
+        return axios.get(`/dashboard/licence_site/view/${id}`);
     },
     conditionSlug(condition) {
         return axios.get(`/dashboard/conditions/view/${condition}`);

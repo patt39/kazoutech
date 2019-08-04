@@ -63,7 +63,7 @@
                                 <div class="card-body">
                                     <div  class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'legal_notice.create' }" id="button_hover" class="btn btn-warning btn-raised btn-round">
+                                            <router-link :to="{ name: 'legal_notice.create' }" id="button_hover" class="btn btn-success btn-raised btn-round">
                                                  <span class="btn-label">
                                                     <i class="material-icons">gavel</i>
                                                 </span>
@@ -102,7 +102,7 @@
                                                         </div>
                                                     </td>
                                                    <td>
-                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                    <a :href="`/dashboard/users/p/${item.user.username}/`">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
@@ -118,7 +118,7 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <router-link  :to="{ path: `/dashboard/legal_notice/lm/${item.slug}` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                        <router-link  :to="{ path: `/dashboard/legal_notice/lm/${item.id}` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
@@ -162,35 +162,10 @@
                 loaded: false,
                 editmode: false,
                 legalnotices: {},
-                user: '',
+                user: {},
                 form: new Form({
                     id: '',
-                    body: '',
-                    user_id: '',
-                    color_name: '',
-                    status: '',
-                    slug: ''
                 }),
-                customToolbar: [
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'font': [] }],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ 'align': [] }],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{ 'color': [] }, { 'background': [] }],
-                    //['link', 'image', 'video', 'formula'],
-                    ['link'],
-                    //[{ 'direction': 'rtl' }],
-                    ['clean'],
-                    //['emoji'],
-                ]
             }
         },
         methods: {
@@ -224,13 +199,6 @@
             getColorHeaderUser(){
                 let colorUser = 'card-header card-header-' + this.user.color_name;
                 return colorUser;
-            },
-             getUser(item){
-                //Progress bar star
-                this.$Progress.start();
-                location.replace(`/dashboard/users/p/${item.user.username}/`);
-                //Progres bar
-                this.$Progress.finish()
             },
             deleteItem(id) {
                 //Alert delete
