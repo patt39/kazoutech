@@ -63,22 +63,8 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');
         Route::get('/dashboard/disable_categories/{id}', 'CategoryController@disable')->name('disable_categories');
 
-        // Admin Route categoryfaqs
-        Route::resource('/dashboard/category-faqs', 'CategoryfaqController');
-        Route::get('/dashboard/active_category-faqs/{id}', 'CategoryfaqController@active')->name('active_category-faqs');
-        Route::get('/dashboard/disable_category-faqs/{id}', 'CategoryfaqController@disable')->name('disable_category-faqs');
 
-        // Admin Route tags
-        Route::resource('/dashboard/tags', 'TagController');
-        Route::get('/dashboard/tags/show/{tag}', 'TagController@view')->name('tags.view');
-        Route::get('/dashboard/tags/api/{slug}', 'TagController@getview');
-        Route::get('/dashboard/active_tags/{id}', 'TagController@active')->name('active_tags');
-        Route::get('/dashboard/disable_tags/{id}', 'TagController@disable')->name('disable_tags');
 
-        //Admin Route colors
-        Route::resource('dashboard/colors', 'ColorController');
-        Route::get('/dashboard/active_color/{id}', 'ColorController@active')->name('active_color');
-        Route::get('/dashboard/disable_color/{id}', 'ColorController@disable')->name('disable_color');
 
         // Admin Route country
         Route::resource('/dashboard/countries', 'CountryController');
@@ -88,10 +74,7 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_cities/{id}', 'CityController@active')->name('active_cities');
         Route::get('/dashboard/disable_cities/{id}', 'CityController@disable')->name('disable_cities');
 
-        Route::get('/dashboard/account/profile', 'AccountController@index')->name('admin.account');
-        Route::get('/dashboard/profile/{username}', 'AccountController@show')->name('admin.view');
-        Route::get('/api/dashboard/profile/{username}', 'AccountController@userShow');
-        Route::get('/dashboard/user/update', 'AccountController@edit')->name('admin.edit_profile');
+
         Route::get('/{username}', 'AccountController@profileView')->name('profile.view');
         Route::get('/profile/edit', 'AccountController@profileEdit')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');
