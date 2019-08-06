@@ -27,10 +27,16 @@ Route::group(['namespace' => 'Auth'], function () {
 
 });
 
+/** Admin */
+require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'index.php');
+
+/** User */
+require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR . 'index.php');
+
 Route::group(['namespace' => 'Admin'], function () {
 
-    // Dashboard
-    Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
+    // Dashboardf
+    //Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
     Route::resource('/dashboard/users','UserController');
     Route::get('/dashboard/users/p/{user}', 'UserController@view')->name('users.view');
 
@@ -39,26 +45,7 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('/dashboard/active_administrators/{id}', 'OccupationController@active')->name('active_occupations');
     Route::get('/dashboard/disable_occupations/{id}', 'OccupationController@disable')->name('disable_occupations');
 
-    //Route Occupation
-    Route::resource('/dashboard/occupations','OccupationController');
-    Route::get('/dashboard/active_occupations/{id}', 'OccupationController@active')->name('active_occupations');
-    Route::get('/dashboard/disable_occupations/{id}', 'OccupationController@disable')->name('disable_occupations');
 
-    //Route Permission
-    Route::resource('/dashboard/permissions', 'PermissionController');
-
-    //Roles Route
-    Route::resource('/dashboard/roles', 'RoleController');
-
-    //Route Faq
-    Route::resource('/dashboard/faqs','FaqController');
-    Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');
-    Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
-
-    //Route Faq
-    Route::resource('/dashboard/faqs','FaqController');
-    Route::get('/dashboard/active_faqs/{id}', 'FaqController@active')->name('active_faqs');
-    Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disable_faqs');
 
     //All Route Partials
     Route::group(['namespace' => 'Partial'], function () {
