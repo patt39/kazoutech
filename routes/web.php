@@ -91,10 +91,7 @@ Route::group(['namespace' => 'Admin'], function () {
         //Reset Password Route
         Route::get('dashboard/user/password/reset', 'ChangePasswordController@showResetPasswordForm')->name('admin.reset_password');
 
-        //Notes administrator Route
-        Route::resource('/dashboard/notes', 'NoteController');
-        Route::get('/dashboard/active_notes/{id}', 'NoteController@active')->name('active_notes');
-        Route::get('/dashboard/disable_notes/{id}', 'NoteController@disable')->name('disable_notes');
+
 
         //Route Following
         Route::post('user/follow/{id}', 'FollowerController@store')->name('user.follow');
@@ -103,17 +100,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('followers/{username}', 'FollowerController@GetFollowersByUser');
         Route::get('followings/{username}', 'FollowerController@GetFollowingsByUser');
 
-        //Notes administrator Route
-        Route::resource('/dashboard/tasks', 'TaskController');
-        Route::get('/api/dashboard/tasks/u/{username}', 'TaskController@usertask');
-        Route::put('/dashboard/update_progress_tasks/{id}', 'TaskController@updateProgress');
-        Route::put('/dashboard/update_description_tasks/{id}', 'TaskController@updateDescription');
-        Route::get('/dashboard/tasks/u/{username}', 'TaskController@view')->name('tasks.view');
-
-        //Admin Route Diplomas
-        Route::resource('dashboard/diplomas', 'DiplomaController');
-        Route::get('/dashboard/active_diplomas/{id}', 'DiplomaController@active')->name('active_diplomas');
-        Route::get('/dashboard/disable_diplomas/{id}', 'DiplomaController@disable')->name('disable_diplomas');
 
 
     });
@@ -121,22 +107,12 @@ Route::group(['namespace' => 'Admin'], function () {
     //All Route Pages
     Route::group(['namespace' => 'Page'], function () {
 
-        //Admin Route Abouts
-        Route::resource('dashboard/abouts', 'AboutController');
-        Route::get('/dashboard/active_abouts/{id}', 'AboutController@active')->name('active_abouts');
-        Route::get('/dashboard/disable_abouts/{id}', 'AboutController@disable')->name('disable_abouts');
+
 
          //Admin Route Abouts
          Route::resource('dashboard/registrations', 'HowregisterController');
          Route::get('/dashboard/active_registrations/{id}', 'HowregisterController@active')->name('active_registrations');
          Route::get('/dashboard/disable_registrations/{id}', 'HowregisterController@disable')->name('disable_registrations');
- 
-        //Testimonials Route
-        Route::resource('/dashboard/testimonials', 'TestimonialController');
-        Route::get('/dashboard/testimonials/tm/{testimonial}', 'TestimonialController@vector')->name('testimonials.view');
-        Route::get('/dashboard/testimonials/view/{slug}', 'TestimonialController@view');
-        Route::get('/dashboard/active_testimonials/{id}', 'TestimonialController@active');
-        Route::get('/dashboard/disable_testimonials/{id}', 'TestimonialController@disable');
 
     });
 
@@ -176,16 +152,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
 Route::group(['namespace' => 'User'], function () {
 
-    //Admin Route contacts
-    Route::resource('dashboard/contacts', 'ContactController');
-    Route::get('dashboard/contacts/msg/{contact}', 'ContactController@contact')->name('contacts.view');
-    Route::get('dashboard/contacts/view/{slug}', 'ContactController@view');
-    Route::get('/dashboard/contacts/red_confirm/{id}', 'ContactController@active');
-    Route::get('/dashboard/contacts/discard_red/{id}', 'ContactController@disable');
-
-    //User Route Contact
-    Route::get('/c/contact', 'ContactController@contatPage')->name('contact_cm');
-    Route::post('contact-cm/save', 'ContactController@store');
 
     //Admin Route technicians
     Route::resource('dashboard/technicians','TechnicianController');

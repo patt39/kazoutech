@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Partial;
 
+use App\Http\Requests\Admin\Colors\StoreRequest;
 use App\Http\Resources\Partial\ColorResource;
 use App\Model\admin\color;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class ColorController extends Controller
@@ -61,21 +63,21 @@ class ColorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->validate($request,[
-            'name'=>'required|string|unique:colors',
-        ]);
+        //$this->validate($request,[
+        //    'name'=>'required|string|unique:colors',
+        //]);
 
-        $color = new Color;
-        $color->name = $request->name;
-        $color->color_name = $request->color_name;
-
-
-        $color->save();
+       $color = new Color;
+       $color->name = $request->name;
+       $color->color_name = $request->color_name;
 
 
-        return response('Created',Response::HTTP_CREATED);
+       $color->save();
+
+
+       //return response('Created',Response::HTTP_CREATED);
     }
 
     public function disable(color $color, $id)
