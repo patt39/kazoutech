@@ -29,6 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
         'username' => $faker->unique()->userName,
         'first_name' => $faker->firstName,
         'avatar' => $faker->imageUrl($width = 400, $height = 400),
+        'avatarcover' => $faker->imageUrl,
         'name' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->unique()->numerify('+393#########'),

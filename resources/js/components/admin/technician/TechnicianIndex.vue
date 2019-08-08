@@ -89,7 +89,7 @@
                                             <tr v-for="item in technicians" :key="item.id">
                                                 <td><img :src="item.user.avatar" :alt="item.user.username" style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%"></td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/users/profile/${item.user.username}/` }">
+                                                    <router-link  :to="{ path: `/dashboard/technicians/u/${item.slug}/` }">
                                                         <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                         <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
@@ -110,9 +110,12 @@
                                                 <td><b>{{ item.updated_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
 
-                                                    <router-link  :to="{ path: `/dashboard/technicians/u/${item.slug}/` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                    <!--<router-link  :to="{ path: `/dashboard/technicians/u/${item.slug}/` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
-                                                    </router-link>
+                                                    </router-link>-->
+                                                    <button  @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                        <i class="material-icons">visibility</i>
+                                                    </button>
 
                                                     <!--<router-link  :to="{ path: `/dashboard/technicians/${item.id}/edit/` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
@@ -123,7 +126,109 @@
                                         </table>
                                     </div>
 
-                                    <!-- Modal création/édition faq -->
+                                    <!-- Modal view technician -->
+                                    <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addNewLabel"><b>Profile technician</b></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Profile Image -->
+                                                    <div class="row">
+                                                        <div class="col-md-6 ml-auto mr-auto">
+                                                            <div style="padding-top: -100px;" class="profile text-center ">
+                                                                <div class="avatar">
+                                                                    <div class="fileinput fileinput-new text-center"
+                                                                         data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail img-circle img-raised">
+                                                                            <img :src="technician.user.avatar" :alt="technician.user.name">
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Pseudo</label>
+                                                                <input v-model="technician.user.username" type="text" name="username" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Last Name</label>
+                                                                <input v-model="technician.user.name" type="text" name="name" maxlength="25" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>First Name</label>
+                                                                <input v-model="technician.user.email" type="text" maxlength="25" name="first_name" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>City</label>
+                                                                <input v-if="technician.city_id !== null" v-model="technician.city.name" type="text" name="username" class="form-control"/>
+                                                                <input v-else="technician.city_id === null" placeholder="don't exist" type="text" name="username" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>District</label>
+                                                                <input v-model="technician.district" type="text" name="name" maxlength="25" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Occupation</label>
+                                                                <input v-if="technician.occupation_id !== null"  v-model="technician.occupation.name" type="text"  maxlength="25" name="first_name" class="form-control"/>
+                                                                <input v-else="technician.occupation_id === null"   type="text" placeholder="don't exist" maxlength="25" name="first_name" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Diploma technician</label>
+                                                                <input v-if="technician.diploma_id !== null" v-model="technician.diploma.name" type="text" name="diploma" class="form-control"/>
+                                                                <input v-else="technician.diploma_id === null" placeholder="don't exist" type="text" name="diploma" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Speciality</label>
+                                                                <input v-model="technician.speciality" type="text" name="name" maxlength="25" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Years get diploma</label>
+                                                                <input  v-model="technician.year" type="number"  maxlength="4" name="first_name" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-danger" data-dismiss="modal" type="button">
+                                        <span class="btn-label">
+                                            <i class="material-icons">clear</i>
+                                            <b>Close</b>
+                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -149,6 +254,12 @@
                 loaded: false,
                 user: {},
                 technicians: {},
+                technician:{
+                    user:'',
+                    city:'',
+                    diploma:'',
+                    occupation:'',
+                },
                 form: new Form({
                     id: '',
                     district: '',
@@ -156,6 +267,12 @@
             }
         },
         methods: {
+            viewItem(item) {
+                //Masquer le modal après la création
+                $("#viewNew").modal("show");
+                //On passe les informations
+                this.technician = item;
+            },
             mydatatables(){
                 $( function () {
                     $('#datatables').DataTable({

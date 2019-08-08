@@ -65,7 +65,7 @@ class CompileTableSeeder extends Seeder
         ]);
         $admin_user->syncRoles('admin');
 
-        factory(User::class, 100)->create();
+        factory(User::class, 1000)->create();
 
         // Output
         $this->command->info('Test utenti added.');
