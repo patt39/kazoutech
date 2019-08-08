@@ -116,38 +116,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
     });
 
-    Route::group(['namespace' => 'Info'], function () {
-    
-        //Terms & Conditions Routes
-        Route::resource('/dashboard/conditions', 'ConditionController');
-        Route::get('/dashboard/conditions/lm/{condition}', 'ConditionController@vector')->name('conditions.view');
-        Route::get('/dashboard/conditions/view/{slug}', 'ConditionController@view');
-        Route::get('/dashboard/unactive_condition/{id}', 'ConditionController@unactive_condition');
-        Route::get('/dashboard/active_condition/{id}', 'ConditionController@active_condition');
-    
-        //Legal Notice Route
-        Route::resource('/dashboard/legal_notice', 'LegalnoticeController');
-        Route::get('/dashboard/legal_notice/lm/{id}', 'LegalnoticeController@vector')->name('legalnotice.view');
-        Route::get('/dashboard/legal_notice/view/{id}', 'LegalnoticeController@view');
-        Route::get('/dashboard/active_legal_notice/{id}', 'LegalnoticeController@active');
-        Route::get('/dashboard/disable_legal_notice/{id}', 'LegalnoticeController@disable');
-    
-        //Policy & Privacy Route
-        Route::resource('/dashboard/policy_privacy', 'PolicyprivacyController');
-        Route::get('/dashboard/policy_privacy/lm/{id}', 'PolicyprivacyController@vector')->name('policy_privacy.view');
-        Route::get('/dashboard/policy_privacy/view/{id}', 'PolicyprivacyController@view');
-        Route::get('/dashboard/active_policy_privacy/{id}', 'PolicyprivacyController@active');
-        Route::get('/dashboard/disable_policy_privacy/{id}', 'PolicyprivacyController@disable');
-    
-        //Licence Site Route
-        Route::resource('/dashboard/licence_site', 'LicencesiteController');
-        Route::get('/dashboard/licence_site/lm/{id}', 'LicencesiteController@vector')->name('licence_site.view');
-        Route::get('/dashboard/licence_site/view/{id}', 'LicencesiteController@view');
-        Route::get('/dashboard/active_licence_site/{id}', 'LicencesiteController@active');
-        Route::get('/dashboard/disable_licence_site/{id}', 'LicencesiteController@disable');
-
-    });
-
 });
 
 Route::group(['namespace' => 'User'], function () {

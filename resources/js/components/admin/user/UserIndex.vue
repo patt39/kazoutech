@@ -256,8 +256,7 @@
                                                             <div class="form-group">
                                                                 <label>Professional Work</label>
                                                                 <input class="form-control" name="work"
-                                                                       type="text"
-                                                                       v-model="userProfile.work">
+                                                                       type="text" v-model="userProfile.work">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -303,12 +302,6 @@
             }
         },
         methods: {
-            viewItem(item) {
-                //Masquer le modal après la création
-                $("#viewNew").modal("show");
-                //On passe les informations
-                this.userProfile = item;
-            },
             mydatatables(){
                 $( function () {
                     $('#datatables').DataTable({
@@ -332,6 +325,12 @@
 
                     });
                 });
+            },
+            viewItem(item) {
+                //Masquer le modal après la création
+                $("#viewNew").modal("show");
+                //On passe les informations
+                this.userProfile = item;
             },
             getColorCardUser(){
                 let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;

@@ -19,8 +19,10 @@ class CreatePolicyprivaciesTable extends Migration
             $table->integer('status')->nullable()->default('0');
             $table->longText('body')->nullable();
             $table->string('ip')->default('127.0.0.1');
-            $table->unsignedInteger('user_id')->nullable()->index();
             $table->timestamps();
+
+            $table->unsignedInteger('user_id')->nullable()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

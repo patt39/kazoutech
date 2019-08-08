@@ -39,10 +39,8 @@ class TechnicianController extends Controller
 
     public function api()
     {
-        $technicians = Cache::rememberForever('technicians', function () {
-            return TechnicianResource::collection(technician::with('user','member','city','occupation','diploma')
-                ->latest()->get());
-        });
+        $technicians = TechnicianResource::collection(technician::with('user','member','city','occupation','diploma')
+            ->latest()->get());
         return $technicians;
     }
 
