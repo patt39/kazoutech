@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Colors;
+namespace App\Http\Requests\Admin\Administrators;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,14 +23,17 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name'=>'required|string|unique:colors.name'.$this->id,
+            'username' => 'required|unique:users,username,' .$this->id,
+            'email' => 'required|email|unique:users,email,' .$this->id,
+            "sex" => "required|in:Female,Male",
+            'country_id' => 'required',
+            'roles' => 'required',
         ];
     }
     public function messages()
     {
         return [
-            //'name.required' => 'Name color is required',
-            //'name.unique' => 'Cette couleur est déjà utilisée.',
+            'country_id.required' => 'Le pays est obligatoire',
         ];
     }
     /**
@@ -41,8 +44,8 @@ class UpdateRequest extends BaseRequest
     public function filters()
     {
         return [
-            //'email' => 'trim|lowercase',
-            'name' => 'trim|capitalize|escape'
+            'email' => 'trim|lowercase',
+            'username' => 'trim|capitalize|escape'
         ];
     }
 }

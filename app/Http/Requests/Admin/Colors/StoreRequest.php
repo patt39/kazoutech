@@ -29,8 +29,8 @@ class StoreRequest extends BaseRequest
     public function messages()
     {
         return [
-            'name.required' => 'Name color is required',
-            'name.unique' => 'Cette couleur est déjà utilisée.',
+            //'name.required' => 'Name color is required',
+            //'name.unique' => 'Cette couleur est déjà utilisée.',
         ];
     }
     /**

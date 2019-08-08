@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Administrators\StoreRequest;
 use App\Http\Resources\UserResource;
 use App\Model\user\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Administrators\UpdateRequest;
 
 class AdministratorController extends Controller
 {
@@ -85,16 +87,8 @@ class AdministratorController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        //dd(request()->all());
-        $this->validate($request, [
-            'username' => 'required|unique:users,username,' . $id,
-            'email' => 'required|email|unique:users,email,' . $id,
-            "sex" => "required|in:Female,Male",
-            'country_id' => 'required',
-            'roles' => 'required',
-        ]);
 
         $user = user::find($id);
         $user->name = $request->name;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Requests\Admin\Colors\StoreRequest;
+use App\Http\Requests\Admin\Colors\UpdateRequest;
 use App\Http\Resources\Partial\ColorResource;
 use App\Model\admin\color;
 use Illuminate\Http\Request;
@@ -65,10 +66,6 @@ class ColorController extends Controller
 
     public function store(StoreRequest $request)
     {
-        //$this->validate($request,[
-        //    'name'=>'required|string|unique:colors',
-        //]);
-        //$validated = $request->validated();
 
        $color = new Color;
        $color->name = $request->name;
@@ -131,11 +128,8 @@ class ColorController extends Controller
      * @param  int  $id
      * @return array
      */
-    public function update(Request $request,$id)
+    public function update(UpdateRequest $request,$id)
     {
-        $this->validate($request,[
-            'name'=> "required|string|min:2|max:25|unique:colors,name,{$id}",
-        ]);
 
         $color = color::findOrFail($id);
 
