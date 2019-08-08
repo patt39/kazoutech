@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Colors;
+namespace App\Http\Requests\Admin\Faqs;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends BaseRequest
+class UpdateRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,15 @@ class StoreRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name'=>'required|string|unique:colors',
+            'title'=>'required',
+            'body'=>'required',
+            'categoryfaq_id'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Name color is required',
-            'name.unique' => 'Cette couleur est déjà utilisée.',
+            'categoryfaq_id.required' => 'Le champ categorie est obligatoire',
         ];
     }
     /**
@@ -42,7 +43,7 @@ class StoreRequest extends BaseRequest
     {
         return [
             //'email' => 'trim|lowercase',
-            'name' => 'trim|capitalize|escape'
+            //'name' => 'trim|capitalize|escape'
         ];
     }
 }

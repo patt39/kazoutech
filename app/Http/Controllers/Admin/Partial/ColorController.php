@@ -68,6 +68,7 @@ class ColorController extends Controller
         //$this->validate($request,[
         //    'name'=>'required|string|unique:colors',
         //]);
+        //$validated = $request->validated();
 
        $color = new Color;
        $color->name = $request->name;

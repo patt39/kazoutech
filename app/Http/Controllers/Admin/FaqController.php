@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Faqs\StoreRequest;
+use App\Http\Requests\Admin\Faqs\UpdateRequest;
 use App\Http\Resources\FaqResource;
 use App\Model\admin\faq;
 use Carbon\Carbon;
@@ -59,13 +61,8 @@ class FaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->validate($request,[
-            'title'=>'required',
-            'body'=>'required',
-            'categoryfaq_id'=>'required',
-        ]);
 
         $faq = new faq;
         $faq->title = $request->title;
@@ -154,14 +151,8 @@ class FaqController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-
-        $this->validate($request,[
-            'title'=>'required',
-            'body'=>'required',
-            'categoryfaq_id'=>'required',
-        ]);
 
         $faq = faq::findOrFail($id);
 

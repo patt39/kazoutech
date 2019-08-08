@@ -28,6 +28,7 @@
         "spatie/laravel-newsletter": "^4.5",
         "spatie/laravel-permission": "^2.37",
         "spatie/laravel-searchable": "^1.3",
+        "waavi/sanitizer": "~1.0",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

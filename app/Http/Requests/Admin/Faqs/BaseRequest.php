@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Colors;
+namespace App\Http\Requests\Admin\Faqs;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
