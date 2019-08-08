@@ -113,9 +113,14 @@
                                                   </router-link>
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                    <!--<a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
-                                                    </a>
+                                                    </a>-->
+                                                    <button @click="viewItem(item)"
+                                                            class="btn btn-link btn-warning btn-round btn-just-icon"
+                                                            title="View">
+                                                        <i class="material-icons">visibility</i>
+                                                    </button>
                                                     <router-link  v-if="$auth.can('edit-user')" :to="{ path: `/dashboard/users/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
@@ -136,6 +141,138 @@
                                             <b>Get Excel Users</b>
                                         </button>
                                     </div>
+
+                                    <!-- Modal view technician -->
+                                    <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addNewLabel"><b>Profile user</b></h5>
+                                                    <button aria-label="Close" class="close" data-dismiss="modal"
+                                                            type="button">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Profile Image -->
+                                                    <div class="row">
+                                                        <div class="col-md-6 ml-auto mr-auto">
+                                                            <div class="profile text-center "
+                                                                 style="padding-top: -100px;">
+                                                                <div class="avatar">
+                                                                    <div class="fileinput fileinput-new text-center"
+                                                                         data-provides="fileinput">
+                                                                        <div
+                                                                            class="fileinput-new thumbnail img-circle img-raised">
+                                                                            <img :alt="userProfile.name"
+                                                                                 :src="userProfile.avatar">
+                                                                        </div>
+                                                                        <div
+                                                                            class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Pseudo</label>
+                                                                <input class="form-control" name="username"
+                                                                       type="text" v-model="userProfile.username">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Last Name</label>
+                                                                <input class="form-control" maxlength="25"
+                                                                       name="name" type="text" v-model="userProfile.name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>First Name</label>
+                                                                <input class="form-control" maxlength="25"
+                                                                       name="first_name" type="text"
+                                                                       v-model="userProfile.first_name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Sex</label>
+                                                                <input class="form-control" maxlength="25"
+                                                                       name="first_name" type="text"
+                                                                       v-model="userProfile.sex">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Age</label>
+                                                                <input class="form-control" maxlength="2"
+                                                                       name="my_birthday" type="text"
+                                                                       v-model="userProfile.age">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Your Phone Number</label>
+                                                                <input class="form-control" name="phone"
+                                                                       type="number"
+                                                                       v-model="userProfile.phone">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <input class="form-control" name="email"
+                                                                       type="email"
+                                                                       v-model="userProfile.email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Street Address</label>
+                                                                <input class="form-control" name="address"
+                                                                       type="text"
+                                                                       v-model="userProfile.address">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Postal Code</label>
+                                                                <input class="form-control" name="cap"
+                                                                       type="number"
+                                                                       v-model="userProfile.cap">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Professional Work</label>
+                                                                <input class="form-control" name="work"
+                                                                       type="text"
+                                                                       v-model="userProfile.work">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-danger" data-dismiss="modal" type="button">
+                                                        <span class="btn-label">
+                                                            <i class="material-icons">clear</i>
+                                                            <b>Close</b>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -153,6 +290,7 @@
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
+
     export default {
         components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
         data() {
@@ -161,9 +299,16 @@
                 errored: false,
                 users: {},
                 user: {},
+                userProfile: {},
             }
         },
         methods: {
+            viewItem(item) {
+                //Masquer le modal après la création
+                $("#viewNew").modal("show");
+                //On passe les informations
+                this.userProfile = item;
+            },
             mydatatables(){
                 $( function () {
                     $('#datatables').DataTable({
