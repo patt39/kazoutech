@@ -209,6 +209,7 @@
                 this.loaded = true;
                 this.technician = response.data.data;
             }).catch(error => {
+                this.$Progress.fail();
                 console.log(error);
                 this.errored = true
             });
