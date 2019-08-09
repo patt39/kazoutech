@@ -384,7 +384,8 @@
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Profile updated Successfully.</strong>', 'progress': 75});
                         }, 2000);
-                        setTimeout(() => this.$router.push({ name: 'admin.account' }), 2000);
+                        setTimeout(() =>  location.replace(`/dashboard/account/profile`), 2000);
+                        //setTimeout(() => this.$router.push({ name: 'admin.account' }), 2000);
                         //End Progress bar
                         this.$Progress.finish();
                     }).catch(() => {

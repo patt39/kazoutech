@@ -1,7 +1,6 @@
 <template>
    <div>
        <vue-progress-bar/>
-
        <div class="main-panel">
            <!-- Navbar -->
            <TopNav/>
