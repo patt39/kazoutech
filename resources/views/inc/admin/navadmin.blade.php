@@ -121,13 +121,6 @@ Tip 2: you can also add an image using data-image tag
                                     <span class="sidebar-normal"><b>Testimonials</b></span>
                                 </router-link>
                             </li>
-                            <!--Registration-->
-                            <li class="nav-item">
-                                <router-link  :to="{ path: '/dashboard/registrations/' }" class="nav-link">
-                                    <span class="sidebar-mini"><b>RI</b></span>
-                                    <span class="sidebar-normal"><b>Registration Infos</b></span>
-                                </router-link>
-                            </li>
                         </ul>
                     </div>
                 </li>

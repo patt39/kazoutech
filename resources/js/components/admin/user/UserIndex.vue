@@ -1,7 +1,6 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <NavAdmin/>
         <div class="main-panel" id="javascriptComponents">
             <TopNav/>
             <div class="content">
@@ -284,14 +283,13 @@
 </template>
 
 <script>
-    import NavAdmin from "../../inc/admin/NavAdmin";
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
 
     export default {
-        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav},
         data() {
             return {
                 loaded: false,

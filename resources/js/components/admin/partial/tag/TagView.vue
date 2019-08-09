@@ -1,7 +1,6 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <NavAdmin/>
         <div class="main-panel" id="javascriptComponents">
             <TopNav/>
             <div class="content">

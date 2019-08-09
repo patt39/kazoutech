@@ -33,9 +33,6 @@ import RoleIndex from "../components/admin/role/RoleIndex";
 import AboutIndex from "../components/admin/page/about/AboutIndex";
 import AboutCreate from "../components/admin/page/about/AboutCreate";
 import AboutEdit from "../components/admin/page/about/AboutEdit";
-import HowregisterIndex from "../components/admin/page/howregister/HowregisterIndex";
-import HowregisterCreate from "../components/admin/page/howregister/HowregisterCreate";
-import HowregisterEdit from "../components/admin/page/howregister/HowregisterEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
 import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 import TechnicianIndex from "../components/admin/technician/TechnicianIndex";
@@ -131,10 +128,6 @@ export const routes = [
     {path: '/dashboard/abouts/create/', name: 'abouts.create', component: AboutCreate},
     {path: '/dashboard/abouts/:id/edit/', name: 'abouts.edit', component: AboutEdit},
 
-     //Route Infos
-     {path: '/dashboard/registrations/', name: 'registrations.index', component: HowregisterIndex},
-     {path: '/dashboard/registrations/create/', name: 'registrations.create', component: HowregisterCreate},
-     {path: '/dashboard/registrations/:id/edit/', name: 'registrations.edit', component: HowregisterEdit},
 
     //Route tags
     {path: '/dashboard/tags/', name: 'tags.index', component: TagIndex},

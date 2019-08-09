@@ -104,18 +104,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
     });
 
-    //All Route Pages
-    Route::group(['namespace' => 'Page'], function () {
-
-
-
-         //Admin Route Abouts
-         Route::resource('dashboard/registrations', 'HowregisterController');
-         Route::get('/dashboard/active_registrations/{id}', 'HowregisterController@active')->name('active_registrations');
-         Route::get('/dashboard/disable_registrations/{id}', 'HowregisterController@disable')->name('disable_registrations');
-
-    });
-
 });
 
 Route::group(['namespace' => 'User'], function () {

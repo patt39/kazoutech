@@ -1,7 +1,6 @@
 <template>
      <div>
         <vue-progress-bar/>
-        <NavAdmin/>
         <div class="main-panel" id="javascriptComponents">
             <TopNav/>
             <div class="content">
@@ -98,14 +97,13 @@
 </template>
 
 <script>
-    import NavAdmin from "../../../inc/admin/NavAdmin";
     import TopNav from "../../../inc/admin/TopNav";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import api from '../../../../api/mixins/collections';
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin },
+        components: {StatusAdmin, FooterAdmin, TopNav },
         data() {
             return {
                 loaded: false,
