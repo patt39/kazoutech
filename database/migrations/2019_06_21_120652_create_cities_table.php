@@ -21,7 +21,7 @@ class CreateCitiesTable extends Migration
             $table->string('ip')->nullable();
             $table->timestamps();
 
-            $table->unsignedInteger('user_id')->nullable()->index();
+            $table->unsignedInteger('user_id')->nullable()->default('2')->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
