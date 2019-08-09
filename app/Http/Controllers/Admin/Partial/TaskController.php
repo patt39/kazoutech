@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Partial;
 
+use App\Http\Requests\Admin\Tasks\StoreRequest;
 use App\Http\Resources\Partial\TaskResource;
 use App\Model\admin\task;
 use App\Model\user\User;
@@ -63,12 +64,8 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->validate($request,[
-            'administrator_id'=>'required',
-            'note_id'=>'required',
-        ]);
 
         $task = new Task;
         $task->administrator_id = $request->administrator_id;

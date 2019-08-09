@@ -12,7 +12,6 @@ class task extends Model
 
     use LogsActivity;
 
-
     protected $table = 'tasks';
 
     protected $fillable = ['user_id','administrator_id','progress','ip','progress','description'];

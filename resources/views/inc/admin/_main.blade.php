@@ -11,7 +11,7 @@
 <div class="wrapper" id="app">
 
     @if(Auth::user()->my_status === 'active')
-
+        @include('inc.admin.navadmin')
     @section('content')
 
 
