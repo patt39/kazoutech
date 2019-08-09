@@ -260,7 +260,7 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get('/dashboard/active_testimonials/' + id).then(() => {
+                axios.get('/dashboard/active_testimonials/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
@@ -293,7 +293,7 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/dashboard/disable_testimonials/' + id).then(() => {
+                axios.get('/dashboard/disable_testimonials/' + id).then(() => {
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
