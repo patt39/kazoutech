@@ -19,7 +19,7 @@ class OccupationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
     }
     /**
      * Display a listing of the resource.
@@ -38,6 +38,13 @@ class OccupationController extends Controller
         $occupations = Cache::rememberForever('occupations', function () {
             return OccupationResource::collection(occupation::with('user')->latest()->get());
         });
+        return $occupations;
+    }
+
+    public function apibystatus()
+    {
+        $occupations =   OccupationResource::collection(occupation::with('user')
+            ->where('status',1)->latest()->get());
         return $occupations;
     }
 

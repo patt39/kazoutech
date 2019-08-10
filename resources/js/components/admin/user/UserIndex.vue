@@ -85,7 +85,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in users" :key="item.id">
+                                            <tr v-for="item in orderByitems" :key="item.id">
                                                 <td><img :src="item.avatar" :alt="item.username" style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%"></td>
                                                 <td>
                                                     <router-link  :to="{ path: `/dashboard/profile/${item.username}` }" title="Administrator Online">
@@ -308,9 +308,8 @@
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
                         responsive: true,
-                        stateSave: true,
                         destroy: true,
                         retrieve:true,
                         autoFill: true,
@@ -425,7 +424,12 @@
                 this.loadItems();
             });
             this.intervalFetchData();
-        }
+        },
+        computed: {
+            orderByitems() {
+                return _.orderBy(this.users, ['created_at'], ['desc'])
+            },
+        },
     }
 
 </script>

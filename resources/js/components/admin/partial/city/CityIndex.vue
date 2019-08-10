@@ -78,7 +78,7 @@
                                                 <th><b>Name</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th><b>Last Update</b></th>
+                                                <th><b>Technicians</b></th>
                                                 <th class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
@@ -87,12 +87,12 @@
                                                 <th><b>Name</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th><b>Last Update</b></th>
+                                                <th><b>Technicians</b></th>
                                                 <th class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in cities" :key="item.id">
+                                            <tr v-for="item in orderBycities" :key="item.id">
                                                 <td>
                                                     <router-link  :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
                                                         <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
@@ -111,7 +111,7 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b>{{ item.updated_at | myDate }}</b></td>
+                                                <td><b>2</b></td>
                                                 <td class="td-actions text-right">
                                                     <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
                                                         <i class="material-icons">power_settings_new</i>
@@ -224,9 +224,8 @@
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
                         responsive: true,
-                        stateSave: true,
                         destroy: true,
                         retrieve:true,
                         autoFill: true,
@@ -485,7 +484,12 @@
                 this.loadItems();
             });
             this.intervalFetchData();
-        }
+        },
+        computed: {
+            orderBycities() {
+                return _.orderBy(this.cities, ['status'], ['asc'])
+            },
+        },
     }
 
 </script>

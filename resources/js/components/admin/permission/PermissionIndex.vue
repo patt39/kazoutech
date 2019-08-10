@@ -201,9 +201,8 @@
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
                         responsive: true,
-                        stateSave: true,
                         destroy: true,
                         retrieve:true,
                         autoFill: true,

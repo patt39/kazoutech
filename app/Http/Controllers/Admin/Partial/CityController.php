@@ -20,7 +20,7 @@ class CityController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -36,7 +36,18 @@ class CityController extends Controller
 
     public function api()
     {
-        $cities = CityResource::collection(city::with('user')->latest()->get());
+        $cities = CityResource::collection(city::with('user')
+            ->orderBy('name','asc')
+            ->get());
+        return $cities;
+    }
+
+    public function apibystatus()
+    {
+        $cities = CityResource::collection(city::with('user')
+            ->where('status',1)
+            ->orderBy('name','asc')
+            ->get());
         return $cities;
     }
 
