@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Resources\Partial\CityResource;
+use App\Http\Resources\User\Partial\CityByStatusResource;
 use App\Model\admin\city;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,7 +45,7 @@ class CityController extends Controller
 
     public function apibystatus()
     {
-        $cities = CityResource::collection(city::with('user')
+        $cities = CityByStatusResource::collection(city::with('user')
             ->where('status',1)
             ->orderBy('name','asc')
             ->get());

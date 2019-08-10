@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Requests\User\Technicians\StoreRequest;
+use App\Http\Resources\User\Partial\TecnicianByStatusResource;
 use App\Http\Resources\User\TechnicianResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\city;
@@ -125,11 +126,11 @@ class TechnicianController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return TechnicianResource|\Illuminate\Http\Response
+     * @return TecnicianByStatusResource|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        $technician = new TechnicianResource(technician::where('id', $id)->findOrFail($id));
+        $technician = new TecnicianByStatusResource(technician::where('id', $id)->findOrFail($id));
         return $technician;
     }
 
@@ -137,12 +138,13 @@ class TechnicianController extends Controller
      * Display the specified resource.
      *
      * @param  int  $slug
-     * @return TechnicianResource|\Illuminate\Http\Response
+     * @return TecnicianByStatusResource|\Illuminate\Http\Response
      */
     //Ici nous recuperon tous les infirmation de l'utilisateur a traver l'API
     public function view($technician)
     {
-        $technician = new TechnicianResource(technician::whereSlug($technician)->firstOrFail());
+        $technician = new TecnicianByStatusResource(technician::whereSlug($technician)->firstOrFail());
+
         return $technician;
     }
 

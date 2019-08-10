@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavSite/>
+
 
 
         <main class="py-4">
@@ -46,7 +46,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>City</label>
-                                                    <input v-if="technician.city_id !== null" v-model="technician.city.name" type="text" name="username" class="form-control"/>
+                                                    <input v-if="technician.city_id !== null" v-model="technician.city" type="text" name="username" class="form-control"/>
                                                     <input v-else="technician.city_id === null" placeholder="don't exist" type="text" name="username" class="form-control"/>
                                                 </div>
                                             </div>
@@ -59,7 +59,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input v-if="technician.occupation_id !== null"  v-model="technician.occupation.name" type="text"  maxlength="25" name="first_name" class="form-control"/>
+                                                    <input v-if="technician.occupation_id !== null"  v-model="technician.occupation" type="text"  maxlength="25" name="first_name" class="form-control"/>
                                                     <input v-else="technician.occupation_id === null"   type="text" placeholder="don't exist" maxlength="25" name="first_name" class="form-control"/>
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Diploma technician</label>
-                                                    <input v-if="technician.diploma_id !== null" v-model="technician.diploma.name" type="text" name="diploma" class="form-control"/>
+                                                    <input v-if="technician.diploma_id !== null" v-model="technician.diploma" type="text" name="diploma" class="form-control"/>
                                                     <input v-else="technician.diploma_id === null" placeholder="don't exist" type="text" name="diploma" class="form-control"/>
                                                 </div>
                                             </div>
@@ -105,11 +105,11 @@
 </template>
 
 <script>
-    import NavSite from "../../inc/user/NavSite";
+    //import NavSite from "../../inc/user/NavSite";
     import api from '../../../api/mixins/collections';
     export default {
         props: ['auth','authcheck','userID'],
-        components: {NavSite},
+       // components: {NavSite},
         data() {
             return {
                 loaded: false,

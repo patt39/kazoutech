@@ -1,6 +1,5 @@
 <template>
      <div>
-        <NavSite/>
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -139,9 +138,7 @@
 
 <script>
     import api from '../../../api/mixins/collections';
-    import NavSite from "../../inc/user/NavSite";
     export default {
-        components: {NavSite},
         data() {
             return {
                 colors:{},

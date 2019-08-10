@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\OccupationResource;
+use App\Http\Resources\User\Partial\OccupationByStatusResource;
 use App\Model\admin\occupation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -43,7 +44,7 @@ class OccupationController extends Controller
 
     public function apibystatus()
     {
-        $occupations =   OccupationResource::collection(occupation::with('user')
+        $occupations =   OccupationByStatusResource::collection(occupation::with('user')
             ->where('status',1)->latest()->get());
         return $occupations;
     }

@@ -9,7 +9,7 @@
 
 
 <div class="wrapper" id="app">
-
+    @include('inc.user.navesite')
     @section('content')
 
 
