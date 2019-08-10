@@ -11,4 +11,4 @@ Route::get('technicians', 'TechnicianController@api');
 Route::get('technicians/p/{technician}','TechnicianController@view');
 Route::get('technicians/c/{city}', 'TechnicianController@viewcity');
 Route::get('technicians/o/{occupation}', 'TechnicianController@viewoccupation');
-Route::get('technicians/o/{occupation}/c/{city}', 'TechnicianController@viewoccupationcity');
+Route::get('technicians/p/{occupation}/v/{city}', 'TechnicianController@viewoccupationcity');

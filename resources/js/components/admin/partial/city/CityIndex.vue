@@ -111,7 +111,7 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b>2</b></td>
+                                                <td><b v-html="item.technician_count | toCurrency"></b></td>
                                                 <td class="td-actions text-right">
                                                     <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
                                                         <i class="material-icons">power_settings_new</i>

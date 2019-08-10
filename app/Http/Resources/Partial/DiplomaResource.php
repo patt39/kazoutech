@@ -21,6 +21,7 @@ class DiplomaResource extends JsonResource
             'slug' => $this->slug,
             'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),
+            'technician_count' => $this->technicians()->get()->count(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

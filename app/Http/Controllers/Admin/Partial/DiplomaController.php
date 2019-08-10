@@ -18,7 +18,7 @@ class DiplomaController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +35,15 @@ class DiplomaController extends Controller
         $diploma = Cache::rememberForever('diplomas', function () {
             return DiplomaResource::collection(diploma::with('user')->latest()->get());
         });
+        return $diploma;
+    }
+
+    public function apibystatus()
+    {
+        $diploma = DiplomaResource::collection(diploma::with('user')
+            ->where('status',1)
+            ->latest()->get());
+
         return $diploma;
     }
 

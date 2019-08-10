@@ -12,9 +12,9 @@ class testimonial extends Model
 {
 
     use LogsActivity;
-    protected static $logAttributes = ['body', 'ip', 'user_id'];
+    protected static $logAttributes = ['body', 'ip', 'user_id','status'];
 
-    protected $fillable = ['body','user_id','ip'];
+    protected $fillable = ['body','user_id','ip','status'];
 
     public function user()
     {

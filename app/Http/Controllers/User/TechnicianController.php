@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\User\Technicians\StoreRequest;
 use App\Http\Resources\User\TechnicianResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\city;
@@ -113,15 +114,8 @@ class TechnicianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->validate($request,[
-            'user_id'=>'required|integer|unique:technicians',
-            'city_id'=>'required',
-            'occupation_id'=>'required',
-            'diploma_id'=>'required',
-        ]);
-
         Technician::create($request->all());
 
         return response('Created',Response::HTTP_CREATED);
@@ -167,7 +161,9 @@ class TechnicianController extends Controller
 
     public function viewoccupationcity($occupation, $city)
     {
-        $technicians = TechnicianResource::collection(occupation::whereSlug($occupation)->whereSlug($city)->first()->technicians()
+        $getcity = city::whereSlug($city);
+        $getoccupation = occupation::whereSlug($occupation);
+        $technicians = TechnicianResource::collection($getoccupation->$getcity->first()->technicians()
             ->with('user','member','city','occupation','diploma')
             ->latest()->get());
         return $technicians;
@@ -209,14 +205,8 @@ class TechnicianController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreRequest $request, $id)
     {
-        $this->validate($request,[
-            'user_id'=> "required|integer|unique:technicians,user_id,{$id}",
-            'city_id'=>'required',
-            'occupation_id'=>'required',
-            'diploma_id'=>'required',
-        ]);
 
         $technician = technician::findOrFail($id);
 

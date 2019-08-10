@@ -9,4 +9,5 @@
 Route::group(['namespace' => 'Partial'], function(){
 
     Route::get('diplomas', 'DiplomaController@api');
+    Route::get('diplomas_by_status', 'DiplomaController@apibystatus');
 });
