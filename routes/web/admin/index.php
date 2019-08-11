@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
     /** C'est route son dans la cartella info */
     require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'legal_notice.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'conditions.php');
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'documentation.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'licence_site.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'policy_privacy.php');
 

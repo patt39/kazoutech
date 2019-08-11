@@ -1,5 +1,8 @@
 <?php
 
+use App\Model\admin\color;
+use App\Model\admin\occupation;
+use App\Model\admin\partial\diploma;
 use App\Model\user\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +18,7 @@ class CompileTableSeeder extends Seeder
     public function run()
     {
         $this->addDefaultUtenti();
+        $this->addInfoDatable();
 
         if (config('app.env') !== 'production') {
             $this->addTestUtenti();
@@ -69,6 +73,14 @@ class CompileTableSeeder extends Seeder
 
         // Output
         $this->command->info('Test utenti added.');
+    }
+
+    public function addInfoDatable()
+    {
+       color::create(['name' =>'danger', 'user_id' =>'1',]);
+       occupation::create(['name' =>'Plombier', 'user_id' =>'1',]);
+       diploma::create(['name' =>'Baccalereat', 'user_id' =>'1',]);
+
     }
 
 }

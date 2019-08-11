@@ -89,6 +89,13 @@ Tip 2: you can also add an image using data-image tag
                     <p><b>Dashboard</b></p>
                 </router-link>
             </li>
+            <!-- Documentation site -->
+            <li class="nav-item">
+                <router-link  :to="{ path: '/dashboard/documentations/' }" class="nav-link">
+                    <i class="material-icons">assignment_ind</i>
+                    <p><b>Documentations site</b></p>
+                </router-link>
+            </li>
             <!-- Occupations -->
             <li class="nav-item">
                 <router-link  :to="{ path: '/dashboard/occupations/' }" class="nav-link">

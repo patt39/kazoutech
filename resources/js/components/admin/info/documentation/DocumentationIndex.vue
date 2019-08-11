@@ -13,14 +13,14 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">color_lens</i>
+                                        <i class="material-icons">assignment_ind</i>
                                     </div>
-                                    <p class="card-category"><b>All Colors</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{colors.length}}</b></h3>
+                                    <p class="card-category"><b>All Documentations</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{documentations.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">color_lens</i><b>All Colors</b>
+                                        <i class="material-icons">assignment_ind</i><b>All Documentations</b>
                                     </div>
                                 </div>
                             </div>
@@ -37,35 +37,35 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h4 class="card-title">
-                                                <b>Datatables Colors</b>
+                                                <b>Datatables Documentations</b>
                                             </h4>
                                             <p class="card-title">
-                                                Color Choice For Buttons
+                                                Documentation Choice For Buttons
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
                                 <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
+                                    <i id="tooltipSize" class="material-icons">assignment_ind</i>
                                 </span>
                                         </div>
                                     </div>
                                 </div>
-                                 <br>   
+                                <br>
                                 <div class="card-body">
-                                     <div class="header text-right">
+                                    <div class="header text-right">
                                         <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
                                         </button>
                                     </div>
-                                    <div v-if="$auth.can('create-color')" class="toolbar">
+                                    <div v-if="$auth.can('create-documentation')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
-                                        <i class="material-icons">color_lens</i>
+                                        <i class="material-icons">assignment_ind</i>
                                     </span>
-                                                <b class="title_hover">New Color</b>
+                                                <b class="title_hover">New Documentation</b>
                                             </button>
                                         </div>
                                     </div>
@@ -74,60 +74,35 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Color Name</b></th>
-                                                <th><b>Color Style</b></th>
-                                                <th><b>Status</b></th>
-                                                <th><b>Edited By</b></th>
+                                                <th><b>Name</b></th>
+                                                <th><b>File</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-documentation') || $auth.can('edit-documentation') || $auth.can('delete-documentation'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Color Name</b></th>
-                                                <th><b>Color Style</b></th>
-                                                <th><b>Status</b></th>
-                                                <th><b>Edited By</b></th>
+                                                <th><b>Name</b></th>
+                                                <th><b>File</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-documentation') || $auth.can('edit-documentation') || $auth.can('delete-documentation'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in orderByItems" :key="item.id">
-                                                <td>{{ item.color_name | upText }}</td>
-                                                <td>
-                                                    <div class="timeline-heading">
-                                                        <span :class="getColor(item)"><b>{{ item.slug }}</b></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="timeline-heading">
-                                                        <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </a>
-                                                </td>
+                                                <td>{{ item.name | upText }}</td>
+                                                <td>{{ item.name_doc }}</td>
                                                 <td><b>{{ item.updated_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <template v-if="$auth.can('publish-color')">
-                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                    </template>
-                                                    <button v-if="$auth.can('edit-color')" @click="editItem(item)"
+                                                    <button @click="editItem(item)"
+                                                            class="btn btn-link  btn-info btn-round btn-just-icon" title="Edit">
+                                                        <i class="material-icons">get_app</i>
+                                                    </button>
+                                                    <button v-if="$auth.can('edit-documentation')" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button v-if="$auth.can('delete-color')" @click="deleteItem(item.id)"
+                                                    <button v-if="$auth.can('delete-documentation')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
@@ -139,7 +114,7 @@
                                     <!-- Modal création/édition color -->
                                     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                          aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add New Color</b></h5>
@@ -150,10 +125,46 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                        <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" >
-                                                            <has-error :form="form" field="name"></has-error>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label class="bmd-label-floating"></label>
+                                                                    <input v-model="form.name" type="text" name="name"
+                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" placeholder="Name document">
+                                                                    <has-error :form="form" field="name"></has-error>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 ml-auto mr-auto">
+                                                                <div class="profile text-center">
+                                                                    <br>
+                                                                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail">
+                                                                            <img v-show="!editmode" src="https://www.kazoucoin.com/assets/img/photo.jpg" alt="...">
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                                        <div>
+                                                                         <span class="btn btn-raised btn-round btn-success btn-file">
+                                                                            <span class="fileinput-new" style="cursor: pointer">
+                                                                               <i class="material-icons">insert_photo</i>
+                                                                                        <b>Add File</b>
+                                                                            </span>
+                                                                             <span class="fileinput-exists" style="cursor: pointer">
+                                                                                <i class="material-icons">photo_library</i>
+                                                                                     <b>Change</b>
+                                                                             </span>
+                                                                             <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
+                                                                         </span>
+                                                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                                                                <i class="material-icons">cancel</i>
+                                                                                <b>Remove</b>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <has-error :form="form" field="photo"></has-error>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="text-center">
@@ -207,18 +218,36 @@
                 errored: false,
                 editmode: false,
                 user: {},
-                colors: {},
+                documentations: {},
                 form: new Form({
                     id: '',
                     name: '',
-                    color_name: '',
-                    user_id: '',
-                    status: '',
                     slug: ''
                 })
             }
         },
         methods: {
+            updateImage(e){
+                //console.log('uploadert')
+                let file = e.target.files[0];
+                console.log(file);
+                let reader = new FileReader();
+                if (file['size'] < 6000775){
+                    reader.onloadend = (file) => {
+                        //console.log('RESULT',reader.result)
+                        this.form.name_doc = reader.result
+                    };
+                    reader.readAsDataURL(file);
+                }else{
+                    this.$Progress.fail();
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Your image is very big',
+                        buttonsStyling: false,
+                        confirmButtonClass: "btn btn-success",
+                    });
+                }
+            },
             mydatatables(){
                 $( function () {
                     $('#datatables').DataTable({
@@ -311,8 +340,8 @@
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete Color?',
-                    text: "Are you sure you want to delete this color?",
+                    title: 'Delete Documentations?',
+                    text: "Are you sure you want to delete this documentations?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated shake',
@@ -336,7 +365,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Color deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>Documentations deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             /* End alert ***/
 
@@ -362,7 +391,7 @@
                 //Start Progress bar
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post("/dashboard/colors")
+                this.form.post("/dashboard/documentations")
                     .then(() => {
                         //Event
                         Fire.$emit('AfterCreate');
@@ -380,7 +409,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Documentations Created Successfully.</strong>', 'progress': 75});
                         }, 2000);
 
                         //End Progress bar
@@ -398,72 +427,13 @@
                         });
                     })
             },
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
-                //Progress bar star
-                this.$Progress.start();
-                axios.get('/dashboard/active_color/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Color activated successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert ***/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
-            /** Ici c'est la désactivation de la couleur **/
-            disableItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-                axios.get('/dashboard/disable_color/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Color desactivated successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert **/
-
-                    //End Progres bar
-                    this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/colors";
+                const url = "/api/documentations";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.colors = response.data.data;
+                    this.documentations = response.data.data;
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
@@ -498,7 +468,7 @@
         //get order bay
         computed: {
             orderByItems() {
-                return _.orderBy(this.colors, ['color_name'], ['asc'])
+                return _.orderBy(this.documentations, ['name'], ['asc'])
             },
         },
     }

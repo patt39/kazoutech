@@ -75,6 +75,7 @@ import PolicyprivacyIndex from "../components/admin/info/policyprivacy/Policypri
 import PolicyprivacyCreate from "../components/admin/info/policyprivacy/PolicyprivacyCreate";
 import PolicyprivacyEdit from "../components/admin/info/policyprivacy/PolicyprivacyEdit";
 import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
+import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
 
 
 export const routes = [
@@ -179,8 +180,9 @@ export const routes = [
     { path: '/dashboard/testimonials/:id/edit', name: 'testimonials.edit', component: TestimonialEdit },
     { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.show', component: TestimonialShow },
 
-     
+
      /* Legal Mention route  */
+     { path: '/dashboard/documentations', name: 'documentations.index', component: DocumentationIndex },
      { path: '/dashboard/legal_notice', name: 'legal_notice.index', component: LegalnoticeIndex },
      { path: '/dashboard/legal_notice/create', name: 'legal_notice.create', component: LegalnoticeCreate },
      { path: '/dashboard/legal_notice/:id/edit', name: 'legal_notice.edit', component: LegalnoticeEdit },

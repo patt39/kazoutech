@@ -7,6 +7,7 @@ use App\Model\admin\categoryfaq;
 use App\Model\admin\color;
 use App\Model\admin\contact;
 use App\Model\admin\faq;
+use App\Model\admin\info\documentation;
 use App\Model\admin\note;
 use App\Model\admin\occupation;
 use App\Model\admin\partial\diploma;
@@ -22,6 +23,7 @@ use App\Observers\Admin\NoteObserver;
 use App\Observers\Admin\OccupationObserver;
 use App\Observers\Admin\Partial\DiplomaObserver;
 use App\Observers\Admin\UserObserver;
+use App\Observers\DocumentationObserver;
 use App\Observers\User\TechnicianObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -59,5 +61,6 @@ class EventServiceProvider extends ServiceProvider
         occupation::observe(OccupationObserver::class);
         user::observe(UserObserver::class);
         technician::observe(TechnicianObserver::class);
+        documentation::observe(DocumentationObserver::class);
     }
 }
