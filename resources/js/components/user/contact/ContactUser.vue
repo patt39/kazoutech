@@ -1,7 +1,6 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <NavSite/>
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -83,9 +82,7 @@
 
 <script>
 //import VueRecaptcha from "vue-recaptcha";
-import NavSite from "../../inc/user/NavSite";
 export default {
-    components: {NavSite},
     //components: { VueRecaptcha },
     data() {
         return {

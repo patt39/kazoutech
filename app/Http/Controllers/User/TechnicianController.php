@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\User\Technicians\StoreRequest;
+use App\Http\Resources\User\Partial\TecnicianByStatusResource;
 use App\Http\Resources\User\TechnicianResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\city;
@@ -113,15 +115,8 @@ class TechnicianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->validate($request,[
-            'user_id'=>'required|integer|unique:technicians',
-            'city_id'=>'required',
-            'occupation_id'=>'required',
-            'diploma_id'=>'required',
-        ]);
-
         Technician::create($request->all());
 
         return response('Created',Response::HTTP_CREATED);
@@ -131,11 +126,11 @@ class TechnicianController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return TechnicianResource|\Illuminate\Http\Response
+     * @return TecnicianByStatusResource|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        $technician = new TechnicianResource(technician::where('id', $id)->findOrFail($id));
+        $technician = new TecnicianByStatusResource(technician::where('id', $id)->findOrFail($id));
         return $technician;
     }
 
@@ -143,12 +138,13 @@ class TechnicianController extends Controller
      * Display the specified resource.
      *
      * @param  int  $slug
-     * @return TechnicianResource|\Illuminate\Http\Response
+     * @return TecnicianByStatusResource|\Illuminate\Http\Response
      */
     //Ici nous recuperon tous les infirmation de l'utilisateur a traver l'API
     public function view($technician)
     {
-        $technician = new TechnicianResource(technician::whereSlug($technician)->firstOrFail());
+        $technician = new TecnicianByStatusResource(technician::whereSlug($technician)->firstOrFail());
+
         return $technician;
     }
 
@@ -167,7 +163,9 @@ class TechnicianController extends Controller
 
     public function viewoccupationcity($occupation, $city)
     {
-        $technicians = TechnicianResource::collection(occupation::whereSlug($occupation)->whereSlug($city)->first()->technicians()
+        $getcity = city::whereSlug($city);
+        $getoccupation = occupation::whereSlug($occupation);
+        $technicians = TechnicianResource::collection($getoccupation->$getcity->first()->technicians()
             ->with('user','member','city','occupation','diploma')
             ->latest()->get());
         return $technicians;
@@ -209,14 +207,8 @@ class TechnicianController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreRequest $request, $id)
     {
-        $this->validate($request,[
-            'user_id'=> "required|integer|unique:technicians,user_id,{$id}",
-            'city_id'=>'required',
-            'occupation_id'=>'required',
-            'diploma_id'=>'required',
-        ]);
 
         $technician = technician::findOrFail($id);
 

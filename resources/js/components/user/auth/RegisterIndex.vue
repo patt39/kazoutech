@@ -1,6 +1,5 @@
 <template>
    <div>
-       <NavSite/>
        <main class="py-4">
            <div class="container">
                <div class="row justify-content-center">
@@ -76,10 +75,8 @@
 </template>
 
 <script>
-    import NavSite from "../../inc/user/NavSite";
     export default {
         name: "RegisterIndex",
-        components: {NavSite},
         data() {
             return {
                 form: new Form({

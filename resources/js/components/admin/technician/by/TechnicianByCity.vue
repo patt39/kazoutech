@@ -1,7 +1,6 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <NavAdmin/>
         <div class="main-panel" id="javascriptComponents">
             <TopNav/>
             <div class="content">
@@ -118,7 +117,7 @@
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>-->
                                                     <button @click="viewItem(item)"
-                                                            class="btn btn-link  btn-warning btn-round btn-just-icon" title="Edit">
+                                                            class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
                                                     </button>
 
@@ -131,13 +130,12 @@
                                         </table>
                                     </div>
 
-                                    <!-- Modal view Technician bay city -->
-                                    <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
-                                         aria-hidden="true">
+                                    <!-- Modal view Technician by city -->
+                                    <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="addNewLabel"><b>Profile Technician</b></h5>
+                                                    <h5 class="modal-title" id="addNewLabel"><b>Profile technician</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -151,10 +149,9 @@
                                                                     <div class="fileinput fileinput-new text-center"
                                                                          data-provides="fileinput">
                                                                         <div class="fileinput-new thumbnail img-circle img-raised">
-                                                                            <img :src="form.user.avatar" :alt="form.user.name">
+                                                                            <img :src="technician.user.avatar" :alt="technician.user.name">
                                                                         </div>
-                                                                        <h5 class="card-title"><b v-text="form.user.name"></b></h5>
-                                                                        <h5 v-if="form.occupation_id !== null"  class="card-title"><b v-text="form.occupation.name"></b></h5>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -165,19 +162,19 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Pseudo</label>
-                                                                <input v-model="form.user.username" type="text" name="username" class="form-control"/>
+                                                                <input v-model="technician.user.username" type="text" name="username" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Last Name</label>
-                                                                <input v-model="form.user.name" type="text" name="name" maxlength="25" class="form-control"/>
+                                                                <input v-model="technician.user.name" type="text" name="name" maxlength="25" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>First Name</label>
-                                                                <input v-model="form.user.email" type="text" maxlength="25" name="first_name" class="form-control"/>
+                                                                <input v-model="technician.user.email" type="text" maxlength="25" name="first_name" class="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -185,21 +182,21 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>City</label>
-                                                                <input v-if="form.city_id !== null" v-model="form.city.name" type="text" name="username" class="form-control"/>
-                                                                <input v-else="form.city_id === null" placeholder="don't exist" type="text" name="username" class="form-control"/>
+                                                                <input v-if="technician.city_id !== null" v-model="technician.city.name" type="text" name="username" class="form-control"/>
+                                                                <input v-else="technician.city_id === null" placeholder="don't exist" type="text" name="username" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>District</label>
-                                                                <input v-model="form.district" type="text" name="name" maxlength="25" class="form-control"/>
+                                                                <input v-model="technician.district" type="text" name="name" maxlength="25" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Occupation</label>
-                                                                <input v-if="form.occupation_id !== null"  v-model="form.occupation.name" type="text"  maxlength="25" name="first_name" class="form-control"/>
-                                                                <input v-else="form.occupation_id === null"   type="text" placeholder="don't exist" maxlength="25" name="first_name" class="form-control"/>
+                                                                <input v-if="technician.occupation_id !== null"  v-model="technician.occupation.name" type="text"  maxlength="25" name="first_name" class="form-control"/>
+                                                                <input v-else="technician.occupation_id === null"   type="text" placeholder="don't exist" maxlength="25" name="first_name" class="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -207,35 +204,32 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Diploma technician</label>
-                                                                <input v-if="form.diploma_id !== null" v-model="form.diploma.name" type="text" name="diploma" class="form-control"/>
-                                                                <input v-else="form.diploma_id === null" placeholder="don't exist" type="text" name="diploma" class="form-control"/>
+                                                                <input v-if="technician.diploma_id !== null" v-model="technician.diploma.name" type="text" name="diploma" class="form-control"/>
+                                                                <input v-else="technician.diploma_id === null" placeholder="don't exist" type="text" name="diploma" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Speciality</label>
-                                                                <input v-model="form.speciality" type="text" name="name" maxlength="25" class="form-control"/>
+                                                                <input v-model="technician.speciality" type="text" name="name" maxlength="25" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Years get diploma</label>
-                                                                <input  v-model="form.year" type="number"  maxlength="4" name="first_name" class="form-control"/>
+                                                                <input  v-model="technician.year" type="number"  maxlength="4" name="first_name" class="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <div class="text-center">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                            <span class="btn-label">
-                                                                <i class="material-icons">clear</i>
-                                                                <b>Close</b>
-                                                            </span>
-                                                        </button>
-                                                    </div>
+                                                    <button class="btn btn-danger" data-dismiss="modal" type="button">
+                                        <span class="btn-label">
+                                            <i class="material-icons">clear</i>
+                                            <b>Close</b>
+                                        </span>
+                                                    </button>
                                                 </div>
-                                                <br>
                                             </div>
                                         </div>
                                     </div>
@@ -255,36 +249,23 @@
 
     import api from '../../../../api/mixins/collections';
     import TopNav from "../../../inc/admin/TopNav";
-    import NavAdmin from "../../../inc/admin/NavAdmin";
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
     export default {
-        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, NavAdmin, TopNav},
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav},
         data() {
             return {
                 loaded: false,
                 errored: false,
                 user:{},
                 technicians:{},
-                form: new Form({
-                    id: '',
-                    district: '',
-                    ip: '',
-                    year: '',
-                    speciality: '',
-                    city_id: '',
-                    city: '',
-                    diploma_id: '',
-                    diploma: '',
-                    member_id:'',
-                    user_id: '',
-                    user: '',
-                    occupation_id: '',
-                    occupation: '',
-                    status: '',
-                    slug: ''
-                }),
+                technician:{
+                    user:'',
+                    city:'',
+                    diploma:'',
+                    occupation:'',
+                },
             }
         },
         methods:{
@@ -296,9 +277,8 @@
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
                         responsive: true,
-                        stateSave: true,
                         destroy: true,
                         retrieve:true,
                         autoFill: true,
@@ -321,9 +301,9 @@
             viewItem(item) {
                 //this.form.reset();
                 //Masquer le modal après la création
-                $('#addNew').modal('show');
+                $('#viewNew').modal('show');
                 //On passe les information
-                this.form.fill(item);
+                this.technician = item;
             },
             loadItems() {
                 this.$Progress.start();

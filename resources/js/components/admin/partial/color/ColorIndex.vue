@@ -89,11 +89,11 @@
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th><b>Last Update</b></th>
-                                                <th class="text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b>></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in colors" :key="item.id">
+                                            <tr v-for="item in orderByItems" :key="item.id">
                                                 <td>{{ item.color_name | upText }}</td>
                                                 <td>
                                                     <div class="timeline-heading">
@@ -227,9 +227,8 @@
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
                         responsive: true,
-                        stateSave: true,
                         destroy: true,
                         retrieve:true,
                         autoFill: true,
@@ -495,7 +494,13 @@
             });
             // Run the intervalFetchData function once to set the interval time for later refresh
             this.intervalFetchData();
-        }
+        },
+        //get order bay
+        computed: {
+            orderByItems() {
+                return _.orderBy(this.colors, ['color_name'], ['asc'])
+            },
+        },
     }
 
 </script>

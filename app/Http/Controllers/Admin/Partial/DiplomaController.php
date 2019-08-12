@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Resources\Partial\DiplomaResource;
+use App\Http\Resources\User\Partial\DiplomaByStatusResource;
 use App\Model\admin\partial\diploma;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class DiplomaController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +36,18 @@ class DiplomaController extends Controller
         $diploma = Cache::rememberForever('diplomas', function () {
             return DiplomaResource::collection(diploma::with('user')->latest()->get());
         });
+        return $diploma;
+    }
+
+    /**Ici je fait un get des api mais avec peux de data en response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function apibystatus()
+    {
+        $diploma = DiplomaByStatusResource::collection(diploma::with('user')
+            ->where('status',1)
+            ->latest()->get());
+
         return $diploma;
     }
 

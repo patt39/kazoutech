@@ -226,7 +226,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/admin/testimonials/' + id).then(() => {
+                        axios.delete('/dashboard/testimonials/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -332,8 +332,6 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
-                let urlColors = "/api/colors";
-                axios.get(urlColors).then(({data}) => (this.colors = data.data));
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
              reload(){

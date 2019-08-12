@@ -29,12 +29,7 @@ Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 Vue.component(AlertSuccess.name, AlertSuccess);
 
-/**
- * Vue select
- */
-import vSelect from 'vue-select'
 
-Vue.component('v-select', vSelect);
 /**
  * Router vuejs
  */
@@ -68,10 +63,15 @@ const router = new VueRouter({
 
 
 /**
+ * Ici c'est pour le filtre
+ */
+import Vue2Filters from 'vue2-filters'
+Vue.use(Vue2Filters);
+
+/**
  * Ici c'est pour le number
  */
 import VueTheMask from 'vue-the-mask'
-
 Vue.use(VueTheMask);
 
 
@@ -114,7 +114,10 @@ Vue.use(VueProgressBar, {
 Vue.filter('upText', function (text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 });
-
+Vue.filter('reverse', function(value) {
+    // slice to make a copy of array, then reverse the copy
+    return value.slice().reverse();
+});
 
 /** Ici c'est pour configurer les date se referer a la documentation
  * pour plus d'information visiter ce lien

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Resources\Partial\CityResource;
+use App\Http\Resources\User\Partial\CityByStatusResource;
 use App\Model\admin\city;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,7 @@ class CityController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -36,7 +37,18 @@ class CityController extends Controller
 
     public function api()
     {
-        $cities = CityResource::collection(city::with('user')->latest()->get());
+        $cities = CityResource::collection(city::with('user')
+            ->orderBy('name','asc')
+            ->get());
+        return $cities;
+    }
+
+    public function apibystatus()
+    {
+        $cities = CityByStatusResource::collection(city::with('user')
+            ->where('status',1)
+            ->orderBy('name','asc')
+            ->get());
         return $cities;
     }
 

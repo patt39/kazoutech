@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Auth'], function () {
 
 });
 
-/** Admin */
+/** Dashboard */
 require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'index.php');
 
 /** User */
@@ -68,11 +68,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
         // Admin Route country
         Route::resource('/dashboard/countries', 'CountryController');
-
-        //Admin Route city
-        Route::resource('/dashboard/cities', 'CityController');
-        Route::get('/dashboard/active_cities/{id}', 'CityController@active')->name('active_cities');
-        Route::get('/dashboard/disable_cities/{id}', 'CityController@disable')->name('disable_cities');
 
 
         Route::get('/{username}', 'AccountController@profileView')->name('profile.view');

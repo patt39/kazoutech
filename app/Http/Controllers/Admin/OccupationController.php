@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\OccupationResource;
+use App\Http\Resources\User\Partial\OccupationByStatusResource;
 use App\Model\admin\occupation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,7 @@ class OccupationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
     }
     /**
      * Display a listing of the resource.
@@ -38,6 +39,13 @@ class OccupationController extends Controller
         $occupations = Cache::rememberForever('occupations', function () {
             return OccupationResource::collection(occupation::with('user')->latest()->get());
         });
+        return $occupations;
+    }
+
+    public function apibystatus()
+    {
+        $occupations =   OccupationByStatusResource::collection(occupation::with('user')
+            ->where('status',1)->latest()->get());
         return $occupations;
     }
 

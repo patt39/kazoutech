@@ -78,7 +78,7 @@
                                                 <th><b>Name occupations</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th><b>Last Update</b></th>
+                                                <th><b>Technicians</b></th>
                                                 <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
                                             </thead>
@@ -87,7 +87,7 @@
                                                 <th><b>Name occupations</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th><b>Last Update</b></th>
+                                                <th><b>Technicians</b></th>
                                                 <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
@@ -111,7 +111,7 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b>{{ item.updated_at | dateAgo }}</b></td>
+                                                <td><b v-html="item.technician_count"></b></td>
                                                 <td class="td-actions text-right">
                                                     <template v-if="$auth.can('publish-occupation')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
@@ -224,9 +224,8 @@
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
                         responsive: true,
-                        stateSave: true,
                         destroy: true,
                         retrieve:true,
                         autoFill: true,

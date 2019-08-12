@@ -1,8 +1,5 @@
 <template>
     <div>
-        <NavSite/>
-
-
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -96,11 +93,9 @@
 </template>
 
 <script>
-    import NavSite from "../../inc/user/NavSite";
     import api from '../../../api/mixins/collections';
     export default {
         name: "RegisterIndex",
-        components: {NavSite},
         data() {
             return {
                 loaded: false,
@@ -165,9 +160,9 @@
         created() {
             this.$Progress.start();
             api.technicianSlug(this.$route.params.technician).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/occupations").then(({data}) => (this.occupations = data.data));
-            axios.get("/api/cities").then(({data}) => (this.cities = data.data));
-            axios.get("/api/diplomas").then(({data}) => (this.diplomas = data.data));
+            axios.get("/api/occupations_by_status").then(({data}) => (this.occupations = data.data));
+            axios.get("/api/cities_by_status").then(({data}) => (this.cities = data.data));
+            axios.get("/api/diplomas_by_status").then(({data}) => (this.diplomas = data.data));
             //End Progress bar
             this.$Progress.finish()
         }
