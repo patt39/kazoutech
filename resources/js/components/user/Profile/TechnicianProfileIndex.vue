@@ -1,8 +1,5 @@
 <template>
     <div>
-
-
-
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -67,7 +64,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Diploma technician</label>
+                                                    <label>Technician diploma</label>
                                                     <input v-if="technician.diploma_id !== null" v-model="technician.diploma" type="text" name="diploma" class="form-control"/>
                                                     <input v-else="technician.diploma_id === null" placeholder="don't exist" type="text" name="diploma" class="form-control"/>
                                                 </div>
@@ -80,7 +77,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Years get diploma</label>
+                                                    <label>Year got diploma</label>
                                                     <input  v-model="technician.year" type="number"  maxlength="4" name="first_name" class="form-control"/>
                                                 </div>
                                             </div>

@@ -7,12 +7,8 @@
                    <div class="col-md-8">
                        <div class="card">
                            <div class="card-header">Register</div>
-
                            <div class="card-body">
                                <form @keydown="form.onKeydown($event)" method="POST" @submit.prevent="createItem()">
-
-
-
                                    <div class="form-group row">
                                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 

@@ -170,16 +170,16 @@
                                                                 <div class="modal-footer">
                                                                     <div class="text-center">
                                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
+                                                                            <span class="btn-label">
+                                                                                <i class="material-icons">clear</i>
+                                                                                <b>Close</b>
+                                                                            </span>
                                                                         </button>
                                                                         <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">near_me</i>
-                                                            <b>Register</b>
-                                                        </span>
+                                                                            <span class="btn-label">
+                                                                                <i class="material-icons">near_me</i>
+                                                                                <b>Register</b>
+                                                                            </span>
                                                                         </button>
                                                                     </div>
                                                                 </div>

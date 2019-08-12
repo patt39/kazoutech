@@ -217,7 +217,7 @@
                                                                                 <div class="form-group">
                                                                                     <label>Street Address</label>
                                                                                     <input v-model="form.address" type="text" name="address"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('adress') }"/>
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('address') }"/>
                                                                                     <has-error :form="form" field="address"></has-error>
                                                                                 </div>
                                                                             </div>
@@ -260,9 +260,9 @@
                                                     <div class="submit">
                                                         <div class="text-center">
                                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                        <span class="btn-label">
-                                            <i class="material-icons">save_alt</i>
-                                        </span>
+                                                                <span class="btn-label">
+                                                                    <i class="material-icons">save_alt</i>
+                                                                </span>
                                                                 <b class="title_hover">Update profile</b>
                                                             </button>
                                                         </div>

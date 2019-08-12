@@ -59,13 +59,13 @@
                                                                 <div class="col-md-3">
                                                                     <div class="form-group">
                                                                         <label>Name</label>
-                                                                        <input type="text" class="form-control" name="name" id="name" v-model="user.name" disabled />
+                                                                        <input type="text" class="form-control" name="name" id="name" v-model="user.name" disabled/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Username</label>
-                                                                        <input type="text" class="form-control" name="username" id="username" v-model="user.username" disabled />
+                                                                        <input type="text" class="form-control" name="username" id="username" v-model="user.username" disabled/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -73,19 +73,19 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sex</label>
-                                                                        <input type="text" class="form-control" name="sex" id="sex" v-model="user.sex" disabled />
+                                                                        <input type="text" class="form-control" name="sex" id="sex" v-model="user.sex" disabled/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Email</label>
-                                                                        <input type="text" class="form-control" name="email" id="email" v-model="user.email" disabled />
+                                                                        <input type="text" class="form-control" name="email" id="email" v-model="user.email" disabled/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Tel</label>
-                                                                        <input type="text" class="form-control" name="phone" id="phone" v-model="user.cellphone" disabled />
+                                                                        <input type="text" class="form-control" name="phone" id="phone" v-model="user.cellphone" disabled/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -93,13 +93,13 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label>Address</label>
-                                                                        <input type="text" class="form-control" name="address" id="address" v-model="user.address" disabled />
+                                                                        <input type="text" class="form-control" name="address" id="address" v-model="user.address" disabled/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label>Postal Code</label>
-                                                                        <input type="text" class="form-control" name="cap" id="cap" v-model="user.cap" disabled />
+                                                                        <input type="text" class="form-control" name="cap" id="cap" v-model="user.cap" disabled/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -107,7 +107,7 @@
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <label>Work</label>
-                                                                        <input type="text" class="form-control" name="work"  v-model="user.work" disabled />
+                                                                        <input type="text" class="form-control" name="work"  v-model="user.work" disabled/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -143,7 +143,7 @@
                                                     <div class="card card-profile">
                                                         <div class="card-avatar">
                                                             <a href="#pablo">
-                                                                <img class="img" :src="user.avatar" :alt="user.name" />
+                                                                <img class="img" :src="user.avatar" :alt="user.name"/>
                                                             </a>
                                                         </div>
                                                         <div class="card-body">

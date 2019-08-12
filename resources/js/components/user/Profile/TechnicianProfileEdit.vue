@@ -6,23 +6,22 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">Technician</div>
-
                             <div class="card-body">
-                                <alert-error class="text-center" :form="form" message="Les informations ne peuvent etre edité que pas l'utilisteur bien vouloir le contacter par mail pour plus d'information"></alert-error>
+                                <alert-error class="text-center" :form="form" message="Les informations ne peuvent qu'etre edité  pas l'utilisteur bien vouloir le contacter par mail pour plus d'informations"></alert-error>
                                 <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating"></label>
-                                                <input v-model="form.year"  type="number" placeholder="Annee obtantion diplome " :class="{ 'is-invalid': form.errors.has('year') }" maxlength="4" name="first_name" class="form-control"/>
+                                                <input v-model="form.year"  type="number" placeholder="Annee obtention diplome " :class="{ 'is-invalid': form.errors.has('year') }" maxlength="4" name="first_name" class="form-control"/>
                                                 <has-error :form="form" field="year"></has-error>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating"></label>
-                                                <input v-model="form.speciality"  type="text" placeholder="Diplome specialiter" :class="{ 'is-invalid': form.errors.has('speciality') }" maxlength="100" name="speciality" class="form-control"/>
+                                                <input v-model="form.speciality"  type="text" placeholder="Diplome specialité" :class="{ 'is-invalid': form.errors.has('speciality') }" maxlength="100" name="speciality" class="form-control"/>
                                                 <has-error :form="form" field="speciality"></has-error>
                                             </div>
                                         </div>
@@ -62,7 +61,7 @@
                                                 <label class="bmd-label-floating"></label>
                                                 <select name="city_id" v-model="form.diploma_id" id="diploma_id" class="form-control"
                                                         :class="{ 'is-invalid': form.errors.has('diploma_id') }">
-                                                    <option value="" disabled>Quelle est votre niveau scolaire</option>
+                                                    <option value="" disabled>Quelle est votre niveau d'études ?</option>
                                                     <option v-for="diploma in diplomas" :key="diploma.id" :value="diploma.id">{{diploma.name}}</option>
                                                 </select>
                                                 <has-error :form="form" field="diploma_id"></has-error>
