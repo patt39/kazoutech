@@ -84,6 +84,9 @@ class ProfileController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $this->validate($request,[
+            "sex" => "required|in:Female,Male",
+        ]);
         $profile = profile::findOrFail($id);
 
         //$this->authorize('update',$id);
