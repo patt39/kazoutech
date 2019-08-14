@@ -26,6 +26,41 @@
                                             <div class="card-body">
                                                 <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                    <!-- Profile Image -->
+                                                    <div class="row">
+                                                        <div class="col-md-6 ml-auto mr-auto">
+                                                            <div style="padding-top: -100px;" class="profile text-center ">
+                                                                <div class="avatar">
+                                                                    <div class="fileinput fileinput-new text-center"
+                                                                         data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail img-circle img-raised">
+                                                                            <img :src="getImagesave()" :alt="form.name">
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                                                                        <div>
+                                                                            <span class="btn btn-raised btn-round btn-info btn-file">
+                                                                                <span class="fileinput-new">
+                                                                                    <b> Add Profile</b>
+                                                                                </span>
+                                                                                <span class="fileinput-exists">
+                                                                                    <i class="material-icons">edit</i>
+                                                                                    <b> Change</b>
+                                                                                </span>
+                                                                                <input @change="updateImage" id="avatar" type="file" class="form-control" name="avatar"/>
+                                                                            </span>
+                                                                            <br/>
+                                                                            <a href="#pablo"
+                                                                               class="btn btn-danger btn-round fileinput-exists"
+                                                                               data-dismiss="fileinput"><i class="fa fa-times"></i>
+                                                                                <b>Remove</b>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
                                                     <!-- User Data -->
                                                     <div class="col-md-12">
                                                         <div class="card card-nav-tabs">
@@ -46,7 +81,7 @@
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
-                                                                                <router-link :to="{ path: `/dashboard/p/${form.id}/edit` }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
+                                                                                <router-link :to="{ path: `/dashboard/p/${user.id}/edit` }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
                                                                                     <b>Editer le profile</b>
                                                                                 </router-link>
@@ -67,104 +102,65 @@
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label class="bmd-label-floating">Company - {{company}}</label>
+                                                                                    <label class="bmd-label-floating">Company - kazoutech</label>
                                                                                     <input type="text" class="form-control" disabled/>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <br>
-                                                                        <br>
                                                                         <div class="row">
-                                                                            <div class="col-md-3">
+                                                                            <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label>First Name</label>
-                                                                                    <input v-model="form.first_name" type="text" maxlength="25" name="first_name" class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }"/>
-                                                                                    <has-error :form="form" field="first_name"></has-error>
+                                                                                    <label>Pseudo</label>
+                                                                                    <input v-model="form.username" type="text" name="username"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('username') }"/>
+                                                                                    <has-error :form="form" field="username"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-3">
+                                                                            <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label>Street Address</label>
-                                                                                    <input v-model="form.address" type="text" name="address"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('address') }"/>
-                                                                                    <has-error :form="form" field="address"></has-error>
+                                                                                    <label>Last Name</label>
+                                                                                    <input v-model="form.name" type="text" name="name" maxlength="25"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('name') }"/>
+                                                                                    <has-error :form="form" field="name"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-3">
+                                                                            <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label>Postal Code</label>
-                                                                                    <input v-model="form.cap" type="number" name="cap"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('cap') }"/>
-                                                                                    <has-error :form="form" field="cap"></has-error>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <div class="form-group">
-                                                                                    <label>Professional Work</label>
-                                                                                    <input v-model="form.work" type="text" name="work"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('work') }"/>
-                                                                                    <has-error :form="form" field="work"></has-error>
+                                                                                    <label>Email</label>
+                                                                                    <input v-model="form.email" type="email" name="email"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('email') }"/>
+                                                                                    <has-error :form="form" field="email"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row" style="padding-top: 10px; padding-bottom: 15px;">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label>Sex</label>
-                                                                                    <select name="sex" v-model="form.sex" id="sex" class="form-control"
-                                                                                            :class="{ 'is-invalid': form.errors.has('sex') }" style="margin-top: 15px;">
-                                                                                        <option value="" disabled>Choose Your Sex</option>
-                                                                                        <option value="Male">Male</option>
-                                                                                        <option value="Female">Female</option>
+                                                                                    <label>Your Country</label>
+                                                                                    <select name="country_id" v-model="form.country_id"
+                                                                                            id="country_id" class="form-control"
+                                                                                            :class="{ 'is-invalid': form.errors.has('country_id') }"
+                                                                                            style="margin-top: 15px;">
+                                                                                        <option value="" disabled>Choose Your Country
+                                                                                        </option>
+                                                                                        <option v-for="country in countries"
+                                                                                                :key="country.name"
+                                                                                                :value="country.id">{{country.name}}
+                                                                                        </option>
                                                                                     </select>
-                                                                                    <has-error :form="form" field="sex"></has-error>
+                                                                                    <has-error :form="form" field="country_id"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label>Sidebar Filters Color Menu</label>
-                                                                                    <select name="color_style" v-model="form.color_style" id="color_style" class="form-control"
-                                                                                            :class="{ 'is-invalid': form.errors.has('color_style') }" style="margin-top: 15px;">
-                                                                                        <option value="" disabled>Choose Your Color Style</option>
-                                                                                        <option value="purple">Purple</option>
-                                                                                        <option value="azure">Azure</option>
-                                                                                        <option value="green">Green</option>
-                                                                                        <option value="orange">Orange</option>
-                                                                                        <option value="danger">Danger</option>
+                                                                                    <label>Header Color Card</label>
+                                                                                    <select name="color_name" v-model="form.color_name" id="color_name" class="form-control"
+                                                                                            :class="{ 'is-invalid': form.errors.has('color_name') }" style="margin-top: 15px;">
+                                                                                        <option value="" disabled>Choose Your Color</option>
+                                                                                        <option v-for="color in colors" :key="color.id" :value="color.slug">{{color.color_name}}</option>
                                                                                     </select>
-                                                                                    <has-error :form="form" field="color_style"></has-error>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <br>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Age</label>
-                                                                                    <input type="text" v-model="form.age" name="my_birthday" maxlength="2"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('age') }"/>
-                                                                                    <has-error :form="form" field="age"></has-error>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Your Phone Number</label>
-                                                                                    <input v-model="form.phone" type="number" name="phone"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('phone') }"/>
-                                                                                    <has-error :form="form" field="phone"></has-error>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <br>
-                                                                        <div class="tab-pane" id="settings">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div class="media-body">
-                                                                                        <label class="bmd-label-floating"></label>
-                                                                                        <vue-editor v-model="form.body" :class="{ 'is-invalid': form.errors.has('body') }"
-                                                                                                    :editorToolbar="customToolbar"></vue-editor>
-                                                                                        <has-error :form="form" field="body"></has-error>
-                                                                                    </div>
+                                                                                    <has-error :form="form" field="color_name"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -201,66 +197,62 @@
 </template>
 
 <script>
-    import api from '../../../api/mixins/collections';
     import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     export default {
         components: {StatusAdmin, FooterAdmin, TopNav},
-        props: ['company'],
         data() {
             return {
-                user:{},
                 colors:{},
+                countries:{},
                 form: new Form({
                     id: '',
-                    first_name: '',
-                    last_name: '',
-                    work: '',
-                    sex: '',
-                    age: '',
-                    body: '',
-                    color_style: '',
-                    phone: '',
-                    cap: '',
-                    address: ''
+                    name: '',
+                    email: '',
+                    username: '',
+                    color_name: '',
+                    avatar: '',
+                    avatarcover: '',
+                    country_id: '',
                 }),
-                customToolbar: [
-                    [{'header': [1, 2, 3, 4, 5, 6, false]}],
-                    [{'font': []}],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{'align': []}],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    //[{'list': 'ordered'}, {'list': 'bullet'}, {'list': 'check'}],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{'color': []}, {'background': []}],
-                    //['link', 'image', 'video', 'formula'],
-                    ['link'],
-                    //[{ 'direction': 'rtl' }],
-                    ['clean'],
-                    //['emoji'],
-                ],
             }
         },
         methods:{
             getUserColorName(){
-                let colorUser = 'card-header card-header-icon card-header-' + this.user.color_name;
+                let colorUser = 'card-header card-header-icon card-header-' + this.form.color_name;
                 return colorUser;
             },
             getUserPanelName(){
-                let colorPanel = 'card-header card-header-' + this.user.color_name;
+                let colorPanel = 'card-header card-header-' + this.form.color_name;
                 return colorPanel;
+            },
+            getImagesave(){
+                let avatar = (this.form.avatar.length > 200) ? this.form.avatar : this.form.avatar;
+                return avatar;
+            },
+            updateImage(e){
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                let limit = 1024 * 1024 * 2;
+                if(file['size'] > limit){
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'You are uploading a large file',
+                    });
+                    return false;
+                }
+                reader.onloadend = (file) => {
+                    this.form.avatar = reader.result;
+                };
+                reader.readAsDataURL(file);
             },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.put("/profiles/" + this.form.id)
+                this.form.put('/user/update/')
                     .then(() => {
                         //Insertion de l'alert !
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -275,7 +267,7 @@
                             notify.update({'type': 'success', 'message': '<strong>Profile updated Successfully.</strong>', 'progress': 75});
                         }, 2000);
                         //setTimeout(() =>  location.replace(`/dashboard/account/profile`), 2000);
-                        //setTimeout(() => this.$router.push({ name: 'admin.account' }), 2000);
+                        setTimeout(() => this.$router.push({ name: 'admin.account' }), 2000);
                         //End Progress bar
                         this.$Progress.finish();
                     }).catch(() => {
@@ -292,11 +284,23 @@
                 })
             },
         },
+        //Ici je recupere les donner avant que la page n'apparait pour le moment
+        //je n'ai pas besoin du created ici
+        beforeRouteEnter (to, from, next) {
+            axios.get('/api/account/profile')
+                .then(({data}) =>  {
+                    next(vm => {
+                        vm.$Progress.start();
+                        vm.form.fill(data);
+                        vm.$Progress.finish()
+                    })
+                });
+        },
         created(){
             //Start Progress bar
             this.$Progress.start();
-            api.profileID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            axios.get("/api/colors").then(({data}) => (this.colors = data.data));
+            axios.get("/api/countries").then((response) => ( this.countries = response.data.data));
             //End Progress bar
             this.$Progress.finish()
         }

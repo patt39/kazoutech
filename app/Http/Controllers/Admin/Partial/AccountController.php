@@ -153,9 +153,6 @@ class AccountController extends Controller
         $this->validate($request,[
             'username' => "required|string|min:2|max:25|unique:users,username,{$user->id}",
             'email' => "required|email|max:255|unique:users,email,{$user->id}",
-            "age" => "required|min:1|max:2",
-            "sex" => "required|in:Female,Male",
-
         ]);
 
         /**
@@ -208,22 +205,12 @@ class AccountController extends Controller
 
         $user->update($request->only(
             'name',
-            'first_name',
-            'last_name',
-            'work',
-            'sex',
-            'age',
             'email',
-            'body',
             'username',
-            'phone',
             'color_name',
-            'color_style',
-            'cellphone',
-            'cap',
             'avatar',
             'avatarcover',
-            'address',
+            'password',
             'country_id'
         ));
         return ['message' => 'user has ben updated'];

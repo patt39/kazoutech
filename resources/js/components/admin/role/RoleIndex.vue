@@ -100,8 +100,9 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a href="javascript:void(0)" @click="editItem(item)"
-                                                       class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <a :href="`/dashboard/roles/${item.id}/edit`"
+                                                       class="btn btn-link  btn-success btn-round btn-just-icon"
+                                                       title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </a>
                                                     <a href="javascript:void(0)" @click="deleteItem(item.id)"

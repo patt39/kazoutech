@@ -27,12 +27,12 @@ use Faker\Generator as Faker;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'username' => $faker->unique()->userName,
-        'first_name' => $faker->firstName,
+        //'first_name' => $faker->firstName,
         'avatar' => $faker->imageUrl($width = 400, $height = 400),
         'avatarcover' => $faker->imageUrl,
         'name' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->unique()->numerify('+393#########'),
+        //'phone' => $faker->unique()->numerify('+393#########'),
         'password' => bcrypt('0000000'),
     ];
 });

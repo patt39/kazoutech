@@ -11,6 +11,9 @@ export default {
     userID(id) {
         return axios.get(`/dashboard/users/${id}`);
     },
+    profileID(id) {
+        return axios.get(`/profiles/u/${id}`);
+    },
     category(id) {
         return axios.get(`/dashboard/categories/${id}`);
     },

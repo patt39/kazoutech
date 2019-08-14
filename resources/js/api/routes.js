@@ -76,13 +76,15 @@ import PolicyprivacyCreate from "../components/admin/info/policyprivacy/Policypr
 import PolicyprivacyEdit from "../components/admin/info/policyprivacy/PolicyprivacyEdit";
 import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
+import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
 
 
 export const routes = [
 
     {path: '/dashboard/', name: 'dashboard.index', component: DashboardIndex},
     {path: '/dashboard/account/profile/', name: 'admin.account', component: AdminAccount},
-    {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileEdit},
+    {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileInfoEdit},
+    {path: '/dashboard/p/:id/edit', name: 'admin.profiles_edit', component: AdminProfileEdit},
     {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
     {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},
