@@ -10,7 +10,10 @@
 
 <div class="wrapper" id="app">
 
+    @can('dashboard')
+
     @if(Auth::user()->my_status === 'active')
+
         @include('inc.admin.navadmin')
 
     @section('content')
@@ -19,6 +22,12 @@
     @show
 
     @endif
+
+        @else
+            <div class="submit text-center">
+                <error-404></error-404>
+            </div>
+    @endcan
 
 </div>
 

@@ -1,6 +1,5 @@
-@if(Auth::user()->avatar)
-<div class="sidebar" data-color="{{ Auth::user()->color_style }}" data-background-color="black" data-image="{{ Auth::user()->avatar }}">
-    @endif
+
+<div class="sidebar" data-color="azure" data-background-color="black" data-image="{{ Auth::user()->avatar }}">
     <!--
 Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 Tip 2: you can also add an image using data-image tag
@@ -72,7 +71,7 @@ Tip 2: you can also add an image using data-image tag
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" @click="navLogout()" id="btnShowAlertLogout" style="cursor:pointer;">
+                            <a href="#" class="nav-link" id="btnShowAlertLogout" style="cursor:pointer;">
                                 <span class="sidebar-mini"><b>L</b></span>
                                 <span class="sidebar-normal"><b>Logout</b></span>
                             </a>

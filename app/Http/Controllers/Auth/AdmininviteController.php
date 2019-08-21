@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdmininviteController extends Controller
 {
+
     public function process(Request $request)
     {
         $this->validate($request,[

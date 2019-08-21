@@ -340,7 +340,7 @@
             inviteAdmin() {
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post("/invite")
+                this.form.post("/user/invite")
                     .then(() => {
                         //Masquer le modal après la création
                         $('#inviteAdmin').modal('hide');

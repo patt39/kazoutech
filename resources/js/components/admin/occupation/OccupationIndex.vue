@@ -396,6 +396,11 @@
                 })
             },
 
+            ChangeStatus(id)
+            {
+              console.log(id)
+            },
+
             /** Ici c'est l'activation de la couleur  **/
             activeItem(id) {
                 //Progress bar star

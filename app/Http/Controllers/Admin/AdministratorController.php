@@ -95,7 +95,6 @@ class AdministratorController extends Controller
         $user->my_status = $request->my_status;
         $user->country_id = $request->country_id;
         $user->email = $request->email;
-        $user->sex = $request->sex;
 
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $permissions = $request->input('permissions') ? $request->input('permissions') : [];

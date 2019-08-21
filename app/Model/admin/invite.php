@@ -7,12 +7,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class invite extends Model
 {
-    use LogsActivity;
 
-    protected $fillable = [
-        'email',
-        'name',
-        'token'];
-    protected static $logAttributes = [ 'email', 'name', 'token'];
+
+    protected $fillable = ['email', 'name', 'token'];
 
 }

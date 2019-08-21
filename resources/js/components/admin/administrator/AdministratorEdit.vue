@@ -75,7 +75,7 @@
                                                                         </div>
                                                                         <br>
                                                                         <div class="row">
-                                                                            <div class="col-md-4">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Pseudo</label>
                                                                                     <input v-model="form.username" type="text" name="username"
@@ -83,7 +83,7 @@
                                                                                     <has-error :form="form" field="username"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-4">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Last Name</label>
                                                                                     <input v-model="form.name" type="text" name="name" maxlength="25"
@@ -91,28 +91,9 @@
                                                                                     <has-error :form="form" field="name"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label>First Name</label>
-                                                                                    <input v-model="form.first_name" type="text" maxlength="25" name="first_name" class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" disabled/>
-                                                                                    <has-error :form="form" field="first_name"></has-error>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                         <div class="row" style="padding-top: 10px; padding-bottom: 15px;">
-                                                                            <div class="col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label>Sex</label>
-                                                                                    <select name="sex" v-model="form.sex" id="sex" class="form-control"
-                                                                                            :class="{ 'is-invalid': form.errors.has('sex') }" style="margin-top: 15px;">
-                                                                                        <option value="" disabled>Choose Your Sex</option>
-                                                                                        <option value="Male">Male</option>
-                                                                                        <option value="Female">Female</option>
-                                                                                    </select>
-                                                                                    <has-error :form="form" field="sex"></has-error>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-4">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Country</label>
                                                                                     <select name="country_id" v-model="form.country_id"
@@ -128,7 +109,7 @@
                                                                                     <has-error :form="form" field="country_id"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-4">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Role</label>
                                                                                     <select   v-model="form.roles" id="role" class="form-control" :class="{ 'is-invalid': form.errors.has('roles[]') }" style="margin-top: 15px;">

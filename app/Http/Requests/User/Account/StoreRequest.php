@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Admin\Administrators;
+namespace App\Http\Requests\User\Account;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends BaseRequest
+class StoreRequest extends BaseRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,8 +24,9 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users,username,' .$this->id,
-            'email' => 'required|email|unique:users,email,' .$this->id,
+            'username' => 'required|unique:users,username,',
+            'email' => 'required|email|unique:users,email,',
+            "sex" => "required|in:Female,Male",
             'country_id' => 'required',
             'roles' => 'required',
         ];

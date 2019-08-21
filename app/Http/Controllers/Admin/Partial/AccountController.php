@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Partial;
 
+use App\Http\Requests\User\Account\UpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Model\user\User;
 use Illuminate\Http\Request;
@@ -146,7 +147,7 @@ class AccountController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdateRequest $request)
     {
         //dd(request()->all()); // pour tester les donner qui entre dans la base de donner
         $user = auth()->user();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Administrators;
+namespace App\Http\Requests\User\Account;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,10 +23,9 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users,username,' .$this->id,
-            'email' => 'required|email|unique:users,email,' .$this->id,
+            'username' => "required|string|min:2|max:25|unique:users,username,{$this->id}",
+            'email' => "required|email|max:255|unique:users,email,{$this->id}",
             'country_id' => 'required',
-            'roles' => 'required',
         ];
     }
     public function messages()
