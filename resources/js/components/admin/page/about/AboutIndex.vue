@@ -246,7 +246,7 @@
     import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
-    
+
     export default {
         components: {
             LoaderLdsDefault,
@@ -381,15 +381,15 @@
                 //Start Progress bar
                 this.$Progress.start();
                 this.form.get('/dashboard/active_abouts/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
+                            /** Alert notify bootstrapp **/
+                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                                allow_dismiss: false,
+                                showProgressbar: true,
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                },
+                            });
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Member activated Successfully.</strong>', 'progress': 75});
                         }, 2000);
@@ -397,7 +397,7 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    
+
                     Fire.$emit('AfterCreate');
                 }).catch(() => {
                     //Failled message
@@ -433,7 +433,7 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    
+
                     Fire.$emit('AfterCreate');
                 }).catch(() => {
                     //Failled message
