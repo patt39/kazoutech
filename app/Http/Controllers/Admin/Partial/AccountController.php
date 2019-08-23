@@ -153,7 +153,7 @@ class AccountController extends Controller
         $user = auth()->user();
         $this->validate($request,[
             'username' => "required|string|min:2|max:25|unique:users,username,{$user->id}",
-            'email' => "required|email|max:255|unique:users,email,{$user->id}",
+            'email' => "required|email:rfc,dns|max:255|unique:users,email,{$user->id}",
         ]);
 
         /**
