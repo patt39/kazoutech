@@ -44,21 +44,21 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-6 text-right">
-								<span>
-									<i id="tooltipSize" class="material-icons">supervised_user_circle</i>
-								</span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">supervised_user_circle</i>
+                                            </span>
                                             </div>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="card-body">
                                         <div class="toolbar">
-                                            <div class="submit text-center">
+                                            <!--<div class="submit text-center">
                                                 <button id="button_hover" @click="modalInvite()" class="btn btn-info btn-raised btn-round text-right">
                                                     <i class="material-icons">inbox</i>
                                                     <b class="title_hover">Invite Administrator</b>
                                                 </button>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="material-datatables">
                                             <table id="datatables" class="table table-striped table-no-bordered table-hover"

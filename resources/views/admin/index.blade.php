@@ -9,11 +9,7 @@
 @endsection
 
 @section('content')
-    <transition name="fade">
-        <keep-alive>
-            <router-view></router-view>
-        </keep-alive>
-    </transition>
+    <router-view></router-view>
 @endsection
 
 @section('script')

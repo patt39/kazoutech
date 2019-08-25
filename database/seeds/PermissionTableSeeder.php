@@ -175,6 +175,8 @@ class PermissionTableSeeder extends Seeder
         
         //Viea Subcribe Newletters permissions
         Permission::create(['guard_name' => 'web' , 'name' => 'view-email']);
+        //View permission and role
+        Permission::create(['guard_name' => 'web' , 'name' => 'view-role-permission']);
 
 
 

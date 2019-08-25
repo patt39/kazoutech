@@ -13,11 +13,7 @@
 
 @section('content')
     @if(Auth::user()->my_status === 'active')
-        <transition name="fade">
-            <keep-alive>
-                <router-view follow="{{auth()->user()->isFollowing($user)}}"></router-view>
-            </keep-alive>
-        </transition>
+        <router-view follow="{{auth()->user()->isFollowing($user)}}"></router-view>
     @else
         <div class="submit text-center">
             @include('inc.admin.alert_permission')

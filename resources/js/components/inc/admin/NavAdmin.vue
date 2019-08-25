@@ -279,7 +279,7 @@
                                     </router-link>
                                 </li>
                                 <!-- Permissions -->
-                                <li v-if="$auth.can('view-presentation')"  class="nav-item">
+                                <li v-if="$auth.can('view-role-permission')"  class="nav-item">
                                     <router-link  :to="{ name: 'permissions.index' }" class="nav-link">
                                         <span class="sidebar-mini">PM</span>
                                         <span class="sidebar-normal"><b>Permissions</b></span>
@@ -287,7 +287,7 @@
                                 </li>
                                 <!-- Roles -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ name: 'roles.index' }" class="nav-link">
+                                    <router-link v-if="$auth.can('view-role-permission')"   :to="{ name: 'roles.index' }" class="nav-link">
                                         <span class="sidebar-mini">RO</span>
                                         <span class="sidebar-normal"><b>Roles</b></span>
                                     </router-link>
