@@ -12,7 +12,11 @@
 
 @section('content')
     @if(Auth::user()->my_status === 'active')
-        <router-view></router-view>
+        <transition name="fade">
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+        </transition>
     @else
         <div class="submit text-center">
             <error-404></error-404>

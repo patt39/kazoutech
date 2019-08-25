@@ -87,6 +87,7 @@
                             <i class="material-icons">dashboard</i>
                             <p><b>Dashboard</b></p>
                         </router-link>
+
                     </li>
                     <!-- Occupations -->
                     <li class="nav-item">
@@ -250,14 +251,14 @@
                                     </router-link>
                                 </li>
                                 <!-- Administrators -->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('view-administrator')"  class="nav-item">
                                     <router-link  :to="{ name: 'administrators.index' }" class="nav-link">
                                         <span class="sidebar-mini">AD</span>
                                         <span class="sidebar-normal"><b>Administrators</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Users -->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('view-user')" class="nav-item">
                                     <router-link  :to="{ name: 'users.index' }" class="nav-link">
                                         <span class="sidebar-mini">US</span>
                                         <span class="sidebar-normal"><b>Users</b></span>
@@ -278,7 +279,7 @@
                                     </router-link>
                                 </li>
                                 <!-- Permissions -->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('view-presentation')"  class="nav-item">
                                     <router-link  :to="{ name: 'permissions.index' }" class="nav-link">
                                         <span class="sidebar-mini">PM</span>
                                         <span class="sidebar-normal"><b>Permissions</b></span>
@@ -382,9 +383,7 @@
             },
         },
         created() {
-            axios.get("/api/account/user").then(
-                response => {this.user = response.data.data}
-                );
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
         }
     }
 </script>

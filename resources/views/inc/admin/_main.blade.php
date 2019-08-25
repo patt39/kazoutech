@@ -14,7 +14,7 @@
 
     @if(Auth::user()->my_status === 'active')
 
-        @include('inc.admin.navadmin')
+       <nav-admin></nav-admin>
 
     @section('content')
 

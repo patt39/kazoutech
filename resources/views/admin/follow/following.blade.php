@@ -12,7 +12,12 @@
 
 @section('content')
     @if(Auth::user()->my_status === 'active')
-        <router-view follow="{{auth()->user()->isFollowing($user)}}"></router-view>
+        <transition name="fade">
+            <keep-alive>
+                <router-view follow="{{auth()->user()->isFollowing($user)}}"></router-view>
+            </keep-alive>
+        </transition>
+
     @else
         <div class="submit text-center">
             <error-404></error-404>

@@ -136,16 +136,15 @@ class RoleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
-    public function destroy(Request $request)
-    {
 
-        $role = Role::findOrFail($request->role_id);
+    public function destroy($id)
+    {
+        $role = Role::findOrFail($id);
         $role->delete();
 
-        //toastr()->success('<b>Role has been deleted!</b>','<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>');
-        return back();
+        return ['message' => 'Rle deleted '];
     }
 
     public function deleteMultiple(Request $request)

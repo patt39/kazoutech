@@ -77,6 +77,7 @@ import PolicyprivacyEdit from "../components/admin/info/policyprivacy/Policypriv
 import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
+import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 
 
 export const routes = [
@@ -149,6 +150,7 @@ export const routes = [
 
     //Route contacts
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
+    {path: '/dashboard/contacts/bookmarks/', name: 'contacts.bookmarks', component: ContactBookmarks},
     {path: '/dashboard/contacts/msg/:contact/', name: 'contacts.view', component: ContactMessageShow},
 
     {

@@ -23,6 +23,7 @@ class CreateContactsTable extends Migration
             $table->string('subject')->nullable();
             $table->longText('message')->nullable();
             $table->integer('status')->default('0')->nullable();
+            $table->boolean('bookmark')->default(false);
             $table->timestamps();
 
             $table->unsignedInteger('user_id')->nullable()->index();

@@ -14,6 +14,8 @@ import 'es6-promise/auto';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+
+
 import {Vue2Storage} from 'vue2-storage'
 Vue.use(Vue2Storage, {
     prefix: 'app_',
@@ -192,6 +194,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('alert-permission', require('./components/inc/admin/components/AlertPermission').default);
 Vue.component('errored-loading', require('./components/inc/animation/Errored').default);
 Vue.component('loader-ellipsis', require('./components/inc/animation/LoaderEllipsis').default);
+Vue.component('nav-admin', require('./components/inc/admin/NavAdmin').default);
 
 
 /**

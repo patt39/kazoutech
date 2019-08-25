@@ -15,8 +15,8 @@ class contact extends Model
      */
     use LogsActivity;
 
-    protected $fillable = ['first_name', 'last_name', 'subject', 'email', 'status', 'message'];
-    protected static $logAttributes = ['first_name', 'last_name','ip','subject', 'email', 'status', 'message'];
+    protected $fillable = ['first_name', 'last_name', 'subject', 'email', 'status', 'message','bookmark'];
+    protected static $logAttributes = ['first_name', 'last_name','ip','subject', 'email', 'status', 'message','bookmark'];
 
     protected static function boot()
     {

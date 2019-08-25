@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,7 +23,7 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','store','contatPage']]);
+        $this->middleware('auth',['except' => ['api','store','contatPage','apibookmark']]);
     }
 
     /**
@@ -44,11 +45,22 @@ class ContactController extends Controller
         return view('admin.contact.index');
     }
 
+    public function bookmaksindex()
+    {
+        return view('admin.contact.index');
+    }
+
 
     public function api()
     {
+        $contacts = ContactResource::collection(contact::where('bookmark', 0)->orderBy('created_at','desc')->get());
+        return $contacts;
+    }
+
+    public function apibookmark()
+    {
         $contacts = Cache::rememberForever('contacts', function () {
-            return ContactResource::collection(contact::orderBy('created_at','desc')->get());
+            return ContactResource::collection(contact::where('bookmark', 1)->orderBy('created_at','desc')->get());
         });
         return $contacts;
     }
@@ -74,7 +86,7 @@ class ContactController extends Controller
         $this->validate($request,[
             'first_name'    => 'required|max:100',
             'last_name'    => 'required|max:100',
-            'email'   => 'required|email',
+            'email'   => 'required|email:rfc,dns',
             'subject' => 'required|min:2|max:210',
             'message'     => 'required|min:2|max:50000',
         ]);
@@ -98,7 +110,7 @@ class ContactController extends Controller
             ),
             function ($message) {
                 $message->from('temgoua2013@yahoo.fr');
-                $message->to('dasgivemoi@gmail.com', 'kazoucoin')
+                $message->to('dasgivemoi@gmail.com', 'Kazoutech')
                     ->subject('New Message send from contact page');
             });
 
@@ -169,6 +181,26 @@ class ContactController extends Controller
         return response('Deactivated message read',Response::HTTP_ACCEPTED);
     }
 
+    public function bookmark(contact $contact, $id)
+    {
+        $contact = contact::where('id', $id)->findOrFail($id);
+        $contact->update([
+            'bookmark' => 1,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Message bookmark',Response::HTTP_ACCEPTED);
+    }
+
+    public function unbookmark(contact $contact, $id)
+    {
+        $contact = contact::where('id', $id)->findOrFail($id);
+        $contact->update([
+            'bookmark' => 0,
+            'user_id' => auth()->user()->id,
+        ]);
+        return response('Message unbookmark',Response::HTTP_ACCEPTED);
+    }
+
     public function active(contact $contact, $id)
     {
         $contact = contact::where('id', $id)->findOrFail($id);
@@ -184,11 +216,17 @@ class ContactController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $contact = contact::findOrFail($id);
-        $contact->delete();
-
-        return ['message' => 'message contact deleted '];
+        try {
+            // Delete user
+            $contact->delete();
+            return ['message' => 'message contact deleted '];
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e);
+            return ['message' => "Error message contact don't deleted"];
+        }
     }
+
 }

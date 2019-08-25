@@ -42,11 +42,13 @@
                                                         <li class="nav-item">
                                                             <router-link :to="{ name: 'contacts.index' }" class="nav-link" style="cursor:pointer;" data-toggle="tab" title="Message contact" exact>
                                                                 <i class="material-icons">email</i>
+                                                                <!--<span class="badge badge-default">4</span>-->
                                                             </router-link>
                                                         </li>
                                                         <li class="nav-item">
                                                             <router-link :to="{ name: 'contacts.bookmarks' }" class="nav-link" style="cursor:pointer;" data-toggle="tab" title="bookmarks" exact>
                                                                 <i class="material-icons">bookmarks</i>
+                                                                <!--<span class="badge badge-default">4</span>-->
                                                             </router-link>
                                                         </li>
                                                     </ul>
@@ -101,8 +103,8 @@
                                                 <td>{{ item.email}}</td>
                                                 <td><b>{{ item.created_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a href="javascript:void(0)" @click="bookmarkItem(item.id)"
-                                                       class="btn btn-link  btn-primary btn-round btn-just-icon" title="Bookmark message">
+                                                    <a href="javascript:void(0)" @click="unbookmarkItem(item.id)"
+                                                       class="btn btn-link  btn-success btn-round btn-just-icon" title="Cancel bookmark message">
                                                         <i class="material-icons">bookmarks</i>
                                                     </a>
                                                     <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-success btn-round btn-just-icon" title="Disable Read">
@@ -311,13 +313,13 @@
                 })
             },
             /** Ici c'est la pour bookmarker le message **/
-            bookmarkItem(id) {
+            unbookmarkItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get(`/dashboard/contacts/bookmark/${id}`).then(() => {
+                axios.get(`/dashboard/contacts/unbookmark/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify("Bookmark successfully", {
+                    $.notify("Bookmark cancel successfully", {
                         type: 'success',
                         animate: {
                             enter: 'animated bounceIn',
@@ -342,7 +344,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                let url = "/api/contacts";
+                let url = "/api/contacts/bookmarks";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.contacts = response.data.data;

@@ -22,30 +22,40 @@
                                                         <i class="material-icons">keyboard_return</i>
                                                      </span>
                                                     </router-link>
-                                                    <a href="javascript:void(0)" @click="deleteItem(form.id)"
+                                                    <a href="javascript:void(0)" @click="deleteItem(contact.id)"
                                                        class="btn btn-danger btn-round btn-just-icon btn-sm" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </a>
 
-                                                    <a  href="javascript:void(0)" v-if="form.status === 1" @click="disableItem(form.id)" class="btn btn-success btn-round btn-just-icon btn-sm" title="Mask as unread">
+                                                    <a  href="javascript:void(0)" v-if="contact.status === 1" @click="disableItem(contact.id)" class="btn btn-success btn-round btn-just-icon btn-sm" title="Mask as unread">
                                                         <i class="material-icons">done_all</i>
                                                     </a>
-                                                    <a href="javascript:void(0)" v-else-if="form.status === 0" @click="activeItem(form.id)" class="btn btn-info btn-round btn-just-icon btn-sm" title="Mask as read">
+                                                    <a href="javascript:void(0)" v-else-if="contact.status === 0" @click="activeItem(contact.id)" class="btn btn-info btn-round btn-just-icon btn-sm" title="Mask as read">
                                                         <i class="material-icons">done</i>
                                                     </a>
+                                                    <template>
+                                                        <a v-if="contact.bookmark === 0" href="javascript:void(0)" @click="bookmarkItem(contact.id)"
+                                                           class="btn btn-primary btn-round btn-just-icon btn-sm" title="Bookmark message">
+                                                            <i class="material-icons">bookmarks</i>
+                                                        </a>
+                                                        <a v-else="contact.bookmark !== 0" href="javascript:void(0)" @click="unbookmarkItem(contact.id)"
+                                                           class="btn btn-success btn-round btn-just-icon btn-sm" title="Cancel bookmark message">
+                                                            <i class="material-icons">bookmarks</i>
+                                                        </a>
+                                                    </template>
 
                                                 </div>
                                                 <div class="card-icon">
                                                     <i class="material-icons">message</i>
                                                 </div>
                                                 <br>
-                                                <h4 class="card-title" style="margin-top: 0px;"><b>Message {{ form.first_name}}</b> -
-                                                    <small class="category" v-text="form.email"></small>
+                                                <h4 class="card-title" style="margin-top: 0px;"><b>Message {{ contact.first_name}}</b> -
+                                                    <small class="category" v-text="contact.email"></small>
                                                 </h4>
                                                 <h4 class="card-title text-right" style="margin-top: 0px;">
                                                     <small class="category">
-                                                        {{ form.created_at | myDate }} ({{ form.created_at | dateAgo }})
-                                                        <a :href="`mailto:${form.email}`" class="btn  btn-dribbble btn-round btn-just-icon btn-sm" title="reply">
+                                                        {{ contact.created_at | myDate }} ({{ contact.created_at | dateAgo }})
+                                                        <a :href="`mailto:${contact.email}`" class="btn  btn-dribbble btn-round btn-just-icon btn-sm" title="reply">
                                                             <i class="material-icons">reply</i>
                                                         </a>
                                                     </small>
@@ -55,7 +65,7 @@
                                                 <!-- User Data -->
                                                 <div class="col-md-12">
                                                     <h5 class="card-title">
-                                                        <b>{{ form.subject}}</b>
+                                                        <b>{{ contact.subject}}</b>
                                                     </h5>
                                                     <div class="card card-nav-tabs">
                                                         <div class="card-body">
@@ -65,25 +75,25 @@
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>First name</label>
-                                                                                <input v-model="form.first_name" type="text" class="form-control">
+                                                                                <input v-model="contact.first_name" type="text" class="form-control">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>Last name</label>
-                                                                                <input type="text" v-model="form.last_name" class="form-control">
+                                                                                <input type="text" v-model="contact.last_name" class="form-control">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label>Email</label>
-                                                                                <input type="email" v-model="form.email" class="form-control">
+                                                                                <input type="email" v-model="contact.email" class="form-control">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <br>
                                                                     <div class="form-group text-justify">
-                                                                       <p class="title" v-html="form.message"></p>
+                                                                       <p class="title" v-html="contact.message"></p>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="text-center">
@@ -93,7 +103,7 @@
                                                                                 </span>
                                                                         <b class="title_hover">Back all messages</b>
                                                                     </router-link>
-                                                                    <a :href="`mailto:${form.email}`" class="btn btn-dribbble btn-raised button_profile">
+                                                                    <a :href="`mailto:${contact.email}`" class="btn btn-dribbble btn-raised button_profile">
                                                                          <span class="btn-label">
                                                                             <i class="material-icons">reply</i>
                                                                         </span>
@@ -133,18 +143,7 @@
                 errored: false,
                 loaded: false,
                 user: {},
-                form: new Form({
-                    id: '',
-                    name: '',
-                    email: '',
-                    message: '',
-                    subject: '',
-                    last_name: '',
-                    first_name: '',
-                    created_at: '',
-                    slug: '',
-                    status: ''
-                })
+                contact: {},
             }
         },
         methods: {
@@ -160,7 +159,66 @@
                 let icon = 'material-icons text-' + color;
                 return icon;
             },
-            deleteItem() {
+            /** Ici c'est la pour bookmarker le message **/
+            unbookmarkItem(id) {
+                //Start Progress bar
+                this.$Progress.start();
+                axios.get(`/dashboard/contacts/unbookmark/${id}`).then(() => {
+
+                    /** Alert notify bootstrapp **/
+                    $.notify("Bookmark cancel successfully", {
+                        type: 'success',
+                        animate: {
+                            enter: 'animated bounceIn',
+                            exit: 'animated bounceOut'
+                        }
+                    });
+                    this.$Progress.finish();
+                    setTimeout(() => this.$router.push({ name: 'contacts.bookmarks' }));
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
+            /** Ici c'est la pour bookmarker le message **/
+            bookmarkItem(id) {
+                //Start Progress bar
+                this.$Progress.start();
+                axios.get(`/dashboard/contacts/bookmark/${id}`).then(() => {
+
+                    /** Alert notify bootstrapp **/
+                    $.notify("Bookmark successfully", {
+                        type: 'success',
+                        animate: {
+                            enter: 'animated bounceIn',
+                            exit: 'animated bounceOut'
+                        }
+                    });
+                    this.$Progress.finish();
+                    //Redirect after create
+                    setTimeout(() => this.$router.push({ name: 'contacts.index' }));
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
+            deleteItem(id) {
                 //Alert delete
                 Swal.fire({
                     title: 'Delete Message Contact-us?',
@@ -180,7 +238,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/dashboard/contacts/' + this.form.id).then(() => {
+                        axios.delete(`/dashboard/contacts/${id}`).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -206,11 +264,11 @@
                 })
             },
             /** Ici c'est l'activation de la couleur  **/
-            activeItem() {
+            activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/dashboard/contacts/discard_red/' + this.form.id).then(() => {
+                axios.get(`/dashboard/contacts/discard_red/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -233,11 +291,11 @@
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
-            disableItem() {
+            disableItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/dashboard/contacts/red_confirm/' + this.form.id).then(() => {
+                axios.get(`/dashboard/contacts/red_confirm/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -262,8 +320,9 @@
                 //Start Progress bar
                 this.$Progress.start();
                 api.contactshow(this.$route.params.contact)
-                    .then(({data}) => this.form.fill(data.data)
-                    ).catch(error => {
+                    .then(response => {
+                        this.contact = response.data.data
+                    }).catch(error => {
                     console.log(error);
                     this.errored = true
                 });

@@ -32,7 +32,7 @@ Route::get('search/tasks/{field}/{query}', 'Admin\Partial\TaskController@search'
 Route::get('task_technicians', 'Admin\TasktechnicianController@api');
 Route::get('roles', 'Admin\RoleController@api');
 Route::get('categories', 'Admin\Partial\CityController@api');
-Route::get('contacts', 'User\ContactController@api');
+
 Route::get('mails', 'User\MailController@api');
 Route::get('messages', 'User\MessageController@api');
 
