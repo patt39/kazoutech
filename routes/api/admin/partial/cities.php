@@ -9,5 +9,6 @@
 Route::group(['namespace' => 'Partial'], function(){
 
     Route::get('cities', 'CityController@api');
+    Route::get('cities/actives', 'CityController@apiactives');
     Route::get('cities_by_status', 'CityController@apibystatus');
 });

@@ -78,6 +78,7 @@ import PolicyprivacyView from "../components/admin/info/policyprivacy/Policypriv
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
+import CityActives from "../components/admin/partial/city/CityActives";
 
 
 export const routes = [
@@ -107,6 +108,7 @@ export const routes = [
 
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.index', component: CityIndex},
+    {path: '/dashboard/cities/actives/', name: 'cities.actives', component: CityActives},
     //Route diplomas
     {path: '/dashboard/diplomas/', name: 'diplomas.index', component: DiplomaIndex},
 

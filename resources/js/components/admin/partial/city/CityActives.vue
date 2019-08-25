@@ -67,11 +67,11 @@
                                                 </span>
                                                 <b class="title_hover">New City</b>
                                             </button>-->
-                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.actives' }" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.index' }" id="button_hover" class="btn btn-success btn-raised btn-round">
                                                  <span class="btn-label">
                                                     <i class="material-icons">spellcheck</i>
                                                 </span>
-                                                <b class="title_hover">Cities actives</b>
+                                                <b class="title_hover">All Cities</b>
                                             </router-link>
                                         </div>
                                     </div>
@@ -120,9 +120,6 @@
                                                 <td class="td-actions text-right">
                                                     <template v-if="$auth.can('edit-administrator')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
                                                     </template>
@@ -306,12 +303,6 @@
                 //On passe les information
                 this.form.fill(item);
             },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-            },
             createItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -402,36 +393,6 @@
                     }
                 })
             },
-
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
-                //Progress bar star
-                this.$Progress.start();
-                axios.get('/dashboard/active_cities/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>City activated successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert ***/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
             /** Ici c'est la désactivation de la couleur **/
             disableItem(id) {
                 //Start Progress bar
@@ -465,7 +426,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/cities";
+                const url = "/api/cities/actives";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.cities = response.data.data;
