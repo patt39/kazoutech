@@ -51,69 +51,66 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div class="header text-right">
-                                            <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                    title="Refresh Page">
-                                                <i class="material-icons">replay</i>
-                                                <b class="title_hover">Refresh</b>
-                                            </button>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="card-body">
-                                            <div class="toolbar">
-                                                <div class="submit text-center">
-                                                    <button id="button_hover" class="btn btn-warning btn-raised btn-round">
+                                        <div class="toolbar">
+                                            <div class="header text-right">
+                                                <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                        title="Refresh Page">
+                                                    <i class="material-icons">replay</i>
+                                                    <b class="title_hover">Refresh</b>
+                                                </button>
+                                            </div>
+                                            <br>
+                                            <div class="submit text-center">
+                                                <button id="button_hover" class="btn btn-warning btn-raised btn-round">
                                     <span class="btn-label">
                                         <i class="material-icons">playlist_add_check</i>
                                     </span>
-                                                        <b class="title_hover">New Role</b>
-                                                    </button>
-                                                </div>
+                                                    <b class="title_hover">New Role</b>
+                                                </button>
                                             </div>
-                                            <div class="material-datatables">
-                                                <table id="datatables" class="table table-striped table-no-bordered table-hover"
-                                                       cellspacing="0" width="100%" style="width:100%">
-                                                    <thead>
-                                                    <tr>
-                                                        <th><b>Name</b></th>
-                                                        <th><b>Guard Name</b></th>
-                                                        <th><b>Last Update</b></th>
-                                                        <th class="disabled-sorting text-right"><b>Actions</b></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tfoot>
-                                                    <tr>
-                                                        <th><b>Name</b></th>
-                                                        <th><b>Guard Name</b></th>
-                                                        <th><b>Last Update</b></th>
-                                                        <th class="text-right"><b>Actions</b></th>
-                                                    </tr>
-                                                    </tfoot>
-                                                    <tbody>
-                                                    <tr v-for="item in roles" :key="item.id">
-                                                        <td>{{ item.name | upText }}</td>
-                                                        <td>
+                                        </div>
+                                        <div class="material-datatables">
+                                            <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                                   cellspacing="0" width="100%" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th><b>Name</b></th>
+                                                    <th><b>Guard Name</b></th>
+                                                    <th><b>Last Update</b></th>
+                                                    <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                </tr>
+                                                </thead>
+                                                <tfoot>
+                                                <tr>
+                                                    <th><b>Name</b></th>
+                                                    <th><b>Guard Name</b></th>
+                                                    <th><b>Last Update</b></th>
+                                                    <th class="text-right"><b>Actions</b></th>
+                                                </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                <tr v-for="item in roles" :key="item.id">
+                                                    <td>{{ item.name | upText }}</td>
+                                                    <td>
                                                      <span v-for="permission in item.permissions" class="badge badge-success badge-pill">
                                                         {{permission}}
                                                     </span>
-                                                        </td>
-                                                        <td><b>{{ item.updated_at | myDate }}</b></td>
-                                                        <td class="td-actions text-right">
-                                                            <a :href="`/dashboard/roles/${item.id}/edit`"
-                                                               class="btn btn-link  btn-success btn-round btn-just-icon"
-                                                               title="Edit">
-                                                                <i class="material-icons">edit</i>
-                                                            </a>
-                                                            <a href="javascript:void(0)" @click="deleteItem(item.id)"
-                                                               class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
-                                                                <i class="material-icons">delete_forever</i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                    </td>
+                                                    <td><b>{{ item.updated_at | myDate }}</b></td>
+                                                    <td class="td-actions text-right">
+                                                        <a :href="`/dashboard/roles/${item.id}/edit`"
+                                                           class="btn btn-link  btn-success btn-round btn-just-icon"
+                                                           title="Edit">
+                                                            <i class="material-icons">edit</i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" @click="deleteItem(item.id)"
+                                                           class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                            <i class="material-icons">delete_forever</i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

@@ -50,17 +50,14 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                 <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                title="Refresh Page">
-                                            <i class="material-icons">replay</i>
-                                            <b class="title_hover">Refresh</b>
-                                        </button>
-                                    </div>
-                                 <br>   
-                                <br>
-                                <div class="card-body">
                                     <div class="toolbar">
+                                        <div class="header text-right">
+                                            <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                    title="Refresh Page">
+                                                <i class="material-icons">replay</i>
+                                                <b class="title_hover">Refresh</b>
+                                            </button>
+                                        </div>
                                         <div class="submit text-center">
                                             <button  id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
@@ -203,7 +200,6 @@
                                         </div>
                                     </div>
                                 </div>
-                             </div>
                            </div>
                         </div>
                     </div>

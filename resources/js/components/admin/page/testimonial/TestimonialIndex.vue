@@ -49,24 +49,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                 <br>
+                                <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                        <button @click="reload"
+                                                class="btn btn-success btn-raised btn-round button_note btn-sm"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
                                         </button>
                                     </div>
-                                <br>
-                                <div class="card-body">
                                     <div v-if="$auth.can('create-testimonial')" class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'testimonials.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
+                                            <router-link :to="{ name: 'testimonials.create' }" id="button_hover"
+                                                         class="btn btn-success btn-raised btn-round ">
                                                <span class="btn-label">
                                                    <i class="material-icons">chat</i>
                                                </span>
-                                               <b class="title_hover">New Testimonial</b>
+                                                <b class="title_hover">New Testimonial</b>
                                             </router-link>
                                         </div>
                                     </div>
@@ -75,77 +75,93 @@
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover"
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
-                                                <tr>
-                                                    <th><b>Profile</b></th>
-                                                    <th><b>FullName</b></th>
-                                                    <th><b>Evaluation</b></th>
-                                                    <th><b>Approvation Status</b></th>
-                                                    <th class="disabled-sorting text-right"><b>Actions</b></th>
-                                                </tr>
+                                            <tr>
+                                                <th><b>Profile</b></th>
+                                                <th><b>FullName</b></th>
+                                                <th><b>Evaluation</b></th>
+                                                <th><b>Approvation Status</b></th>
+                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                            </tr>
                                             </thead>
                                             <tfoot>
-                                                <tr>
-                                                    <th><b>Profile</b></th>
-                                                    <th><b>FullName</b></th>
-                                                    <th><b>Evaluation</b></th>
-                                                    <th><b>Approvation Status</b></th>
-                                                    <th class="text-right"><b>Actions</b></th>
-                                                </tr>
+                                            <tr>
+                                                <th><b>Profile</b></th>
+                                                <th><b>FullName</b></th>
+                                                <th><b>Evaluation</b></th>
+                                                <th><b>Approvation Status</b></th>
+                                                <th class="text-right"><b>Actions</b></th>
+                                            </tr>
                                             </tfoot>
                                             <tbody>
-                                                <tr v-for="item in testimonials" :key="item.id">
-                                                    <td><img :src="item.user.avatar" :alt="item.user.name" style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%"></td>
-                                                    <td>
-                                                        <a href="javascript:void(0)" @click="getUser(item)">
-                                                            <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                            <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                            {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                        </a>
-                                                    </td>
-                                                    <td>{{item.evaluation}}</td>
-                                                     <td>
-                                                        <div class="timeline-heading">
-                                                            <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
-                                                            <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="td-actions text-right">
-                                                        <template v-if="$auth.can('publish-testimonial')">
-                                                            <button v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                                <i class="material-icons">power_settings_new</i>
-                                                            </button>
-                                                            <button v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                                <i class="material-icons">power_settings_new</i>
-                                                            </button>
-                                                        </template>
-                                                       <router-link :to="{ path: `/dashboard/testimonials/tm/${item.slug}` }" class="btn btn-link btn-warning btn-round btn-just-icon" title="Show">
-                                                            <i class="material-icons">visibility</i>
-                                                        </router-link>
-                                                        <!--
-                                                        <router-link :to="{ path: `/dashboard/testimonials/${item.id}/edit` }" class="btn btn-link btn-success btn-round btn-just-icon"
-                                                               v-if="$auth.can('edit-testimonial')" title="Edit">
-                                                            <i class="material-icons">edit</i>
-                                                        </router-link>
-                                                        -->
-                                                        <button @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon"
-                                                                v-if="$auth.can('delete-testimonial')" title="Delete">
-                                                            <i class="material-icons">delete_forever</i>
+                                            <tr v-for="item in testimonials" :key="item.id">
+                                                <td><img :src="item.user.avatar" :alt="item.user.name"
+                                                         style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%">
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                        <button v-if="item.statusOnline" type="button"
+                                                                class="btn btn-success btn-round btn-just-icon btn-sm"
+                                                                title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button"
+                                                                class="btn btn-danger btn-round btn-just-icon btn-sm"
+                                                                title="Administrator Offline"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+
+                                                        "..." : item.user.name) | upText }}
+                                                    </a>
+                                                </td>
+                                                <td>{{item.evaluation}}</td>
+                                                <td>
+                                                    <div class="timeline-heading">
+                                                        <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
+                                                        <span v-else-if="item.status === 0"
+                                                              class="badge badge-danger"><b>Deactive</b></span>
+                                                    </div>
+                                                </td>
+                                                <td class="td-actions text-right">
+                                                    <template v-if="$auth.can('publish-testimonial')">
+                                                        <button v-if="item.status === 1" @click="disableItem(item.id)"
+                                                                class="btn btn-link btn-info btn-round btn-just-icon "
+                                                                title="Disable">
+                                                            <i class="material-icons">power_settings_new</i>
                                                         </button>
-                                                    </td>
-                                                </tr>
+                                                        <button v-else-if="item.status === 0"
+                                                                @click="activeItem(item.id)"
+                                                                class="btn btn-link btn-danger btn-round btn-just-icon "
+                                                                title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                    </template>
+                                                    <router-link
+                                                            :to="{ path: `/dashboard/testimonials/tm/${item.slug}` }"
+                                                            class="btn btn-link btn-warning btn-round btn-just-icon"
+                                                            title="Show">
+                                                        <i class="material-icons">visibility</i>
+                                                    </router-link>
+                                                    <!--
+                                                    <router-link :to="{ path: `/dashboard/testimonials/${item.id}/edit` }" class="btn btn-link btn-success btn-round btn-just-icon"
+                                                           v-if="$auth.can('edit-testimonial')" title="Edit">
+                                                        <i class="material-icons">edit</i>
+                                                    </router-link>
+                                                    -->
+                                                    <button @click="deleteItem(item.id)"
+                                                            class="btn btn-link btn-danger btn-round btn-just-icon"
+                                                            v-if="$auth.can('delete-testimonial')" title="Delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <FooterAdmin/>
         </div>
     </div>
-    <FooterAdmin/>
-  </div>
- </div>
 </template>
 
 <script>
@@ -155,7 +171,7 @@
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
 
     export default {
-        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav },
+        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav},
         data() {
             return {
                 loaded: false,
@@ -164,19 +180,19 @@
             }
         },
         methods: {
-            mydatatables(){
-                $( function () {
+            mydatatables() {
+                $(function () {
                     $('#datatables').DataTable({
                         "pagingType": "full_numbers",
                         "lengthMenu": [
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[0, 'desc'], [3, 'asc']],
                         responsive: true,
                         stateSave: true,
                         destroy: true,
-                        retrieve:true,
+                        retrieve: true,
                         autoFill: true,
                         colReorder: true,
                         language: {
@@ -187,19 +203,19 @@
                     });
                 });
             },
-            getColorCardUser(){
+            getColorCardUser() {
                 let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
             },
-            getColorHeaderUser(){
+            getColorHeaderUser() {
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
-            getMaterialIcon(color){
+            getMaterialIcon(color) {
                 let icon = 'material-icons text-' + color;
                 return icon;
             },
-            getUser(item){
+            getUser(item) {
                 //Progress bar star
                 this.$Progress.start();
                 location.replace(`/dashboard/users/p/${item.user.username}/`);
@@ -232,8 +248,12 @@
                                 allow_dismiss: false,
                                 showProgressbar: true
                             });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Testimonial deleted successfully.</strong>', 'progress': 75});
+                            setTimeout(function () {
+                                notify.update({
+                                    'type': 'success',
+                                    'message': '<strong>Testimonial deleted successfully.</strong>',
+                                    'progress': 75
+                                });
                             }, 2000);
                             /* End alert ***/
 
@@ -246,7 +266,7 @@
                             this.$Progress.fail();
                             //Alert
                             $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
+                                type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
                                     exit: 'animated bounceOutUp'
@@ -266,8 +286,12 @@
                         allow_dismiss: false,
                         showProgressbar: true
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Testimonial activated successfully.</strong>', 'progress': 75});
+                    setTimeout(function () {
+                        notify.update({
+                            'type': 'success',
+                            'message': '<strong>Testimonial activated successfully.</strong>',
+                            'progress': 75
+                        });
                     }, 2000);
                     /** End alert **/
 
@@ -280,7 +304,7 @@
                     this.$Progress.fail();
                     //Alert
                     $.notify("Ooop! Something wrong. Try later", {
-                    type: 'danger',
+                        type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
                             exit: 'animated bounceOutUp'
@@ -299,8 +323,12 @@
                         allow_dismiss: false,
                         showProgressbar: true
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Testimonial desactivated successfully.</strong>', 'progress': 75});
+                    setTimeout(function () {
+                        notify.update({
+                            'type': 'success',
+                            'message': '<strong>Testimonial desactivated successfully.</strong>',
+                            'progress': 75
+                        });
                     }, 2000);
                     /** End alert **/
 
@@ -313,7 +341,7 @@
                     this.$Progress.fail();
                     //Alert
                     $.notify("Ooop! Something wrong. Try later", {
-                    type: 'danger',
+                        type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
                             exit: 'animated bounceOutUp'
@@ -332,9 +360,11 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {
+                    this.user = response.data.data
+                });
             },
-             reload(){
+            reload() {
                 this.loadItems();
             },
         },
