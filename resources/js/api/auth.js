@@ -39,6 +39,10 @@ export default class Auth {
         return this.roles().includes("visitor");
     }
 
+    isUser() {
+        return this.roles().includes("user");
+    }
+
 
     can($permissionName) {
         return this.permissions().includes($permissionName);

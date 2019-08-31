@@ -1,65 +1,63 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <div class="main-panel" id="javascriptComponents">
-            <TopNav/>
-            <div class="content">
-                <div class="container-fluid">
-                    <br>
-                    <StatusAdmin/>
-                    <br>
-                    <div v-if="loaded" class="row">
-                        <div class="col-md-12 expo">
-                            <div class="card card-stats">
-                                <div :class="getColorCardUser()">
-                                    <div class="card-icon">
-                                        <i class="material-icons">forum</i>
-                                    </div>
-                                    <p class="card-category"><b>All Tags</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{tags.length}}</b></h3>
+        <div class="content">
+            <div class="container-fluid">
+                <br>
+                <StatusAdmin/>
+                <br>
+                <div v-if="loaded" class="row">
+                    <div class="col-md-12 expo">
+                        <div class="card card-stats">
+                            <div :class="getColorCardUser()">
+                                <div class="card-icon">
+                                    <i class="material-icons">forum</i>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">forum</i>
-                                        <b>All Tags</b>
-                                    </div>
+                                <p class="card-category"><b>All Tags</b>
+                                <h3 class="card-title" style="color:red;"><b>{{tags.length}}</b></h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">forum</i>
+                                    <b>All Tags</b>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderLdsDefault/>
-                    </div>
-                    <div v-if="loaded" class="row">
-                        <div class="col-md-12 expo">
-                            <div class="card">
-                                <div :class="getColorHeaderUser()">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h4 class="card-title">
-                                                <b>Datatables Tag</b>
-                                            </h4>
-                                            <p class="card-title">
-                                                Public help Tags
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6 text-right">
+                </div>
+                <div v-if="!loaded" class="submit">
+                    <LoaderLdsDefault/>
+                </div>
+                <div v-if="loaded" class="row">
+                    <div class="col-md-12 expo">
+                        <div class="card">
+                            <div :class="getColorHeaderUser()">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="card-title">
+                                            <b>Datatables Tag</b>
+                                        </h4>
+                                        <p class="card-title">
+                                            Public help Tags
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 text-right">
                                 <span>
                                     <i id="tooltipSize" class="material-icons">forum</i>
                                 </span>
-                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <br>
+                            <div  class="card-body">
+                                <div class="header text-right">
+                                    <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                            title="Refresh Page">
+                                        <i class="material-icons">replay</i>
+                                        <b class="title_hover">Refresh</b>
+                                    </button>
+                                </div>
                                 <br>
-                             <div  class="card-body">
-                                 <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                title="Refresh Page">
-                                            <i class="material-icons">replay</i>
-                                            <b class="title_hover">Refresh</b>
-                                        </button>
-                                    </div>
-                                 <br>   
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="submit text-center">
@@ -134,23 +132,19 @@
 
                                 </div>
                             </div>
-                         </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <FooterAdmin/>
         </div>
     </div>
 </template>
 
 <script>
-    import TopNav from "../../../inc/admin/TopNav";
-    import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
     export default {
-        components: {LoaderLdsDefault, StatusAdmin, FooterAdmin, TopNav},
+        components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
                 loaded: false,

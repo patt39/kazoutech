@@ -233,6 +233,13 @@
                             <p><b>Technicians</b></p>
                         </router-link>
                     </li>
+                    <!-- Documentation -->
+                    <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/documentations/' }" class="nav-link">
+                            <i class="material-icons">ballot</i>
+                            <p><b>Documentations</b></p>
+                        </router-link>
+                    </li>
                     <!-- Administrations -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#administrationExamples">

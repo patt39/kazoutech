@@ -9,5 +9,31 @@
 Route::group(['namespace' => 'Info'], function(){
 
     //Terms & Documentations Routes
-    Route::resource('/dashboard/documentations', 'DocumentationController');
+    //Route::resource('/dashboard/documentations', 'DocumentationController');
+    Route::get(
+        '/dashboard/documentations',
+        'DocumentationController@index'
+    )->name('documentations.index');
+
+    Route::get(
+        '/dashboard/documentations/create',
+        'DocumentationController@create'
+    )->name('documentations.create');
+
+    Route::post(
+        '/dashboard/documentations',
+        'DocumentationController@store'
+    )->name('documentations.store');
+
+    Route::get(
+        '/dashboard/documentations/{documentation}/getdocumentation',
+        'DocumentationController@getDocumentation'
+    )->name('documentations.getdocumentation');
+
+    Route::delete(
+        '/dashboard/documentations/{documentation}',
+        'DocumentationController@destroy'
+    )->name('documentations.destroy');
+
+    Route::get('/dashboard/documentation/save', 'DocumentationController@save');
 });

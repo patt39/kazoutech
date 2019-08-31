@@ -13,17 +13,17 @@ class documentation extends Model
     use LogsActivity;
 
     protected $table = 'documentations';
-    protected $fillable = ['name','file'];
+    protected $fillable = ['name','file','name_doc'];
     protected static $logAttributes = ['name'];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+   ////public function getRouteKeyName()
+   //{
+   //    return 'slug';
+   //}
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     /**
@@ -68,4 +68,13 @@ class documentation extends Model
             ]
         ];
     }
+
+
+    public function getUploadPath()
+    {
+        return 'documentation/'. $this->id .'/';
+        //return 'documentation' . DIRECTORY_SEPARATOR . $this->id . DIRECTORY_SEPARATOR;
+    }
+
+
 }

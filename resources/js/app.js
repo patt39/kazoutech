@@ -195,6 +195,8 @@ Vue.component('alert-permission', require('./components/inc/admin/components/Ale
 Vue.component('errored-loading', require('./components/inc/animation/Errored').default);
 Vue.component('loader-ellipsis', require('./components/inc/animation/LoaderEllipsis').default);
 Vue.component('nav-admin', require('./components/inc/admin/NavAdmin').default);
+Vue.component('top-nav', require('./components/inc/admin/TopNav').default);
+Vue.component('footer-admin', require('./components/inc/admin/FooterAdmin').default);
 
 
 /**

@@ -7,6 +7,8 @@ use App\Model\admin\info\documentation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class DocumentationController extends Controller
@@ -20,14 +22,19 @@ class DocumentationController extends Controller
     {
         return view('admin.info.documentation.index');
     }
+    public function save()
+    {
+        return view('test');
+    }
 
     public function api()
     {
 
-        $documentations = Cache::rememberForever('documentations', function () {
-            return DocumentationResource::collection(documentation::with('user')->latest()->get());
-        });
-        return $documentations;
+        return DocumentationResource::collection(documentation::with('user')->latest()->get());
+        //$documentations = Cache::rememberForever('documentations', function () {
+        //    return DocumentationResource::collection(documentation::with('user')->latest()->get());
+        //});
+        //return $documentations;
     }
     /**
      * Show the form for creating a new resource.
@@ -36,7 +43,7 @@ class DocumentationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.info.documentation.create');
     }
 
     /**
@@ -51,32 +58,23 @@ class DocumentationController extends Controller
             'name'=>'required|string',
         ]);
 
-        $documentation = new documentation;
-        $documentation->name = $request->name;
+         $documentation = new documentation();
+         $documentation->name = $request->name;
+         $documentation->save();
 
-        if ($request->name_doc) {
-
-            $namefile = sha1(date('YmdHis') . str_random(30));
-
-            $name =   $namefile.'.' . explode('/',explode(':',substr($request->name_doc,0,strpos
-                ($request->name_doc,';')))[1])[1];
-
-            $dir = 'assets/doc/documentation/';
-            if(!file_exists($dir)){
-                mkdir($dir, 0775, true);
-            }
-            $destinationPath = public_path("assets/doc/documentation/{$name}");
-            //Image::make($request->name_doc)->save($destinationPath);
-            //$request->name_doc->save($destinationPath);
-
-            //Save Image to database
-            $myfilename = "/assets/doc/documentation/{$name}";
-            $documentation->name_doc = $myfilename;
-        }
-
-        $documentation->save();
-
-        return new DocumentationResource($documentation);
+         if ($request->name_doc) {
+             $file_name_doc = $request->name_doc;
+             $file_name_doc_name = 'documentation.' . $file_name_doc->getClientOriginalExtension();
+             //$file_name_doc_name = $filename.'documentation.' . $file_name_doc->getClientOriginalExtension();
+             Storage::disk('public')->putFileAs(
+                 $documentation->getUploadPath(),
+                 $file_name_doc,
+                 $file_name_doc_name
+             );
+             $documentation->name_doc = $file_name_doc_name;
+             $documentation->save();
+         }
+        return redirect()->route('documentations.index');
     }
 
     /**
@@ -117,10 +115,31 @@ class DocumentationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, documentation $documentation)
     {
-        //
+        try {
+            Storage::disk('public')->delete($documentation->getUploadPath().$documentation->name_doc);
+            // Delete user
+            $documentation->delete();
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e);
+            dd($e);
+        }
+
+        return ['message' => 'condition deleted'];
     }
+
+
+    public function getDocumentation(documentation $documentation)
+    {
+        if ($documentation->name_doc)
+        {
+            return Storage::disk('public')->download($documentation->getUploadPath().$documentation->name_doc);
+        }
+        return abort(404);
+    }
+
 }

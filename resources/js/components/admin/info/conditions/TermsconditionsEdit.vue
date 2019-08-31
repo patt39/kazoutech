@@ -120,13 +120,11 @@
 
 <script>
     import api from '../../../../api/mixins/collections';
-    import TopNav from "../../../inc/admin/TopNav";
-    import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
 
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, LoaderEllipsis },
+        components: {StatusAdmin, LoaderEllipsis },
         data() {
             return {
                 editmode: false,
