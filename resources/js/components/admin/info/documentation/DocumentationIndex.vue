@@ -96,10 +96,10 @@
                                                         class="btn btn-link  btn-info btn-round btn-just-icon" title="Download file">
                                                     <i class="material-icons">get_app</i>
                                                 </a>
-                                                <button v-if="$auth.can('edit-documentation')" @click="editItem(item)"
-                                                        class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                <a :href="`/dashboard/documentations/${item.id}/edit/`"
+                                                   class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                     <i class="material-icons">edit</i>
-                                                </button>
+                                                </a>
                                                 <button v-if="$auth.can('delete-documentation')" @click="deleteItem(item.id)"
                                                         class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                     <i class="material-icons">delete_forever</i>

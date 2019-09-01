@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Model\admin\about;
+use App\Model\admin\page\about;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\color;
 use App\Model\admin\contact;

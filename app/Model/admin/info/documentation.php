@@ -16,10 +16,6 @@ class documentation extends Model
     protected $fillable = ['name','file','name_doc'];
     protected static $logAttributes = ['name'];
 
-   ////public function getRouteKeyName()
-   //{
-   //    return 'slug';
-   //}
 
     public function user()
     {
@@ -72,8 +68,8 @@ class documentation extends Model
 
     public function getUploadPath()
     {
-        return 'documentation/'. $this->id .'/';
-        //return 'documentation' . DIRECTORY_SEPARATOR . $this->id . DIRECTORY_SEPARATOR;
+        //return 'documentation/'. $this->id .'/';
+        return 'documentation' . DIRECTORY_SEPARATOR . $this->id . DIRECTORY_SEPARATOR;
     }
 
 

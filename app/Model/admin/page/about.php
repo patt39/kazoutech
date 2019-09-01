@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\admin;
+namespace App\Model\admin\page;
 
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;

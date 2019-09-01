@@ -29,12 +29,10 @@ class DocumentationController extends Controller
 
     public function api()
     {
-
-        return DocumentationResource::collection(documentation::with('user')->latest()->get());
-        //$documentations = Cache::rememberForever('documentations', function () {
-        //    return DocumentationResource::collection(documentation::with('user')->latest()->get());
-        //});
-        //return $documentations;
+        $documentations = Cache::rememberForever('documentations', function () {
+            return DocumentationResource::collection(documentation::with('user')->latest()->get());
+        });
+        return $documentations;
     }
     /**
      * Show the form for creating a new resource.
@@ -64,8 +62,8 @@ class DocumentationController extends Controller
 
          if ($request->name_doc) {
              $file_name_doc = $request->name_doc;
-             $file_name_doc_name = 'documentation.' . $file_name_doc->getClientOriginalExtension();
-             //$file_name_doc_name = $filename.'documentation.' . $file_name_doc->getClientOriginalExtension();
+             //$file_name_doc_name = 'documentation.' . $file_name_doc->getClientOriginalExtension();
+             $file_name_doc_name = ''.$file_name_doc->getClientOriginalName();
              Storage::disk('public')->putFileAs(
                  $documentation->getUploadPath(),
                  $file_name_doc,
@@ -91,13 +89,18 @@ class DocumentationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(documentation $documentation)
     {
-        //
+        $data = [
+            'mode' => 'edit',
+            'documentation' => $documentation,
+        ];
+        return view('admin.info.documentation.edit', $data);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -106,9 +109,31 @@ class DocumentationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, documentation $documentation)
     {
-        //
+
+        $inputs = $request->all();
+        try {
+
+            if(isset($inputs['name_doc'])) {
+                $file_logo = $inputs['name_doc'];
+                Storage::disk('public')->delete($documentation->getUploadPath().$documentation->name_doc);
+                $file_name_doc_name = ''.$file_logo->getClientOriginalName();
+                Storage::disk('public')->putFileAs(
+                    $documentation->getUploadPath(),
+                    $file_logo,
+                    $file_name_doc_name);
+                $inputs['name_doc'] = $file_name_doc_name;
+            }
+
+            $documentation->update($inputs);
+
+        } catch (\Illuminate\Database\QueryException $e){
+            Log::error($e);
+        }
+
+        return redirect()->route('documentations.index');
+
     }
 
     /**

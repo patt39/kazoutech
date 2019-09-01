@@ -74,7 +74,7 @@
                                                                                                      <i class="material-icons">photo_library</i>
                                                                                                           <b>Change</b>
                                                                                                   </span>
-                                                                                                  <input id="photo" type="file" class="form-control" name="name_doc">
+                                                                                                  {!! Form::file('name_doc', null, ['class' => 'form-control','id' =>'name_doc']) !!}
                                                                                               </span>
                                                                                             <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
                                                                                                 <i class="material-icons">cancel</i>

@@ -26,6 +26,16 @@ Route::group(['namespace' => 'Info'], function(){
     )->name('documentations.store');
 
     Route::get(
+        '/dashboard/documentations/{documentation}/edit',
+        'DocumentationController@edit'
+    )->name('documentations.edit');
+
+    Route::put(
+        '/dashboard/documentations/{documentation}',
+        'DocumentationController@update'
+    )->name('documentations.update');
+
+    Route::get(
         '/dashboard/documentations/{documentation}/getdocumentation',
         'DocumentationController@getDocumentation'
     )->name('documentations.getdocumentation');

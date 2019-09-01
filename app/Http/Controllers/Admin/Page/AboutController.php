@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Resources\Page\AboutResource;
-use App\Model\admin\about;
+use App\Model\admin\page\about;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -77,7 +78,7 @@ class AboutController extends Controller
         $about->first_name = $request->first_name;
         $about->description = $request->description;
 
-        if ($request->photo) {
+       if ($request->photo) {
 
             $namefile = sha1(date('YmdHis') . str_random(30));
 
