@@ -9,7 +9,6 @@
 Route::group(['namespace' => 'Info'], function(){
 
     //Terms & Documentations Routes
-    //Route::resource('/dashboard/documentations', 'DocumentationController');
     Route::get(
         '/dashboard/documentations',
         'DocumentationController@index'
@@ -45,5 +44,4 @@ Route::group(['namespace' => 'Info'], function(){
         'DocumentationController@destroy'
     )->name('documentations.destroy');
 
-    Route::get('/dashboard/documentation/save', 'DocumentationController@save');
 });

@@ -22,10 +22,6 @@ class DocumentationController extends Controller
     {
         return view('admin.info.documentation.index');
     }
-    public function save()
-    {
-        return view('test');
-    }
 
     public function api()
     {

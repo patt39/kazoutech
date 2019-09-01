@@ -193,7 +193,6 @@
                             </ul>
                         </div>
                     </li>
-
                     <!-- Categories Faqs -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#faqsExamples">

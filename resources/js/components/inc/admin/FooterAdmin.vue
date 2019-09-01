@@ -4,9 +4,9 @@
             <nav class="pull-left">
                 <ul>
                     <li>
-                        <a href="/dashboard" class="nav-link">
-                            kazoutech
-                        </a>
+                        <router-link  :to="{ path: '/dashboard/' }">
+                            <p><b>kazoutech</b></p>
+                        </router-link>
                     </li>
                     <li>
                         <a href="#" target="_blank">
@@ -32,7 +32,7 @@
             </nav>
             <div class="copyright pull-right">
                 <h6 style="font-size=0.9em;">&copy; 2019 -
-                    {{ new Date().getFullYear() }}. Realized by <a href="/">TNP</a></h6>
+                    {{ new Date().getFullYear() }}. Realized by <a href="/">TNP</a> version 0.2</h6>
             </div>
         </div>
     </footer>
