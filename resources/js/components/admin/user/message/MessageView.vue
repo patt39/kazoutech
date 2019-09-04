@@ -1,89 +1,86 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <div class="main-panel" id="javascriptComponents">
-            <TopNav/>
-            <div class="content">
-                <div class="container-fluid">
-                    <br>
-                    <StatusAdmin/>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 expo">
-                                        <div class="card">
-                                            <div :class="getColorCardUser()" style="margin-top: -18px;">
-                                                <div class="text-center">
-                                                    <router-link  title="back messages" :to="{ name: 'messages.index' }" class="btn btn-secondary btn-round btn-just-icon btn-sm">
+        <div class="content">
+            <div class="container-fluid">
+                <br>
+                <StatusAdmin/>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 expo">
+                                    <div class="card">
+                                        <div :class="getColorCardUser()" style="margin-top: -18px;">
+                                            <div class="text-center">
+                                                <router-link  title="back messages" :to="{ name: 'messages.index' }" class="btn btn-secondary btn-round btn-just-icon btn-sm">
                                                      <span class="btn-label">
                                                         <i class="material-icons">keyboard_return</i>
                                                      </span>
-                                                    </router-link>
-                                                    <a href="javascript:void(0)" @click="deleteItem(form.id)"
-                                                       class="btn btn-danger btn-round btn-just-icon btn-sm" title="Delete">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </a>
+                                                </router-link>
+                                                <a href="javascript:void(0)" @click="deleteItem(form.id)"
+                                                   class="btn btn-danger btn-round btn-just-icon btn-sm" title="Delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
 
-                                                    <a  href="javascript:void(0)" v-if="form.status === 1" @click="disableItem(form.id)" class="btn btn-success btn-round btn-just-icon btn-sm" title="Mask as unread">
-                                                        <i class="material-icons">done_all</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" v-else-if="form.status === 0" @click="activeItem(form.slug)" class="btn btn-info btn-round btn-just-icon btn-sm" title="Mask as read">
-                                                        <i class="material-icons">done</i>
-                                                    </a>
+                                                <a  href="javascript:void(0)" v-if="form.status === 1" @click="disableItem(form.id)" class="btn btn-success btn-round btn-just-icon btn-sm" title="Mask as unread">
+                                                    <i class="material-icons">done_all</i>
+                                                </a>
+                                                <a href="javascript:void(0)" v-else-if="form.status === 0" @click="activeItem(form.slug)" class="btn btn-info btn-round btn-just-icon btn-sm" title="Mask as read">
+                                                    <i class="material-icons">done</i>
+                                                </a>
 
-                                                </div>
-                                                <div class="card-icon">
-                                                    <i class="material-icons">message</i>
-                                                </div>
-                                                <br>
-                                                <h4 class="card-title" style="margin-top: 0px;"><b>{{ form.from.name}}</b> -
-                                                    <small class="category" v-text="form.from.email"></small>
-                                                </h4>
-                                                <h4 class="card-title text-right" style="margin-top: 0px;">
-                                                    <!--<small class="category">
-                                                        {{ form.created_at | myDate }} ({{ form.created_at | dateAgo }})
-                                                        <a :href="`mailto:${form.email}`" class="btn  btn-dribbble btn-round btn-just-icon btn-sm" title="reply">
-                                                            <i class="material-icons">reply</i>
-                                                        </a>
-                                                    </small>-->
-                                                </h4>
                                             </div>
-                                            <div class="card-body">
-                                                <!-- User Data -->
-                                                <div class="col-md-12">
-                                                    <h5 class="card-title">
-                                                        <b>{{ form.subject}}</b>
-                                                    </h5>
-                                                    <div class="card card-nav-tabs">
-                                                        <div class="card-body">
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane active" id="profile">
-                                                                    <div class="form-group text-justify">
-                                                                        <p class="title" v-html="form.object"></p>
-                                                                    </div>
-                                                                    <br>
-                                                                    <div class="form-group text-justify">
-                                                                        <p class="title" v-html="form.message"></p>
-                                                                    </div>
-                                                                    <hr>
-                                                                    <div class="text-center">
-                                                                        <router-link  :to="{ name: 'messages.index' }" class="btn btn-secondary btn-raised button_profile">
+                                            <div class="card-icon">
+                                                <i class="material-icons">message</i>
+                                            </div>
+                                            <br>
+                                            <h4 class="card-title" style="margin-top: 0px;"><b>{{ form.from.name}}</b> -
+                                                <small class="category" v-text="form.from.email"></small>
+                                            </h4>
+                                            <h4 class="card-title text-right" style="margin-top: 0px;">
+                                                <!--<small class="category">
+                                                    {{ form.created_at | myDate }} ({{ form.created_at | dateAgo }})
+                                                    <a :href="`mailto:${form.email}`" class="btn  btn-dribbble btn-round btn-just-icon btn-sm" title="reply">
+                                                        <i class="material-icons">reply</i>
+                                                    </a>
+                                                </small>-->
+                                            </h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- User Data -->
+                                            <div class="col-md-12">
+                                                <h5 class="card-title">
+                                                    <b>{{ form.subject}}</b>
+                                                </h5>
+                                                <div class="card card-nav-tabs">
+                                                    <div class="card-body">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="profile">
+                                                                <div class="form-group text-justify">
+                                                                    <p class="title" v-html="form.object"></p>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group text-justify">
+                                                                    <p class="title" v-html="form.message"></p>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="text-center">
+                                                                    <router-link  :to="{ name: 'messages.index' }" class="btn btn-secondary btn-raised button_profile">
                                                                                 <span class="btn-label">
                                                                                     <i class="material-icons">keyboard_return</i>
                                                                                 </span>
-                                                                            <b class="title_hover">Back your messages</b>
-                                                                        </router-link>
-                                                                        <a :href="`mailto:${form.from.email}`" class="btn btn-dribbble btn-raised button_profile">
+                                                                        <b class="title_hover">Back your messages</b>
+                                                                    </router-link>
+                                                                    <a :href="`mailto:${form.from.email}`" class="btn btn-dribbble btn-raised button_profile">
                                                                          <span class="btn-label">
                                                                             <i class="material-icons">reply</i>
                                                                         </span>
-                                                                            <b class="title_hover">Reply message</b>
-                                                                        </a>
-                                                                    </div>
-
+                                                                        <b class="title_hover">Reply message</b>
+                                                                    </a>
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -93,23 +90,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
                         </div>
+                        <!-- end row -->
                     </div>
                 </div>
             </div>
-            <FooterAdmin/>
         </div>
     </div>
 </template>
 
 <script>
     import api from '../../../../api/mixins/collections';
-    import TopNav from "../../../inc/admin/TopNav";
-    import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav},
+        components: {StatusAdmin},
         data() {
             return {
                 loaded: false,

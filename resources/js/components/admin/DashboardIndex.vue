@@ -216,11 +216,9 @@
 </template>
 
 <script>
-    import NavAdmin from "../inc/admin/NavAdmin";
-    import TopNav from "../inc/admin/TopNav";
-    import FooterAdmin from "../inc/admin/FooterAdmin";
+
     export default {
-        components: { NavAdmin},
+
         data() {
             return {
                 loaded: false,

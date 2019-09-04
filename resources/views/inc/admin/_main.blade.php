@@ -16,7 +16,7 @@
 
        <nav-admin></nav-admin>
 
-        <div class="main-panel" id="javascriptComponents">
+        <div class="main-panel">
             <top-nav></top-nav>
             @section('content')
 
