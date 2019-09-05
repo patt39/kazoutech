@@ -17,8 +17,8 @@ class DocumentationService
         if($disk->exists($old_path))
             $disk->delete($old_path);
 
-        //$filename = 'modello_comunicazione.' . $file->getClientOriginalExtension();
-        $filename = ''. $file->getClientOriginalName();
+        $filename = 'file.' . $file->getClientOriginalExtension();
+       // $filename = ''. $file->getClientOriginalName();
         $disk->putFileAs($path, $file, $filename);
 
         return $filename;

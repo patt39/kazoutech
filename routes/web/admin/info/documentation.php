@@ -35,9 +35,15 @@ Route::group(['namespace' => 'Info'], function(){
     )->name('documentations.update');
 
     Route::get(
-        '/dashboard/documentations/{documentation}/getdocumentation',
-        'DocumentationController@getDocumentation'
+        '/dashboard/documentations/{documentation}/downloaddocumentation',
+        'DocumentationController@downloadDocumentation'
+    )->name('documentations.downloaddocumentation');
+
+    Route::get(
+        '/dashboard/documentations/{documentation}/file.pdf',
+        'DocumentationController@getFilelink'
     )->name('documentations.getdocumentation');
+
 
     Route::delete(
         '/dashboard/documentations/{documentation}',

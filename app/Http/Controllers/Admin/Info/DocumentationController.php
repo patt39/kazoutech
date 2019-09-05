@@ -156,13 +156,30 @@ class DocumentationController extends Controller
     }
 
 
-    public function getDocumentation(documentation $documentation)
+    public function downloadDocumentation(documentation $documentation)
     {
         if ($documentation->name_doc)
         {
-            return Storage::disk('public')->download($documentation->getUploadPath().$documentation->name_doc);
+            $path = $documentation->getUploadPath();
+            $file = Storage::disk('public');
+            return $file->download($path.$documentation->name_doc);
         }
         return abort(404);
     }
+
+
+    public function getFilelink(documentation $documentation)
+    {
+        if($documentation->name_doc)
+        {
+            $path = $documentation->getUploadPath($documentation->name_doc);
+            $file = Storage::disk('public')->get($path);
+            $response = \Response::make($file, 200);
+            $response->header('Content-Type', 'application/pdf');
+            return $response;
+        }
+        return abort(404);
+    }
+
 
 }

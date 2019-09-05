@@ -94,7 +94,7 @@
                                                 <td>{{ item.name_doc }}</td>
                                                 <td><b>{{ item.updated_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a :href="`/dashboard/documentations/${item.id}/getdocumentation/`"
+                                                    <a :href="`/dashboard/documentations/${item.id}/downloaddocumentation/`"
                                                        class="btn btn-link  btn-info btn-round btn-just-icon" title="Download file">
                                                         <i class="material-icons">get_app</i>
                                                     </a>
