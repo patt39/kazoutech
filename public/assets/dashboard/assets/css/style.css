@@ -289,13 +289,13 @@ table.dataTable {
     cursor: pointer;
     display: none;
     z-index: 99;
-    border-radius: 50%;
+    border-radius: 30%;
     width: 70px;
     height: 70px;
     color: white;
     font-size: 2em;
-    background-color: #ff9800!important;
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 12px -5px rgba(255,152,0,.46);
+    background-color: green!important;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 12px -5px rgba(42, 255, 28, 0.46);
 }
 .top-button {
     font-size: 0.8em !important;
@@ -335,7 +335,7 @@ table.dataTable {
 }
 
 
-#Date { 
+#Date {
     font-family: 'Arial', Helvetica, sans-serif;
     font-size: 1em;
     width: 100px;
@@ -353,18 +353,18 @@ table.dataTable {
 }
 
 /* Animasi Detik Kedap - Kedip */
-@-webkit-keyframes mymove 
+@-webkit-keyframes mymove
 {
     0% {opacity:1.0; text-shadow:0 0 20px #00c6ff;}
     50% {opacity:0; text-shadow:none; }
-    100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; } 
+    100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }
 }
 
-@-moz-keyframes mymove 
+@-moz-keyframes mymove
 {
     0% {opacity:1.0; text-shadow:0 0 20px #00c6ff;}
     50% {opacity:0; text-shadow:none; }
-    100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; } 
+    100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }
 }
 
 /* Button selection multiple */
@@ -465,7 +465,7 @@ table.dataTable {
     -webkit-transform: translate3d(0px,-100px,0) scale(.8,.8);
     transform:         translate3d(0px,-100px,0) scale(.8,.8);
 }
-.option.scale-on .option1, 
+.option.scale-on .option1,
 .option.scale-on .option2,
 .option.scale-on .option3,
 .option.scale-on .option4 {
@@ -507,7 +507,7 @@ table.dataTable {
     }
     25% {
         -webkit-transform: scale(1.4,1.4);
-        transform:         scale(1.4,1.4); 
+        transform:         scale(1.4,1.4);
     }
     75% {
         -webkit-transform: scale(1.2,1.2);
@@ -525,7 +525,7 @@ table.dataTable {
     }
     25% {
         -webkit-transform: scale(1.4,1.4);
-        transform:         scale(1.4,1.4); 
+        transform:         scale(1.4,1.4);
     }
     75% {
         -webkit-transform: scale(1.2,1.2);
