@@ -13,8 +13,8 @@ class documentation extends Model
     use LogsActivity;
 
     protected $table = 'documentations';
-    protected $fillable = ['name','file','name_doc'];
-    protected static $logAttributes = ['name'];
+    protected $guarded = [];
+    protected static $logAttributes = ['name','id'];
 
 
     public function user()

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\info;
 
 use App\Http\Resources\Info\DocumentationResource;
 use App\Model\admin\info\documentation;
+use App\Services\Admin\Info\DocumentationService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -52,22 +53,23 @@ class DocumentationController extends Controller
             'name'=>'required|string',
         ]);
 
-         $documentation = new documentation();
-         $documentation->name = $request->name;
-         $documentation->save();
+        $inputs = $request->all();
 
-         if ($request->name_doc) {
-             $file_name_doc = $request->name_doc;
-             //$file_name_doc_name = 'documentation.' . $file_name_doc->getClientOriginalExtension();
-             $file_name_doc_name = ''.$file_name_doc->getClientOriginalName();
-             Storage::disk('public')->putFileAs(
-                 $documentation->getUploadPath(),
-                 $file_name_doc,
-                 $file_name_doc_name
-             );
-             $documentation->name_doc = $file_name_doc_name;
-             $documentation->save();
-         }
+        try{
+            $documentation = new documentation();
+            $documentation->fill($inputs);
+            $documentation->save();
+
+            if(isset($inputs['name_doc'])) {
+                $file_name_doc = $inputs['name_doc'];
+                $file_name_doc_name = DocumentationService::uploadDocumentation($documentation->getUploadPath(), $file_name_doc,  $documentation->name_doc);
+                $documentation->name_doc = $file_name_doc_name;
+            }
+            $documentation->save();
+
+        }catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e);
+        }
         return redirect()->route('documentations.index');
     }
 
