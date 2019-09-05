@@ -1,56 +1,56 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <div class="main-panel" id="javascriptComponents">
-            <TopNav/>
+        <div class="main-panel">
+            <top-nav></top-nav>
             <div class="content">
                 <div class="container-fluid">
                     <br>
                     <StatusAdmin/>
                     <br>
-                        <div class="col-md-12">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 expo">
-                                        <div class="card">
-                                            <div :class="getColorCardUser()" style="margin-top: -5px;">
-                                                <div class="card-icon">
-                                                    <i class="material-icons">indeterminate_check_box</i>
-                                                </div>
-                                                <br>
-                                                <h4 class="card-title" style="margin-top: 0px;"><b>Edit</b> -
-                                                    <small class="category">Term & Condition</small>
-                                                </h4>
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 expo">
+                                    <div class="card">
+                                        <div :class="getColorCardUser()" style="margin-top: -5px;">
+                                            <div class="card-icon">
+                                                <i class="material-icons">indeterminate_check_box</i>
                                             </div>
-                                            <div class="card-body">
-                                                <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
-                                                      method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                    <div class="col-md-12">
-                                                        <div class="card card-nav-tabs">
-                                                            <div class="card-body">
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane active" id="profile">
-                                                                        <div class="form-group">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="bmd-label-floating"></label>
-                                                                                        <input v-model="form.title" type="text" name="title"
-                                                                                               class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" placeholder="Presentation title">
-                                                                                        <has-error :form="form" field="title"></has-error>
-                                                                                    </div>
+                                            <br>
+                                            <h4 class="card-title" style="margin-top: 0px;"><b>Edit</b> -
+                                                <small class="category">Term & Condition</small>
+                                            </h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
+                                                  method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                <div class="col-md-12">
+                                                    <div class="card card-nav-tabs">
+                                                        <div class="card-body">
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane active" id="profile">
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label class="bmd-label-floating"></label>
+                                                                                    <input v-model="form.title" type="text" name="title"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" placeholder="Presentation title">
+                                                                                    <has-error :form="form" field="title"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-8 ml-auto mr-auto">
-                                                                                    <div class="profile text-center">
-                                                                                        <br>
-                                                                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                                                            <div class="fileinput-new thumbnail">
-                                                                                                <img :src="getImagesave()" :alt="form.slug">
-                                                                                            </div>
-                                                                                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                                            <div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-8 ml-auto mr-auto">
+                                                                                <div class="profile text-center">
+                                                                                    <br>
+                                                                                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                                                        <div class="fileinput-new thumbnail">
+                                                                                            <img :src="getImagesave()" :alt="form.slug">
+                                                                                        </div>
+                                                                                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                                                        <div>
                                                                                                 <span class="btn btn-raised btn-round btn-success btn-file">
                                                                                                    <span class="fileinput-new" style="cursor: pointer">
                                                                                                        <i class="material-icons">insert_photo</i>
@@ -62,58 +62,58 @@
                                                                                                     </span>
                                                                                                     <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
                                                                                                 </span>
-                                                                                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
-                                                                                                    <i class="material-icons">cancel</i>
-                                                                                                    <b>Remove</b>
-                                                                                                </a>
-                                                                                            </div>
+                                                                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                                                                                <i class="material-icons">cancel</i>
+                                                                                                <b>Remove</b>
+                                                                                            </a>
                                                                                         </div>
-                                                                                        <has-error :form="form" field="photo"></has-error>
                                                                                     </div>
+                                                                                    <has-error :form="form" field="photo"></has-error>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
-                                                                                <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
-                                                                                <div class="form-check">
-                                                                                    <label class="form-check-label pull-right">
-                                                                                        Created by
-                                                                                        <router-link  :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
-                                                                                            {{ form.user.name }}
-                                                                                        </router-link>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <has-error :form="form" field="body"></has-error>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
+                                                                            <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label pull-right">
+                                                                                    Created by
+                                                                                    <router-link  :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
+                                                                                        {{ form.user.name }}
+                                                                                    </router-link>
+                                                                                </label>
                                                                             </div>
+                                                                            <has-error :form="form" field="body"></has-error>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <hr>
-                                                    <div class="submit">
-                                                        <div class="text-center">
-                                                            <router-link id="button_hover" :to="{ name: 'conditions.index' }" class="btn btn-danger btn-round" data-toggle="tab">
-                                                                <i class="material-icons">chevron_left</i>
-                                                                <b class="title_hover">Back</b>
-                                                            </router-link>
-                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                                                <i class="material-icons">save_alt</i>
-                                                                <b class="title_hover">Update</b>
-                                                            </button>
-                                                        </div>
+                                                </div>
+                                                <hr>
+                                                <div class="submit">
+                                                    <div class="text-center">
+                                                        <router-link id="button_hover" :to="{ name: 'conditions.index' }" class="btn btn-danger btn-round" data-toggle="tab">
+                                                            <i class="material-icons">chevron_left</i>
+                                                            <b class="title_hover">Back</b>
+                                                        </router-link>
+                                                        <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <i class="material-icons">save_alt</i>
+                                                            <b class="title_hover">Update</b>
+                                                        </button>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                     </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-         <FooterAdmin/>
+            <footer-admin></footer-admin>
         </div>
     </div>
 </template>

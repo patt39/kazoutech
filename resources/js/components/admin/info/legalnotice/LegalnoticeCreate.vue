@@ -1,70 +1,73 @@
 <template>
     <div>
          <vue-progress-bar/>
-        <div class="content">
-            <div class="container-fluid">
-                <br>
-                <StatusAdmin/>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 expo">
-                                    <div class="card">
-                                        <div :class="getColorCardUser()" style="margin-top: -5px;">
-                                            <div class="card-icon">
-                                                <i class="material-icons">gavel</i>
+        <div class="main-panel">
+            <top-nav></top-nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <br>
+                    <StatusAdmin/>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 expo">
+                                        <div class="card">
+                                            <div :class="getColorCardUser()" style="margin-top: -5px;">
+                                                <div class="card-icon">
+                                                    <i class="material-icons">gavel</i>
+                                                </div>
+                                                <br>
+                                                <h4 class="card-title" style="margin-top: 0px;"><b>Create</b> -
+                                                    <small class="category">New Legal Notice</small>
+                                                </h4>
                                             </div>
                                             <br>
-                                            <h4 class="card-title" style="margin-top: 0px;"><b>Create</b> -
-                                                <small class="category">New Legal Notice</small>
-                                            </h4>
-                                        </div>
-                                        <br>
-                                        <div class="card-body">
-                                            <form id="RegisterValidation" @submit.prevent="createItem()" role="form"
-                                                  method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                <!-- User Data -->
-                                                <div class="col-md-12">
-                                                    <div class="card card-nav-tabs">
-                                                        <div class="card-body">
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane active" id="profile">
-                                                                    <div class="form-group">
-                                                                        <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
-                                                                        <br>
-                                                                        <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label pull-right">
-                                                                                You can use the
-                                                                                <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
-                                                                                    Markdown here
-                                                                                </a>
-                                                                                <span class="form-check-sign"></span>
-                                                                            </label>
+                                            <div class="card-body">
+                                                <form id="RegisterValidation" @submit.prevent="createItem()" role="form"
+                                                      method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                    <!-- User Data -->
+                                                    <div class="col-md-12">
+                                                        <div class="card card-nav-tabs">
+                                                            <div class="card-body">
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active" id="profile">
+                                                                        <div class="form-group">
+                                                                            <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
+                                                                            <br>
+                                                                            <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label pull-right">
+                                                                                    You can use the
+                                                                                    <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
+                                                                                        Markdown here
+                                                                                    </a>
+                                                                                    <span class="form-check-sign"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <has-error :form="form" field="body"></has-error>
                                                                         </div>
-                                                                        <has-error :form="form" field="body"></has-error>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <hr>
-                                                <div class="submit">
-                                                    <div class="text-center">
-                                                        <router-link :to="{ name: 'legal_notice.index' }" class="btn btn-danger btn-round" id="button_hover">
-                                                            <i class="material-icons">chevron_left</i>
-                                                            <b class="title_hover">Back</b>
-                                                        </router-link>
-                                                        <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                                            <i class="material-icons">save_alt</i>
-                                                            <b class="title_hover">Save</b>
-                                                        </button>
+                                                    <hr>
+                                                    <div class="submit">
+                                                        <div class="text-center">
+                                                            <router-link :to="{ name: 'legal_notice.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                                                <i class="material-icons">chevron_left</i>
+                                                                <b class="title_hover">Back</b>
+                                                            </router-link>
+                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                                <i class="material-icons">save_alt</i>
+                                                                <b class="title_hover">Save</b>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +76,9 @@
                     </div>
                 </div>
             </div>
+            <footer-admin></footer-admin>
         </div>
+
     </div>
 </template>
 <script>

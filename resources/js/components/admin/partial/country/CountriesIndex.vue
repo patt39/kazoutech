@@ -1,145 +1,147 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <div class="content">
-            <div class="container-fluid">
-                <br>
-                <StatusAdmin/>
-                <br>
-                <div v-if="loaded" class="row">
-                    <div class="col-md-12 expo">
-                        <div class="card card-stats">
-                            <div :class="getColorCardUser()">
-                                <div class="card-icon">
-                                    <i class="material-icons">flag</i>
+        <div class="main-panel">
+            <top-nav></top-nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <br>
+                    <StatusAdmin/>
+                    <br>
+                    <div v-if="loaded" class="row">
+                        <div class="col-md-12 expo">
+                            <div class="card card-stats">
+                                <div :class="getColorCardUser()">
+                                    <div class="card-icon">
+                                        <i class="material-icons">flag</i>
+                                    </div>
+                                    <p class="card-category"><b>All Countries</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{countries.length}}</b></h3>
                                 </div>
-                                <p class="card-category"><b>All Countries</b>
-                                <h3 class="card-title" style="color:red;"><b>{{countries.length}}</b></h3>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">flag</i><b>All Countries</b>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">flag</i><b>All Countries</b>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div v-if="!loaded" class="submit">
-                    <LoaderLdsDefault/>
-                </div>
-                <div v-if="loaded" class="row">
-                    <div class="col-md-12 expo">
-                        <div class="card">
-                            <div :class="getColorHeaderUser()">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h4 class="card-title">
-                                            <b>Datatables Countries</b>
-                                        </h4>
-                                        <p class="card-title">
-                                            All countries available
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6 text-right">
+                    <div v-if="!loaded" class="submit">
+                        <LoaderLdsDefault/>
+                    </div>
+                    <div v-if="loaded" class="row">
+                        <div class="col-md-12 expo">
+                            <div class="card">
+                                <div :class="getColorHeaderUser()">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title">
+                                                <b>Datatables Countries</b>
+                                            </h4>
+                                            <p class="card-title">
+                                                All countries available
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 text-right">
                                 <span>
                                     <i id="tooltipSize" class="material-icons">flag</i>
                                 </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="toolbar">
-                                    <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                title="Refresh Page">
-                                            <i class="material-icons">replay</i>
-                                            <b class="title_hover">Refresh</b>
-                                        </button>
-                                    </div>
-                                    <div class="submit text-center">
-                                        <button  id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
+                                <div class="card-body">
+                                    <div class="toolbar">
+                                        <div class="header text-right">
+                                            <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                    title="Refresh Page">
+                                                <i class="material-icons">replay</i>
+                                                <b class="title_hover">Refresh</b>
+                                            </button>
+                                        </div>
+                                        <div class="submit text-center">
+                                            <button  id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">flag</i>
                                     </span>
-                                            <b class="title_hover">New Country</b>
-                                        </button>
+                                                <b class="title_hover">New Country</b>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="material-datatables">
-                                    <table id="datatables" class="table table-striped table-no-bordered table-hover"
-                                           cellspacing="0" width="100%" style="width:100%">
-                                        <thead>
-                                        <tr>
-                                            <th><b>Country Name</b></th>
-                                            <th><b>Code</b></th>
-                                            <th><b>Flag</b></th>
-                                            <!--<th><b>Edited By</b></th>-->
-                                            <th class="disabled-sorting text-right"><b>Actions</b></th>
-                                        </tr>
-                                        </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <th><b>Country Name</b></th>
-                                            <th><b>Code</b></th>
-                                            <th><b>Flag</b></th>
-                                            <!--<th><b>Edited By</b></th>-->
-                                            <th class="text-right"><b>Actions</b></th>
-                                        </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <tr v-for="item in countries" :key="item.id">
-                                            <td>{{ item.name | upText }}</td>
-                                            <td>{{ item.code }}</td>
-                                            <td><img :src="item.flag" ></td>
-                                            <!--<td>
-                                                <a v-if="item.user.status" :href="`/admin/profile/${item.user.username}`" title="Administrator Online">
-                                                    <button type="button" class="btn btn-success btn-round btn-just-icon btn-sm"></button>
-                                                    {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                </a>
-                                                <a v-else="item.user.status" :href="`/admin/profile/${item.user.username}`" title="Administrator Offline">
-                                                    <button type="button" class="btn btn-danger btn-round btn-just-icon btn-sm"></button>
-                                                    {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                </a>
-                                            </td>-->
-                                            <td class="td-actions text-right">
-                                                <button @click="editItem(item)"
-                                                        class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                                <button @click="deleteItem(item.id)"
-                                                        class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
-                                                    <i class="material-icons">delete_forever</i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <div class="material-datatables">
+                                        <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                               cellspacing="0" width="100%" style="width:100%">
+                                            <thead>
+                                            <tr>
+                                                <th><b>Country Name</b></th>
+                                                <th><b>Code</b></th>
+                                                <th><b>Flag</b></th>
+                                                <!--<th><b>Edited By</b></th>-->
+                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                            </tr>
+                                            </thead>
+                                            <tfoot>
+                                            <tr>
+                                                <th><b>Country Name</b></th>
+                                                <th><b>Code</b></th>
+                                                <th><b>Flag</b></th>
+                                                <!--<th><b>Edited By</b></th>-->
+                                                <th class="text-right"><b>Actions</b></th>
+                                            </tr>
+                                            </tfoot>
+                                            <tbody>
+                                            <tr v-for="item in countries" :key="item.id">
+                                                <td>{{ item.name | upText }}</td>
+                                                <td>{{ item.code }}</td>
+                                                <td><img :src="item.flag" ></td>
+                                                <!--<td>
+                                                    <a v-if="item.user.status" :href="`/admin/profile/${item.user.username}`" title="Administrator Online">
+                                                        <button type="button" class="btn btn-success btn-round btn-just-icon btn-sm"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                    </a>
+                                                    <a v-else="item.user.status" :href="`/admin/profile/${item.user.username}`" title="Administrator Offline">
+                                                        <button type="button" class="btn btn-danger btn-round btn-just-icon btn-sm"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                    </a>
+                                                </td>-->
+                                                <td class="td-actions text-right">
+                                                    <button @click="editItem(item)"
+                                                            class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                    <button @click="deleteItem(item.id)"
+                                                            class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                <!-- Modal création/édition color -->
-                                <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new Country</b></h5>
-                                                <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update Country</b></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <alert-error :form="form"></alert-error>
-                                                <form @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                    <div class="col-md-8 ml-auto mr-auto">
-                                                        <div class="profile text-center">
-                                                            <br>
-                                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                                <div class="fileinput-new thumbnail">
-                                                                    <img v-show="editmode" :src="form.flag" :alt="form.slug">
-                                                                </div>
-                                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                <div>
+                                    <!-- Modal création/édition color -->
+                                    <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new Country</b></h5>
+                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update Country</b></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <alert-error :form="form"></alert-error>
+                                                    <form @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                        <div class="col-md-8 ml-auto mr-auto">
+                                                            <div class="profile text-center">
+                                                                <br>
+                                                                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                                    <div class="fileinput-new thumbnail">
+                                                                        <img v-show="editmode" :src="form.flag" :alt="form.slug">
+                                                                    </div>
+                                                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                                    <div>
                                                             <span class="btn btn-raised btn-round btn-warning btn-file">
                                                                 <span class="fileinput-new" style="cursor: pointer">
                                                                     <i class="material-icons">insert_photo</i>
@@ -151,48 +153,49 @@
                                                                 </span>
                                                                 <input id="flag" @change="updateImage" type="file" class="form-control" name="flag">
                                                             </span>
-                                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
-                                                                        <i class="material-icons">cancel</i>
-                                                                        <b>Remove</b>
-                                                                    </a>
+                                                                        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                                                            <i class="material-icons">cancel</i>
+                                                                            <b>Remove</b>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
+                                                                <has-error :form="form" field="photo"></has-error>
                                                             </div>
-                                                            <has-error :form="form" field="photo"></has-error>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating"></label>
-                                                        <input v-model="form.name" type="text" name="name" placeholder="Name country" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
-                                                        <has-error :form="form" field="name"></has-error>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating"></label>
-                                                        <input v-model="form.code" type="text" name="code" placeholder="Code country" class="form-control" :class="{ 'is-invalid': form.errors.has('code') }" required>
-                                                        <has-error :form="form" field="code"></has-error>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="text-center">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating"></label>
+                                                            <input v-model="form.name" type="text" name="name" placeholder="Name country" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
+                                                            <has-error :form="form" field="name"></has-error>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating"></label>
+                                                            <input v-model="form.code" type="text" name="code" placeholder="Code country" class="form-control" :class="{ 'is-invalid': form.errors.has('code') }" required>
+                                                            <has-error :form="form" field="code"></has-error>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="text-center">
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                                         <span class="btn-label">
                                                             <i class="material-icons">clear</i>
                                                             <b>Close</b>
                                                         </span>
-                                                            </button>
-                                                            <button :disabled="form.busy" v-show="!editmode" type="submit" class="btn btn-success btn-raised">
+                                                                </button>
+                                                                <button :disabled="form.busy" v-show="!editmode" type="submit" class="btn btn-success btn-raised">
                                                         <span class="btn-label">
                                                             <i class="material-icons">check</i>
                                                             <b>Yes, Save</b>
                                                         </span>
-                                                            </button>
-                                                            <button :disabled="form.busy" v-show="editmode" type="submit" class="btn btn-success btn-raised">
+                                                                </button>
+                                                                <button :disabled="form.busy" v-show="editmode" type="submit" class="btn btn-success btn-raised">
                                                         <span class="btn-label">
                                                             <i class="material-icons">save_alt</i>
                                                             <b>Yes, Update</b>
                                                         </span>
-                                                            </button>
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +205,9 @@
                     </div>
                 </div>
             </div>
+            <footer-admin></footer-admin>
         </div>
+
     </div>
 </template>
 

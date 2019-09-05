@@ -1,9 +1,8 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <NavAdmin/>
-        <div class="main-panel" id="javascriptComponents">
-            <TopNav/>
+        <div class="main-panel">
+            <top-nav></top-nav>
             <div class="content">
                 <div class="container-fluid">
                     <br>
@@ -209,19 +208,17 @@
                     </div>
                 </div>
             </div>
-            <FooterAdmin/>
+            <footer-admin></footer-admin>
         </div>
     </div>
 </template>
 
 <script>
     import api from '../../../api/mixins/collections';
-    import NavAdmin from "../../inc/admin/NavAdmin";
-    import TopNav from "../../inc/admin/TopNav";
     import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {StatusAdmin, FooterAdmin},
         props: ['company'],
         data() {
             return {

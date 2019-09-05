@@ -16,14 +16,10 @@
 
        <nav-admin></nav-admin>
 
-        <div class="main-panel">
-            <top-nav></top-nav>
-            @section('content')
+        @section('content')
 
 
-            @show
-            <footer-admin></footer-admin>
-        </div>
+        @show
 
     @endif
 

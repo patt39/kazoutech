@@ -24,6 +24,8 @@
 <script src="/assets/dashboard/assets/js/plugins/jquery-jvectormap.js"></script>
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 <script src="/assets/dashboard/assets/js/plugins/nouislider.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 <!-- Library for adding dinamically elements -->
 <script src="/assets/dashboard/assets/js/plugins/arrive.min.js"></script>
 <!-- Chartist JS -->
@@ -31,7 +33,11 @@
 <!--  Notifications Plugin    -->
 <script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
-
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
 @if(config('app.env') != 'local')
 @endif
 
