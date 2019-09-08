@@ -48,7 +48,7 @@
                                                         <li class="nav-item">
                                                             <router-link :to="{ name: 'contacts.bookmarks' }" class="nav-link" style="cursor:pointer;" data-toggle="tab" title="bookmarks" exact>
                                                                 <i class="material-icons">bookmarks</i>
-                                                                <!--<span class="badge badge-default">4</span>-->
+                                                                <span class="badge badge-rose">{{contacts.length}}</span>
                                                             </router-link>
                                                         </li>
                                                     </ul>

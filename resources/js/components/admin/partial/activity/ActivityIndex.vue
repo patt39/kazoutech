@@ -8,7 +8,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="loaded" class="row">
+                    <div class="row">
                         <div class="col-md-12 expo">
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
@@ -26,10 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderLdsDefault/>
-                    </div>
-                    <div v-if="loaded" class="row">
+                    <div class="row">
                         <div class="col-md-12 expo">
                             <div class="card">
                                 <div :class="getColorHeaderUser()">
@@ -50,15 +47,6 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="header text-right">
-                                        <button @click="reload"
-                                                class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                title="Refresh Page">
-                                            <i class="material-icons">replay</i>
-                                            <b class="title_hover">Refresh</b>
-                                        </button>
-                                    </div>
-                                    <br>
                                     <div class="toolbar">
                                     </div>
                                     <br>
@@ -110,8 +98,6 @@
 </template>
 
 <script>
-    import TopNav from "../../../inc/admin/TopNav";
-    import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
 
@@ -168,32 +154,31 @@
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
-            loadItems() {
-                //Start Progress bar
-                this.$Progress.start();
-                let url = "/dashboard/api/activities";
-                axios.get(url).then(response => {
-                    this.loaded = true;
-                    this.activities = response.data.data;
-                    this.mydatatables();
-                });
-
-                axios.get("/api/account/user").then(response => {
-                    this.user = response.data.data
-                });
-                //End Progress bar
-                this.$Progress.finish();
-            },
-            reload() {
-                this.loadItems();
-            },
         },
         created() {
-            this.loadItems();
-            Fire.$on('AfterCreate', () => {
-                this.loadItems();
+            axios.get("/api/account/user").then(response => {
+                this.user = response.data.data
             });
-        }
+        },
+        beforeRouteEnter (to, from, next) {
+
+            try {
+
+                let url = "/dashboard/api/activities";
+               axios.get(url).then(response => {
+                       next(vm => {
+                           vm.$Progress.start();
+                           vm.activities = response.data.data;
+                           vm.mydatatables();
+                           vm.$Progress.finish()
+                       })
+                   });
+            }catch (err) {
+
+                next(false)
+            }
+
+        },
     }
 </script>
 

@@ -42,6 +42,7 @@
                                                         <li class="nav-item">
                                                             <router-link :to="{ name: 'contacts.index' }" class="nav-link" style="cursor:pointer;" data-toggle="tab" title="Message contact" exact>
                                                                 <i class="material-icons">email</i>
+                                                                <span class="badge badge-rose">{{contacts.length}}</span>
                                                             </router-link>
                                                         </li>
                                                         <li class="nav-item">
