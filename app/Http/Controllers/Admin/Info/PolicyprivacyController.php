@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\PolicyprivacyResource;
 use App\Model\admin\info\policyprivacy;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class PolicyprivacyController extends Controller
@@ -151,6 +152,7 @@ class PolicyprivacyController extends Controller
         try {
          
         $policyprivacy = policyprivacy::first();
+        $policyprivacy->body = $request->body;
         $slug = sha1(date('YmdHis') . str_random(30));
         $policyprivacy->slug = $slug;
         $policyprivacy->save();

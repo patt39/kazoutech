@@ -31,20 +31,4 @@ class contact extends Model
     {
         return 'slug';
     }
-
-    use Sluggable;
-
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'subject'
-            ]
-        ];
-    }
 }

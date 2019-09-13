@@ -134,14 +134,16 @@
                 return 'card-header card-header-' + this.user.color_name;
             },
         },
-        created() {
-            this.$Progress.start();
-            //api.licenceSlug(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            api.licencesiteView(this.$route.params.licencesite).then(response => {
-                this.licencesite = response.data.data;
-            axios.get("/api/account/user").then(response => {this.user = response.data.data});
-            //End Progress bar
-            this.$Progress.finish();
+        beforeRouteEnter (to, from, next) {
+            next(vm => {
+                vm.$Progress.start();
+                api.licencesiteView(vm.$route.params.licencesite).then(response => {
+                    vm.licencesite = response.data.data;
+                });
+                axios.get("/api/account/user").then(response => {
+                    vm.user = response.data.data
+                });
+                vm.$Progress.finish();
             });
         }
     }

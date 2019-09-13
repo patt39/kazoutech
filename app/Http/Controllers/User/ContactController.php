@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Requests\ContactFormRequest;
+
 use App\Http\Resources\User\ContactResource;
 use App\Model\admin\contact;
 use Illuminate\Http\Request;
@@ -97,6 +97,8 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->subject = $request->subject;
         $contact->message = $request->message;
+        $slug = sha1(date('YmdHis') . str_random(30));
+        $contact->slug = $slug;
 
         $contact->save();
 

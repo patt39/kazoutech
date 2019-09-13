@@ -136,16 +136,18 @@
                 return colorUser;
             }
         },
-        created()  {
-            //Start Progress bar
-            this.$Progress.start();
-            api.policyprivacyView(this.$route.params.policyprivacy).then(response => {
-                this.policyprivacy = response.data.data;
-            axios.get("/api/account/user").then(response => {this.user = response.data.data});
-            //End Progress bar
-            this.$Progress.finish();
-        })
-    }
+        beforeRouteEnter (to, from, next) {
+            next(vm => {
+                vm.$Progress.start();
+                api.policyprivacyView(vm.$route.params.policyprivacy).then(response => {
+                    vm.policyprivacy = response.data.data;
+                });
+                axios.get("/api/account/user").then(response => {
+                    vm.user = response.data.data
+                });
+                vm.$Progress.finish();
+            });
+        }
  }
 </script>
 
