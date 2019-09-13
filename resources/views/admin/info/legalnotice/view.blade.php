@@ -1,5 +1,5 @@
 @extends('inc.admin._main')
-<?php $usernameTag = htmlspecialchars($legalnotice->title); ?>
+<?php $usernameTag = htmlspecialchars($legalnotice->slug); ?>
 @section('title',"- $usernameTag")
 
 

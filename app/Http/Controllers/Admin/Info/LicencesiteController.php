@@ -58,7 +58,8 @@ class LicencesiteController extends Controller
         
         $licencesite = new Licencesite;
         $licencesite->body = $request->body;
-        $licencesite->user_id = auth()->user()->id;
+        $slug = sha1(date('YmdHis') . str_random(30));
+        $licencesite->slug = $slug;
         
         $licencesite->save();
         
@@ -116,19 +117,17 @@ class LicencesiteController extends Controller
         return view('admin.info.licence.edit', compact('licencesite'));
     }
 
-    public function view($id)
+    public function view($slug)
     {
-        $licencesite = new LicencesiteResource(licencesite::where('id',$id)->findOrFail($id));
+        $licencesite = new LicencesiteResource(licencesite::where('slug',$slug)->firstOrFail());
         return $licencesite;
     }
 
-
-
-    public function vector(licencesite $legalnotice,$id)
+    public function vector(licencesite $legalnotice)
     {
-
-        $licencesite = licencesite::where('id',$id)->findOrFail($id);
-        return view('admin.info.licence.view', compact('licencesite'));
+        return view('admin.info.licence.view', [
+            'licencesite' => $legalnotice,
+        ]);
     }
     /**
      * Update the specified resource in storage.
@@ -145,7 +144,8 @@ class LicencesiteController extends Controller
         $licencesite = licencesite::first();
 
         $licencesite->body = $request->body;
-        $licencesite->user_id = auth()->user()->id;
+        $slug = sha1(date('YmdHis') . str_random(30));
+        $licencesite->slug = $slug;
 
         $licencesite->save();
 

@@ -52,14 +52,14 @@ export default {
     policyprivacyID(id) {
         return axios.get(`/dashboard/policy_privacy/${id}`);
     },
-    policyprivacyView(id) {
-        return axios.get(`/dashboard/policy_privacy/view/${id}`);
+    policyprivacyView(policyprivacy) {
+        return axios.get(`/dashboard/policy_privacy/view/${policyprivacy}`);
     },
     licencesiteID(id) {
         return axios.get(`/dashboard/licence_site/${id}`);
     },
-    licencesiteView(id) {
-        return axios.get(`/dashboard/licence_site/view/${id}`);
+    licencesiteView(licencesite) {
+        return axios.get(`/dashboard/licence_site/view/${licencesite}`);
     },
     conditionSlug(condition) {
         return axios.get(`/dashboard/conditions/view/${condition}`);

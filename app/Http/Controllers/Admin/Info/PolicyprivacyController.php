@@ -57,12 +57,18 @@ class PolicyprivacyController extends Controller
         $this->validate($request,[
             'body'=>'required|string'
         ]);
-        
-        $policyprivacy = new policyprivacy;
-        $policyprivacy->body = $request->body;
-        
-        $policyprivacy->save();
 
+        try {
+         
+            $policyprivacy = new policyprivacy;
+            $policyprivacy->body = $request->body;
+            $slug = sha1(date('YmdHis') . str_random(30));
+            $policyprivacy->slug = $slug;
+            $policyprivacy->save();
+
+            } catch (\Illuminate\Database\QueryException $e) {
+                Log::error($e);
+            }
         return response('Created',Response::HTTP_CREATED);
     }
 
@@ -116,18 +122,19 @@ class PolicyprivacyController extends Controller
         return view('admin.info.policyprivacy.edit', compact('policyprivacy'));
     }
 
-    public function view($id)
+    public function view($slug)
     {
-        $policyprivacy = new PolicyprivacyResource(policyprivacy::where('id',$id)->findOrFail($id));
+        $policyprivacy = new PolicyprivacyResource(policyprivacy::where('slug',$slug)->firstOrFail());
         return $policyprivacy;
     }
 
-    public function vector(policyprivacy $policyprivacy,$id)
+    public function vector(policyprivacy $policyprivacy)
     {
-
-        $policyprivacy = policyprivacy::where('id',$id)->findOrFail($id);
-        return view('admin.info.policyprivacy.view', compact('policyprivacy'));
+        return view('admin.info.policyprivacy.view', [
+            'policyprivacy' => $policyprivacy,
+        ]);
     }
+    
     /**
      * Update the specified resource in storage.
      *
@@ -140,12 +147,17 @@ class PolicyprivacyController extends Controller
         $this->validate($request,[
             'body'=>'required|string',
         ]);
-        
-        $policyprivacy = policyprivacy::first();
-        $policyprivacy->user_id = auth()->user()->id;
 
+        try {
+         
+        $policyprivacy = policyprivacy::first();
+        $slug = sha1(date('YmdHis') . str_random(30));
+        $policyprivacy->slug = $slug;
         $policyprivacy->save();
 
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e);
+        }
         return ['message' => 'updated successfully'];
     }
 

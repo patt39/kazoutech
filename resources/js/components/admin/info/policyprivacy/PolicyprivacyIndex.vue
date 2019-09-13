@@ -133,7 +133,7 @@
                                                             </button>
                                                         </template>
                                                         <router-link
-                                                            :to="{ path: `/dashboard/policy_privacy/lm/${item.id}` }"
+                                                            :to="{ path: `/dashboard/policy_privacy/lm/${item.slug}` }"
                                                             class="btn btn-link  btn-warning btn-round btn-just-icon"
                                                             title="View">
                                                             <span class="btn-label">
@@ -266,7 +266,6 @@
                     });
                 })
             },
-
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({

@@ -139,7 +139,7 @@
         created()  {
             //Start Progress bar
             this.$Progress.start();
-            api.policyprivacyView(this.$route.params.id).then(response => {
+            api.policyprivacyView(this.$route.params.policyprivacy).then(response => {
                 this.policyprivacy = response.data.data;
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar

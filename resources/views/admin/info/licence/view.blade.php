@@ -1,6 +1,6 @@
 @extends('inc.admin._main')
-<?php $usernameTag = htmlspecialchars($licencesite->title); ?>
-@section('title',"- $usernameTag")
+<?php $slugTag = htmlspecialchars($licencesite->slug); ?>
+@section('title',"- $slugTag")
 
 
 @section('style')

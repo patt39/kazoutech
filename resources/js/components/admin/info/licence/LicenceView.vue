@@ -137,7 +137,7 @@
         created() {
             this.$Progress.start();
             //api.licenceSlug(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            api.licencesiteView(this.$route.params.id).then(response => {
+            api.licencesiteView(this.$route.params.licencesite).then(response => {
                 this.licencesite = response.data.data;
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
