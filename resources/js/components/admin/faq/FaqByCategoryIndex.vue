@@ -324,7 +324,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                api.faqCatagoryfaq(this.$route.params.categoryfaq).then(response => {
+                api.faqByCatagory(this.$route.params.categoryfaq).then(response => {
                    this.loaded = true;
                    this.faqs = response.data.data;
                    this.mydatatables();

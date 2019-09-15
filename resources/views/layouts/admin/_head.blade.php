@@ -8,7 +8,7 @@
 @auth
     <meta name="userID" content="{{ auth()->user()->id }}">
 @endauth
-<script>window.Kazoucoin = { csrfToken: '{{ csrf_token() }}' }; </script>
+<script>window.kazoutech = { csrfToken: '{{ csrf_token() }}' }; </script>
 <script>
     window.user = {!! json_encode([
     'user' => auth()->user(),

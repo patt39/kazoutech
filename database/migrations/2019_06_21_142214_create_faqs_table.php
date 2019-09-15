@@ -26,7 +26,7 @@ class CreateFaqsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('categoryfaq_id')->nullable()->index();
-            $table->foreign('categoryfaq_id')->references('id')->on('categoryfaqs')->onDelete('restrict')->onUpdate('restrict');;
+            $table->foreign('categoryfaq_id')->references('id')->on('categoryfaqs')->onDelete('restrict')->onUpdate('restrict');
 
         });
     }

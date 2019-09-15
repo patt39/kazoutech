@@ -19,36 +19,6 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -70,9 +40,19 @@ class ProfileController extends Controller
      */
     public function edit(profile $profile)
     {
-        return view("admin.account.profileEdit",[
-            'profile' => $profile,
-        ]);
+        if (auth()->user()->id === $profile->user_id){
+
+            $this->authorize('update',$profile);
+
+            return view("admin.account.profileEdit",[
+                'profile' => $profile,
+            ]);
+        }else{
+            return back()
+                ->with('error',"Unauthorized edit this article contact Author.");
+        }
+
+
     }
 
     /**
@@ -87,9 +67,10 @@ class ProfileController extends Controller
         $this->validate($request,[
             "sex" => "required|in:Female,Male",
         ]);
+
         $profile = profile::findOrFail($id);
 
-        //$this->authorize('update',$id);
+        $this->authorize('update',$profile);
 
         if(auth()->user()->id === $profile->user_id) {
             $profile->update($request->all());
@@ -100,14 +81,4 @@ class ProfileController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
