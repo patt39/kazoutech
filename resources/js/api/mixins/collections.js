@@ -40,6 +40,9 @@ export default {
     faqID(id) {
         return axios.get(`/dashboard/faqs/${id}`);
     },
+    faqCatagoryfaq(categoryfaq) {
+        return axios.get(`/api/faqs/c/${categoryfaq}`);
+    },
     conditionID(id) {
         return axios.get(`/dashboard/conditions/${id}`);
     },

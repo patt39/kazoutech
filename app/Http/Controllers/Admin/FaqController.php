@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\Faqs\StoreRequest;
 use App\Http\Requests\Admin\Faqs\UpdateRequest;
 use App\Http\Resources\FaqResource;
+use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class FaqController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','catagoryfaqapi']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -42,6 +43,13 @@ class FaqController extends Controller
         $faqs = Cache::rememberForever('faqs', function () {
             return FaqResource::collection(Faq::with('user','categoryfaq')->latest()->get());
         });
+        return $faqs;
+    }
+
+    public function catagoryfaqapi($categoryfaq)
+    {
+        $faqs = FaqResource::collection(Categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
+        ->with('user','categoryfaq')->latest()->get());
         return $faqs;
     }
 
@@ -114,6 +122,14 @@ class FaqController extends Controller
         $faq = new FaqResource(faq::where('id', $id)->findOrFail($id));
         return $faq;
     }
+
+    public function catagoryfaq($categoryfaq)
+    {
+        $faqs = Categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
+            ->with('user','categoryfaq')->orderBy('created_at','DESC')->get();
+        return view('admin.faq.index',compact('faqs'));
+    }
+
     /**
      * Display the specified resource.
      *

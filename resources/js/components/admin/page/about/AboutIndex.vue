@@ -110,14 +110,20 @@
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <template v-if="$auth.can('publish-about')">
+                                                    <!--<template v-if="$auth.can('publish-about')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
                                                         <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                             <i class="material-icons">power_settings_new</i>
                                                         </button>
-                                                    </template>
+                                                    </template>-->
+                                                    <a href="javascript:void(0)" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                        <label>
+                                                            <input type="checkbox" checked="">
+                                                            <span class="toggle"></span>
+                                                        </label>
+                                                    </a>
                                                     <button @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <span class="btn-label">
                                                             <i class="material-icons">visibility</i>
@@ -126,6 +132,7 @@
                                                     <router-link  v-if="$auth.can('edit-about')" :to="{ path: `/dashboard/abouts/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
+
                                                     <button v-if="$auth.can('delete-about')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>

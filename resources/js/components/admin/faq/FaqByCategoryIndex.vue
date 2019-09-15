@@ -98,7 +98,7 @@
                                                     <td>{{ (item.title.length > 30 ? item.title.substring(0,30)+ "..." : item.title) | upText }}</td>
                                                     <td>
                                                         <b> <router-link  :to="{ path: `/dashboard/faqs/c/${item.categoryfaq.slug}/` }">
-                                                        <b>{{ (item.categoryfaq.name.length > 30 ? item.categoryfaq.name.substring(0,30)+ "..." : item.categoryfaq.name) | upText }}</b>
+                                                            <b>{{ (item.categoryfaq.name.length > 30 ? item.categoryfaq.name.substring(0,30)+ "..." : item.categoryfaq.name) | upText }}</b>
                                                         </router-link></b>
                                                     </td>
                                                     <td>
@@ -152,6 +152,7 @@
 </template>
 
 <script>
+    import api from '../../../api/mixins/collections';
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
     export default {
@@ -323,10 +324,10 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get("/api/faqs").then(response => {
-                    this.loaded = true;
-                    this.faqs = response.data.data;
-                    this.mydatatables();
+                api.faqCatagoryfaq(this.$route.params.categoryfaq).then(response => {
+                   this.loaded = true;
+                   this.faqs = response.data.data;
+                   this.mydatatables();
                 });
                 axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});

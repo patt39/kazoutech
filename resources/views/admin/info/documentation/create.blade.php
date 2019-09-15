@@ -11,30 +11,32 @@
 
 @section('content')
     @if(Auth::user()->my_status === 'active')
-        <div class="content">
-            <div class="container-fluid">
-                <br>
-                <!--
-                <StatusAdmin/>
-                -->
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 expo">
-                                    <div class="card">
-                                        <div class="card-header card-header-icon card-header-success" style="margin-top: -5px;">
-                                            <div class="card-icon">
-                                                <i class="material-icons">indeterminate_check_box</i>
+        <div class="main-panel">
+            <top-nav></top-nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <br>
+                    <!--
+                    <StatusAdmin/>
+                    -->
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 expo">
+                                        <div class="card">
+                                            <div class="card-header card-header-icon card-header-success" style="margin-top: -5px;">
+                                                <div class="card-icon">
+                                                    <i class="material-icons">indeterminate_check_box</i>
+                                                </div>
+                                                <br>
+                                                <h4 class="card-title" style="margin-top: 0px;"><b>Create</b> -
+                                                    <small class="category">New Documentation</small>
+                                                </h4>
                                             </div>
-                                            <br>
-                                            <h4 class="card-title" style="margin-top: 0px;"><b>Create</b> -
-                                                <small class="category">New Documentation</small>
-                                            </h4>
-                                        </div>
-                                        <div class="card-body">
-                                            {!! Form::open(array('route' => 'documentations.store','files'=> 'true','method'=>'POST')) !!}
+                                            <div class="card-body">
+                                                {!! Form::open(array('route' => 'documentations.store','files'=> 'true','method'=>'POST')) !!}
                                                 <div class="col-md-12">
                                                     <div class="card card-nav-tabs">
                                                         <div class="card-body">
@@ -101,7 +103,8 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                            {!! Form::close() !!}
+                                                {!! Form::close() !!}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -111,6 +114,7 @@
                 </div>
             </div>
         </div>
+
     @else
         <div class="submit text-center">
           <error-404></error-404>

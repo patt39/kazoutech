@@ -14,6 +14,12 @@ import 'es6-promise/auto';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+/**
+ * Vue-select
+ */
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect);
+import 'vue-select/dist/vue-select.css';
 
 
 import {Vue2Storage} from 'vue2-storage'

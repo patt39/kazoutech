@@ -101,7 +101,11 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in categoryfaqs" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
+                                                <td>
+                                                    <router-link  :to="{ path: `/dashboard/faqs/c/${item.slug}/` }">
+                                                    <b>{{ (item.name.length > 30 ? item.name.substring(0,30)+ "..." : item.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
                                                 <td><i :class="getMaterialIcon(item.color_name)">{{ item.icon}}</i></td>
                                                 <td>
                                                     <div class="timeline-heading">

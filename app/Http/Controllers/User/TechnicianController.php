@@ -165,7 +165,7 @@ class TechnicianController extends Controller
     {
         $getcity = city::whereSlug($city);
         $getoccupation = occupation::whereSlug($occupation);
-        $technicians = TechnicianResource::collection($getoccupation->$getcity->first()->technicians()
+        $technicians = TechnicianResource::collection($getoccupation->first()->technicians()
             ->with('user','member','city','occupation','diploma')
             ->latest()->get());
         return $technicians;
@@ -190,6 +190,8 @@ class TechnicianController extends Controller
      */
     public function edit(technician $technician)
     {
+        $this->authorize('update',$technician);
+
         if(auth()->user()->id === $technician->user_id) {
             return view("user.page.technician.technicianEdit",[
                 'technician' => $technician,
@@ -209,8 +211,9 @@ class TechnicianController extends Controller
      */
     public function update(StoreRequest $request, $id)
     {
-
         $technician = technician::findOrFail($id);
+
+        $this->authorize('update',$technician);
 
         if(auth()->user()->id === $technician->user_id) {
             $technician->update($request->all());

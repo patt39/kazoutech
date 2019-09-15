@@ -79,6 +79,7 @@ import DocumentationIndex from "../components/admin/info/documentation/Documenta
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 import CityActives from "../components/admin/partial/city/CityActives";
+import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
 
 
 export const routes = [
@@ -123,6 +124,7 @@ export const routes = [
     {path: '/dashboard/faqs/', name: 'faqs.index', component: FaqIndex},
     {path: '/dashboard/faqs/create/', name: 'faqs.create', component: FaqCreate},
     {path: '/dashboard/faqs/:id/edit/', name: 'faqs.edit', component: FaqEdit},
+    {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
 
     //Route categories
     {path: '/dashboard/categories/', name: 'categories.index', component: CategoryIndex},

@@ -27,7 +27,7 @@ class StoreRequest extends BaseRequest
             //'user_id'=> 'required|integer|unique:technicians,user_id'.$this->id,
             'occupation_id'=>'required',
             'city_id'=>'required',
-            'diploma_id'=>'required',
+            //b'diploma_id'=>'required',
         ];
     }
     public function messages()
@@ -35,7 +35,7 @@ class StoreRequest extends BaseRequest
         return [
             'occupation_id.required' => 'Votre occupation',
             'city_id.required' => 'Votre ville actuelle',
-            'diploma_id.required' => 'Votre plus recent diplome',
+            //'diploma_id.required' => 'Votre plus recent diplome',
         ];
     }
     /**

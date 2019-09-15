@@ -51,6 +51,11 @@ class categoryfaq extends Model
         return Cache::has('user-is-online-' . $this->id);
     }
 
+    public function faqs()
+    {
+        return $this->hasMany(faq::class);
+    }
+
     use Sluggable;
 
     /**
