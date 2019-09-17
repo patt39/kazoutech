@@ -95,10 +95,10 @@
                                                 </tfoot>
                                                 <tbody>
                                                 <tr v-for="item in faqs" :key="item.id">
-                                                    <td>{{ (item.title.length > 30 ? item.title.substring(0,30)+ "..." : item.title) | upText }}</td>
+                                                    <td>{{ (item.title.length > 15 ? item.title.substring(0,15)+ "..." : item.title) | upText }}</td>
                                                     <td>
                                                         <b> <router-link  :to="{ path: `/dashboard/faqs/c/${item.categoryfaq.slug}/` }">
-                                                        <b>{{ (item.categoryfaq.name.length > 30 ? item.categoryfaq.name.substring(0,30)+ "..." : item.categoryfaq.name) | upText }}</b>
+                                                        <b>{{ (item.categoryfaq.name.length > 15 ? item.categoryfaq.name.substring(0,15)+ "..." : item.categoryfaq.name) | upText }}</b>
                                                         </router-link></b>
                                                     </td>
                                                     <td>

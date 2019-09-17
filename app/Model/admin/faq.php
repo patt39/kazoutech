@@ -15,6 +15,10 @@ class faq extends Model
   protected $fillable = ['body','title','categoryfaq_id','status'];
   protected static $logAttributes = ['user_id','body','title','categoryfaq_id','ip','status'];
 
+    public static function faqId(string $id): self
+    {
+        return static::where('id', $id)->first();
+    }
 
     public function user()
     {
@@ -46,11 +50,6 @@ class faq extends Model
         return $this->belongsTo(Categoryfaq::class);
     }
 
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 
     public function isOnline()
     {

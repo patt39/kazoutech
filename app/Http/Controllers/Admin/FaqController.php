@@ -7,11 +7,9 @@ use App\Http\Requests\Admin\Faqs\UpdateRequest;
 use App\Http\Resources\FaqResource;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Projectors\EventProjector\FaqAggregateRoot;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -72,12 +70,15 @@ class FaqController extends Controller
     public function store(StoreRequest $request)
     {
 
-        $faq = new faq;
-        $faq->title = $request->title;
-        $faq->body = $request->body;
-        $faq->categoryfaq_id = $request->categoryfaq_id;
+       // $faq = new faq;
+       // $faq->title = $request->title;
+       // $faq->body = $request->body;
+       // $faq->categoryfaq_id = $request->categoryfaq_id;
 
-        $faq->save();
+       // $faq->save();
+
+        $attributes = $request->validated();
+        faq::createWithAttributes($attributes);
 
         return response('Created',Response::HTTP_CREATED);
     }
@@ -185,14 +186,17 @@ class FaqController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  faq $faq
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $faq = Faq::findOrFail($id);
-        $faq->delete();
+   public function destroy(faq $faq)
+   {
+       //event(new FaqDeletedEvent($faq->id));
 
-        return ['message' => 'Deleted successfully '];
-    }
+       FaqAggregateRoot::retrieve($faq->id)
+           ->deleteFaq()
+           ->persist();
+
+       return ['message' => 'Deleted successfully '];
+   }
 }
