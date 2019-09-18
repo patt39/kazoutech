@@ -5,18 +5,16 @@ namespace App\EventProjector\Events\Faq;
 
 use Spatie\EventProjector\ShouldBeStored;
 
-class FaqCreatedEvent implements ShouldBeStored
+final class FaqCreatedEvent implements ShouldBeStored
 {
-    /** @var string */
-    public $id;
+    public $title;
+    public $body;
+    public $categoryfaq_id;
 
-    /** @var array */
-    public $faqAttributes;
-
-    public function __construct(array $faqAttributes)
+    public function __construct(string $title, $body, int $categoryfaq_id)
     {
-        $this->id = $faqAttributes['id'];
-
-        $this->faqAttributes = $faqAttributes;
+        $this->title = $title;
+        $this->body = $body;
+        $this->categoryfaq_id = $categoryfaq_id;
     }
 }

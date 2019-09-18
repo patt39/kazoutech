@@ -9,9 +9,9 @@ use Spatie\EventProjector\AggregateRoot;
 final class FaqAggregateRoot extends AggregateRoot
 {
 
-    public function createAccount(string $name, string $faqId)
+    public function createFaq(string $title, $body, int $categoryfaq_id)
     {
-        $this->recordThat(new FaqCreatedEvent($name, $faqId));
+        $this->recordThat(new FaqCreatedEvent($title,$body,$categoryfaq_id));
         return $this;
     }
 
@@ -19,7 +19,6 @@ final class FaqAggregateRoot extends AggregateRoot
     public function deleteFaq()
     {
         $this->recordThat(new FaqDeletedEvent());
-
         return $this;
     }
 }

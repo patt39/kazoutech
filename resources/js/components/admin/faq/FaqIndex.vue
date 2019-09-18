@@ -276,8 +276,8 @@
                         notify.update({'type': 'success', 'message': '<strong>Faq activated Successfully.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert ***/
-
                     Fire.$emit('AfterCreate');
+                    this.$Progress.finish();
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();

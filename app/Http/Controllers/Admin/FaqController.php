@@ -69,20 +69,18 @@ class FaqController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        $faq = new faq;
 
-       // $faq = new faq;
-       // $faq->title = $request->title;
-       // $faq->body = $request->body;
-       // $faq->categoryfaq_id = $request->categoryfaq_id;
-
-       // $faq->save();
-
-        $attributes = $request->validated();
-        faq::createWithAttributes($attributes);
+        FaqAggregateRoot::retrieve($faq)
+            ->createFaq(
+                $faq->title = $request->title,
+                $faq->body = $request->body,
+                $faq->categoryfaq_id = $request->categoryfaq_id
+            )->persist();
 
         return response('Created',Response::HTTP_CREATED);
     }
-    
+
     /**
      * cette partie consite a activer et a desactiver
      * @param $id

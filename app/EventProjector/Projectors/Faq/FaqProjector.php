@@ -15,15 +15,16 @@ final class FaqProjector implements Projector
 
     public function onFaqCreated(FaqCreatedEvent $event)
     {
-
-        faq::create($event->faqAttributes);
+        faq::create([
+            'title' => $event->title,
+            'body' => $event->body,
+            'categoryfaq_id' => $event->categoryfaq_id,
+        ]);
     }
 
-
-
-    public function onFaqDeleted(FaqDeletedEvent $event, string $id)
+    public function onFaqDeleted(FaqDeletedEvent $event, string $aggregateUuid)
     {
-        faq::faqId($id)->delete();
+        faq::faqId($aggregateUuid)->delete();
     }
 
 
