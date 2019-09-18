@@ -122,3 +122,11 @@ Route::group(['namespace' => 'User'], function () {
 
     Route::get('dashboard/chat', 'MessageController@chat')->name('messages.chat');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

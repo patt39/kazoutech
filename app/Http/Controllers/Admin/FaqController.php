@@ -189,8 +189,6 @@ class FaqController extends Controller
      */
    public function destroy(faq $faq)
    {
-       //event(new FaqDeletedEvent($faq->id));
-
        FaqAggregateRoot::retrieve($faq->id)
            ->deleteFaq()
            ->persist();

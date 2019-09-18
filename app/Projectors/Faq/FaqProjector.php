@@ -22,7 +22,7 @@ final class FaqProjector implements Projector
         ]);
     }
 
-    public function onFaqDeleted(FaqDeletedEvent $event, string $aggregateUuid)
+    public function onFaqDeleted(FaqDeletedEvent $event, int $aggregateUuid)
     {
         faq::faqId($aggregateUuid)->delete();
     }
