@@ -1,10 +1,10 @@
 <?php
 
-namespace App\EventProjector\Projectors\Faq;
+namespace App\Projectors\Faq;
 
 
-use App\EventProjector\Events\Faq\FaqCreatedEvent;
-use App\EventProjector\Events\Faq\FaqDeletedEvent;
+use App\Events\Faq\FaqCreatedEvent;
+use App\Events\Faq\FaqDeletedEvent;
 use App\Model\admin\faq;
 use Spatie\EventProjector\Projectors\Projector;
 use Spatie\EventProjector\Projectors\ProjectsEvents;

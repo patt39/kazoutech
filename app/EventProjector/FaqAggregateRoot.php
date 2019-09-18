@@ -2,8 +2,9 @@
 
 namespace App\Projectors\EventProjector;
 
-use App\EventProjector\Events\Faq\FaqCreatedEvent;
-use App\EventProjector\Events\Faq\FaqDeletedEvent;
+
+use App\Events\Faq\FaqCreatedEvent;
+use App\Events\Faq\FaqDeletedEvent;
 use Spatie\EventProjector\AggregateRoot;
 
 final class FaqAggregateRoot extends AggregateRoot

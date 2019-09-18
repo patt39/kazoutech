@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EventProjector\Events\Faq;
+namespace App\Events\Faq;
 
 
 use Spatie\EventProjector\ShouldBeStored;
