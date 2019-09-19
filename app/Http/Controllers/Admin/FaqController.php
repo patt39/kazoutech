@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\Faqs\UpdateRequest;
 use App\Http\Resources\FaqResource;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
-use App\Projectors\EventProjector\FaqAggregateRoot;
+use App\StorableEvents\FaqAggregateRoot;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
@@ -166,17 +166,16 @@ class FaqController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, faq $faq)
     {
 
-        $faq = faq::findOrFail($id);
-
-        $faq->title = $request->title;
-        $faq->body = $request->body;
-        $faq->slug = null;
-        $faq->categoryfaq_id = $request->categoryfaq_id;
-
-        $faq->save();
+        $slug = sha1(date('YmdHis') . str_random(30));
+        FaqAggregateRoot::retrieve($faq->id)->updateFaq(
+        $faq->title = $request->title,
+        $faq->body = $request->body,
+        $faq->slug = $slug,
+        $faq->categoryfaq_id = $request->categoryfaq_id
+        )->persist();
 
         return ['message' => 'updated successfully'];
     }
