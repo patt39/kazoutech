@@ -23,7 +23,7 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name'=>'required|string|unique:colors.name'.$this->id,
+            'name'=>'required|string|unique:colors,name,'.$this->id,
         ];
     }
     public function messages()

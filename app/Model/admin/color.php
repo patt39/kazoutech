@@ -6,10 +6,12 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class color extends Model
+class color extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +21,18 @@ class color extends Model
 
     protected $fillable = ['name','user_id','ip','status'];
     protected static $logAttributes = ['name','user_id','ip','status'];
+
+    protected $table = 'colors';
+    /**
+     * @return array
+     */
+    public function generateTags(): array
+    {
+        return [
+
+            $this->user->name,
+        ];
+    }
 
     public function user()
     {

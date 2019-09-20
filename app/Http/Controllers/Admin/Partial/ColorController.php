@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
+use Torann\GeoIP\Console\Update;
 
 class ColorController extends Controller
 {
@@ -130,7 +131,6 @@ class ColorController extends Controller
      */
     public function update(UpdateRequest $request,$id)
     {
-
         $color = color::findOrFail($id);
 
         $color->name = $request->name;
