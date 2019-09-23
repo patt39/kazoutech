@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Requests\Admin\Colors\StoreRequest;
 use App\Http\Requests\Admin\Colors\UpdateRequest;
+use App\Http\Resources\AuditResource;
 use App\Http\Resources\Partial\ColorResource;
+use App\Model\admin\audit;
 use App\Model\admin\color;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,7 +27,7 @@ class ColorController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apiauditing']]);
     }
     /**
      * Display a listing of the resource.
@@ -42,8 +44,16 @@ class ColorController extends Controller
     {
         //$colors = new ColorCollection(Color::with('user')->latest()->get());
         $colors = Cache::rememberForever('colors', function () {
-            return ColorResource::collection(Color::with('user')->latest()->get());
+            return ColorResource::collection(Color::with('user')
+                ->with('user')->latest()->get());
         });
+        return $colors;
+    }
+
+    public function apiauditing($color)
+    {
+        $colors = AuditResource::collection(color::whereSlug($color)->firstOrFail()->auditings()
+            ->latest()->get());
         return $colors;
     }
 
@@ -111,6 +121,12 @@ class ColorController extends Controller
         return view('admin.partial.color.show', ['color' => $color]);
     }
 
+    public function auditing($color)
+    {
+        $colors = color::whereSlug($color)->firstOrFail()->auditings()
+            ->with('user')->orderBy('created_at','DESC')->get();
+        return view('admin.partial.color.index',compact('colors'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -133,8 +149,9 @@ class ColorController extends Controller
     {
         $color = color::findOrFail($id);
 
-        $color->name = $request->name;
         $color->color_name = $request->color_name;
+        $color->name = $request->name;
+        $color->color_name = null;
         $color->slug = null;
 
         $color->save();

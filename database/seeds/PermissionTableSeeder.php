@@ -30,6 +30,8 @@ class PermissionTableSeeder extends Seeder
         //Create permissions Dashboard
         Permission::create(['guard_name' => 'web' , 'name' => 'dashboard']);
 
+        Permission::create(['guard_name' => 'web' , 'name' => 'auditing']);
+
         //Create permissions Administrations
         Permission::create(['guard_name' => 'web' , 'name' => 'view-administrator']);
         Permission::create(['guard_name' => 'web' , 'name' => 'create-administrator']);
@@ -85,7 +87,7 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-aide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-aide']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-aide']);
-        
+
         // create permissions eventments
         Permission::create(['guard_name' => 'web' , 'name' => 'create-eventment']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-eventment']);
@@ -173,7 +175,7 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'create-permission']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-permission']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-permission']);
-        
+
         //Viea Subcribe Newletters permissions
         Permission::create(['guard_name' => 'web' , 'name' => 'view-email']);
         //View permission and role

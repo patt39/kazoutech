@@ -131,6 +131,10 @@
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
+                                                    <router-link v-if="$auth.can('auditing')" :to="{ path: `/dashboard/colors/auditing/${item.slug}/` }"
+                                                            class="btn btn-link btn-facebook btn-round btn-just-icon" title="All setting">
+                                                        <i class="material-icons">new_releases</i>
+                                                    </router-link>
                                                 </td>
                                             </tr>
                                             </tbody>

@@ -19,7 +19,7 @@ class color extends Model implements Auditable
      */
     use LogsActivity;
 
-    protected $fillable = ['name','user_id','ip','status'];
+    protected $fillable = ['name','user_id','ip','status','slug','color_name'];
     protected static $logAttributes = ['name','user_id','ip','status'];
 
     protected $table = 'colors';
@@ -29,9 +29,13 @@ class color extends Model implements Auditable
     public function generateTags(): array
     {
         return [
-
             $this->user->name,
         ];
+    }
+
+    public function auditings()
+    {
+        return $this->hasMany(audit::class,'auditable_id');
     }
 
     public function user()

@@ -152,7 +152,7 @@
 </template>
 
 <script>
-    import api from '../../../api/mixins/collections';
+    import api from '../../../api/admin/faq';
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
     export default {

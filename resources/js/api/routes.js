@@ -80,6 +80,7 @@ import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEd
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 import CityActives from "../components/admin/partial/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
+import ColorAuditing from "../components/admin/partial/color/ColorAuditing";
 
 
 export const routes = [
@@ -91,6 +92,7 @@ export const routes = [
     {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
     {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},
+    {path: '/dashboard/colors/auditing/:color/', name: 'colors.auditing', component: ColorAuditing},
     {path: '/dashboard/countries/', name: 'countries.index', component: CountriesIndex},
 
     //Route administrators
@@ -208,7 +210,7 @@ export const routes = [
      { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
      { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
 
-     
+
     /** Ici je recupere les route du site **/
 
     //Route auth
