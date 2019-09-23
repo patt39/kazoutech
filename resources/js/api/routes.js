@@ -80,7 +80,10 @@ import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEd
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 import CityActives from "../components/admin/partial/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
+
 import ColorAuditing from "../components/admin/partial/color/ColorAuditing";
+import AuditIndex from "../components/admin/audit/AuditIndex";
+
 
 
 export const routes = [
@@ -101,6 +104,8 @@ export const routes = [
 
     //Route activities
     {path: '/dashboard/activities/', name: 'activities.index', component: ActivityIndex},
+    //Route audits
+    {path: '/dashboard/audits/', name: 'audits.index', component: AuditIndex},
 
      //Route links
      {path: '/dashboard/links/', name: 'links.index', component: LinkIndex},

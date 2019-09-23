@@ -7,9 +7,12 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
+use OwenIt\Auditing\Redactors\LeftRedactor;
 
-class occupation extends Model
+class occupation extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +22,24 @@ class occupation extends Model
         'name', 'ip','status'
     ];
 
+    /**
+     * @return array
+     */
+    public function generateTags(): array
+    {
+        return [
+            $this->user->name,
+        ];
+    }
+
+    /**
+     * Attribute modifiers.
+     *
+     * @var array
+     */
+    //protected $attributeModifiers = [
+    //    'name' => LeftRedactor::class,
+    //];
 
     public function user()
     {

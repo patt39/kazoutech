@@ -90,6 +90,13 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <!-- Export Excel Users -->
+                                    <div class="submit text-center">
+                                        <router-link to="/dashboard/colors" class="btn btn-success btn-raised btn-round">
+                                            <i class="material-icons">chevron_left</i>
+                                            <b>Back</b>
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -158,8 +165,14 @@
                 this.loaded = true;
                 this.colors = response.data.data;
                 this.mydatatables();
-                this.$Progress.finish()
+            }).catch(error => {
+                console.log(error);
+                this.errored = true
             });
+            axios.get("/api/account/user").then(response => {
+                this.user = response.data.data
+            });
+            this.$Progress.finish()
         },
         computed: {
             orderByItems() {

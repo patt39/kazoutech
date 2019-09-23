@@ -7,7 +7,7 @@ use App\Model\admin\audit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class LaravelAuditingController extends Controller
+class LaravelAuditController extends Controller
 {
     public function __construct()
     {
@@ -22,7 +22,7 @@ class LaravelAuditingController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.audit.index');
     }
 
 

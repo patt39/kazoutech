@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use Overtrue\LaravelFollow\Traits\CanFollow;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail,Auditable
 {
-    use Notifiable,HasApiTokens,HasRoles,CanFollow, CanBeFollowed;
+    use Notifiable,HasApiTokens,HasRoles,CanFollow, CanBeFollowed,\OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

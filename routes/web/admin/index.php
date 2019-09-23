@@ -13,6 +13,7 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
     require(__DIR__ . DIRECTORY_SEPARATOR . 'occupations.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'permissions.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'roles.php');
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'laravel-auditing.php');
 
     /** C'est route son dans la cartella partial */
     require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'tags.php');

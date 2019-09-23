@@ -6,17 +6,19 @@ use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class licencesite extends Model
+class licencesite extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     protected $table = 'licencesites';
 
     protected $fillable = ['body','status','slug'];
-   
+
 
     protected static function boot()
     {
-        parent::boot(); 
+        parent::boot();
 
         static::creating(function ($model){
             if (auth()->check()){

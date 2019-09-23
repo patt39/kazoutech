@@ -6,9 +6,12 @@ use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class policyprivacy extends Model
+class policyprivacy extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'policyprivacies';
     protected $dates = ['updated_at'];
 
@@ -26,7 +29,7 @@ class policyprivacy extends Model
 
     protected static function boot()
     {
-        parent::boot(); 
+        parent::boot();
 
         static::creating(function ($model){
             if (auth()->check()){

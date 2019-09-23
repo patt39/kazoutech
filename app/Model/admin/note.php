@@ -6,11 +6,12 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class note extends Model
+class note extends Model implements Auditable
 {
-    use LogsActivity;
+    use \OwenIt\Auditing\Auditable,LogsActivity;
 
 
     protected $fillable = ['body','title','ip','slug','status'];

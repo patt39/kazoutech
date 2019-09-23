@@ -6,11 +6,12 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class documentation extends Model
+class documentation extends Model implements Auditable
 {
-    use LogsActivity;
+    use LogsActivity,\OwenIt\Auditing\Auditable;
 
     protected $table = 'documentations';
     protected $guarded = [];

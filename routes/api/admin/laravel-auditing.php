@@ -1,3 +1,3 @@
 <?php
 
-Route::get('auditing','LaravelAuditingController@api');
+Route::get('audits','LaravelAuditController@api');

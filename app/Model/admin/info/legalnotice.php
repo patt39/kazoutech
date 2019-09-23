@@ -6,9 +6,12 @@ use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class legalnotice extends Model
+class legalnotice extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'legalnotices';
 
     protected $fillable = ['body', 'ip','status','user_id'];

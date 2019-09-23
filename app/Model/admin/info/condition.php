@@ -5,11 +5,12 @@ namespace App\Model\admin\info;
 use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class condition extends Model
+class condition extends Model implements Auditable
 {
-    use LogsActivity;
+    use LogsActivity,\OwenIt\Auditing\Auditable;
 
     protected $table = 'conditions';
     protected $fillable = ['title', 'body','photo','status'];

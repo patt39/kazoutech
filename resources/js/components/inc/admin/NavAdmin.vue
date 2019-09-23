@@ -249,6 +249,13 @@
                         </a>
                         <div class="collapse" id="administrationExamples">
                             <ul class="nav">
+                                <!-- Audits -->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'audits.index' }" class="nav-link">
+                                        <span class="sidebar-mini">AS</span>
+                                        <span class="sidebar-normal"><b>Audits site</b></span>
+                                    </router-link>
+                                </li>
                                 <!-- Activities -->
                                 <li class="nav-item">
                                     <router-link  :to="{ name: 'activities.index' }" class="nav-link">
