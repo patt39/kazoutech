@@ -1,506 +1,512 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kazoutech</title>
-        <meta name="description" content="Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skils and experience."/>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-        <link href="{{ asset('assets/css/aos.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{asset('assets/styles/main.css') }}" rel="stylesheet">
-    </head>
-    <body id="top">
-    <header>
-        <div class="profile-page sidebar-collapse">
-            <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-warning" color-on-scroll="400">
-                <div class="container">
-                    <div class="navbar-translate"><a class="navbar-brand" href="/" rel="tooltip">Kazoutech</a>
-                        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
-                    </div>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Skills</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">{{ __('Contact')}}</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="/dashboard">{{ __('Dashboard')}}</a></li>
-                        </ul>
-                    </div>
+@extends('inc.site._main')
+@section('title', '')
+
+@section('style')
+@endsection
+
+@section('init')
+    <!-- Site wrapper -->
+@endsection
+
+@section('content')
+    <main>
+        <div class="position-relative">
+            <!-- shape Hero -->
+            <section class="section section-lg section-shaped pb-250">
+                <div class="shape shape-style-1 shape-default">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-            </nav>
-        </div>
-    </header>
-    <div class="page-content">
-        <div>
-            <div class="profile-page">
-                <div class="wrapper">
-                    <div class="page-header page-header-small" filter-color="green">
-                        <div class="page-header-image" data-parallax="true" style="background-image: url('/assets/images/cc-bg-1.jpg');"></div>
-                        <div class="container">
-                            <div class="content-center">
-                                <div class="cc-profile-image"><a href="#"><img src="/assets/images/anthony.jpg" alt="Image"/></a></div>
-                                <div class="h2 title">Noubissi Tafeng Darry Patrick</div>
-                                <p class="category text-white">Web Developer And Data Analyst</p>
-                                <a class="btn btn-primary btn-round btn-warning smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a>
-                                <a class="btn btn-primary btn-round " href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                <div class="container py-lg-md d-flex">
+                    <div class="col px-0">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h1 class="display-3  text-white">A beautiful Design System<span>completed with examples</span></h1>
+                                <p class="lead  text-white">The design system comes with four pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                                <div class="btn-wrapper">
+                                    <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="btn btn-info btn-icon mb-3 mb-sm-0">
+                                        <span class="btn-inner--icon"><i class="fa fa-code"></i></span>
+                                        <span class="btn-inner--text">Components</span>
+                                    </a>
+                                    <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-white btn-icon mb-3 mb-sm-0">
+                                        <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>
+                                        <span class="btn-inner--text">Download HTML</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="section">
-                            <div class="container">
-                                <div class="button-container">
-                                    <a class="btn btn-facebook btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Facebook">
+                    </div>
+                </div>
+                <!-- SVG separator -->
+                <div class="separator separator-bottom separator-skew">
+                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                    </svg>
+                </div>
+            </section>
+            <!-- 1st Hero Variation -->
+        </div>
+        <section class="section section-lg pt-lg-0 mt--200">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="row row-grid">
+                            <div class="col-lg-4">
+                                <div class="card card-lift--hover shadow border-0">
+                                    <div class="card-body py-5">
+                                        <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                                            <i class="ni ni-check-bold"></i>
+                                        </div>
+                                        <h6 class="text-primary text-uppercase">Download Argon</h6>
+                                        <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                                        <div>
+                                            <span class="badge badge-pill badge-primary">design</span>
+                                            <span class="badge badge-pill badge-primary">system</span>
+                                            <span class="badge badge-pill badge-primary">creative</span>
+                                        </div>
+                                        <a href="#" class="btn btn-primary mt-4">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card card-lift--hover shadow border-0">
+                                    <div class="card-body py-5">
+                                        <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                                            <i class="ni ni-istanbul"></i>
+                                        </div>
+                                        <h6 class="text-success text-uppercase">Build Something</h6>
+                                        <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                                        <div>
+                                            <span class="badge badge-pill badge-success">business</span>
+                                            <span class="badge badge-pill badge-success">vision</span>
+                                            <span class="badge badge-pill badge-success">success</span>
+                                        </div>
+                                        <a href="#" class="btn btn-success mt-4">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card card-lift--hover shadow border-0">
+                                    <div class="card-body py-5">
+                                        <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                                            <i class="ni ni-planet"></i>
+                                        </div>
+                                        <h6 class="text-warning text-uppercase">Prepare Launch</h6>
+                                        <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                                        <div>
+                                            <span class="badge badge-pill badge-warning">marketing</span>
+                                            <span class="badge badge-pill badge-warning">product</span>
+                                            <span class="badge badge-pill badge-warning">launch</span>
+                                        </div>
+                                        <a href="#" class="btn btn-warning mt-4">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-lg">
+            <div class="container">
+                <div class="row row-grid align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="/assets/site/assets/img/theme/promo-1.png" class="img-fluid floating" alt="image">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="pr-md-5">
+                            <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
+                                <i class="ni ni-settings-gear-65"></i>
+                            </div>
+                            <h3>Awesome features</h3>
+                            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                            <ul class="list-unstyled mt-5">
+                                <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <div class="badge badge-circle badge-success mr-3">
+                                                <i class="ni ni-settings-gear-65"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Carefully crafted components</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <div class="badge badge-circle badge-success mr-3">
+                                                <i class="ni ni-html5"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Amazing page examples</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <div class="badge badge-circle badge-success mr-3">
+                                                <i class="ni ni-satisfied"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Super friendly support team</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="row row-grid align-items-center">
+                    <div class="col-md-6">
+                        <div class="card bg-default shadow border-0">
+                            <img src="/assets/site/assets/img/theme/img-1-1200x1000.jpg" class="card-img-top" alt="image">
+                            <blockquote class="card-blockquote">
+                                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
+                                    <polygon points="0,52 583,95 0,95" class="fill-default" />
+                                    <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default" />
+                                </svg>
+                                <h4 class="display-3 font-weight-bold text-white">Design System</h4>
+                                <p class="lead text-italic text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pl-md-5">
+                            <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
+                                <i class="ni ni-settings"></i>
+                            </div>
+                            <h3>Our customers</h3>
+                            <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.</p>
+                            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                            <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful websites</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section pb-0 bg-gradient-warning">
+            <div class="container">
+                <div class="row row-grid align-items-center">
+                    <div class="col-md-6 order-lg-2 ml-lg-auto">
+                        <div class="position-relative pl-md-5">
+                            <img src="/assets/site/assets/img/ill/ill-2.svg" class="img-center img-fluid" alt="image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="d-flex px-3">
+                            <div>
+                                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                    <i class="ni ni-building text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="pl-4">
+                                <h4 class="display-3 text-white">Modern Interface</h4>
+                                <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                            </div>
+                        </div>
+                        <div class="card shadow shadow-lg--hover mt-5">
+                            <div class="card-body">
+                                <div class="d-flex px-3">
+                                    <div>
+                                        <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                            <i class="ni ni-satisfied"></i>
+                                        </div>
+                                    </div>
+                                    <div class="pl-4">
+                                        <h5 class="title text-success">Awesome Support</h5>
+                                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                                        <a href="#" class="text-success">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow shadow-lg--hover mt-5">
+                            <div class="card-body">
+                                <div class="d-flex px-3">
+                                    <div>
+                                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                                            <i class="ni ni-active-40"></i>
+                                        </div>
+                                    </div>
+                                    <div class="pl-4">
+                                        <h5 class="title text-warning">Modular Components</h5>
+                                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                                        <a href="#" class="text-warning">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SVG separator -->
+            <div class="separator separator-bottom separator-skew zindex-100">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </section>
+        <section class="section section-lg">
+            <div class="container">
+                <div class="row justify-content-center text-center mb-lg">
+                    <div class="col-lg-8">
+                        <h2 class="display-3">The amazing Team</h2>
+                        <p class="lead text-muted">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img src="/assets/site/assets/img/theme/team-1-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;" alt="image">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Ryan Tompson</span>
+                                    <small class="h6 text-muted">Web Developer</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
                                         <i class="fa fa-facebook"></i>
                                     </a>
-                                    <a class="btn btn-linkedin btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Linkedin">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                    <a class="btn btn-google btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Google+">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a><a class="btn btn-instagram btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Instagram">
-                                        <i class="fa fa-instagram"></i>
+                                    <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                                        <i class="fa fa-dribbble"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="section" id="about">
-                <div class="container">
-                    <div class="card" data-aos="fade-up" data-aos-offset="10">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card-body">
-                                    <div class="h4 mt-0 title">About Me</div>
-                                    <p>Hello! I am Patrick Noubissi. Web Developer and Data Analyst.</p>
-                                    <p><em style="font-weight: bold"> Patrick CV </em> is a simple website type blog which permit me to be more visible on the work market. Built by me with PHP using LARAVEL framework AND JAVASCRIPT using VUE.JS , Now UI Kit and FontAwesome, this modern and responsive design site is perfect to showcase my portfolio, skills and experience.</p>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img src="/assets/site/assets/img/theme/team-2-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;" alt="image">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Romina Hadid</span>
+                                    <small class="h6 text-muted">Marketing Strategist</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card-body">
-                                    <div class="h4 mt-0 title">Basic Information</div>
-                                    <div class="row">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-                                        <div class="col-sm-8">23</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-                                        <div class="col-sm-8">patrick.noubissi@yahoo.com</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-                                        <div class="col-sm-8">+39 3881155086</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-                                        <div class="col-sm-8">140, City Center, New York, U.S.A</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-                                        <div class="col-sm-8">English, Italian, French</div>
-                                    </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img alt="image" src="/assets/site/assets/img/theme/team-3-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Alexander Smith</span>
+                                    <small class="h6 text-muted">UI/UX Designer</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img alt="image" src="/assets/site/assets/img/theme/team-4-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">John Doe</span>
+                                    <small class="h6 text-muted">Founder and CEO</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section" id="skill">
-                <div class="container">
-                    <div class="h4 text-center mb-4 title">Professional Skills</div>
-                    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">PHP</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">LARAVEL</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
+        </section>
+        <section class="section section-lg pt-0">
+            <div class="container">
+                <div class="card bg-gradient-warning shadow-lg border-0">
+                    <div class="p-5">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <h3 class="text-white">We made website building easier for you.</h3>
+                                <p class="lead text-white mt-3">I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture.</p>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">JavaScript</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">VUE.JS</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-lg-3 ml-lg-auto">
+                                <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-block btn-white">Download HTML</a>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">PYTHON</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-lg bg-gradient-default">
+            <div class="container pt-lg pb-300">
+                <div class="row text-center justify-content-center">
+                    <div class="col-lg-10">
+                        <h2 class="display-3 text-white">Build something</h2>
+                        <p class="lead text-white">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice.</p>
+                    </div>
+                </div>
+                <div class="row row-grid mt-5">
+                    <div class="col-lg-4">
+                        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                            <i class="ni ni-settings text-primary"></i>
+                        </div>
+                        <h5 class="text-white mt-3">Building tools</h5>
+                        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                            <i class="ni ni-ruler-pencil text-primary"></i>
+                        </div>
+                        <h5 class="text-white mt-3">Grow your market</h5>
+                        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                            <i class="ni ni-atom text-primary"></i>
+                        </div>
+                        <h5 class="text-white mt-3">Launch time</h5>
+                        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- SVG separator -->
+            <div class="separator separator-bottom separator-skew zindex-100">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </section>
+        <section class="section section-lg pt-lg-0 section-contact-us">
+            <div class="container">
+                <div class="row justify-content-center mt--300">
+                    <div class="col-lg-8">
+                        <div class="card bg-gradient-secondary shadow">
+                            <div class="card-body p-lg-5">
+                                <h4 class="mb-1">Want to work with us?</h4>
+                                <p class="mt-0">Your project is very important to us.</p>
+                                <div class="form-group mt-5">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-user-run"></i></span>
                                         </div>
+                                        <input class="form-control" placeholder="Your name" type="text">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">TENSOFLOW</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
+                                        <input class="form-control" placeholder="Email address" type="email">
                                     </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-default btn-round btn-block btn-lg">Send Message</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section" id="portfolio">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 ml-auto mr-auto">
-                            <div class="h4 text-center mb-4 title">Portfolio</div>
-                            <div class="nav-align-center">
-                                <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#web-development" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
+        </section>
+        <section class="section section-lg">
+            <div class="container">
+                <div class="row row-grid justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="display-3">Do you love this awesome <span class="text-success">Design System for Bootstrap 4?</span></h2>
+                        <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative Tim where you can find the Design System in HTML. Start a new project or give an old Bootstrap project a new look!</p>
+                        <div class="btn-wrapper">
+                            <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-primary mb-3 mb-sm-0">Download HTML</a>
+                            <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-default">Download PSD/Sketch</a>
                         </div>
-                    </div>
-                    <div class="tab-content gallery mt-5">
-                        <div class="tab-pane active" id="web-development">
-                            <div class="ml-auto mr-auto">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                                                <figure class="cc-effect"><img src="/assets/images/project-1.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Recent Project</div>
-                                                        <p>Web Development</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                                                <figure class="cc-effect"><img src="/assets/images/project-2.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Startup Project</div>
-                                                        <p>Web Development</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                                                <figure class="cc-effect"><img src="/assets/images/project-3.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Food Order Project</div>
-                                                        <p>Web Development</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                                                <figure class="cc-effect"><img src="/assets/images/project-4.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Web Advertising Project</div>
-                                                        <p>Web Development</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                    </div>
+                        <div class="text-center">
+                            <h4 class="display-4 mb-5 mt-5">Available on these technologies</h4>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://www.creative-tim.com/product/argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Bootstrap 4 - Most popular front-end component library">
+                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid">
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="graphic-design" role="tabpanel">
-                            <div class="ml-auto mr-auto">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="/assets/images/graphic-design-1.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Triangle Pattern</div>
-                                                        <p>Graphic Design</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="/assets/images/graphic-design-2.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Abstract Umbrella</div>
-                                                        <p>Graphic Design</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="/assets/images/graphic-design-3.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Cube Surface Texture</div>
-                                                        <p>Graphic Design</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="/assets/images/graphic-design-4.jpg" alt="Image"/>
-                                                    <figcaption>
-                                                        <div class="h4">Abstract Line</div>
-                                                        <p>Graphic Design</p>
-                                                    </figcaption>
-                                                </figure></a></div>
-                                    </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href=" https://www.creative-tim.com/product/vue-argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Vue.js - The progressive javascript framework">
+                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/vue.jpg" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href=" https://www.sketchapp.com/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Sketch - Digital design toolkit">
+                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/sketch.jpg" class="img-fluid opacity-3">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href=" https://www.adobe.com/products/photoshop.html" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Adobe Photoshop - Software for digital images manipulation">
+                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/ps.jpg" class="img-fluid opacity-3">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Angular - One framework. Mobile &amp; desktop">
+                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid opacity-3">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] React - A JavaScript library for building user interfaces">
+                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/react.jpg" class="img-fluid opacity-3">
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section" id="experience">
-                <div class="container cc-experience">
-                    <div class="h4 text-center mb-4 title">Work Experience</div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-experience-header">
-                                    <p>March 2016 - Present</p>
-                                    <div class="h5">CreativeM</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Front End Developer</div>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-danger" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-experience-header">
-                                    <p>April 2014 - March 2016</p>
-                                    <div class="h5">WebNote</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Web Developer</div>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-info" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-experience-header">
-                                    <p>March 2016 - Mai 2016</p>
-                                    <div class="h5">Datacheck</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Data Analysis</div>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-warning" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-experience-header">
-                                    <p>April 2013 - February 2014</p>
-                                    <div class="h5">WEBM</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Intern</div>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section">
-                <div class="container cc-education">
-                    <div class="h4 text-center mb-4 title">Education</div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-education-header">
-                                    <p>2009 - 2013</p>
-                                    <div class="h5">Bachelor's Degree</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Bachelor of Computer Science</div>
-                                    <p class="category">University of Computer Science</p>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body cc-education-header">
-                                    <p>2007 - 2009</p>
-                                    <div class="h5">High School</div>
-                                </div>
-                            </div>
-                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                <div class="card-body">
-                                    <div class="h5">Science and Mathematics</div>
-                                    <p class="category">School of Secondary board</p>
-                                    <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section" id="reference">
-                <div class="container cc-reference">
-                    <div class="h4 mb-4 text-center title">References</div>
-                    <div class="card" data-aos="zoom-in">
-                        <div class="carousel slide" id="cc-Indicators" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li class="active" data-target="#cc-Indicators" data-slide-to="0"></li>
-                                <li data-target="#cc-Indicators" data-slide-to="1"></li>
-                                <li data-target="#cc-Indicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-3 cc-reference-header"><img src="/assets/images/reference-image-1.jpg" alt="Image"/>
-                                            <div class="h5 pt-2">Aiyana</div>
-                                            <p class="category">CEO / WEBM</p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-9">
-                                            <p> Habitasse venenatis commodo tempor eleifend arcu sociis sollicitudin ante pulvinar ad, est porta cras erat ullamcorper volutpat metus duis platea convallis, tortor primis ac quisque etiam luctus nisl nullam fames. Ligula purus suscipit tempus nascetur curabitur donec nam ullamcorper, laoreet nullam mauris dui aptent facilisis neque elementum ac, risus semper felis parturient fringilla rhoncus eleifend.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-3 cc-reference-header"><img src="/assets/images/reference-image-2.jpg" alt="Image"/>
-                                            <div class="h5 pt-2">Braiden</div>
-                                            <p class="category">CEO / Creativem</p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-9">
-                                            <p> Habitasse venenatis commodo tempor eleifend arcu sociis sollicitudin ante pulvinar ad, est porta cras erat ullamcorper volutpat metus duis platea convallis, tortor primis ac quisque etiam luctus nisl nullam fames. Ligula purus suscipit tempus nascetur curabitur donec nam ullamcorper, laoreet nullam mauris dui aptent facilisis neque elementum ac, risus semper felis parturient fringilla rhoncus eleifend.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-3 cc-reference-header"><img src="/assets/images/reference-image-3.jpg" alt="Image"/>
-                                            <div class="h5 pt-2">Alexander</div>
-                                            <p class="category">CEO / Webnote</p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-9">
-                                            <p> Habitasse venenatis commodo tempor eleifend arcu sociis sollicitudin ante pulvinar ad, est porta cras erat ullamcorper volutpat metus duis platea convallis, tortor primis ac quisque etiam luctus nisl nullam fames. Ligula purus suscipit tempus nascetur curabitur donec nam ullamcorper, laoreet nullam mauris dui aptent facilisis neque elementum ac, risus semper felis parturient fringilla rhoncus eleifend.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section" id="contact">
-                <div class="cc-contact-information" style="background-image: url('/assets/images/staticmap.png');">
-                    <div class="container">
-                        <div class="cc-contact">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <div class="card mb-0" data-aos="zoom-in">
-                                        <div class="h4 text-center title">Contact Me</div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="card-body">
-                                                    <form action="#" method="POST">
-                                                        <div class="p pb-3"><strong>Feel free to contact me </strong></div>
-                                                        <div class="row mb-3">
-                                                            <div class="col">
-                                                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                                                    <input class="form-control" type="text" name="name" placeholder="Name" required="required"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col">
-                                                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-text"></i></span>
-                                                                    <input class="form-control" type="text" name="Subject" placeholder="Subject" required="required"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col">
-                                                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                                    <input class="form-control" type="email" name="_replyto" placeholder="E-mail" required="required"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control" name="message" placeholder="Your Message" required="required"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <button class="btn btn-primary" type="submit">Send</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="card-body">
-                                                    <p class="mb-0"><strong>Address </strong></p>
-                                                    <p class="pb-2">140, City Center, New York, U.S.A</p>
-                                                    <p class="mb-0"><strong>Phone</strong></p>
-                                                    <p class="pb-2">+39 3881155086</p>
-                                                    <p class="mb-0"><strong>Email</strong></p>
-                                                    <p>patrick.noubissi@yahoo.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div></div>
-    </div>
-    @include('cookieConsent::index')
-    <footer class="footer">
-        <div class="container text-center"><a class="cc-facebook btn btn-link" href="#"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a><a class="cc-twitter btn btn-link " href="#"><i class="fa fa-twitter fa-2x " aria-hidden="true"></i></a><a class="cc-google-plus btn btn-link" href="#"><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a><a class="cc-instagram btn btn-link" href="#"><i class="fa fa-instagram fa-2x " aria-hidden="true"></i></a></div>
-        <div class="h4 title text-center">Patrick Noubissi</div>
-        <div class="copyright pull-left">
-            <h6 style="font-size=0.9em;">&copy; 2018 -
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>. Realized by <a href="/">{!! config('app.author') !!}</a></h6>
-        </div>
-    </footer>
+        </section>
+    </main>
+@endsection
 
-<script src="/assets/js/core/jquery.3.2.1.min.js"></script>
-<script src="/assets/js/core/popper.min.js"></script>
-<script src="/assets/js/core/bootstrap.min.js"></script>
-<script src="/assets/js/now-ui-kit.js?v=1.1.0"></script>
-<script src="/assets/js/aos.js"></script>
-<script src="/assets/scripts/main.js"></script>
- </body>
-</html>
+@section('script')
+
+@endsection
