@@ -17,6 +17,16 @@ class policyprivacy extends Model implements Auditable
 
     protected $fillable = ['body','user_id','status','slug'];
 
+    /**
+     * @return array
+     */
+    public function generateTags(): array
+    {
+        return [
+            $this->user->name,
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

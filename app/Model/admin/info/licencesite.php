@@ -15,6 +15,15 @@ class licencesite extends Model implements Auditable
 
     protected $fillable = ['body','status','slug'];
 
+    /**
+     * @return array
+     */
+    public function generateTags(): array
+    {
+        return [
+            $this->user->name,
+        ];
+    }
 
     protected static function boot()
     {
