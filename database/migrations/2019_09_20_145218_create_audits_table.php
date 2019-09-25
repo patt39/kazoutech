@@ -17,15 +17,13 @@ class CreateAuditsTable extends Migration
             $table->bigIncrements('id');
             $table->nullableMorphs('owner');
 
+            $table->uuid('user_id')->nullable();
             $table->string('user_type')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->index(['user_id', 'user_type']);
 
             $table->string('event');
 
             $table->uuid('auditable_id');
             $table->string('auditable_type');
-            $table->index(['auditable_id', 'auditable_type']);
 
             $table->json('old_values')->nullable();
             $table->json('new_values')->nullable();
@@ -35,6 +33,10 @@ class CreateAuditsTable extends Migration
             $table->text('user_agent')->nullable();
             $table->text('tags')->nullable();
             $table->timestamps();
+
+
+            $table->index(['user_id', 'user_type']);
+            $table->index(['auditable_id', 'auditable_type']);
         });
     }
 

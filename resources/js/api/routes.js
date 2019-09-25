@@ -120,6 +120,7 @@ export const routes = [
     //Route diplomas
     {path: '/dashboard/diplomas/', name: 'diplomas.index', component: DiplomaIndex},
 
+
     //Route categories FAQS
     {path: '/dashboard/category-faqs/', name: 'categoryfaqs.index', component: CategoryFaqIndex},
     //Route permissions
