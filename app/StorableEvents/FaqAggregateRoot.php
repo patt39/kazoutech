@@ -6,7 +6,7 @@ namespace App\StorableEvents;
 use App\Events\Faq\FaqCreatedEvent;
 use App\Events\Faq\FaqDeletedEvent;
 use App\Events\Faq\FaqUpdatedEvent;
-use Spatie\EventProjector\AggregateRoot;
+use Spatie\EventSourcing\AggregateRoot;
 
 final class FaqAggregateRoot extends AggregateRoot
 {

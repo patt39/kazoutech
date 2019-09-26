@@ -3,7 +3,7 @@
 namespace App\Events\Faq;
 
 
-use Spatie\EventProjector\ShouldBeStored;
+use Spatie\EventSourcing\ShouldBeStored;
 
 final class FaqUpdatedEvent implements ShouldBeStored
 {

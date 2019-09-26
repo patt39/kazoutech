@@ -155,6 +155,7 @@
             createItem() {
                 //Start Progress bar
                 this.$Progress.start();
+                this.form.busy = true;
                 // Submit the form via a POST request
                 this.form.post("/dashboard/faqs")
                     .then(() => {

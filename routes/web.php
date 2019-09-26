@@ -55,7 +55,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/api/activities', 'ActivitylogController@api');
 
          // Admin Route links
-         Route::get('/dashboard/links', 'LinkController@index')->name('links.index');
          Route::get('/dashboard/api/links', 'LinkController@api');
 
         // Admin Route categories

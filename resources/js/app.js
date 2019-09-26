@@ -15,6 +15,13 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 /**
+ * VeeValidate
+ */
+import { ValidationProvider, extend } from 'vee-validate';
+Vue.component('ValidationProvider', ValidationProvider);
+
+
+/**
  * Vue-select
  */
 import vSelect from 'vue-select'

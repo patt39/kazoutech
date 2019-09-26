@@ -7,8 +7,8 @@ use App\Events\Faq\FaqCreatedEvent;
 use App\Events\Faq\FaqDeletedEvent;
 use App\Events\Faq\FaqUpdatedEvent;
 use App\Model\admin\faq;
-use Spatie\EventProjector\Projectors\Projector;
-use Spatie\EventProjector\Projectors\ProjectsEvents;
+use Spatie\EventSourcing\Projectors\Projector;
+use Spatie\EventSourcing\Projectors\ProjectsEvents;
 
 final class FaqProjector implements Projector
 {

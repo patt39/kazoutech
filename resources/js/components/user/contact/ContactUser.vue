@@ -57,10 +57,12 @@
                                     </div>
                                     <div class="form-group row mb-0">
                                         <div class="col-md-6 offset-md-4">
-                                            <button :disabled="form.busy" type="submit" class="btn btn-primary">
+                                            <button @click="executeRecaptcha" :disabled="form.busy" type="submit" class="btn btn-primary">
                                                 Register
                                             </button>
                                         </div>
+                                        <!-- listen to verify event emited by the recaptcha component -->
+                                        <recaptcha ref="recaptcha" @verify="submit"></recaptcha>
                                     </div>
                                 </form>
                             </div>
@@ -73,9 +75,9 @@
 </template>
 
 <script>
-//import VueRecaptcha from "vue-recaptcha";
+import Recaptcha from '../../inc/vendor/recaptcha'
 export default {
-    //components: { VueRecaptcha },
+    components: { Recaptcha },
     data() {
         return {
             form: new Form({
@@ -90,9 +92,16 @@ export default {
     },
 
     methods: {
+        // send your recaptcha token to the server to verify it
+        submit (response) {
+            console.log(response)
+        },
+        // execute the recaptcha widget
+        executeRecaptcha () {
+            this.$refs.recaptcha.execute()
+        },
         createItem() {
             //Progress bar star
-
             this.$Progress.start();
 
             this.form.post('/contact-cm/save').then(() => {

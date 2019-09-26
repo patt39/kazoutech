@@ -19,7 +19,7 @@ class LinkController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 
     /**
      * Display a listing of the resource.
@@ -30,7 +30,7 @@ class LinkController extends Controller
     {
         return view('admin.partial.link.index');
     }
-     
+
     public function api()
     {
         return LinkResource::collection(Link::with('user')->latest()->get());
@@ -50,10 +50,15 @@ class LinkController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return LinkResource|\Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'link'=>'required',
+            'name'=>'required',
+        ]);
+
         $link = new Link;
         $link->link  =  $request->link;
         $link->slug  =  $request->slug;

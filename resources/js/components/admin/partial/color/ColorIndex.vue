@@ -153,7 +153,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                    <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : storeItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
                                                             <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" >
@@ -261,6 +261,46 @@
                 //Progres bar
                 this.$Progress.finish()
             },
+            storeItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/colors")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -360,46 +400,6 @@
                         })
                     }
                 })
-            },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/colors")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
             },
             /** Ici c'est l'activation de la couleur  **/
             activeItem(id) {

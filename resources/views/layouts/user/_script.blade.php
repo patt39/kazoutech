@@ -32,6 +32,8 @@
 <script src="/assets/dashboard/assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="{{ mix('/js/app.js') }}"></script>
 <script type="text/javascript">
     $(function () {

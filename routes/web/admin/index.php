@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
     require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'tasks.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'notes.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'diplomas.php');
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'links.php');
 
 
     /** C'est route son dans la cartella page */

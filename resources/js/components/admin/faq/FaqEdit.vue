@@ -159,6 +159,7 @@
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
+                this.form.busy = true;
 
                 this.form.put('/dashboard/faqs/' + this.form.id)
                     .then(() => {
