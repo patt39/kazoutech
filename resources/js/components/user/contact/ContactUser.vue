@@ -57,12 +57,23 @@
                                     </div>
                                     <div class="form-group row mb-0">
                                         <div class="col-md-6 offset-md-4">
-                                            <button @click="executeRecaptcha" :disabled="form.busy" type="submit" class="btn btn-primary">
+                                            <button :disabled="form.busy" type="submit" class="btn btn-primary">
                                                 Register
                                             </button>
                                         </div>
-                                        <!-- listen to verify event emited by the recaptcha component -->
-                                        <recaptcha ref="recaptcha" @verify="submit"></recaptcha>
+                                        <div class="form-group">
+                                            <vue-recaptcha
+                                                ref="recaptcha"
+                                                @verify="onVerify"
+                                                sitekey="6Lf_oboUAAAAADoIGJb7c_JQ6oONZlMuov2Fi0k_"></vue-recaptcha>
+                                        </div>
+                                        <has-error :form="form" field="recaptcha"></has-error>
+                                        <ul class="alert alert-danger" v-if="errors.length != 0">
+                                            <li v-for="error in errors">
+                                                {{ error[0] }}
+                                            </li>
+                                        </ul>
+
                                     </div>
                                 </form>
                             </div>
@@ -75,36 +86,36 @@
 </template>
 
 <script>
-import Recaptcha from '../../inc/vendor/recaptcha'
+
+ import VueRecaptcha from 'vue-recaptcha'
 export default {
-    components: { Recaptcha },
+    components: { VueRecaptcha },
     data() {
         return {
+            errors: [],
             form: new Form({
                 first_name: "",
                 last_name: "",
                 email: "",
                 phone: "",
                 subject: "",
-                message: ""
+                message: "",
+                recaptcha: '',
             })
         };
     },
 
     methods: {
-        // send your recaptcha token to the server to verify it
-        submit (response) {
-            console.log(response)
-        },
-        // execute the recaptcha widget
-        executeRecaptcha () {
-            this.$refs.recaptcha.execute()
+        onVerify(response) {
+            this.form.recaptcha = response;
         },
         createItem() {
             //Progress bar star
             this.$Progress.start();
 
             this.form.post('/contact-cm/save').then(() => {
+                this.errors = [];
+                this.$refs.recaptcha.reset();
                     /* debut de l'alert **/
                     var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                         allow_dismiss: false,
@@ -131,6 +142,10 @@ export default {
                     this.form.reset();
                 })
                 .catch(error => {
+                    if(error)
+                    {
+                        this.errors = error.response.data.errors;
+                    }
                     this.$Progress.fail();
                     //console.log(data)
                 });

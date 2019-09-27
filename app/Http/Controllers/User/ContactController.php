@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Resources\User\ContactResource;
 use App\Model\admin\contact;
+use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -80,7 +81,7 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Recaptcha $recaptcha)
     {
         //dd(\request()->all());
         $this->validate($request,[
@@ -89,6 +90,7 @@ class ContactController extends Controller
             'email'   => 'required|email:rfc,dns',
             'subject' => 'required|min:2|max:210',
             'message'     => 'required|min:2|max:50000',
+            'recaptcha' => ['required', $recaptcha],
         ]);
         $contact = new Contact;
 

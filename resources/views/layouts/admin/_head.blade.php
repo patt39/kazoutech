@@ -5,6 +5,7 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 @auth
     <meta name="userID" content="{{ auth()->user()->id }}">
 @endauth
