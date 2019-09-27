@@ -65,7 +65,7 @@
                                             <vue-recaptcha
                                                 ref="recaptcha"
                                                 @verify="onVerify"
-                                                sitekey="6Lf_oboUAAAAADoIGJb7c_JQ6oONZlMuov2Fi0k_"></vue-recaptcha>
+                                                sitekey="6Lc5kroUAAAAACixvuqpSKI9hzo6g1He4obDGHkw"></vue-recaptcha>
                                         </div>
                                         <has-error :form="form" field="recaptcha"></has-error>
                                         <ul class="alert alert-danger" v-if="errors.length != 0">
