@@ -115,8 +115,9 @@ export const routes = [
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
 
     //Route cities
-    {path: '/dashboard/cities/', name: 'cities.index', component: CityIndex},
-    {path: '/dashboard/cities/actives/', name: 'cities.actives', component: CityActives},
+    {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},
+    {path: '/dashboard/cities/actives/', name: 'cities.index', component: CityIndex},
+
     //Route diplomas
     {path: '/dashboard/diplomas/', name: 'diplomas.index', component: DiplomaIndex},
 

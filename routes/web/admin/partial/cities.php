@@ -42,12 +42,7 @@ Route::group(['namespace' => 'Partial'], function(){
     )->name('cities.actives');
 
     Route::get(
-        '/dashboard/active_cities/{id}',
-        'CityController@active'
-    )->name('active_cities');
-
-    Route::get(
-        '/dashboard/disable_cities/{id}',
-        'CityController@disable'
-    )->name('disable_cities');
+        '/dashboard/change_status_cities/{city}',
+        'CityController@status'
+    )->name('status_cities');
 });

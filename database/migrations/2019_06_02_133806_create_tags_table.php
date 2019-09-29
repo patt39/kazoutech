@@ -18,7 +18,7 @@ class CreateTagsTable extends Migration
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->string('ip')->nullable()->default('127.0.0.1');
-            $table->integer('status')->nullable()->default('0');
+            $table->boolean('status_task')->default(false)->nullable();
             $table->timestamps();
 
             $table->unsignedInteger('user_id')->nullable()->index();

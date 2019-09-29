@@ -171,7 +171,7 @@
                                 </li>
                                 <!-- Cites -->
                                 <li class="nav-item">
-                                    <router-link  :to="{ name: 'cities.index' }"  replace class="nav-link">
+                                    <router-link  :to="{ name: 'cities.actives' }"  replace class="nav-link">
                                         <span class="sidebar-mini"><b>CI</b></span>
                                         <span class="sidebar-normal"><b>Cities</b></span>
                                     </router-link>

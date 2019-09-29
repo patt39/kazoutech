@@ -23,7 +23,7 @@ class CreateAboutsTable extends Migration
             $table->string('photo')->nullable();
             $table->text('description')->nullable();
             $table->string('slug')->nullable();
-            $table->integer('status')->default('0')->nullable();
+            $table->boolean('status')->default(false)->nullable();
             $table->string('ip')->nullable();
             $table->timestamps();
 

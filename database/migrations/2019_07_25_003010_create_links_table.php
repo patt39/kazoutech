@@ -17,7 +17,7 @@ class CreateLinksTable extends Migration
             $table->bigIncrements('id');
             $table->string('link')->nullable();
             $table->string('name')->nullable();
-            $table->integer('status')->nullable()->default('0');
+            $table->boolean('status')->default(false)->nullable();
             $table->string('slug')->nullable();
             $table->string('ip')->nullable();
             $table->unsignedInteger('user_id')->nullable()->index();

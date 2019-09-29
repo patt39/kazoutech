@@ -118,14 +118,13 @@
                                                 </td>
                                                 <td><b v-html="item.technician_count"></b></td>
                                                 <td class="td-actions text-right">
-                                                    <template v-if="$auth.can('edit-administrator')">
-                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                    </template>
+                                                    <button v-if="$auth.can('edit-administrator')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                        <label>
+                                                            <input type="checkbox" name="status" v-model="item.status"
+                                                                   @change="changeStatus(item)"/>
+                                                            <span class="toggle"></span>
+                                                        </label>
+                                                    </button>
                                                     <button @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
@@ -282,7 +281,7 @@
                         //End Progress bar
                         this.$Progress.finish();
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('ItemGetter');
                     })
                     .catch(() => {
                         //Failled message
@@ -318,7 +317,7 @@
                 this.form.post("/dashboard/cities")
                     .then(() => {
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('ItemGetter');
 
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -385,7 +384,7 @@
 
                             //End Progress bar
                             this.$Progress.finish();
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
 
                         }).catch(() => {
                             this.$Progress.fail();
@@ -401,56 +400,32 @@
                     }
                 })
             },
-
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
-                //Progress bar star
-                this.$Progress.start();
-                axios.get('/dashboard/active_cities/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>City activated successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert ***/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
-            /** Ici c'est la désactivation de la couleur **/
-            disableItem(id) {
+            changeStatus(item){
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get('/dashboard/disable_cities/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                axios.get(`/dashboard/change_status_cities/${item.id}`, {
+                    status: item.status,
+                }).then(res => {
+
+                    $.notify('<strong>City update Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>City desactivated successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    /** End alert **/
 
-                    //End Progres bar
+                    Fire.$emit('ItemGetter');
+                    //End Progress bar
                     this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
                 }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
                     //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
                         type: 'danger',
@@ -485,8 +460,8 @@
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
-                this.loadItems();
+            Fire.$on('ItemGetter', () => {
+                this.loadItems()
             });
             this.intervalFetchData();
         },

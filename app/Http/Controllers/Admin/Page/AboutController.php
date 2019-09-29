@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,25 +102,17 @@ class AboutController extends Controller
         return response('Created', Response::HTTP_CREATED);
     }
 
-
-    public function disable(about $about, $id)
+    /**
+     * @param about $about
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status(about $about)
     {
-        $about = about::where('id', $id)->findOrFail($id);
-        $about->update([
-            'status' => 0,
-        ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        $about->update(['status' => !$about->status]);
+
+        return response()->json($about);
     }
 
-
-    public function active(about $about, $id)
-    {
-        $about = about::where('id', $id)->findOrFail($id);
-        $about->update([
-            'status' => 1,
-        ]);
-        return response('Activated',Response::HTTP_ACCEPTED);
-    }
 
     /**
      * Display the specified resource.

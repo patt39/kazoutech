@@ -21,7 +21,7 @@ class CreateTechniciansTable extends Migration
             $table->string('slug')->nullable();
             $table->string('speciality')->nullable();
             $table->integer('year')->nullable();
-            $table->integer('status')->nullable()->default('1');
+            $table->boolean('status')->default(false)->nullable();
 
             $table->unsignedBigInteger('member_id')->nullable();
             $table->unsignedBigInteger('diploma_id')->nullable();

@@ -52,7 +52,8 @@
                                 <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                        <button @click="reload"
+                                                class="btn btn-success btn-raised btn-round button_note btn-sm"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
@@ -60,7 +61,8 @@
                                     </div>
                                     <div v-if="$auth.can('create-about')" class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'abouts.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
+                                            <router-link :to="{ name: 'abouts.create' }" id="button_hover"
+                                                         class="btn btn-success btn-raised btn-round ">
                                                <span class="btn-label">
                                                    <i class="material-icons">person_outline</i>
                                                </span>
@@ -93,48 +95,58 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in abouts" :key="item.id">
-                                                <td><img :src="item.photo" style="width: 50px; height: 50px;  top: 15px; left: 15px; border-radius: 50%" ></td>
-                                                <td>{{ (item.last_name.length > 15 ? item.last_name.substring(0,15)+ "..." : item.last_name) | upText }}</td>
+                                                <td><img :src="item.photo"
+                                                         style="width: 50px; height: 50px;  top: 15px; left: 15px; border-radius: 50%">
+                                                </td>
+                                                <td>{{ (item.last_name.length > 15 ? item.last_name.substring(0,15)+
+                                                    "..." : item.last_name) | upText }}
+                                                </td>
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="item.status === 0" class="badge badge-danger"><b>Deactive</b></span>
+                                                        <span v-else-if="item.status === 0"
+                                                              class="badge badge-danger"><b>Deactive</b></span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                        <button v-if="item.statusOnline" type="button"
+                                                                class="btn btn-success btn-round btn-just-icon btn-sm"
+                                                                title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button"
+                                                                class="btn btn-danger btn-round btn-just-icon btn-sm"
+                                                                title="Administrator Offline"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+
+                                                        "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
                                                 <td><b>{{ item.updated_at | myDate }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <!--<template v-if="$auth.can('publish-about')">
-                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                    </template>-->
-                                                    <a href="javascript:void(0)" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                    <button type="button" class="togglebutton btn btn-link btn-sm btn-sm">
                                                         <label>
-                                                            <input type="checkbox" checked="">
+                                                            <input type="checkbox" name="status" v-model="item.status"
+                                                                   @change="changeStatus(item)"/>
                                                             <span class="toggle"></span>
                                                         </label>
-                                                    </a>
-                                                    <button @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                    </button>
+                                                    <button @click="viewItem(item)"
+                                                            class="btn btn-link btn-warning btn-round btn-just-icon"
+                                                            title="View">
                                                         <span class="btn-label">
                                                             <i class="material-icons">visibility</i>
                                                         </span>
                                                     </button>
-                                                    <router-link  v-if="$auth.can('edit-about')" :to="{ path: `/dashboard/abouts/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <router-link v-if="$auth.can('edit-about')"
+                                                                 :to="{ path: `/dashboard/abouts/${item.id}/edit` }"
+                                                                 class="btn btn-link  btn-success btn-round btn-just-icon"
+                                                                 title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
 
-                                                    <button v-if="$auth.can('delete-about')" @click="deleteItem(item.id)"
-                                                            class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                    <button v-if="$auth.can('delete-about')"
+                                                            @click="deleteItem(item.id)"
+                                                            class="btn btn-link btn-danger btn-round btn-just-icon"
+                                                            title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
                                                 </td>
@@ -144,23 +156,28 @@
                                     </div>
 
                                     <!-- Modal show member -->
-                                    <div class="modal fade" id="viewNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
+                                    <div class="modal fade" id="viewNew" tabindex="-1" role="dialog"
+                                         aria-labelledby="addNewLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
                                                         <span aria-hidden="true"></span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col-md-10 ml-auto mr-auto">
-                                                            <div style="padding-top: -100px;" class="profile text-center ">
+                                                            <div style="padding-top: -100px;"
+                                                                 class="profile text-center ">
                                                                 <div class="avatar">
                                                                     <div class="fileinput fileinput-new text-center"
                                                                          data-provides="fileinput">
-                                                                        <div class="fileinput-new thumbnail img-circle img-raised">
-                                                                            <img :src="form.photo" :alt="form.first_name">
+                                                                        <div
+                                                                            class="fileinput-new thumbnail img-circle img-raised">
+                                                                            <img :src="about.photo"
+                                                                                 :alt="about.first_name">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -171,17 +188,18 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.last_name" type="text" name="last_name"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="Full Name..." disabled>
-                                                                <has-error :form="form" field="last_name"></has-error>
+                                                                <input v-model="about.last_name" type="text"
+                                                                       name="last_name"
+                                                                       class="form-control" placeholder="Full Name..."
+                                                                       disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.first_name" type="text" name="First Name"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="Role..." disabled>
-                                                                <has-error :form="form" field="first_name"></has-error>
+                                                                <input v-model="about.first_name" type="text"
+                                                                       class="form-control" name="First Name"
+                                                                       placeholder="Role..." disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -189,17 +207,18 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.fblink" type="text" name="fblink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('fblink') }" placeholder="Facebook Username" disabled>
-                                                                <has-error :form="form" field="fblink"></has-error>
+                                                                <input v-model="about.fblink" type="text" name="fblink"
+                                                                       class="form-control"
+                                                                       placeholder="Facebook Username" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.instlink" type="text" name="instlink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('instlink') }" placeholder="Instagram Username" disabled>
-                                                                <has-error :form="form" field="instlink"></has-error>
+                                                                <input v-model="about.instlink" type="text"
+                                                                       name="instlink"
+                                                                       class="form-control"
+                                                                       placeholder="Instagram Username" disabled>
                                                             </div>
                                                         </div>
                                                         <!--<div class="col-md-3">
@@ -220,12 +239,13 @@
                                                         </div>-->
                                                     </div>
                                                     <div class="form-group text-justify">
-                                                        <p v-html="form.description"></p>
+                                                        <p v-html="about.description"></p>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="text-center">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">
                                                 <span class="btn-label">
                                                     <i class="material-icons">clear</i>
                                                     <b>Close</b>
@@ -254,6 +274,9 @@
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
 
     export default {
+        props: {
+            checked: Boolean
+        },
         components: {
             LoaderLdsDefault,
             StatusAdmin,
@@ -262,39 +285,27 @@
             return {
                 loaded: false,
                 editmode: false,
-                abouts:{},
+                abouts: {},
                 user: {},
-                form: new Form({
-                    id: '',
-                    role: '',
-                    ip: '',
-                    description: '',
-                    fblink: '',
-                    first_name: '',
-                    last_name: '',
-                    photo: '',
-                    twlink: '',
-                    instlink: '',
-                    user_id: '',
-                    status: '',
-                    slug: ''
-                }),
+                about: {
+                    'user': ''
+                },
             }
         },
         methods: {
-            mydatatables(){
-                $( function () {
+            mydatatables() {
+                $(function () {
                     $('#datatables').DataTable({
                         "pagingType": "full_numbers",
                         "lengthMenu": [
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
+                        order: [[0, 'desc'], [3, 'asc']],
                         responsive: true,
                         stateSave: true,
                         destroy: true,
-                        retrieve:true,
+                        retrieve: true,
                         autoFill: true,
                         colReorder: true,
                         language: {
@@ -306,13 +317,13 @@
                     });
                 });
             },
-            getColorCardUser(){
+            getColorCardUser() {
                 return 'card-header card-header-icon card-header-' + this.user.color_name;
-			},
-            getColorHeaderUser(){
+            },
+            getColorHeaderUser() {
                 return 'card-header card-header-' + this.user.color_name;
-			},
-            getUser(item){
+            },
+            getUser(item) {
                 //Progress bar star
                 this.$Progress.start();
                 location.replace(`/dashboard/users/p/${item.user.username}/`);
@@ -323,7 +334,7 @@
                 //Masquer le modal après la création
                 $('#viewNew').modal('show');
                 //On passe les information
-                this.form.fill(item);
+                this.about = item;
             },
             deleteItem(id) {
                 //Alert delete
@@ -345,26 +356,30 @@
                         //Start Progress bar
                         this.$Progress.start();
                         //Envoyer la requete au server
-                        this.form.delete("/dashboard/abouts/" + id).then(() => {
+                        axios.delete("/dashboard/abouts/" + id).then(() => {
 
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
+                                allow_dismiss: false,
+                                showProgressbar: true,
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
                                 },
                             });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Member deleted Successfully.</strong>', 'progress': 75});
+                            setTimeout(function () {
+                                notify.update({
+                                    'type': 'success',
+                                    'message': '<strong>Member deleted Successfully.</strong>',
+                                    'progress': 75
+                                });
                             }, 2000);
                             /** End alert ***/
 
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -380,65 +395,31 @@
                     }
                 })
             },
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
+
+            /** Ici c'est l'activation de la data  **/
+            changeStatus(item){
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get('/dashboard/active_abouts/' + id).then(() => {
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true,
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                },
-                            });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Member activated Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                    /** End alert ***/
+                axios.get(`/dashboard/change_status_abouts/${item.id}`, {
+                    status: item.status,
+                }).then(res => {
 
-                    //End Progress bar
-                    this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
+                    $.notify('<strong>Member update Successfully.</strong>', {
+                        allow_dismiss: false,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
                         animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                })
-            },
-            /** Ici c'est la desactivation de la couleur **/
-            disableItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-                this.form.get('/dashboard/disable_abouts/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Member desactivated Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                    /** End alert ***/
 
+                    Fire.$emit('ItemGetter');
                     //End Progress bar
                     this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -453,25 +434,28 @@
                 })
             },
             loadItems() {
+                let vm = this;
                 //Start Progress bar
-                this.$Progress.start();
+                vm.$Progress.start();
                 axios.get("/api/abouts").then(response => {
-                    this.loaded = true;
-                    this.abouts = response.data.data;
-                    this.mydatatables();
+                    vm.loaded = true;
+                    vm.abouts = response.data.data;
+                    vm.mydatatables();
                     //End Progress bar
-                    this.$Progress.finish();
+                    vm.$Progress.finish();
                 });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {
+                    vm.user = response.data.data
+                });
 
             },
-            reload(){
+            reload() {
                 this.loadItems()
             },
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
         }

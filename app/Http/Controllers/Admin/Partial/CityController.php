@@ -99,25 +99,16 @@ class CityController extends Controller
     }
 
 
-   public function disable(city $city, $id)
-   {
-       $city = city::where('id', $id)->findOrFail($id);
-       $city->update([
-           'status' => 0,
-       ]);
-       return response('Deactivated',Response::HTTP_ACCEPTED);
-   }
-
-
-    public function active(city $city, $id)
+    /**
+     * @param city $city
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status(city $city)
     {
-        $city = city::where('id', $id)->findOrFail($id);
-        $city->update([
-            'status' => 1,
-        ]);
-        return response('Activated',Response::HTTP_ACCEPTED);
-    }
+        $city->update(['status' => !$city->status]);
 
+        return response('Update',Response::HTTP_CREATED);
+    }
 
 
     /**

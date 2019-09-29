@@ -17,7 +17,7 @@ class CreateConditionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug')->nullable();
             $table->string('title')->nullable();
-            $table->integer('status')->default('0');
+            $table->boolean('status')->default(false)->nullable();
             $table->longText('body');
             $table->string('photo')->nullable()->default('https://www.kazoucoin.com/assets/img/photo.jpg');
             $table->integer('admin_id')->unsigned()->nullable();

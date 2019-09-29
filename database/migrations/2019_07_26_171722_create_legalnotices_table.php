@@ -17,7 +17,7 @@ class CreateLegalnoticesTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug')->nullable();
             $table->longtext('body')->nullable();
-            $table->integer('status')->default('0');
+            $table->boolean('status')->default(false)->nullable();
             $table->string('ip')->default('127.0.0.1');
             $table->timestamps();
             $table->unsignedInteger('user_id')->nullable()->index();

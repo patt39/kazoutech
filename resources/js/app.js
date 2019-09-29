@@ -65,7 +65,7 @@ import {VueEditor, Quill} from "vue2-editor";
 Vue.component('VueEditor', VueEditor);
 Vue.component('Quill', Quill);
 
-import {routes} from './api/routes';
+import {routes} from './routes/routes';
 
 const router = new VueRouter({
     routes,

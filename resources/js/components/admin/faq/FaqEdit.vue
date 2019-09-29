@@ -107,7 +107,7 @@
     </div>
 </template>
 <script>
-    import api from '../../../api/admin/faq';
+    import api from '../../../routes/admin/faq';
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderEllipsis from "../../inc/animation/LoaderEllipsis";
     export default {
