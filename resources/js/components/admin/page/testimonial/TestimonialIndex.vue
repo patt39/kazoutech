@@ -118,19 +118,13 @@
                                                     </div>
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <template v-if="$auth.can('publish-testimonial')">
-                                                        <button v-if="item.status === 1" @click="disableItem(item.id)"
-                                                                class="btn btn-link btn-info btn-round btn-just-icon "
-                                                                title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                        <button v-else-if="item.status === 0"
-                                                                @click="activeItem(item.id)"
-                                                                class="btn btn-link btn-danger btn-round btn-just-icon "
-                                                                title="Activate">
-                                                            <i class="material-icons">power_settings_new</i>
-                                                        </button>
-                                                    </template>
+                                                    <button type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                        <label>
+                                                            <input type="checkbox" name="status" v-model="item.status"
+                                                                   @change="changeStatus(item)"/>
+                                                            <span class="toggle"></span>
+                                                        </label>
+                                                    </button>
                                                     <router-link
                                                         :to="{ path: `/dashboard/testimonials/tm/${item.slug}` }"
                                                         class="btn btn-link btn-warning btn-round btn-just-icon"
@@ -259,7 +253,7 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -275,70 +269,34 @@
                     }
                 })
             },
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
+            /** Ici c'est l'activation de la data  **/
+            changeStatus(item){
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get('/dashboard/active_testimonials/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                axios.get(`/dashboard/change_status_testimonials/${item.id}`, {
+                    status: item.status,
+                }).then(res => {
+
+                    $.notify('<strong>Testimonial update Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Testimonial activated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
-                    /** End alert **/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
                         animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                })
-            },
-            /** Ici c'est la désactivation de la couleur **/
-            disableItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
 
-                axios.get('/dashboard/disable_testimonials/' + id).then(() => {
-                    /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                    });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Testimonial desactivated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
-                    /** End alert **/
-
+                    Fire.$emit('ItemGetter');
                     //End Progress bar
                     this.$Progress.finish();
-
-                    Fire.$emit('AfterCreate');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    //Alert
+                    //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
@@ -369,7 +327,7 @@
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
         }

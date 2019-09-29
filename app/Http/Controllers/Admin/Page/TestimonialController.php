@@ -76,25 +76,16 @@ class TestimonialController extends Controller
         return response('Created', Response::HTTP_CREATED);
     }
 
-
-
-
-    public function disable(testimonial $testimonial,$id)
+    /**
+     * @param testimonial $testimonial
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status(testimonial $testimonial,$id)
     {
         $testimonial = testimonial::where('id', $id)->findOrFail($id);
-        $testimonial->update([
-            'status' => 0,
-        ]);
-        return response('deactivated', Response::HTTP_ACCEPTED);
-    }
+        $testimonial->update(['status' => !$testimonial->status]);
 
-    public function active(testimonial $testimonial,$id)
-    {
-        $testimonial = testimonial::where('id', $id)->findOrFail($id);
-        $testimonial->update([
-            'status' => 1,
-        ]);
-        return response('activated', Response::HTTP_ACCEPTED);
+        return response('Update', Response::HTTP_ACCEPTED);
     }
 
 
