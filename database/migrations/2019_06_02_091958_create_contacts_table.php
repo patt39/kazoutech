@@ -22,7 +22,7 @@ class CreateContactsTable extends Migration
             $table->string('slug')->nullable();
             $table->string('subject')->nullable();
             $table->longText('message')->nullable();
-            $table->boolean('status_task')->default(false)->nullable();
+            $table->boolean('status')->default(false)->nullable();
             $table->boolean('bookmark')->default(false);
             $table->timestamps();
 

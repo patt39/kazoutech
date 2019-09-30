@@ -117,7 +117,7 @@
                                                 <td class="td-actions text-right">
                                                     <template v-if="$auth.can('publish-color')">
                                                         <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
+                                                            <i class="material-icons">check_circle</i>
                                                         </button>
                                                         <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                             <i class="material-icons">power_settings_new</i>
@@ -407,13 +407,18 @@
                 this.$Progress.start();
                 axios.get('/dashboard/active_color/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Color activated successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Color activated successfully.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert ***/
 
                     //End Progress bar
@@ -436,13 +441,18 @@
                 this.$Progress.start();
                 axios.get('/dashboard/disable_color/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Color desactivated successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Color desactivated successfully.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert **/
 
                     //End Progres bar

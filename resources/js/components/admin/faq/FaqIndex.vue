@@ -118,7 +118,7 @@
                                                     <td class="td-actions text-right">
                                                         <template v-if="$auth.can('publish-faq')">
                                                             <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                                <i class="material-icons">power_settings_new</i>
+                                                                <i class="material-icons">check_circle</i>
                                                             </a>
                                                             <a href="javascript:void(0)"  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                                 <i class="material-icons">power_settings_new</i>
@@ -264,17 +264,18 @@
                 this.$Progress.start();
                 axios.get('/dashboard/active_faqs/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Faq activated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
                         animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
                         },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Faq activated Successfully.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert ***/
                     Fire.$emit('AfterCreate');
                     this.$Progress.finish();
@@ -297,17 +298,18 @@
                 this.$Progress.start();
                 axios.get('/dashboard/disable_faqs/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Faq desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
                         animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
                         },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Faq desactivated Successfully.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert ***/
 
                     //End Progress bar

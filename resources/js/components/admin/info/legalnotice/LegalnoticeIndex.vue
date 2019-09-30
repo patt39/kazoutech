@@ -109,7 +109,7 @@
                                                 <td class="td-actions text-right">
                                                     <template>
                                                         <button v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
+                                                            <i class="material-icons">check_circle</i>
                                                         </button>
                                                         <button v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
                                                             <i class="material-icons">power_settings_new</i>

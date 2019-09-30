@@ -123,7 +123,7 @@
                                                                     @click="disableItem(item.id)"
                                                                     class="btn btn-link btn-info btn-round btn-just-icon"
                                                                     title="Disable">
-                                                                <i class="material-icons">power_settings_new</i>
+                                                                <i class="material-icons">check_circle</i>
                                                             </button>
                                                             <button v-else-if="item.status === 0"
                                                                     @click="activeItem(item.id)"

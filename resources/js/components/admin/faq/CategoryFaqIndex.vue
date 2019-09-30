@@ -133,7 +133,7 @@
                                                            @click="disableItem(item.id)"
                                                            class="btn btn-link btn-info btn-round btn-just-icon "
                                                            title="Disable">
-                                                            <i class="material-icons">power_settings_new</i>
+                                                            <i class="material-icons">check_circle</i>
                                                         </a>
                                                         <a href="javascript:void(0)" v-else-if="item.status === 0"
                                                            @click="activeItem(item.id)"
@@ -478,18 +478,18 @@
                 this.$Progress.start();
                 this.form.get('/dashboard/active_category-faqs/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Category Faq activated successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Category Faq activated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
-
                     //End Progress bar
                     this.$Progress.finish();
 
@@ -513,17 +513,18 @@
                 this.$Progress.start();
                 this.form.get('/dashboard/disable_category-faqs/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Category Faq desactivated successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Category Faq desactivated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar

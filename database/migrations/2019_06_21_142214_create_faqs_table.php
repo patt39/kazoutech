@@ -17,7 +17,7 @@ class CreateFaqsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->boolean('status_task')->default(false)->nullable();
+            $table->boolean('status')->default(false)->nullable();
             $table->string('ip')->nullable();
             $table->longText('body')->nullable();
             $table->timestamps();

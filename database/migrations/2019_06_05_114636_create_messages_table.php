@@ -21,7 +21,7 @@ class CreateMessagesTable extends Migration
             $table->string('ip')->nullable();
             $table->longText('message')->nullable();
             $table->longText('reply_message')->nullable();
-            $table->boolean('status_task')->default(false)->nullable();
+            $table->boolean('status')->default(false)->nullable();
             $table->unsignedInteger('from_id')->nullable();
             $table->unsignedInteger('to_id')->nullable();
             $table->foreign('from_id','from')->references('id')->on('users')->onDelete('cascade');

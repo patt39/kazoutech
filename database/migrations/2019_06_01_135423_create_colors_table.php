@@ -18,7 +18,7 @@ class CreateColorsTable extends Migration
             $table->string('name')->nullable();
             $table->string('color_name')->nullable();
             $table->string('slug')->nullable();
-            $table->boolean('status_task')->default(false)->nullable();
+            $table->boolean('status')->default(false)->nullable();
             $table->string('ip')->nullable();
             $table->timestamps();
 
