@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apitrash']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -42,6 +42,14 @@ class UserController extends Controller
         return $users;
     }
 
+    public function apitrash()
+    {
+        $users =  UserResource::collection(User::onlyTrashed()
+            ->with('my_country')
+            ->where('my_status','0')
+            ->latest()->get());
+        return $users;
+    }
 
 
     public function search(Request $request)
@@ -150,5 +158,21 @@ class UserController extends Controller
         $user->delete();
 
         return ['message' => 'Deleted successfully '];
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return array
+     */
+    public function restore(Request $request,$id)
+    {
+        $user = User::onlyTrashed()->find($id);
+        if ($user->restore()){
+            return ['message' => 'Restore successfully '];
+        }else{
+            return ['message' => 'Oppp errore '];
+        }
+
     }
 }

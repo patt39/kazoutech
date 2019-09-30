@@ -109,7 +109,7 @@
                                                     <td><b>{{ item.updated_at | myDate }}</b></td>
                                                     <td class="td-actions text-right">
                                                         <a href="javascript:void(0)" @click="sendItem(item)" class="btn btn-link btn-info btn-round btn-just-icon" title="Send invitation">
-                                                            <i class="material-icons">near_me</i>
+                                                            <i class="material-icons">mail</i>
                                                         </a>
                                                         <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View administrator">
                                                             <i class="material-icons">visibility</i>
@@ -163,7 +163,7 @@
                                                                     </button>
                                                                     <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                         <span class="btn-label">
-                                                            <i class="material-icons">near_me</i>
+                                                            <i class="material-icons">mail</i>
                                                             <b>Yes, Send</b>
                                                         </span>
                                                                     </button>

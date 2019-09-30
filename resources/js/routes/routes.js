@@ -83,6 +83,7 @@ import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
 
 import ColorAuditing from "../components/admin/partial/color/ColorAuditing";
 import AuditIndex from "../components/admin/audit/AuditIndex";
+import UserTrah from "../components/admin/user/UserTrah";
 
 
 
@@ -154,6 +155,7 @@ export const routes = [
 
     //Route users
     {path: '/dashboard/users/', name: 'users.index', component: UserIndex},
+    {path: '/dashboard/users/t/trash/', name: 'users.trash', component: UserTrah},
     {path: '/dashboard/users/:id/edit/', name: 'users.edit', component: UserEdit},
     {path: '/dashboard/users/p/:username/', name: 'users.view', component: AdministratorShow},
 

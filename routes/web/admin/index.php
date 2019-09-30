@@ -10,6 +10,7 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
     /* Admin */
     require(__DIR__ . DIRECTORY_SEPARATOR . 'account.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'faqs.php');
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'users.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'occupations.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'permissions.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'roles.php');

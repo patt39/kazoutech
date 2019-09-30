@@ -271,11 +271,42 @@
                                     </router-link>
                                 </li>
                                 <!-- Users -->
-                                <li v-if="$auth.can('view-user')" class="nav-item">
-                                    <router-link  :to="{ name: 'users.index' }" class="nav-link">
-                                        <span class="sidebar-mini">US</span>
-                                        <span class="sidebar-normal"><b>Users</b></span>
-                                    </router-link>
+                                <li class="nav-item ">
+                                    <a class="nav-link" data-toggle="collapse" href="#aidesUsers">
+                                        <span class="sidebar-mini"><b>US</b></span>
+                                        <span class="sidebar-normal"><b>Users</b>
+                                          <b class="caret"></b>
+                                        </span>
+                                    </a>
+                                    <div v-if="$auth.can('view-user')" class="collapse" id="aidesUsers">
+                                        <ul class="nav">
+                                            <li class="nav-item ">
+                                                <a class="nav-link" data-toggle="collapse" href="#componentsUsers">
+                                                    <span class="sidebar-mini"><b>US</b></span>
+                                                    <span class="sidebar-normal"><b>Users</b>
+                                                    <b class="caret"></b>
+                                                </span>
+                                                </a>
+                                                <div class="collapse" id="componentsUsers">
+                                                    <ul class="nav">
+                                                        <li class="nav-item">
+                                                            <router-link :to="{ name: 'users.index' }" class="nav-link">
+                                                                <span class="sidebar-mini"><b>US</b></span>
+                                                                <span class="sidebar-normal"><b>Users</b></span>
+                                                            </router-link>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <router-link :to="{ name: 'users.trash' }"
+                                                                         class="nav-link">
+                                                                <span class="sidebar-mini"><b>TU</b></span>
+                                                                <span class="sidebar-normal"><b>Task Users</b></span>
+                                                            </router-link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                                 <!-- Notes -->
                                 <li class="nav-item">

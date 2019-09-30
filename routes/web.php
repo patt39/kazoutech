@@ -35,10 +35,6 @@ require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'user' . DI
 
 Route::group(['namespace' => 'Admin'], function () {
 
-    // Dashboardf
-    //Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
-    Route::resource('/dashboard/users','UserController');
-    Route::get('/dashboard/users/p/{user}', 'UserController@view')->name('users.view');
 
     //Route Administrator
     Route::resource('/dashboard/administrators','AdministratorController');

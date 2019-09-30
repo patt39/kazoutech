@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

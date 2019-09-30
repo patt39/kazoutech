@@ -21,7 +21,6 @@ require(__DIR__ . DIRECTORY_SEPARATOR . 'api' .DIRECTORY_SEPARATOR . 'admin' . D
 require(__DIR__ . DIRECTORY_SEPARATOR . 'api' .DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR . 'index.php');
 
 
-Route::get('users', 'Admin\UserController@api');
 Route::get('search', 'Admin\UserController@search');
 Route::get('administrators', 'Admin\AdministratorController@api');
 

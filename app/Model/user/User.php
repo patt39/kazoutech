@@ -6,6 +6,7 @@ use App\Mail\NewUserWelcomeMail;
 use App\Model\admin\country;
 use App\Model\admin\task;
 use App\Notifications\RegisteredUsers;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail,Auditable
 {
-    use Notifiable,HasApiTokens,HasRoles,CanFollow, CanBeFollowed,\OwenIt\Auditing\Auditable;
+    use Notifiable,HasApiTokens,HasRoles,CanFollow,SoftDeletes, CanBeFollowed,\OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
         'country_id'
     ];
 
+    protected $dates = ['deleted_at'];
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
