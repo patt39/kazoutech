@@ -325,17 +325,18 @@
                 this.$Progress.start();
                 this.form.get('/dashboard/active_policy_privacy/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Policy & Privacy activated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Policy & Privacy activated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert ***/
 
                     //End Progress bar
@@ -361,17 +362,18 @@
 
                 this.form.get('/dashboard/disable_policy_privacy/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Policy & Privacy desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Policy & Privacy desactivated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert ***/
 
                     //End Progress bar

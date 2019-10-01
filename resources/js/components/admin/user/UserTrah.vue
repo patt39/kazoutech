@@ -96,10 +96,6 @@
                                                             title="Restore user">
                                                         <i class="material-icons">restore</i>
                                                     </button>
-                                                    <button v-if="$auth.can('delete-user')" @click="deleteItem(item.id)"
-                                                            class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -121,7 +117,6 @@
 <script>
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
-
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
@@ -193,55 +188,6 @@
                             });
                             setTimeout(function() {
                                 notify.update({'type': 'success', 'message': '<strong>User restore successfully.</strong>', 'progress': 75});
-                            }, 2000);
-
-                            //End Progress bar
-                            this.$Progress.finish();
-
-                            Fire.$emit('AfterSave');
-                        }).catch(() => {
-                            //Failled message
-                            this.$Progress.fail();
-                            //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
-                                type: 'danger',
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                }
-                            });
-                        })
-                    }
-                })
-            },
-            deleteItem(id) {
-                Swal.fire({
-                    title: 'Delete User?',
-                    text: "Are you sure you want to delete this user?",
-                    type: 'warning',
-                    customClass: 'animated shake',
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success",
-                    cancelButtonClass: 'btn btn-danger',
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'No',
-                    showCancelButton: true,
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.value) {
-                        //Start Progress bar
-                        this.$Progress.start();
-
-                        //Envoyer la requet au server
-                        axios.delete('/dashboard/users/' + id).then(() => {
-
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true
-                            });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>User deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
 
                             //End Progress bar

@@ -286,17 +286,18 @@
                 this.$Progress.start();
                 this.form.get('/dashboard/active_licence_site/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Licence activated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Licence site activated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert ***/
 
                     //End Progress bar
@@ -322,17 +323,18 @@
 
                 this.form.get('/dashboard/disable_licence_site/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Licence site desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Licence site desactivated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert ***/
 
                     //End Progress bar

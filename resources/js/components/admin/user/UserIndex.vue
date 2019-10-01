@@ -345,8 +345,8 @@
             },
             deleteItem(id) {
                 Swal.fire({
-                    title: 'Delete User?',
-                    text: "Are you sure you want to delete this user?",
+                    title: 'Banish User?',
+                    text: "Are you sure you want to banish this user?",
                     type: 'warning',
                     customClass: 'animated shake',
                     buttonsStyling: false,
@@ -370,7 +370,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>User deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>User banish successfully.</strong>', 'progress': 75});
                             }, 2000);
 
                             //End Progress bar

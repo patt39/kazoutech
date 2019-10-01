@@ -190,36 +190,6 @@
                 loaded: false,
                 user: '',
                 termsconditions: {},
-                form: new Form({
-                    id: '',
-                    ip: '',
-                    title: '',
-                    color_user: '',
-                    photo: '',
-                    body: '',
-                    user_id: '',
-                    status: '',
-                }),
-                customToolbar: [
-                    [{'header': [1, 2, 3, 4, 5, 6, false]}],
-                    [{'font': []}],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{'align': []}],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    [{'list': 'ordered'}, {'list': 'bullet'}, {'list': 'check'}],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{'color': []}, {'background': []}],
-                    //['link', 'image', 'video', 'formula'],
-                    ['link'],
-                    //[{ 'direction': 'rtl' }],
-                    ['clean'],
-                    //['emoji'],
-                ]
             }
         },
         methods: {
@@ -261,31 +231,6 @@
                 //Progres bar
                 this.$Progress.finish()
             },
-            getImagesave() {
-                let photo = (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
-                return photo;
-            },
-            updateImage(e) {
-                //console.log('uploadert')
-                let file = e.target.files[0];
-                console.log(file);
-                let reader = new FileReader();
-                if (file['size'] < 6000775) {
-                    reader.onloadend = (file) => {
-                        //console.log('RESULT',reader.result)
-                        this.form.photo = reader.result
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    this.$Progress.fail();
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Your image is very big',
-                        buttonsStyling: false,
-                        confirmButtonClass: "btn btn-success",
-                    });
-                }
-            },
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
@@ -306,7 +251,7 @@
                     if (result.value) {
                         //Start Progress bar
                         this.$Progress.start();
-                        this.form.delete('/dashboard/conditions/' + id).then(() => {
+                        axios.delete('/dashboard/conditions/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -324,7 +269,7 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -343,25 +288,26 @@
             activeItem(id) {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.get('/dashboard/active_condition/' + id).then(() => {
+                axios.get('/dashboard/active_condition/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Term & Condition activated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Term & Condition activated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -379,25 +325,26 @@
                 //Start Progress bar
                 this.$Progress.start();
 
-                this.form.get('/dashboard/unactive_condition/' + id).then(() => {
+                axios.get('/dashboard/unactive_condition/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Term & Condition desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function () {
-                        notify.update({
-                            'type': 'success',
-                            'message': '<strong>Term & Condition desactivated successfully.</strong>',
-                            'progress': 75
-                        });
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -432,7 +379,7 @@
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
         }
