@@ -142,24 +142,55 @@
                         <div class="collapse" id="partialExamples">
                             <ul class="nav">
                                 <!-- Links -->
+                                <li class="nav-item ">
+                                    <a class="nav-link" data-toggle="collapse" href="#aidesSettings">
+                                        <span class="sidebar-mini"><b>ST</b></span>
+                                        <span class="sidebar-normal"><b>Settings</b>
+                                          <b class="caret"></b>
+                                        </span>
+                                    </a>
+                                    <div class="collapse" id="aidesSettings">
+                                        <ul class="nav">
+                                            <li class="nav-item ">
+                                                <a class="nav-link" data-toggle="collapse" href="#componentsSettings">
+                                                    <span class="sidebar-mini"><b>ST</b></span>
+                                                    <span class="sidebar-normal"><b>Style & Data</b>
+                                                    <b class="caret"></b>
+                                                </span>
+                                                </a>
+                                                <div class="collapse" id="componentsSettings">
+                                                    <ul class="nav">
+                                                        <!-- Languages -->
+                                                        <li class="nav-item">
+                                                            <router-link  :to="{ path: '/dashboard/languages/' }" class="nav-link">
+                                                                <span class="sidebar-mini"><b>LN</b></span>
+                                                                <span class="sidebar-normal"><b>Languages</b></span>
+                                                            </router-link>
+                                                        </li>
+                                                        <!-- Colors -->
+                                                        <li class="nav-item">
+                                                            <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
+                                                                <span class="sidebar-mini"><b>CO</b></span>
+                                                                <span class="sidebar-normal"><b>Colors</b></span>
+                                                            </router-link>
+                                                        </li>
+                                                        <!-- Diplomas -->
+                                                        <li class="nav-item">
+                                                            <router-link  :to="{ path: '/dashboard/diplomas/' }" class="nav-link">
+                                                                <span class="sidebar-mini"><b>DI</b></span>
+                                                                <span class="sidebar-normal"><b>Diplomas</b></span>
+                                                            </router-link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <li class="nav-item">
                                     <router-link  :to="{ path: '/dashboard/links/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>LI</b></span>
                                         <span class="sidebar-normal"><b>Links</b></span>
-                                    </router-link>
-                                </li>
-                                <!-- Colors -->
-                                <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>COL</b></span>
-                                        <span class="sidebar-normal"><b>Colors</b></span>
-                                    </router-link>
-                                </li>
-                                <!-- Diplomas -->
-                                <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/diplomas/' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>DI</b></span>
-                                        <span class="sidebar-normal"><b>Diplomas</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Countries -->
