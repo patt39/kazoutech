@@ -25,13 +25,7 @@ Route::group(['namespace' => 'Admin'], function(){
     require(__DIR__ . DIRECTORY_SEPARATOR . 'laravel-auditing.php');
 
     /* C'est route son dans la cartella partial */
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'tags.php');
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'tasks.php');
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'notes.php');
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'cities.php');
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'colors.php');
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'diplomas.php');
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'category_faqs.php');
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'index.php');
 
 
     /* C'est route son dans la cartella page */

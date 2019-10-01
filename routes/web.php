@@ -60,11 +60,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
 
 
-
-        // Admin Route country
-        Route::resource('/dashboard/countries', 'CountryController');
-
-
         Route::get('/{username}', 'AccountController@profileView')->name('profile.view');
         Route::get('/profile/edit', 'AccountController@profileEdit')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');

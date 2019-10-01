@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Partial;
+namespace App\Http\Controllers\Admin\Partial\Settings;
 
 use App\Http\Requests\Admin\Colors\StoreRequest;
 use App\Http\Requests\Admin\Colors\UpdateRequest;

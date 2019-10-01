@@ -46,6 +46,12 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-testimonial']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-testimonial']);
 
+        // create permissions testimonials
+        Permission::create(['guard_name' => 'web' , 'name' => 'create-setting']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'edit-setting']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'delete-setting']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'publish-setting']);
+
         // create permissions documentations
         Permission::create(['guard_name' => 'web' , 'name' => 'create-documentation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-documentation']);

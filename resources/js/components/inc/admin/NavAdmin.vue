@@ -160,13 +160,6 @@
                                                 </a>
                                                 <div class="collapse" id="componentsSettings">
                                                     <ul class="nav">
-                                                        <!-- Languages -->
-                                                        <li class="nav-item">
-                                                            <router-link  :to="{ path: '/dashboard/languages/' }" class="nav-link">
-                                                                <span class="sidebar-mini"><b>LN</b></span>
-                                                                <span class="sidebar-normal"><b>Languages</b></span>
-                                                            </router-link>
-                                                        </li>
                                                         <!-- Colors -->
                                                         <li class="nav-item">
                                                             <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
@@ -181,6 +174,20 @@
                                                                 <span class="sidebar-normal"><b>Diplomas</b></span>
                                                             </router-link>
                                                         </li>
+                                                        <!-- Countries -->
+                                                        <li class="nav-item">
+                                                            <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
+                                                                <span class="sidebar-mini"><b>CO</b></span>
+                                                                <span class="sidebar-normal"><b>Country</b></span>
+                                                            </router-link>
+                                                        </li>
+                                                        <!-- Cites -->
+                                                        <li class="nav-item">
+                                                            <router-link  :to="{ name: 'cities.actives' }"  replace class="nav-link">
+                                                                <span class="sidebar-mini"><b>CI</b></span>
+                                                                <span class="sidebar-normal"><b>Cities</b></span>
+                                                            </router-link>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </li>
@@ -191,20 +198,6 @@
                                     <router-link  :to="{ path: '/dashboard/links/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>LI</b></span>
                                         <span class="sidebar-normal"><b>Links</b></span>
-                                    </router-link>
-                                </li>
-                                <!-- Countries -->
-                                <li class="nav-item">
-                                    <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
-                                        <span class="sidebar-mini"><b>CO</b></span>
-                                        <span class="sidebar-normal"><b>Country</b></span>
-                                    </router-link>
-                                </li>
-                                <!-- Cites -->
-                                <li class="nav-item">
-                                    <router-link  :to="{ name: 'cities.actives' }"  replace class="nav-link">
-                                        <span class="sidebar-mini"><b>CI</b></span>
-                                        <span class="sidebar-normal"><b>Cities</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Tags -->

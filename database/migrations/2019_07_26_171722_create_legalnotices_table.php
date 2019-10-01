@@ -15,6 +15,7 @@ class CreateLegalnoticesTable extends Migration
     {
         Schema::create('legalnotices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->longtext('body')->nullable();
             $table->boolean('status')->default(false)->nullable();

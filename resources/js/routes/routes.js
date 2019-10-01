@@ -1,7 +1,7 @@
 import DashboardIndex from "../components/admin/DashboardIndex";
 import AdminProfileEdit from "../components/admin/account/AdminProfileEdit";
-import ColorIndex from "../components/admin/partial/color/ColorIndex";
-import CountriesIndex from "../components/admin/partial/country/CountriesIndex";
+import ColorIndex from "../components/admin/partial/settings/color/ColorIndex";
+import CountriesIndex from "../components/admin/partial/settings/country/CountriesIndex";
 import AdminChangePassword from "../components/admin/account/AdminChangePassword";
 import CategoryIndex from "../components/admin/partial/category/site/CategoryIndex";
 import CategoryCreate from "../components/admin/partial/category/site/CategoryCreate";
@@ -24,7 +24,7 @@ import FaqCreate from "../components/admin/faq/FaqCreate";
 import FaqEdit from "../components/admin/faq/FaqEdit";
 import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
-import CityIndex from "../components/admin/partial/city/CityIndex";
+import CityIndex from "../components/admin/partial/settings/city/CityIndex";
 import PermissionIndex from "../components/admin/permission/PermissionIndex";
 import NoteIndex from "../components/admin/partial/note/NoteIndex";
 import TaskIndex from "../components/admin/partial/task/TaskIndex";
@@ -51,7 +51,7 @@ import TestimonialIndex from "../components/admin/page/testimonial/TestimonialIn
 import TestimonialCreate from "../components/admin/page/testimonial/TestimonialCreate";
 import TestimonialEdit from "../components/admin/page/testimonial/TestimonialEdit";
 import TestimonialShow from "../components/admin/page/testimonial/TestimonialShow";
-import DiplomaIndex from "../components/admin/partial/diploma/DiplomaIndex";
+import DiplomaIndex from "../components/admin/partial/settings/diploma/DiplomaIndex";
 import TechnicianProfileIndex from "../components/user/Profile/TechnicianProfileIndex";
 import TechnicianProfileEdit from "../components/user/Profile/TechnicianProfileEdit";
 import TechnicianByCity from "../components/admin/technician/by/TechnicianByCity";
@@ -78,10 +78,10 @@ import PolicyprivacyView from "../components/admin/info/policyprivacy/Policypriv
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
-import CityActives from "../components/admin/partial/city/CityActives";
+import CityActives from "../components/admin/partial/settings/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
 
-import ColorAuditing from "../components/admin/partial/color/ColorAuditing";
+import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
 

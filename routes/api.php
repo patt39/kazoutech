@@ -25,8 +25,6 @@ Route::get('search', 'Admin\UserController@search');
 Route::get('administrators', 'Admin\AdministratorController@api');
 
 
-Route::get('countries', 'Admin\Partial\CountryController@api');
-
 Route::get('search/tasks/{field}/{query}', 'Admin\Partial\TaskController@search');
 Route::get('task_technicians', 'Admin\TasktechnicianController@api');
 Route::get('roles', 'Admin\RoleController@api');

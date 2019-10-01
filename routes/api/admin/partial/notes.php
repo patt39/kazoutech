@@ -6,7 +6,4 @@
  * Time: 20:11
  */
 
-Route::group(['namespace' => 'Partial'], function(){
-
-    Route::get('notes', 'NoteController@api');
-});
+Route::get('notes', 'NoteController@api');

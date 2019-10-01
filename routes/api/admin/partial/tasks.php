@@ -6,7 +6,4 @@
  * Time: 20:07
  */
 
-Route::group(['namespace' => 'Partial'], function(){
-
-    Route::get('tasks', 'TaskController@api');
-});
+Route::get('tasks', 'TaskController@api');

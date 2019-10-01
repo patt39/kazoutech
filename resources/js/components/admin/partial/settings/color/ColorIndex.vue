@@ -13,19 +13,20 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">location_city</i>
+                                        <i class="material-icons">color_lens</i>
                                     </div>
-                                    <p class="card-category"><b>All Cities</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{cities.length}}</b></h3>
+                                    <p class="card-category"><b>All Colors</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{colors.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">location_city</i><b>All Cities</b>
+                                        <i class="material-icons">color_lens</i><b>All Colors</b>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
@@ -36,43 +37,36 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h4 class="card-title">
-                                                <b>Datatables Cities</b>
+                                                <b>Datatables Colors</b>
                                             </h4>
                                             <p class="card-title">
-                                                City choice for buttons
+                                                Color Choice For Buttons
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
                                 <span>
-                                    <i id="tooltipSize" class="material-icons">location_city</i>
+                                    <i id="tooltipSize" class="material-icons">color_lens</i>
                                 </span>
                                         </div>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="card-body">
-                                    <div class="toolbar">
-                                        <div class="header text-right">
-                                            <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                    title="Refresh Page">
-                                                <i class="material-icons">replay</i>
-                                                <b class="title_hover">Refresh</b>
-                                            </button>
-                                        </div>
-                                        <br>
+                                    <div class="header text-right">
+                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                                title="Refresh Page">
+                                            <i class="material-icons">replay</i>
+                                            <b class="title_hover">Refresh</b>
+                                        </button>
+                                    </div>
+                                    <div v-if="$auth.can('create-color')" class="toolbar">
                                         <div class="submit text-center">
-                                            <!--<button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
-                                                 <span class="btn-label">
-                                                    <i class="material-icons">location_city</i>
-                                                </span>
-                                                <b class="title_hover">New City</b>
-                                            </button>-->
-                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.actives' }" id="button_hover" class="btn btn-success btn-raised btn-round">
-                                                 <span class="btn-label">
-                                                    <i class="material-icons">spellcheck</i>
-                                                </span>
-                                                <b class="title_hover">Cities actives</b>
-                                            </router-link>
+                                            <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
+                                     <span class="btn-label">
+                                        <i class="material-icons">color_lens</i>
+                                    </span>
+                                                <b class="title_hover">New Color</b>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="material-datatables">
@@ -80,28 +74,31 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Name</b></th>
+                                                <th><b>Color Name</b></th>
+                                                <th><b>Color Style</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th><b>Technicians</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
+                                                <th><b>Last Update</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Name</b></th>
+                                                <th><b>Color Name</b></th>
+                                                <th><b>Color Style</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th><b>Technicians</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
+                                                <th><b>Last Update</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-color') || $auth.can('edit-color') || $auth.can('delete-color'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in orderBycities" :key="item.id">
+                                            <tr v-for="item in orderByItems" :key="item.id">
+                                                <td>{{ item.color_name | upText }}</td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
-                                                        <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
-                                                    </router-link>
+                                                    <div class="timeline-heading">
+                                                        <span :class="getColor(item)"><b>{{ item.slug }}</b></span>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="timeline-heading">
@@ -116,47 +113,50 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b v-html="item.technician_count"></b></td>
+                                                <td><b>{{ item.updated_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <button v-if="$auth.can('edit-administrator')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
-                                                        <label>
-                                                            <input type="checkbox" name="status" v-model="item.status"
-                                                                   @change="changeStatus(item)"/>
-                                                            <span class="toggle"></span>
-                                                        </label>
-                                                    </button>
-                                                    <button @click="editItem(item)"
+                                                    <template v-if="$auth.can('publish-color')">
+                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">check_circle</i>
+                                                        </button>
+                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                    </template>
+                                                    <button v-if="$auth.can('edit-color')" @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button v-if="$auth.can('edit-administrator')" @click="deleteItem(item.id)"
+                                                    <button v-if="$auth.can('delete-color')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
+                                                    <router-link v-if="$auth.can('auditing')" :to="{ path: `/dashboard/colors/auditing/${item.slug}/` }"
+                                                            class="btn btn-link btn-facebook btn-round btn-just-icon" title="All setting">
+                                                        <i class="material-icons">new_releases</i>
+                                                    </router-link>
                                                 </td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
-
                                     <!-- Modal création/édition color -->
                                     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new City</b></h5>
-                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update City</b></h5>
+                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add New Color</b></h5>
+                                                    <h5 v-show="editmode" class="modal-title" id="updateNewLabel"><b>Update Color</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <alert-error :form="form"></alert-error>
-                                                    <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                    <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : storeItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name city" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
+                                                            <input v-model="form.name" type="text" name="name" placeholder="Name color" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" >
                                                             <has-error :form="form" field="name"></has-error>
                                                         </div>
                                                         <div class="modal-footer">
@@ -199,16 +199,18 @@
 </template>
 
 <script>
-    import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+    import StatusAdmin from "../../../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../../../inc/animation/LoaderLds-default";
+
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
                 loaded: false,
+                errored: false,
                 editmode: false,
-                cities: {},
                 user: {},
+                colors: {},
                 form: new Form({
                     id: '',
                     name: '',
@@ -249,6 +251,9 @@
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
             },
+            getColor(item){
+                return 'badge badge-' + item.color_name;
+            },
             getUser(item){
                 //Progress bar star
                 this.$Progress.start();
@@ -256,14 +261,50 @@
                 //Progres bar
                 this.$Progress.finish()
             },
-            getColor(item){
-                let colorStyle = 'badge badge-' + item.color_name;
-                return colorStyle;
+            storeItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/colors")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('AfterCreate');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Color Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
             },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.put('/dashboard/cities/' + this.form.id)
+                this.form.put('/dashboard/colors/' + this.form.id)
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -281,7 +322,7 @@
                         //End Progress bar
                         this.$Progress.finish();
                         //Event
-                        Fire.$emit('ItemGetter');
+                        Fire.$emit('AfterCreate');
                     })
                     .catch(() => {
                         //Failled message
@@ -310,51 +351,11 @@
                 //Masquer le modal après la création
                 $('#addNew').modal('show');
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/cities")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('ItemGetter');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>City Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            },
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete City?',
-                    text: "Are you sure you want to delete this city?",
+                    title: 'Delete Color?',
+                    text: "Are you sure you want to delete this color?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated shake',
@@ -371,20 +372,20 @@
                         this.$Progress.start();
 
                         //Envoyer la requete au server
-                        axios.delete('/dashboard/cities/' + id).then(() => {
+                        axios.delete('/dashboard/colors/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>City deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>Color deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             /* End alert ***/
 
                             //End Progress bar
                             this.$Progress.finish();
-                            Fire.$emit('ItemGetter');
+                            Fire.$emit('AfterCreate');
 
                         }).catch(() => {
                             this.$Progress.fail();
@@ -400,14 +401,13 @@
                     }
                 })
             },
-            changeStatus(item){
-                //Start Progress bar
+            /** Ici c'est l'activation de la couleur  **/
+            activeItem(id) {
+                //Progress bar star
                 this.$Progress.start();
-                axios.get(`/dashboard/change_status_cities/${item.id}`, {
-                    status: item.status,
-                }).then(res => {
-
-                    $.notify('<strong>City update Successfully.</strong>', {
+                axios.get('/dashboard/active_color/' + id).then(() => {
+                    /** Alert notify bootstrapp **/
+                    $.notify('<strong>Color activated successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'info',
                         placement: {
@@ -419,13 +419,47 @@
                             exit: 'animated fadeOutRight'
                         },
                     });
+                    /** End alert ***/
 
-                    Fire.$emit('ItemGetter');
                     //End Progress bar
                     this.$Progress.finish();
+                    Fire.$emit('AfterCreate');
                 }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
+            /** Ici c'est la désactivation de la couleur **/
+            disableItem(id) {
+                //Start Progress bar
+                this.$Progress.start();
+                axios.get('/dashboard/disable_color/' + id).then(() => {
+                    /** Alert notify bootstrapp **/
+                    $.notify('<strong>Color desactivated successfully.</strong>', {
+                        allow_dismiss: false,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
+                    });
+                    /** End alert **/
+
+                    //End Progres bar
+                    this.$Progress.finish();
+
+                    Fire.$emit('AfterCreate');
+                }).catch(() => {
                     //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
                         type: 'danger',
@@ -439,35 +473,45 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/cities";
+                const url = "/api/colors";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.cities = response.data.data;
+                    this.colors = response.data.data;
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
-             reload(){
-                this.loadItems();
+            reload(){
+                this.loadItems()
             },
             intervalFetchData: function () {
                 setInterval(() => {
                     this.loadItems();
-                }, 360000);
+                }, 120000);
             },
         },
         created() {
             this.loadItems();
-            Fire.$on('ItemGetter', () => {
-                this.loadItems()
+            this.$storage.setOptions({
+                prefix: 'app_',
+                driver: 'local',
+                ttl: 60 * 60 * 24 * 1000 // 24 hours
             });
+            Fire.$on('AfterCreate', () => {
+                this.loadItems();
+            });
+            // Run the intervalFetchData function once to set the interval time for later refresh
             this.intervalFetchData();
         },
+        //get order bay
         computed: {
-            orderBycities() {
-                return _.orderBy(this.cities, ['status'], ['asc'])
+            orderByItems() {
+                return _.orderBy(this.colors, ['color_name'], ['asc'])
             },
         },
     }

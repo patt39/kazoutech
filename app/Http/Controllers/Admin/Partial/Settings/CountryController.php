@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Partial;
+namespace App\Http\Controllers\Admin\Partial\Settings;
 
 use App\Http\Resources\Partial\CountryResource;
 use App\Model\admin\country;
@@ -26,7 +26,7 @@ class CountryController extends Controller
     /**
      * Display a listing of Permission.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\
      */
 
     public function index()

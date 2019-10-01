@@ -110,9 +110,9 @@
 </template>
 
 <script>
-    import api from '../../../../routes/admin/color';
-    import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+    import api from '../../../../../routes/admin/color';
+    import StatusAdmin from "../../../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../../../inc/animation/LoaderLds-default";
 
     export default {
         components: {LoaderLdsDefault, StatusAdmin},

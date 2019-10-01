@@ -13,14 +13,14 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">flag</i>
+                                        <i class="material-icons">location_city</i>
                                     </div>
-                                    <p class="card-category"><b>All Countries</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{countries.length}}</b></h3>
+                                    <p class="card-category"><b>All Cities</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{cities.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">flag</i><b>All Countries</b>
+                                        <i class="material-icons">location_city</i><b>All Cities</b>
                                     </div>
                                 </div>
                             </div>
@@ -36,19 +36,20 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h4 class="card-title">
-                                                <b>Datatables Countries</b>
+                                                <b>Datatables Cities</b>
                                             </h4>
                                             <p class="card-title">
-                                                All countries available
+                                                City choice for buttons
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
                                 <span>
-                                    <i id="tooltipSize" class="material-icons">flag</i>
+                                    <i id="tooltipSize" class="material-icons">location_city</i>
                                 </span>
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="header text-right">
@@ -58,13 +59,20 @@
                                                 <b class="title_hover">Refresh</b>
                                             </button>
                                         </div>
+                                        <br>
                                         <div class="submit text-center">
-                                            <button  id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
-                                     <span class="btn-label">
-                                        <i class="material-icons">flag</i>
-                                    </span>
-                                                <b class="title_hover">New Country</b>
-                                            </button>
+                                            <!--<button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
+                                                 <span class="btn-label">
+                                                    <i class="material-icons">location_city</i>
+                                                </span>
+                                                <b class="title_hover">New City</b>
+                                            </button>-->
+                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.index' }" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                                 <span class="btn-label">
+                                                    <i class="material-icons">spellcheck</i>
+                                                </span>
+                                                <b class="title_hover">Add Cities</b>
+                                            </router-link>
                                         </div>
                                     </div>
                                     <div class="material-datatables">
@@ -72,43 +80,56 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Country Name</b></th>
-                                                <th><b>Code</b></th>
-                                                <th><b>Flag</b></th>
-                                                <!--<th><b>Edited By</b></th>-->
+                                                <th><b>Name</b></th>
+                                                <th><b>Status</b></th>
+                                                <th><b>Edited By</b></th>
+                                                <th><b>Technicians</b></th>
                                                 <th class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Country Name</b></th>
-                                                <th><b>Code</b></th>
-                                                <th><b>Flag</b></th>
-                                                <!--<th><b>Edited By</b></th>-->
+                                                <th><b>Name</b></th>
+                                                <th><b>Status</b></th>
+                                                <th><b>Edited By</b></th>
+                                                <th><b>Technicians</b></th>
                                                 <th class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in countries" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
-                                                <td>{{ item.code }}</td>
-                                                <td><img :src="item.flag" ></td>
-                                                <!--<td>
-                                                    <a v-if="item.user.status" :href="`/admin/profile/${item.user.username}`" title="Administrator Online">
-                                                        <button type="button" class="btn btn-success btn-round btn-just-icon btn-sm"></button>
+                                            <tr v-for="item in orderBycities" :key="item.id">
+                                                <td>
+                                                    <router-link  :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
+                                                        <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
+                                                <td>
+                                                    <div class="timeline-heading">
+                                                        <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
+                                                        <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
-                                                    <a v-else="item.user.status" :href="`/admin/profile/${item.user.username}`" title="Administrator Offline">
-                                                        <button type="button" class="btn btn-danger btn-round btn-just-icon btn-sm"></button>
-                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </a>
-                                                </td>-->
+                                                </td>
+                                                <td><b v-html="item.technician_count"></b></td>
                                                 <td class="td-actions text-right">
+                                                    <button v-if="$auth.can('edit-administrator')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                        <label>
+                                                            <input type="checkbox" name="status" v-model="item.status"
+                                                                   @change="changeStatus(item)"/>
+                                                            <span class="toggle"></span>
+                                                        </label>
+                                                    </button>
                                                     <button @click="editItem(item)"
                                                             class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button @click="deleteItem(item.id)"
+                                                    <button v-if="$auth.can('edit-administrator')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
@@ -124,53 +145,19 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new Country</b></h5>
-                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update Country</b></h5>
+                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new City</b></h5>
+                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update City</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <alert-error :form="form"></alert-error>
-                                                    <form @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                        <div class="col-md-8 ml-auto mr-auto">
-                                                            <div class="profile text-center">
-                                                                <br>
-                                                                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                                    <div class="fileinput-new thumbnail">
-                                                                        <img v-show="editmode" :src="form.flag" :alt="form.slug">
-                                                                    </div>
-                                                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                    <div>
-                                                            <span class="btn btn-raised btn-round btn-warning btn-file">
-                                                                <span class="fileinput-new" style="cursor: pointer">
-                                                                    <i class="material-icons">insert_photo</i>
-                                                                    <b>Add flag country</b>
-                                                                </span>
-                                                                <span class="fileinput-exists" style="cursor: pointer">
-                                                                    <i class="material-icons">photo_library</i>
-                                                                    <b>Change</b>
-                                                                </span>
-                                                                <input id="flag" @change="updateImage" type="file" class="form-control" name="flag">
-                                                            </span>
-                                                                        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
-                                                                            <i class="material-icons">cancel</i>
-                                                                            <b>Remove</b>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <has-error :form="form" field="photo"></has-error>
-                                                            </div>
-                                                        </div>
+                                                    <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name country" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
+                                                            <input v-model="form.name" type="text" name="name" placeholder="Name city" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
                                                             <has-error :form="form" field="name"></has-error>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.code" type="text" name="code" placeholder="Code country" class="form-control" :class="{ 'is-invalid': form.errors.has('code') }" required>
-                                                            <has-error :form="form" field="code"></has-error>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="text-center">
@@ -212,22 +199,23 @@
 </template>
 
 <script>
-    import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+    import StatusAdmin from "../../../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../../../inc/animation/LoaderLds-default";
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
                 loaded: false,
                 editmode: false,
-                countries: {},
+                cities: {},
                 user: {},
                 form: new Form({
                     id: '',
                     name: '',
-                    code: '',
+                    color_name: '',
                     user_id: '',
-                    flag: ''
+                    status: '',
+                    slug: ''
                 })
             }
         },
@@ -261,35 +249,21 @@
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
             },
+            getUser(item){
+                //Progress bar star
+                this.$Progress.start();
+                location.replace(`/dashboard/users/p/${item.user.username}/`);
+                //Progres bar
+                this.$Progress.finish()
+            },
             getColor(item){
                 let colorStyle = 'badge badge-' + item.color_name;
                 return colorStyle;
             },
-            //getImagesave(){
-            //    let flag = (this.form.flag.length > 200) ? this.form.flag : this.form.flag;
-            //    return flag;
-            //},
-            updateImage(e){
-                let file = e.target.files[0];
-                let reader = new FileReader();
-                let limit = 1024 * 1024 * 2;
-                if(file['size'] > limit){
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'You are uploading a large file',
-                    });
-                    return false;
-                }
-                reader.onloadend = (file) => {
-                    this.form.flag = reader.result;
-                };
-                reader.readAsDataURL(file);
-            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
-                this.form.put('/dashboard/countries/' + this.form.id)
+                this.form.put('/dashboard/cities/' + this.form.id)
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -300,18 +274,26 @@
                             showProgressbar: true
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Country updated successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Color updated successfully.</strong>', 'progress': 75});
                         }, 2000);
                         /** Fin alert **/
 
                         //End Progress bar
                         this.$Progress.finish();
                         //Event
-                        Fire.$emit('AfterCreate');
-                    }).catch(() => {
+                        Fire.$emit('ItemGetter');
+                    })
+                    .catch(() => {
                         //Failled message
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
             },
             editItem(item) {
@@ -322,17 +304,51 @@
                 //On passe les information
                 this.form.fill(item);
             },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
+            createItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/cities")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('ItemGetter');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>City Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish()
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
             },
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete Country?',
-                    text: "Are you sure you want to delete this country?",
+                    title: 'Delete City?',
+                    text: "Are you sure you want to delete this city?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated shake',
@@ -349,36 +365,79 @@
                         this.$Progress.start();
 
                         //Envoyer la requete au server
-                        axios.delete('/dashboard/countries/' + id).then(() => {
+                        axios.delete('/dashboard/cities/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Country deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>City deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             /* End alert ***/
 
                             //End Progress bar
                             this.$Progress.finish();
-
                             Fire.$emit('AfterCreate');
+
                         }).catch(() => {
-                            //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            //Alert error
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
                         })
                     }
                 })
             },
-            loadItem() {
+            /** Ici c'est pour changer le status **/
+            changeStatus(item){
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/countries";
+                axios.get(`/dashboard/change_status_cities/${item.id}`, {
+                    status: item.status,
+                }).then(res => {
+
+                    $.notify('<strong>City update Successfully.</strong>', {
+                        allow_dismiss: false,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
+                    });
+
+                    Fire.$emit('ItemGetter');
+                    //End Progress bar
+                    this.$Progress.finish();
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
+            loadItems() {
+                //Start Progress bar
+                this.$Progress.start();
+                const url = "/api/cities/actives";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.countries = response.data.data;
+                    this.cities = response.data.data;
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
@@ -393,48 +452,19 @@
                     this.loadItems();
                 }, 360000);
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/countries")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Country Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        //Failled message
-                        this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
-                    })
-            }
         },
         created() {
-            this.loadItem();
-            Fire.$on('AfterCreate', () => {
-                this.loadItem();
+            this.loadItems();
+            Fire.$on('ItemGetter', () => {
+                this.loadItems();
             });
             this.intervalFetchData();
-        }
+        },
+        computed: {
+            orderBycities() {
+                return _.orderBy(this.cities, ['status'], ['asc'])
+            },
+        },
     }
 
 </script>

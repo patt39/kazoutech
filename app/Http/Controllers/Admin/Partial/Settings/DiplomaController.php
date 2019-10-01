@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Partial;
+namespace App\Http\Controllers\Admin\Partial\Settings;
 
 use App\Http\Resources\Partial\DiplomaResource;
 use App\Http\Resources\User\Partial\DiplomaByStatusResource;
