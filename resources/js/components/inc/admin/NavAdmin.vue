@@ -90,7 +90,7 @@
 
                     </li>
                     <!-- Occupations -->
-                    <li class="nav-item">
+                    <li v-if="$auth.can('create-occupation')" class="nav-item">
                         <router-link  :to="{ path: '/dashboard/occupations/' }" class="nav-link">
                             <i class="material-icons">assignment</i>
                             <p><b>Occupations</b></p>
@@ -107,14 +107,14 @@
                         <div class="collapse" id="pageExamples">
                             <ul class="nav">
                                 <!-- Abouts -->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('create-about')" class="nav-item">
                                     <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
                                         <span class="sidebar-mini"><b>AM</b></span>
                                         <span class="sidebar-normal"><b>About Member</b></span>
                                     </router-link>
                                 </li>
                                 <!--Testimonial-->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('create-testimonial')" class="nav-item">
                                     <router-link  :to="{ path: '/dashboard/testimonials/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>TS</b></span>
                                         <span class="sidebar-normal"><b>Testimonials</b></span>
@@ -161,7 +161,7 @@
                                                 <div class="collapse" id="componentsSettings">
                                                     <ul class="nav">
                                                         <!-- Colors -->
-                                                        <li class="nav-item">
+                                                        <li v-if="$auth.can('create-color')" class="nav-item">
                                                             <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
                                                                 <span class="sidebar-mini"><b>CO</b></span>
                                                                 <span class="sidebar-normal"><b>Colors</b></span>
@@ -218,7 +218,7 @@
                         </div>
                     </li>
                     <!-- Categories Faqs -->
-                    <li class="nav-item ">
+                    <li v-if="$auth.can('create-faq')" class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#faqsExamples">
                             <i class="material-icons">contact_support</i>
                             <p><b>FAQs</b>
@@ -264,7 +264,7 @@
                         </router-link>
                     </li>
                     <!-- Administrations -->
-                    <li class="nav-item ">
+                    <li  v-if="$auth.can('administration')" class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#administrationExamples">
                             <i class="material-icons">person_outline</i>
                             <p><b>Administrations</b>
@@ -274,14 +274,14 @@
                         <div class="collapse" id="administrationExamples">
                             <ul class="nav">
                                 <!-- Audits -->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('auditing')" class="nav-item">
                                     <router-link  :to="{ name: 'audits.index' }" class="nav-link">
                                         <span class="sidebar-mini">AS</span>
                                         <span class="sidebar-normal"><b>Audits site</b></span>
                                     </router-link>
                                 </li>
                                 <!-- Activities -->
-                                <li class="nav-item">
+                                <li v-if="$auth.can('activity')" class="nav-item">
                                     <router-link  :to="{ name: 'activities.index' }" class="nav-link">
                                         <span class="sidebar-mini">AC</span>
                                         <span class="sidebar-normal"><b>Activities site</b></span>
@@ -295,14 +295,14 @@
                                     </router-link>
                                 </li>
                                 <!-- Users -->
-                                <li class="nav-item ">
+                                <li v-if="$auth.can('view-user')" class="nav-item ">
                                     <a class="nav-link" data-toggle="collapse" href="#aidesUsers">
                                         <span class="sidebar-mini"><b>US</b></span>
                                         <span class="sidebar-normal"><b>Users</b>
                                           <b class="caret"></b>
                                         </span>
                                     </a>
-                                    <div v-if="$auth.can('view-user')" class="collapse" id="aidesUsers">
+                                    <div class="collapse" id="aidesUsers">
                                         <ul class="nav">
                                             <li class="nav-item ">
                                                 <a class="nav-link" data-toggle="collapse" href="#componentsUsers">
@@ -333,7 +333,7 @@
                                     </div>
                                 </li>
                                 <!-- Notes -->
-                                <li class="nav-item">
+                                <li  class="nav-item">
                                     <router-link  :to="{ name: 'notes.index' }" class="nav-link">
                                         <span class="sidebar-mini">NO</span>
                                         <span class="sidebar-normal"><b>Notes</b></span>
@@ -354,8 +354,8 @@
                                     </router-link>
                                 </li>
                                 <!-- Roles -->
-                                <li class="nav-item">
-                                    <router-link v-if="$auth.can('view-role-permission')"   :to="{ name: 'roles.index' }" class="nav-link">
+                                <li v-if="$auth.can('view-role-permission')" class="nav-item">
+                                    <router-link   :to="{ name: 'roles.index' }" class="nav-link">
                                         <span class="sidebar-mini">RO</span>
                                         <span class="sidebar-normal"><b>Roles</b></span>
                                     </router-link>

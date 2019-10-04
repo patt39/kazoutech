@@ -129,11 +129,25 @@
                                                             <input  type="text" name="object" placeholder="Message à" class="form-control" >
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
-                                                            <select name="name" v-model="form.to_id" id="name" class="form-control" :class="{ 'is-invalid': form.errors.has('to_id') }">
+                                                            <v-select label="To email..." @input="test"  :items="users"
+                                                                      item-text="email"
+                                                                      item-value="id"
+                                                                      return-object
+                                                                      v-model="form.to_id">
+                                                                <template #search="{attributes, events}">
+                                                                    <input
+                                                                        class="vs__search"
+                                                                        :required="!form.to_id"
+                                                                        v-bind="attributes"
+                                                                        v-on="events"
+                                                                    />
+                                                                </template>
+                                                            </v-select>
+
+                                                            <!--<select name="name" v-model="form.to_id" id="name" class="form-control" :class="{ 'is-invalid': form.errors.has('to_id') }">
                                                                 <option value="" disabled >To</option>
                                                                 <option v-for="user in users" :key="user.id" :value="user.id">{{user.email}}</option>
-                                                            </select>
+                                                            </select>-->
                                                             <has-error :form="form" field="to_id"></has-error>
                                                         </div>
                                                         <div class="form-group">
@@ -185,9 +199,8 @@
             return {
                 keywords: null,
                 loaded: false,
-                users: {},
+                users: [],
                 user: {},
-                options: {},
                 messages: {},
                 color_user: '',
                 form: new Form({
@@ -209,6 +222,9 @@
 
         methods: {
 
+            test(){
+              console.log(user.id)
+            },
            //onSearch(search, loading) {
            //    loading(true);
            //    this.search(loading, search, this);
@@ -379,39 +395,21 @@
 </script>
 
 <style scoped>
-    img {
-        height: auto;
-        max-width: 2.5rem;
-        margin-right: 1rem;
+    body {
+        font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
     }
 
-    .d-center {
-        display: flex;
-        align-items: center;
+    h1 {
+        font-size: 26px;
+        font-weight: 600;
+        color: #2c3e5099;
+        text-rendering: optimizelegibility;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-text-size-adjust: none;
     }
 
-    .selected img {
-        width: auto;
-        max-height: 23px;
-        margin-right: 0.5rem;
-    }
-
-    .v-select .dropdown li {
-        border-bottom: 1px solid rgba(112, 128, 144, 0.1);
-    }
-
-    .v-select .dropdown li:last-child {
-        border-bottom: none;
-    }
-
-    .v-select .dropdown li a {
-        padding: 10px 20px;
-        width: 100%;
-        font-size: 1.25em;
-        color: #3c3c3c;
-    }
-
-    .v-select .dropdown-menu .active > a {
-        color: #fff;
+    #app {
+        max-width: 30em;
+        margin: 1em auto;
     }
 </style>

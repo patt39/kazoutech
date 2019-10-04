@@ -270,11 +270,11 @@
                         type: 'info',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
                     /** End alert ***/
@@ -301,14 +301,14 @@
                     /** Alert notify bootstrapp **/
                     $.notify('<strong>Faq desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        type: 'info',
+                        type: 'primary',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
                     /** End alert ***/
@@ -320,7 +320,14 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! try later or incorrect');
+                    //Alert
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             loadItems() {

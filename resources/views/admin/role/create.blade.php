@@ -8,6 +8,9 @@
 <div class="content">
     @include('inc.admin.components.status_admin')
     <div class="container-fluid">
+        <br>
+        <StatusAdmin/>
+        <br>
         @can('create-role')
         <div class="row">
             <div class="col-md-10 col-sm-6 ml-auto mr-auto">
@@ -43,7 +46,7 @@
                             <br>
                         </div>
                     </div>
-                    
+
                 {!! Form::close() !!}
             </div>
         </div>

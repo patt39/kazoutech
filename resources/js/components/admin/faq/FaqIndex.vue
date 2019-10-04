@@ -269,11 +269,11 @@
                         type: 'info',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
                         },
                     });
                     /** End alert ***/
@@ -300,14 +300,14 @@
                     /** Alert notify bootstrapp **/
                     $.notify('<strong>Faq desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        type: 'info',
+                        type: 'primary',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
                         },
                     });
                     /** End alert ***/

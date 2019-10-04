@@ -158,7 +158,8 @@
                         setTimeout(function() {
                             notify.update({'type': 'success', 'message': '<strong>Member updated successfully.</strong>', 'progress': 75});
                         }, 2000);
-                        setTimeout(() => this.$router.push({  path: `/dashboard/testimonials/tm/${this.form.slug}` }));
+                        setTimeout(() => this.$router.push({  name: `testimonials.index` }));
+                        //setTimeout(() => this.$router.push({  path: `/dashboard/testimonials/tm/${this.form.slug}` }));
                         /** Fin alert **/
 
                         //End Progress bar

@@ -118,7 +118,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                    <button type="button" class="togglebutton btn btn-link bmd-btn-fab-sm btn-group-toggle">
                                                         <label>
                                                             <input type="checkbox" name="status" v-model="item.status"
                                                                    @change="changeStatus(item)"/>
@@ -282,11 +282,11 @@
                         type: 'info',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
 

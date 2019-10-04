@@ -484,7 +484,10 @@
                     console.log(error);
                     this.errored = true
                 });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {
+                    this.loaded = true;
+                    this.user = response.data.data
+                });
             },
             reload(){
                 this.loadItems()

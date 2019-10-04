@@ -32,6 +32,10 @@ class PermissionTableSeeder extends Seeder
 
         Permission::create(['guard_name' => 'web' , 'name' => 'auditing']);
 
+        Permission::create(['guard_name' => 'web' , 'name' => 'activity']);
+
+        Permission::create(['guard_name' => 'web' , 'name' => 'administration']);
+
         //Create permissions Administrations
         Permission::create(['guard_name' => 'web' , 'name' => 'view-administrator']);
         Permission::create(['guard_name' => 'web' , 'name' => 'create-administrator']);

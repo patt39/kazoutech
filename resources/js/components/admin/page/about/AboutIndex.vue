@@ -409,11 +409,11 @@
                         type: 'info',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
 
