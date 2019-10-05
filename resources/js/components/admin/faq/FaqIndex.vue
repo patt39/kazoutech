@@ -124,6 +124,9 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </a>
                                                         </template>
+                                                        <button type="button" @click="viewItem(item)" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View">
+                                                            <i class="material-icons">visibility</i>
+                                                        </button>
                                                         <router-link  v-if="$auth.can('edit-faq')" :to="{ path: `/dashboard/faqs/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
@@ -137,6 +140,46 @@
                                         </div>
 
                                         <!-- Modal création/édition faq -->
+                                        <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="addNewLabel">
+                                                            <span :class="colorBage()"><b v-text="faq.categoryfaq.name"></b></span>
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div id="accordion" role="tablist">
+                                                            <div class="card card-collapse">
+                                                                <div class="card-header" role="tab" id="headingOne">
+                                                                    <h5 class="mb-0">
+                                                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                           {{faq.title}}
+                                                                            <i class="material-icons">keyboard_arrow_down</i>
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+                                                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                                    <div class="card-body" v-html="faq.body"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-danger" data-dismiss="modal" type="button">
+                                                            <span class="btn-label">
+                                                                <i class="material-icons">clear</i>
+                                                                <b>Close</b>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -165,6 +208,9 @@
                 faqs: {
                     categoryfaq:'',
                 },
+                faq: {
+                    categoryfaq:'',
+                },
             }
         },
         methods: {
@@ -191,11 +237,20 @@
                     });
                 });
             },
+            colorBage(){
+              return 'badge badge-' + this.faq.categoryfaq.color_name;
+            },
             getColorCardUser(){
                 return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
+            },
+            viewItem(item){
+                //Masquer le modal après la création
+                $('#viewNew').modal('show');
+                //On passe les information
+                this.faq = item;
             },
             getUser(item){
                 //Progress bar star

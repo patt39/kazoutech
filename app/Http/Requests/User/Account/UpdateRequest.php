@@ -2,8 +2,14 @@
 
 namespace App\Http\Requests\User\Account;
 
+use App\Model\user\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
+/**
+ * Class UpdateRequest
+ * @package App\Http\Requests\User\Account
+ */
 class UpdateRequest extends BaseRequest
 {
     /**
@@ -13,7 +19,7 @@ class UpdateRequest extends BaseRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +30,8 @@ class UpdateRequest extends BaseRequest
     {
         return [
             'username' => "required|string|min:2|max:25|unique:users,username,{$this->id}",
-            'email' => "required|email|max:255|unique:users,email,{$this->id}",
+            'email' => ['required', 'email', Rule::unique((new User)->getTable())->ignore(auth()->id())],
+            //'email' => "required|email|max:255|unique:users,email,{$this->id}",
             'country_id' => 'required',
         ];
     }
@@ -42,7 +49,6 @@ class UpdateRequest extends BaseRequest
     public function filters()
     {
         return [
-            'email' => 'trim|lowercase',
             'username' => 'trim|capitalize|escape'
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Partial;
 
+use App\Http\Requests\User\Account\PasswordRequest;
 use App\Model\user\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -58,29 +59,31 @@ class ChangePasswordController extends Controller
      * @param Request $request
      * @return ChangePasswordController|array|\Illuminate\Http\RedirectResponse
      */
-    public function changePassword(Request $request)
+   //public function changePassword(Request $request)
+   //{
+   //    $this->validate($request, [
+   //        'old_password' => 'required|min:6',
+   //        'password' => 'required|string|min:6|confirmed',
+   //        'password_confirmation' => 'required|min:6'
+   //    ]);
+
+   //    $user = User::find(Auth::id());
+
+   //    if (!Hash::check($request->old_password, $user->password)) {
+   //        return response()->json(['errors' => ['old_password'=> ['Current password does not match']]], 422);
+   //    }
+
+   //    $user->password = Hash::make($request->password);
+   //    $user->save();
+
+   //    return $user;
+   //}
+
+    public function changePassword(PasswordRequest $request)
     {
-        $this->validate($request, [
-            'old_password' => 'required|min:6',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required|min:6'
-        ]);
+        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        $user = User::find(Auth::id());
-
-        if (!Hash::check($request->old_password, $user->password)) {
-            return response()->json(['errors' => ['old_password'=> ['Current password does not match']]], 422);
-        }
-
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        return $user;
-    }
-
-    public function resetPassword()
-    {
-
+        return response()->json(['errors' => ['old_password'=> ['Current password does not match']]]);
     }
 
 }
