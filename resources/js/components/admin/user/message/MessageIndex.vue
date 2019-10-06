@@ -129,18 +129,11 @@
                                                             <input  type="text" name="object" placeholder="Message à" class="form-control" >
                                                         </div>
                                                         <div class="form-group">
-                                                            <v-select label="To email..." @input="test"  :items="users"
-                                                                      item-text="email"
-                                                                      item-value="id"
-                                                                      return-object
-                                                                      v-model="form.to_id">
-                                                                <template #search="{attributes, events}">
-                                                                    <input
-                                                                        class="vs__search"
-                                                                        :required="!form.to_id"
-                                                                        v-bind="attributes"
-                                                                        v-on="events"
-                                                                    />
+                                                            <label class="bmd-label-floating"></label>
+                                                            <v-select :options="users" label="name" v-model="form.to_id" :class="{ 'is-invalid': form.errors.has('to_id') }">
+                                                                <template slot="item.id" v-model="form.to_id" slot-scope="item">
+                                                                    <!--<span class="fa" :class="option.icon"></span>-->
+                                                                    {{ item.name }}
                                                                 </template>
                                                             </v-select>
 

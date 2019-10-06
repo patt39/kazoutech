@@ -323,7 +323,7 @@
                                                             <router-link :to="{ name: 'users.trash' }"
                                                                          class="nav-link">
                                                                 <span class="sidebar-mini"><b>TU</b></span>
-                                                                <span class="sidebar-normal"><b>Task Users</b></span>
+                                                                <span class="sidebar-normal"><b>Trash Users</b></span>
                                                             </router-link>
                                                         </li>
                                                     </ul>

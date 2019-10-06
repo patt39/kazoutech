@@ -90,7 +90,7 @@ class AdministratorController extends Controller
     public function update(UpdateRequest $request, $id)
     {
 
-        $user = user::find($id);
+        $user = User::find($id);
         $user->name = $request->name;
         $user->my_status = $request->my_status;
         $user->country_id = $request->country_id;

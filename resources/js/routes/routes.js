@@ -91,8 +91,8 @@ export const routes = [
 
     {path: '/dashboard/', name: 'dashboard.index', component: DashboardIndex},
     {path: '/dashboard/account/profile/', name: 'admin.account', component: AdminAccount},
-    {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileInfoEdit},
     {path: '/dashboard/p/:id/edit', name: 'admin.profiles_edit', component: AdminProfileEdit},
+    {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileInfoEdit},
     {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
     {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},

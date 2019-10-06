@@ -46,7 +46,7 @@ class FaqController extends Controller
 
     public function catagoryfaqapi($categoryfaq)
     {
-        $faqs = FaqResource::collection(Categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
+        $faqs = FaqResource::collection(categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
         ->with('user','categoryfaq')->latest()->get());
         return $faqs;
     }
@@ -124,7 +124,7 @@ class FaqController extends Controller
 
     public function catagoryfaq($categoryfaq)
     {
-        $faqs = Categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
+        $faqs = categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
             ->with('user','categoryfaq')->orderBy('created_at','DESC')->get();
         return view('admin.faq.index',compact('faqs'));
     }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Requests\Admin\Tasks\StoreRequest;
 use App\Http\Resources\Partial\TaskResource;
+use App\Jobs\MailTaskEmailJob;
 use App\Model\admin\task;
 use App\Model\user\User;
+use App\Services\Admin\MailTaskService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +37,7 @@ class TaskController extends Controller
 
     public function api()
     {
-        $tasks = TaskResource::collection(Task::with('user','administrator','note')
+        $tasks = TaskResource::collection(task::with('user','administrator','note')
                 ->orderBy('created_at','DESC')->paginate(6));
         return $tasks;
     }
@@ -53,7 +55,7 @@ class TaskController extends Controller
     public function search($field, $query)
     {
         //$colors = new ColorCollection(Color::with('user')->latest()->get());
-        $colors = TaskResource::collection(Task::where($field,'LIKE',"%$query%")
+        $colors = TaskResource::collection(task::where($field,'LIKE',"%$query%")
             ->with('user')->latest()->get());
         return $colors;
     }
@@ -67,12 +69,14 @@ class TaskController extends Controller
     public function store(StoreRequest $request)
     {
 
-        $task = new Task;
+        $task = new task;
         $task->administrator_id = $request->administrator_id;
         $task->note_id = $request->note_id;
 
         $task->save();
 
+
+        MailTaskService::newTask($request);
         return response('Created',Response::HTTP_CREATED);
     }
 

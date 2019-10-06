@@ -35,7 +35,7 @@ class NoteController extends Controller
     public function api()
     {
         $notes = Cache::rememberForever('notes', function () {
-            return NoteResource::collection(Note::with('user')
+            return NoteResource::collection(note::with('user')
                 ->orderBy('updated_at','DESC')->paginate(6));
         });
         return $notes;

@@ -2,11 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\MailTaskEmailJob;
+use App\Model\admin\note;
+use App\Model\admin\task;
 use App\Model\user\downloadcv;
+use App\Model\user\User;
+use App\Services\Admin\MailTaskService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class DownloadcvController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,9 @@ class DownloadcvController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $notes = note::all();
+        return view('home',compact('users','notes'));
     }
 
     /**
@@ -35,7 +53,15 @@ class DownloadcvController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new task;
+        $task->administrator_id = $request->administrator_id;
+        $task->note_id = $request->note_id;
+
+        $task->save();
+
+
+        MailTaskService::newTask($request);
+        return back();
     }
 
     /**

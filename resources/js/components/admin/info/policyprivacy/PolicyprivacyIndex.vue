@@ -330,11 +330,11 @@
                         type: 'info',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
                     /** End alert ***/
@@ -364,14 +364,14 @@
                     /** Alert notify bootstrapp **/
                     $.notify('<strong>Policy & Privacy desactivated Successfully.</strong>', {
                         allow_dismiss: false,
-                        type: 'info',
+                        type: 'primary',
                         placement: {
                             from: 'bottom',
-                            align: 'right'
+                            align: 'center'
                         },
                         animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
                     /** End alert ***/
