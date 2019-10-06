@@ -31,7 +31,7 @@ class StoreRequest extends BaseRequest
     public function messages()
     {
         return [
-            'administrator_id.required' => 'Selectioner une administrateur',
+            'administrator_id.required' => 'Selectioner un administrateur',
             'note_id.required' => 'Selectioner une note',
         ];
     }

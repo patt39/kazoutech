@@ -39,7 +39,7 @@ class MailTaskService
             }
         }
 
-        $from = Auth::user()->email;
+        $from = ['address' => Auth::user()->email, 'name' => Auth::user()->name];
         $emailuserJob = (new MailTaskEmailJob($subject,$message,$to,$from));
         dispatch($emailuserJob);
     }

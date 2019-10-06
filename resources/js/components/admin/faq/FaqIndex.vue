@@ -327,8 +327,8 @@
                             align: 'center'
                         },
                         animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
                     /** End alert ***/
@@ -361,8 +361,8 @@
                             align: 'center'
                         },
                         animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
                         },
                     });
                     /** End alert ***/
@@ -374,7 +374,13 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! try later or incorrect');
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
                 })
             },
             loadItems() {

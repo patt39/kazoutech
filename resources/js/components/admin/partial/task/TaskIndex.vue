@@ -83,21 +83,29 @@
                                                                 <b>{{ item.updated_at | dateAgo }}</b>
                                                             </div>
                                                         </div>
-                                                        <div v-if="item.administrator.id === user.id" class="text-right">
-                                                            <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
+                                                        <div class="text-right">
+                                                           <template v-if="item.administrator.id === user.id">
+                                                               <button class="btn btn-warning btn-round btn-just-icon btn-sm" title="View Note">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">visibility</i>
                                                             </span>
-                                                            </button>
-                                                            <button @click="addProgress(item)" class="restore-lk btn btn-success btn-round btn-just-icon btn-sm" title="Add Progress Task">
+                                                               </button>
+                                                               <button @click="addProgress(item)" class="restore-lk btn btn-success btn-round btn-just-icon btn-sm" title="Add Progress Task">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">add</i>
                                                             </span>
-                                                            </button>
-                                                            <button v-if="item.description === null"  @click="addDescription(item)" class="btn btn-info btn-round btn-just-icon btn-sm"
-                                                                    title="Add Description">
+                                                               </button>
+                                                               <button v-if="item.description === null"  @click="addDescription(item)" class="btn btn-info btn-round btn-just-icon btn-sm"
+                                                                       title="Add Description">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">description</i>
+                                                            </span>
+                                                               </button>
+                                                           </template>
+                                                            <button  v-if="$auth.can('setting-task')"  @click="deleteItem(item.id)"" class="btn btn-danger btn-round btn-just-icon btn-sm"
+                                                                    title="Deleted">
+                                                            <span class="btn-label">
+                                                                <i class="material-icons">delete_forever</i>
                                                             </span>
                                                             </button>
                                                         </div>
@@ -537,6 +545,59 @@
                         }
                     });
                 });
+            },
+            deleteItem(id) {
+                Swal.fire({
+                    title: 'Delete Task?',
+                    text: "Are you sure you want to delete task faq?",
+                    type: 'warning',
+                    animation: false,
+                    customClass: 'animated shake',
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                    cancelButtonClass: 'btn btn-danger',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No',
+                    showCancelButton: true,
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        //Start Progress bar
+                        this.$Progress.start();
+                        //Envoyer la requet au server
+                        axios.delete('/dashboard/tasks/' + id).then(() => {
+
+                            /** Alert notify bootstrapp **/
+                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                                allow_dismiss: false,
+                                showProgressbar: true,
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                },
+                            });
+                            setTimeout(function() {
+                                notify.update({'type': 'success', 'message': '<strong>Task deleted Successfully.</strong>', 'progress': 75});
+                            }, 2000);
+                            /** End alert ***/
+
+                            //End Progress bar
+                            this.$Progress.finish();
+
+                            Fire.$emit('AfterCreate');
+                        }).catch(() => {
+                            //Failled message
+                            this.$Progress.fail();
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
+                        })
+                    }
+                })
             },
             reload(){
                 this.loadItems()
