@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\User\SubscriberResource;
 use App\Model\user\subscriber;
 use Illuminate\Http\Request;
+use Spatie\Newsletter\Newsletter;
+use Symfony\Component\HttpFoundation\Response;
 
 class SubscriberController extends Controller
 {
@@ -42,7 +44,19 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if ( ! Newsletter::isSubscribed($request->user_email) ) {
+            Newsletter::subscribe($request->user_email);
+
+            $subscriber= new subscriber;
+            $subscriber->user_email = $request->user_email;
+
+            $subscriber->save();
+
+            return response('Thank you for subscribing to our newsletters',Response::HTTP_CREATED);
+        }
+
+        return response('You are already subscribed',Response::HTTP_CREATED);
     }
 
 }
