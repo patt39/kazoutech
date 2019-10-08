@@ -3,10 +3,21 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User\SubscriberResource;
+use App\Model\user\subscriber;
 use Illuminate\Http\Request;
 
 class SubscriberController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['api','store']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,19 +25,15 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.user.subscriber.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function api()
     {
-        //
-    }
 
+        $subscribers = SubscriberResource::collection(subscriber::latest()->get());
+        return $subscribers;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,48 +45,4 @@ class SubscriberController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

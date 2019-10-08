@@ -84,6 +84,7 @@ import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
 import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
+import SubscriberIndex from "../components/admin/contact/SubscriberIndex";
 
 
 
@@ -167,6 +168,9 @@ export const routes = [
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
     {path: '/dashboard/contacts/bookmarks/', name: 'contacts.bookmarks', component: ContactBookmarks},
     {path: '/dashboard/contacts/msg/:contact/', name: 'contacts.view', component: ContactMessageShow},
+
+    //Route subscribers
+    {path:'/dashboard/subscribers/',name:'subscribers.index',component:SubscriberIndex},
 
     {
         path: '/dashboard/messages/',

@@ -13,14 +13,14 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">keyboard_capslock</i>
+                                        <i class="material-icons">email</i>
                                     </div>
-                                    <p class="card-category"><b>All Activities Logs</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{activities.length}}</b></h3>
+                                    <p class="card-category"><b>All Emails Subscribers</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{subscribers.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">keyboard_capslock</i><b>All Activities Logs</b>
+                                        <i class="material-icons">email</i><b>All Emails Subscribers</b>
                                     </div>
                                 </div>
                             </div>
@@ -33,16 +33,16 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h4 class="card-title">
-                                                <b>Datatables Activities Logs</b>
+                                                <b>Datatables Subscribers</b>
                                             </h4>
                                             <p class="card-title">
-                                                Administrators Logs
+                                                Subscribers
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">keyboard_capslock</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">email</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -55,32 +55,30 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Activity Route</b></th>
-                                                <th><b>Description</b></th>
-                                                <th><b>ID Activity</b></th>
-                                                <th><b>Modify By</b></th>
+                                                <th><b>Emails</b></th>
+                                                <th><b>Ips</b></th>
                                                 <th><b>Date Creation</b></th>
+                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Activity Route</b></th>
-                                                <th><b>Description</b></th>
-                                                <th><b>ID Activity</b></th>
-                                                <th><b>Modify By</b></th>
+                                                <th><b>Emails</b></th>
+                                                <th><b>Ips</b></th>
                                                 <th><b>Date Creation</b></th>
+                                                <th class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in activities" :key="item.id">
-                                                <td>{{ item.subject_type }}</td>
-                                                <td>{{ item.description }}</td>
-                                                <td>{{ item.subject_id }}</td>
-                                                <td v-if="item.causer_id !== null">{{ (item.user.name.length > 30 ?
-                                                    item.user.name.substring(0,30)+ "..." : item.user.name) | upText }}
-                                                </td>
-                                                <td v-else="item.causer_id === null"><b>User don't exist</b></td>
+                                            <tr v-for="item in subscribers" :key="item.id">
+                                                <td>{{ item.email }}</td>
+                                                <td>{{ item.ip }}</td>
                                                 <td><b>{{ item.created_at | dateCalendar }}</b></td>
+                                                <td class="td-actions text-right">
+                                                    <a href="javascript:void(0)" class="btn btn-link  btn-warning btn-round btn-just-icon" title="Edit">
+                                                        <i class="material-icons">visibility</i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -98,15 +96,15 @@
 </template>
 
 <script>
-    import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
+    import StatusAdmin from "../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
 
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
                 user: {},
-                activities: {},
+                subscribers: {},
             }
         },
         methods: {
@@ -150,18 +148,15 @@
         beforeRouteEnter (to, from, next) {
 
             try {
-
-                let url = "/dashboard/api/activities";
-               axios.get(url).then(response => {
-                       next(vm => {
-                           vm.$Progress.start();
-                           vm.activities = response.data.data;
-                           vm.mydatatables();
-                           vm.$Progress.finish()
-                       })
-                   });
+                axios.get("/api/subscribers").then(response => {
+                    next(vm => {
+                        vm.$Progress.start();
+                        vm.subscribers = response.data.data;
+                        vm.mydatatables();
+                        vm.$Progress.finish()
+                    })
+                });
             }catch (err) {
-
                 next(false)
             }
 

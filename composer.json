@@ -35,7 +35,6 @@
         "spatie/laravel-activitylog": "^3.6",
         "spatie/laravel-backup": "^6.2",
         "spatie/laravel-cookie-consent": "^2.8",
-        "spatie/laravel-event-sourcing": "1.0",
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-newsletter": "^4.7",
         "spatie/laravel-permission": "^3.0",

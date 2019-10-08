@@ -107,11 +107,23 @@
                         <div class="collapse" id="pageExamples">
                             <ul class="nav">
                                 <!-- Abouts -->
-                                <li v-if="$auth.can('create-about')" class="nav-item">
-                                    <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
-                                        <span class="sidebar-mini"><b>AM</b></span>
-                                        <span class="sidebar-normal"><b>About Member</b></span>
-                                    </router-link>
+                                <li v-if="$auth.can('create-about')" class="nav-item ">
+                                    <a class="nav-link" data-toggle="collapse" href="#aboutsCollapse">
+                                        <span class="sidebar-mini"> AB </span>
+                                        <span class="sidebar-normal"> About page
+                                          <b class="caret"></b>
+                                        </span>
+                                    </a>
+                                    <div class="collapse" id="aboutsCollapse" style="">
+                                        <ul class="nav">
+                                            <li  class="nav-item">
+                                                <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
+                                                    <span class="sidebar-mini"><b>AM</b></span>
+                                                    <span class="sidebar-normal"><b>About Member</b></span>
+                                                </router-link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                                 <!--Testimonial-->
                                 <li v-if="$auth.can('create-testimonial')" class="nav-item">
@@ -243,11 +255,29 @@
                         </div>
                     </li>
                     <!-- Contacts -->
-                    <li class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#contactsSettings">
                             <i class="material-icons">message</i>
-                            <p><b>Contacts</b></p>
-                        </router-link>
+                            <p><b>Contacts</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="contactsSettings">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>MCP</b></span>
+                                        <span class="sidebar-normal"><b>Message Contact Page</b></span>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'subscribers.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>SC</b></span>
+                                        <span class="sidebar-normal"><b>Subscribers</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <!-- Technician -->
                     <li class="nav-item">

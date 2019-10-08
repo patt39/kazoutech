@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Faqs\UpdateRequest;
 use App\Http\Resources\FaqResource;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
-use App\StorableEvents\FaqAggregateRoot;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +38,7 @@ class FaqController extends Controller
     public function api()
     {
         $faqs = Cache::rememberForever('faqs', function () {
-            return FaqResource::collection(Faq::with('user','categoryfaq')->latest()->get());
+            return FaqResource::collection(faq::with('user','categoryfaq')->latest()->get());
         });
         return $faqs;
     }
@@ -71,12 +70,11 @@ class FaqController extends Controller
     {
         $faq = new faq;
 
-        FaqAggregateRoot::retrieve($faq)
-            ->createFaq(
-                $faq->title = $request->title,
-                $faq->body = $request->body,
-                $faq->categoryfaq_id = $request->categoryfaq_id
-            )->persist();
+        $faq->title = $request->title;
+        $faq->body = $request->body;
+        $faq->categoryfaq_id = $request->categoryfaq_id;
+
+        $faq->save();
 
         return response('Created',Response::HTTP_CREATED);
     }
@@ -168,14 +166,15 @@ class FaqController extends Controller
      */
     public function update(UpdateRequest $request, faq $faq)
     {
+        $faq = faq::findOrFail($faq->id);
 
         $slug = sha1(date('YmdHis') . str_random(30));
-        FaqAggregateRoot::retrieve($faq->id)->updateFaq(
-        $faq->title = $request->title,
-        $faq->body = $request->body,
-        $faq->slug = $slug,
-        $faq->categoryfaq_id = $request->categoryfaq_id
-        )->persist();
+        $faq->title = $request->title;
+        $faq->body = $request->body;
+        $faq->slug = $slug;
+        $faq->categoryfaq_id = $request->categoryfaq_id;
+
+        $faq->save();
 
         return ['message' => 'updated successfully'];
     }
@@ -188,9 +187,8 @@ class FaqController extends Controller
      */
    public function destroy(faq $faq)
    {
-       FaqAggregateRoot::retrieve($faq->id)
-           ->deleteFaq()
-           ->persist();
+       $faq = faq::findOrFail($faq->id);
+       $faq->delete();
 
        return ['message' => 'Deleted successfully '];
    }

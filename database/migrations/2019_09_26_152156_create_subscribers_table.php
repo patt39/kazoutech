@@ -16,6 +16,8 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email')->nullable();
+            $table->string('user_email')->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }
