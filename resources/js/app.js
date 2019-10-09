@@ -209,6 +209,7 @@ Vue.component('loader-ellipsis', require('./components/inc/animation/LoaderEllip
 Vue.component('nav-admin', require('./components/inc/admin/NavAdmin').default);
 Vue.component('top-nav', require('./components/inc/admin/TopNav').default);
 Vue.component('footer-admin', require('./components/inc/admin/FooterAdmin').default);
+Vue.component('contact-us', require('./components/user/contact/ContactUser').default);
 
 
 /**

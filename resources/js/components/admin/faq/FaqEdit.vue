@@ -52,27 +52,19 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card card-nav-tabs">
-                                                                <div class="card-body">
-                                                                    <div class="tab-content">
-                                                                        <div class="tab-pane active" id="profile">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
-                                                                                <br>
-                                                                                <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
-                                                                                <div class="form-check">
-                                                                                    <label class="form-check-label pull-right">
-                                                                                        Created by
-                                                                                        <router-link :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
-                                                                                            {{ form.user.name }}
-                                                                                        </router-link>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <has-error :form="form" field="body"></has-error>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
+                                                                <br>
+                                                                <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label pull-right">
+                                                                        Created by
+                                                                        <router-link :to="{ path: `/admin/profile/${form.user.username}` }" class="text-danger">
+                                                                            {{ form.user.name }}
+                                                                        </router-link>
+                                                                    </label>
                                                                 </div>
+                                                                <has-error :form="form" field="body"></has-error>
                                                             </div>
                                                         </div>
                                                     </div>

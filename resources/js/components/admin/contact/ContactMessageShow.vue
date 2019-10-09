@@ -322,7 +322,6 @@
                     .then(response => {
                         this.contact = response.data.data
                     }).catch(error => {
-                    console.log(error);
                     this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});

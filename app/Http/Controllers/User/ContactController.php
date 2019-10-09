@@ -89,7 +89,7 @@ class ContactController extends Controller
             'email'   => 'required|email:rfc,dns',
             'subject' => 'required|min:2|max:210',
             'message'     => 'required|min:2|max:50000',
-            'recaptcha' => ['required', $recaptcha],
+            //'recaptcha' => ['required', $recaptcha],
         ]);
         $contact = new Contact;
 
