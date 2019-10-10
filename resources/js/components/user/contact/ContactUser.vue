@@ -17,7 +17,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-user-run"></i></span>
                                                     </div>
-                                                    <input v-model="form.last_name"  id="last_name" type="text" placeholder="Last Name" :class="{ 'is-invalid': form.errors.has('last_name') }"  class="form-control" name="name">
+                                                    <input v-model="form.last_name"  id="last_name" type="text" placeholder="Last Name" :class="{ 'is-invalid': form.errors.has('last_name') }"  class="form-control" name="last_name">
                                                     <has-error :form="form" field="last_name"></has-error>
                                                 </div>
                                             </div>
@@ -194,7 +194,7 @@ export default {
                 this.errors = [];
                 //this.$refs.recaptcha.reset();
                     /* debut de l'alert **/
-                    $.notify('<strong>Merci pour votre message, nous vous répondrons dans les meilleurs délais</strong>', {
+                    $.notify('<strong>Merci pour votre message, nous vous répondrons dans les délais</strong>', {
                         allow_dismiss: false,
                         type: 'success',
                         placement: {

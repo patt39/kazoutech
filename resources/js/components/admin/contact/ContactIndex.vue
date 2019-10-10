@@ -226,13 +226,18 @@
                 axios.get(`/dashboard/contacts/discard_red/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Message contact read.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'center'
+                        },
+                        animate: {
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact read.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar
@@ -260,13 +265,18 @@
                 axios.get(`/dashboard/contacts/red_confirm/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Message contact unread.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'primary',
+                        placement: {
+                            from: 'bottom',
+                            align: 'center'
+                        },
+                        animate: {
+                            enter: "animated fadeInUp",
+                            exit: "animated fadeOutDown"
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact unread.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar
