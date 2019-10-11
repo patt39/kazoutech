@@ -102,7 +102,7 @@
                                                             </span>
                                                                </button>
                                                            </template>
-                                                            <button  v-if="$auth.can('setting-task')"  @click="deleteItem(item.id)"" class="btn btn-danger btn-round btn-just-icon btn-sm"
+                                                            <button  v-if="$auth.can('setting-task')"  @click="deleteItem(item.id)" class="btn btn-danger btn-round btn-just-icon btn-sm"
                                                                     title="Deleted">
                                                             <span class="btn-label">
                                                                 <i class="material-icons">delete_forever</i>
