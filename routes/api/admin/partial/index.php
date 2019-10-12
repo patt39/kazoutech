@@ -7,6 +7,7 @@ Route::group(['namespace' => 'Partial'], function(){
 
 
     require(__DIR__ .  DIRECTORY_SEPARATOR . 'tags.php');
+    require(__DIR__ .  DIRECTORY_SEPARATOR . 'cities.php');
     require(__DIR__ .  DIRECTORY_SEPARATOR . 'tasks.php');
     require(__DIR__ .  DIRECTORY_SEPARATOR . 'notes.php');
     require(__DIR__ .  DIRECTORY_SEPARATOR . 'category_faqs.php');

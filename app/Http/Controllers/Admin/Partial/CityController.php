@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Partial\Settings;
+namespace App\Http\Controllers\Admin\Partial;
 
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\Partial\CityByStatusResource;
 use App\Model\admin\city;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class CityController extends Controller
