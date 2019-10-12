@@ -60,7 +60,7 @@ Route::group(['namespace' => 'Admin'], function () {
 
 
 
-        Route::get('/{username}', 'AccountController@profileView')->name('profile.view');
+        Route::get('/@{username}', 'AccountController@profileView')->name('profile.view');
         Route::get('/profile/edit', 'AccountController@profileEdit')->name('profile.edit');
         Route::put('/user/update', 'AccountController@update');
 
