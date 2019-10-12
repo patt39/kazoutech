@@ -39,7 +39,7 @@
                 </ul>
                 <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                     <li class="nav-item d-none d-lg-block ml-lg-4">
-                        <a href="{{route('login')}}" class="btn btn-outline-info btn-icon">
+                        <a href="/login" class="btn btn-outline-info btn-icon">
                             <!--<span class="btn-inner--icon">
                               <i class="fa fa-cloud-download mr-2"></i>
                             </span>-->
@@ -47,7 +47,7 @@
                         </a>
                     </li>
                     <li class="nav-item d-none d-lg-block ml-lg-4">
-                        <a href="{{route('register')}}" class="btn btn-neutral btn-icon">
+                        <a href="/register" class="btn btn-neutral btn-icon">
                             <!--<span class="btn-inner--icon">
                               <i class="fa fa-cloud-download mr-2"></i>
                             </span>-->
