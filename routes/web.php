@@ -11,24 +11,17 @@
 |
 */
 
-Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'Auth'], function () {
-
-    // Admin Invitation
-    Route::get('invite', 'AdmininviteController@invite')->name('invite');
-    Route::post('user/invite', 'AdmininviteController@process')->name('process');
-
-    // {token} is a required parameter that will be exposed to us in the controller method
-    Route::get('user/accept/{token}', 'AdmininviteController@accept')->name('accept');
-
-});
 
 /** Dashboard */
 require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'index.php');
+
+/** Auth */
+Auth::routes(['verify' => true]);
+require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'index.php');
 
 /** User */
 require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR . 'index.php');
@@ -46,13 +39,6 @@ Route::group(['namespace' => 'Admin'], function () {
     //All Route Partials
     Route::group(['namespace' => 'Partial'], function () {
 
-        // Admin Route activities
-        Route::get('/dashboard/activities', 'ActivitylogController@index')->name('activities.index');
-        Route::get('/dashboard/api/activities', 'ActivitylogController@api');
-
-         // Admin Route links
-         Route::get('/dashboard/api/links', 'LinkController@api');
-
         // Admin Route categories
         Route::resource('/dashboard/categories', 'CategoryController');
         Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');
@@ -68,22 +54,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('api/{username}', 'AccountController@view');
         Route::get('api/account/user', 'AccountController@user');
         Route::get('api/account/profile', 'AccountController@userEdit');
-
-
-        //Change Password Route
-        Route::get('dashboard/user/password/change', 'ChangePasswordController@showChangePasswordForm')->name('admin.change_password');
-        Route::put('change_password', 'ChangePasswordController@changePassword');
-        //Reset Password Route
-        Route::get('dashboard/user/password/reset', 'ChangePasswordController@showResetPasswordForm')->name('admin.reset_password');
-
-
-
-        //Route Following
-        Route::post('user/follow/{id}', 'FollowerController@store')->name('user.follow');
-        Route::get('dashboard/users/p/{username}/followers', 'FollowerController@followers')->name('follower.view');
-        Route::get('dashboard/users/p/{username}/followings', 'FollowerController@following')->name('following.view');
-        Route::get('followers/{username}', 'FollowerController@GetFollowersByUser');
-        Route::get('followings/{username}', 'FollowerController@GetFollowingsByUser');
 
 
 
@@ -113,11 +83,4 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('dashboard/chat', 'MessageController@chat')->name('messages.chat');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/dashboard/tests', 'DownloadcvController');
