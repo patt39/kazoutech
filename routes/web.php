@@ -44,19 +44,6 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');
         Route::get('/dashboard/disable_categories/{id}', 'CategoryController@disable')->name('disable_categories');
 
-
-
-        Route::get('/@{username}', 'AccountController@profileView')->name('profile.view');
-        Route::get('/profile/edit', 'AccountController@profileEdit')->name('profile.edit');
-        Route::put('/user/update', 'AccountController@update');
-
-        Route::post('auth/register', 'AccountController@register');
-        Route::get('api/{username}', 'AccountController@view');
-        Route::get('api/account/user', 'AccountController@user');
-        Route::get('api/account/profile', 'AccountController@userEdit');
-
-
-
     });
 
 });

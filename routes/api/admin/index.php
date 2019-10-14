@@ -16,7 +16,8 @@ Route::group(['namespace' => 'Admin'], function(){
      * pas confondre avec celle du web
      */
 
-    /* Admin */
+    /* Admin  and User*/
+
     require(__DIR__ . DIRECTORY_SEPARATOR . 'faqs.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'roles.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'users.php');

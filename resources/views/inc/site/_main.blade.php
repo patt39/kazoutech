@@ -6,9 +6,12 @@
     @yield('style')
 </head>
 <body>
-@include('inc.site.nav-site')
 
-<div class="wrapper" id="app">
+<div id="app">
+
+    @include('inc.site.nav-site')
+
+    <div class="wrapper">
 
 
 
@@ -18,6 +21,7 @@
         @show
 
 
+    </div>
 </div>
 
 @include('inc.site.footer-site')

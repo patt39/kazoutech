@@ -45,7 +45,7 @@
 </template>
 
 <script>
-    import NavSite from "../../inc/user/NavSite";
+    import NavSite from "../../inc/user/NavUserSite";
     export default {
         name: "RegisterIndex",
         components: {NavSite},

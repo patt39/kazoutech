@@ -22,8 +22,6 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api','view','profileView']]);
-        // Middleware lock account
-        //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.
@@ -64,6 +62,8 @@ class AccountController extends Controller
         $user = new UserResource(User::where('username', $username)->firstOrFail());
         return $user;
     }
+
+
     public function view($username)
     {
         $user = new UserResource(User::where('username', $username)->firstOrFail());

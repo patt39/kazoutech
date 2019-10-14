@@ -143,7 +143,7 @@
                                     <hr>
                                     <div class="submit">
                                         <div class="text-center">
-                                             <router-link  :to="{ path: `/${form.username}` }" class="btn btn-info btn-round btn-raised" title="View">
+                                             <router-link  :to="{ path: `/@${form.username}` }" class="btn btn-info btn-round btn-raised" title="View">
                                                 <b class="title_hover">view profile</b>
                                              </router-link>
                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">

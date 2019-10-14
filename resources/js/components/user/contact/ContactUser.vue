@@ -194,7 +194,7 @@ export default {
                 this.errors = [];
                 //this.$refs.recaptcha.reset();
                     /* debut de l'alert **/
-                    $.notify('<strong>Merci pour votre message, nous vous répondrons dans les délais</strong>', {
+                    $.notify('<strong>Merci pour votre message, nous vous répondrons d\'ici peux </strong>', {
                         allow_dismiss: false,
                         type: 'success',
                         placement: {
