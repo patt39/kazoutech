@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\VerifyEmailUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class VerificationController extends Controller
 {
@@ -26,6 +29,7 @@ class VerificationController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+
 
     /**
      * Create a new controller instance.

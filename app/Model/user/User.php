@@ -5,7 +5,7 @@ namespace App\Model\user;
 use App\Mail\NewUserWelcomeMail;
 use App\Model\admin\country;
 use App\Model\admin\task;
-use App\Notifications\RegisteredUsers;
+use App\Notifications\VerifyEmailUsers;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new RegisteredUsers());
+        $this->notify(new VerifyEmailUsers());
     }
 
     public function visits()

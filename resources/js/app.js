@@ -205,6 +205,7 @@ Vue.component('pagination-link', require('./components/inc/vendor/PaginationComp
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('alert-permission', require('./components/inc/admin/components/AlertPermission').default);
 Vue.component('errored-loading', require('./components/inc/animation/Errored').default);
+Vue.component('link-verify', require('./components/user/auth/LinkVerify').default);
 Vue.component('loader-ellipsis', require('./components/inc/animation/LoaderEllipsis').default);
 Vue.component('nav-admin', require('./components/inc/admin/NavAdmin').default);
 Vue.component('nav-user-site', require('./components/inc/user/NavUserSite').default);

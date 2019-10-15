@@ -95,7 +95,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                             </div>
-                                            <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password">
                                         </div>
                                     </div>
                                     <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>

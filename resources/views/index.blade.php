@@ -420,6 +420,7 @@
             </div>
         </section>
        <contact-us></contact-us>
+        <link-verify></link-verify>
         <section class="section section-lg">
             <div class="container">
                 <div class="row row-grid justify-content-center">
