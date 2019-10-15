@@ -1,5 +1,5 @@
 @extends('inc.user._main')
-@section('title', '| Contact')
+@section('title', '| Contact-Page')
 
 @section('style')
 
@@ -10,9 +10,7 @@
 @endsection
 
 @section('content')
-    <div id="app">
-        <router-view></router-view>
-    </div>
+    <router-view></router-view>
 @endsection
 
 @section('script')

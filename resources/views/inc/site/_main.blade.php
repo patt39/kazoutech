@@ -9,7 +9,7 @@
 
 <div id="app">
 
-    @include('inc.site.nav-site')
+    @include('inc.user.navesite')
 
     <div class="wrapper">
 

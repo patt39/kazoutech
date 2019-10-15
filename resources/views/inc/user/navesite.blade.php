@@ -1,77 +1,79 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="/">
-            Kazoutech
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        {{ __('Demander un service') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        {{ __('Devenir un bosseur') }}
-                    </a>
-                </li>
-                <!-- Authentication Links -->
-                @guest
-                <li class="nav-item">
-                    <router-link  :to="{ name: 'login' }" class="nav-link">
-                        {{ __('Connexion') }}
-                    </router-link>
-                </li>
-                    @if (Route::has('register'))
-                <li class="nav-item">
-                    <router-link  :to="{ name: 'register' }" class="nav-link">
-                        {{ __('Inscription') }}
-                    </router-link>
-                </li>
-                     @endif
-                @else
-                <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="position: relative; padding-left: 50px;">
-                        @if(Auth::user()->avatar)
-                            <img src="{{ asset(auth()->user()->avatar ) }}" alt="{{ Auth::user()->email }}"  class="img-raised rounded-circle img-fluid text-center" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%"> <b>{!! str_limit(Auth::user()->email, 12,'...') !!}</b>
-                        @endif
-                    </a>
-                    <div class="dropdown-menu dropdown-with-icons">
-                        <a href="{{route('dashboard.index')}}" class="dropdown-item">
-                            <b>{{ __('Dashboard') }}</b>
-                        </a>
-                        <router-link  :to="{ path: `/${user.username}` }" class="dropdown-item">
-                            <b> {{ __('Profile') }}</b>
-                        </router-link>
-
-                        <router-link  :to="{ path: `/profile/edit` }" class="dropdown-item">
-                            <b> {{ __('Paramètres') }}</b>
-                        </router-link>
-                        <a href="javascript:void(0)" class="dropdown-item">
-                            <b>Deconnexion</b>
-                        </a>
+<header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="/">
+                <img src="../assets/img/brand/white.png" alt="brand">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="../index.html">
+                                <img src="../assets/img/brand/blue.png" alt="brand">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
                     </div>
-                </li>
-            @endguest
-                <!--<li class="nav-item">
-                    <router-link  :to="{ name: 'contact_cm' }" class="nav-link">
-                        Contact
-                    </router-link>
-                </li>-->
-            </ul>
+                </div>
+                @guest
+                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                        <li class="nav-item d-none d-lg-block ml-lg-4">
+                            <a href="{{route('login')}}" class="btn btn-secondary btn-icon">
+                                <span class="nav-link-inner--text">Connection</span>
+                            </a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item d-none d-lg-block ml-lg-4">
+                                <a href="{{route('register')}}" class="btn btn-neutral btn-icon">
+                                    <span class="nav-link-inner--text">Inscription</span>
+                                </a>
+                            </li>
+                        @endif
+                </ul>
+                @else
+
+                @can('dashboard')
+                 @if(Auth::user()->my_status === 'active')
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+                            <i class="ni ni-bold-down d-lg-none"></i>
+                            <span class="nav-link-inner--text">Dashboard</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-xl">
+                            <div class="dropdown-menu-inner">
+                                <a href="{{route('dashboard.index')}}" class="media d-flex align-items-center">
+                                    <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                        <i class="ni ni-align-center"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h6 class="heading text-primary mb-md-1">Dashboard</h6>
+                                    </div>
+                                </a>
+                                <a href="{{route('users.index')}}" class="media d-flex align-items-center">
+                                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                        <i class="ni ni-palette"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h6 class="heading text-primary mb-md-1">Dashboard users</h6>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                 @endif
+                @endcan
+                @endguest
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>

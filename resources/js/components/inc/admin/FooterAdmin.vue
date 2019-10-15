@@ -4,29 +4,19 @@
             <nav class="pull-left">
                 <ul>
                     <li>
-                        <router-link  :to="{ path: '/dashboard/' }">
+                        <a href="/" target="_blank">
                             <p><b>kazoutech</b></p>
-                        </router-link>
+                        </a>
                     </li>
                     <li>
-                        <a href="#" target="_blank">
+                        <a href="/abouts">
                             About Us
                         </a>
                     </li>
                     <li>
-                        <a href="/orders" target="_blank">
-                            Services
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            FAQs
-                        </a>
-                    </li>
-                    <li>
-                        <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
+                        <a href="/contacts">
                             Contacts
-                        </router-link>
+                        </a>
                     </li>
                 </ul>
             </nav>

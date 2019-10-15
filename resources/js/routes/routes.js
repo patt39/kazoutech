@@ -231,7 +231,7 @@ export const routes = [
     {path: '/login/', name: 'login', component: LoginIndex},
 
     //Route contact page
-    {path: '/c/contact/', name: 'contact_cm', component: ContactUser},
+    {path: '/contacts/', name: 'contact_cm', component: ContactUser},
 
     //Route profile user
     {path: '/:username', name: 'profile.view', component: ProfileUserIndex},

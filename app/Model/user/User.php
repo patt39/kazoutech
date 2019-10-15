@@ -19,7 +19,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail,Auditable
 {
-    use Notifiable,HasApiTokens,HasRoles,CanFollow,SoftDeletes, CanBeFollowed,\OwenIt\Auditing\Auditable;
+    use Notifiable,HasApiTokens,HasRoles,CanFollow,SoftDeletes,CanBeFollowed,\OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

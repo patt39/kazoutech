@@ -33,20 +33,20 @@
                             </li>
 
                             <li class="nav-item">
-                                <router-link  :to="{ name: 'login' }" class="nav-link">
-                                    Connexion
-                                </router-link>
+                                <a href="/login" class="nav-link">
+                                    <b>Connexion</b>
+                                </a>
                             </li>
-
                             <li class="nav-item">
-                                <router-link  :to="{ name: 'register' }" class="nav-link">
-                                    Inscription
-                                </router-link>
+                                <a href="/register" class="nav-link">
+                                    <b>  Inscription</b>
+                                </a>
                             </li>
                         </template>
                         <li v-else="guest" class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="position: relative; padding-left: 50px;">
-                                <img :src="userData.avatar" :alt="userData.name"  class="img-raised rounded-circle img-fluid text-center" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%"> <b v-text="userData.name"></b>
+                                <img :src="userData.avatar" :alt="userData.name"  class="img-raised rounded-circle img-fluid text-center" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%">
+                                <b v-text="userData.name"></b>
                             </a>
                             <div class="dropdown-menu dropdown-with-icons">
                                 <a href="#" class="dropdown-item">

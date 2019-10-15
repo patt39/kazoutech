@@ -445,7 +445,6 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-
                     //Event
                     Fire.$emit("AfterCreate");
                 }).catch(() => {
