@@ -17,7 +17,10 @@
 <script type="text/javascript">
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
-    })
+
+        var e = document.getElementById("fooDiv");
+        e.parentNode.removeChild(e);
+    })();
 </script>
 @if(config('app.env') != 'local')
 @endif

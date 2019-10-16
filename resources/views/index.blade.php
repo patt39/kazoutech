@@ -28,16 +28,20 @@
                     <div class="col px-0">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h1 class="display-3  text-white">A beautiful Design System<span>completed with examples</span></h1>
-                                <p class="lead  text-white">The design system comes with four pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                                <h1 class="display-3  text-white">Kazoutech</h1>
+                                <p class="lead  text-white">Particer a votre evollution a un changement.</p>
                                 <div class="btn-wrapper">
-                                    <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="btn btn-info btn-icon mb-3 mb-sm-0">
-                                        <span class="btn-inner--icon"><i class="fa fa-code"></i></span>
-                                        <span class="btn-inner--text">Components</span>
+                                    <a href="{{route('login')}}" class="btn btn-info btn-icon mb-3 mb-sm-0">
+                                        <span class="btn-inner--icon">
+                                            <i class="fa fa-sign-in"></i>
+                                        </span>
+                                        <span class="btn-inner--text">Se connecter</span>
                                     </a>
-                                    <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-white btn-icon mb-3 mb-sm-0">
-                                        <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>
-                                        <span class="btn-inner--text">Download HTML</span>
+                                    <a href="{{route('register')}}" class="btn btn-white btn-icon mb-3 mb-sm-0">
+                                        <span class="btn-inner--icon">
+                                            <i class="ni ni-user-run"></i>
+                                        </span>
+                                        <span class="btn-inner--text">S'inscrire</span>
                                     </a>
                                 </div>
                             </div>
@@ -116,155 +120,22 @@
         </section>
         <section class="section section-lg">
             <div class="container">
-                <div class="row row-grid align-items-center">
-                    <div class="col-md-6 order-md-2">
-                        <img src="/assets/site/assets/img/theme/promo-1.png" class="img-fluid floating" alt="image">
-                    </div>
-                    <div class="col-md-6 order-md-1">
-                        <div class="pr-md-5">
-                            <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                                <i class="ni ni-settings-gear-65"></i>
+                <div class="row justify-content-center text-center mb-lg">
+                    <div class="col-lg-8 col-12">
+                        <h6 class="display-4">Abonnez vous à notre newsletter pour etre notifié des derniers mise a jour!</h6>
+                        <div class="row row-input">
+                            <div  id="fooDiv" class="fooDiv col-sm-8 col-12">
+                                <input type="text"  class="form-control" placeholder="Votre adresse e-mail"  name="foo" id="foo">
                             </div>
-                            <h3>Awesome features</h3>
-                            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-                            <ul class="list-unstyled mt-5">
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <div class="badge badge-circle badge-success mr-3">
-                                                <i class="ni ni-settings-gear-65"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-0">Carefully crafted components</h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <div class="badge badge-circle badge-success mr-3">
-                                                <i class="ni ni-html5"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-0">Amazing page examples</h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <div class="badge badge-circle badge-success mr-3">
-                                                <i class="ni ni-satisfied"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-0">Super friendly support team</h6>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section bg-secondary">
-            <div class="container">
-                <div class="row row-grid align-items-center">
-                    <div class="col-md-6">
-                        <div class="card bg-default shadow border-0">
-                            <img src="/assets/site/assets/img/theme/img-1-1200x1000.jpg" class="card-img-top" alt="image">
-                            <blockquote class="card-blockquote">
-                                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
-                                    <polygon points="0,52 583,95 0,95" class="fill-default" />
-                                    <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default" />
-                                </svg>
-                                <h4 class="display-3 font-weight-bold text-white">Design System</h4>
-                                <p class="lead text-italic text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.</p>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="pl-md-5">
-                            <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
-                                <i class="ni ni-settings"></i>
+                            <div class="col-sm-8 col-12">
+                                <input type="email" class="form-control" name="email" id="signupSrEmail" placeholder="Votre adresse e-mail" aria-label="Your email">
                             </div>
-                            <h3>Our customers</h3>
-                            <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.</p>
-                            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-                            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-                            <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful websites</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section pb-0 bg-gradient-warning">
-            <div class="container">
-                <div class="row row-grid align-items-center">
-                    <div class="col-md-6 order-lg-2 ml-lg-auto">
-                        <div class="position-relative pl-md-5">
-                            <img src="/assets/site/assets/img/ill/ill-2.svg" class="img-center img-fluid" alt="image">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="d-flex px-3">
-                            <div>
-                                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                    <i class="ni ni-building text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="pl-4">
-                                <h4 class="display-3 text-white">Modern Interface</h4>
-                                <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                            </div>
-                        </div>
-                        <div class="card shadow shadow-lg--hover mt-5">
-                            <div class="card-body">
-                                <div class="d-flex px-3">
-                                    <div>
-                                        <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                                            <i class="ni ni-satisfied"></i>
-                                        </div>
-                                    </div>
-                                    <div class="pl-4">
-                                        <h5 class="title text-success">Awesome Support</h5>
-                                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                                        <a href="#" class="text-success">Learn more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow shadow-lg--hover mt-5">
-                            <div class="card-body">
-                                <div class="d-flex px-3">
-                                    <div>
-                                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                            <i class="ni ni-active-40"></i>
-                                        </div>
-                                    </div>
-                                    <div class="pl-4">
-                                        <h5 class="title text-warning">Modular Components</h5>
-                                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                                        <a href="#" class="text-warning">Learn more</a>
-                                    </div>
-                                </div>
+                            <div class="col-sm-4 col-12 pl-lg-0">
+                                <button type="submit" class="btn btn-primary btn-block">S'abonner</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- SVG separator -->
-            <div class="separator separator-bottom separator-skew zindex-100">
-                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-                </svg>
-            </div>
-        </section>
-        <section class="section section-lg">
-            <div class="container">
                 <div class="row justify-content-center text-center mb-lg">
                     <div class="col-lg-8">
                         <h2 class="display-3">The amazing Team</h2>
@@ -420,56 +291,25 @@
             </div>
         </section>
        <contact-us></contact-us>
-        <link-verify></link-verify>
-        <section class="section section-lg">
-            <div class="container">
-                <div class="row row-grid justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-3">Do you love this awesome <span class="text-success">Design System for Bootstrap 4?</span></h2>
-                        <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative Tim where you can find the Design System in HTML. Start a new project or give an old Bootstrap project a new look!</p>
-                        <div class="btn-wrapper">
-                            <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-primary mb-3 mb-sm-0">Download HTML</a>
-                            <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-default">Download PSD/Sketch</a>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="display-4 mb-5 mt-5">Available on these technologies</h4>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-2 col-4">
-                                    <a href="https://www.creative-tim.com/product/argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Bootstrap 4 - Most popular front-end component library">
-                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 col-4">
-                                    <a href=" https://www.creative-tim.com/product/vue-argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Vue.js - The progressive javascript framework">
-                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/vue.jpg" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 col-4">
-                                    <a href=" https://www.sketchapp.com/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Sketch - Digital design toolkit">
-                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/sketch.jpg" class="img-fluid opacity-3">
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 col-4">
-                                    <a href=" https://www.adobe.com/products/photoshop.html" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Adobe Photoshop - Software for digital images manipulation">
-                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/ps.jpg" class="img-fluid opacity-3">
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 col-4">
-                                    <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Angular - One framework. Mobile &amp; desktop">
-                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid opacity-3">
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 col-4">
-                                    <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] React - A JavaScript library for building user interfaces">
-                                        <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/react.jpg" class="img-fluid opacity-3">
-                                    </a>
-                                </div>
+        @guest
+            <section class="section section-lg">
+                <div class="container">
+                    <div class="row row-grid justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <h2 class="display-3">Lancez-vous dès maintenant</h2>
+                            <div class="btn-wrapper">
+                                <a href="{{route('login')}}" class="btn btn-primary mb-3 mb-sm-0">S'incrire</a>
+                                <a href="{{route('register')}}" class="btn btn-default">Se connecter</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @else
+            @if(Auth::user()->email_verified_at === null)
+                <link-verify></link-verify>
+            @endif
+        @endguest
     </main>
 @endsection
 

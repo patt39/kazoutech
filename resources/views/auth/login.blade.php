@@ -1,5 +1,5 @@
 @extends('inc.site._main')
-@section('title', 'Login page')
+@section('title', 'Login')
 
 @section('style')
 @endsection

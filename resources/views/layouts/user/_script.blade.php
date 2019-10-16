@@ -40,6 +40,12 @@
         $('[data-toggle="tooltip"]').tooltip();
     })
 </script>
+<script>
+    (function () {
+        var e = document.getElementById("fooDiv");
+        e.parentNode.removeChild(e);
+    })();
+</script>
 @if(config('app.env') != 'local')
 @endif
 

@@ -23,6 +23,7 @@
 <!-- Icons -->
 <link href="/assets/site/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
 <link href="/assets/site/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/dashboard/assets/css/style.css">
 <!-- Argon CSS -->
 <link type="text/css" href="/assets/site/assets/css/argon.css?v=1.1.0" rel="stylesheet">
 

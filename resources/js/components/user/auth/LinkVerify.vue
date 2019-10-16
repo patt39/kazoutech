@@ -1,30 +1,16 @@
 <template>
-    <div class="row" style="padding-top: 50px; padding-bottom: 50px;">
-        <div class="col-md-6 mr-auto ml-auto">
-            <div class="card">
-                <div class="card-header text-center card-header-warning card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">mail_outline</i>
-                    </div>
-                    <h4 class="card-title">Email Verification</h4>
-                </div>
-                <div class="card-body">
-                    Before proceding in our platform, please check your registration email for a secure verification.
-                    <br>
-                </div>
-                <div class="card-footer text-right">
-                    <div class="form-check mr-auto">
-                        Have not received the confirm link ?
-                    </div>
-                    <div class="submit text-center">
-                        <a id="button_hover" href="javascript:void(0)" @click="emailVerify" class="btn btn-success btn-raised btn-round">
-									<span class="btn-label">
-										<i class="material-icons">email</i>
-									</span>
-                            <b class="title_hover">Send Again</b>
-                        </a>
-                    </div>
-                </div>
+    <div>
+        <div class="container">
+            <div class="row row-grid justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <a  class="btn btn-lg" href="javascript:void(0)" @click="emailVerify">
+                        <div class="alert alert-danger text-center">
+                            <div class="container">
+                                <b>Info alert:</b> Your account is not yet activated. Click on this link to activate it.
+                            </div>
+                        </div>
+                    </a>
+              </div>
             </div>
         </div>
     </div>
