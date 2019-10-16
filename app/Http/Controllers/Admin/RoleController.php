@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Resources\RoleResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -38,7 +37,7 @@ class RoleController extends Controller
     {
         return RoleResource::collection(Role::orderBy('id','DESC')->latest()->get());
     }
-    
+
     //public function apiRoles()
     //{
     //    return UsersrolesResource::collection(Role::with('role')->latest()->get());

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\SubscriberResource;
 use App\Model\user\subscriber;
 use Illuminate\Http\Request;
-use Spatie\Newsletter\Newsletter;
+use Newsletter;
 use Symfony\Component\HttpFoundation\Response;
 
 class SubscriberController extends Controller
@@ -44,6 +44,9 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'user_email' => 'required|string|email',
+        ]);
 
         if ( ! Newsletter::isSubscribed($request->user_email) ) {
             Newsletter::subscribe($request->user_email);

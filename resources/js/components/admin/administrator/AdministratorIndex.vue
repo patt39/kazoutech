@@ -415,18 +415,20 @@
                 })
             },
             loadItems() {
-                //Start Progress bar
-                this.$Progress.start();
-                const url = "/api/administrators";
-                axios.get(url).then(response => {
-                    this.loaded = true;
-                    this.users = response.data.data;
-                    this.mydatatables();
-                    //End Progress bar
-                    this.$Progress.finish();
-                });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
-                axios.get("/api/colors").then(({data}) => (this.colors = data.data));
+                if (this.$auth.isSuperAdmin){
+                    //Start Progress bar
+                    this.$Progress.start();
+                    const url = "/api/administrators";
+                    axios.get(url).then(response => {
+                        this.loaded = true;
+                        this.users = response.data.data;
+                        this.mydatatables();
+                        //End Progress bar
+                        this.$Progress.finish();
+                    });
+                    axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                    axios.get("/api/colors").then(({data}) => (this.colors = data.data));
+                }
             },
         },
         created() {

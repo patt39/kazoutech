@@ -260,16 +260,18 @@
             },
         },
         created(){
-            //Start Progress bar
-            this.$Progress.start();
-            api.userID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/countries").then((response) => {
-                this.loaded = true;
-                this.countries = response.data.data;
-                //End Progress bar
-                this.$Progress.finish();
-            });
-            axios.get("/api/roles").then(({data}) => (this.roles = data.data));
+            if (this.$auth.isSuperAdmin){
+                //Start Progress bar
+                this.$Progress.start();
+                api.userID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
+                axios.get("/api/countries").then((response) => {
+                    this.loaded = true;
+                    this.countries = response.data.data;
+                    //End Progress bar
+                    this.$Progress.finish();
+                });
+                axios.get("/api/roles").then(({data}) => (this.roles = data.data));
+            }
         }
     }
 </script>

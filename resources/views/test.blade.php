@@ -116,6 +116,7 @@
 <h1>Ajax avec Laravel</h1>
 <p><label id="open" class="pure-button button-success" for="modal">Ouvrir la page de contact</label></p>
 <input class="modal-state" id="modal" type="checkbox">
+
 <div class="modal">
     <label class="modal__bg" for="modal"></label>
     <div class="modal__inner">

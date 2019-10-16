@@ -120,22 +120,7 @@
         </section>
         <section class="section section-lg">
             <div class="container">
-                <div class="row justify-content-center text-center mb-lg">
-                    <div class="col-lg-8 col-12">
-                        <h6 class="display-4">Abonnez vous à notre newsletter pour etre notifié des derniers mise a jour!</h6>
-                        <div class="row row-input">
-                            <div  id="fooDiv" class="fooDiv col-sm-8 col-12">
-                                <input type="text"  class="form-control" placeholder="Votre adresse e-mail"  name="foo" id="foo">
-                            </div>
-                            <div class="col-sm-8 col-12">
-                                <input type="email" class="form-control" name="email" id="signupSrEmail" placeholder="Votre adresse e-mail" aria-label="Your email">
-                            </div>
-                            <div class="col-sm-4 col-12 pl-lg-0">
-                                <button type="submit" class="btn btn-primary btn-block">S'abonner</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <newsletter-index></newsletter-index>
                 <div class="row justify-content-center text-center mb-lg">
                     <div class="col-lg-8">
                         <h2 class="display-3">The amazing Team</h2>

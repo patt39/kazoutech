@@ -91,7 +91,7 @@ class ContactController extends Controller
             'message'     => 'required|min:2|max:50000',
             //'recaptcha' => ['required', $recaptcha],
         ]);
-        $contact = new Contact;
+        $contact = new contact;
 
         $contact->first_name = $request->first_name;
         $contact->last_name = $request->last_name;

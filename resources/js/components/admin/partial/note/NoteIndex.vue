@@ -310,6 +310,46 @@
                 //Progres bar
                 this.$Progress.finish()
             },
+            createItem() {
+                this.$Progress.start();
+                this.form.busy = true;
+                // Submit the form via a POST request
+                this.form.post("/dashboard/notes").then(() => {
+                    //Event
+                    Fire.$emit("AfterCreate");
+
+                    //Masquer le modal après la création
+                    $("#addNew").modal("hide");
+
+                    //Insertion de l'alert !
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true,
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        },
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Note Created Successfully.</strong>', 'progress': 75});
+                    }, 2000);
+                    //Fin insertion de l'alert !
+
+                    //End Progress bar
+                    this.$Progress.finish();
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                });
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -486,46 +526,7 @@
             reload(){
                 this.loadItems()
             },
-            createItem() {
-                this.$Progress.start();
-                this.form.busy = true;
-                // Submit the form via a POST request
-                this.form.post("/dashboard/notes").then(() => {
-                    //Event
-                    Fire.$emit("AfterCreate");
 
-                    //Masquer le modal après la création
-                    $("#addNew").modal("hide");
-
-                    //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Note Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                        //Fin insertion de l'alert !
-
-                    //End Progress bar
-                    this.$Progress.finish();
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                });
-            }
         },
         created() {
             this.loadItems();
