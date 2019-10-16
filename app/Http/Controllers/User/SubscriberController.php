@@ -53,6 +53,7 @@ class SubscriberController extends Controller
 
             $subscriber= new subscriber;
             $subscriber->user_email = $request->user_email;
+            $subscriber->email = $request->user_email;
 
             $subscriber->save();
 
