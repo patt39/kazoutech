@@ -4,6 +4,7 @@ namespace App\Model\admin;
 
 use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class audit extends Model
 {
@@ -13,12 +14,5 @@ class audit extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
-
-    public function data()
-    {
-
-    }
-
-
 
 }

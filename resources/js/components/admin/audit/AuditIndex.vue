@@ -6,7 +6,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <br>
-                    <StatusAdmin/>
+                    <status-admin></status-admin>
                     <br>
                     <div class="row">
                         <div class="col-md-12 expo">
@@ -56,8 +56,8 @@
                                             <thead>
                                             <tr>
                                                 <th><b>Event</b></th>
-                                                <th><b>Auditable</b></th>
                                                 <th><b>Old Values</b></th>
+                                                <th><b>New Values</b></th>
                                                 <th><b>New Values</b></th>
                                                 <th><b>Date Creation</b></th>
                                             </tr>
@@ -65,16 +65,16 @@
                                             <tfoot>
                                             <tr>
                                                 <th><b>Event</b></th>
-                                                <th><b>Auditable</b></th>
                                                 <th><b>Old Values</b></th>
+                                                <th><b>New Values</b></th>
                                                 <th><b>New Values</b></th>
                                                 <th><b>Date Creation</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in audits" :key="item.id">
-                                                <td>{{ item.event }}</td>
-                                                <td>{{ item.auditable_type }}</td>
+                                                <td><b>{{ item.event }}</b></td>
+                                                <td>{{ item.old_values }}</td>
                                                 <td>{{ item.old_values }}</td>
                                                 <td v-if="item.user_id !== null">{{ (item.user.name.length > 30 ?
                                                     item.user.name.substring(0,30)+ "..." : item.user.name) | upText }}
@@ -146,7 +146,6 @@
             });
         },
         beforeRouteEnter (to, from, next) {
-
             try {
                 let url = "/api/audits";
                 axios.get(url).then(response => {
@@ -158,7 +157,6 @@
                     })
                 });
             }catch (err) {
-
                 next(false)
             }
 

@@ -28,7 +28,6 @@ class AuditResource extends JsonResource
             'user_agent' => $this->user_agent,
             'tags' => $this->tags,
             'user' => $this->user,
-            'statusOnline' => $this->user->isOnline(),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

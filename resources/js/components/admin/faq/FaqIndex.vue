@@ -297,7 +297,7 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -332,7 +332,7 @@
                         },
                     });
                     /** End alert ***/
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                     this.$Progress.finish();
                 }).catch(() => {
                     //Failled message
@@ -370,7 +370,7 @@
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -407,7 +407,7 @@
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
             this.intervalFetchData();

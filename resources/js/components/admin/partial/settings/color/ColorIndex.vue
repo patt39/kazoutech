@@ -261,6 +261,12 @@
                 //Progres bar
                 this.$Progress.finish()
             },
+            newModal() {
+                this.editmode = false;
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+            },
             storeItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -268,7 +274,7 @@
                 this.form.post("/dashboard/colors")
                     .then(() => {
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('ItemGetter');
 
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -301,6 +307,14 @@
                         });
                     })
             },
+            editItem(item) {
+                this.editmode = true;
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+                //On passe les information
+                this.form.fill(item);
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -308,6 +322,8 @@
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
+                        //Event
+                        Fire.$emit('ItemGetter');
 
                         /** Debut de l'alert **/
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -321,8 +337,6 @@
 
                         //End Progress bar
                         this.$Progress.finish();
-                        //Event
-                        Fire.$emit('AfterCreate');
                     })
                     .catch(() => {
                         //Failled message
@@ -337,20 +351,7 @@
                         });
                     })
             },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-            },
+
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
@@ -385,7 +386,7 @@
 
                             //End Progress bar
                             this.$Progress.finish();
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
 
                         }).catch(() => {
                             this.$Progress.fail();
@@ -423,7 +424,7 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
@@ -458,7 +459,7 @@
                     //End Progres bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
@@ -505,7 +506,7 @@
                 driver: 'local',
                 ttl: 60 * 60 * 24 * 1000 // 24 hours
             });
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
             // Run the intervalFetchData function once to set the interval time for later refresh

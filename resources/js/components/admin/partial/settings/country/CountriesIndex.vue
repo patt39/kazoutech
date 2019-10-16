@@ -286,6 +286,61 @@
                 };
                 reader.readAsDataURL(file);
             },
+            newModal() {
+                this.editmode = false;
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+            },
+            createItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/countries")
+                    .then(() => {
+                        //Event
+                        Fire.$emit('ItemGetter');
+
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        //Insertion de l'alert !
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            },
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Country Created Successfully.</strong>', 'progress': 75});
+                        }, 2000);
+
+                        //End Progress bar
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        //Failled message
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
+            },
+            editItem(item) {
+                this.editmode = true;
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+                //On passe les information
+                this.form.fill(item);
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -307,26 +362,19 @@
                         //End Progress bar
                         this.$Progress.finish();
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('ItemGetter');
                     }).catch(() => {
                         //Failled message
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
-            },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
             },
             deleteItem(id) {
                 //Alert delete
@@ -363,11 +411,18 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            //Alert error
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
                         })
                     }
                 })
@@ -393,44 +448,11 @@
                     this.loadItems();
                 }, 360000);
             },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/countries")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('AfterCreate');
 
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Country Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        //Failled message
-                        this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
-                    })
-            }
         },
         created() {
             this.loadItem();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItem();
             });
             this.intervalFetchData();

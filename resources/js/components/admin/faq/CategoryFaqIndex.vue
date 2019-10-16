@@ -321,54 +321,6 @@
                 //Progres bar
                 this.$Progress.finish()
             },
-            updateItem() {
-                //Start Progress bar
-                this.$Progress.start();
-
-                this.form.put('/dashboard/category-faqs/' + this.form.id)
-                    .then(() => {
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        /** Debut de l'alert **/
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true
-                        });
-                        setTimeout(function () {
-                            notify.update({
-                                'type': 'success',
-                                'message': '<strong>Category Faq updated successfully.</strong>',
-                                'progress': 75
-                            });
-                        }, 2000);
-                        /** Fin alert **/
-
-                        //End Progress bar
-                        this.$Progress.finish
-
-                        //Event
-                        Fire.$emit('AfterCreate');
-                    }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les informations
-                this.form.fill(item);
-            },
             newModal() {
                 this.editmode = false;
                 this.form.reset();
@@ -381,7 +333,7 @@
                 this.form.post("/dashboard/category-faqs")
                     .then(() => {
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('ItemGetter');
 
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -410,6 +362,54 @@
                     //Failled message
                     this.$Progress.fail();
 
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
+            editItem(item) {
+                this.editmode = true;
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+                //On passe les informations
+                this.form.fill(item);
+            },
+            updateItem() {
+                //Start Progress bar
+                this.$Progress.start();
+
+                this.form.put('/dashboard/category-faqs/' + this.form.id)
+                    .then(() => {
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        /** Debut de l'alert **/
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true
+                        });
+                        setTimeout(function () {
+                            notify.update({
+                                'type': 'success',
+                                'message': '<strong>Category Faq updated successfully.</strong>',
+                                'progress': 75
+                            });
+                        }, 2000);
+                        /** Fin alert **/
+
+                        //End Progress bar
+                        this.$Progress.finish;
+
+                        //Event
+                        Fire.$emit('ItemGetter');
+                    }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
                     $.notify("Ooop! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
@@ -456,7 +456,7 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -493,7 +493,7 @@
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -530,7 +530,7 @@
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -567,7 +567,7 @@
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
         }

@@ -145,15 +145,14 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new City</b></h5>
-                                                    <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update City</b></h5>
+                                                    <h5 class="modal-title" id="updatwNewLabel"><b>Update City</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <alert-error :form="form"></alert-error>
-                                                    <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                    <form id="RegisterValidation" @submit.prevent="updateItem" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
                                                             <input v-model="form.name" type="text" name="name" placeholder="Name city" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
@@ -162,22 +161,16 @@
                                                         <div class="modal-footer">
                                                             <div class="text-center">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
+                                                                    <span class="btn-label">
+                                                                        <i class="material-icons">clear</i>
+                                                                        <b>Close</b>
+                                                                    </span>
                                                                 </button>
-                                                                <button :disabled="form.busy" v-show="!editmode" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">check</i>
-                                                            <b>Yes, Save</b>
-                                                        </span>
-                                                                </button>
-                                                                <button :disabled="form.busy" v-show="editmode" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">save_alt</i>
-                                                            <b>Yes, Update</b>
-                                                        </span>
+                                                                <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                                    <span class="btn-label">
+                                                                        <i class="material-icons">save_alt</i>
+                                                                        <b>Yes, Update</b>
+                                                                    </span>
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -206,7 +199,6 @@
         data() {
             return {
                 loaded: false,
-                editmode: false,
                 cities: {},
                 user: {},
                 form: new Form({
@@ -260,6 +252,13 @@
                 let colorStyle = 'badge badge-' + item.color_name;
                 return colorStyle;
             },
+            editItem(item) {
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+                //On passe les information
+                this.form.fill(item);
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -267,6 +266,8 @@
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
+                        //Event
+                        Fire.$emit('ItemGetter');
 
                         /** Debut de l'alert **/
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -280,59 +281,9 @@
 
                         //End Progress bar
                         this.$Progress.finish();
-                        //Event
-                        Fire.$emit('ItemGetter');
                     })
                     .catch(() => {
                         //Failled message
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/cities")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('ItemGetter');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>City Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
                         this.$Progress.fail();
                         //Alert error
                         $.notify("Ooop! Something wrong. Try later", {

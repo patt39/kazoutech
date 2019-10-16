@@ -183,8 +183,6 @@
                 editmode: false,
                 user: {},
                 permissions: {},
-                colors: {},
-                color_user: '',
                 form: new Form({
                     id: '',
                     name: '',
@@ -224,6 +222,46 @@
 				let colorUser = 'card-header card-header-' + this.user.color_name;
 				return colorUser;
 			},
+
+            createItem() {
+                this.$Progress.start();
+                // Submit the form via a POST request
+                this.form.post("/dashboard/permissions").then(() => {
+
+                    //Masquer le modal après la création
+                    $('#addNew').modal('hide');
+
+                    //Insertion de l'alert !
+                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true,
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        },
+                    });
+                    setTimeout(function() {
+                        notify.update({'type': 'success', 'message': '<strong>Permission Created Successfully.</strong>', 'progress': 75});
+                    }, 2000);
+                    //Fin insertion de l'alert !
+
+                    //End Progress bar
+                    this.$Progress.finish();
+
+                    Fire.$emit('ItemGetter');
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },
             updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
@@ -247,11 +285,17 @@
                         this.$Progress.finish();
 
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('ItemGetter');
                     }).catch(() => {
                         //Failled message
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
                     })
             },
             editItem(item) {
@@ -268,46 +312,7 @@
                 //Masquer le modal après la création
                 $('#addNew').modal('show');
             },
-            createItem() {
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/permissions").then(() => {
 
-                    //Event
-                    Fire.$emit('AfterCreate');
-
-                    //Masquer le modal après la création
-                    $('#addNew').modal('hide');
-
-                    //Insertion de l'alert !
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                        allow_dismiss: false,
-                        showProgressbar: true,
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        },
-                    });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Permission Created Successfully.</strong>', 'progress': 75});
-                    }, 2000);
-                    //Fin insertion de l'alert !
-
-                    //End Progress bar
-                    this.$Progress.finish()
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
             deleteItem(id) {
                 Swal.fire({
                     title: 'Delete Permission?',
@@ -343,11 +348,17 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
                         })
                     }
                 })
@@ -371,18 +382,12 @@
              reload(){
                 this.loadItems();
             },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 360000);
-            },
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
-            this.intervalFetchData();
         }
     }
 

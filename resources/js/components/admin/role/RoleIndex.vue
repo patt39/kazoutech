@@ -52,19 +52,11 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="toolbar">
-                                            <div class="header text-right">
-                                                <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
-                                                        title="Refresh Page">
-                                                    <i class="material-icons">replay</i>
-                                                    <b class="title_hover">Refresh</b>
-                                                </button>
-                                            </div>
-                                            <br>
                                             <div class="submit text-center">
                                                 <button id="button_hover" class="btn btn-warning btn-raised btn-round">
-                                    <span class="btn-label">
-                                        <i class="material-icons">playlist_add_check</i>
-                                    </span>
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">playlist_add_check</i>
+                                                    </span>
                                                     <b class="title_hover">New Role</b>
                                                 </button>
                                             </div>
@@ -137,15 +129,8 @@
         data() {
             return {
                 loaded: false,
-                editmode: false,
                 roles: {},
                 user: {},
-                colors: {},
-                form: new Form({
-                    id: '',
-                    name: '',
-                    guard_name: ''
-                })
             }
         },
         methods: {
@@ -201,7 +186,7 @@
                         //Start Progress bar
                         this.$Progress.start();
 
-                        this.form.delete('/dashboard/roles/' + id).then(() => {
+                        axios.delete('/dashboard/roles/' + id).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -215,7 +200,7 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('AfterCreate');
+                            Fire.$emit('ItemGetter');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -237,21 +222,12 @@
                 });
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
             },
-             reload(){
-                this.loadItems();
-            },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 360000);
-            },
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
-            this.intervalFetchData();
         }
     }
 

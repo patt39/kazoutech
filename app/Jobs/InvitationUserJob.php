@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\InviteAdministrator;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
