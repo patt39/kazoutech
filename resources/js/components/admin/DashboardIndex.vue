@@ -5,7 +5,9 @@
            <top-nav></top-nav>
            <div class="content">
                <div class="container-fluid">
-
+                   <br>
+                   <status-admin></status-admin>
+                   <br>
                    <div class="row">
                        <div class="col-lg-6 col-md-6 col-sm-6">
                            <div class="card card-stats">
@@ -222,8 +224,9 @@
 
 <script>
 
+    import StatusAdmin from "../inc/admin/StatusAdmin";
     export default {
-
+        components: {StatusAdmin},
         data() {
             return {
                 loaded: false,

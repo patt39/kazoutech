@@ -14,18 +14,19 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
 
         require(__DIR__ . DIRECTORY_SEPARATOR . 'faqs.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'users.php');
+        require(__DIR__ . DIRECTORY_SEPARATOR . 'roles.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'occupations.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'permissions.php');
-        require(__DIR__ . DIRECTORY_SEPARATOR . 'roles.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'laravel-auditing.php');
-
-        /** C'est route son dans la cartella partial */
-        require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'index.php');
 
 
         /** C'est route son dans la cartella page */
         require(__DIR__ . DIRECTORY_SEPARATOR . 'page'. DIRECTORY_SEPARATOR . 'abouts.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'page'. DIRECTORY_SEPARATOR . 'testimonials.php');
+
+        /** C'est route son dans la cartella partial */
+        require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'index.php');
+
 
         /** C'est route son dans la cartella info */
         require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'legal_notice.php');

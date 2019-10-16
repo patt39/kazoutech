@@ -45,9 +45,9 @@
                 axios.post(`/email/resend`)
                     .then(() => {
                     /* debut de l'alert **/
-                        $.notify('<strong>A fresh verification link has been sent to your email.</strong>', {
+                        $.notify('<strong>Un nouveau lien de vérification a été envoyé à votre adresse e-mail.</strong>', {
                             allow_dismiss: false,
-                            type: 'success',
+                            type: 'primary',
                             placement: {
                                 from: 'bottom',
                                 align: 'right'

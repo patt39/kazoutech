@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\MailTaskEmailJob;
+use App\Model\admin\contact;
 use App\Model\admin\note;
 use App\Model\admin\task;
 use App\Model\user\downloadcv;
@@ -30,9 +31,7 @@ class DownloadcvController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $notes = note::all();
-        return view('home',compact('users','notes'));
+        return view('test');
     }
 
     /**
@@ -53,15 +52,25 @@ class DownloadcvController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new task;
-        $task->administrator_id = $request->administrator_id;
-        $task->note_id = $request->note_id;
+        if ($request->ajax()) {
+            $this->validate($request, [
+                'email' => 'bail|required|email',
+                'subject' => 'bail|required|max:250',
+                'message' => 'bail|required|max:250'
+            ]);
 
-        $task->save();
+            $contact = new Contact;
 
+            $contact->email = $request->email;
+            $contact->subject = $request->subject;
+            $contact->message = $request->message;
+            $slug = sha1(date('YmdHis') . str_random(30));
+            $contact->slug = $slug;
 
-        MailTaskService::newTask($request);
-        return back();
+            return response ()->json ();
+        }
+        abort(404);
+
     }
 
     /**
