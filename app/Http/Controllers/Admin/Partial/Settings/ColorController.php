@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Partial\Settings;
 
+use App\Events\ColorPublishedEvent;
 use App\Http\Requests\Admin\Colors\StoreRequest;
 use App\Http\Requests\Admin\Colors\UpdateRequest;
 use App\Http\Resources\AuditResource;
@@ -83,10 +84,10 @@ class ColorController extends Controller
        $color->color_name = $request->color_name;
 
 
+
        $color->save();
 
-
-       //return response('Created',Response::HTTP_CREATED);
+       return response('Created',Response::HTTP_CREATED);
     }
 
     public function disable(color $color, $id)

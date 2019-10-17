@@ -87,21 +87,17 @@ Tip 2: you can also add an image using data-image tag
                     <i class="material-icons">dashboard</i>
                     <p><b>Dashboard</b></p>
                 </router-link>
-            </li>
-            <!-- Documentation site -->
-            <li class="nav-item">
-                <router-link  :to="{ path: '/dashboard/documentations/' }" class="nav-link">
-                    <i class="material-icons">assignment_ind</i>
-                    <p><b>Documentations site</b></p>
-                </router-link>
+
             </li>
             <!-- Occupations -->
-            <li class="nav-item">
+            @can('create-occupation')
+            <li  class="nav-item">
                 <router-link  :to="{ path: '/dashboard/occupations/' }" class="nav-link">
                     <i class="material-icons">assignment</i>
                     <p><b>Occupations</b></p>
                 </router-link>
             </li>
+            @endcan
             <!-- Links Pages -->
             <li class="nav-item ">
                 <a class="nav-link" data-toggle="collapse" href="#pageExamples">
@@ -113,17 +109,38 @@ Tip 2: you can also add an image using data-image tag
                 <div class="collapse" id="pageExamples">
                     <ul class="nav">
                         <!-- Abouts -->
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
-                                <span class="sidebar-mini"><b>AM</b></span>
-                                <span class="sidebar-normal"><b>About Member</b></span>
-                            </router-link>
+                        <li v-if="$auth.can('create-about')" class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#aboutsCollapse">
+                                <span class="sidebar-mini"> AB </span>
+                                <span class="sidebar-normal"> About page
+                                          <b class="caret"></b>
+                                        </span>
+                            </a>
+                            <div class="collapse" id="aboutsCollapse" style="">
+                                <ul class="nav">
+                                    <li  class="nav-item">
+                                        <router-link  :to="{ name: 'abouts.index' }"  replace class="nav-link">
+                                            <span class="sidebar-mini"><b>AM</b></span>
+                                            <span class="sidebar-normal"><b>About Member</b></span>
+                                        </router-link>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <!--Testimonial-->
+                        @can('create-testimonial')
                         <li class="nav-item">
                             <router-link  :to="{ path: '/dashboard/testimonials/' }" class="nav-link">
                                 <span class="sidebar-mini"><b>TS</b></span>
                                 <span class="sidebar-normal"><b>Testimonials</b></span>
+                            </router-link>
+                        </li>
+                        @endcan
+                        <!--Registration-->
+                        <li class="nav-item">
+                            <router-link  :to="{ path: '/dashboard/registrations/' }" class="nav-link">
+                                <span class="sidebar-mini"><b>RI</b></span>
+                                <span class="sidebar-normal"><b>Registration Infos</b></span>
                             </router-link>
                         </li>
                     </ul>
@@ -141,38 +158,64 @@ Tip 2: you can also add an image using data-image tag
                 <div class="collapse" id="partialExamples">
                     <ul class="nav">
                         <!-- Links -->
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#aidesSettings">
+                                <span class="sidebar-mini"><b>ST</b></span>
+                                <span class="sidebar-normal"><b>Settings</b>
+                                          <b class="caret"></b>
+                                        </span>
+                            </a>
+                            <div class="collapse" id="aidesSettings">
+                                <ul class="nav">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" data-toggle="collapse" href="#componentsSettings">
+                                            <span class="sidebar-mini"><b>ST</b></span>
+                                            <span class="sidebar-normal"><b>Style & Data</b>
+                                                    <b class="caret"></b>
+                                                </span>
+                                        </a>
+                                        <div class="collapse" id="componentsSettings">
+                                            <ul class="nav">
+                                                <!-- Colors -->
+                                                @can('create-color')
+                                                <li class="nav-item">
+                                                    <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
+                                                        <span class="sidebar-mini"><b>CO</b></span>
+                                                        <span class="sidebar-normal"><b>Colors</b></span>
+                                                    </router-link>
+                                                </li>
+                                                @endcan
+                                                <!-- Diplomas -->
+                                                <li class="nav-item">
+                                                    <router-link  :to="{ path: '/dashboard/diplomas/' }" class="nav-link">
+                                                        <span class="sidebar-mini"><b>DI</b></span>
+                                                        <span class="sidebar-normal"><b>Diplomas</b></span>
+                                                    </router-link>
+                                                </li>
+                                                <!-- Countries -->
+                                                <li class="nav-item">
+                                                    <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
+                                                        <span class="sidebar-mini"><b>CO</b></span>
+                                                        <span class="sidebar-normal"><b>Country</b></span>
+                                                    </router-link>
+                                                </li>
+                                                <!-- Cites -->
+                                                <li class="nav-item">
+                                                    <router-link  :to="{ name: 'cities.actives' }"  replace class="nav-link">
+                                                        <span class="sidebar-mini"><b>CI</b></span>
+                                                        <span class="sidebar-normal"><b>Cities</b></span>
+                                                    </router-link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <router-link  :to="{ path: '/dashboard/links/' }" class="nav-link">
                                 <span class="sidebar-mini"><b>LI</b></span>
                                 <span class="sidebar-normal"><b>Links</b></span>
-                            </router-link>
-                        </li>
-                        <!-- Colors -->
-                        <li class="nav-item">
-                            <router-link  :to="{ path: '/dashboard/colors/' }" class="nav-link">
-                                <span class="sidebar-mini"><b>COL</b></span>
-                                <span class="sidebar-normal"><b>Colors</b></span>
-                            </router-link>
-                        </li>
-                        <!-- Diplomas -->
-                        <li class="nav-item">
-                            <router-link  :to="{ path: '/dashboard/diplomas/' }" class="nav-link">
-                                <span class="sidebar-mini"><b>DI</b></span>
-                                <span class="sidebar-normal"><b>Diplomas</b></span>
-                            </router-link>
-                        </li>
-                        <!-- Countries -->
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'countries.index' }"  replace class="nav-link">
-                                <span class="sidebar-mini"><b>CO</b></span>
-                                <span class="sidebar-normal"><b>Country</b></span>
-                            </router-link>
-                        </li>
-                        <!-- Cites -->
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'cities.index' }"  replace class="nav-link">
-                                <span class="sidebar-mini"><b>CI</b></span>
-                                <span class="sidebar-normal"><b>Cities</b></span>
                             </router-link>
                         </li>
                         <!-- Tags -->
@@ -192,9 +235,9 @@ Tip 2: you can also add an image using data-image tag
                     </ul>
                 </div>
             </li>
-
             <!-- Categories Faqs -->
-            <li class="nav-item ">
+            @can('create-faq')
+            <li  class="nav-item ">
                 <a class="nav-link" data-toggle="collapse" href="#faqsExamples">
                     <i class="material-icons">contact_support</i>
                     <p><b>FAQs</b>
@@ -218,12 +261,31 @@ Tip 2: you can also add an image using data-image tag
                     </ul>
                 </div>
             </li>
+            @endcan
             <!-- Contacts -->
-            <li class="nav-item">
-                <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#contactsSettings">
                     <i class="material-icons">message</i>
-                    <p><b>Contacts</b></p>
-                </router-link>
+                    <p><b>Contacts</b>
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="contactsSettings">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
+                                <span class="sidebar-mini"><b>MCP</b></span>
+                                <span class="sidebar-normal"><b>Message Contact Page</b></span>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link  :to="{ name: 'subscribers.index' }" class="nav-link">
+                                <span class="sidebar-mini"><b>SC</b></span>
+                                <span class="sidebar-normal"><b>Subscribers</b></span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <!-- Technician -->
             <li class="nav-item">
@@ -232,8 +294,16 @@ Tip 2: you can also add an image using data-image tag
                     <p><b>Technicians</b></p>
                 </router-link>
             </li>
+            <!-- Documentation -->
+            <li class="nav-item">
+                <router-link  :to="{ path: '/dashboard/documentations/' }" class="nav-link">
+                    <i class="material-icons">ballot</i>
+                    <p><b>Documentations</b></p>
+                </router-link>
+            </li>
             <!-- Administrations -->
-            <li class="nav-item ">
+            @can('administration')
+            <li  class="nav-item ">
                 <a class="nav-link" data-toggle="collapse" href="#administrationExamples">
                     <i class="material-icons">person_outline</i>
                     <p><b>Administrations</b>
@@ -242,29 +312,73 @@ Tip 2: you can also add an image using data-image tag
                 </a>
                 <div class="collapse" id="administrationExamples">
                     <ul class="nav">
+                        <!-- Audits -->
+                        <li v-if="$auth.can('auditing')" class="nav-item">
+                            <router-link  :to="{ name: 'audits.index' }" class="nav-link">
+                                <span class="sidebar-mini">AS</span>
+                                <span class="sidebar-normal"><b>Audits site</b></span>
+                            </router-link>
+                        </li>
                         <!-- Activities -->
+                        @can('activity')
                         <li class="nav-item">
                             <router-link  :to="{ name: 'activities.index' }" class="nav-link">
                                 <span class="sidebar-mini">AC</span>
                                 <span class="sidebar-normal"><b>Activities site</b></span>
                             </router-link>
                         </li>
+                        @endcan
                         <!-- Administrators -->
+                        @can('view-administrator')
                         <li class="nav-item">
                             <router-link  :to="{ name: 'administrators.index' }" class="nav-link">
                                 <span class="sidebar-mini">AD</span>
                                 <span class="sidebar-normal"><b>Administrators</b></span>
                             </router-link>
                         </li>
+                        @endcan
                         <!-- Users -->
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'users.index' }" class="nav-link">
-                                <span class="sidebar-mini">US</span>
-                                <span class="sidebar-normal"><b>Users</b></span>
-                            </router-link>
+                        @can('view-user')
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#aidesUsers">
+                                <span class="sidebar-mini"><b>US</b></span>
+                                <span class="sidebar-normal"><b>Users</b>
+                                          <b class="caret"></b>
+                                        </span>
+                            </a>
+                            <div class="collapse" id="aidesUsers">
+                                <ul class="nav">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" data-toggle="collapse" href="#componentsUsers">
+                                            <span class="sidebar-mini"><b>US</b></span>
+                                            <span class="sidebar-normal"><b>Users</b>
+                                                    <b class="caret"></b>
+                                                </span>
+                                        </a>
+                                        <div class="collapse" id="componentsUsers">
+                                            <ul class="nav">
+                                                <li class="nav-item">
+                                                    <router-link :to="{ name: 'users.index' }" class="nav-link">
+                                                        <span class="sidebar-mini"><b>US</b></span>
+                                                        <span class="sidebar-normal"><b>Users</b></span>
+                                                    </router-link>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <router-link :to="{ name: 'users.trash' }"
+                                                                 class="nav-link">
+                                                        <span class="sidebar-mini"><b>TU</b></span>
+                                                        <span class="sidebar-normal"><b>Trash Users</b></span>
+                                                    </router-link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+                        @endcan
                         <!-- Notes -->
-                        <li class="nav-item">
+                        <li  class="nav-item">
                             <router-link  :to="{ name: 'notes.index' }" class="nav-link">
                                 <span class="sidebar-mini">NO</span>
                                 <span class="sidebar-normal"><b>Notes</b></span>
@@ -278,6 +392,7 @@ Tip 2: you can also add an image using data-image tag
                             </router-link>
                         </li>
                         <!-- Permissions -->
+                        @can('view-role-permission')
                         <li class="nav-item">
                             <router-link  :to="{ name: 'permissions.index' }" class="nav-link">
                                 <span class="sidebar-mini">PM</span>
@@ -285,15 +400,17 @@ Tip 2: you can also add an image using data-image tag
                             </router-link>
                         </li>
                         <!-- Roles -->
-                        <li class="nav-item">
-                            <router-link  :to="{ name: 'roles.index' }" class="nav-link">
+                        <li  class="nav-item">
+                            <router-link   :to="{ name: 'roles.index' }" class="nav-link">
                                 <span class="sidebar-mini">RO</span>
                                 <span class="sidebar-normal"><b>Roles</b></span>
                             </router-link>
                         </li>
+                        @endcan
                     </ul>
                 </div>
             </li>
+            @endcan
             <!-- Legals Mentions -->
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#legalsExamples">

@@ -493,11 +493,6 @@
             reload(){
                 this.loadItems()
             },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 120000);
-            },
         },
         created() {
             this.loadItems();
@@ -509,8 +504,6 @@
             Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
-            // Run the intervalFetchData function once to set the interval time for later refresh
-            this.intervalFetchData();
         },
         //get order bay
         computed: {
