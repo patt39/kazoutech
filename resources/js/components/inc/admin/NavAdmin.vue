@@ -91,7 +91,7 @@
                     </li>
                     <!-- Occupations -->
                     <li v-if="$auth.can('create-occupation')" class="nav-item">
-                        <router-link  :to="{ path: '/dashboard/occupations/' }" class="nav-link">
+                        <router-link  :to="{ name: 'occupations.index' }" class="nav-link">
                             <i class="material-icons">assignment</i>
                             <p><b>Occupations</b></p>
                         </router-link>
@@ -127,7 +127,7 @@
                                 </li>
                                 <!--Testimonial-->
                                 <li v-if="$auth.can('create-testimonial')" class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/testimonials/' }" class="nav-link">
+                                    <router-link  :to="{ path: 'testimonials.index' }" class="nav-link">
                                         <span class="sidebar-mini"><b>TS</b></span>
                                         <span class="sidebar-normal"><b>Testimonials</b></span>
                                     </router-link>

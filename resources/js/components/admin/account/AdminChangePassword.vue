@@ -50,14 +50,20 @@
                                                                 <div class="nav-tabs-navigation">
                                                                     <div class="nav-tabs-wrapper">
                                                                         <ul class="nav nav-tabs" data-tabs="tabs">
-                                                                            <li class="nav-item">
+                                                                            <!--<li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">face</i>
                                                                                     <b>Mon profile</b>
                                                                                 </router-link>
-                                                                            </li>
+                                                                            </li>-->
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
+                                                                                    <i class="material-icons">info</i>
+                                                                                    <b>Personal info</b>
+                                                                                </router-link>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <router-link :to="{ name: 'admin.profiles_edit', params: { id: form.id  } }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
                                                                                     <b>Editer le profile</b>
                                                                                 </router-link>
@@ -102,11 +108,6 @@
                                                                             <has-error :form="form" field="password_confirmation"></has-error>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="text-center">
-                                                                        <router-link :to="{ name: 'admin.reset_password' }" style="cursor:pointer;" class="text-info">
-                                                                            <b>Mot de passe oublié ?</b>
-                                                                        </router-link>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -149,6 +150,7 @@
                 colors:{},
                 countries:{},
                 form: new Form({
+                    id: '',
                     avatar: '',
                     old_password: '',
                     password: '',

@@ -34,7 +34,6 @@ import AboutIndex from "../components/admin/page/about/AboutIndex";
 import AboutCreate from "../components/admin/page/about/AboutCreate";
 import AboutEdit from "../components/admin/page/about/AboutEdit";
 import AdministratorShow from "../components/admin/account/AdministratorShow";
-import AdminResetPassword from "../components/admin/account/AdminResetPassword";
 import TechnicianIndex from "../components/admin/technician/TechnicianIndex";
 import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
@@ -91,37 +90,10 @@ import ProfileUserEdit from "../components/user/profile/ProfileUserEdit";
 export const routes = [
 
     {path: '/dashboard/', name: 'dashboard.index', component: DashboardIndex},
-    {path: '/dashboard/account/profile/', name: 'admin.account', component: AdminAccount},
-    {path: '/dashboard/user/p/:id/edit', name: 'admin.profiles_edit', component: AdminProfileEdit},
-    {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileInfoEdit},
-    {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
-    {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
-    //{
-    // path: '/dashboard/user/',
-    // component: AdminAccount
-    // children: [
-    //     //    {
-    //     //    path: 'update/',
-    //     //    name: 'admin.edit_profile',
-    //     //    component: AdminProfileInfoEdit,
-    //     //    },
-    //     //    {
-    //     //    path: 'p/:id/edit',
-    //     //    name: 'admin.profiles_edit',
-    //     //    component: AdminProfileEdit,
-    //     //    },
-    //     //    {
-    //     //    path: 'password/change/',
-    //     //    name: 'admin.change_password',
-    //     //    component: AdminChangePassword,
-    //     //    },
-    //     //    {
-    //     //    path: 'password/reset/',
-    //     //    name: 'admin.reset_password',
-    //     //    component: AdminResetPassword,
-    //     //    },
-    //     //]
-    // },
+    {path: '/dashboard/myprofile/', name: 'admin.account', component: AdminAccount},
+    {path: '/dashboard/myprofile/p/:id/edit', name: 'admin.profiles_edit', component: AdminProfileEdit},
+    {path: '/dashboard/myprofile/update/', name: 'admin.edit_profile', component: AdminProfileInfoEdit},
+    {path: '/dashboard/myprofile/change_password/', name: 'admin.change_password', component: AdminChangePassword,},
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},
     {path: '/dashboard/colors/auditing/:color/', name: 'colors.auditing', component: ColorAuditing},
     {path: '/dashboard/countries/', name: 'countries.index', component: CountriesIndex},

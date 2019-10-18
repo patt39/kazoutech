@@ -68,12 +68,12 @@
                                                                 <div class="nav-tabs-navigation">
                                                                     <div class="nav-tabs-wrapper">
                                                                         <ul class="nav nav-tabs" data-tabs="tabs">
-                                                                            <li class="nav-item">
+                                                                            <!--<li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">face</i>
                                                                                     <b>Mon profile</b>
                                                                                 </router-link>
-                                                                            </li>
+                                                                            </li>-->
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">info</i>
@@ -81,7 +81,7 @@
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
-                                                                                <router-link :to="{ name: 'admin.profiles_edit', params: { id: form.id } }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
+                                                                                <router-link :to="{ name: 'admin.profiles_edit', params: { id: form.id  } }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
                                                                                     <b>Editer le profile</b>
                                                                                 </router-link>

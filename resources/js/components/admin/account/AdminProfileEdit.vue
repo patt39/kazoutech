@@ -33,12 +33,12 @@
                                                                 <div class="nav-tabs-navigation">
                                                                     <div class="nav-tabs-wrapper">
                                                                         <ul class="nav nav-tabs" data-tabs="tabs">
-                                                                            <li class="nav-item">
+                                                                            <!--<li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.account' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">face</i>
                                                                                     <b>Mon profile</b>
                                                                                 </router-link>
-                                                                            </li>
+                                                                            </li>-->
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">info</i>
@@ -160,9 +160,8 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="media-body">
-                                                                                        <label class="bmd-label-floating"></label>
-                                                                                        <vue-editor v-model="form.body" :class="{ 'is-invalid': form.errors.has('body') }"
-                                                                                                    :editorToolbar="customToolbar"></vue-editor>
+                                                                                        <label class="bmd-label-floating">Tell about for you</label>
+                                                                                        <textarea class="form-control" rows="4" name="body" v-model="form.body" :class="{ 'is-invalid': form.errors.has('body') }"></textarea>
                                                                                         <has-error :form="form" field="body"></has-error>
                                                                                     </div>
                                                                                 </div>
@@ -224,26 +223,6 @@
                     cap: '',
                     address: ''
                 }),
-                customToolbar: [
-                    [{'header': [1, 2, 3, 4, 5, 6, false]}],
-                    [{'font': []}],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{'align': []}],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    //[{'list': 'ordered'}, {'list': 'bullet'}, {'list': 'check'}],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{'color': []}, {'background': []}],
-                    //['link', 'image', 'video', 'formula'],
-                    ['link'],
-                    //[{ 'direction': 'rtl' }],
-                    ['clean'],
-                    //['emoji'],
-                ],
             }
         },
         methods:{
@@ -291,13 +270,15 @@
                 })
             },
         },
-        created(){
-            //Start Progress bar
-            this.$Progress.start();
-            api.profileID(this.$route.params.id).then(({data}) => this.form.fill(data.data));
-            axios.get("/api/account/user").then(response => {this.user = response.data.data});
-            //End Progress bar
-            this.$Progress.finish()
+        beforeRouteEnter (to, from, next) {
+            next(vm => {
+                vm.$Progress.start();
+                api.profileID(vm.$route.params.id).then(({data}) => vm.form.fill(data.data));
+                axios.get("/api/account/user").then(response => {
+                    vm.user = response.data.data
+                });
+                vm.$Progress.finish();
+            });
         }
     }
 </script>
