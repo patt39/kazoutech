@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
 
-    userSlug(username) {
+    userUsername(username) {
         return axios.get(`/api/${username}`);
     },
 };

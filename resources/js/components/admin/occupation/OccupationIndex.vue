@@ -255,50 +255,6 @@
                 //Progres bar
                 this.$Progress.finish()
             },
-            updateItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                this.form.put('/dashboard/occupations/' + this.form.id)
-                    .then(() => {
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        /** Debut de l'alert **/
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Occupations updated successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                        /** Fin alert **/
-
-                        //End Progress bar
-                        this.$Progress.finish();
-                        //Event
-                        Fire.$emit('AfterCreate');
-                    })
-                    .catch(() => {
-                        //Failled message
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
             newModal() {
                 this.editmode = false;
                 this.form.reset();
@@ -334,6 +290,50 @@
                         this.$Progress.finish()
                     })
                     .catch(() => {
+                        this.$Progress.fail();
+                        //Alert error
+                        $.notify("Ooop! Something wrong. Try later", {
+                            type: 'danger',
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
+                        });
+                    })
+            },
+            editItem(item) {
+                this.editmode = true;
+                this.form.reset();
+                //Masquer le modal après la création
+                $('#addNew').modal('show');
+                //On passe les information
+                this.form.fill(item);
+            },
+            updateItem() {
+                //Start Progress bar
+                this.$Progress.start();
+                this.form.put('/dashboard/occupations/' + this.form.id)
+                    .then(() => {
+                        //Masquer le modal après la création
+                        $('#addNew').modal('hide');
+
+                        /** Debut de l'alert **/
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Occupations updated successfully.</strong>', 'progress': 75});
+                        }, 2000);
+                        /** Fin alert **/
+
+                        //End Progress bar
+                        this.$Progress.finish();
+                        //Event
+                        Fire.$emit('AfterCreate');
+                    })
+                    .catch(() => {
+                        //Failled message
                         this.$Progress.fail();
                         //Alert error
                         $.notify("Ooop! Something wrong. Try later", {
@@ -394,12 +394,6 @@
                     }
                 })
             },
-
-            ChangeStatus(id)
-            {
-              console.log(id)
-            },
-
             /** Ici c'est l'activation de la couleur  **/
             activeItem(id) {
                 //Progress bar star
@@ -486,11 +480,11 @@
             reload(){
                 this.loadItems()
             },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 120000);
-            },
+            //intervalFetchData: function () {
+            //    setInterval(() => {
+            //        this.loadItems();
+            //    }, 120000);
+            //},
         },
         created() {
             this.loadItems();
@@ -498,7 +492,7 @@
                 this.loadItems();
             });
             // Run the intervalFetchData function once to set the interval time for later refresh
-            this.intervalFetchData();
+            //this.intervalFetchData();
         }
     }
 

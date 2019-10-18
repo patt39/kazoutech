@@ -74,24 +74,21 @@
     export default {
         data() {
             return {
-                userProfile:{},
+                userProfile:{
+                    profile:'',
+                },
             };
         },
-
-        methods: {
-            loadItems(){
-                //Start Progress bar
-                this.$Progress.start();
-                api.userSlug(this.$route.params.username).then(response => {
-                    this.userProfile = response.data.data
+        beforeRouteEnter (to, from, next) {
+            next(vm => {
+                vm.$Progress.start();
+                api.userUsername(vm.$route.params.username).then(response => {
+                    vm.userProfile = response.data.data;
                 });
                 //End Progress bar
-                this.$Progress.finish()
-            }
+                vm.$Progress.finish();
+            });
         },
-        created(){
-         this.loadItems();
-        }
     }
 </script>
 
