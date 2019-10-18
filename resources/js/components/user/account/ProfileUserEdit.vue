@@ -246,7 +246,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Profile updated Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>profile updated Successfully.</strong>', 'progress': 75});
                         }, 2000);
 
                         //End Progress bar

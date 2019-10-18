@@ -52,8 +52,8 @@ import TestimonialCreate from "../components/admin/page/testimonial/TestimonialC
 import TestimonialEdit from "../components/admin/page/testimonial/TestimonialEdit";
 import TestimonialShow from "../components/admin/page/testimonial/TestimonialShow";
 import DiplomaIndex from "../components/admin/partial/settings/diploma/DiplomaIndex";
-import TechnicianProfileIndex from "../components/user/Profile/TechnicianProfileIndex";
-import TechnicianProfileEdit from "../components/user/Profile/TechnicianProfileEdit";
+import TechnicianProfileIndex from "../components/user/profile/TechnicianProfileIndex";
+import TechnicianProfileEdit from "../components/user/profile/TechnicianProfileEdit";
 import TechnicianByCity from "../components/admin/technician/by/TechnicianByCity";
 import TechnicianByOccupation from "../components/admin/technician/by/TechnicianByOccupation";
 import LoginIndex from "../components/user/auth/LoginIndex";
@@ -109,8 +109,8 @@ export const routes = [
     //Route audits
     {path: '/dashboard/audits/', name: 'audits.index', component: AuditIndex},
 
-     //Route links
-     {path: '/dashboard/links/', name: 'links.index', component: LinkIndex},
+    //Route links
+    {path: '/dashboard/links/', name: 'links.index', component: LinkIndex},
 
 
     //Route occupations
@@ -204,24 +204,24 @@ export const routes = [
     { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.show', component: TestimonialShow },
 
 
-     /* Legal Mention route  */
-     { path: '/dashboard/documentations', name: 'documentations.index', component: DocumentationIndex },
-     { path: '/dashboard/legal_notice', name: 'legal_notice.index', component: LegalnoticeIndex },
-     { path: '/dashboard/legal_notice/create', name: 'legal_notice.create', component: LegalnoticeCreate },
-     { path: '/dashboard/legal_notice/:id/edit', name: 'legal_notice.edit', component: LegalnoticeEdit },
-     { path: '/dashboard/legal_notice/lm/:id', name: 'legal_notice.view', component: LegalnoticeView, },
-     { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
-     { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
-     { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },
-     { path: '/dashboard/licence_site/lm/:licencesite', name: 'licence_site.view', component: LicenceView },
-     { path: '/dashboard/policy_privacy', name: 'policy_privacy.index', component: PolicyprivacyIndex },
-     { path: '/dashboard/policy_privacy/create', name: 'policy_privacy.create', component: PolicyprivacyCreate },
-     { path: '/dashboard/policy_privacy/:id/edit', name: 'policy_privacy.edit', component: PolicyprivacyEdit },
-     { path: '/dashboard/policy_privacy/lm/:policyprivacy', name: 'policy_privacy.view', component: PolicyprivacyView },
-     { path: '/dashboard/conditions', name: 'conditions.index', component: TermsconditionsIndex },
-     { path: '/dashboard/conditions/create', name: 'conditions.create', component: TermsconditionsCreate },
-     { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
-     { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
+    /* Legal Mention route  */
+    { path: '/dashboard/documentations', name: 'documentations.index', component: DocumentationIndex },
+    { path: '/dashboard/legal_notice', name: 'legal_notice.index', component: LegalnoticeIndex },
+    { path: '/dashboard/legal_notice/create', name: 'legal_notice.create', component: LegalnoticeCreate },
+    { path: '/dashboard/legal_notice/:id/edit', name: 'legal_notice.edit', component: LegalnoticeEdit },
+    { path: '/dashboard/legal_notice/lm/:id', name: 'legal_notice.view', component: LegalnoticeView, },
+    { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
+    { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
+    { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },
+    { path: '/dashboard/licence_site/lm/:licencesite', name: 'licence_site.view', component: LicenceView },
+    { path: '/dashboard/policy_privacy', name: 'policy_privacy.index', component: PolicyprivacyIndex },
+    { path: '/dashboard/policy_privacy/create', name: 'policy_privacy.create', component: PolicyprivacyCreate },
+    { path: '/dashboard/policy_privacy/:id/edit', name: 'policy_privacy.edit', component: PolicyprivacyEdit },
+    { path: '/dashboard/policy_privacy/lm/:policyprivacy', name: 'policy_privacy.view', component: PolicyprivacyView },
+    { path: '/dashboard/conditions', name: 'conditions.index', component: TermsconditionsIndex },
+    { path: '/dashboard/conditions/create', name: 'conditions.create', component: TermsconditionsCreate },
+    { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
+    { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
 
 
     /** Ici je recupere les route du site **/

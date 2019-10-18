@@ -2,9 +2,6 @@ import axios from 'axios';
 
 export default {
 
-    userSlug(username) {
-        return axios.get(`/api/${username}`);
-    },
     userShow(username) {
         return axios.get(`/api/dashboard/profile/${username}`);
     },

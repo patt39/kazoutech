@@ -11,6 +11,8 @@ class profile extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
+        'status_profile',
+        'status_online',
         'first_name',
         'last_name',
         'work',

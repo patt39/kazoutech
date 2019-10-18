@@ -67,13 +67,17 @@ Vue.component('Quill', Quill);
 
 import {routes} from './routes/routes';
 
+/**
+ * Router site
+ * @type {VueRouter}
+ */
 const router = new VueRouter({
     routes,
     mode: 'history',
     linkActiveClass: "active",
     linkExactActiveClass: "active", // active class for *exact* links.
+})
 
-});
 
 
 /**
@@ -213,6 +217,11 @@ Vue.component('nav-user-site', require('./components/inc/user/NavUserSite').defa
 Vue.component('top-nav', require('./components/inc/admin/TopNav').default);
 Vue.component('footer-admin', require('./components/inc/admin/FooterAdmin').default);
 Vue.component('contact-us', require('./components/user/contact/ContactUser').default);
+
+
+
+
+//Vue.component('profile-index', require('./components/user/profile/ProfileIndex').default);
 
 
 /**

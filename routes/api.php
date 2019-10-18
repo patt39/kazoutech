@@ -26,6 +26,9 @@ Route::get('administrators', 'Admin\AdministratorController@api');
 
 
 Route::get('search/tasks/{field}/{query}', 'Admin\Partial\TaskController@search');
+
+Route::get('/@{username}', 'Admin\Partial\AccountController@view')->name('view.profile');
+
 Route::get('task_technicians', 'Admin\TasktechnicianController@api');
 Route::get('roles', 'Admin\RoleController@api');
 Route::get('categories', 'Admin\Partial\CityController@api');

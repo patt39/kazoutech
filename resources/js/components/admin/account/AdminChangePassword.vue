@@ -26,7 +26,7 @@
                                             <div class="card-body">
                                                 <form id="RegisterValidation" @submit.prevent="changePassword()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                    <!-- Profile Image -->
+                                                    <!-- profile Image -->
                                                     <div class="row">
                                                         <div class="col-md-6 ml-auto mr-auto">
                                                             <div style="padding-top: -100px;" class="profile text-center ">

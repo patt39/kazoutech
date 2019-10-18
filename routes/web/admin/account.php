@@ -3,12 +3,10 @@
 Route::group(['namespace' => 'Partial'], function(){
 
 
-    Route::get('/@{username}', 'AccountController@profileView')->name('profile.view');
     Route::get('/profile/edit', 'AccountController@profileEdit')->name('profile.edit');
     Route::put('/user/update', 'AccountController@update');
 
     Route::post('auth/register', 'AccountController@register');
-    Route::get('/api/@{username}', 'AccountController@view')->name('view.profile');
     Route::get('api/account/user', 'AccountController@user');
     Route::get('api/account/profile', 'AccountController@userEdit');
 

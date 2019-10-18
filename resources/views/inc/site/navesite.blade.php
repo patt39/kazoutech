@@ -56,7 +56,7 @@
                             <b>{{ __('Dashboard') }}</b>
                         </a>
                         <router-link  :to="{ path: `/@${user.username}` }" class="dropdown-item">
-                            <b> {{ __('Profile') }}</b>
+                            <b> {{ __('profile') }}</b>
                         </router-link>
 
                         <router-link  :to="{ path: `/profile/edit` }" class="dropdown-item">

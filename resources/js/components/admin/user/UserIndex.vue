@@ -153,7 +153,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <!-- Profile Image -->
+                                                    <!-- profile Image -->
                                                     <div class="row">
                                                         <div class="col-md-6 ml-auto mr-auto">
                                                             <div class="profile text-center "

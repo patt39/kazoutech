@@ -7,6 +7,7 @@ use App\Model\user\profile;
 use App\Model\user\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProfileController extends Controller
 {
@@ -79,6 +80,17 @@ class ProfileController extends Controller
             return back()
                 ->with('error',"Unauthorized edit this article contact Author.");
         }
+    }
+
+    /**
+     * @param profile $profile
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statusOnline(profile $profile)
+    {
+        $profile->update(['status_online' => !$profile->status_online]);
+
+        return response('Update',Response::HTTP_CREATED);
     }
 
 }
