@@ -41,7 +41,6 @@ import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
 import ProfileUserEdit from "../components/user/account/ProfileUserEdit";
-import ProfileUserIndex from "../components/user/account/ProfileUserIndex";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
@@ -85,6 +84,7 @@ import ColorAuditing from "../components/admin/partial/settings/color/ColorAudit
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
 import SubscriberIndex from "../components/admin/contact/SubscriberIndex";
+import ProfileUserIndex from "../components/user/profile/ProfileUserIndex";
 
 
 
