@@ -10,7 +10,7 @@ Route::group(['namespace' => 'Page'], function(){
 
     //Testimonials Route
     Route::resource('/dashboard/testimonials', 'TestimonialController');
-    Route::get('/dashboard/testimonials/tm/{testimonial}', 'TestimonialController@vector')->name('testimonials.view');
+    Route::get('/dashboard/testimonials/tm/{testimonial}', 'TestimonialController@vector')->name('testimonials.vector');
     Route::get('/dashboard/testimonials/view/{slug}', 'TestimonialController@view');
     Route::get('/dashboard/change_status_testimonials/{id}', 'TestimonialController@status');
 });

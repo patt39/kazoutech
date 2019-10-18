@@ -8,5 +8,5 @@
 
 Route::get('profiles/u/{id}','ProfileController@show')->name('profiles.show');
 Route::put('profiles/{profile}','ProfileController@update');
-Route::get('dashboard/p/{profile}/edit','ProfileController@edit')->name('admin.profiles_edit');
+Route::get('dashboard/user/p/{profile}/edit','ProfileController@edit')->name('admin.profiles_edit');
 Route::get('/profiles/change_status_online/{id}', 'ProfileController@statusOnline');

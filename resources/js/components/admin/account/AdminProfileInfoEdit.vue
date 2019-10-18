@@ -81,7 +81,7 @@
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
-                                                                                <router-link :to="{ path: `/dashboard/p/${user.id}/edit` }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
+                                                                                <router-link :to="{ name: 'admin.profiles_edit', params: { id: form.id } }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
                                                                                     <b>Editer le profile</b>
                                                                                 </router-link>

@@ -24,9 +24,14 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
+                                    <template v-if="!guest">
+                                        <router-link v-if="userProfile.id === user.id" :to="{ name: 'profile.edit' }" class="btn btn-sm btn-primary mr-2" id="button_hover">
+                                            <b>Settings</b>
+                                        </router-link>
+                                    </template>
                                    <template v-if="userProfile.profile.status_online === 1">
-                                       <button type="button" v-if="userProfile.statusOnline" class="btn btn-sm btn-success mr-4" :title="userProfile.name + ' is online'">Online</button>
-                                       <button type="button" v-else="userProfile.statusOnline"  class="btn btn-sm btn-danger mr-4" :title="userProfile.name + ' is offline'">Offline</button>
+                                       <button type="button" v-if="userProfile.statusOnline" class="btn btn-sm btn-success mr-2" :title="userProfile.name + ' is online'">Online</button>
+                                       <button type="button" v-else="userProfile.statusOnline"  class="btn btn-sm btn-danger mr-2" :title="userProfile.name + ' is offline'">Offline</button>
                                    </template>
                                     <a href="#" class="btn btn-sm btn-default float-right" :title="'Laisser un message à ' + userProfile.name">Message</a>
                                 </div>

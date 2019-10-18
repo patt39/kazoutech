@@ -126,7 +126,7 @@
                                                         </label>
                                                     </button>
                                                     <router-link
-                                                        :to="{ path: `/dashboard/testimonials/tm/${item.slug}` }"
+                                                        :to="{ name: 'testimonials.vector', params: { testimonial: item.slug } }"
                                                         class="btn btn-link btn-warning btn-round btn-just-icon"
                                                         title="Show">
                                                         <i class="material-icons">visibility</i>

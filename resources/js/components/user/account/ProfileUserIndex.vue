@@ -114,8 +114,8 @@
                                                 <hr>
                                                 <div class="submit">
                                                     <div class="text-center">
-                                                        <router-link :to="{ path: `/profile/t/${userProfile.username}` }" class="btn btn-danger btn-round" id="button_hover">
-                                                            <b class="title_hover">Technician profile</b>
+                                                        <router-link :to="{ path: `/profile/t/${userProfile.username}` }" class="btn btn-danger btn-round">
+                                                            <b>Technician profile</b>
                                                         </router-link>
                                                        <template v-if="!guest">
                                                            <router-link v-if="userProfile.id === user.id" :to="{ name: 'profile.edit' }" class="btn btn-success btn-round" id="button_hover">
@@ -153,7 +153,7 @@
         created(){
             //Start Progress bar
             this.$Progress.start();
-            api.userSlug(this.$route.params.username).then(response => {
+            api.userUsername(this.$route.params.username).then(response => {
                 this.userProfile = response.data.data
             });
             //End Progress bar

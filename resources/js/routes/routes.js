@@ -40,7 +40,6 @@ import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
-import ProfileUserEdit from "../components/user/account/ProfileUserEdit";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
@@ -85,6 +84,7 @@ import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
 import SubscriberIndex from "../components/admin/contact/SubscriberIndex";
 import ProfileUserIndex from "../components/user/profile/ProfileUserIndex";
+import ProfileUserEdit from "../components/user/profile/ProfileUserEdit";
 
 
 
@@ -92,10 +92,36 @@ export const routes = [
 
     {path: '/dashboard/', name: 'dashboard.index', component: DashboardIndex},
     {path: '/dashboard/account/profile/', name: 'admin.account', component: AdminAccount},
-    {path: '/dashboard/p/:id/edit', name: 'admin.profiles_edit', component: AdminProfileEdit},
+    {path: '/dashboard/user/p/:id/edit', name: 'admin.profiles_edit', component: AdminProfileEdit},
     {path: '/dashboard/user/update/', name: 'admin.edit_profile', component: AdminProfileInfoEdit},
     {path: '/dashboard/user/password/change/', name: 'admin.change_password', component: AdminChangePassword,},
     {path: '/dashboard/user/password/reset/', name: 'admin.reset_password', component: AdminResetPassword},
+    //{
+    // path: '/dashboard/user/',
+    // component: AdminAccount
+    // children: [
+    //     //    {
+    //     //    path: 'update/',
+    //     //    name: 'admin.edit_profile',
+    //     //    component: AdminProfileInfoEdit,
+    //     //    },
+    //     //    {
+    //     //    path: 'p/:id/edit',
+    //     //    name: 'admin.profiles_edit',
+    //     //    component: AdminProfileEdit,
+    //     //    },
+    //     //    {
+    //     //    path: 'password/change/',
+    //     //    name: 'admin.change_password',
+    //     //    component: AdminChangePassword,
+    //     //    },
+    //     //    {
+    //     //    path: 'password/reset/',
+    //     //    name: 'admin.reset_password',
+    //     //    component: AdminResetPassword,
+    //     //    },
+    //     //]
+    // },
     {path: '/dashboard/colors/', name: 'colors.index', component: ColorIndex},
     {path: '/dashboard/colors/auditing/:color/', name: 'colors.auditing', component: ColorAuditing},
     {path: '/dashboard/countries/', name: 'countries.index', component: CountriesIndex},
@@ -201,7 +227,7 @@ export const routes = [
     { path: '/dashboard/testimonials', name: 'testimonials.index', component: TestimonialIndex },
     { path: '/dashboard/testimonials/create', name: 'testimonials.create', component: TestimonialCreate },
     { path: '/dashboard/testimonials/:id/edit', name: 'testimonials.edit', component: TestimonialEdit },
-    { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.show', component: TestimonialShow },
+    { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.vector', component: TestimonialShow },
 
 
     /* Legal Mention route  */

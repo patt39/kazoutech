@@ -199,6 +199,7 @@
 </template>
 
 <script>
+    import api from "../../../../../routes/admin/color";
     import StatusAdmin from "../../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../../inc/animation/LoaderLds-default";
 
@@ -474,8 +475,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/colors";
-                axios.get(url).then(response => {
+                api.colorItems(this.$route).then(response => {
                     this.loaded = true;
                     this.colors = response.data.data;
                     this.mydatatables();
@@ -496,11 +496,6 @@
         },
         created() {
             this.loadItems();
-            this.$storage.setOptions({
-                prefix: 'app_',
-                driver: 'local',
-                ttl: 60 * 60 * 24 * 1000 // 24 hours
-            });
             Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });

@@ -6,7 +6,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <br>
-                    <status-admin></status-admin>
+                    <StatusAdmin/>
                     <br>
                     <div class="row">
                         <div class="col-md-12 expo">
@@ -98,7 +98,9 @@
 </template>
 
 <script>
+    import StatusAdmin from "../../inc/admin/StatusAdmin";
     export default {
+        components: {StatusAdmin},
         data() {
             return {
                 loaded: false,
