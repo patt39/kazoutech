@@ -18,10 +18,10 @@ import MessageIndex from "../components/admin/user/message/MessageIndex";
 import MessageSend from "../components/admin/user/message/MessageSend";
 import MessageView from "../components/admin/user/message/MessageView";
 import OccupationIndex from "../components/admin/occupation/OccupationIndex";
-import CategoryFaqIndex from "../components/admin/faq/CategoryFaqIndex";
-import FaqIndex from "../components/admin/faq/FaqIndex";
-import FaqCreate from "../components/admin/faq/FaqCreate";
-import FaqEdit from "../components/admin/faq/FaqEdit";
+import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
+import FaqIndex from "../components/admin/faq/admin/FaqIndex";
+import FaqCreate from "../components/admin/faq/admin/FaqCreate";
+import FaqEdit from "../components/admin/faq/admin/FaqEdit";
 import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
 import CityIndex from "../components/admin/partial/settings/city/CityIndex";
@@ -76,7 +76,7 @@ import DocumentationIndex from "../components/admin/info/documentation/Documenta
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 import CityActives from "../components/admin/partial/settings/city/CityActives";
-import FaqByCategoryIndex from "../components/admin/faq/FaqByCategoryIndex";
+import FaqByCategoryIndex from "../components/admin/faq/admin/FaqByCategoryIndex";
 
 import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
 import AuditIndex from "../components/admin/audit/AuditIndex";
@@ -84,6 +84,9 @@ import UserTrah from "../components/admin/user/UserTrah";
 import SubscriberIndex from "../components/admin/contact/SubscriberIndex";
 import ProfileUserIndex from "../components/user/profile/ProfileUserIndex";
 import ProfileUserEdit from "../components/user/profile/ProfileUserEdit";
+import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable";
+import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
+import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryViewSites";
 
 
 
@@ -133,6 +136,8 @@ export const routes = [
     {path: '/dashboard/faqs/', name: 'faqs.index', component: FaqIndex},
     {path: '/dashboard/faqs/create/', name: 'faqs.create', component: FaqCreate},
     {path: '/dashboard/faqs/:id/edit/', name: 'faqs.edit', component: FaqEdit},
+    {path: '/dashboard/faqs/v/sites/', name: 'faqs.dashboard_sites', component: FaqViewSites},
+    {path: '/dashboard/faqs/v/sites/c/:categoryfaq', name: 'faqs.dashboard_categoryfaq_sites', component: FaqByCategoryViewSites},
     {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
 
     //Route categories
@@ -184,6 +189,7 @@ export const routes = [
 
     {path: '/dashboard/notes/', name: 'notes.index', component: NoteIndex},
     {path: '/dashboard/tasks/', name: 'tasks.index', component: TaskIndex},
+    {path: '/dashboard/tasks/tests/databases', name: 'tasks.database', component: TaskIndexDatable},
     {path: '/dashboard/tasks/u/:username/', name: 'tasks.view', component: TaskUser},
 
     //Route technicians

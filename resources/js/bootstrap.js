@@ -57,34 +57,6 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-require('medium-editor/dist/css/medium-editor.css');
-require('medium-editor/dist/css/themes/default.css');
-
-import MediumEditor from 'medium-editor';
-
-var editor = new MediumEditor('.editable', {
-    toolbar: {
-        /* These are the default options for the toolbar,
-           if nothing is passed this is what is used */
-        allowMultiParagraphSelection: true,
-        buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-        diffLeft: 0,
-        diffTop: -10,
-        firstButtonClass: 'medium-editor-button-first',
-        lastButtonClass: 'medium-editor-button-last',
-        relativeContainer: null,
-        standardizeSelectionStart: false,
-        static: false,
-        /* options which only apply when static is true */
-        align: 'center',
-        sticky: false,
-        updateOnEmptySelection: false
-    }
-});
-
-
-
-
 import Echo from 'laravel-echo'
 
 window.Pusher = require('pusher-js');

@@ -127,7 +127,7 @@
                                 </li>
                                 <!--Testimonial-->
                                 <li v-if="$auth.can('create-testimonial')" class="nav-item">
-                                    <router-link  :to="{ path: 'testimonials.index' }" class="nav-link">
+                                    <router-link  :to="{ name: 'testimonials.index' }" class="nav-link">
                                         <span class="sidebar-mini"><b>TS</b></span>
                                         <span class="sidebar-normal"><b>Testimonials</b></span>
                                     </router-link>
@@ -370,11 +370,30 @@
                                     </router-link>
                                 </li>
                                 <!-- Tasks -->
-                                <li class="nav-item">
-                                    <router-link  :to="{ name: 'tasks.index' }" class="nav-link">
-                                        <span class="sidebar-mini">TA</span>
-                                        <span class="sidebar-normal"><b>Tasks</b></span>
-                                    </router-link>
+                                <li v-if="$auth.can('view-user')" class="nav-item ">
+                                    <a class="nav-link" data-toggle="collapse" href="#componentsTasks">
+                                        <span class="sidebar-mini"><b>TK</b></span>
+                                        <span class="sidebar-normal"><b>Tasks</b>
+                                          <b class="caret"></b>
+                                        </span>
+                                    </a>
+                                    <div class="collapse" id="componentsTasks">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <router-link :to="{ name: 'tasks.index' }" class="nav-link">
+                                                    <span class="sidebar-mini"><b>TS</b></span>
+                                                    <span class="sidebar-normal"><b>Tasks</b></span>
+                                                </router-link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <router-link :to="{ name: 'tasks.database' }"
+                                                             class="nav-link">
+                                                    <span class="sidebar-mini"><b>TD</b></span>
+                                                    <span class="sidebar-normal"><b>Task Datatable</b></span>
+                                                </router-link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                                 <!-- Permissions -->
                                 <li v-if="$auth.can('view-role-permission')"  class="nav-item">
@@ -487,7 +506,5 @@
 </script>
 
 <style scoped>
-    .router-link-active {
-        color: orange;
-    }
+
 </style>

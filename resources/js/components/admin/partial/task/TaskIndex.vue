@@ -492,20 +492,6 @@
                 //Masquer le modal après la création
                 $("#addNew").modal("show");
             },
-            loadItems() {
-                //Progrs bar
-                this.$Progress.start();
-                axios.get(`/api/tasks?page=${this.pagination.current_page}`).then(response => {
-                    this.loaded = true;
-                    this.tasks = response.data.data;
-                    this.pagination = response.data.meta;
-                    //End Progress bar
-                    this.$Progress.finish();
-                });
-                axios.get("/api/notes").then(response => {this.notes = response.data.data});
-                axios.get("/api/administrators").then(response => {this.users = response.data.data;});
-
-            },
             createItem() {
                 this.$Progress.start();
                 // Submit the form via a POST request
@@ -597,6 +583,20 @@
                         })
                     }
                 })
+            },
+            loadItems() {
+                //Progrs bar
+                this.$Progress.start();
+                axios.get(`/api/tasks?page=${this.pagination.current_page}`).then(response => {
+                    this.loaded = true;
+                    this.tasks = response.data.data;
+                    this.pagination = response.data.meta;
+                    //End Progress bar
+                    this.$Progress.finish();
+                });
+                axios.get("/api/notes").then(response => {this.notes = response.data.data});
+                axios.get("/api/administrators").then(response => {this.users = response.data.data;});
+
             },
             reload(){
                 this.loadItems()

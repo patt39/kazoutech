@@ -20,7 +20,7 @@ class CategoryfaqController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apibystatus']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -32,6 +32,12 @@ class CategoryfaqController extends Controller
     public function index()
     {
         return view('admin.faq.categoryfaq');
+    }
+
+    public function apibystatus()
+    {
+        $categoryfaqs = categoryfaq::with('user')->where('status',1)->latest()->get();
+        return $categoryfaqs;
     }
 
     public function api()
@@ -64,7 +70,7 @@ class CategoryfaqController extends Controller
             'color_name'=>'required',
             'icon'=>'required',
         ]);
-        
+
         $categoryfaq = new categoryfaq;
         $categoryfaq->name = $request->name;
         $categoryfaq->color_name = $request->color_name;
@@ -147,7 +153,7 @@ class CategoryfaqController extends Controller
             'color_name'=>'required',
             'icon'=>'required',
         ]);
-        
+
         $categoryfaq = categoryfaq::findOrFail($id);
 
         $categoryfaq->name = $request->name;

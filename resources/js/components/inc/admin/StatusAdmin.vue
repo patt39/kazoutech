@@ -22,22 +22,22 @@
         methods:{
             getRoleName(role) {
                 if (role === 'super-admin') {
-                    return 'btn btn-info btn-raised btn-lg btn-round';
+                    return 'btn btn-info btn-raised btn-lg';
                 }
                 if (role === 'admin') {
-                    return 'btn btn-success btn-raised btn-lg btn-round';
+                    return 'btn btn-success btn-raised btn-lg';
                 }
                 if (role === 'visitor') {
-                    return 'btn btn-secondary btn-raised btn-lg btn-round';
+                    return 'btn btn-secondary btn-raised btn-lg';
                 }
                 if (role === 'editor') {
-                    return 'btn btn-warning btn-raised btn-lg btn-round';
+                    return 'btn btn-warning btn-raised btn-lg';
                 }
                 if (role === 'advertiser') {
-                    return 'btn btn-danger btn-raised btn-lg btn-round';
+                    return 'btn btn-danger btn-raised btn-lg';
                 }
                 if (role === 'moderator') {
-                    return 'btn btn-primary btn-raised btn-lg btn-round';
+                    return 'btn btn-primary btn-raised btn-lg';
                 }
             },
         },

@@ -388,21 +388,5 @@
 </script>
 
 <style scoped>
-    body {
-        font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-    }
 
-    h1 {
-        font-size: 26px;
-        font-weight: 600;
-        color: #2c3e5099;
-        text-rendering: optimizelegibility;
-        -moz-osx-font-smoothing: grayscale;
-        -moz-text-size-adjust: none;
-    }
-
-    #app {
-        max-width: 30em;
-        margin: 1em auto;
-    }
 </style>

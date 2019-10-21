@@ -8,6 +8,7 @@
 
 //Tasks administrator Route
 Route::resource('/dashboard/tasks', 'TaskController');
+Route::get('/dashboard/tasks/tests/databases', 'TaskController@databases')->name('tasks.database');
 Route::get('/api/dashboard/tasks/u/{username}', 'TaskController@usertask');
 Route::put('/dashboard/update_progress_tasks/{id}', 'TaskController@updateProgress');
 Route::put('/dashboard/update_description_tasks/{id}', 'TaskController@updateDescription');

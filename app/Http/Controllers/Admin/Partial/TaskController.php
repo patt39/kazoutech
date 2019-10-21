@@ -35,6 +35,12 @@ class TaskController extends Controller
         return view('admin.partial.task.index');
     }
 
+
+    public function databases()
+    {
+        return view('admin.partial.task.tasksDatable');
+    }
+
     public function api()
     {
         $tasks = TaskResource::collection(task::with('user','administrator','note')

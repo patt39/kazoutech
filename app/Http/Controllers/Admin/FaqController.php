@@ -21,7 +21,7 @@ class FaqController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','catagoryfaqapi']]);
+        $this->middleware('auth',['except' => ['api','catagoryfaqapi','bystatussitesapi','bystatuscatagoryfaqapi']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -31,6 +31,11 @@ class FaqController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        return view('admin.faq.index');
+    }
+
+    public function sites()
     {
         return view('admin.faq.index');
     }
@@ -48,6 +53,25 @@ class FaqController extends Controller
         $faqs = FaqResource::collection(categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
         ->with('user','categoryfaq')->latest()->get());
         return $faqs;
+    }
+
+
+    public function bystatussitesapi()
+    {
+        $faqs = FaqResource::collection(faq::with('user','categoryfaq')
+            ->where('status',1)->latest()
+            ->paginate(10));
+        return $faqs;
+
+    }
+
+    public function bystatuscatagoryfaqapi($categoryfaq)
+    {
+        $faqs = FaqResource::collection(categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
+            ->with('user','categoryfaq')->where('status',1)->latest()
+            ->paginate(6));
+        return $faqs;
+
     }
 
     /**
@@ -121,6 +145,13 @@ class FaqController extends Controller
     }
 
     public function catagoryfaq($categoryfaq)
+    {
+        $faqs = categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
+            ->with('user','categoryfaq')->orderBy('created_at','DESC')->get();
+        return view('admin.faq.index',compact('faqs'));
+    }
+
+    public function catagoryfaqbystatus($categoryfaq)
     {
         $faqs = categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
             ->with('user','categoryfaq')->orderBy('created_at','DESC')->get();

@@ -66,7 +66,7 @@
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
-                                                            <router-link v-if="$auth.can('edit-testimonial')" :to="{ path: `/dashboard/testimonials/${testimonial.id}/edit` }" class="btn btn-success btn-round" id="button_hover">
+                                                            <router-link v-if="$auth.can('edit-testimonial')" :to="{ name: 'testimonials.edit', params: { id: testimonial.id  } }" class="btn btn-success btn-round" id="button_hover">
                                                                 <i class="material-icons">edit</i>
                                                                 <b class="title_hover">Edit</b>
                                                             </router-link>
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-    import api from "../../../../api/mixins/collections";
+    import api from "../../../../routes/admin/testimonial";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
 
     export default {

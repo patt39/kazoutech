@@ -21,21 +21,6 @@ import { ValidationProvider, extend } from 'vee-validate';
 Vue.component('ValidationProvider', ValidationProvider);
 
 
-/**
- * Vue-select
- */
-import vSelect from 'vue-select'
-Vue.component('v-select', vSelect);
-import 'vue-select/dist/vue-select.css';
-
-
-import {Vue2Storage} from 'vue2-storage'
-Vue.use(Vue2Storage, {
-    prefix: 'app_',
-    driver: 'local',
-    ttl: 60 * 60 * 24 * 1000 // 24 часа
-});
-
 import {Form, HasError, AlertError, AlertSuccess} from 'vform'
 
 window.Form = Form;
@@ -91,6 +76,16 @@ Vue.use(Vue2Filters);
  */
 import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask);
+
+import InfiniteLoading from 'vue-infinite-loading';
+Vue.use(InfiniteLoading);
+
+/**
+ * Vue-select
+ */
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect);
+
 
 
 /**

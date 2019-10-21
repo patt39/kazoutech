@@ -74,7 +74,7 @@
                                                                  <i class="material-icons">save_alt</i>
                                                                  <b class="title_hover">Update</b>
                                                              </button>
-                                                             <router-link :to="{ path: `/dashboard/testimonials/tm/${form.slug}` }" class="btn btn-warning btn-round" id="button_hover">
+                                                             <router-link :to="{ name: 'testimonials.vector', params: { testimonial: form.slug  } }" class="btn btn-warning btn-round" id="button_hover">
                                                                  <i class="material-icons">visibility</i>
                                                                  <b class="title_hover">View</b>
                                                              </router-link>
@@ -99,7 +99,7 @@
 
 <script>
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import api from '../../../../api/mixins/collections';
+    import api from "../../../../routes/admin/testimonial";
 
     export default {
         components: {StatusAdmin },
