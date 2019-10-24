@@ -20,10 +20,14 @@
                                 </div>
                                 <div class="toolbar">
                                     <div class="submit text-center">
-                                        <router-link v-for="item in categoryfaqs" :key="item.id" id="button_hover" :to="{ name: 'faqs.dashboard_categoryfaq_sites', params:{ categoryfaq: item.slug}}" class="btn btn-raised btn-sm btn-info">
+                                        <button v-for="item in categoryfaqs" :key="item.id" id="button_hover" @click="getCategory(item)"  class="btn btn-raised btn-sm btn-info">
                                             <i class="material-icons" v-text="item.icon"></i>
                                             <b class="title_hover" v-text="item.name"></b>
-                                        </router-link>
+                                        </button>
+                                        <!--<router-link v-for="item in categoryfaqs" :key="item.id" id="button_hover" :to="{ name: 'faqs.dashboard_categoryfaq_sites', params:{ categoryfaq: item.slug}}" class="btn btn-raised btn-sm btn-info">
+                                            <i class="material-icons" v-text="item.icon"></i>
+                                            <b class="title_hover" v-text="item.name"></b>
+                                        </router-link>-->
                                     </div>
                                 </div>
                                 <br>
@@ -47,19 +51,14 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <br>
-
                                 <div class="toolbar">
                                     <div class="submit text-center" >
-                                        <infinite-loading @infinite="infiniteHandler">
-                                             <span slot="no-more">
-                                               Plus de donner :(
-                                            </span>
+                                        <infinite-loading spinner="waveDots" @infinite="infiniteHandler">
+                                            <span slot="no-more">No results :(</span>
                                         </infinite-loading>
                                     </div>
                                 </div>
-
                                 <br>
                             </div>
                         </div>
@@ -80,14 +79,19 @@
         data() {
             return {
                 page: 1,
-                faqs: {categoryfaq:'',},
+                faqs: [],
                 categoryfaqs: {},
             };
         },
         created() {
-            this.loadItems();
+            api.categoryfaqbystatus(this.$route.params).then(response => {
+                this.categoryfaqs = response.data
+            });
         },
         methods: {
+            /**
+             * @return {string}
+             */
             HeadingFaq(item){
                 return `headingFaq-${item.id}`;
             },
@@ -97,42 +101,27 @@
             collapseFaqHr(item){
                 return `#collapseFaq-${item.id}`;
             },
-            loadItems() {
-               this.$Progress.start();
-               api.faqByCatagoryStatus(this.$route.params.categoryfaq).then(response => {
-                   console.log(response.data)
-                   if (response.data.data.length > 0) {
-                       this.loaded = true;
-                       this.faqs = response.data.data;
-                   }else{
-                       console.log('No users found.');
-                   }
-               });
-                api.categoryfaqbystatus(this.$route.params).then(response => {
-                   this.categoryfaqs = response.data
-               });
-                this.$Progress.finish();
-           },
-            infiniteHandler: function ($state) {
-                let limit = this.faqs.length / 6 + 1;
-                api.faqByCatagoryStatus(this.$route.params.categoryfaq,
-                    { params: { page: limit } }).then(response => {
-                    this.loadMore($state, response);
-                });
+            getCategory(item){
+                this.$Progress.start();
+                location.replace(`/dashboard/faqs/v/sites/c/${item.slug}/`);
+                this.$Progress.finish()
             },
-            loadMore: function ($state, response) {
-                if (response.data.data.length) {
-                    this.faqs = this.faqs.concat(response.data.data);
-                    setTimeout(() => {
-                        $state.loaded();
-                    }, 3000);
-                    console.log(this.faqs.length)
-                    if (response.data.meta.total == 11 ) {
-                        $state.complete();
-                    }
-                } else {
-                    $state.complete();
-                }
+            infiniteHandler($state) {
+                setTimeout(() => {
+                    axios.get(`/api/faqs/sites/c/${this.$route.params.categoryfaq}`, {
+                        params: {
+                            page: this.page,
+                        },
+                    }).then(response => {
+                        if (response.data.length) {
+                            this.page += 1;
+                            this.faqs.push(...response.data);
+                            $state.loaded();
+                        } else {
+                            $state.complete();
+                        }
+                    });
+                }, 1000);
             },
         },
     };

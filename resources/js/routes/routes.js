@@ -137,8 +137,15 @@ export const routes = [
     {path: '/dashboard/faqs/create/', name: 'faqs.create', component: FaqCreate},
     {path: '/dashboard/faqs/:id/edit/', name: 'faqs.edit', component: FaqEdit},
     {path: '/dashboard/faqs/v/sites/', name: 'faqs.dashboard_sites', component: FaqViewSites},
-    {path: '/dashboard/faqs/v/sites/c/:categoryfaq', name: 'faqs.dashboard_categoryfaq_sites', component: FaqByCategoryViewSites},
     {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
+    {
+        path: '/dashboard/faqs/v/sites/c/:categoryfaq',
+        name: 'faqs.dashboard_categoryfaq_sites',
+        component: FaqByCategoryViewSites,
+        //children: [
+        //    {path: 'send/', name: 'messages.send', component: MessageSend,},
+        //]
+    },
 
     //Route categories
     {path: '/dashboard/categories/', name: 'categories.index', component: CategoryIndex},

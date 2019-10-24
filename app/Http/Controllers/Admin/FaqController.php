@@ -61,8 +61,7 @@ class FaqController extends Controller
         $faqs = FaqResource::collection(faq::with('user','categoryfaq')
             ->where('status',1)->latest()
             ->paginate(10));
-        return $faqs;
-
+        return response()->json($faqs,200);
     }
 
     public function bystatuscatagoryfaqapi($categoryfaq)
@@ -70,7 +69,8 @@ class FaqController extends Controller
         $faqs = FaqResource::collection(categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
             ->with('user','categoryfaq')->where('status',1)->latest()
             ->paginate(6));
-        return $faqs;
+
+        return response()->json($faqs,200);
 
     }
 

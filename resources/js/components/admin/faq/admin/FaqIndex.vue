@@ -399,18 +399,18 @@
             reload(){
                 this.loadItems()
             },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 120000);
-            },
+            //intervalFetchData: function () {
+            //    setInterval(() => {
+            //        this.loadItems();
+            //    }, 120000);
+            //},
         },
         created() {
             this.loadItems();
             Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
-            this.intervalFetchData();
+            //this.intervalFetchData();
         }
     }
 </script>
