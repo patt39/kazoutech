@@ -34,14 +34,14 @@ class UserController extends Controller
     
     public function datatables()
     {
-        return view('admin.user.index');
+        return view('admin.user.datatables');
     }
 
     public function apidatatables()
     {
         $users = UserResource::collection(User::with('my_country')
         ->where('my_status','0')
-        ->latest()->paginate(1000));
+        ->latest()->get());
 
         return $users;
     }
@@ -50,7 +50,7 @@ class UserController extends Controller
     {
         $users = UserResource::collection(User::with('my_country')
             ->where('my_status','0')
-            ->latest()->paginate(500));
+            ->latest()->paginate(12));
         return response()->json($users,200);
     }
 
