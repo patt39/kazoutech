@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        return view('admin.user.datatables');
     }
     
     public function datatables()

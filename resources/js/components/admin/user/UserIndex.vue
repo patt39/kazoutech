@@ -26,7 +26,6 @@
                             </div>
                         </div>
                     </div>
-                    <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
@@ -300,7 +299,6 @@
         data() {
             return {
                 loaded: false,
-                errored: false,
                 users: {},
                 user: {},
                 userProfile: {},
@@ -408,10 +406,7 @@
                     this.loaded = true;
                     this.users = response.data.data;
                     this.mydatatables();
-                }).catch(error => {
-                    console.log(error);
-                    this.errored = true
-                });
+                })
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();
