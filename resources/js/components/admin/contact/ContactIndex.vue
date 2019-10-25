@@ -8,24 +8,6 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="loaded" class="row">
-                        <div class="col-md-12 expo">
-                            <div class="card card-stats">
-                                <div :class="getColorCardUser()">
-                                    <div class="card-icon">
-                                        <i class="material-icons">email</i>
-                                    </div>
-                                    <p class="card-category"><b>All Messages Contact Us</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{contacts.length}}</b></h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">email</i><b>All Messages Contact Us</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
@@ -39,12 +21,6 @@
                                             <div class="nav-tabs-navigation">
                                                 <div class="nav-tabs-wrapper">
                                                     <ul class="nav nav-tabs" data-tabs="tabs">
-                                                        <li class="nav-item">
-                                                            <router-link :to="{ name: 'contacts.index' }" class="nav-link" style="cursor:pointer;" data-toggle="tab" title="Message contact" exact>
-                                                                <i class="material-icons">email</i>
-                                                                <span class="badge badge-rose">{{contacts.length}}</span>
-                                                            </router-link>
-                                                        </li>
                                                         <li class="nav-item">
                                                             <router-link :to="{ name: 'contacts.bookmarks' }" class="nav-link" style="cursor:pointer;" data-toggle="tab" title="bookmarks" exact>
                                                                 <i class="material-icons">bookmarks</i>
@@ -93,7 +69,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in orderByItems" :key="item.id">
+                                            <tr v-for="item in contacts" :key="item.id">
                                                 <td>
                                                     <span v-if="item.status === 1" class="badge badge-success">Read</span>
                                                     <span v-else-if="item.status === 0"  class="badge badge-rose">New</span>
@@ -128,6 +104,13 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="toolbar">
+                                        <div class="submit text-center" >
+                                            <infinite-loading spinner="waveDots" @infinite="infiniteHandler">
+                                            <span slot="no-more">No results :(</span>
+                                            </infinite-loading>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -150,35 +133,19 @@
                 loaded: false,
                 errored: false,
                 editmode: false,
+                contacts: [],
                 user: {},
-                contacts: {},
             }
         },
+        created() {
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            this.loadItems();
+            Fire.$on('LoadData', () => {
+                this.loadItems();
+            });
+            this.intervalFetchData();
+        },
         methods: {
-            mydatatables(){
-                $( function () {
-                    $('#datatables').DataTable({
-                        "pagingType": "full_numbers",
-                        "lengthMenu": [
-                            [10, 25, 50, -1],
-                            [10, 25, 50, "All"]
-                        ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
-                        responsive: true,
-                        stateSave: true,
-                        destroy: true,
-                        retrieve:true,
-                        autoFill: true,
-                        colReorder: true,
-                        language: {
-                            search: "<i class='material-icons'>search</i>",
-                            searchPlaceholder: "Search Record",
-                        },
-                        "sPaginationType": "full_numbers",
-
-                    });
-                });
-            },
             getColorCardUser(){
                 let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
@@ -205,7 +172,7 @@
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -243,7 +210,7 @@
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -281,7 +248,7 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -306,7 +273,7 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -335,7 +302,7 @@
                         }
                     });
                     this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -350,20 +317,32 @@
                 })
             },
             loadItems() {
-                //Start Progress bar
-                this.$Progress.start();
-                let url = "/api/contacts";
-                axios.get(url).then(response => {
+                axios.get("/api/contacts").then(response => {
                     this.loaded = true;
                     this.contacts = response.data.data;
-                    this.mydatatables();
-                    //End Progress bar
-                    this.$Progress.finish();
                 }).catch(error => {
                     console.log(error);
                     this.errored = true
                 });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            },
+            infiniteHandler($state) {
+                let limit = this.contacts.length / 10 + 1;
+                axios.get('/api/contacts', { params: { page: limit } }).then(response => {
+                    this.loadMore($state, response);
+                });
+            },
+            loadMore($state, response) {
+                if ( response.data.data.length ) {
+                    this.contacts = this.contacts.concat(response.data.data);
+                    setTimeout(() => {
+                        $state.loaded();
+                    }, 500);
+                    if ( response.data.total === this.contacts.length ) {
+                        $state.complete();
+                    }
+                }else{
+                    $state.complete();
+                }
             },
             reload(){
                 this.loadItems();
@@ -372,19 +351,6 @@
                 setInterval(() => {
                     this.loadItems();
                 }, 120000);
-            },
-        },
-        created() {
-            this.loadItems();
-            Fire.$on('AfterCreate', () => {
-                this.loadItems();
-            });
-            this.intervalFetchData();
-        },
-        //get order bay
-        computed: {
-            orderByItems() {
-                return _.orderBy(this.contacts, ['created_at'], ['asc'])
             },
         },
     }

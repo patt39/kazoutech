@@ -71,11 +71,11 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'faqs.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                                            <router-link :to="{ name: 'faqs.index' }" class="btn btn-danger btn-raised" id="button_hover">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
-                                                            <button v-if="$auth.can('edit-faq')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <button v-if="$auth.can('edit-faq')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <i class="material-icons">save_alt</i>
                                                                 <b class="title_hover">Update</b>
                                                             </button>

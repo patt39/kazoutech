@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','apitrash']]);
+        $this->middleware('auth',['except' => ['api','apitrash','apidatatables','apisearch']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -32,14 +32,36 @@ class UserController extends Controller
         return view('admin.user.index');
     }
 
-    public function api()
+
+    public function datatable()
+    {
+        return view('admin.user.index');
+    }
+    public function apidatatables()
     {
         $users = Cache::rememberForever('users', function () {
             return UserResource::collection(User::with('my_country')
                 ->where('my_status','0')
                 ->latest()->get());
         });
-        return $users;
+        return response()->json($users,200);
+    }
+
+    public function api()
+    {
+        $users = UserResource::collection(User::with('my_country')
+            ->where('my_status','0')
+            ->latest()->paginate(12));
+        return response()->json($users,200);
+    }
+
+    public function apisearch(Request $request)
+    {
+        $users = UserResource::collection(User::with('my_country')
+            ->where('my_status','0')
+            ->where('name', $request->keywords)
+            ->latest()->paginate(12));
+        return response()->json($users,200);
     }
 
     public function apitrash()

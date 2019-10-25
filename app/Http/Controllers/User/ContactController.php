@@ -53,8 +53,8 @@ class ContactController extends Controller
 
     public function api()
     {
-        $contacts = ContactResource::collection(contact::where('bookmark', 0)->latest()
-            ->paginate(10));
+        $contacts = contact::where('bookmark', 0)->latest()
+            ->paginate(10);
         return response()->json($contacts,200);
     }
 

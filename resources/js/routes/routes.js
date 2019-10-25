@@ -87,6 +87,7 @@ import ProfileUserEdit from "../components/user/profile/ProfileUserEdit";
 import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable";
 import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
 import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryViewSites";
+import UserCardIndex from "../components/admin/user/UserCardIndex";
 
 
 
@@ -165,7 +166,8 @@ export const routes = [
     {path: '/dashboard/tags/show/:tag/', name: 'tags.view', component: TagView},
 
     //Route users
-    {path: '/dashboard/users/', name: 'users.index', component: UserIndex},
+    {path: '/dashboard/users/', name: 'users.index', component: UserCardIndex},
+    {path: '/dashboard/users/b/datatables/', name: 'users.datatables', component: UserIndex},
     {path: '/dashboard/users/t/trash/', name: 'users.trash', component: UserTrah},
     {path: '/dashboard/users/:id/edit/', name: 'users.edit', component: UserEdit},
     {path: '/dashboard/users/p/:username/', name: 'users.view', component: AdministratorShow},

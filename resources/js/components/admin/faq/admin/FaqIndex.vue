@@ -62,10 +62,12 @@
                                     <div class="card-body">
                                         <div class="toolbar">
                                             <div class="submit text-center">
-                                                <router-link v-if="$auth.can('create-faq')" :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised btn-round ">
+                                                <router-link v-if="$auth.can('create-faq')" :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised ">
+                                                    <i class="material-icons">forum</i>
                                                     <b class="title_hover">New FAQS</b>
                                                 </router-link>
-                                                <router-link :to="{ name: 'faqs.dashboard_sites' }" id="button_hover" class="btn btn-info btn-raised btn-round ">
+                                                <router-link :to="{ name: 'faqs.dashboard_sites' }" id="button_hover" class="btn btn-info btn-raised ">
+                                                    <i class="material-icons">contact_support</i>
                                                     <b class="title_hover">FAQS Site</b>
                                                 </router-link>
                                             </div>

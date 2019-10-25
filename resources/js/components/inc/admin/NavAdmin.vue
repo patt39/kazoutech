@@ -344,7 +344,7 @@
                                                 <div class="collapse" id="componentsUsers">
                                                     <ul class="nav">
                                                         <li class="nav-item">
-                                                            <router-link :to="{ name: 'users.index' }" class="nav-link">
+                                                            <router-link :to="{ name: 'users.datatables' }" class="nav-link">
                                                                 <span class="sidebar-mini"><b>US</b></span>
                                                                 <span class="sidebar-normal"><b>Users</b></span>
                                                             </router-link>

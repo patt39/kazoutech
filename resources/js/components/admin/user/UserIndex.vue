@@ -60,6 +60,14 @@
                                         </button>
                                     </div>
                                     <div class="toolbar">
+                                        <div class="submit text-center">
+                                            <router-link :to="{name:'users.index'}" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                                <span class="btn-label">
+                                                    <i class="material-icons">perm_identity</i>
+                                                </span>
+                                                <b class="title_hover">Profile users</b>
+                                            </router-link>
+                                        </div>
                                     </div>
                                     <div class="material-datatables">
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover"
@@ -395,10 +403,10 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/users";
+                const url = "/api/users_datatables";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.users = response.data.data;
+                    this.users = response.data;
                     this.mydatatables();
                 }).catch(error => {
                     console.log(error);

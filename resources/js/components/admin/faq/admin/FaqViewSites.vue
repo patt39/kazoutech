@@ -14,6 +14,7 @@
                                 <div class="toolbar">
                                     <div class="submit text-center" >
                                         <router-link :to="{ name: 'faqs.index' }" id="button_hover" class="btn btn-info btn-raised">
+                                            <i class="material-icons">forum</i>
                                             <b class="title_hover">FAQS Datable</b>
                                         </router-link>
                                     </div>
