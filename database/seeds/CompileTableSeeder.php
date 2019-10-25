@@ -19,6 +19,7 @@ class CompileTableSeeder extends Seeder
     {
         $this->addDefaultUtenti();
         $this->addInfoDatable();
+        $this->addTestUtenti();
 
         if (config('app.env') !== 'production') {
             $this->addTestUtenti();
