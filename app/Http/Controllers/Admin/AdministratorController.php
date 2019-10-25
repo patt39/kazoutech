@@ -18,7 +18,7 @@ class AdministratorController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apidatatables']]);
     }
 
     /**
@@ -36,6 +36,15 @@ class AdministratorController extends Controller
         return UserResource::collection(User::with('my_country')
             ->where('my_status','active')
             ->orderBy('updated_at','DESC')->get());
+    }
+
+    public function apidatatables()
+    {
+        $users = User::with('my_country')
+            ->where('my_status','active')
+            ->orderBy('updated_at','DESC')->paginate(10);
+
+        return response()->json($users,200);
     }
     /**
      * Show the form for creating a new resource.

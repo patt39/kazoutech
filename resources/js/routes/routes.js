@@ -23,6 +23,7 @@ import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
 import FaqEdit from "../components/admin/faq/admin/FaqEdit";
 import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
+import AdministratorDatatableIndex from "../components/admin/administrator/AdministratorDatatableIndex";
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
 import CityIndex from "../components/admin/partial/settings/city/CityIndex";
 import PermissionIndex from "../components/admin/permission/PermissionIndex";
@@ -104,6 +105,7 @@ export const routes = [
 
     //Route administrators
     {path: '/dashboard/administrators/', name: 'administrators.index', component: AdministratorIndex},
+    {path: '/dashboard/administrators/u/datatables/', name: 'administrators.datatables', component: AdministratorDatatableIndex},
     {path: '/dashboard/administrators/:id/edit/', name: 'administrators.edit', component: AdministratorEdit},
 
     //Route activities

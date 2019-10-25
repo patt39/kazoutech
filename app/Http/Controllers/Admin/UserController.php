@@ -31,12 +31,6 @@ class UserController extends Controller
     {
         return view('admin.user.index');
     }
-
-
-    public function datatable()
-    {
-        return view('admin.user.index');
-    }
     public function apidatatables()
     {
         $users = Cache::rememberForever('users', function () {

@@ -29,12 +29,6 @@ require(__DIR__ . DIRECTORY_SEPARATOR . 'web' .DIRECTORY_SEPARATOR . 'user' . DI
 Route::group(['namespace' => 'Admin'], function () {
 
 
-    //Route Administrator
-    Route::resource('/dashboard/administrators','AdministratorController');
-    Route::get('/dashboard/active_administrators/{id}', 'OccupationController@active')->name('active_occupations');
-    Route::get('/dashboard/disable_occupations/{id}', 'OccupationController@disable')->name('disable_occupations');
-
-
 
     //All Route Partials
     Route::group(['namespace' => 'Partial'], function () {

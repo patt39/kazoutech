@@ -10,6 +10,8 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
         )->name('dashboard.index');
 
         /* Admin */
+        require(__DIR__ . DIRECTORY_SEPARATOR . 'administrators.php');
+
         require(__DIR__ . DIRECTORY_SEPARATOR . 'account.php');
 
         require(__DIR__ . DIRECTORY_SEPARATOR . 'faqs.php');

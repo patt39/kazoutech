@@ -53,12 +53,20 @@
                                     <br>
                                     <div class="card-body">
                                         <div class="toolbar">
-                                            <!--<div class="submit text-center">
-                                                <button id="button_hover" @click="modalInvite()" class="btn btn-info btn-raised btn-round text-right">
-                                                    <i class="material-icons">inbox</i>
-                                                    <b class="title_hover">Invite Administrator</b>
-                                                </button>
-                                            </div>-->
+                                            <div class="submit text-center">
+                                                <router-link :to="{name:'administrators.datatables'}" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">perm_identity</i>
+                                                    </span>
+                                                    <b class="title_hover">Administrators Datatable</b>
+                                                </router-link>
+                                                <!--<div class="submit text-center">
+                                                    <button id="button_hover" @click="modalInvite()" class="btn btn-info btn-raised btn-round text-right">
+                                                        <i class="material-icons">inbox</i>
+                                                        <b class="title_hover">Invite Administrator</b>
+                                                    </button>
+                                                </div>-->
+                                            </div>
                                         </div>
                                         <div class="material-datatables">
                                             <table id="datatables" class="table table-striped table-no-bordered table-hover"
