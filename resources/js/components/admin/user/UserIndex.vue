@@ -406,7 +406,7 @@
                 const url = "/api/users_datatables";
                 axios.get(url).then(response => {
                     this.loaded = true;
-                    this.users = response.data;
+                    this.users = response.data.data;
                     this.mydatatables();
                 }).catch(error => {
                     console.log(error);

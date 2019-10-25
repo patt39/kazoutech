@@ -31,21 +31,26 @@ class UserController extends Controller
     {
         return view('admin.user.index');
     }
+    
+    public function datatables()
+    {
+        return view('admin.user.index');
+    }
+
     public function apidatatables()
     {
-        $users = Cache::rememberForever('users', function () {
-            return UserResource::collection(User::with('my_country')
-                ->where('my_status','0')
-                ->latest()->get());
-        });
-        return response()->json($users,200);
+        $users = UserResource::collection(User::with('my_country')
+        ->where('my_status','0')
+        ->latest()->paginate(1000));
+
+        return $users;
     }
 
     public function api()
     {
         $users = UserResource::collection(User::with('my_country')
             ->where('my_status','0')
-            ->latest()->paginate(12));
+            ->latest()->paginate(500));
         return response()->json($users,200);
     }
 
