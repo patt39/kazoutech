@@ -26,6 +26,7 @@
                             </div>
                         </div>
                     </div>
+                     <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
@@ -76,8 +77,6 @@
                                                 <th><b>Profile</b></th>
                                                 <th><b>Name</b></th>
                                                 <th><b>Confirmed</b></th>
-                                                <th><b>Connect with</b></th>
-                                                <th><b>Followers</b></th>
                                                 <th class="disabled-sorting text-right"><b>Actions</b></th>
                                             </tr>
                                             </thead>
@@ -86,13 +85,11 @@
                                                 <th><b>Profile</b></th>
                                                 <th><b>Name</b></th>
                                                 <th><b>Confirmed</b></th>
-                                                <th><b>Connect with</b></th>
-                                                <th><b>Followers</b></th>
                                                 <th class="text-right"><b>Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in orderByitems" :key="item.id">
+                                            <tr v-for="item in users" :key="item.id">
                                                 <td><img :src="item.avatar" :alt="item.username" style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%"></td>
                                                 <td>
                                                     <router-link  :to="{ path: `/dashboard/profile/${item.username}` }" title="Administrator Online">
@@ -109,15 +106,11 @@
                                                         <span v-if="item.email_verified_at != null" class="badge badge-success"><b>Yes</b></span>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <b v-if="item.provider !== null" v-text="item.provider"></b>
-                                                    <b v-if="item.provider === null">kazoucoin</b>
-                                                </td>
-                                                <td>
+                                                <!--<td>
                                                     <router-link  :to="{ path: `/dashboard/users/p/${item.username}/followers/` }">
                                                         <h6 class="card-title">{{item.followers}}</h6>
                                                     </router-link>
-                                                </td>
+                                                </td>-->
                                                 <td class="td-actions text-right">
                                                     <!--<a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
@@ -299,6 +292,7 @@
         data() {
             return {
                 loaded: false,
+                errored: false,
                 users: {},
                 user: {},
                 userProfile: {},
@@ -401,13 +395,18 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/users_datatables";
-                axios.get(url).then(response => {
+                axios.get("/api/users/a/datatables").then(response => {
                     this.loaded = true;
-                    this.users = response.data.data;
+                    this.users = response.data;
                     this.mydatatables();
-                })
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                }).catch(error => {
+                    console.log(error);
+                    this.errored = true
+                });
+                axios.get("/api/account/user").then(response => {
+                    this.loaded = true;
+                    this.user = response.data.data
+                });
                 //End Progress bar
                 this.$Progress.finish();
             },
@@ -426,11 +425,6 @@
                 this.loadItems();
             });
             this.intervalFetchData();
-        },
-        computed: {
-            orderByitems() {
-                return _.orderBy(this.users, ['created_at'], ['desc'])
-            },
         },
     }
 

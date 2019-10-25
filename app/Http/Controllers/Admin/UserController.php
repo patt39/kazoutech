@@ -39,11 +39,11 @@ class UserController extends Controller
 
     public function apidatatables()
     {
-        $users = UserResource::collection(User::with('my_country')
-        ->where('my_status','0')
-        ->latest()->get());
-
-        return $users;
+        $users = Cache::rememberForever('users', function () {
+            return   User::with('my_country')->where('my_status','0')
+                    ->latest()->get();
+        });
+        return response()->json($users,200);
     }
 
     public function api()
