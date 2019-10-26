@@ -26,7 +26,6 @@
                             </div>
                         </div>
                     </div>
-                     <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
                     </div>
@@ -89,7 +88,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in users" :key="item.id">
+                                            <tr v-for="(item,index) in users" :key="item.id">
                                                 <td><img :src="item.avatar" :alt="item.username" style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%"></td>
                                                 <td>
                                                     <router-link  :to="{ path: `/dashboard/profile/${item.username}` }" title="Administrator Online">
@@ -292,7 +291,6 @@
         data() {
             return {
                 loaded: false,
-                errored: false,
                 users: {},
                 user: {},
                 userProfile: {},
@@ -399,9 +397,6 @@
                     this.loaded = true;
                     this.users = response.data;
                     this.mydatatables();
-                }).catch(error => {
-                    console.log(error);
-                    this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {
                     this.loaded = true;
@@ -413,18 +408,12 @@
             reload(){
                 this.loadItems()
             },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 120000);
-            },
         },
         created() {
             this.loadItems();
             Fire.$on('AfterSave', () => {
                 this.loadItems();
             });
-            this.intervalFetchData();
         },
     }
 
