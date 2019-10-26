@@ -120,7 +120,7 @@
                                                             title="View">
                                                         <i class="material-icons">visibility</i>
                                                     </button>
-                                                    <router-link  v-if="$auth.can('edit-user')" :to="{ path: `/dashboard/users/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                    <router-link  v-if="$auth.can('edit-user')" :to="{ name: 'users.edit', params: { id: item.id  } }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>
                                                     <button v-if="$auth.can('delete-user')" @click="deleteItem(item.id)"

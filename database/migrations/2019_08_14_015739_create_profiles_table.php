@@ -19,9 +19,12 @@ class CreateProfilesTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('work')->nullable();
-            $table->string('sex')->nullable();
             $table->string('age')->nullable();
             $table->string('phone')->nullable();
+              //si le status es true il est en line false il est offline
+            $table->boolean('status_online')->default(true);
+              // il met son profile en prive ou en public
+            $table->boolean('status_profile')->default(true);
             $table->longText('body')->nullable();
             $table->string('address')->nullable();
             $table->string('color_style')->nullable();

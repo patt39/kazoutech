@@ -22,8 +22,6 @@ require(__DIR__ . DIRECTORY_SEPARATOR . 'api' .DIRECTORY_SEPARATOR . 'user' . DI
 
 
 Route::get('search', 'Admin\UserController@search');
-Route::get('administrators', 'Admin\AdministratorController@api');
-Route::get('administrators_datatables', 'Admin\AdministratorController@apidatatables');
 
 
 Route::get('search/tasks/{field}/{query}', 'Admin\Partial\TaskController@search');

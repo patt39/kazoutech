@@ -33,18 +33,20 @@ class AdministratorController extends Controller
 
     public function api()
     {
-        return UserResource::collection(User::with('my_country')
+        $users = UserResource::collection(User::with('my_country')
             ->where('my_status','active')
-            ->orderBy('updated_at','DESC')->get());
+            ->orderBy('updated_at','DESC')->paginate(6));
+
+        return response()->json($users,200);
     }
 
     public function apidatatables()
     {
-        $users = User::with('my_country')
-            ->where('my_status','active')
-            ->orderBy('updated_at','DESC')->paginate(10);
+        $users = UserResource::collection(User::with('my_country')
+        ->where('my_status','active')
+        ->orderBy('updated_at','DESC')->get());
 
-        return response()->json($users,200);
+        return $users;
     }
     /**
      * Show the form for creating a new resource.

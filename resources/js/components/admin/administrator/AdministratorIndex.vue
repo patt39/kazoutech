@@ -9,38 +9,17 @@
                     <StatusAdmin/>
                     <br>
                     <template v-if="$auth.can('view-administrator')">
-                        <div v-if="loaded" class="row">
-                            <div class="col-md-12 expo">
-                                <div class="card card-stats">
-                                    <div :class="getColorCardUser()">
-                                        <div class="card-icon">
-                                            <i class="material-icons">supervised_user_circle</i>
-                                        </div>
-                                        <p class="card-category"><b>All Administrators</b>
-                                        <h3 class="card-title" style="color:red;"><b>{{users.length}}</b></h3>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="stats">
-                                            <i class="material-icons">supervised_user_circle</i><b>All Administrators</b>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-if="!loaded" class="submit">
-                            <LoaderLdsDefault/>
-                        </div>
-                        <div v-if="loaded" class="row">
+                        <div class="row">
                             <div class="col-md-12 expo">
                                 <div class="card">
                                     <div :class="getColorHeaderUser()">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h4 class="card-title">
-                                                    <b>Datatables Administrators</b>
+                                                    <b>Profile Administrators</b>
                                                 </h4>
                                                 <p class="card-title">
-                                                    Historic informations
+                                                    Profile Administrators
                                                 </p>
                                             </div>
                                             <div class="col-md-6 text-right">
@@ -58,7 +37,7 @@
                                                     <span class="btn-label">
                                                         <i class="material-icons">perm_identity</i>
                                                     </span>
-                                                    <b class="title_hover">Administrators Datatable</b>
+                                                    <b class="title_hover">Administrators Profile</b>
                                                 </router-link>
                                                 <!--<div class="submit text-center">
                                                     <button id="button_hover" @click="modalInvite()" class="btn btn-info btn-raised btn-round text-right">
@@ -68,76 +47,46 @@
                                                 </div>-->
                                             </div>
                                         </div>
-                                        <div class="material-datatables">
-                                            <table id="datatables" class="table table-striped table-no-bordered table-hover"
-                                                   cellspacing="0" width="100%" style="width:100%">
-                                                <thead>
-                                                <tr>
-                                                    <th><b>Profile</b></th>
-                                                    <th><b>Admin Name</b></th>
-                                                    <th><b>Admin Sex</b></th>
-                                                    <th><b>Status</b></th>
-                                                    <th><b>Admin Role</b></th>
-                                                    <th><b>Edit By</b></th>
-                                                    <th><b>Last Update</b></th>
-                                                    <th class="disabled-sorting text-right"><b>Actions</b></th>
-                                                </tr>
-                                                </thead>
-                                                <tfoot>
-                                                <tr>
-                                                    <th><b>Profile</b></th>
-                                                    <th><b>Admin Name</b></th>
-                                                    <th><b>Admin Sex</b></th>
-                                                    <th><b>Status</b></th>
-                                                    <th><b>Admin Role</b></th>
-                                                    <th><b>Edit By</b></th>
-                                                    <th><b>Last Update</b></th>
-                                                    <th class="text-right"><b>Actions</b></th>
-                                                </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                <tr v-for="item in users" :key="item.id">
-                                                    <td><img :src="item.avatar" :alt="item.username" style="width: 40px; height: 40px;  top: 15px; left: 15px; border-radius: 50%"></td>
-                                                    <td>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</td>
-                                                    <td>{{ item.sex }}</td>
-                                                    <td v-if="item.statusOnline"><span class="badge badge-success" title="Administrator Online">Online</span></td>
-                                                    <td v-else="item.statusOnline"><span class="badge badge-danger" title="Administrator Offline">Offline</span></td>
-                                                    <td>
-                                                        <span v-for="role in item.roles" :class="getRoleName(role)">
-                                                            <b>{{role}}</b>
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:void(0)" @click="getUser(item)">
+                                        <br>
+                                        <br>
+                                         <div class="row">
+                                            <div v-for="(item,index) in users" :key="index" class="col-md-4 col-sm-4 ">
+                                                <div class="card card-profile">
+                                                    <div class="card-avatar">
+                                                        <a href="#pablo">
+                                                            <img class="img" :src="item.avatar" :alt="item.name"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="stats text-center">
+                                                         <a href="javascript:void(0)" @click="sendItem(item)" class="btn btn-info btn-just-icon btn-fill btn-round btn-sm" title="Send invitation">
+                                                            <i class="material-icons">mail</i>
+                                                        </a>
+                                                        <button @click="getUser(item)" class="btn btn-warning btn-just-icon btn-fill btn-round btn-sm">
+                                                            <i class="material-icons">visibility</i>
+                                                        </button>
+                                                        <router-link  v-if="$auth.can('edit-administrator')" :to="{ name: 'administrators.edit', params: { id: item.id  } }" class="btn btn-success btn-just-icon btn-fill btn-sm btn-round btn-wd" title="Edit">
+                                                            <i class="material-icons">mode_edit</i>
+                                                        <div class="ripple-container"></div>
+                                                        </router-link>
+                                                    </div>
+                                                    <div class="card-body">
+                                                         <a href="javascript:void(0)" @click="getUser(item)">
                                                             <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
                                                             <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
                                                             {{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}
                                                         </a>
-                                                    </td>
-                                                    <td><b>{{ item.updated_at | myDate }}</b></td>
-                                                    <td class="td-actions text-right">
-                                                        <a href="javascript:void(0)" @click="sendItem(item)" class="btn btn-link btn-info btn-round btn-just-icon" title="Send invitation">
-                                                            <i class="material-icons">mail</i>
-                                                        </a>
-                                                        <a href="javascript:void(0)" @click="getUser(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View administrator">
-                                                            <i class="material-icons">visibility</i>
-                                                        </a>
-                                                        <router-link  v-if="$auth.can('edit-administrator')" :to="{ path: `/dashboard/administrators/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit administrator">
-                                                            <i class="material-icons">edit</i>
-                                                        </router-link>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                                        <h6>
+                                                            <span v-for="role in item.roles" :class="getRoleName(role)">
+                                                            <b>{{role}}</b>
+                                                            </span>
+                                                        </h6>
+                                                        <h4 class="card-title"><b>{{ item.name }} {{ item.first_name }}</b></h4>
+                                                        <h4 class="card-title"><b>Sex:</b> {{ item.sex }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <!-- Export Excel Users -->
-                                        <div class="submit text-center">
-                                            <button type="button" id="myAdminDownload" class="btn btn-success btn-raised btn-round">
-                                                <i class="material-icons">cloud_download</i>
-                                                <b>Get Excel Admins</b>
-                                            </button>
-                                        </div>
+                                       
                                         <!-- send invitation user -->
                                         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                              aria-hidden="true">
@@ -180,6 +129,13 @@
                                                         </form>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolbar">
+                                            <div class="submit text-center" >
+                                                <infinite-loading spinner="waveDots" @infinite="infiniteHandler">
+                                                <span slot="no-more"></span>
+                                                </infinite-loading>
                                             </div>
                                         </div>
                                         <!-- Modal Invite Administrator -->
@@ -267,7 +223,8 @@
             return {
                 loaded: false,
                 editmode: false,
-                users: {},
+                page: 1,
+                users: [],
                 user: {},
                 colors:[],
                 roles:{},
@@ -278,31 +235,6 @@
             }
         },
         methods: {
-            /* Ici c'est le script du datatable */
-            mydatatables(){
-                $( function () {
-                    $('#datatables').DataTable({
-                        "pagingType": "full_numbers",
-                        "lengthMenu": [
-                            [10, 25, 50, -1],
-                            [10, 25, 50, "All"]
-                        ],
-                        order: [[ 0, 'desc' ], [ 3, 'asc' ]],
-                        responsive: true,
-                        stateSave: true,
-                        destroy: true,
-                        retrieve:true,
-                        autoFill: true,
-                        colReorder: true,
-                        language: {
-                            search: "<i class='material-icons'>search</i>",
-                            searchPlaceholder: "Search Record",
-                        },
-                        "sPaginationType": "full_numbers",
-
-                    });
-                });
-            },
             getColorCardUser(){
                 return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
@@ -358,17 +290,17 @@
                         $('#addNew').modal('hide');
 
                         //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        $.notify('<strong>Administrator invite Successfully.</strong>', {
                             allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
+                            type: 'success',
+                            placement: {
+                                from: 'bottom',
                             },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Administrator invite Successfully.</strong>', 'progress': 75});
-                        }, 2000);
+                            animate: {
+                                enter: "animated fadeInUp",
+                                exit: "animated fadeOutDown"
+                            },
+                       });
 
                         //End Progress bar
                         this.$Progress.finish();
@@ -422,28 +354,25 @@
                     });
                 })
             },
-            loadItems() {
-                if (this.$auth.isSuperAdmin){
-                    //Start Progress bar
-                    this.$Progress.start();
-                    const url = "/api/administrators";
-                    axios.get(url).then(response => {
-                        this.loaded = true;
-                        this.users = response.data.data;
-                        this.mydatatables();
-                        //End Progress bar
-                        this.$Progress.finish();
-                    });
-                    axios.get("/api/account/user").then(response => {this.user = response.data.data});
-                    axios.get("/api/colors").then(({data}) => (this.colors = data.data));
-                }
+             infiniteHandler($state) {
+                axios.get(`/api/administrators`, {
+                    params: {
+                        page: this.page,
+                    },
+                }).then(response => {
+                    if (response.data.length) {
+                        this.page += 1;
+                        this.users.push(...response.data);
+                        $state.loaded();
+                    } else {
+                        $state.complete();
+                    }
+                });
             },
         },
         created() {
-            this.loadItems();
-            Fire.$on('AfterCreate', () => {
-                this.loadItems();
-            });
+         axios.get("/api/account/user").then(response => {this.user = response.data.data});
+         axios.get("/api/colors").then(({data}) => (this.colors = data.data));
         }
     }
 

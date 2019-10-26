@@ -130,14 +130,6 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
-                                        <!-- Export Excel Users -->
-                                        <div class="submit text-center">
-                                            <button type="button" id="myAdminDownload" class="btn btn-success btn-raised btn-round">
-                                                <i class="material-icons">cloud_download</i>
-                                                <b>Get Excel Admins</b>
-                                            </button>
-                                        </div>
                                         <!-- send invitation user -->
                                         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                              aria-hidden="true">
@@ -426,7 +418,7 @@
                 if (this.$auth.isSuperAdmin){
                     //Start Progress bar
                     this.$Progress.start();
-                    const url = "/api/administrators";
+                    const url = "/api/administrators_datatables";
                     axios.get(url).then(response => {
                         this.loaded = true;
                         this.users = response.data.data;
