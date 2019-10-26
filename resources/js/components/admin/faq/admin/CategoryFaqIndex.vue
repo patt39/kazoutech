@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="header text-right">
                                         <button @click="reload"
-                                                class="btn btn-success btn-raised button_note btn-sm"
+                                                class="btn btn-success btn-raised button_note btn-sm btn-round"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
@@ -63,7 +63,7 @@
                                     <br>
                                     <div v-if="$auth.can('create-category')" class="toolbar">
                                         <div class="submit text-center">
-                                            <button id="button_hover" class="btn btn-raised btn-success"
+                                            <button id="button_hover" class="btn btn-raised btn-success btn-round"
                                                     @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">forum</i>

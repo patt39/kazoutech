@@ -37,7 +37,7 @@
                                                     <span class="btn-label">
                                                         <i class="material-icons">perm_identity</i>
                                                     </span>
-                                                    <b class="title_hover">Administrators Profile</b>
+                                                    <b class="title_hover">Administrators Datatable</b>
                                                 </router-link>
                                                 <!--<div class="submit text-center">
                                                     <button id="button_hover" @click="modalInvite()" class="btn btn-info btn-raised btn-round text-right">
@@ -86,7 +86,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                         <!-- send invitation user -->
                                         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
                                              aria-hidden="true">
@@ -235,9 +235,6 @@
             }
         },
         methods: {
-            getColorCardUser(){
-                return 'card-header card-header-icon card-header-' + this.user.color_name;
-            },
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
             },

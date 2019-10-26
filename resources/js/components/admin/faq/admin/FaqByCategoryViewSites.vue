@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="toolbar">
                                     <div class="submit text-center">
-                                        <button v-for="item in categoryfaqs" :key="item.id" id="button_hover" @click="getCategory(item)"  class="btn btn-raised btn-sm btn-info">
+                                        <button v-for="item in categoryfaqs" :key="item.id" id="button_hover" @click="getCategory(item)"  class="btn btn-raised btn-sm btn-info btn-round">
                                             <i class="material-icons" v-text="item.icon"></i>
                                             <b class="title_hover" v-text="item.name"></b>
                                         </button>

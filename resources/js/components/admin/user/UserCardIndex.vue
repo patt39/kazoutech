@@ -11,9 +11,44 @@
                     <div class="row">
                         <div class="col-md-12 expo">
                             <div class="card">
+                                <div :class="getColorHeaderUser()">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title">
+                                                <b>Profile Users</b>
+                                            </h4>
+                                            <p class="card-title">
+                                                Profile Users
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">supervised_user_circle</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <div class="card-body">
-                                    
+                                    <div class="toolbar">
+                                        <div class="submit text-center">
+                                            <router-link :to="{name:'users.datatables'}" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">perm_identity</i>
+                                                    </span>
+                                                <b class="title_hover">Users Datatable</b>
+                                            </router-link>
+                                            <!--<div class="submit text-center">
+                                                <button id="button_hover" @click="modalInvite()" class="btn btn-info btn-raised btn-round text-right">
+                                                   <i class="material-icons">inbox</i>
+                                                    <b class="title_hover">Invite Administrator</b>
+                                                </button>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+
                                     <div class="row">
                                         <div v-for="(item,index) in users" :key="index" class="col-md-4 col-sm-4 ">
                                             <div class="card card-profile">
@@ -203,7 +238,10 @@
             }
         },
         methods:{
-              viewItem(item) {
+            getColorHeaderUser(){
+                return 'card-header card-header-' + this.user.color_name;
+            },
+            viewItem(item) {
                 //Masquer le modal après la création
                 $("#viewNew").modal("show");
                 //On passe les informations

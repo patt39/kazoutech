@@ -349,12 +349,6 @@
                                                                 <span class="sidebar-normal"><b>Users</b></span>
                                                             </router-link>
                                                         </li>
-                                                         <li class="nav-item">
-                                                            <router-link :to="{ name: 'users.datatables' }" class="nav-link">
-                                                                <span class="sidebar-mini"><b>UD</b></span>
-                                                                <span class="sidebar-normal"><b>Users Datatables</b></span>
-                                                            </router-link>
-                                                        </li>
                                                         <li class="nav-item">
                                                             <router-link :to="{ name: 'users.trash' }"
                                                                          class="nav-link">

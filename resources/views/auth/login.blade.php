@@ -77,9 +77,10 @@
                                         </div>
                                     </div>
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="custom-control-label" for="customCheckLogin">
-                                            <span>Remember me</span>
+                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox"
+                                               checked="checked"  name="remember" {{ old('remember') ? 'checked' : '' }} >
+                                        <label class="custom-control-label" for="customCheckRegister">
+                                            <span>{{ __('Se souvenir de moi') }}</span>
                                         </label>
                                     </div>
                                     <div class="text-center">

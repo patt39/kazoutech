@@ -134,12 +134,12 @@
                                     </div>
 
                                     <!-- Export Excel Users -->
-                                    <div class="submit text-center">
+                                    <!--<div class="submit text-center">
                                         <button type="button" id="myUserDownload" class="btn btn-success btn-raised btn-round">
                                             <i class="material-icons">cloud_download</i>
                                             <b>Get Excel Users</b>
                                         </button>
-                                    </div>
+                                    </div>-->
 
                                     <!-- Modal view technician -->
                                     <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">

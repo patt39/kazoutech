@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="toolbar">
                                     <div class="submit text-center" >
-                                        <router-link :to="{ name: 'faqs.index' }" id="button_hover" class="btn btn-info btn-raised">
+                                        <router-link :to="{ name: 'faqs.index' }" id="button_hover" class="btn btn-info btn-raised btn-round">
                                             <i class="material-icons">forum</i>
                                             <b class="title_hover">FAQS Datable</b>
                                         </router-link>
@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="toolbar">
                                     <div class="submit text-center">
-                                        <router-link v-for="item in categoryfaqs" :key="item.id" id="button_hover" :to="{ name: 'faqs.dashboard_categoryfaq_sites', params:{ categoryfaq: item.slug}}" class="btn btn-raised btn-sm btn-info">
+                                        <router-link v-for="item in categoryfaqs" :key="item.id" id="button_hover" :to="{ name: 'faqs.dashboard_categoryfaq_sites', params:{ categoryfaq: item.slug}}" class="btn btn-raised btn-sm btn-info btn-round">
                                             <i class="material-icons" v-text="item.icon"></i>
                                             <b class="title_hover" v-text="item.name"></b>
                                         </router-link>
