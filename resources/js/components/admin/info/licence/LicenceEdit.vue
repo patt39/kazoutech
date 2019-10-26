@@ -153,7 +153,7 @@
                 })
             },
         },
-        created() {
+        mounted() {
             //Start Progress bar
             this.$Progress.start();
             api.licencesiteID(this.$route.params.id).then(({data}) => {

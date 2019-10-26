@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="toolbar">
                                     <div class="submit text-center">
-                                        <button v-for="item in categoryfaqs" :key="item.id" id="button_hover" @click="getCategory(item)"  class="btn btn-raised btn-sm btn-info btn-round">
+                                        <button v-for="(item,index) in categoryfaqs" :key="item.id" id="button_hover" @click="getCategory(item)"  class="btn btn-raised btn-sm btn-info btn-round">
                                             <i class="material-icons" v-text="item.icon"></i>
                                             <b class="title_hover" v-text="item.name"></b>
                                         </button>
@@ -35,7 +35,7 @@
                                     <div class="col-md-11 ml-auto mr-auto">
                                         <div id="accordion" role="tablist">
 
-                                            <div  v-for="(item, i) in faqs" :key="`${i}-${item.id}`" class="card card-collapse">
+                                            <div  v-for="(item,index) in faqs" :key="`${i}-${item.id}`" class="card card-collapse">
                                                 <div class="card-header" role="tab" :id="HeadingFaq(item)">
                                                     <h5 class="mb-0">
                                                         <a class="collapsed" data-toggle="collapse" :href="collapseFaqHr(item)" aria-expanded="false" :aria-controls="collapseFaq(item)">

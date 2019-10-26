@@ -183,7 +183,7 @@
                 })
             },
         },
-        created() {
+        mounted() {
             this.$Progress.start();
             api.faqID(this.$route.params.id).then(({data}) => {
                 this.loaded = true;

@@ -53,8 +53,9 @@ class ContactController extends Controller
 
     public function api()
     {
-        $contacts = contact::where('bookmark', 0)->orderBy('created_at','desc')
-            ->paginate(10);
+        $contacts = ContactResource::collection(contact::where('bookmark', 0)
+            ->orderBy('created_at','desc')
+            ->paginate(10));
         return response()->json($contacts,200);
     }
 

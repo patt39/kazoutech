@@ -330,7 +330,7 @@
             },
 
         },
-        created() {
+        mounted() {
             this.loadItems();
             Fire.$on('AfterCreate', () => {
                 this.loadItems();

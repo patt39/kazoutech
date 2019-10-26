@@ -8,11 +8,7 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <errored-loading v-if="errored"/>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderLdsDefault/>
-                    </div>
-                    <div v-if="loaded" class="row">
+                    <div class="row">
                         <div class="col-md-12 expo">
                             <div class="card">
                                 <div :class="getColorHeaderUser()">
@@ -69,7 +65,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in contacts" :key="item.id">
+                                            <tr v-for="(item,index) in contacts" :key="item.id">
                                                 <td>
                                                     <span v-if="item.status === 1" class="badge badge-success">Read</span>
                                                     <span v-else-if="item.status === 0"  class="badge badge-rose">New</span>
@@ -78,16 +74,10 @@
                                                 <td>{{ item.email}}</td>
                                                 <td><b>{{ item.created_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a href="javascript:void(0)" @click="bookmarkItem(item.id)"
+                                                    <!--<a href="javascript:void(0)" @click="bookmarkItem(item.id)"
                                                        class="btn btn-link  btn-primary btn-round btn-just-icon" title="Bookmark message">
                                                         <i class="material-icons">bookmarks</i>
-                                                    </a>
-                                                    <a  href="javascript:void(0)" v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-success btn-round btn-just-icon" title="Disable Read">
-                                                        <i class="material-icons">done_all</i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Confirm Read">
-                                                        <i class="material-icons">done</i>
-                                                    </a>
+                                                    </a>-->
                                                     <!--<router-link  :to="{ path: `/dashboard/contacts/msg/${item.slug}` }" class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
                                                         <i class="material-icons">visibility</i>
                                                     </router-link>-->
@@ -95,7 +85,7 @@
                                                        class="btn btn-link  btn-warning btn-round btn-just-icon" title="View message">
                                                         <i class="material-icons">visibility</i>
                                                     </a>
-                                                    <a href="javascript:void(0)" @click="deleteItem(item.id)"
+                                                    <a href="javascript:void(0)" @click="deleteItem(item)"
                                                        class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </a>
@@ -130,20 +120,13 @@
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
-                loaded: false,
-                errored: false,
-                editmode: false,
+                page: 1,
                 contacts: [],
                 user: {},
             }
         },
         created() {
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
-            this.loadItems();
-            Fire.$on('LoadData', () => {
-                this.loadItems();
-            });
-            this.intervalFetchData();
         },
         methods: {
             getColorCardUser(){
@@ -154,105 +137,32 @@
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
-            deleteItem(id) {
+            deleteItem(item) {
                 //Start Progress bar
                 this.$Progress.start();
 
-                axios.delete('/dashboard/contacts/' + id).then(() => {
+                axios.delete(`/dashboard/contacts/${item.id}`).then(() => {
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Message contact-us deleted successfully.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'success',
+                        placement: {
+                            from: 'bottom',
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
-                    }, 2000);
                     /* End alert ***/
-
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('LoadData');
+                    let index = this.contacts.indexOf(item)
+                    this.contacts.splice(index, 1);
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
-            /** Ici c'est l'activation de la couleur  **/
-            activeItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-
-                axios.get(`/dashboard/contacts/discard_red/${id}`).then(() => {
-
-                    /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact read.</strong>', {
-                        allow_dismiss: false,
-                        type: 'info',
-                        placement: {
-                            from: 'bottom',
-                            align: 'center'
-                        },
-                        animate: {
-                            enter: "animated fadeInUp",
-                            exit: "animated fadeOutDown"
-                        },
-                    });
-                    /** End alert **/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-
-                    Fire.$emit('LoadData');
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
-            /** Ici c'est la désactivation de la couleur **/
-            disableItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-
-                axios.get(`/dashboard/contacts/red_confirm/${id}`).then(() => {
-
-                    /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact unread.</strong>', {
-                        allow_dismiss: false,
-                        type: 'primary',
-                        placement: {
-                            from: 'bottom',
-                            align: 'center'
-                        },
-                        animate: {
-                            enter: "animated fadeInUp",
-                            exit: "animated fadeOutDown"
-                        },
-                    });
-                    /** End alert **/
-
-                    //End Progress bar
-                    this.$Progress.finish();
-                    Fire.$emit('LoadData');
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
@@ -273,7 +183,6 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -286,71 +195,24 @@
                         }
                     });
                 })
-            },
-            /** Ici c'est la pour bookmarker le message **/
-            bookmarkItem(id) {
-                //Start Progress bar
-                this.$Progress.start();
-                axios.get(`/dashboard/contacts/bookmark/${id}`).then(() => {
-
-                    /** Alert notify bootstrapp **/
-                    $.notify("Bookmark successfully", {
-                        type: 'success',
-                        animate: {
-                            enter: 'animated bounceIn',
-                            exit: 'animated bounceOut'
-                        }
-                    });
-                    this.$Progress.finish();
-                    Fire.$emit('LoadData');
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            },
-            loadItems() {
-                axios.get("/api/contacts").then(response => {
-                    this.loaded = true;
-                    this.contacts = response.data.data;
-                }).catch(error => {
-                    console.log(error);
-                    this.errored = true
-                });
             },
             infiniteHandler($state) {
-                let limit = this.contacts.length / 10 + 1;
-                axios.get('/api/contacts', { params: { page: limit } }).then(response => {
-                    this.loadMore($state, response);
-                });
-            },
-            loadMore($state, response) {
-                if ( response.data.data.length ) {
-                    this.contacts = this.contacts.concat(response.data.data);
-                    setTimeout(() => {
+                axios.get(`/api/contacts`, {
+                    params: {
+                        page: this.page,
+                    },
+                }).then(response => {
+                    if (response.data.length) {
+                        this.page += 1;
+                        this.contacts.push(...response.data);
                         $state.loaded();
-                    }, 500);
-                    if ( response.data.total === this.contacts.length ) {
+                    } else {
                         $state.complete();
                     }
-                }else{
-                    $state.complete();
-                }
+                });
             },
             reload(){
-                this.loadItems();
-            },
-            intervalFetchData: function () {
-                setInterval(() => {
-                    this.loadItems();
-                }, 120000);
+                console.log('okk')
             },
         },
     }
