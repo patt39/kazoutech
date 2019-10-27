@@ -95,7 +95,7 @@
                                                                         </div>
                                                                         <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
                                                                         <div>
-                                                                                <span class="btn btn-raised btn-round btn-info btn-file">
+                                                                                <span class="btn btn-raised btn-info btn-file">
                                                                                     <span class="fileinput-new">
                                                                                         <b> Add Photo</b>
                                                                                     </span>
@@ -108,7 +108,7 @@
                                                                                 </span>
                                                                             <br/>
                                                                             <a href="#pablo"
-                                                                               class="btn btn-danger btn-round fileinput-exists"
+                                                                               class="btn btn-danger fileinput-exists"
                                                                                data-dismiss="fileinput"><i class="fa fa-times"></i>
                                                                                 <b>Remove</b>
                                                                             </a>
@@ -149,11 +149,11 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'abouts.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                                            <router-link :to="{ name: 'abouts.index' }" class="btn btn-danger" id="button_hover">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
-                                                            <button v-if="$auth.can('create-about')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <button v-if="$auth.can('create-about')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <i class="material-icons">save_alt</i>
                                                                 <b class="title_hover">Save</b>
                                                             </button>

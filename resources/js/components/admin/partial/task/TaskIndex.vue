@@ -595,7 +595,7 @@
                     this.$Progress.finish();
                 });
                 axios.get("/api/notes").then(response => {this.notes = response.data.data});
-                axios.get("/api/administrators").then(response => {this.users = response.data.data;});
+                axios.get("/api/administrators").then(response => {this.users = response.data;});
 
             },
             reload(){

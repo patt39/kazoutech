@@ -206,7 +206,6 @@
                 loaded: false,
                 editmode: false,
                 user: {},
-                categoryfaqs:{},
                 faqs: {
                     categoryfaq:'',
                 },
@@ -393,7 +392,6 @@
                     this.faqs = response.data.data;
                     this.mydatatables();
                 });
-                axios.get("/api/category-faqs").then(({data}) => (this.categoryfaqs = data.data));
                 axios.get("/api/account/user").then(response => {this.user = response.data.data});
                 //End Progress bar
                 this.$Progress.finish();

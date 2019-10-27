@@ -53,7 +53,7 @@
                                                                                             </div>
                                                                                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                             <div>
-                                                                                              <span class="btn btn-raised btn-round btn-success btn-file">
+                                                                                              <span class="btn btn-raised btn-success btn-file">
                                                                                                  <span class="fileinput-new" style="cursor: pointer">
                                                                                                     <i class="material-icons">insert_photo</i>
                                                                                                              <b>Add Slide</b>
@@ -64,7 +64,7 @@
                                                                                                   </span>
                                                                                                   <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
                                                                                               </span>
-                                                                                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                                                                                <a href="#pablo" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
                                                                                                     <i class="material-icons">cancel</i>
                                                                                                     <b>Remove</b>
                                                                                                 </a>
@@ -97,11 +97,11 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'conditions.index' }" id="button_hover" class="btn btn-danger btn-raised btn-round" data-toggle="tab">
+                                                            <router-link :to="{ name: 'conditions.index' }" id="button_hover" class="btn btn-danger btn-raised" data-toggle="tab">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">back</b>
                                                             </router-link>
-                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <i class="material-icons">save_alt</i>
                                                                 <b class="title_hover">Save</b>
                                                             </button>

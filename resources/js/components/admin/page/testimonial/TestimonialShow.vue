@@ -62,11 +62,11 @@
                                                     <br>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'testimonials.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                                            <router-link :to="{ name: 'testimonials.index' }" class="btn btn-danger" id="button_hover">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>
-                                                            <router-link v-if="$auth.can('edit-testimonial')" :to="{ name: 'testimonials.edit', params: { id: testimonial.id  } }" class="btn btn-success btn-round" id="button_hover">
+                                                            <router-link v-if="$auth.can('edit-testimonial')" :to="{ name: 'testimonials.edit', params: { id: testimonial.id  } }" class="btn btn-success" id="button_hover">
                                                                 <i class="material-icons">edit</i>
                                                                 <b class="title_hover">Edit</b>
                                                             </router-link>

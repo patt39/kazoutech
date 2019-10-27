@@ -94,7 +94,7 @@
                                             <hr>
                                             <div class="submit">
                                                 <div class="text-center">
-                                                    <router-link id="button_hover" :to="{ name: 'conditions.index' }" class="btn btn-danger btn-round" data-toggle="tab">
+                                                    <router-link id="button_hover" :to="{ name: 'conditions.index' }" class="btn btn-danger" data-toggle="tab">
                                                         <i class="material-icons">chevron_left</i>
                                                         <b class="title_hover">Back</b>
                                                     </router-link>
@@ -162,7 +162,7 @@
                 return colorHeader;
             },
         },
-        created() {
+        mounted() {
             //Start Progress bar
             this.$Progress.start();
             api.conditionSlug(this.$route.params.condition).then(response => {

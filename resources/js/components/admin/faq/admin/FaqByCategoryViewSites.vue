@@ -35,7 +35,7 @@
                                     <div class="col-md-11 ml-auto mr-auto">
                                         <div id="accordion" role="tablist">
 
-                                            <div  v-for="(item,index) in faqs" :key="`${i}-${item.id}`" class="card card-collapse">
+                                            <div  v-for="(item,index) in faqs" :key="item.id" class="card card-collapse">
                                                 <div class="card-header" role="tab" :id="HeadingFaq(item)">
                                                     <h5 class="mb-0">
                                                         <a class="collapsed" data-toggle="collapse" :href="collapseFaqHr(item)" aria-expanded="false" :aria-controls="collapseFaq(item)">

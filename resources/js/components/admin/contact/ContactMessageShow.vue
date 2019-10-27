@@ -252,8 +252,6 @@
 
                             //End Progress bar
                             this.$Progress.finish();
-
-                            Fire.$emit('AfterCreate');
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
@@ -270,19 +268,24 @@
                 axios.get(`/dashboard/contacts/discard_red/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Message contact read.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'success',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact read.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -297,18 +300,23 @@
                 axios.get(`/dashboard/contacts/red_confirm/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                    $.notify('<strong>Message contact unread.</strong>', {
                         allow_dismiss: false,
-                        showProgressbar: true
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
                     });
-                    setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact unread.</strong>', 'progress': 75});
-                    }, 2000);
                     /** End alert **/
 
                     //End Progress bar
                     this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadData');
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
@@ -332,7 +340,7 @@
         },
         mounted() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('LoadData', () => {
                 this.loadItems();
             });
         }

@@ -52,7 +52,7 @@
                                 <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised button_note btn-sm"
+                                        <button @click="reload" class="btn btn-success btn-raised button_note btn-sm btn-round"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
@@ -62,10 +62,10 @@
                                     <div class="card-body">
                                         <div class="toolbar">
                                             <div class="submit text-center">
-                                                <router-link v-if="$auth.can('create-faq')" :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised">
+                                                <router-link v-if="$auth.can('create-faq')" :to="{ name: 'faqs.create' }" id="button_hover" class="btn btn-success btn-raised btn-round">
                                                   <span class="btn-label">
-                                        <i class="material-icons">forum</i>
-                                    </span>
+                                                    <i class="material-icons">forum</i>
+                                                  </span>
                                                     <b class="title_hover">New FAQS</b>
                                                 </router-link>
                                             </div>

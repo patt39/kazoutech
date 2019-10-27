@@ -45,11 +45,11 @@
                                                      <hr>
                                                      <div class="submit">
                                                          <div class="text-center">
-                                                             <router-link id="button_hover" :to="{ name: 'legal_notice.index' }" class="btn btn-danger btn-round" data-toggle="tab">
+                                                             <router-link id="button_hover" :to="{ name: 'legal_notice.index' }" class="btn btn-danger" data-toggle="tab">
                                                                  <i class="material-icons">chevron_left</i>
                                                                  <b class="title_hover">Back</b>
                                                              </router-link>
-                                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                  <i class="material-icons">save_alt</i>
                                                                  <b class="title_hover">Update</b>
                                                              </button>

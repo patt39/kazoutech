@@ -66,15 +66,15 @@
                                                      <hr>
                                                      <div class="submit">
                                                          <div class="text-center">
-                                                             <router-link :to="{ name: 'testimonials.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                                             <router-link :to="{ name: 'testimonials.index' }" class="btn btn-danger" id="button_hover">
                                                                  <i class="material-icons">chevron_left</i>
                                                                  <b class="title_hover">Back</b>
                                                              </router-link>
-                                                             <button v-if="$auth.can('edit-testimonial')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                             <button v-if="$auth.can('edit-testimonial')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                  <i class="material-icons">save_alt</i>
                                                                  <b class="title_hover">Update</b>
                                                              </button>
-                                                             <router-link :to="{ name: 'testimonials.vector', params: { testimonial: form.slug  } }" class="btn btn-warning btn-round" id="button_hover">
+                                                             <router-link :to="{ name: 'testimonials.vector', params: { testimonial: form.slug  } }" class="btn btn-warning" id="button_hover">
                                                                  <i class="material-icons">visibility</i>
                                                                  <b class="title_hover">View</b>
                                                              </router-link>

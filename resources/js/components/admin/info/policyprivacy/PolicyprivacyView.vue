@@ -71,7 +71,7 @@
                                                 <hr>
                                                 <div class="submit">
                                                     <div class="text-center">
-                                                        <router-link :to="{ name: 'policy_privacy.index' }" id="button_hover" class="btn btn-danger btn-raised btn-round" data-toggle="tab">
+                                                        <router-link :to="{ name: 'policy_privacy.index' }" id="button_hover" class="btn btn-danger btn-raised" data-toggle="tab">
                                                             <i class="material-icons">chevron_left</i>
                                                             <b class="title_hover">Back</b>
                                                         </router-link>
