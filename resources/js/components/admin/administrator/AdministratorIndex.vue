@@ -85,7 +85,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                         </div>
 
                                         <!-- send invitation user -->
                                         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"

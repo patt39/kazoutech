@@ -123,13 +123,13 @@
                                                             </div>
                                                             <hr>
                                                             <div class="text-center">
-                                                                <router-link id="button_hover" :to="{ name: 'users.index' }" class="btn btn-info btn-raised btn-round">
+                                                                <router-link id="button_hover" :to="{ name: 'users.index' }" class="btn btn-info btn-raised">
                                                                     <span class="btn-label">
                                                                         <i class="material-icons">account_box</i>
                                                                     </span>
                                                                     <b class="title_hover">Users</b>
                                                                 </router-link>
-                                                                <router-link id="button_hover" :to="{ name: 'administrators.index' }" class="btn btn-success btn-raised btn-round">
+                                                                <router-link id="button_hover" :to="{ name: 'administrators.index' }" class="btn btn-success btn-raised">
                                                                     <span class="btn-label">
                                                                         <i class="material-icons">supervised_user_circle</i>
                                                                     </span>
@@ -152,7 +152,7 @@
                                                                     v-text="buttonText">
                                                             </button>
                                                             <button v-if="follow" type="button" @click="followUser"
-                                                                    class="btn btn-info btn-sm btn-round"
+                                                                    class="btn btn-info btn-sm"
                                                                     v-text="buttonText">
                                                             </button>
                                                             <router-link  :to="{ path: `/dashboard/users/p/${user.username}/followers/` }">

@@ -139,11 +139,11 @@
                                                         <hr>
                                                         <div class="submit">
                                                             <div class="text-center">
-                                                                <router-link :to="{ name: 'administrators.index' }" class="btn btn-danger btn-round" id="button_hover">
+                                                                <router-link :to="{ name: 'administrators.index' }" class="btn btn-danger" id="button_hover">
                                                                     <i class="material-icons">chevron_left</i>
                                                                     <b class="title_hover">Back</b>
                                                                 </router-link>
-                                                                <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                                <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <span class="btn-label">
                                                                     <i class="material-icons">save_alt</i>
                                                                 </span>

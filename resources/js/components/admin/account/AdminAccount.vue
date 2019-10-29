@@ -100,10 +100,10 @@
                                                 </div>
                                                 <hr>
                                                 <div class="text-center">
-                                                    <router-link  :to="{ name: 'admin.edit_profile' }" class="btn btn-info btn-raised btn-round button_profile">
+                                                    <router-link  :to="{ name: 'admin.edit_profile' }" class="btn btn-info btn-raised button_profile">
                                                         <span class="btn-label">
-                                    <i class="material-icons">edit</i>
-                                </span>
+                                                            <i class="material-icons">edit</i>
+                                                        </span>
                                                         <b class="title_hover">Edit Profile</b>
                                                     </router-link>
                                                 </div>

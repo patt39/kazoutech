@@ -175,7 +175,7 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
+                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <span class="btn-label">
                                                                     <i class="material-icons">save_alt</i>
                                                                 </span>
