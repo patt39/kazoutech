@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da3c6fcbdb751f166080f471376c44b1",
+    "content-hash": "4475ad5c145f7b56ccba661cd2059a2d",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2005,6 +2005,63 @@
                 "useragent"
             ],
             "time": "2019-01-19T21:32:55+00:00"
+        },
+        {
+            "name": "julienbourdeau/route-usage",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/julienbourdeau/route-usage.git",
+                "reference": "d5902df362f897146f08c6f17c105f84fdce602a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/julienbourdeau/route-usage/zipball/d5902df362f897146f08c6f17c105f84fdce602a",
+                "reference": "d5902df362f897146f08c6f17c105f84fdce602a",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">= 5.8",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Julienbourdeau\\RouteUsage\\RouteUsageServiceProvider"
+                    ],
+                    "aliases": {
+                        "RouteUsage": "Julienbourdeau\\RouteUsage\\RouteUsageFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Julienbourdeau\\RouteUsage\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Bourdeau",
+                    "email": "julien@sigerr.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Log what routes were used and when. Easily figure out if one hasn't been called in a long time (and delete it! 🥳)",
+            "homepage": "https://github.com/julienbourdeau/route-usage",
+            "keywords": [
+                "julienbourdeau",
+                "route-usage"
+            ],
+            "time": "2019-10-28T19:17:21+00:00"
         },
         {
             "name": "kitetail/zttp",
