@@ -158,7 +158,7 @@
                     //End Progress bar
                     this.$Progress.finish();
 
-                    let index = this.contacts.indexOf(item)
+                    let index = this.contacts.indexOf(item);
                     this.contacts.splice(index, 1);
                 }).catch(() => {
                     //Failled message

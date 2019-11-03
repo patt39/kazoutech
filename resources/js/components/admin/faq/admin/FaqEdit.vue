@@ -185,7 +185,8 @@
         },
         mounted() {
             this.$Progress.start();
-            api.faqID(this.$route.params.id).then(({data}) => {
+            let  faqID = this.$route.params.id;
+            axios.get(`/dashboard/faqs/${faqID}`).then(({data}) => {
                 this.loaded = true;
                 this.form.fill(data.data);
             });
