@@ -161,7 +161,10 @@
                                                                                 <div class="col-md-12">
                                                                                     <div class="media-body">
                                                                                         <label class="bmd-label-floating">Tell about for you</label>
-                                                                                        <textarea class="form-control" rows="4" name="body" v-model="form.body" :class="{ 'is-invalid': form.errors.has('body') }"></textarea>
+                                                                                        <quill-editor v-model="form.body"
+                                                                                                      :class="{ 'is-invalid': form.errors.has('body') }"
+                                                                                                      :options="editorOption">
+                                                                                        </quill-editor>
                                                                                         <has-error :form="form" field="body"></has-error>
                                                                                     </div>
                                                                                 </div>
@@ -223,6 +226,20 @@
                     cap: '',
                     address: ''
                 }),
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            ['bold', 'italic', 'underline'],
+                            [{'list': 'ordered'}, {'list': 'bullet'}],
+                            [{ 'align': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            ['clean']
+                        ]
+                    }
+                }
             }
         },
         methods:{

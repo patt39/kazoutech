@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 Vue.use(require('vue-resource'));
 
@@ -42,13 +43,7 @@ Vue.use(VueRouter);
 import rate from 'vue-rate';
 Vue.use(rate);
 
-/**
- * VueEditor
- */
-import {VueEditor, Quill} from "vue2-editor";
 
-Vue.component('VueEditor', VueEditor);
-Vue.component('Quill', Quill);
 
 import {routes} from './routes/routes';
 
@@ -77,9 +72,9 @@ Vue.use(Vue2Filters);
 import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask);
 
-import InfiniteLoading from 'vue-infinite-loading';
-Vue.use(InfiniteLoading);
 
+
+require('./import');
 /**
  * Vue-select
  */
@@ -186,6 +181,7 @@ Vue.filter('toCurrency', function (value) {
 });
 
 window.Fire = new Vue();
+
 
 /**
  * The following block of code may be used to automatically register your

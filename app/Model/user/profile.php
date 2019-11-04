@@ -16,7 +16,6 @@ class profile extends Model implements Auditable
         'first_name',
         'last_name',
         'work',
-        'sex',
         'age',
         'body',
         'color_style',

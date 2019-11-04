@@ -52,7 +52,10 @@
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
                                                                 <br>
-                                                                <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                <quill-editor v-model="form.body"
+                                                                              :class="{ 'is-invalid': form.errors.has('body') }"
+                                                                              :options="editorOption">
+                                                                </quill-editor>
                                                                 <div class="form-check">
                                                                     <label class="form-check-label pull-right">
                                                                         You can use the
@@ -115,26 +118,20 @@
                     status: '',
                     slug: ''
                 }),
-                customToolbar: [
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'font': [] }],
-                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
-                    //[{ 'size': ['small', false, 'large', 'huge'] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ 'align': [] }],
-                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['blockquote', 'code-block'],
-                    //['blockquote', 'code-block'],
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-                    //[{ 'script': 'sub'}, { 'script': 'super' }],
-                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{ 'color': [] }, { 'background': [] }],
-                    //['link', 'image', 'video', 'formula'],
-                    ['link'],
-                    //[{ 'direction': 'rtl' }],
-                    ['clean'],
-                    //['emoji'],
-                ]
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            ['bold', 'italic', 'underline'],
+                            [{'list': 'ordered'}, {'list': 'bullet'}],
+                            [{ 'align': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            ['clean']
+                        ]
+                    }
+                }
             }
         },
         methods: {
@@ -191,6 +188,6 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

@@ -132,7 +132,7 @@
                                                         <router-link  v-if="$auth.can('edit-faq')" :to="{ path: `/dashboard/faqs/${item.id}/edit` }" class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </router-link>
-                                                        <button v-if="$auth.can('delete-faq')" @click="deleteItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                        <button v-if="$auth.can('delete-faq')" @click="deleteItem(item)" class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
                                                     </td>
@@ -260,7 +260,7 @@
                 //Progres bar
                 this.$Progress.finish()
             },
-            deleteItem(id) {
+            deleteItem(item) {
                 Swal.fire({
                     title: 'Delete Faq?',
                     text: "Are you sure you want to delete this faq?",
@@ -279,7 +279,7 @@
                         //Start Progress bar
                         this.$Progress.start();
                         //Envoyer la requet au server
-                        axios.delete('/dashboard/faqs/' + id).then(() => {
+                        axios.delete(`/dashboard/faqs/${item.id}`).then(() => {
 
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
@@ -298,7 +298,8 @@
                             //End Progress bar
                             this.$Progress.finish();
 
-                            Fire.$emit('ItemGetter');
+                            let index = this.faqs.indexOf(item);
+                            this.faqs.splice(index, 1);
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
