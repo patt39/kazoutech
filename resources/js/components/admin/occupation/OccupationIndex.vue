@@ -52,7 +52,7 @@
                                 <br>
                                 <div class="card-body">
                                     <div class="header text-right">
-                                        <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                        <button @click="reload" class="btn btn-success btn-raised button_note btn-sm"
                                                 title="Refresh Page">
                                             <i class="material-icons">replay</i>
                                             <b class="title_hover">Refresh</b>
@@ -62,7 +62,7 @@
                                     <div class="card-body">
                                         <div v-if="$auth.can('create-occupation')" class="toolbar">
                                             <div class="submit text-center">
-                                                <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
+                                                <button id="button_hover" class="btn btn-success btn-raised " @click="newModal">
                                      <span class="btn-label">
                                         <i class="material-icons">assignment</i>
                                     </span>
