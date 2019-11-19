@@ -117,6 +117,6 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
 
     public function profile()
     {
-        return $this->hasOne(profile::class);
+        return $this->hasOne(profile::class,'user_id');
     }
 }

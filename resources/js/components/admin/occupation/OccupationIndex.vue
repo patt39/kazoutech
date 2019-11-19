@@ -125,7 +125,7 @@
                                                                 class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                         </button>
-                                                        <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
+                                                        <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item)"
                                                                 class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
@@ -268,7 +268,7 @@
                 this.form.post("/dashboard/occupations")
                     .then(() => {
                         //Event
-                        Fire.$emit('AfterCreate');
+                        Fire.$emit('LoadItems');
 
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
@@ -316,7 +316,8 @@
                     .then(() => {
                         //Masquer le modal après la création
                         $('#addNew').modal('hide');
-
+                        //Event
+                        Fire.$emit('LoadItems');
                         /** Debut de l'alert **/
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                             allow_dismiss: false,
@@ -329,8 +330,7 @@
 
                         //End Progress bar
                         this.$Progress.finish();
-                        //Event
-                        Fire.$emit('AfterCreate');
+
                     })
                     .catch(() => {
                         //Failled message
@@ -345,7 +345,7 @@
                         });
                     })
             },
-            deleteItem(id) {
+            deleteItem(item) {
                 //Alert delete
                 Swal.fire({
                     title: 'Delete Occupations?',
@@ -365,7 +365,7 @@
                         //Start Progress bar
                         this.$Progress.start();
                         //Envoyer la requete au server
-                        axios.delete(`/dashboard/occupations/${id}`).then(() => {
+                        axios.delete(`/dashboard/occupations/${item.id}`).then(() => {
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -378,8 +378,9 @@
 
                             //End Progress bar
                             this.$Progress.finish();
-                            Fire.$emit('AfterCreate');
 
+                            let index = this.occupations.indexOf(item);
+                            this.occupations.splice(index, 1);
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
@@ -399,6 +400,7 @@
                 //Progress bar star
                 this.$Progress.start();
                 axios.get('/dashboard/active_occupations/' + id).then(() => {
+                    Fire.$emit('LoadItems');
                     /** Alert notify bootstrapp **/
                     $.notify('<strong>Occupations activated Successfully.</strong>', {
                         allow_dismiss: false,
@@ -416,7 +418,6 @@
 
                     //End Progress bar
                     this.$Progress.finish();
-                    Fire.$emit('AfterCreate');
                 }).catch(() => {
                     //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
@@ -451,7 +452,7 @@
                     //End Progres bar
                     this.$Progress.finish();
 
-                    Fire.$emit('AfterCreate');
+                    Fire.$emit('LoadItems');
                 }).catch(() => {
                     //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
@@ -488,7 +489,7 @@
         },
         created() {
             this.loadItems();
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('LoadItems', () => {
                 this.loadItems();
             });
             // Run the intervalFetchData function once to set the interval time for later refresh
