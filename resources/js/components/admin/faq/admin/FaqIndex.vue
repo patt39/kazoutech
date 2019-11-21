@@ -261,58 +261,45 @@
                 this.$Progress.finish()
             },
             deleteItem(item) {
-                Swal.fire({
-                    title: 'Delete Faq?',
-                    text: "Are you sure you want to delete this faq?",
-                    type: 'warning',
-                    animation: false,
-                    customClass: 'animated shake',
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success",
-                    cancelButtonClass: 'btn btn-danger',
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'No',
-                    showCancelButton: true,
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.value) {
-                        //Start Progress bar
-                        this.$Progress.start();
-                        //Envoyer la requet au server
-                        axios.delete(`/dashboard/faqs/${item.id}`).then(() => {
+                bootbox.confirm({
+                    title: "Destroy planet?",
+                    message: "Are you sure you want to delete this faq?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel',
+                            className: 'btn-success'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback(result) {
+                        if (result) {
+                            //Start Progress bar
+                            //this.$Progress.start();
+                            //Envoyer la requete au server
+                            axios.delete(`/dashboard/faqs/${item.id}`)
+                                .then(() => {
+                                /** Alert notify bootstrapp **/
+                                var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                                    allow_dismiss: false,
+                                    showProgressbar: true
+                                });
+                                setTimeout(function() {
+                                    notify.update({'type': 'success', 'message': '<strong>Faq deleted successfully.</strong>', 'progress': 75});
+                                }, 2000);
+                                /* End alert ***/
 
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true,
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                },
-                            });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Faq deleted Successfully.</strong>', 'progress': 75});
-                            }, 2000);
-                            /** End alert ***/
+                                //End Progress bar
+                               // this.$Progress.finish();
 
-                            //End Progress bar
-                            this.$Progress.finish();
-
-                            let index = this.faqs.indexOf(item);
-                            this.faqs.splice(index, 1);
-                        }).catch(() => {
-                            //Failled message
-                            this.$Progress.fail();
-                            $.notify("Ooop! Something wrong. Try later", {
-                                type: 'danger',
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                }
-                            });
-                        })
+                               Fire.$emit('ItemGetter');
+                            })
+                        }
                     }
-                })
+                });
+
             },
 
             /** Ici c'est l'activation de la couleur  **/
