@@ -13,7 +13,7 @@
 <script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Argon JS -->
 <script src="/assets/site/assets/js/argon.js?v=1.1.0"></script>
-<script src="{{ mix('/js/app.js') }}"></script>
+<script src="{{ mix('/js/vuejs/app.js') }}"></script>
 <script type="text/javascript">
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();

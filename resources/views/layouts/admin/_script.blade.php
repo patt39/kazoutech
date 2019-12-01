@@ -44,7 +44,7 @@
 <script src="/assets/dashboard/assets/js/myscript.js?v=1.0.0" type="text/javascript"></script>
 
 
-<script src="{{ mix('/js/app.js') }}"></script>
+<script src="{{ mix('/js/vuejs/app.js') }}"></script>
 <!--
 <script type="text/javascript">
     var timer = setInterval("autoRefresher()", 60 * 70000);
