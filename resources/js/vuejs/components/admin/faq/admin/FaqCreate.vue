@@ -25,6 +25,7 @@
                                             </div>
                                             <br>
                                             <div class="card-body">
+
                                                 <form id="RegisterValidation" @submit.prevent="createItem()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                     <div class="row">
@@ -83,6 +84,8 @@
                                                         </div>
                                                     </div>
                                                 </form>
+
+
                                             </div>
                                         </div>
                                     </div>
