@@ -1,3 +1,4 @@
 {
-    "/js/vuejs/app.js": "/js/vuejs/app.js"
+    "/js/vuejs/app.js": "/js/vuejs/app.js",
+    "/js/vuejs/axios.js": "/js/vuejs/axios.js"
 }

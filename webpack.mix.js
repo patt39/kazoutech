@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js/vuejs')
+    .js('resources/js/axios.js', 'public/js/vuejs')
     //.sass('resources/sass/app.scss', 'public/css')
     //.copy('node_modules/animate.css/animate.css','public/assets/dashboard/assets/css/plugins')
     .sourceMaps();
