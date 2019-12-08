@@ -13,11 +13,14 @@
           <div class="page-header page-header-small header-filter">
             <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/pages/nathan-dumlao.jpg');"></div>
             <div class="container">
-                <div class="row">
+              <div class="row">
                 <div class="col-lg-10 mx-auto text-center">
                     <h2 class="display-2 text-white">Du service a la personne et du main à main entre particuliers</h2>
+                    <a href="/service" class="btn btn-success btn-lg mt-500" name="button">
+                        <span class="button-inner--text pt-40 text-uppercase">Demande un service</span>
+                    </a>
                 </div>
-                </div>
+             </div>
             </div>
             </div>
             <div class="section features">
@@ -190,62 +193,6 @@
         </div>
       </div>
     <br /><br />
-    <div class="social-line social-line-blue text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-12">
-                <h4 class="title mb-4">Thank you for your support!</h4>
-              </div>
-              <a href="javascript:;" class="btn btn-twitter btn-round">
-                <i class="fab fa-twitter"></i> Twitter · 2.5k
-              </a>
-              <a href="javascript:;" class="btn btn-facebook btn-round">
-                <i class="fab fa-facebook-square"></i> Facebook · 3.2k
-              </a>
-              <a href="javascript:;" class="btn btn-tumblr btn-round">
-                <i class="fab fa-tumblr"></i> Tumblr · 1.2k
-              </a>
-              <a href="javascript:;" class="btn btn-dribbble btn-round">
-                <i class="fab fa-dribbble"></i> Dribbble · 1.8k
-              </a>
-            </div>
-          </div>
-        </div>
-        <!--     *********   SIMPLE SOCIAL LINE     *********      -->
-        <br><br>
-        <!--     *********    SIMPLE SOCIAL LINE     *********      -->
-        <div class="social-line social-line-big-icons">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3 col-md-6 mb-md-4 mb-lg-0">
-                  <i class="fab fa-twitter"></i>
-                  <p class="title">twitter</p>
-                  <p class="subtitle">@creativetim</p>
-              </div>
-              <div class="col-lg-3 col-md-6 mb-md-4 mb-lg-0">
-                <a href="javascript:;" class="btn btn-gradient-facebook btn-footer">
-                  <i class="fab fa-facebook-square"></i>
-                  <p class="title">facebook</p>
-                  <p class="subtitle">@creativetim</p>
-                </a>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <a href="javascript:;" class="btn btn-gradient-slack btn-footer">
-                  <i class="fab fa-slack"></i>
-                  <p class="title">slack</p>
-                  <p class="subtitle">@creativetim</p>
-                </a>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <a href="javascript:;" class="btn btn-gradient-instagram btn-footer">
-                  <i class="fab fa-instagram"></i>
-                  <p class="title">instagram</p>
-                  <p class="subtitle">@creativetim</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
       <div class="subscribe-line subscribe-line-white">
           <div class="container">
             <div class="row">
