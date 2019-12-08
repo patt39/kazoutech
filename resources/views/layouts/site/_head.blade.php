@@ -18,15 +18,17 @@
 </script>
 
 <title>{{ config('app.name') }} @yield('title')</title>
-<!-- Fonts -->
+<!--     Fonts and icons     -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<!-- Icons -->
-<link href="/assets/site/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-<link href="/assets/site/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/assets/dashboard/assets/css/style.css">
-<!-- Argon CSS -->
-<link type="text/css" href="/assets/site/assets/css/argon.css?v=1.1.0" rel="stylesheet">
-
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!-- Nucleo Icons -->
+<link href="/assets/vendor_site/css/nucleo-icons.css" rel="stylesheet" />
+<link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
+<!-- Font Awesome Icons -->
+<link href="/assets/vendor_site/css/font-awesome.css" rel="stylesheet" />
+<link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
+<!-- CSS Files -->
+<link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.0" rel="stylesheet" />
 
 @section('style')
 @show

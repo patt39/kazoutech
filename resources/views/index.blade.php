@@ -1,5 +1,5 @@
 @extends('inc.site._main')
-@section('title', '')
+@section('title', 'Home page')
 
 @section('style')
 @endsection
@@ -9,293 +9,277 @@
 @endsection
 
 @section('content')
-    <main>
-        <div class="position-relative">
-            <!-- shape Hero -->
-            <section class="section section-lg section-shaped pb-250">
-                <div class="shape shape-style-1 shape-default">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="container py-lg-md d-flex">
-                    <div class="col px-0">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h1 class="display-3  text-white">Kazoutech</h1>
-                                <p class="lead  text-white">Particer a votre evollution a un changement.</p>
-                                <div class="btn-wrapper">
-                                    <a href="{{route('login')}}" class="btn btn-info btn-icon mb-3 mb-sm-0">
-                                        <span class="btn-inner--icon">
-                                            <i class="fa fa-sign-in"></i>
-                                        </span>
-                                        <span class="btn-inner--text">Se connecter</span>
-                                    </a>
-                                    <a href="{{route('register')}}" class="btn btn-white btn-icon mb-3 mb-sm-0">
-                                        <span class="btn-inner--icon">
-                                            <i class="ni ni-user-run"></i>
-                                        </span>
-                                        <span class="btn-inner--text">S'inscrire</span>
-                                    </a>
+    @include('inc.site.nav_site')
+    <div class="landing-page">
+        <div class="wrapper">
+            <header class="header-4 skew-separator">
+                <div class="header-wrapper">
+                    <div class="page-header header-video">
+                        <div class="overlay"></div>
+                        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                            <source src="https://www.oberlo.com/wp-content/uploads/2018/10/1.-Pixabay.mp4" type="video/mp4">
+                            <!-- <source src="../assets/video/jetsky.mp4" type="video/mp4"> -->
+                        </video>
+                        <div class="container text-center">
+                            <div class="row">
+                                <div class="col-lg-7 mx-auto">
+                                    <h1 class="text-black" style="font-size: 100px">WELCOME</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- SVG separator -->
-                <div class="separator separator-bottom separator-skew">
-                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-                    </svg>
+            </header>
+            <div class="section features-6">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="info info-horizontal info-hover-primary">
+                                <div class="icon icon-shape icon-shape-info rounded-circle text-white">
+                                    <i class="ni ni-html5 text-info"></i>
+                                </div>
+                                <div class="description pl-4">
+                                    <h5 class="title">For Developers</h5>
+                                    <p>The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. For standing out. But the time is now.</p>
+                                    <a href="#" class="text-info">Learn more</a>
+                                </div>
+                            </div>
+                            <div class="info info-horizontal info-hover-primary">
+                                <div class="icon icon-shape icon-shape-info rounded-circle text-white">
+                                    <i class="ni ni-app text-info"></i>
+                                </div>
+                                <div class="description pl-4">
+                                    <h5 class="title">For Designers</h5>
+                                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
+                                    <a href="#" class="text-info">Learn more</a>
+                                </div>
+                            </div>
+                            <div class="info info-horizontal info-hover-primary">
+                                <div class="icon icon-shape icon-shape-info rounded-circle text-white">
+                                    <i class="ni ni-bell-55 text-info"></i>
+                                </div>
+                                <div class="description pl-4">
+                                    <h5 class="title">For Beginners</h5>
+                                    <p>That’s what I do. That’s what I’m here for. Don’t be afraid to be wrong because you can’t learn anything from a compliment. If everything I did failed - which it doesn't.</p>
+                                    <a href="#" class="text-info">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-10 mx-md-auto">
+                            <img class="ml-lg-5" src="/assets/vendor_site/img/ill/ill.png" width="100%">
+                        </div>
+                    </div>
                 </div>
-            </section>
-            <!-- 1st Hero Variation -->
-        </div>
-        <section class="section section-lg pt-lg-0 mt--200">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="row row-grid">
-                            <div class="col-lg-4">
-                                <div class="card card-lift--hover shadow border-0">
-                                    <div class="card-body py-5">
-                                        <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                                            <i class="ni ni-check-bold"></i>
-                                        </div>
-                                        <h6 class="text-primary text-uppercase">Download Argon</h6>
-                                        <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                                        <div>
-                                            <span class="badge badge-pill badge-primary">design</span>
-                                            <span class="badge badge-pill badge-primary">system</span>
-                                            <span class="badge badge-pill badge-primary">creative</span>
-                                        </div>
-                                        <a href="#" class="btn btn-primary mt-4">Learn more</a>
-                                    </div>
+            </div>
+            <div class="section features-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto text-center">
+                            <span class="badge badge-primary badge-pill mb-3">Insight</span>
+                            <h3 class="display-3">Full-Funnel Social Analytics</h3>
+                            <p class="lead">The time is now for it to be okay to be great. For being a bright color. For standing out.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle">
+                                    <i class="ni ni-settings-gear-65"></i>
                                 </div>
+                                <h6 class="info-title text-uppercase text-primary">Social Conversations</h6>
+                                <p class="description opacity-8">We get insulted by others, lose trust for those others. We get back stabbed by friends. It becomes harder for us to give others a hand.</p>
+                                <a href="javascript:;" class="text-primary">More about us
+                                    <i class="ni ni-bold-right text-primary"></i>
+                                </a>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card card-lift--hover shadow border-0">
-                                    <div class="card-body py-5">
-                                        <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
-                                            <i class="ni ni-istanbul"></i>
-                                        </div>
-                                        <h6 class="text-success text-uppercase">Build Something</h6>
-                                        <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                                        <div>
-                                            <span class="badge badge-pill badge-success">business</span>
-                                            <span class="badge badge-pill badge-success">vision</span>
-                                            <span class="badge badge-pill badge-success">success</span>
-                                        </div>
-                                        <a href="#" class="btn btn-success mt-4">Learn more</a>
-                                    </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
+                                    <i class="ni ni-atom"></i>
                                 </div>
+                                <h6 class="info-title text-uppercase text-success">Analyze Performance</h6>
+                                <p class="description opacity-8">Don't get your heart broken by people we love, even that we give them all we have. Then we lose family over time. As we live, our hearts turn colder.</p>
+                                <a href="javascript:;" class="text-primary">Learn about our products
+                                    <i class="ni ni-bold-right text-primary"></i>
+                                </a>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card card-lift--hover shadow border-0">
-                                    <div class="card-body py-5">
-                                        <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                                            <i class="ni ni-planet"></i>
-                                        </div>
-                                        <h6 class="text-warning text-uppercase">Prepare Launch</h6>
-                                        <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                                        <div>
-                                            <span class="badge badge-pill badge-warning">marketing</span>
-                                            <span class="badge badge-pill badge-warning">product</span>
-                                            <span class="badge badge-pill badge-warning">launch</span>
-                                        </div>
-                                        <a href="#" class="btn btn-warning mt-4">Learn more</a>
-                                    </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle">
+                                    <i class="ni ni-world"></i>
                                 </div>
+                                <h6 class="info-title text-uppercase text-warning">Measure Conversions</h6>
+                                <p class="description opacity-8">What else could rust the heart more over time? Blackgold. The time is now for it to be okay to be great. or being a bright color. For standing out.</p>
+                                <a href="javascript:;" class="text-primary">Check our documentation
+                                    <i class="ni ni-bold-right text-primary"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="section section-lg">
-            <div class="container">
-              <newsletter-index></newsletter-index>
-                <div class="row justify-content-center text-center mb-lg">
-                    <div class="col-lg-8">
-                        <h2 class="display-3">The amazing Team</h2>
-                        <p class="lead text-muted">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="px-4">
-                            <img src="/assets/site/assets/img/theme/team-1-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;" alt="image">
-                            <div class="pt-4 text-center">
-                                <h5 class="title">
-                                    <span class="d-block mb-1">Ryan Tompson</span>
-                                    <small class="h6 text-muted">Web Developer</small>
-                                </h5>
-                                <div class="mt-3">
-                                    <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </div>
-                            </div>
+            <section class="blogs-2">
+                <div class="container-fluid">
+                    <div class="row mb-md-5">
+                        <div class="col-md-8 mx-auto">
+                            <h3 class="display-3 text-center">Nos meilleur Techniciens</h3>
+                            <p class="lead text-center">I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can’t do anything, you won’t do anything. I was taught I could do everything.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="px-4">
-                            <img src="/assets/site/assets/img/theme/team-2-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;" alt="image">
-                            <div class="pt-4 text-center">
-                                <h5 class="title">
-                                    <span class="d-block mb-1">Romina Hadid</span>
-                                    <small class="h6 text-muted">Marketing Strategist</small>
-                                </h5>
-                                <div class="mt-3">
-                                    <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card card-blog card-background" data-animation="zooming">
+                                <div class="full-background" style="background-image: url('/assets/vendor_site/img/sections/damian.jpg"></div>
+                                <a href="javascript:;">
+                                    <div class="card-body">
+                                        <div class="content-bottom">
+                                            <h6 class="card-category text-white opacity-8">AI at the Edge</h6>
+                                            <h5 class="card-title">Research Byte</h5>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="px-4">
-                            <img alt="image" src="/assets/site/assets/img/theme/team-3-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
-                            <div class="pt-4 text-center">
-                                <h5 class="title">
-                                    <span class="d-block mb-1">Alexander Smith</span>
-                                    <small class="h6 text-muted">UI/UX Designer</small>
-                                </h5>
-                                <div class="mt-3">
-                                    <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </div>
+                        <div class="col-lg-3">
+                            <div class="card card-blog card-background" data-animation="zooming">
+                                <div class="full-background" style="background-image: url('/assets/vendor_site/img/sections/ashim.jpg"></div>
+                                <a href="javascript:;">
+                                    <div class="card-body">
+                                        <div class="content-bottom">
+                                            <h6 class="card-category text-white opacity-8">Spectrum</h6>
+                                            <h5 class="card-title">Data Virtualization</h5>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="px-4">
-                            <img alt="image" src="/assets/site/assets/img/theme/team-4-800x800.jpg" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
-                            <div class="pt-4 text-center">
-                                <h5 class="title">
-                                    <span class="d-block mb-1">John Doe</span>
-                                    <small class="h6 text-muted">Founder and CEO</small>
-                                </h5>
-                                <div class="mt-3">
-                                    <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </div>
+                        <div class="col-lg-3">
+                            <div class="card card-blog card-background" data-animation="zooming">
+                                <div class="full-background" style="background-image: url('/assets/vendor_site/img/sections/odin.jpg"></div>
+                                <a href="javascript:;">
+                                    <div class="card-body">
+                                        <div class="content-bottom">
+                                            <h6 class="card-category text-white opacity-8">Touch on a trend</h6>
+                                            <h5 class="card-title">New Challenges</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card card-blog card-background" data-animation="zooming">
+                                <div class="full-background" style="background-image: url('/assets/vendor_site/img/sections/dane.jpg"></div>
+                                <a href="javascript:;">
+                                    <div class="card-body">
+                                        <div class="content-bottom">
+                                            <h6 class="card-category text-white opacity-8">Self-Driving Cars</h6>
+                                            <h5 class="card-title">Driverless Future</h5>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section section-lg pt-0">
-            <div class="container">
-                <div class="card bg-gradient-warning shadow-lg border-0">
-                    <div class="p-5">
-                        <div class="row align-items-center">
-                            <div class="col-lg-8">
-                                <h3 class="text-white">We made website building easier for you.</h3>
-                                <p class="lead text-white mt-3">I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture.</p>
-                            </div>
-                            <div class="col-lg-3 ml-lg-auto">
-                                <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-block btn-white">Download HTML</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section section-lg bg-gradient-default">
-            <div class="container pt-lg pb-300">
+              <div class="section features-3 my-5" style="background-image: url('/assets/vendor_site/img/ill/p31.svg')">
+                <div class="container">
                 <div class="row text-center justify-content-center">
-                    <div class="col-lg-10">
-                        <h2 class="display-3 text-white">Build something</h2>
-                        <p class="lead text-white">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice.</p>
+                    <div class="col-lg-8">
+                    <h3 class="display-3 text-white">Build something great<span class="text-success"> with our products</span></h3>
+                    <p class="lead text-white">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment.</p>
                     </div>
                 </div>
                 <div class="row row-grid mt-5">
-                    <div class="col-lg-4">
-                        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                            <i class="ni ni-settings text-primary"></i>
+                    <div class="col-lg-6">
+                    <div class="info info-horizontal bg-white">
+                        <div class="icon icon-shape icon-shape-info rounded-circle text-white">
+                        <i class="ni ni-hat-3 text-info"></i>
                         </div>
-                        <h5 class="text-white mt-3">Building tools</h5>
-                        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="description pl-4">
+                        <h5 class="title text-info">Modular Components</h5>
+                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                        <a href="#" class="text-info">Learn more</a>
+                        </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                            <i class="ni ni-ruler-pencil text-primary"></i>
-                        </div>
-                        <h5 class="text-white mt-3">Grow your market</h5>
-                        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                            <i class="ni ni-atom text-primary"></i>
+                    <div class="col-lg-6">
+                    <div class="info info-horizontal bg-white">
+                        <div class="icon icon-shape icon-shape-warning rounded-circle text-white">
+                        <i class="ni ni-istanbul text-warning"></i>
                         </div>
-                        <h5 class="text-white mt-3">Launch time</h5>
-                        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="description pl-4">
+                        <h5 class="title text-warning">Modern Interface</h5>
+                        <p>If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration.</p>
+                        <a href="#" class="text-warning">Learn more</a>
+                        </div>
+                    </div>
                     </div>
                 </div>
+                <div class="row row-grid">
+                    <div class="col-lg-6">
+                    <div class="info info-horizontal bg-white">
+                        <div class="icon icon-shape icon-shape-danger rounded-circle text-white">
+                        <i class="ni ni-trophy text-danger"></i>
+                        </div>
+                        <div class="description pl-4">
+                        <h5 class="title text-danger">Great Features</h5>
+                        <p>People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest.</p>
+                        <a href="#" class="text-danger">Learn more</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="info info-horizontal bg-white">
+                        <div class="icon icon-shape icon-shape-success rounded-circle text-white">
+                        <i class="ni ni-image text-success"></i>
+                        </div>
+                        <div class="description pl-4">
+                        <h5 class="title text-success">Awesome Support</h5>
+                        <p>The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color.</p>
+                        <a href="#" class="text-success">Learn more</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
-            <!-- SVG separator -->
-            <div class="separator separator-bottom separator-skew zindex-100">
-                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-                </svg>
-            </div>
-        </section>
-       <contact-us></contact-us>
-        @guest
-            <section class="section section-lg">
-                <div class="container">
-                    <div class="row row-grid justify-content-center">
-                        <div class="col-lg-8 text-center">
-                            <h2 class="display-3">Lancez-vous dès maintenant</h2>
-                            <div class="btn-wrapper">
-                                <a href="{{route('login')}}" class="btn btn-primary mb-3 mb-sm-0">S'incrire</a>
-                                <a href="{{route('register')}}" class="btn btn-default">Se connecter</a>
+            <br /><br />
+                    <div class="page-header">
+                    <div class="container">
+                        <div class="row align-items-center text-left">
+                        <div class="col-lg-5 col-12">
+                            <h1 class="display-3">Design with us,<span class="text-primary"> Develop Anything.</span></h1>
+                            <p class="lead pb-4">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+                            <div class="row row-input">
+                            <div class="col-sm-8 col-12">
+                                <input type="email" class="form-control" name="email" id="signupSrEmail" placeholder="Your email" aria-label="Your email">
+                            </div>
+                            <div class="col-sm-4 col-12 pl-lg-0">
+                                <button type="submit" class="btn btn-primary btn-block">More</button>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-12 pl-0">
+                            <img class="ml-lg-5" src="/assets/vendor_site/img/ill/bg6-2.svg" width="100%">
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        @else
-            @if(Auth::user()->email_verified_at === null)
-                <link-verify></link-verify>
-            @endif
-        @endguest
-    </main>
+            @include('inc.site.footer_site')
+        </div>
+        <!--   Core JS Files   -->
+    </div>
 @endsection
 
 @section('script')

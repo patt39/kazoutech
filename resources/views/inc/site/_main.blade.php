@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    @include('layouts.site._head')
+@include('layouts.site._head')
 
     @yield('style')
 </head>
@@ -9,22 +9,13 @@
 
 <div id="app">
 
-    @include('inc.user.navesite')
 
-    <div class="wrapper">
-
+    @section('content')
 
 
-        @section('content')
+    @show
 
-
-        @show
-
-
-    </div>
 </div>
-
-@include('inc.site.footer-site')
 
 @include('layouts.site._script')
 

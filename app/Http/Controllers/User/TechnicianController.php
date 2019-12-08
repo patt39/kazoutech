@@ -38,6 +38,12 @@ class TechnicianController extends Controller
         return view('admin.technician.index');
     }
 
+    public function bosseur()
+    {
+        return view('user.page.technician.technicianBecome');
+    }
+
+
 
     public function api()
     {
