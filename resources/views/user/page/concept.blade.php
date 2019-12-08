@@ -1,4 +1,4 @@
-@extends('inc.site._main')
+@extends('inc.user._main')
 @section('title', 'Home page')
 
 @section('style')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    @include('inc.site.nav_site')
+    @include('inc.user.nav_site')
     <div class="page-header  header-filter">
       <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/sections/photo-1.jpg');"></div>
       <div class="container">
@@ -398,7 +398,7 @@
           </div>
         </div>
       </div>
-    @include('inc.site.footer_site')
+    @include('inc.user.footer_site')
 @endsection
 
 @section('script')

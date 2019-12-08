@@ -22,7 +22,7 @@
             </nav>
             <div class="copyright pull-right">
                 <h6 style="font-size=0.9em;">&copy; 2019 -
-                    {{ new Date().getFullYear() }}. Realized by <a href="/">TNP</a> version 0.2</h6>
+                    {{ new Date().getFullYear() }}. Realized by <a href="/">KazouGroup</a> version 0.2</h6>
             </div>
         </div>
     </footer>

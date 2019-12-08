@@ -1,4 +1,4 @@
-@extends('inc.site._main')
+@extends('inc.user._main')
 @section('title', 'Login')
 
 @section('style')

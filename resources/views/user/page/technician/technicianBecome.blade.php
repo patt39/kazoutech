@@ -1,4 +1,4 @@
-@extends('inc.site._main')
+@extends('inc.user._main')
 @section('title', 'Home page')
 
 @section('style')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    @include('inc.site.nav_site')
+    @include('inc.user.nav_site')
   <div class="wrapper">
     <div class="section-shaped">
       <div class="page-header page-header-small header-filter">
@@ -594,7 +594,7 @@
             </div>
           </div>
         </div>
-    @include('inc.site.footer_site')
+    @include('inc.user.footer_site')
 @endsection
 
 @section('script')

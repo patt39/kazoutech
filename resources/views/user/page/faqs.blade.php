@@ -1,5 +1,5 @@
 
-@extends('inc.site._main')
+@extends('inc.user._main')
 @section('title', 'Home page')
 
 @section('style')
@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    @include('inc.site.nav_site')
+    @include('inc.user.nav_site')
     <div class="contactus-3">
       <div class="page-header">
         <img class="bg-image" src="/assets/vendor_site/img/ill/bg_contactus3.svg" alt="">
@@ -154,8 +154,8 @@
         </div>
       </div>
     </div>
-        
-    @include('inc.site.footer_site')
+
+    @include('inc.user.footer_site')
 @endsection
 
 @section('script')

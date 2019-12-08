@@ -1,4 +1,4 @@
-@extends('inc.site._main')
+@extends('inc.user._main')
 <?php $usernameTag = htmlspecialchars($user->name); ?>
 @section('title',"- $usernameTag")
 

@@ -7,8 +7,14 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @auth
     <meta name="userID" content="{{ auth()->user()->id }}">
+    <script>
+        window.user = {!! json_encode([
+    'roles' => auth()->user()->roles,
+    'permissions' => auth()->user()->getAllPermissions(),
+    ]) !!}
+    </script>
 @endauth
-<script>window.Kazoucoin = { csrfToken: '{{ csrf_token() }}' }; </script>
+<script>window.Kazoutech = { csrfToken: '{{ csrf_token() }}' }; </script>
 <script>
     window.user = {!! json_encode([
     'user' => auth()->user(),
@@ -18,13 +24,17 @@
 </script>
 
 <title>{{ config('app.name') }} @yield('title')</title>
-<!-- Fonts -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-<!-- Styles -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!-- Nucleo Icons -->
+<link href="/assets/vendor_site/css/nucleo-icons.css" rel="stylesheet" />
+<link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
+<!-- Font Awesome Icons -->
+<link href="/assets/vendor_site/css/font-awesome.css" rel="stylesheet" />
+<link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
+<!-- CSS Files -->
+<link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.0" rel="stylesheet" />
 
 @section('style')
 @show

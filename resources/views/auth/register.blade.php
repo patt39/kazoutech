@@ -1,4 +1,4 @@
-@extends('inc.site._main')
+@extends('inc.user._main')
 @section('title', 'Register')
 
 @section('style')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-   
+
   <div class="section-shaped my-0 skew-separator skew-mini">
     <div class="page-header page-header-small header-filter">
       <div class="page-header-image" style="background-image: url('../assets/img/sections/unsplashs.jpg');">
