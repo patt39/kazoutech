@@ -43,9 +43,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">forum</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">forum</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
