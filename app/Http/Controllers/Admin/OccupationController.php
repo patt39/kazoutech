@@ -8,8 +8,9 @@ use App\Model\admin\occupation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
+use File;
 
 class OccupationController extends Controller
 {
@@ -74,6 +75,21 @@ class OccupationController extends Controller
         $occupation = new occupation;
         $occupation->name = $request->name;
 
+        if ($request->photo) {
+            $namefile = sha1(date('YmdHis') . str_random(30));
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->photo,0,strpos
+                ($request->photo,';')))[1])[1];
+            $dir = 'assets/img/occupations/';
+            if(!file_exists($dir)){
+                mkdir($dir, 0775, true);
+            }
+            $destinationPath = public_path("assets/img/occupations/{$name}");
+            Image::make($request->photo)->save($destinationPath);
+            //Save Image to database
+            $myfilename = "/assets/img/occupations/{$name}";
+            $occupation->photo = $myfilename;
+        }
+
         $occupation->save();
 
         return response('Created',Response::HTTP_CREATED);
@@ -89,7 +105,7 @@ class OccupationController extends Controller
     {
         $category = new OccupationResource(occupation::where('id', $id)->findOrFail($id));
 
-        return $category;
+        return response()->json($category,200);
     }
 
     /**
@@ -138,11 +154,22 @@ class OccupationController extends Controller
 
         $occupation = occupation::findOrFail($id);
 
-        $occupation->name = $request->name;
-        $occupation->slug = null;
-        $occupation->save();
+        $currentPhoto = $occupation->photo;
 
-        return ['message' => 'color has ben updated'];
+        if ($request->photo != $currentPhoto){
+            $namefile = sha1(date('YmdHis') . str_random(30));
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->photo,0,strpos
+                ($request->photo,';')))[1])[1];
+            $dir = 'assets/img/occupations/';
+            if(!file_exists($dir)){mkdir($dir, 0775, true);}
+            Image::make($request->photo)->save(public_path('assets/img/occupations/').$name);
+            $request->merge(['photo' =>  "/assets/img/occupations/{$name}"]);
+            $oldFilename = $currentPhoto;
+            File::delete(public_path($oldFilename));
+        }
+        $occupation->update($request->all());
+
+        return ['message' => 'Occupation has ben updated'];
     }
 
     /**
@@ -154,6 +181,8 @@ class OccupationController extends Controller
     public function destroy($id)
     {
         $occupation = occupation::findOrFail($id);
+        $oldFilename = $occupation->photo;
+        File::delete(public_path($oldFilename));
         $occupation->delete();
 
         return ['message' => 'color deleted '];

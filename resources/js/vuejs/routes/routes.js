@@ -89,6 +89,8 @@ import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable"
 import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
 import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryViewSites";
 import UserCardIndex from "../components/admin/user/UserCardIndex";
+import OccupationEdit from "../components/admin/occupation/OccupationEdit";
+import OccupationCreate from "../components/admin/occupation/OccupationCreate";
 
 
 
@@ -119,6 +121,8 @@ export const routes = [
 
     //Route occupations
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
+    {path: '/dashboard/occupations/create/', name: 'occupations.create', component: OccupationCreate},
+    {path: '/dashboard/occupations/:id/edit', name: 'occupations.edit', component: OccupationEdit},
 
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},

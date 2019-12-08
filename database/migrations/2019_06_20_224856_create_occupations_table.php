@@ -17,6 +17,7 @@ class CreateOccupationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->string('photo')->nullable();
             $table->boolean('status')->default(false)->nullable();
             $table->string('ip')->nullable();
             $table->timestamps();

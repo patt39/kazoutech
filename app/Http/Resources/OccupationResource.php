@@ -19,6 +19,7 @@ class OccupationResource extends JsonResource
             'name' => $this->name,
             'status' => $this->status,
             'slug' => $this->slug,
+            'photo' => $this->photo,
             'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),
             'technician_count' => $this->technicians()->get()->count(),

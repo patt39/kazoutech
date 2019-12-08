@@ -62,12 +62,12 @@
                                     <div class="card-body">
                                         <div v-if="$auth.can('create-occupation')" class="toolbar">
                                             <div class="submit text-center">
-                                                <button id="button_hover" class="btn btn-success btn-raised " @click="newModal">
+                                                <router-link :to="{ name: 'occupations.create' }" class="btn btn-success btn-raised " >
                                      <span class="btn-label">
                                         <i class="material-icons">assignment</i>
                                     </span>
                                                     <b class="title_hover">New Occupations</b>
-                                                </button>
+                                                </router-link>
                                             </div>
                                         </div>
                                         <div class="material-datatables">
@@ -75,6 +75,7 @@
                                                    cellspacing="0" width="100%" style="width:100%">
                                                 <thead>
                                                 <tr>
+                                                    <th><b>Image</b></th>
                                                     <th><b>Name occupations</b></th>
                                                     <th><b>Status</b></th>
                                                     <th><b>Edited By</b></th>
@@ -84,6 +85,7 @@
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
+                                                    <th><b>Image</b></th>
                                                     <th><b>Name occupations</b></th>
                                                     <th><b>Status</b></th>
                                                     <th><b>Edited By</b></th>
@@ -93,6 +95,7 @@
                                                 </tfoot>
                                                 <tbody>
                                                 <tr v-for="item in occupations" :key="item.id">
+                                                    <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
                                                     <td>
                                                         <router-link  :to="{ path: `/dashboard/technicians/o/${item.slug}/` }">
                                                             <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
@@ -121,11 +124,11 @@
                                                                 <i class="material-icons">power_settings_new</i>
                                                             </button>
                                                         </template>
-                                                        <button v-if="$auth.can('edit-occupation')" @click="editItem(item)"
+                                                        <router-link :to="{ name: 'occupations.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
                                                                 class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                             <i class="material-icons">edit</i>
-                                                        </button>
-                                                        <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item)"
+                                                        </router-link>
+                                                        <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
                                                                 class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
@@ -133,53 +136,6 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                        </div>
-
-                                        <!-- Modal création/édition occupation -->
-                                        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 v-show="!editmode" class="modal-title" id="addNewLabel"><b>Add new Occupations</b></h5>
-                                                        <h5 v-show="editmode" class="modal-title" id="updatwNewLabel"><b>Update Occupations</b></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form id="RegisterValidation" @submit.prevent="editmode ? updateItem() : createItem()" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.name" type="text" name="name" placeholder="Name occupation" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required/>
-                                                                <has-error :form="form" field="name"></has-error>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="text-center">
-                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
-                                                                    </button>
-                                                                    <button :disabled="form.busy" v-show="!editmode" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">check</i>
-                                                            <b>Yes, Save</b>
-                                                        </span>
-                                                                    </button>
-                                                                    <button :disabled="form.busy" v-show="editmode" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">save_alt</i>
-                                                            <b>Yes, Update</b>
-                                                        </span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -202,16 +158,8 @@
         data() {
             return {
                 loaded: false,
-                editmode: false,
                 user: {},
                 occupations: {},
-                form: new Form({
-                    id: '',
-                    name: '',
-                    user_id: '',
-                    status: '',
-                    slug: ''
-                })
             }
         },
         methods: {
@@ -255,97 +203,7 @@
                 //Progres bar
                 this.$Progress.finish()
             },
-            newModal() {
-                this.editmode = false;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-            },
-            createItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                // Submit the form via a POST request
-                this.form.post("/dashboard/occupations")
-                    .then(() => {
-                        //Event
-                        Fire.$emit('LoadItems');
-
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-
-                        //Insertion de l'alert !
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true,
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            },
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Occupations Created Successfully.</strong>', 'progress': 75});
-                        }, 2000);
-
-                        //End Progress bar
-                        this.$Progress.finish()
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            },
-            editItem(item) {
-                this.editmode = true;
-                this.form.reset();
-                //Masquer le modal après la création
-                $('#addNew').modal('show');
-                //On passe les information
-                this.form.fill(item);
-            },
-            updateItem() {
-                //Start Progress bar
-                this.$Progress.start();
-                this.form.put('/dashboard/occupations/' + this.form.id)
-                    .then(() => {
-                        //Masquer le modal après la création
-                        $('#addNew').modal('hide');
-                        //Event
-                        Fire.$emit('LoadItems');
-                        /** Debut de l'alert **/
-                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            allow_dismiss: false,
-                            showProgressbar: true
-                        });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Occupations updated successfully.</strong>', 'progress': 75});
-                        }, 2000);
-                        /** Fin alert **/
-
-                        //End Progress bar
-                        this.$Progress.finish();
-
-                    })
-                    .catch(() => {
-                        //Failled message
-                        this.$Progress.fail();
-                        //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
-                            type: 'danger',
-                            animate: {
-                                enter: 'animated bounceInDown',
-                                exit: 'animated bounceOutUp'
-                            }
-                        });
-                    })
-            },
-            deleteItem(item) {
+            deleteItem(id) {
                 //Alert delete
                 Swal.fire({
                     title: 'Delete Occupations?',
@@ -365,7 +223,9 @@
                         //Start Progress bar
                         this.$Progress.start();
                         //Envoyer la requete au server
-                        axios.delete(`/dashboard/occupations/${item.id}`).then(() => {
+                        let url = route('occupations.destroy',id);
+                        dyaxios.delete(url).then(() => {
+                            Fire.$emit('LoadItems');
                             /** Alert notify bootstrapp **/
                             var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                                 allow_dismiss: false,
@@ -375,12 +235,8 @@
                                 notify.update({'type': 'success', 'message': '<strong>Occupations deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             /* End alert ***/
-
                             //End Progress bar
                             this.$Progress.finish();
-
-                            let index = this.occupations.indexOf(item);
-                            this.occupations.splice(index, 1);
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
