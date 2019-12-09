@@ -41,7 +41,6 @@ class Kernel extends HttpKernel
 
             /* *** LogLastUserActivity *** */
             \App\Http\Middleware\LogLastUserActivity::class,
-            \PragmaRX\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
         ],
 
         'api' => [
