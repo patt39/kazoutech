@@ -1,6 +1,6 @@
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent headroom">
     <div class="container">
-        <a class="navbar-brand mr-lg-5" href="../../../index.html">
+        <a class="navbar-brand mr-lg-5" href="/">
             <img src="/assets/vendor_site/img/brand/white.png">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
             <div class="navbar-collapse-header">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href=index.html">
+                        <a href="/">
                             <img src="/assets/img/vendor_site/brand/blue.png">
                         </a>
                     </div>

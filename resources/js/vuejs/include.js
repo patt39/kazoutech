@@ -208,11 +208,7 @@ Vue.component('top-nav', require('./components/inc/admin/TopNav').default);
 Vue.component('footer-admin', require('./components/inc/admin/FooterAdmin').default);
 Vue.component('contact-us', require('./components/user/contact/ContactUser').default);
 
-/**
- *User site include
- */
 
-Vue.component('footer-user-site', require('./components/inc/user/FooterUserSite').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

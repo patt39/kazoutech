@@ -91,6 +91,7 @@ import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryV
 import UserCardIndex from "../components/admin/user/UserCardIndex";
 import OccupationEdit from "../components/admin/occupation/OccupationEdit";
 import OccupationCreate from "../components/admin/occupation/OccupationCreate";
+import IndexSite from "../components/user/IndexSite";
 
 
 
@@ -245,6 +246,10 @@ export const routes = [
 
     /** Ici je recupere les route du site **/
 
+    {path: '/',  name: 'index.site',component: IndexSite},
+    {path: '/home/', name: 'home',  component: IndexSite},
+
+
     //Route auth
     {path: '/register/', name: 'register', component: RegisterIndex},
     {path: '/login/', name: 'login', component: LoginIndex},
@@ -253,7 +258,7 @@ export const routes = [
     {path: '/contacts/', name: 'contact_cm', component: ContactUser},
 
     //Route profile user
-    {path: '/:username', name: 'profile.view', component: ProfileUserIndex},
+    //{path: '/:username', name: 'profile.view', component: ProfileUserIndex},
     {path: '/profile/edit/', name: 'profile.edit', component: ProfileUserEdit},
 
 ];

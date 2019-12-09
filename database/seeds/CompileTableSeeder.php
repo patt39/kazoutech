@@ -9,7 +9,7 @@ use App\Model\user\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-
+use Faker\Factory as Faker;
 class CompileTableSeeder extends Seeder
 {
 
@@ -84,8 +84,24 @@ class CompileTableSeeder extends Seeder
 
     public function addInfoDatable()
     {
+        $faker = Faker::create();
+
+        $name = 'name';
+        $occupations = [
+            [ $name  => 'Menagerie', 'slug' => str_slug('Menagerie'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Démenagement', 'slug' =>str_slug('Démenagement'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Location Multiple', 'slug' =>str_slug('Location Multiple'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Maçonnerie', 'slug' =>str_slug('Maçonnerie'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Menuiserie', 'slug' =>str_slug('Menuiserie'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Soudure', 'slug' =>str_slug('Soudure'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Méccanique', 'slug' =>str_slug('Méccanique'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Electricité', 'slug' =>str_slug('Electricité'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+            [ $name  => 'Charpenterie', 'slug' =>str_slug('Charpenterie'), 'photo' => $faker->imageUrl($width = 1000, $height = 900), 'user_id' => user::inRandomOrder()->first()->id],
+        ];
+        foreach($occupations as $item)
+        occupation::create($item);
+
         color::create(['name' => 'danger','user_id' =>'1',] );
-       occupation::create(['name' =>'Plombier', 'user_id' =>'1',]);
        diploma::create(['name' =>'Baccalereat', 'user_id' =>'1',]);
 
     }

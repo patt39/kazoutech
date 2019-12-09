@@ -1,4 +1,4 @@
-
+@routes
 <!-- Core -->
 <script src="/assets/vendor_site/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="/assets/vendor_site/js/core/popper.min.js" type="text/javascript"></script>
@@ -27,6 +27,7 @@
 <script src="/assets/dashboard/assets/js/plugins/sweetalert2.js"></script>
 <script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script src="{{ mix('/js/vuejs/axios.js') }}"></script>
 <script src="{{ mix('/js/vuejs/app.js') }}"></script>
 <script>
     window.TrackJS &&
