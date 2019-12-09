@@ -42,6 +42,9 @@ import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
+import About from "../components/user/pages/About";
+import Faqs from "../components/user/pages/Faqs";
+import Concept from "../components/user/pages/Concept";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
 import LinkIndex from "../components/admin/partial/link/LinkIndex";
 import TechnicianView from "../components/admin/technician/TechnicianView";
@@ -245,9 +248,17 @@ export const routes = [
 
 
     /** Ici je recupere les route du site **/
-
+     //Route index
     {path: '/',  name: 'index.site',component: IndexSite},
     {path: '/home/', name: 'home',  component: IndexSite},
+
+    //Route pages
+    {path: '/about/', name: 'about', component: About},
+    {path: '/faqs', name: 'faq', component: Faqs},
+    {path: '/concept', name: 'concept', component: Concept},
+
+
+
 
 
     //Route auth

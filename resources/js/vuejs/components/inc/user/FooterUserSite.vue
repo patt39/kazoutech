@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="column">
-                            <h4 class="mb-4">About Us</h4>
+                            <h4 class="mb-4">Informations</h4>
                             <ul class="links-vertical">
                                 <li>
                                     <a href="javascript:;">
@@ -141,8 +141,8 @@
                 </button>
             </div>
         </div>
-        <div class="copyright d-flex justify-content-center mt-4">
-            Copyright &copy; {{ new Date().getFullYear() }}. Realized by <a href="/">KazouGroup</a> version 0.2</h6>
+        <div class="copyright d-flex justify-content-center mt-4 mr-40">
+            Copyright &copy; {{ new Date().getFullYear() }}. Realized by <a href="/" class="title-red" style="padding-left: 4px; color: red">KazouGroup srl</a></h6>
         </div>
     </footer>
 </template>
