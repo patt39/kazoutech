@@ -73,13 +73,13 @@
                     <div v-for="item in occupations" :key="item.id" class="col-lg-3">
                         <div class="card card-blog card-background" data-animation="zooming">
                             <div class="full-background" :style="{ backgroundImage: 'url(' + item.photo + ')' }"></div>
-                            <a href="javascript:;">
+                            <router-link :to="{ name: 'occupations.slug', params: { occupation: item.slug  } }" >
                                 <div class="card-body">
                                     <div class="content-bottom">
                                         <h5 class="card-title text-center" v-html="item.name"></h5>
                                     </div>
                                 </div>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                 </div>

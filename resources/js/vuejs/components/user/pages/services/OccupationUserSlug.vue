@@ -6,38 +6,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 mx-auto text-center">
-                            <h2 class="display-2 text-white">Du service a la personne et du main à main entre particuliers</h2>
-                            <a href="/service" class="btn btn-success btn-lg mt-500" name="button">
+                            <h2 class="display-2 text-white">Occupation description</h2>
+                            <a href="/service" class="btn btn-success btn-lg mt-500">
                                 <span class="button-inner--text pt-40 text-uppercase">Devenez bosseur</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-           <br /><br />
-            <div class="container text-center">
-                <div class="row mb-5">
-                    <div class="col-md-8 mx-auto">
-                        <h3 class="display-3">Nos offres en quelque clicks choisissez votre categorie</h3>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div v-for="item in occupations" :key="item.id" class="col-lg-3">
-                        <div class="card card-blog card-background" data-animation="zooming">
-                            <div class="full-background" :style="{ backgroundImage: 'url(' + item.photo + ')' }"></div>
-                            <router-link :to="{ name: 'occupations.slug', params: { slug: item.slug  } }" exact>
-                                <div class="card-body">
-                                    <div class="content-bottom">
-                                        <h5 class="card-title text-center" v-html="item.name"></h5>
-                                    </div>
-                                </div>
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
-                <br /><br />
-            </div>
-            <br/>
             <div class="subscribe-line subscribe-line-white">
                 <div class="container">
                     <div class="row">
@@ -69,7 +45,7 @@
                     </div>
                 </div>
             </div>
-           <FooterUserSite/>
+            <FooterUserSite/>
         </div>
     </div>
 </template>
@@ -79,17 +55,22 @@
     export default {
         components: {FooterUserSite},
         data() {
-            let composantTitle = 'Technicians services to particulars';
+            let composantTitle = `${this.$route.params.slug}`;
             document.title = `${composantTitle}`;
             return {
-                occupations: {},
+                occupation: {},
             };
         },
 
         methods:{
-            loadItems(){
-                dyaxios.get(route('api_active.occupations')).then(response => ( this.occupations = response.data))
-            }
+            loadItems() {
+               dyaxios.get(route('occupations.view',this.$route.params.slug))
+                    .then(response => {
+                        this.occupation = response.data
+                    }).catch(error => {
+                    this.errored = true
+                });
+            },
         },
 
         created() {

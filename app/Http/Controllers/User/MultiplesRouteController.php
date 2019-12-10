@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
+use App\Model\admin\occupation;
 use Illuminate\Http\Request;
 
 class MultiplesRouteController extends Controller
@@ -23,6 +24,13 @@ class MultiplesRouteController extends Controller
     public function occupations()
     {
         return view('user.page.occupations');
+    }
+
+    public function occupation(occupation $occupation)
+    {
+        return view('user.occupation.show',[
+           'occupation' => $occupation,
+        ]);
     }
 
     /**
