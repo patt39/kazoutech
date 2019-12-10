@@ -127,22 +127,19 @@
     export default {
         components: {FooterUserSite},
         data() {
-            //here get title of the site
-            let composantTitle = 'Technicians services to particulars';
-            document.title = `${composantTitle}`;
             return {
                 occupations: {},
             };
         },
 
         methods:{
-            loadItems(){
-                dyaxios.get(route('api_active.occupations')).then(response => ( this.occupations = response.data))
-            }
+           //
         },
-
-        created() {
-            this.loadItems();
+        beforeRouteEnter(to, from, next) {
+            document.title = to.meta.title;
+            dyaxios.get(route('api_active.occupations')).then(response => {
+                next(vm => {vm.occupations = response.data;})
+            });
         }
     }
 </script>

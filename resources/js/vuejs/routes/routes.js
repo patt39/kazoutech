@@ -256,8 +256,18 @@ export const routes = [
 
     /** Ici je recupere les route du site **/
      //Route index
-    {path: '/',  name: 'index.site',component: IndexSite},
-    {path: '/home/', name: 'home',  component: IndexSite},
+    {
+        path: '/',
+        name: 'index.site',
+        component: IndexSite,
+        meta: {title: 'Technicians services to particulars'}
+    },
+    {
+        path: '/home/',
+        name: 'home',
+        component: IndexSite,
+        meta: {title: 'Technicians services to particulars'}
+    },
 
     //Route pages
     {path: '/about/', name: 'about', component: AboutSite},
@@ -265,8 +275,18 @@ export const routes = [
     {path: '/concept', name: 'concept', component: ConceptSite},
 
     //Route services
-    {path: '/occupations/', name: 'occupations.site', component: OccupationsSite},
-    {path: '/occupations/:slug/', name: 'occupations.slug', component: OccupationUserSlug},
+    {
+        path: '/occupations/',
+        name: 'occupations.site',
+        component: OccupationsSite,
+        meta: {title: 'Occupations'}
+    },
+    {
+        path: '/occupations/:slug/',
+        name: 'occupations.slug',
+        component: OccupationUserSlug,
+        meta: {title: 'Technicians services to particulars'}
+    },
 
 
 
