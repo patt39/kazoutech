@@ -97,7 +97,7 @@ import OccupationCreate from "../components/admin/occupation/occupation/Occupati
 import IndexSite from "../components/user/IndexSite";
 
 /* Services routes */
-import ServicesSite from "../components/user/pages/services/ServicesSite";
+import OccupationsSite from "../components/user/pages/services/OccupationsSite";
 import CategoryOccupationCreate from "../components/admin/occupation/categoryoccupation/CategoryOccupationCreate";
 
 
@@ -264,7 +264,7 @@ export const routes = [
     {path: '/concept', name: 'concept', component: ConceptSite},
 
     //Route services
-    {path: '/services', name: 'services', component: ServicesSite},
+    {path: '/occupations', name: 'occupations.site', component: OccupationsSite},
 
 
 

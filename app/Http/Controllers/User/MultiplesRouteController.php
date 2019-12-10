@@ -20,9 +20,9 @@ class MultiplesRouteController extends Controller
         return view('user.page.concept');
     }
 
-    public function services()
+    public function occupations()
     {
-        return view('user.page.services');
+        return view('user.page.occupations');
     }
 
     /**
