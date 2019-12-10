@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md-6 mx-auto ">
                             <form role="form" class="card  p-3" id="contact-form" @submit.prevent="createItem()"
-                                  method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">>
+                                  method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -34,8 +34,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" placeholder="Votre nom..." aria-label="First Name...">
-                                                    <has-error :form="form" field="title"></has-error>
+                                                    <input type="text" class="form-control" v-model="form.first_name" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="Votre nom..." aria-label="First Name...">
+                                                    <has-error :form="form" field="first_name"></has-error>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +46,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-tag"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" placeholder="Prénom..." aria-label="Last Name...">
+                                                    <input type="text" class="form-control" v-model="form.last_name" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="Prénom..." aria-label="Last Name...">
+                                                    <has-error :form="form" field="last_name"></has-error>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +58,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Email...">
+                                            <input type="email" class="form-control" v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }"  placeholder="Email...">
+                                            <has-error :form="form" field="email"></has-error>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -66,12 +68,13 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Email...">
+                                            <input type="text" class="form-control" placeholder="Object..." v-model="form.subject" :class="{ 'is-invalid': form.errors.has('subject') }">
+                                            <has-error :form="form" field="subject"></has-error>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Votre message<span style="color: red">*</span></label>
-                                        <textarea name="message" v-model="form.message" :class="{ 'is-invalid': form.errors.has('title') }" class="form-control form-control-alternative" id="message" rows="6"></textarea>
+                                        <textarea name="message" v-model="form.message" :class="{ 'is-invalid': form.errors.has('message') }" class="form-control form-control-alternative" id="message" rows="6"></textarea>
                                         <has-error :form="form" field="message"></has-error></div>
                                     <div class="row">
                                         <div class="col-md-6 ml-auto">
@@ -187,7 +190,7 @@
         },
 
         created() {
-        
+
         }
     }
 </script>

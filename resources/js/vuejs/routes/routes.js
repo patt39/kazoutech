@@ -17,7 +17,7 @@ import UserEdit from "../components/admin/user/UserEdit";
 import MessageIndex from "../components/admin/user/message/MessageIndex";
 import MessageSend from "../components/admin/user/message/MessageSend";
 import MessageView from "../components/admin/user/message/MessageView";
-import OccupationIndex from "../components/admin/occupation/OccupationIndex";
+import OccupationIndex from "../components/admin/occupation/occupation/OccupationIndex";
 import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
@@ -92,12 +92,13 @@ import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable"
 import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
 import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryViewSites";
 import UserCardIndex from "../components/admin/user/UserCardIndex";
-import OccupationEdit from "../components/admin/occupation/OccupationEdit";
-import OccupationCreate from "../components/admin/occupation/OccupationCreate";
+import OccupationEdit from "../components/admin/occupation/occupation/OccupationEdit";
+import OccupationCreate from "../components/admin/occupation/occupation/OccupationCreate";
 import IndexSite from "../components/user/IndexSite";
 
 /* Services routes */
 import ServicesSite from "../components/user/pages/services/ServicesSite";
+import CategoryOccupationCreate from "../components/admin/occupation/categoryoccupation/CategoryOccupationCreate";
 
 
 
@@ -130,6 +131,8 @@ export const routes = [
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
     {path: '/dashboard/occupations/create/', name: 'occupations.create', component: OccupationCreate},
     {path: '/dashboard/occupations/:id/edit', name: 'occupations.edit', component: OccupationEdit},
+
+    {path: '/dashboard/category_occupations/create', name: 'category_occupations.create', component: CategoryOccupationCreate},
 
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},

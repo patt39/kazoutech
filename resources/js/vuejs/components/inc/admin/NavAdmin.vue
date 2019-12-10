@@ -90,13 +90,6 @@
 
                     </li>
                     <!-- Occupations -->
-                    <li v-if="$auth.can('create-occupation')" class="nav-item">
-                        <router-link  :to="{ name: 'occupations.index' }" class="nav-link">
-                            <i class="material-icons">assignment</i>
-                            <p><b>Occupations</b></p>
-                        </router-link>
-                    </li>
-                    <!-- Links Pages -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#pageExamples">
                             <i class="material-icons">list_alt</i>
@@ -137,6 +130,32 @@
                                     <router-link  :to="{ path: '/dashboard/registrations/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>RI</b></span>
                                         <span class="sidebar-normal"><b>Registration Infos</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Links Pages -->
+                    <li v-if="$auth.can('create-occupation')" class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#pageOccupations">
+                            <i class="material-icons">assignment</i>
+                            <p><b>Occupations</b>
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="pageOccupations">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'occupations.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>OC</b></span>
+                                        <span class="sidebar-normal"><b>Occupations</b></span>
+                                    </router-link>
+                                </li>
+                                 <!--Registration-->
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'category_occupations.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>CO</b></span>
+                                        <span class="sidebar-normal"><b>Category Occupation</b></span>
                                     </router-link>
                                 </li>
                             </ul>
