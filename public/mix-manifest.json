@@ -1,4 +1,6 @@
 {
-    "/js/vuejs/app.js": "/js/vuejs/app.js",
-    "/js/vuejs/axios.js": "/js/vuejs/axios.js"
+    "/js/vuejs/app.js": "/js/vuejs/app.js?id=ae7a2f0f8ecc91da5652",
+    "/js/vuejs/app.js.map": "/js/vuejs/app.js.map?id=c25fb62ff6d06e5ae300",
+    "/js/vuejs/axios.js": "/js/vuejs/axios.js?id=c7436173109d3a729a68",
+    "/js/vuejs/axios.js.map": "/js/vuejs/axios.js.map?id=8746e5bac2d21c357ce7"
 }
