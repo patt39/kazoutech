@@ -76,7 +76,7 @@
                             <a href="javascript:;">
                                 <div class="card-body">
                                     <div class="content-bottom">
-                                        <h5 class="card-title" v-html="item.name"></h5>
+                                        <h5 class="card-title text-center" v-html="item.name"></h5>
                                     </div>
                                 </div>
                             </a>

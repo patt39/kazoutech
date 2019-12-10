@@ -13,12 +13,4 @@ Route::group(['namespace' => 'User'], function(){
 
     require(__DIR__ . DIRECTORY_SEPARATOR . 'subscribers.php');
 
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'about.php');
-
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'concept.php');
-
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'faq.php');
-
-    require(__DIR__ . DIRECTORY_SEPARATOR . 'service.php');
-
 });

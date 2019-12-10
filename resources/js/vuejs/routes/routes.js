@@ -42,9 +42,9 @@ import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
 import RegisterIndex from "../components/user/auth/RegisterIndex";
 import ContactUser from "../components/user/contact/ContactUser";
-import About from "../components/user/pages/About";
-import Faqs from "../components/user/pages/Faqs";
-import Concept from "../components/user/pages/Concept";
+import AboutSite from "../components/user/pages/AboutSite";
+import FaqsSite from "../components/user/pages/FaqsSite";
+import ConceptSite from "../components/user/pages/ConceptSite";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
 import LinkIndex from "../components/admin/partial/link/LinkIndex";
 import TechnicianView from "../components/admin/technician/TechnicianView";
@@ -95,6 +95,9 @@ import UserCardIndex from "../components/admin/user/UserCardIndex";
 import OccupationEdit from "../components/admin/occupation/OccupationEdit";
 import OccupationCreate from "../components/admin/occupation/OccupationCreate";
 import IndexSite from "../components/user/IndexSite";
+
+/* Services routes */
+import ServicesSite from "../components/user/pages/services/ServicesSite";
 
 
 
@@ -253,10 +256,12 @@ export const routes = [
     {path: '/home/', name: 'home',  component: IndexSite},
 
     //Route pages
-    {path: '/about/', name: 'about', component: About},
-    {path: '/faqs', name: 'faq', component: Faqs},
-    {path: '/concept', name: 'concept', component: Concept},
+    {path: '/about/', name: 'about', component: AboutSite},
+    {path: '/faqs', name: 'faqs', component: FaqsSite},
+    {path: '/concept', name: 'concept', component: ConceptSite},
 
+    //Route services
+    {path: '/services', name: 'services', component: ServicesSite},
 
 
 

@@ -1,8 +1,8 @@
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent headroom">
     <div class="container">
-        <a class="navbar-brand mr-lg-5" href="/">
+        <router-link :to="{ name: 'index.site' }" class="navbar-brand mr-lg-5">
             <img src="/assets/vendor_site/img/brand/white.png">
-        </a>
+        </router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,7 +12,7 @@
                     <div class="col-6 collapse-brand">
                         <a href="/">
                             <img src="/assets/img/vendor_site/brand/blue.png">
-                        </a>
+                       </a>
                     </div>
                     <div class="col-6 collapse-close">
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,10 +32,10 @@
                 </li>
                 @endcan
                 <li class="nav-item">
-                    <a href="/services" class="nav-link"  role="button">
+                    <router-link :to="{ name: 'services' }"  class="nav-link"  role="button">
                         <i class="ni ni-app d-lg-none"></i>
                         <span class="nav-link-inner--text"><b>Demander un service</b></span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-item">
                     <a href="/become_technician" class="nav-link" role="button">

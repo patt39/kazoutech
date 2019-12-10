@@ -9,6 +9,22 @@ use Illuminate\Http\Request;
 
 class MultiplesRouteController extends Controller
 {
+
+    public function about()
+    {
+        return view('user.page.about');
+    }
+
+    public function concept()
+    {
+        return view('user.page.concept');
+    }
+
+    public function services()
+    {
+        return view('user.page.services');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

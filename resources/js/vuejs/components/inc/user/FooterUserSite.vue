@@ -13,9 +13,9 @@
                             <h4 class="mb-4">Presentation</h4>
                             <ul class="links-vertical">
                                 <li>
-                                    <a href="/about">
+                                    <router-link :to="{ name: 'about' }">
                                         A propos de nous
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li>
                                     <a href="/concept">
@@ -28,9 +28,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/contacts">
+                                    <router-link :to="{ name: 'contact_cm' }">
                                         Contact
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>
@@ -49,58 +49,31 @@
                                         Media Kit
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        Contact
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="column">
                             <h4 class="mb-4">Informations</h4>
                             <ul class="links-vertical">
                                 <li>
                                     <a href="javascript:;">
-                                        Our mission
+                                        Licence
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
-                                        Media Kit
+                                        Terme et Condition
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
-                                        Contact
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6">
-                        <div class="column">
-                            <h4 class="mb-4">Social</h4>
-                            <ul class="links-vertical">
-                                <li>
-                                    <a href="javascript:;">
-                                        Community
+                                        Politique de confidentialite
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
-                                        Dribbble
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        Twitter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        Facebook
+                                        Legale notice 
                                     </a>
                                 </li>
                             </ul>

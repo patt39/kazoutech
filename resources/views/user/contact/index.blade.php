@@ -1,5 +1,5 @@
 @extends('inc.user._main')
-@section('title', '| Contact-Page')
+@section('title', 'Contact page')
 
 @section('style')
 
