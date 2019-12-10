@@ -23,9 +23,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/faqs">
-                                        Faqs
-                                    </a>
+                                    <router-link :to="{ name: 'faqs' }">
+                                        Faq
+                                    </router-link>
                                 </li>
                                 <li>
                                     <router-link :to="{ name: 'contact_cm' }">

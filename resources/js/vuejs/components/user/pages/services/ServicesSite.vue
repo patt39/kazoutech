@@ -137,7 +137,72 @@
                     </div>
                     </div>
                 </div>
-                <br /><br />
+            </div>
+              <div class="service">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center my-5">
+                    <h3 class="display-4">Dernier services rendu</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                    <div class="card card-project">
+                        <a href="javascript:;">
+                        <div class="icon icon-lg icon-shape icon-shape-secondary shadow rounded-circle mx-auto">
+                            <i class="ni ni-favourite-28"></i>
+                        </div>
+                        </a>
+                        <div class="card-body">
+                        <h4 class="card-title mt-3">Prepare launch</h4>
+                        <p class="card-description">Society has put up so many boundaries, so many limitations on what’s right and wrong that it’s almost impossible to get a pure thought out. It’s like a little kid, a little boy.</p>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-link text-secondary"><i class="ni ni-glasses-2"></i> Check out now</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                    <div class="card card-project">
+                        <a href="javascript:;">
+                        <div class="icon icon-lg icon-shape icon-shape-danger shadow rounded-circle mx-auto">
+                            <i class="ni ni-books"></i>
+                        </div>
+                        </a>
+                        <div class="card-body">
+                        <h4 class="card-title mt-3">Premium support</h4>
+                        <p class="card-description">Pink is obviously a better color. Everyone’s born confident, and everything’s taken away from you matters is the people who are sparked by it follow their dreams, too.</p>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-link text-danger"><i class="ni ni-key-25"></i> Find a opportunity</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                    <div class="card card-project">
+                        <a href="javascript:;">
+                        <div class="icon icon-lg icon-shape icon-shape-info shadow rounded-circle mx-auto">
+                            <i class="ni ni-trophy"></i>
+                        </div>
+                        </a>
+                        <div class="card-body">
+                        <h4 class="card-title mt-3">Design tools</h4>
+                        <p class="card-description">Constantly growing. We’re constantly making mistakes. We’re constantly trying to express ourselves and actualize our dreams the position that we want to be.</p>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-link text-info"><i class="ni ni-notification-70"></i> Check more</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-20">
+                        <h4 class="title">Nous offrons toujour le meilleur des service a la personne à traver les technicien(ne) sur notre plateforme.Le service a la personne na jamais été aussi facile et nous recompensons toujour nos meilleur technicien pourquils vous apportent toujours le meilleur de leur services a chaque fois. A noté que nos bosseur sont reconnu et donc ne peuvent pas defaillir a leur tache sous penne d'exclusion definitif de la plateform et aussi grace a vos feedback nous évaluons nos bosseur pour toujours vous recommender les meilleur</h4>
+                    </div>
+                </div>
             </div>
             <br/>
             <br/>
@@ -174,7 +239,6 @@
             </div>
            <FooterUserSite/>
         </div>
-    </div>
 </template>
 
 <script>
@@ -183,7 +247,7 @@
         components: {FooterUserSite},
         data() {
             //here get title of the site
-            let composantTitle = 'Technicians services to particulars';
+            let composantTitle = 'Services';
             document.title = `${composantTitle}`;
             return {
                 occupations: {},

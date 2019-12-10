@@ -8,7 +8,7 @@
 
 //Admin Route technicians
 Route::resource('dashboard/technicians','TechnicianController');
-Route::get('/become_technician', 'TechnicianController@bosseur')->name('become.technician');
+Route::get('/technician_become', 'TechnicianController@bosseur')->name('technician_become');
 Route::get('dashboard/technicians/u/{technician}','TechnicianController@technician')->name('technicians.view');
 Route::get('dashboard/technicians/c/{city}', 'TechnicianController@bycity')->name('city.technician');
 Route::get('dashboard/technicians/o/{occupation}', 'TechnicianController@byoccupation')->name('occupation.technician');

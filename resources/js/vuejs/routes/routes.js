@@ -81,7 +81,7 @@ import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEd
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 import CityActives from "../components/admin/partial/settings/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/admin/FaqByCategoryIndex";
-
+import TechnicianBecomeSite from "../components/user/pages/TechnicianBecomeSite";
 import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
@@ -263,7 +263,8 @@ export const routes = [
     //Route services
     {path: '/services', name: 'services', component: ServicesSite},
 
-
+     //Route devenir bosseur
+     {path: '/technician_become', name: 'technician_become', component: TechnicianBecomeSite},
 
 
     //Route auth

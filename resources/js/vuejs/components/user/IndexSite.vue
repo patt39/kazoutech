@@ -2,7 +2,7 @@
     <div class="landing-page">
         <div class="wrapper">
             <div class="page-header page-header-small header-filter">
-                <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/pages/nathan-dumlao.jpg');"></div>
+                <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/pages/georgie.jpg');"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 mx-auto text-center">
@@ -65,11 +65,10 @@
             <div class="container text-center">
                 <div class="row mb-5">
                     <div class="col-md-8 mx-auto">
-                        <h3 class="display-3">Nos offres en quelque clicks choisissez votre categorie</h3>
+                        <h3 class="display-4">Nos offres en quelques clicks choisissez votre categorie</h3>
                     </div>
                 </div>
                 <div class="row align-items-center">
-
                     <div v-for="item in occupations" :key="item.id" class="col-lg-3">
                         <div class="card card-blog card-background" data-animation="zooming">
                             <div class="full-background" :style="{ backgroundImage: 'url(' + item.photo + ')' }"></div>
@@ -86,6 +85,84 @@
             </div>
             <br/>
             <br/>
+          <div class="section features-7 bg-secondary">
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-center mx-auto">
+                    <h4 class="display-5">Le service entre particuliers jamais aussi facile</h4>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-12">
+                    <div class="row row-grid">
+                        <div class="col-lg-4">
+                        <div class="card card-lift--hover shadow border-0">
+                            <div class="card-body py-5">
+                            <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                                <i class="ni ni-check-bold"></i>
+                            </div>
+                            <h6 class="text-primary text-uppercase">Kazoutech plateforme par excelence</h6>
+                            <p class="description mt-3">Because I’m here to follow my dreams and inspire other people to follow their dreams, too. That’s what I’m here for. </p>
+                            <a href="#" class="btn btn-primary mt-4">Learn more</a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-4">
+                        <div class="card card-lift--hover shadow border-0">
+                            <div class="card-body py-5">
+                            <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                                <i class="ni ni-istanbul"></i>
+                            </div>
+                            <h6 class="text-success text-uppercase">Confiance absolut</h6>
+                            <p class="description mt-3">Society has put up so many boundaries, so many limitations on what’s right and wrong that it’s almost impossible.</p>
+                            <a href="#" class="btn btn-success mt-4">Learn more</a>
+                            </div>
+                        </div>
+                        </div>
+                     <div class="col-lg-4">
+                        <div class="card card-lift--hover shadow border-0">
+                            <div class="card-body py-5">
+                            <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                                <i class="ni ni-planet"></i>
+                            </div>
+                            <h6 class="text-warning text-uppercase">Tout vos bésoins en quelques minute</h6>
+                            <p class="description mt-3">Why would anyone pick blue over pink? Pink is obviously a better color.Everyone’s born confident, and everything’s...</p>
+                            <a href="#" class="btn btn-warning mt-4">Learn more</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                     <div class="section pub-cities">
+                         <div class="container">
+                             <div class="row">
+                              <div class="col-md-8 text-center mx-auto">
+                           <h4 class="display-5">Nous somme partout et beaucoups en parlent</h4>
+                           </div>
+                      </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-6">
+                            <small class="d-block text-uppercase font-weight-bold mb-4">Douala</small>
+                            <img src="/assets/vendor_site/img/faces/team-1.jpg" alt="Rounded image" class="img-fluid rounded shadow" style="width: 150px;">
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <small class="d-block text-uppercase font-weight-bold mb-4">Yaoundé</small>
+                            <img src="/assets/vendor_site/img/faces/team-2.jpg" alt="Circle image" class="img-fluid rounded-circle shadow" style="width: 150px;">
+                        </div>
+                        <div class="col-sm-3 col-6 mt-5 mt-sm-0">
+                            <small class="d-block text-uppercase font-weight-bold mb-4">Bafoussam</small>
+                            <img src="/assets/vendor_site/img/faces/team-3.jpg" alt="Raised image" class="img-fluid rounded shadow-lg" style="width: 150px;">
+                        </div>
+                        <div class="col-sm-3 col-6 mt-5 mt-sm-0">
+                            <small class="d-block text-uppercase font-weight-bold mb-4">Bamenda</small>
+                            <img src="/assets/vendor_site/img/faces/team-4.jpg" alt="Raised circle image" class="img-fluid rounded-circle shadow-lg" style="width: 150px;">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
             <div class="subscribe-line subscribe-line-white">
                 <div class="container">
                     <div class="row">
@@ -119,6 +196,7 @@
             </div>
            <FooterUserSite/>
         </div>
+      </div> 
     </div>
 </template>
 
