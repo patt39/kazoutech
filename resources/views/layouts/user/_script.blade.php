@@ -30,7 +30,7 @@
 <script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 <script src="{{ mix('/js/vuejs/axios.js') }}"></script>
-<script src="{{ mix('/js/vuejs/app.js') }}"></script>
+<script src="{{ mix('/js/reactjs/app.js') }}"></script>
 <script>
     window.TrackJS &&
     TrackJS.install({

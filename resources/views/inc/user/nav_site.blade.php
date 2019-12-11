@@ -32,7 +32,7 @@
                 </li>
                 @endcan
                 <li class="nav-item">
-                    <router-link :to="{ name: 'services' }"  class="nav-link"  role="button">
+                    <router-link :to="{ name: 'occupations.site' }"  class="nav-link"  role="button">
                         <i class="ni ni-app d-lg-none"></i>
                         <span class="nav-link-inner--text"><b>Demander un service</b></span>
                     </router-link>

@@ -17,7 +17,7 @@ import UserEdit from "../components/admin/user/UserEdit";
 import MessageIndex from "../components/admin/user/message/MessageIndex";
 import MessageSend from "../components/admin/user/message/MessageSend";
 import MessageView from "../components/admin/user/message/MessageView";
-import OccupationIndex from "../components/admin/occupation/OccupationIndex";
+import OccupationIndex from "../components/admin/occupation/occupation/OccupationIndex";
 import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
@@ -92,12 +92,14 @@ import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable"
 import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
 import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryViewSites";
 import UserCardIndex from "../components/admin/user/UserCardIndex";
-import OccupationEdit from "../components/admin/occupation/OccupationEdit";
-import OccupationCreate from "../components/admin/occupation/OccupationCreate";
+import OccupationEdit from "../components/admin/occupation/occupation/OccupationEdit";
+import OccupationCreate from "../components/admin/occupation/occupation/OccupationCreate";
 import IndexSite from "../components/user/IndexSite";
 
 /* Services routes */
-import ServicesSite from "../components/user/pages/services/ServicesSite";
+import OccupationsSite from "../components/user/pages/services/OccupationsSite";
+import CategoryOccupationCreate from "../components/admin/occupation/categoryoccupation/CategoryOccupationCreate";
+import OccupationUserSlug from "../components/user/pages/services/OccupationUserSlug";
 
 
 
@@ -130,6 +132,8 @@ export const routes = [
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
     {path: '/dashboard/occupations/create/', name: 'occupations.create', component: OccupationCreate},
     {path: '/dashboard/occupations/:id/edit', name: 'occupations.edit', component: OccupationEdit},
+
+    {path: '/dashboard/category_occupations/create', name: 'category_occupations.create', component: CategoryOccupationCreate},
 
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},
@@ -252,8 +256,18 @@ export const routes = [
 
     /** Ici je recupere les route du site **/
      //Route index
-    {path: '/',  name: 'index.site',component: IndexSite},
-    {path: '/home/', name: 'home',  component: IndexSite},
+    {
+        path: '/',
+        name: 'index.site',
+        component: IndexSite,
+        meta: {title: 'Technicians services to particulars'}
+    },
+    {
+        path: '/home/',
+        name: 'home',
+        component: IndexSite,
+        meta: {title: 'Technicians services to particulars'}
+    },
 
     //Route pages
     {path: '/about/', name: 'about', component: AboutSite},
@@ -261,7 +275,18 @@ export const routes = [
     {path: '/concept', name: 'concept', component: ConceptSite},
 
     //Route services
-    {path: '/services', name: 'services', component: ServicesSite},
+    {
+        path: '/occupations/',
+        name: 'occupations.site',
+        component: OccupationsSite,
+        meta: {title: 'Occupations et services à la persone : trouver un jobber facillement kazoutech'}
+    },
+    {
+        path: '/occupations/:slug/',
+        name: 'occupations.slug',
+        component: OccupationUserSlug,
+        meta: {title: 'Technicians services to particulars'}
+    },
 
      //Route devenir bosseur
      {path: '/technician_become', name: 'technician_become', component: TechnicianBecomeSite},
