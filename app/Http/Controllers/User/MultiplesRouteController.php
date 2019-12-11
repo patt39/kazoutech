@@ -33,6 +33,12 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
+    public function occupationbyslug($slug)
+    {
+        $occupation = occupation::whereSlug($slug)->firstOrFail();
+
+        dd($occupation);
+    }
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

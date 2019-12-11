@@ -9,7 +9,6 @@
 
 <div id="app">
 
-    @include('inc.user.nav_site')
     @section('content')
 
 

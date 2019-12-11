@@ -60,7 +60,7 @@ class FooterUserSite extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-2">
                                 <div className="column">
                                     <h4 className="mb-4">Informations</h4>
                                     <ul className="links-vertical">
@@ -87,19 +87,31 @@ class FooterUserSite extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="column">
                                     <h4 className="mb-4">Newsletter</h4>
                                     <ul className="links-vertical">
                                         <p>We handpicked the most interesting content for you. No spam. It takes one click to unsubscribe. Give
                                 it a try!</p>
-                                        <form className="form form-newsletter" method="" action="">
-                                            <div className="form-group">
-                                                <input type="email" className="form-control" placeholder="Your Email" />
+                                        <form method="" action="">
+                                            <div className="row">
+                                                <div className="col-sm-8">
+                                                    <div className="form-group">
+                                                        <div className="input-group mb-4">
+                                                            <div className="input-group-prepend">
+                                                            <span className="input-group-text">
+                                                                <i className="ni ni-email-83" /></span>
+                                                            </div>
+                                                            <input className="form-control" placeholder="votre Email..."
+                                                                   type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-sm-4">
+                                                    <button type="button" className="btn btn-outline-primary btn-block">souscrivez
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <button type="button" className="btn btn-primary" name="button">
-                                                Subscribe
-                                </button>
                                         </form>
                                     </ul>
                                 </div>
@@ -122,7 +134,7 @@ class FooterUserSite extends Component {
                             <span className="btn-inner--icon">
                                 <i className="fab fa-instagram"></i>
                             </span>
-                        </button>
+                       </button>
                         <button type="button" className="btn-icon-only rounded-circle btn btn-pinterest">
                             <span className="btn-inner--icon">
                                 <i className="fab fa-pinterest"></i>

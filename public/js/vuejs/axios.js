@@ -426,7 +426,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\perso\kazoutech\resources\js\vuejs\axios.js */"./resources/js/vuejs/axios.js");
+module.exports = __webpack_require__(/*! /Users/boclairtemgoua/sites/projet/kazoutech/resources/js/vuejs/axios.js */"./resources/js/vuejs/axios.js");
 
 
 /***/ })

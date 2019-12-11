@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\Faqs\StoreRequest;
 use App\Http\Requests\Admin\Faqs\UpdateRequest;
 use App\Http\Resources\FaqResource;
+use App\Http\Resources\User\FaqByStatusResource;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
 use App\Http\Controllers\Controller;
@@ -58,9 +59,7 @@ class FaqController extends Controller
 
     public function bystatussitesapi()
     {
-        $faqs = FaqResource::collection(faq::with('user','categoryfaq')
-            ->where('status',1)->latest()
-            ->paginate(10));
+        $faqs = FaqByStatusResource::collection(faq::where('status',1)->latest()->get());
         return response()->json($faqs,200);
     }
 

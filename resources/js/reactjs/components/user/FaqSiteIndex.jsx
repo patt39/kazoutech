@@ -13,7 +13,8 @@ class FaqSiteIndex extends Component {
 
     // lifecycle method
     componentDidMount() {
-        //
+        const composantTitle = 'FAQS';
+        document.title = `${composantTitle} | Kaazoutech`;
     }
     render(){
         const {faqs} = this.state;
@@ -23,7 +24,7 @@ class FaqSiteIndex extends Component {
               <NavUserSIte/>
               <div className="faq-page">
                   <div className="wrapper">
-                      <div className="page-header page-header-small header-filter">
+                      <div className="page-header page-header-mini header-filter">
                           <div className="page-header-image page-header-mini" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
                           <div className="container">
                               <div className="row">

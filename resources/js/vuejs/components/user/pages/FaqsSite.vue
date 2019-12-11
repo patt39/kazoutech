@@ -65,7 +65,7 @@
                         <div class="card">
                             <div class="card-header" id="headingFour">
                             <h5 class="mb-0">
-                                <button class="btn btn-link w-100 text-primary text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-controls="collapseFour">
+                               <button class="btn btn-link w-100 text-primary text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-controls="collapseFour">
                                 Can I resell the products?
                                 <i class="ni ni-bold-down float-right pt-1"></i>
                                 </button>

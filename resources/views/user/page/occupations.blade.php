@@ -1,6 +1,6 @@
 @extends('inc.user._main')
-<?php $item = htmlspecialchars('Occupations et services à la persone : trouver un jobber facillement kazoutech');?>
-@section('title', $item)
+<?php $item = htmlspecialchars(config('app.name'));?>
+@section('title', 'Occupations et services à la persone : trouver un jobber facillement kazoutech | '.$item)
 
 @section('style')
 @endsection
@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <router-view></router-view>
+    <div id="app_kazoutech"></div>
 @endsection
 
 @section('script')

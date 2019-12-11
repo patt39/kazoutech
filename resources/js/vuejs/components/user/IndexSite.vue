@@ -108,7 +108,7 @@
                     <h3 class="display-5">Nous somme partout et beaucoups en parlent</h3>
                   </div>
                 </div>
-              </div>
+             </div>
               <br/>
               <div class="row">
                 <div class="col-sm-3 col-6">

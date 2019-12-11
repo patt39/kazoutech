@@ -1,5 +1,6 @@
 @extends('inc.user._main')
-@section('title', 'Technicians services to particulars')
+<?php $item = htmlspecialchars(config('app.name'));?>
+@section('title', 'Technicians services to particulars | '.$item)
 
 @section('style')
 @endsection
@@ -9,7 +10,7 @@
 @endsection
 
 @section('content')
-    <router-view></router-view>
+    <div id="app_kazoutech"></div>
 @endsection
 
 @section('script')
