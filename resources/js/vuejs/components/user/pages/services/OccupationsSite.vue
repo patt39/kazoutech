@@ -1,24 +1,27 @@
 <template>
     <div class="services-page">
         <div class="wrapper">
-            <div class="page-header page-header-small header-filter">
-                <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/pages/nathan-dumlao.jpg');"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 mx-auto text-center">
-                            <h2 class="display-2 text-white">Du service a la personne et du main à main entre particuliers</h2>
-                            <a href="/service" class="btn btn-success btn-lg mt-500" name="button">
-                                <span class="button-inner--text pt-40 text-uppercase">Devenez bosseur</span>
-                            </a>
+            <div class="section-shaped my-0 skew-separator skew-mini">
+                <div class="page-header page-header-small header-filter">
+                    <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/pages/nathan-dumlao.jpg');">
+                    </div>
+                    <div class="container">
+                        <div class="header-body text-center mb-7">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+                                    <h1 class="text-white">Occupations </h1>
+                                    <p class="text-lead text-white">Du service a la personne et du main à main entre particuliers</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-           <br /><br />
+            <br/>
             <div class="container text-center">
                 <div class="row mb-5">
-                    <div class="col-md-8 mx-auto">
-                        <h3 class="display-3">Nos offres en quelque clicks choisissez votre categorie</h3>
+                    <div class="col-md-10 mx-auto">
+                        <h5 class="display-3">Nos offres en quelque clicks choisissez votre occupations</h5>
                     </div>
                 </div>
                 <div class="row align-items-center">
@@ -35,7 +38,6 @@
                         </div>
                     </div>
                 </div>
-                <br /><br />
             </div>
             <br/>
             <div class="subscribe-line subscribe-line-white">

@@ -38,10 +38,10 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                <router-link :to="{ name: 'technician_become' }"  class="nav-link"  role="button">
-                        <i class="ni ni-app d-lg-none"></i>
-                        <span class="nav-link-inner--text"><b>Dévenir un bosseur</b></span>
-                </router-link>
+                    <router-link :to="{ name: 'technician_become' }"  class="nav-link"  role="button">
+                            <i class="ni ni-app d-lg-none"></i>
+                            <span class="nav-link-inner--text"><b>Dévenir un bosseur</b></span>
+                    </router-link>
                 </li>
                 <!-- Authentication Links -->
                 @guest
