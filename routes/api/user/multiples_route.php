@@ -1,3 +1,3 @@
 <?php
 
-Route::get('occupations/{slug}','MultiplesRouteController@occupationbyslug')->name('occupation.view');
+Route::get('occupations/{slug}','MultiplesRouteController@apioccupationbyslug')->name('occupations.view');

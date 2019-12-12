@@ -9,23 +9,22 @@ class OccupationSiteIndex extends Component{
     constructor(props){
         super(props);
         this.state = {
-            occupation: [],
+            occupations: [],
         }
     }
 
-    loadItems(){
+    // lifecycle method
+    componentDidMount() {
+        const composantTitle = 'Occupations et services à la persone : trouver un jobber facillement kazoutech';
+        document.title = `${composantTitle} | Kaazoutech`;
         dyaxios.get(route('api_active.occupations')).then(response =>
             this.setState({
                 occupations: [...response.data],
             }));
-    }
-    // lifecycle method
-    componentDidMount() {
-        this.loadItems();
 
     }
     render() {
-        let { occupation } = this.state;
+        let { occupations } = this.state;
         return(
             <>
                 <NavUserSIte/>

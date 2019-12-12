@@ -18,8 +18,9 @@ class OccupationByStatusResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'status' => $this->status,
             'photo' => $this->photo,
+            'status' => $this->status,
+            'description' => $this->description,
         ];
     }
 }

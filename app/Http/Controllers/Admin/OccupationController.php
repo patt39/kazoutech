@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Occupations\StoreRequest;
+use App\Http\Requests\Occupations\UpdateRequest;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\User\OccupationByStatusResource;
 use App\Model\admin\occupation;
@@ -74,11 +76,8 @@ class OccupationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->validate($request,[
-            'name'=>'required|string|unique:occupations',
-        ]);
 
         $occupation = new occupation;
         $occupation->name = $request->name;
@@ -154,11 +153,8 @@ class OccupationController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        $this->validate($request,[
-            'name'=> "required|string|min:2|max:25|unique:occupations,name,{$id}",
-        ]);
 
         $occupation = occupation::findOrFail($id);
 

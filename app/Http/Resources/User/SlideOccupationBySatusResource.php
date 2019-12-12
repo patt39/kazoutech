@@ -20,6 +20,7 @@ class SlideOccupationBySatusResource extends JsonResource
             'status' => $this->status,
             'title' => $this->title,
             'subtitle' => $this->subtitle,
+            'description' => $this->description,
             'type_header' => $this->type_header,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User\OccupationByStatusResource;
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
 use App\Model\admin\occupation;
@@ -23,7 +24,7 @@ class MultiplesRouteController extends Controller
 
     public function occupations()
     {
-        return view('user.page.occupations');
+        return view('user.occupation.occupations');
     }
 
     public function occupation(occupation $occupation)
@@ -33,11 +34,11 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function occupationbyslug($slug)
+    public function apioccupationbyslug($slug)
     {
-        $occupation = occupation::whereSlug($slug)->firstOrFail();
+        $occupation = new OccupationByStatusResource(occupation::whereSlug($slug)->firstOrFail());
 
-        dd($occupation);
+        return response()->json($occupation,200);
     }
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
