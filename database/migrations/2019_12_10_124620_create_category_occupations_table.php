@@ -18,6 +18,7 @@ class CreateCategoryOccupationsTable extends Migration
             $table->string('name')->nullable();
             $table->text('subject')->nullable();
             $table->text('description')->nullable();
+            $table->string('photo')->nullable();
             $table->string('link')->nullable();
             $table->string('slug')->nullable();
             $table->boolean('status')->default(false);

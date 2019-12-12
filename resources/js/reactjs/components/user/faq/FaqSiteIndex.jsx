@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FaqUserList from "./FaqUserList";
-import OccupationList from "../occupation/OccupationList";
 
 
 class FaqSiteIndex extends Component {

@@ -95,6 +95,11 @@ class occupation extends Model implements Auditable
         return $this->belongsTo(city::class);
     }
 
+    public function categoryoccupations()
+    {
+        return $this->hasMany(category_occupation::class,'occupation_id');
+    }
+
     public function technicians()
     {
         return $this->hasMany(technician::class);

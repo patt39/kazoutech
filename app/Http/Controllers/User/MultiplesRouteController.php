@@ -36,7 +36,7 @@ class MultiplesRouteController extends Controller
 
     public function apioccupationbyslug($slug)
     {
-        $occupation = new OccupationByStatusResource(occupation::whereSlug($slug)->firstOrFail());
+        $occupation = new OccupationByStatusResource(occupation::where('status',1)->whereSlug($slug)->firstOrFail());
 
         return response()->json($occupation,200);
     }

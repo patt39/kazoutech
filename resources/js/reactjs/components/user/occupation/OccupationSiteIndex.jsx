@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-import {Link} from 'react-router-dom'
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import OccupationList from "./OccupationList";
