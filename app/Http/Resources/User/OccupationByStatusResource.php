@@ -19,7 +19,8 @@ class OccupationByStatusResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'photo' => $this->photo,
-            'categoryoccupations' => $this->categoryoccupations()->select('id','slug','photo','name')->get()->toArray(),
+            'categoryoccupations' => $this->categoryoccupations()
+                 ->select('id','slug','photo','name','occupation_id')->distinct()->get()->toArray(),
             'status' => $this->status,
             'description' => $this->description,
         ];

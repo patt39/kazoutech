@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-        <div class="section features-4">
+      <div class="section features-4">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-4 mr-auto text-left mt-4">
@@ -264,7 +264,7 @@
                 </div>
                 </div>
             </div>
-            </section>
+        </section>
             <br/>
             <br/>
             <div class="subscribe-line subscribe-line-white">

@@ -40,10 +40,10 @@ class IndexSite extends Component {
                                     <div className="col-lg-10 mx-auto text-center">
                                         <h3
                                             className="display-2 text-white"
-                                        >Du service a la personne et du main à main entre particuliers</h3>
-                                        <a href="/service" className="btn btn-success btn-lg mt-500" name="button">
+                                       >Du service a la personne et du main à main entre particuliers</h3>
+                                        <Link to={'/occupations/'} className="btn btn-success btn-lg mt-500" name="button">
                                             <span className="button-inner--text pt-40 text-uppercase">Demande un service</span>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

@@ -21,24 +21,24 @@ class FooterUserSite extends Component {
                                     <h4 className="mb-4">Presentation</h4>
                                     <ul className="links-vertical">
                                         <li>
-                                            <Link to={'/'}>
+                                            <Link to={'/about/'}>
                                                 A propos de nous
-                                        </Link>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/concept">
+                                            <a href="/concept/">
                                                 Notre concept
                                         </a>
                                         </li>
                                         <li>
-                                            <Link to={'/faqs'}>
+                                            <Link to={'/faqs/'}>
                                                 Faq
-                                    </Link>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <Link to={'/contacts'}>
+                                            <Link to={'/contacts/'}>
                                                 Contact
-                                </Link>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -48,19 +48,19 @@ class FooterUserSite extends Component {
                                     <h4 className="mb-4">Services</h4>
                                     <ul className="links-vertical">
                                         <li>
-                                            <a href="/services">
-                                                Nos services
-                                </a>
+                                        <Link to={'/occupations'}>
+                                                Nos categorie
+                                        </Link>
                                         </li>
                                         <li>
                                             <a href="..">
                                                 Media Kit
-                                </a>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-3">
                                 <div className="column">
                                     <h4 className="mb-4">Informations</h4>
                                     <ul className="links-vertical">
@@ -87,7 +87,7 @@ class FooterUserSite extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-5">
                                 <div className="column">
                                     <h4 className="mb-4">Newsletter</h4>
                                     <ul className="links-vertical">
@@ -108,7 +108,7 @@ class FooterUserSite extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="col-sm-4">
-                                                    <button type="button" className="btn btn-outline-primary btn-block">souscrivez
+                                                    <button type="button" className="btn btn-primary btn-block">souscrivez
                                                     </button>
                                                 </div>
                                             </div>
@@ -144,7 +144,7 @@ class FooterUserSite extends Component {
                 </div>
                 <div className="copyright d-flex justify-content-center mt-4 mr-40">
                     Copyright &copy; {1900 + new Date().getYear()}, Designed by{" "}. Realized by 
-             <a href="/" className="title-red"> KazouGroup srl</a>
+             <a href="/" className="title-red pl-2" style={{color: "red"}}> KazouGroup srl</a>
                 </div>
             </footer>
         )

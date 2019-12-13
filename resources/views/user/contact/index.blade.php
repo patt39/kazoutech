@@ -1,8 +1,8 @@
 @extends('inc.user._main')
-@section('title', 'Contact page')
+<?php $item = htmlspecialchars(config('app.name'));?>
+@section('title', 'contacts | '.$item)
 
 @section('style')
-
 @endsection
 
 @section('init')
@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <router-view></router-view>
+    <div id="app_kazoutech"></div>
 @endsection
 
 @section('script')

@@ -50,7 +50,7 @@
                                                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                 <div>
                                                                                                 <span class="btn btn-raised btn-success btn-file">
-                                                                                                   <span class="fileinput-new" style="cursor: pointer">
+                                                                                                  <span class="fileinput-new" style="cursor: pointer">
                                                                                                        <i class="material-icons">insert_photo</i>
                                                                                                            <b>Add Slide</b>
                                                                                                     </span>
@@ -67,6 +67,18 @@
                                                                                 </div>
                                                                             </div>
                                                                             <has-error :form="form" field="photo"></has-error>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="media-body">
+                                                                            <label class="bmd-label-floating">Tell about for you<span style="color: red;">*</span></label>
+                                                                            <quill-editor v-model="form.description"
+                                                                                          :class="{ 'is-invalid': form.errors.has('description') }"
+                                                                                          :options="editorOption">
+                                                                            </quill-editor>
+                                                                            <has-error :form="form" field="body"></has-error>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -116,6 +128,20 @@
                     photo: '',
                     user: '',
                 }),
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            ['bold', 'italic', 'underline'],
+                            [{'list': 'ordered'}, {'list': 'bullet'}],
+                            [{ 'align': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            ['clean']
+                        ]
+                    }
+                }
             }
         },
         methods: {

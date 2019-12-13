@@ -16,9 +16,13 @@ class category_occupation extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
+    public function occupation()
+    {
+        return $this->belongsTo(occupation::class,'occupation_id');
+    }
     /**
      * save and deleting image
      */
