@@ -10,7 +10,7 @@ class DiplomaObserver
     /**
      * Handle the diploma "created" event.
      *
-     * @param  \App\Model\admin\partial\diploma  $diploma
+     * @param diploma $diploma
      * @return void
      */
     public function created(diploma $diploma)
@@ -21,7 +21,7 @@ class DiplomaObserver
     /**
      * Handle the diploma "updated" event.
      *
-     * @param  \App\Model\admin\partial\diploma  $diploma
+     * @param diploma $diploma
      * @return void
      */
     public function updated(diploma $diploma)
@@ -32,7 +32,7 @@ class DiplomaObserver
     /**
      * Handle the diploma "deleted" event.
      *
-     * @param  \App\Model\admin\partial\diploma  $diploma
+     * @param diploma $diploma
      * @return void
      */
     public function deleted(diploma $diploma)

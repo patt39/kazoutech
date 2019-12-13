@@ -10,7 +10,7 @@ class ColorObserver
     /**
      * Handle the color "created" event.
      *
-     * @param  \App\Model\admin\color  $color
+     * @param color $color
      * @return void
      */
     public function created(color $color)
@@ -21,7 +21,7 @@ class ColorObserver
     /**
      * Handle the color "updated" event.
      *
-     * @param  \App\Model\admin\color  $color
+     * @param color $color
      * @return void
      */
     public function updated(color $color)
@@ -32,7 +32,7 @@ class ColorObserver
     /**
      * Handle the color "deleted" event.
      *
-     * @param  \App\Model\admin\color  $color
+     * @param color $color
      * @return void
      */
     public function deleted(color $color)

@@ -10,7 +10,7 @@ class NoteObserver
     /**
      * Handle the note "created" event.
      *
-     * @param  \App\Model\admin\note  $note
+     * @param note $note
      * @return void
      */
     public function created(note $note)
@@ -21,7 +21,7 @@ class NoteObserver
     /**
      * Handle the note "updated" event.
      *
-     * @param  \App\Model\admin\note  $note
+     * @param note $note
      * @return void
      */
     public function updated(note $note)
@@ -32,7 +32,7 @@ class NoteObserver
     /**
      * Handle the note "deleted" event.
      *
-     * @param  \App\Model\admin\note  $note
+     * @param note $note
      * @return void
      */
     public function deleted(note $note)

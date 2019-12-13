@@ -1,6 +1,7 @@
 <?php
 
-use App\Model\admin\category_occupation;
+use App\Model\admin\annonce;
+use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
 use App\Model\user\User;
 use Illuminate\Database\Seeder;
@@ -39,6 +40,6 @@ class OccupationAndCategoriesSeed extends Seeder
             occupation::create($item);
 
 
-        factory(category_occupation::class, 100)->create();
+        factory(categoryoccupation::class, 30)->create();
     }
 }

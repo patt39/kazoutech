@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
-import PageUserHeader from "../../inc/PageUserHeader";
-import CategoryOcupationList from "./CategoryOcupationList";
+import OccupationHeader from "../../inc/OccupationHeader";
+import CategoryOcupationList from "./categoryoccupation/CategoryOcupationList";
 import OccupationList from "./OccupationList";
 
 
@@ -18,8 +18,8 @@ class OccupationSiteSlug extends Component {
 
     // lifecycle method
     componentDidMount() {
-        let itemSlug = this.props.match.params.slug;
-        let url = route('occupations.view',itemSlug);
+        let itemOccupation = this.props.match.params.occupation;
+        let url = route('occupations.view',itemOccupation);
         axios.get(url).then(response => this.setState({occupation: response.data,}));
     }
 
@@ -34,9 +34,7 @@ class OccupationSiteSlug extends Component {
                 <NavUserSIte/>
                 <div className="landing-page">
                     <div className="wrapper">
-                        <div className="section-shaped my-0 skew-separator skew-mini">
-                           <PageUserHeader {...occupation}/>
-                        </div>
+                        <OccupationHeader {...occupation}/>
                         <div className="cd-section" id="accordion">
                             <div className="accordion-1">
                                 <div className="container">

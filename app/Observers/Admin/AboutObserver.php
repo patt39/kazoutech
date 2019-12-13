@@ -10,7 +10,7 @@ class AboutObserver
     /**
      * Handle the about "created" event.
      *
-     * @param  \App\Model\admin\page\about  $about
+     * @param about $about
      * @return void
      */
     public function created(about $about)
@@ -21,7 +21,7 @@ class AboutObserver
     /**
      * Handle the about "updated" event.
      *
-     * @param  \App\Model\admin\page\about  $about
+     * @param about $about
      * @return void
      */
     public function updated(about $about)
@@ -32,7 +32,7 @@ class AboutObserver
     /**
      * Handle the about "deleted" event.
      *
-     * @param  \App\Model\admin\page\about  $about
+     * @param about $about
      * @return void
      */
     public function deleted(about $about)

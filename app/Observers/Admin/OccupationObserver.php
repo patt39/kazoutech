@@ -10,7 +10,7 @@ class OccupationObserver
     /**
      * Handle the occupation "created" event.
      *
-     * @param  \App\Model\admin\occupation  $occupation
+     * @param occupation $occupation
      * @return void
      */
     public function created(occupation $occupation)
@@ -21,7 +21,7 @@ class OccupationObserver
     /**
      * Handle the occupation "updated" event.
      *
-     * @param  \App\Model\admin\occupation  $occupation
+     * @param occupation $occupation
      * @return void
      */
     public function updated(occupation $occupation)
@@ -32,7 +32,7 @@ class OccupationObserver
     /**
      * Handle the occupation "deleted" event.
      *
-     * @param  \App\Model\admin\occupation  $occupation
+     * @param occupation $occupation
      * @return void
      */
     public function deleted(occupation $occupation)

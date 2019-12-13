@@ -10,7 +10,7 @@ class ContactObserver
     /**
      * Handle the contact "created" event.
      *
-     * @param  \App\Model\admin\contact  $contact
+     * @param contact $contact
      * @return void
      */
     public function created(contact $contact)
@@ -21,7 +21,7 @@ class ContactObserver
     /**
      * Handle the contact "updated" event.
      *
-     * @param  \App\Model\admin\contact  $contact
+     * @param contact $contact
      * @return void
      */
     public function updated(contact $contact)
@@ -32,7 +32,7 @@ class ContactObserver
     /**
      * Handle the contact "deleted" event.
      *
-     * @param  \App\Model\admin\contact  $contact
+     * @param contact $contact
      * @return void
      */
     public function deleted(contact $contact)

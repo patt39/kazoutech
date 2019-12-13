@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\admin\category_occupation;
+use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
 use App\Model\user\User;
 use Faker\Generator as Faker;
@@ -16,7 +16,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(category_occupation::class, function (Faker $faker) {
+$factory->define(categoryoccupation::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->userName,
         'status' => $faker->boolean,

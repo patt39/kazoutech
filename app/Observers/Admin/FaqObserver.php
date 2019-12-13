@@ -10,7 +10,7 @@ class FaqObserver
     /**
      * Handle the faq "created" event.
      *
-     * @param  \App\Model\admin\faq  $faq
+     * @param faq $faq
      * @return void
      */
     public function created(faq $faq)
@@ -21,7 +21,7 @@ class FaqObserver
     /**
      * Handle the faq "updated" event.
      *
-     * @param  \App\Model\admin\faq  $faq
+     * @param faq $faq
      * @return void
      */
     public function updated(faq $faq)
@@ -32,7 +32,7 @@ class FaqObserver
     /**
      * Handle the faq "deleted" event.
      *
-     * @param  \App\Model\admin\faq  $faq
+     * @param faq $faq
      * @return void
      */
     public function deleted(faq $faq)

@@ -10,7 +10,7 @@ class CategoryfaqObserver
     /**
      * Handle the categoryfaq "created" event.
      *
-     * @param  \App\Model\admin\categoryfaq  $categoryfaq
+     * @param categoryfaq $categoryfaq
      * @return void
      */
     public function created(categoryfaq $categoryfaq)
@@ -21,7 +21,7 @@ class CategoryfaqObserver
     /**
      * Handle the categoryfaq "updated" event.
      *
-     * @param  \App\Model\admin\categoryfaq  $categoryfaq
+     * @param categoryfaq $categoryfaq
      * @return void
      */
     public function updated(categoryfaq $categoryfaq)
@@ -32,7 +32,7 @@ class CategoryfaqObserver
     /**
      * Handle the categoryfaq "deleted" event.
      *
-     * @param  \App\Model\admin\categoryfaq  $categoryfaq
+     * @param categoryfaq $categoryfaq
      * @return void
      */
     public function deleted(categoryfaq $categoryfaq)

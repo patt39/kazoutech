@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryOccupations\StoreRequest;
 use App\Http\Requests\CategoryOccupations\UpdateRequest;
 use App\Http\Resources\CategoryOccupationResource;
-use App\Model\admin\category_occupation;
+use App\Model\admin\categoryoccupation;
 use Illuminate\Http\Request;
 
 class CategoryOccupationController extends Controller
@@ -32,7 +32,7 @@ class CategoryOccupationController extends Controller
 
     public function api()
     {
-        $categoryoccupations = CategoryOccupationResource::collection(category_occupation::with('user')->latest()->get());
+        $categoryoccupations = CategoryOccupationResource::collection(categoryoccupation::with('user')->latest()->get());
 
         return response()->json($categoryoccupations,200);
     }
@@ -56,7 +56,7 @@ class CategoryOccupationController extends Controller
     {
         $inputs = $request->all();
 
-        $categoryoccupation = new category_occupation();
+        $categoryoccupation = new categoryoccupation();
 
         $categoryoccupation->fill($inputs);
 
@@ -68,12 +68,12 @@ class CategoryOccupationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  category_occupation $categoryoccupation
+     * @param  categoryoccupation $categoryoccupation
      * @return \Illuminate\Http\Response
      */
-    public function show(category_occupation $categoryoccupation)
+    public function show(categoryoccupation $categoryoccupation)
     {
-        $categoryoccupation = new CategoryOccupationResource(category_occupation::where('id', $categoryoccupation->id)
+        $categoryoccupation = new CategoryOccupationResource(categoryoccupation::where('id', $categoryoccupation->id)
             ->findOrFail($categoryoccupation->id));
 
         return  response()->json($categoryoccupation,200);
@@ -82,12 +82,12 @@ class CategoryOccupationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  category_occupation $categoryoccupation
+     * @param  categoryoccupation $categoryoccupation
      * @return \Illuminate\Http\Response
      */
-    public function edit(category_occupation $categoryoccupation)
+    public function edit(categoryoccupation $categoryoccupation)
     {
-        $categoryoccupation = category_occupation::where('id', $categoryoccupation->id)->findOrFail($categoryoccupation->id);
+        $categoryoccupation = categoryoccupation::where('id', $categoryoccupation->id)->findOrFail($categoryoccupation->id);
         return view('admin.category_occupations.edit',compact('categoryoccupation'));
     }
 
@@ -95,14 +95,14 @@ class CategoryOccupationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  category_occupation $categoryoccupation
+     * @param  categoryoccupation $categoryoccupation
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, category_occupation $categoryoccupation)
+    public function update(UpdateRequest $request, categoryoccupation $categoryoccupation)
     {
         $inputs = $request->all();
 
-        $categoryoccupation = category_occupation::findOrFail($categoryoccupation->id);
+        $categoryoccupation = categoryoccupation::findOrFail($categoryoccupation->id);
 
         $categoryoccupation->update($inputs);
 
@@ -112,12 +112,12 @@ class CategoryOccupationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  category_occupation $categoryoccupation
+     * @param  categoryoccupation $categoryoccupation
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy(category_occupation $categoryoccupation)
+    public function destroy(categoryoccupation $categoryoccupation)
     {
-        $categoryoccupation = category_occupation::findOrFail($categoryoccupation->id);
+        $categoryoccupation = categoryoccupation::findOrFail($categoryoccupation->id);
         $categoryoccupation->delete();
 
         return ['message' => 'Deleted successfully'];

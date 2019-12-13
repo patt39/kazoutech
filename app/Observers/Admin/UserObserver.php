@@ -10,7 +10,7 @@ class UserObserver
     /**
      * Handle the user "created" event.
      *
-     * @param  \App\Model\user\user  $user
+     * @param user $user
      * @return void
      */
     public function created(user $user)
@@ -21,7 +21,7 @@ class UserObserver
     /**
      * Handle the user "updated" event.
      *
-     * @param  \App\Model\user\user  $user
+     * @param user $user
      * @return void
      */
     public function updated(user $user)
@@ -32,7 +32,7 @@ class UserObserver
     /**
      * Handle the user "deleted" event.
      *
-     * @param  \App\Model\user\user  $user
+     * @param user $user
      * @return void
      */
     public function deleted(user $user)
