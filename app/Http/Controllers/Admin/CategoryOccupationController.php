@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryOccupations\StoreCategoryCoccupationRequest;
 use App\Http\Requests\CategoryOccupations\StoreRequest;
 use App\Http\Requests\CategoryOccupations\UpdateRequest;
 use App\Http\Resources\CategoryOccupationResource;
 use App\Model\admin\categoryoccupation;
+use App\Model\admin\occupation;
 use App\Services\Admin\CategoryOccupationService;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -66,6 +68,21 @@ class CategoryOccupationController extends Controller
         $categoryoccupation->save();
 
         return response()->json($categoryoccupation,200);
+    }
+
+
+    public function storecategoryoccupation(StoreCategoryCoccupationRequest $request, occupation $occupation)
+    {
+        $categoryoccupation = new categoryoccupation();
+
+        $categoryoccupation->fill($request->all());
+        $categoryoccupation->occupation_id = $occupation->id;
+
+        CategoryOccupationService::storeUploadImage($request,$categoryoccupation);
+
+        $categoryoccupation->save();
+
+       return response()->json($categoryoccupation,200);
     }
 
     /**

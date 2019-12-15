@@ -6,10 +6,13 @@ use App\Http\Requests\Occupations\StoreRequest;
 use App\Http\Requests\Occupations\UpdateRequest;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\User\OccupationByStatusResource;
+use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
+use App\Services\Admin\OccupationService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
 use File;
@@ -23,12 +26,12 @@ class OccupationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','activestatus']]);
+        $this->middleware('auth',['except' => ['api','activestatus','apioccupationbyslug']]);
     }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|View
      */
     public function index()
     {
@@ -45,6 +48,27 @@ class OccupationController extends Controller
         return $occupations;
     }
 
+
+    public function apioccupationbyslug($slug)
+    {
+        $occupation = new OccupationByStatusResource(occupation::whereSlug($slug)->firstOrFail());
+
+        return response()->json($occupation,200);
+    }
+
+    public function occupation(occupation $occupation)
+    {
+        return view('admin.occupation.show',[
+            'occupation' => $occupation,
+        ]);
+    }
+
+    public function occupationcreate(occupation $occupation)
+    {
+        return view('admin.occupation.show',[
+            'occupation' => $occupation,
+        ]);
+    }
 
     public function activestatus()
     {
@@ -63,7 +87,7 @@ class OccupationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|View
      */
     public function create()
     {
@@ -83,20 +107,7 @@ class OccupationController extends Controller
         $occupation->name = $request->name;
         $occupation->description = $request->description;
 
-        if ($request->photo) {
-            $namefile = sha1(date('YmdHis') . str_random(30));
-            $name =   $namefile.'.' . explode('/',explode(':',substr($request->photo,0,strpos
-                ($request->photo,';')))[1])[1];
-            $dir = 'assets/img/occupations/';
-            if(!file_exists($dir)){
-                mkdir($dir, 0775, true);
-            }
-            $destinationPath = public_path("assets/img/occupations/{$name}");
-            Image::make($request->photo)->save($destinationPath);
-            //Save Image to database
-            $myfilename = "/assets/img/occupations/{$name}";
-            $occupation->photo = $myfilename;
-        }
+        OccupationService::storeUploadImage($request,$occupation);
 
         $occupation->save();
 
@@ -107,7 +118,7 @@ class OccupationController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return OccupationResource|\Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -120,7 +131,7 @@ class OccupationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|View
      */
     public function edit($id)
     {
@@ -159,19 +170,8 @@ class OccupationController extends Controller
 
         $occupation = occupation::findOrFail($id);
 
-        $currentPhoto = $occupation->photo;
+        OccupationService::updateUploadeImage($request, $occupation);
 
-        if ($request->photo != $currentPhoto){
-            $namefile = sha1(date('YmdHis') . str_random(30));
-            $name =   $namefile.'.' . explode('/',explode(':',substr($request->photo,0,strpos
-                ($request->photo,';')))[1])[1];
-            $dir = 'assets/img/occupations/';
-            if(!file_exists($dir)){mkdir($dir, 0775, true);}
-            Image::make($request->photo)->save(public_path('assets/img/occupations/').$name);
-            $request->merge(['photo' =>  "/assets/img/occupations/{$name}"]);
-            $oldFilename = $currentPhoto;
-            File::delete(public_path($oldFilename));
-        }
         $occupation->update($request->all());
 
         return ['message' => 'Occupation has ben updated'];

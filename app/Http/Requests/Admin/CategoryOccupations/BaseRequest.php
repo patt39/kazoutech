@@ -23,7 +23,12 @@ class BaseRequest extends Request
                 'occupation_id' => 'required',
             ];
         }
-        else { // 'edit'
+        elseif ($group === 'storecategoryoccupation'){
+            $rules = [
+                'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,' .$this->id,
+                'photo' => 'required',
+            ];
+        } else { // 'edit'
             $rules = [
                 'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,' .$this->id,
                 'occupation_id' => 'required',

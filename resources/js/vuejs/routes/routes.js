@@ -102,6 +102,8 @@ import CategoryOccupationCreate from "../components/admin/occupation/categoryocc
 import OccupationUserSlug from "../components/user/pages/services/OccupationUserSlug";
 import CategoryOccupationIndex from "../components/admin/occupation/categoryoccupation/CategoryOccupationIndex";
 import CategoryOccupationEdit from "../components/admin/occupation/categoryoccupation/CategoryOccupationEdit";
+import OccupationShow from "../components/admin/occupation/occupation/OccupationShow";
+import OccupationShowCreate from "../components/admin/occupation/occupation/OccupationShowCreate";
 
 
 
@@ -134,6 +136,8 @@ export const routes = [
     {path: '/dashboard/occupations/', name: 'occupations.index', component: OccupationIndex},
     {path: '/dashboard/occupations/create/', name: 'occupations.create', component: OccupationCreate},
     {path: '/dashboard/occupations/:id/edit', name: 'occupations.edit', component: OccupationEdit},
+    {path: '/dashboard/occupations/v/:occupation', name: 'occupations.show_dashboard', component: OccupationShow},
+    {path: '/dashboard/occupations/v/:occupation/create/', name: 'occupations.show_dashboard_create', component: OccupationShowCreate},
 
     {path: '/dashboard/categoryoccupations/', name: 'categoryoccupations.index', component: CategoryOccupationIndex},
     {path: '/dashboard/categoryoccupations/create', name: 'categoryoccupations.create', component: CategoryOccupationCreate},

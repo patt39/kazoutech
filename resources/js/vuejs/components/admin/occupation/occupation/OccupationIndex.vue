@@ -59,84 +59,82 @@
                                         </button>
                                     </div>
                                     <br>
-                                    <div class="card-body">
-                                        <div v-if="$auth.can('create-occupation')" class="toolbar">
-                                            <div class="submit text-center">
-                                                <router-link :to="{ name: 'occupations.create' }" class="btn btn-success btn-raised " >
+                                    <div v-if="$auth.can('create-occupation')" class="toolbar">
+                                        <div class="submit text-center">
+                                            <router-link :to="{ name: 'occupations.create' }" class="btn btn-success btn-raised " >
                                      <span class="btn-label">
                                         <i class="material-icons">assignment</i>
                                     </span>
-                                                    <b class="title_hover">New Occupations</b>
-                                                </router-link>
-                                            </div>
+                                                <b class="title_hover">New Occupations</b>
+                                            </router-link>
                                         </div>
-                                        <div class="material-datatables">
-                                            <table id="datatables" class="table table-striped table-no-bordered table-hover"
-                                                   cellspacing="0" width="100%" style="width:100%">
-                                                <thead>
-                                                <tr>
-                                                    <th><b>Image</b></th>
-                                                    <th><b>Name occupations</b></th>
-                                                    <th><b>Status</b></th>
-                                                    <th><b>Edited By</b></th>
-                                                    <th><b>Technicians</b></th>
-                                                    <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
-                                                </tr>
-                                                </thead>
-                                                <tfoot>
-                                                <tr>
-                                                    <th><b>Image</b></th>
-                                                    <th><b>Name occupations</b></th>
-                                                    <th><b>Status</b></th>
-                                                    <th><b>Edited By</b></th>
-                                                    <th><b>Technicians</b></th>
-                                                    <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
-                                                </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                <tr v-for="item in occupations" :key="item.id">
-                                                    <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
-                                                    <td>
-                                                        <router-link  :to="{ path: `/dashboard/technicians/o/${item.slug}/` }">
-                                                            <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
-                                                        </router-link>
-                                                    </td>
-                                                    <td>
-                                                        <div class="timeline-heading">
-                                                            <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
-                                                            <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:void(0)" @click="getUser(item)">
-                                                            <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                            <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                            {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                        </a>
-                                                    </td>
-                                                    <td><b v-html="item.technician_count"></b></td>
-                                                    <td class="td-actions text-right">
-                                                        <template v-if="$auth.can('publish-occupation')">
-                                                            <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
-                                                                <i class="material-icons">check_circle</i>
-                                                            </button>
-                                                            <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
-                                                                <i class="material-icons">power_settings_new</i>
-                                                            </button>
-                                                        </template>
-                                                        <router-link :to="{ name: 'occupations.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
-                                                                class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
-                                                            <i class="material-icons">edit</i>
-                                                        </router-link>
-                                                        <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
-                                                                class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
-                                                            <i class="material-icons">delete_forever</i>
+                                    </div>
+                                    <div class="material-datatables">
+                                        <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                               cellspacing="0" width="100%" style="width:100%">
+                                            <thead>
+                                            <tr>
+                                                <th><b>Image</b></th>
+                                                <th><b>Name occupations</b></th>
+                                                <th><b>Status</b></th>
+                                                <th><b>Edited By</b></th>
+                                                <th><b>Technicians</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
+                                            </tr>
+                                            </thead>
+                                            <tfoot>
+                                            <tr>
+                                                <th><b>Image</b></th>
+                                                <th><b>Name occupations</b></th>
+                                                <th><b>Status</b></th>
+                                                <th><b>Edited By</b></th>
+                                                <th><b>Technicians</b></th>
+                                                <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
+                                            </tr>
+                                            </tfoot>
+                                            <tbody>
+                                            <tr v-for="item in occupations" :key="item.id">
+                                                <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
+                                                <td>
+                                                    <router-link  :to="{ path: `/dashboard/occupations/v/${item.slug}/` }">
+                                                        <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
+                                                <td>
+                                                    <div class="timeline-heading">
+                                                        <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
+                                                        <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
+                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                    </a>
+                                                </td>
+                                                <td><b v-html="item.technician_count"></b></td>
+                                                <td class="td-actions text-right">
+                                                    <template v-if="$auth.can('publish-occupation')">
+                                                        <button  v-if="item.status === 1" @click="disableItem(item.id)" class="btn btn-link btn-info btn-round btn-just-icon " title="Disable">
+                                                            <i class="material-icons">check_circle</i>
                                                         </button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                        <button  v-else-if="item.status === 0" @click="activeItem(item.id)" class="btn btn-link btn-danger btn-round btn-just-icon " title="Activate">
+                                                            <i class="material-icons">power_settings_new</i>
+                                                        </button>
+                                                    </template>
+                                                    <router-link :to="{ name: 'occupations.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
+                                                                 class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                        <i class="material-icons">edit</i>
+                                                    </router-link>
+                                                    <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
+                                                            class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
