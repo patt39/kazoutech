@@ -21,6 +21,7 @@ class CategoryOccupationResource extends JsonResource
             'subject' => $this->subject,
             'description' => $this->description,
             'status' => $this->status,
+            'occupation_id' => $this->occupation_id,
             'occupation' => $this->occupation,
             'slug' => $this->slug,
             'user' => $this->user,

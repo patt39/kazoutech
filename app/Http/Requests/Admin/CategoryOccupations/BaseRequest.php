@@ -19,13 +19,13 @@ class BaseRequest extends Request
     {
         if ($group == 'store') {
             $rules = [
-                'name' => 'required|unique:category_occupations,name,',
+                'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,',
                 'occupation_id' => 'required',
             ];
         }
         else { // 'edit'
             $rules = [
-                'name' => 'required|unique:category_occupations,name,' .$this->id,
+                'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,' .$this->id,
                 'occupation_id' => 'required',
             ];
         }

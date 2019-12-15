@@ -30,16 +30,36 @@
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="row">
                                                                 <div class="col-md-4">
-                                                                    <label>Name category occupation<span style="color: red;">*</span></label>
                                                                     <div class="form-group">
+                                                                        <label>Name category occupation<span style="color: red;">*</span></label>
                                                                         <input v-model="form.name" type="text" name="name"
                                                                                class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" />
                                                                         <has-error :form="form" field="name"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-8">
-                                                                    <label>Subject category occupation<span style="color: red;">*</span></label>
                                                                     <div class="form-group">
+                                                                        <label>Subject category occupation<span style="color: red;">*</span></label>
+                                                                        <input v-model="form.subject" type="text" name="subject"
+                                                                               class="form-control" :class="{ 'is-invalid': form.errors.has('subject') }" />
+                                                                        <has-error :form="form" field="subject"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <select name="occupation_id" v-model="form.occupation_id" id="occupation_id" class="form-control"
+                                                                                :class="{ 'is-invalid': form.errors.has('occupation_id') }">
+                                                                            <option value="" disabled>Choose Category</option>
+                                                                            <option v-for="occupation in occupations" :key="occupation.id" :value="occupation.id">{{occupation.name}}</option>
+                                                                        </select>
+                                                                        <has-error :form="form" field="occupation_id"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="form-group">
+                                                                        <label>Subject category occupation<span style="color: red;">*</span></label>
                                                                         <input v-model="form.subject" type="text" name="subject"
                                                                                class="form-control" :class="{ 'is-invalid': form.errors.has('subject') }" />
                                                                         <has-error :form="form" field="subject"/>
@@ -92,11 +112,13 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <label>Description category occupation<span style="color: red;">*</span></label>
-                                                                    <div class="form-group">
-                                                                        <textarea v-model="form.description" type="text" name="description"
-                                                                                  class="form-control" :class="{ 'is-invalid': form.errors.has('description') }" rows="7"/>
-                                                                        <has-error :form="form" field="description"/>
+                                                                    <div class="media-body">
+                                                                        <label class="bmd-label-floating">Tell about for you<span style="color: red;">*</span></label>
+                                                                        <quill-editor v-model="form.description"
+                                                                                      :class="{ 'is-invalid': form.errors.has('description') }"
+                                                                                      :options="editorOption">
+                                                                        </quill-editor>
+                                                                        <has-error :form="form" field="body"></has-error>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -140,14 +162,29 @@
             return {
                 editmode: false,
                 user: '',
+                occupations: {},
                 form: new Form({
                     id: '',
                     name: '',
                     photo: '',
                     subject: '',
                     description: '',
-                    user: '',
+                    occupation_id: '',
                 }),
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            ['bold', 'italic', 'underline'],
+                            [{'list': 'ordered'}, {'list': 'bullet'}],
+                            [{ 'align': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            ['clean']
+                        ]
+                    }
+                }
             }
         },
         methods: {
@@ -161,8 +198,8 @@
                 return (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
             },
             updateImage(e) {
-                let reader = new FileReader();
                 let file = e.target.files[0];
+                let reader = new FileReader();
                 if (file['size'] < 6000775) {
                     reader.onloadend = (file) => {
                         this.form.photo = reader.result
@@ -215,6 +252,7 @@
             //Start Progress bar
             this.$Progress.start();
             dyaxios.get(route('categoryoccupations.show',this.$route.params.id)).then(response => {this.occupation = this.form.fill(response.data)});
+            dyaxios.get(route('api.occupations')).then(response => {this.occupations = response.data.data});
             dyaxios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
