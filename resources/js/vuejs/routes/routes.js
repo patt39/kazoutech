@@ -100,6 +100,8 @@ import IndexSite from "../components/user/IndexSite";
 import OccupationsSite from "../components/user/pages/services/OccupationsSite";
 import CategoryOccupationCreate from "../components/admin/occupation/categoryoccupation/CategoryOccupationCreate";
 import OccupationUserSlug from "../components/user/pages/services/OccupationUserSlug";
+import CategoryOccupationIndex from "../components/admin/occupation/categoryoccupation/CategoryOccupationIndex";
+import CategoryOccupationEdit from "../components/admin/occupation/categoryoccupation/CategoryOccupationEdit";
 
 
 
@@ -133,8 +135,9 @@ export const routes = [
     {path: '/dashboard/occupations/create/', name: 'occupations.create', component: OccupationCreate},
     {path: '/dashboard/occupations/:id/edit', name: 'occupations.edit', component: OccupationEdit},
 
-    {path: '/dashboard/category_occupations/create', name: 'category_occupations.create', component: CategoryOccupationCreate},
-
+    {path: '/dashboard/categoryoccupations/', name: 'categoryoccupations.index', component: CategoryOccupationIndex},
+    {path: '/dashboard/categoryoccupations/create', name: 'categoryoccupations.create', component: CategoryOccupationCreate},
+    {path: '/dashboard/categoryoccupations/:id/edit', name: 'categoryoccupations.edit', component: CategoryOccupationEdit},
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},
     {path: '/dashboard/cities/actives/', name: 'cities.index', component: CityIndex},

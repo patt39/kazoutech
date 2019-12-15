@@ -31,6 +31,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Electricité',
                 'slug' =>str_slug('Electricité'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -38,6 +39,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Méccanique',
                 'slug' =>str_slug('Méccanique'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -45,6 +47,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Soudure',
                 'slug' =>str_slug('Soudure'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -52,6 +55,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Maçonnerie',
                 'slug' =>str_slug('Maçonnerie'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -59,6 +63,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Menuiserie',
                 'slug' =>str_slug('Menuiserie'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -66,6 +71,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Charpenterie',
                 'slug' =>str_slug('Charpenterie'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -73,6 +79,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Menagerie',
                 'slug' => str_slug('Menagerie'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],
@@ -80,6 +87,7 @@ class OccupationAndCategoriesSeed extends Seeder
                 $name  => 'Démenagement',
                 'slug' =>str_slug('Démenagement'),
                 'description' =>$description,
+                'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
                 'user_id' => $user
             ],

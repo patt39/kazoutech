@@ -183,7 +183,7 @@ class CityController extends Controller
                 ($request->photo,';')))[1])[1];
             $dir = 'assets/img/cities/';
             if(!file_exists($dir)){mkdir($dir, 0775, true);}
-            Image::make($request->photo)->save(public_path('assets/img/cities/').$name);
+            Image::make($request->photo)->fit(800,535)->save(public_path('assets/img/cities/').$name);
             $request->merge(['photo' =>  "/assets/img/cities/{$name}"]);
             $oldFilename = $currentPhoto;
             File::delete(public_path($oldFilename));

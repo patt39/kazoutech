@@ -22,8 +22,8 @@
                     <div class="user-info">
                         <a data-toggle="collapse" href="#collapseExample" class="username">
 					<span>
-						<b v-text="user.name"></b>
-						<b class="caret"></b>
+						<b v-text="user.name"/>
+						<b class="caret"/>
 					</span>
                         </a>
                         <div class="collapse" id="collapseExample">
@@ -153,7 +153,7 @@
                                 </li>
                                  <!--Registration-->
                                 <li class="nav-item">
-                                    <router-link  :to="{ name: 'category_occupations.index' }" class="nav-link">
+                                    <router-link  :to="{ name: 'categoryoccupations.index' }" class="nav-link">
                                         <span class="sidebar-mini"><b>CO</b></span>
                                         <span class="sidebar-normal"><b>Category Occupation</b></span>
                                     </router-link>

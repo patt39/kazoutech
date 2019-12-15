@@ -1,5 +1,5 @@
 @extends('inc.admin._main')
-<?php $item = htmlspecialchars($catgoryoccupation->name); ?>
+<?php $item = htmlspecialchars($categoryoccupation->name); ?>
 @section('title'," $item")
 
 @section('style')

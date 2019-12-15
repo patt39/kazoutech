@@ -164,6 +164,50 @@
                                                 <div class="modal-body">
                                                     <alert-error :form="form"/>
                                                     <form id="RegisterValidation" @submit.prevent="updateItem" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                        <div class="row">
+                                                            <div class="col-md-8 ml-auto mr-auto">
+                                                                <div class="profile text-center">
+                                                                    <br>
+                                                                    <div class="fileinput fileinput-new text-center"
+                                                                         data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail">
+                                                                            <img :src="getImagesave()" :alt="form.slug">
+                                                                        </div>
+                                                                        <div
+                                                                            class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                                        <div>
+                                                                            <span
+                                                                                class="btn btn-raised btn-success btn-file">
+                                                                              <span
+                                                                                  class="fileinput-new"
+                                                                                  style="cursor: pointer">
+                                                                                   <i class="material-icons">insert_photo</i>
+                                                                                       <b>Add Slide</b>
+                                                                                </span>
+                                                                               <span
+                                                                                   class="fileinput-exists"
+                                                                                   style="cursor: pointer">
+                                                                                   <i class="material-icons">photo_library</i>
+                                                                                   <b>Change</b>
+                                                                                </span>
+                                                                                <input id="photo"
+                                                                                       @change="updateImage"
+                                                                                       type="file"
+                                                                                       class="form-control"
+                                                                                       name="photo"/>
+                                                                            </span>
+                                                                            <a href="#pablo"
+                                                                               class="btn btn-danger fileinput-exists"
+                                                                               data-dismiss="fileinput">
+                                                                                <i class="material-icons">cancel</i>
+                                                                                <b>Remove</b>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <has-error :form="form" field="photo"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"/>
                                                             <input v-model="form.name" type="text" name="name" placeholder="Name city" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
@@ -205,6 +249,7 @@
 <script>
     import StatusAdmin from "../../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../../inc/animation/LoaderLds-default";
+
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
@@ -219,6 +264,7 @@
                     city_vip: '',
                     user_id: '',
                     status: '',
+                    photo: '',
                     slug: ''
                 })
             }
@@ -250,6 +296,9 @@
             getColorCardUser(){
                 return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
+            getImagesave() {
+                return (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
+            },
             getColorHeaderUser(){
                 return 'card-header card-header-' + this.user.color_name;
             },
@@ -261,8 +310,7 @@
                 this.$Progress.finish()
             },
             getColor(item){
-                let colorStyle = 'badge badge-' + item.color_name;
-                return colorStyle;
+                return 'badge badge-' + item.color_name;
             },
             editItem(item) {
                 this.form.reset();
@@ -270,6 +318,24 @@
                 $('#addNew').modal('show');
                 //On passe les information
                 this.form.fill(item);
+            },
+            updateImage(e) {
+                let reader = new FileReader();
+                let file = e.target.files[0];
+                if (file['size'] < 6000775) {
+                    reader.onloadend = (file) => {
+                        this.form.photo = reader.result
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    this.$Progress.fail();
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Your image is very big',
+                        buttonsStyling: false,
+                        confirmButtonClass: "btn btn-success",
+                    });
+                }
             },
             updateItem() {
                 //Start Progress bar

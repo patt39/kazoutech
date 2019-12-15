@@ -16,10 +16,12 @@ class CategoryOccupationResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'photo' => $this->photo,
             'name' => $this->name,
             'subject' => $this->subject,
             'description' => $this->description,
             'status' => $this->status,
+            'occupation' => $this->occupation,
             'slug' => $this->slug,
             'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),
