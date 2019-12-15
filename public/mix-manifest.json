@@ -1,8 +1,5 @@
 {
-    "/js/reactjs/app.js": "/js/reactjs/app.js?id=d8ff06b8546968a3a499",
-    "/js/reactjs/app.js.map": "/js/reactjs/app.js.map?id=987b5e665cbd45b73a33",
-    "/js/vuejs/app.js": "/js/vuejs/app.js?id=a11b575fa73445e83192",
-    "/js/vuejs/app.js.map": "/js/vuejs/app.js.map?id=a6ae63b49e9db0deab69",
-    "/js/vuejs/axios.js": "/js/vuejs/axios.js?id=c7436173109d3a729a68",
-    "/js/vuejs/axios.js.map": "/js/vuejs/axios.js.map?id=cc30f0c5e98c824855fc"
+    "/js/reactjs/app.js": "/js/reactjs/app.js",
+    "/js/vuejs/app.js": "/js/vuejs/app.js",
+    "/js/vuejs/axios.js": "/js/vuejs/axios.js"
 }

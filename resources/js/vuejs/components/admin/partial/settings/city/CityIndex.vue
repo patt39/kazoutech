@@ -105,8 +105,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="timeline-heading">
-                                                        <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
+                                                        <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
+                                                        <span v-else-if="!item.status"  class="badge badge-danger"><b>Deactive</b></span>
                                                     </div>
                                                 </td>
                                                 <td>

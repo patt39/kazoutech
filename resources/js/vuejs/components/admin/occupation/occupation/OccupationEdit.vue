@@ -126,6 +126,7 @@
                     id: '',
                     name: '',
                     photo: '',
+                    description: '',
                     user: '',
                 }),
                 editorOption: {

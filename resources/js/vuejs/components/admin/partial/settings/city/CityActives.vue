@@ -105,8 +105,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="timeline-heading">
-                                                        <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="item.status === 0"  class="badge badge-danger"><b>Deactive</b></span>
+                                                        <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
+                                                        <span v-if="item.city_vip"  class="badge badge-success"><b>VIP</b></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -118,6 +118,14 @@
                                                 </td>
                                                 <td><b v-html="item.technician_count"></b></td>
                                                 <td class="td-actions text-right">
+                                                    <button v-if="$auth.can('edit-administrator')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                        <label>
+                                                            <input type="checkbox" name="city_vip" v-model="item.city_vip"
+                                                                   @change="changeCityVip(item)"/>
+                                                            <span class="toggle"></span>
+                                                        </label>
+                                                    </button>
+
                                                     <button v-if="$auth.can('edit-administrator')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
                                                         <label>
                                                             <input type="checkbox" name="status" v-model="item.status"
@@ -205,6 +213,7 @@
                     id: '',
                     name: '',
                     color_name: '',
+                    city_vip: '',
                     user_id: '',
                     status: '',
                     slug: ''
@@ -354,6 +363,42 @@
                 }).then(res => {
 
                     $.notify('<strong>City update Successfully.</strong>', {
+                        allow_dismiss: false,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
+                    });
+
+                    Fire.$emit('ItemGetter');
+                    //End Progress bar
+                    this.$Progress.finish();
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            },    /** Ici c'est pour changer le status **/
+            changeCityVip(item){
+                //Start Progress bar
+                this.$Progress.start();
+                axios.get(`/dashboard/change_city_vip_cities/${item.id}`, {
+                    city_vip: item.city_vip,
+                }).then(res => {
+
+                    $.notify('<strong>Status VIP change successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'info',
                         placement: {

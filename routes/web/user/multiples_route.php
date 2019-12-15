@@ -1,6 +1,7 @@
 <?php
 
 Route::get('about','MultiplesRouteController@about')->name('about');
+Route::get('toutes-les-villes','MultiplesRouteController@touteslesvilles')->name('touteslesvilles');
 Route::get('concept','MultiplesRouteController@concept')->name('concept');
 Route::get('occupations','MultiplesRouteController@occupations')->name('occupations.site');
 Route::get('occupations/{occupation}','MultiplesRouteController@occupation')->name('occupation.show');

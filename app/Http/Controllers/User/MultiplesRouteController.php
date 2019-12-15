@@ -20,6 +20,11 @@ class MultiplesRouteController extends Controller
         return view('user.page.about');
     }
 
+    public function touteslesvilles()
+    {
+        return view('user.page.touteslesvilles');
+    }
+
     public function concept()
     {
         return view('user.page.concept');

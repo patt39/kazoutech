@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\User;
 
 
+use App\Http\Requests\Contacts\StoreRequest;
 use App\Http\Resources\User\ContactResource;
 use App\Model\admin\contact;
 use App\Rules\Recaptcha;
+use App\Services\Admin\MailContactService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class ContactController extends Controller
@@ -29,7 +32,7 @@ class ContactController extends Controller
     /**
      *Get page contact user site
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|View
      */
     public function contatPage()
     {
@@ -66,10 +69,11 @@ class ContactController extends Controller
         });
         return $contacts;
     }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -79,45 +83,23 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Recaptcha $recaptcha
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request,Recaptcha $recaptcha)
+    public function store(StoreRequest $request,Recaptcha $recaptcha)
     {
-        //dd(\request()->all());
-        $this->validate($request,[
-            'first_name'    => 'required|max:100',
-            'last_name'    => 'required|max:100',
-            'email'   => 'required|email:rfc,dns',
-            'subject' => 'required|min:2|max:210',
-            'message'     => 'required|min:2|max:50000',
-            //'recaptcha' => ['required', $recaptcha],
-        ]);
+
         $contact = new contact;
-
-        $contact->first_name = $request->first_name;
-        $contact->last_name = $request->last_name;
-        $contact->email = $request->email;
-        $contact->subject = $request->subject;
-        $contact->message = $request->message;
         $slug = sha1(date('YmdHis') . str_random(30));
-        $contact->slug = $slug;
+        $contact->fill($request->all());
 
+        $contact->slug = $slug;
         $contact->save();
 
-        Mail::send('emails.contact',
-            array(
-                'first_name' => $request->get('first_name'),
-                'last_name' => $request->get('last_name'),
-                'subject' => $request->get('subject'),
-                'email' => $request->get('email'),
-                'message' => $request->get('message')
-            ),
-            function ($message) {
-                $message->from('temgoua2013@yahoo.fr');
-                $message->to('dasgivemoi@gmail.com', 'Kazoutech')
-                    ->subject('New Message send from contact page');
-            });
+
+        MailContactService::newMailContact($request);
 
         return response('Created', Response::HTTP_CREATED);
     }

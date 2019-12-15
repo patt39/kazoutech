@@ -3,31 +3,24 @@ import { Link } from 'react-router-dom'
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
 import OccupationList from "./occupation/OccupationList";
+import CitySite from "./city/CitySite";
+import AllOccupation from "../inc/AllOccupation";
 
 
 class IndexSite extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupations: [],
+            //
         }
-    }
-
-    loadItems() {
-        dyaxios.get(route('api_active.occupations')).then(response =>
-            this.setState({
-                occupations: [...response.data],
-            }));
     }
 
     // lifecycle method
     componentDidMount() {
-        this.loadItems();
         const composantTitle = 'Technicians services to particulars | Kazoutech';
         document.title = `${composantTitle}`;
     }
     render() {
-        let { occupations } = this.state;
         return (
             <>
                 <NavUserSIte />
@@ -101,19 +94,13 @@ class IndexSite extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="container text-center">
-                            <div className="row mb-5">
-                                <div className="col-md-8 mx-auto">
-                                    <h3 className="display-3">En quelques clicks choisissez votre categorie</h3>
-                                </div>
-                            </div>
-                            <div className="row align-items-center">
-                                {occupations.map((item) => (
-                                    <OccupationList key={item.id} {...item} />
-                                ))}
-                            </div>
-                        </div>
+
+                        <AllOccupation/>
+
                     </div>
+
+                    <CitySite />
+
                     <div className="subscribe-line subscribe-line-white">
                         <div className="container">
                             <div className="row">
@@ -149,6 +136,7 @@ class IndexSite extends Component {
                             </div>
                         </div>
                     </div>
+
                     <FooterUserSite />
                 </div>
             </>

@@ -13,7 +13,7 @@ class AboutSite extends Component {
 
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'About tout sur';
+        const composantTitle = 'About';
         document.title = `${composantTitle} | Kazoutech`;
     }
     render() {

@@ -81,6 +81,7 @@ class OccupationController extends Controller
 
         $occupation = new occupation;
         $occupation->name = $request->name;
+        $occupation->description = $request->description;
 
         if ($request->photo) {
             $namefile = sha1(date('YmdHis') . str_random(30));

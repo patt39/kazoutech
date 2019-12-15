@@ -23,6 +23,8 @@ class city extends Model implements Auditable
         'ip',
         'slug',
         'status',
+        'photo',
+        'city_vip',
     ];
 
 
@@ -49,6 +51,10 @@ class city extends Model implements Auditable
         });
     }
 
+    protected $casts = [
+        'status' => 'boolean',
+        'city_vip' => 'boolean',
+    ];
 
     public function isOnline()
     {

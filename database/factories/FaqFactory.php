@@ -1,11 +1,12 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
 use App\Model\user\User;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Str;
 
 /*
@@ -25,11 +26,7 @@ $factory->define(faq::class, function (Faker $faker) {
         'ip' => $faker->ipv4,
         'body' => $faker->realText,
         'status' =>$faker->boolean,
-        'categoryfaq_id' => function () {
-            return categoryfaq::inRandomOrder()->first()->id;
-        },
-        'user_id' => function () {
-            return user::inRandomOrder()->first()->id;
-        }
+        'categoryfaq_id' => categoryfaq::inRandomOrder()->first()->id,
+        'user_id' => user::inRandomOrder()->first()->id,
     ];
 });

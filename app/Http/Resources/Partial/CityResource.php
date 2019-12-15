@@ -18,6 +18,8 @@ class CityResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'status' => $this->status,
+            'city_vip' => $this->city_vip,
+            'photo' => $this->photo,
             'slug' => $this->slug,
             'statusOnline' => $this->user->isOnline(),
             'technician_count' => $this->technicians()->get()->count(),

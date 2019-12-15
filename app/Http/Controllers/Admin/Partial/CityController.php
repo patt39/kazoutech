@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Partial;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\Partial\CityByStatusResource;
 use App\Model\admin\city;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +21,14 @@ class CityController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','apibystatus','apiactives']]);
+        $this->middleware('auth',['except' => ['api','apibystatus','apibyvip','apiactives']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -61,7 +63,16 @@ class CityController extends Controller
             ->where('status',1)
             ->orderBy('name','asc')
             ->get());
-        return $cities;
+        return response()->json($cities,200);
+    }
+
+    public function apibyvip()
+    {
+        $cities = CityByStatusResource::collection(city::with('user')
+            ->where('city_vip',1)
+            ->orderBy('name','desc')
+            ->get());
+        return response()->json($cities,200);
     }
 
 
@@ -78,8 +89,9 @@ class CityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
 
     public function store(Request $request)
@@ -99,11 +111,22 @@ class CityController extends Controller
 
     /**
      * @param city $city
-     * @return \Illuminate\Http\JsonResponse
+     * @return ResponseFactory|\Illuminate\Http\Response
      */
     public function status(city $city)
     {
         $city->update(['status' => !$city->status]);
+
+        return response('Update',Response::HTTP_CREATED);
+    }
+
+    /**
+     * @param city $city
+     * @return ResponseFactory|\Illuminate\Http\Response
+     */
+    public function city_vip(city $city)
+    {
+        $city->update(['city_vip' => !$city->city_vip]);
 
         return response('Update',Response::HTTP_CREATED);
     }
@@ -113,7 +136,7 @@ class CityController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Factory|\Illuminate\View\View
      */
     public function show($id)
     {
@@ -136,7 +159,7 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return array
      */

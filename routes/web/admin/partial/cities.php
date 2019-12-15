@@ -43,3 +43,8 @@ Route::get(
     '/dashboard/change_status_cities/{city}',
     'CityController@status'
 )->name('status_cities');
+
+Route::get(
+    '/dashboard/change_city_vip_cities/{city}',
+    'CityController@city_vip'
+)->name('city_vip_cities');
