@@ -53,7 +53,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="header text-right">
-                                            <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                            <button @click="reload" class="btn btn-success btn-raised button_note btn-sm"
                                                     title="Refresh Page">
                                                 <i class="material-icons">replay</i>
                                                 <b class="title_hover">Refresh</b>
@@ -67,7 +67,7 @@
                                                 </span>
                                                 <b class="title_hover">New City</b>
                                             </button>-->
-                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.index' }" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.index' }" id="button_hover" class="btn btn-success btn-raised">
                                                  <span class="btn-label">
                                                     <i class="material-icons">spellcheck</i>
                                                 </span>
@@ -80,6 +80,7 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
+                                                <th><b>Image</b></th>
                                                 <th><b>Name</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
@@ -89,6 +90,7 @@
                                             </thead>
                                             <tfoot>
                                             <tr>
+                                                <th><b>Image</b></th>
                                                 <th><b>Name</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
@@ -98,6 +100,7 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in orderBycities" :key="item.id">
+                                                <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 4px"></td>
                                                 <td>
                                                     <router-link  :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
                                                         <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
@@ -159,12 +162,12 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <alert-error :form="form"></alert-error>
+                                                    <alert-error :form="form"/>
                                                     <form id="RegisterValidation" @submit.prevent="updateItem" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                         <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
+                                                            <label class="bmd-label-floating"/>
                                                             <input v-model="form.name" type="text" name="name" placeholder="Name city" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
-                                                            <has-error :form="form" field="name"></has-error>
+                                                            <has-error :form="form" field="name"/>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="text-center">

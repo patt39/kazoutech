@@ -22,7 +22,7 @@ class MailContactMessageJob implements ShouldQueue
     protected $lastname;
     protected $subject;
     protected $message;
-    protected $to;
+    protected $emailTo;
     protected $from;
     /**
      * Create a new job instance.
@@ -36,7 +36,7 @@ class MailContactMessageJob implements ShouldQueue
         $this->lastname = $lastname;
         $this->subject = $subject;
         $this->message = $message;
-        $this->to = $to !== null? Arr::wrap($to) : [];
+        $this->emailTo = $to !== null? Arr::wrap($to) : [];
         $this->from = $from !== null? Arr::wrap($from) : [];
 
     }
@@ -49,7 +49,7 @@ class MailContactMessageJob implements ShouldQueue
     public function handle()
     {
         try {
-            foreach ($this->to as $email){
+            foreach ($this->emailTo as $email){
 
                 $emailData = new MailContactMail(
                     $this->firstname,

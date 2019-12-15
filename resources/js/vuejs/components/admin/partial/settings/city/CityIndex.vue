@@ -53,7 +53,8 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                         <div class="header text-right">
-                                            <button @click="reload" class="btn btn-success btn-raised btn-round button_note btn-sm"
+                                            <button @click="reload"
+                                                    class="btn btn-success btn-raised button_note btn-sm"
                                                     title="Refresh Page">
                                                 <i class="material-icons">replay</i>
                                                 <b class="title_hover">Refresh</b>
@@ -67,7 +68,9 @@
                                                 </span>
                                                 <b class="title_hover">New City</b>
                                             </button>-->
-                                            <router-link v-if="$auth.can('edit-administrator')" :to="{ name: 'cities.actives' }" id="button_hover" class="btn btn-success btn-raised btn-round">
+                                            <router-link v-if="$auth.can('edit-administrator')"
+                                                         :to="{ name: 'cities.actives' }" id="button_hover"
+                                                         class="btn btn-success btn-raised">
                                                  <span class="btn-label">
                                                     <i class="material-icons">spellcheck</i>
                                                 </span>
@@ -80,6 +83,7 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
+                                                <th><b>Image</b></th>
                                                 <th><b>Name</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
@@ -89,6 +93,7 @@
                                             </thead>
                                             <tfoot>
                                             <tr>
+                                                <th><b>Image</b></th>
                                                 <th><b>Name</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
@@ -98,39 +103,52 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in orderBycities" :key="item.id">
+                                                <td><img :src="item.photo"
+                                                         style="height: 50px; width: 80px;border-radius: 4px"></td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
-                                                        <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..." : item.name) | upText }}</b>
+                                                    <router-link
+                                                        :to="{ path: `/dashboard/technicians/c/${item.slug}/` }">
+                                                        <b>{{ (item.name.length > 15 ? item.name.substring(0,15)+ "..."
+                                                            : item.name) | upText }}</b>
                                                     </router-link>
                                                 </td>
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="!item.status"  class="badge badge-danger"><b>Deactive</b></span>
+                                                        <span v-else-if="!item.status" class="badge badge-danger"><b>Deactive</b></span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
-                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                        <button v-if="item.statusOnline" type="button"
+                                                                class="btn btn-success btn-round btn-just-icon btn-sm"
+                                                                title="Administrator Online"/>
+                                                        <button v-else="item.statusOnline" type="button"
+                                                                class="btn btn-danger btn-round btn-just-icon btn-sm"
+                                                                title="Administrator Offline"/>
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+
+                                                        "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
-                                                <td><b v-html="item.technician_count"></b></td>
+                                                <td><b v-html="item.technician_count"/></td>
                                                 <td class="td-actions text-right">
-                                                    <button v-if="$auth.can('edit-administrator')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                    <button v-if="$auth.can('edit-administrator')" type="button"
+                                                            class="togglebutton btn btn-link btn-sm btn-sm">
                                                         <label>
                                                             <input type="checkbox" name="status" v-model="item.status"
                                                                    @change="changeStatus(item)"/>
-                                                            <span class="toggle"></span>
+                                                            <span class="toggle"/>
                                                         </label>
                                                     </button>
                                                     <button @click="editItem(item)"
-                                                            class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
+                                                            class="btn btn-link  btn-success btn-round btn-just-icon"
+                                                            title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button v-if="$auth.can('edit-administrator')" @click="deleteItem(item.id)"
-                                                            class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                    <button v-if="$auth.can('edit-administrator')"
+                                                            @click="deleteItem(item.id)"
+                                                            class="btn btn-link btn-danger btn-round btn-just-icon"
+                                                            title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </button>
                                                 </td>
@@ -138,35 +156,86 @@
                                             </tbody>
                                         </table>
                                     </div>
-
-                                    <!-- Modal création/édition color -->
-                                    <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
+                                    <div class="modal fade" id="addNew" tabindex="-1" role="dialog"
+                                         aria-labelledby="addNewLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="updatwNewLabel"><b>Update City</b></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <alert-error :form="form"></alert-error>
-                                                    <form id="RegisterValidation" @submit.prevent="updateItem" role="form" method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                    <alert-error :form="form"/>
+                                                    <form id="RegisterValidation" @submit.prevent="updateItem"
+                                                          role="form" method="POST" action="" accept-charset="UTF-8"
+                                                          @keydown="form.onKeydown($event)">
+                                                        <div class="row">
+                                                            <div class="col-md-8 ml-auto mr-auto">
+                                                                <div class="profile text-center">
+                                                                    <br>
+                                                                    <div class="fileinput fileinput-new text-center"
+                                                                         data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail">
+                                                                            <img :src="getImagesave()" :alt="form.slug">
+                                                                        </div>
+                                                                        <div
+                                                                            class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                                        <div>
+                                                                            <span
+                                                                                class="btn btn-raised btn-success btn-file">
+                                                                              <span
+                                                                                  class="fileinput-new"
+                                                                                  style="cursor: pointer">
+                                                                                   <i class="material-icons">insert_photo</i>
+                                                                                       <b>Add Slide</b>
+                                                                                </span>
+                                                                               <span
+                                                                                   class="fileinput-exists"
+                                                                                   style="cursor: pointer">
+                                                                                   <i class="material-icons">photo_library</i>
+                                                                                   <b>Change</b>
+                                                                                </span>
+                                                                                <input id="photo"
+                                                                                       @change="updateImage"
+                                                                                       type="file"
+                                                                                       class="form-control"
+                                                                                       name="photo"/>
+                                                                            </span>
+                                                                            <a href="#pablo"
+                                                                               class="btn btn-danger fileinput-exists"
+                                                                               data-dismiss="fileinput">
+                                                                                <i class="material-icons">cancel</i>
+                                                                                <b>Remove</b>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <has-error :form="form" field="photo"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.name" type="text" name="name" placeholder="Name city" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" required>
-                                                            <has-error :form="form" field="name"></has-error>
+                                                            <label class="bmd-label-floating"/>
+                                                            <input v-model="form.name" type="text" name="name"
+                                                                   placeholder="Name city" class="form-control"
+                                                                   :class="{ 'is-invalid': form.errors.has('name') }"
+                                                                   required/>
+                                                            <has-error :form="form" field="name"/>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="text-center">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                                <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">
                                                                     <span class="btn-label">
                                                                         <i class="material-icons">clear</i>
                                                                         <b>Close</b>
                                                                     </span>
                                                                 </button>
-                                                                <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                                <button :disabled="form.busy" type="submit"
+                                                                        class="btn btn-success btn-raised">
                                                                     <span class="btn-label">
                                                                         <i class="material-icons">save_alt</i>
                                                                         <b>Yes, Update</b>
@@ -185,7 +254,7 @@
                     </div>
                 </div>
             </div>
-            <footer-admin></footer-admin>
+            <footer-admin/>
         </div>
 
     </div>
@@ -194,6 +263,7 @@
 <script>
     import StatusAdmin from "../../../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../../../inc/animation/LoaderLds-default";
+
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
@@ -207,23 +277,24 @@
                     color_name: '',
                     user_id: '',
                     status: '',
+                    photo: '',
                     slug: ''
                 })
             }
         },
         methods: {
-            mydatatables(){
-                $( function () {
+            mydatatables() {
+                $(function () {
                     $('#datatables').DataTable({
                         "pagingType": "full_numbers",
                         "lengthMenu": [
                             [10, 25, 50, -1],
                             [10, 25, 50, "All"]
                         ],
-                        order: [[ 0, 'asc' ], [ 3, 'desc' ]],
+                        order: [[0, 'asc'], [3, 'desc']],
                         responsive: true,
                         destroy: true,
-                        retrieve:true,
+                        retrieve: true,
                         autoFill: true,
                         colReorder: true,
                         language: {
@@ -235,20 +306,23 @@
                     });
                 });
             },
-            getColorCardUser(){
+            getColorCardUser() {
                 return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
-            getColorHeaderUser(){
+            getColorHeaderUser() {
                 return 'card-header card-header-' + this.user.color_name;
             },
-            getUser(item){
+            getImagesave() {
+                return (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
+            },
+            getUser(item) {
                 //Progress bar star
                 this.$Progress.start();
                 location.replace(`/dashboard/users/p/${item.user.username}/`);
                 //Progres bar
                 this.$Progress.finish()
             },
-            getColor(item){
+            getColor(item) {
                 let colorStyle = 'badge badge-' + item.color_name;
                 return colorStyle;
             },
@@ -258,6 +332,24 @@
                 $('#addNew').modal('show');
                 //On passe les information
                 this.form.fill(item);
+            },
+            updateImage(e) {
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                if (file['size'] < 6000775) {
+                    reader.onloadend = (file) => {
+                        this.form.photo = reader.result
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    this.$Progress.fail();
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Your image is very big',
+                        buttonsStyling: false,
+                        confirmButtonClass: "btn btn-success",
+                    });
+                }
             },
             updateItem() {
                 //Start Progress bar
@@ -274,8 +366,12 @@
                             allow_dismiss: false,
                             showProgressbar: true
                         });
-                        setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Color updated successfully.</strong>', 'progress': 75});
+                        setTimeout(function () {
+                            notify.update({
+                                'type': 'success',
+                                'message': '<strong>Color updated successfully.</strong>',
+                                'progress': 75
+                            });
                         }, 2000);
                         /** Fin alert **/
 
@@ -322,8 +418,12 @@
                                 allow_dismiss: false,
                                 showProgressbar: true
                             });
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>City deleted successfully.</strong>', 'progress': 75});
+                            setTimeout(function () {
+                                notify.update({
+                                    'type': 'success',
+                                    'message': '<strong>City deleted successfully.</strong>',
+                                    'progress': 75
+                                });
                             }, 2000);
                             /* End alert ***/
 
@@ -345,7 +445,7 @@
                     }
                 })
             },
-            changeStatus(item){
+            changeStatus(item) {
                 //Start Progress bar
                 this.$Progress.start();
                 axios.get(`/dashboard/change_status_cities/${item.id}`, {
@@ -392,9 +492,11 @@
                     //End Progress bar
                     this.$Progress.finish();
                 });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
+                axios.get("/api/account/user").then(response => {
+                    this.user = response.data.data
+                });
             },
-             reload(){
+            reload() {
                 this.loadItems();
             },
         },

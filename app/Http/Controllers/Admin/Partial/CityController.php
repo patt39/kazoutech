@@ -9,7 +9,11 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\File;
 
 class CityController extends Controller
 {
@@ -22,13 +26,11 @@ class CityController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api','apibystatus','apibyvip','apiactives']]);
-        // Middleware lock account
-        //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.
      *
-     * @return Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -79,7 +81,7 @@ class CityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -91,7 +93,7 @@ class CityController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
 
     public function store(Request $request)
@@ -136,7 +138,7 @@ class CityController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show($id)
     {
@@ -160,8 +162,9 @@ class CityController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return array
+     * @throws ValidationException
      */
     public function update(Request $request,$id)
     {
@@ -171,9 +174,23 @@ class CityController extends Controller
 
         $city = city::findOrFail($id);
 
-        $city->name = $request->name;
+
+        $currentPhoto = $city->photo;
+
+        if ($request->photo != $currentPhoto){
+            $namefile = sha1(date('YmdHis') . str_random(30));
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->photo,0,strpos
+                ($request->photo,';')))[1])[1];
+            $dir = 'assets/img/cities/';
+            if(!file_exists($dir)){mkdir($dir, 0775, true);}
+            Image::make($request->photo)->save(public_path('assets/img/cities/').$name);
+            $request->merge(['photo' =>  "/assets/img/cities/{$name}"]);
+            $oldFilename = $currentPhoto;
+            File::delete(public_path($oldFilename));
+        }
         $city->slug = null;
-        $city->save();
+
+        $city->update($request->all());
 
         return ['message' => 'city has ben updated'];
     }

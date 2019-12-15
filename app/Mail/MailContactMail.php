@@ -15,7 +15,7 @@ class MailContactMail extends Mailable implements ShouldQueue
     protected $lastName;
     protected $subjectMessage;
     protected $messageContact;
-    protected $emaiTo;
+    protected $emailTo;
     protected $emailFrom;
 
     /**
@@ -31,7 +31,7 @@ class MailContactMail extends Mailable implements ShouldQueue
         $this->lastName = $lastname;
         $this->subjectMessage = $subject;
         $this->messageContact = $message;
-        $this->emaiTo = $to;
+        $this->emailTo = $to;
         $this->emailFrom = $from;
 
     }
@@ -44,7 +44,7 @@ class MailContactMail extends Mailable implements ShouldQueue
     public function build()
     {
 
-        return $this->to($this->emaiTo)->from($this->emailFrom)
+        return $this->to($this->emailTo)->from($this->emailFrom)
             ->subject($this->subjectMessage)
             ->html($this->messageContact);
     }

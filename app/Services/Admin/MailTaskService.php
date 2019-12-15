@@ -19,28 +19,26 @@ class MailTaskService
     public static function newTask($request)
     {
         $notes = note::with('user')->latest()->get();
-        $users = User::latest()->get();
+        $users = User::where('my_status','active')->get();
+        $administratorID =  (int)$request->get('administrator_id');
+        $nodeID = (int)$request->get('note_id');
 
         foreach ($users as $item) {
-            if ($item->id != $request->administrator_id ){
-               //
-            }else{
-                $to[] = $item->email;
-            }
-
+            if ($item['id'] === $administratorID)
+                $to[] = $item->email;continue;
         }
 
         foreach ($notes as $item){
-            if ($item->id != $request->note_id ){
-                //
-            }else{
-                $subject = $item->title;
-                $message = $item->body;
-            }
+           if ($item->id === $nodeID)
+            $subjectTask = $item->title;
+            $messageTask = $item->body;
+            continue;
         }
 
-        $from = ['address' => Auth::user()->email, 'name' => Auth::user()->name];
-        $emailuserJob = (new MailTaskEmailJob($subject,$message,$to,$from));
+        $userEmail = Auth::user()->email;
+        $userName = Auth::user()->name;
+        $from = ['address' => $userEmail, 'name' => $userName];
+        $emailuserJob = (new MailTaskEmailJob($subjectTask,$messageTask,$to,$from));
         dispatch($emailuserJob);
     }
 

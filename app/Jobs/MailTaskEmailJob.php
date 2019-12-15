@@ -19,8 +19,8 @@ class MailTaskEmailJob implements ShouldQueue
 
     protected $subject;
     protected $message;
-    protected $to;
-    protected $from;
+    protected $emailTo;
+    protected $emaiFrom;
 
 
     /**
@@ -28,13 +28,12 @@ class MailTaskEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($subject,$message,$to=[],$from=[])
+    public function __construct($subjectTask,$messageTask,$to=[],$from=[])
     {
-        $this->subject = $subject;
-        $this->message = $message;
-        $this->to = $to !== null? Arr::wrap($to) : [];
-        $this->from = $from !== null? Arr::wrap($from) : [];
-
+        $this->subject = $subjectTask;
+        $this->message = $messageTask;
+        $this->emailTo = $to !== null? Arr::wrap($to) : [];
+        $this->emaiFrom = $from !== null? Arr::wrap($from) : [];
 
     }
 
@@ -46,8 +45,8 @@ class MailTaskEmailJob implements ShouldQueue
     public function handle()
     {
         try{
-            foreach ($this->to as $email){
-                $emailData = new MailTaskEmailMail($this->subject,$this->message,$email,$this->from);
+            foreach ($this->emailTo as $email){
+                $emailData = new MailTaskEmailMail($this->subject,$this->message,$email,$this->emaiFrom);
                 Mail::send($emailData);
             }
         }catch(\Exception $e){
