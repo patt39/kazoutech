@@ -59,7 +59,7 @@ class BlogList extends Component {
                                                                     </a>
                                                                 </h3>
                                                                 <p className="card-description">
-                                                                    <b dangerouslySetInnerHTML={{__html: (item.body.length > 200 ? item.body.substring(0, 200) + "..." : item.body)}}/>
+                                                                    <b dangerouslySetInnerHTML={{__html: (item.body.length > 180 ? item.body.substring(0, 180) + "..." : item.body)}}/>
                                                                     <a href=".."> Read More </a>
                                                                 </p>
                                                                 <div className="author">
