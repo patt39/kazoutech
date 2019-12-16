@@ -10,6 +10,7 @@ use App\Http\Resources\CategoryOccupationResource;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
 use App\Services\Admin\CategoryOccupationService;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
@@ -22,12 +23,12 @@ class CategoryOccupationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','activestatus']]);
+        $this->middleware('auth',['except' => ['api']]);
     }
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Factory|View
      */
     public function index()
     {
@@ -43,7 +44,7 @@ class CategoryOccupationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Factory|View
      */
     public function create()
     {
@@ -103,7 +104,7 @@ class CategoryOccupationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  categoryoccupation $categoryoccupation
-     * @return \Illuminate\Contracts\View\Factory|Response|View
+     * @return Factory|Response|View
      */
     public function edit($id)
     {

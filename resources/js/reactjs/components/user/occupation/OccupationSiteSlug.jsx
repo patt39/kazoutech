@@ -13,7 +13,7 @@ class OccupationSiteSlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupation: {categoryoccupations: []},
+            occupation: {categoryoccupations: [],blogs:[]},
         }
     }
 

@@ -8,8 +8,8 @@ class CategoryOcupationList extends Component {
     render() {
         return (
 
-            <div className="col-lg-3">
-                <div key={this.props.id} className="card card-blog card-background" data-animation="zooming">
+            <div key={this.props.id} className="col-lg-3">
+                <div className="card card-blog card-background" data-animation="zooming">
                     <div className="full-background" style={{ backgroundImage: "url(" + this.props.photo + ")" }} />
                     <Link to={`/occupations/${this.props.occupation.slug}/${this.props.slug}`}>
                         <div className="card-body">

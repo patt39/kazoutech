@@ -11,6 +11,8 @@ Route::get('faqs','MultiplesRouteController@faqs')->name('faqs');
 Route::get('faqs/c/{categoryfaq}', 'MultiplesRouteController@faqsbycategory')->name('faqs_by_category');
 
 
-Route::get('blog','MultiplesRouteController@blog')->name('blog');
-Route::get('blog/{occupation}','MultiplesRouteController@blogOccupation')->name('blog.occupation');
-Route::get('blog/{occupation}/{slug}','MultiplesRouteController@blogOccupationSlug')->name('blog.occupation_slug');
+
+
+Route::get('blog','MultiplesRouteController@blogs')->name('blogs');
+Route::get('blog/{occupation}','MultiplesRouteController@blogsoccupation')->name('blog_view');
+Route::get('blog/{occupation}/{blog}','MultiplesRouteController@blogsoccupationslug')->name('blog.occupation_slug');

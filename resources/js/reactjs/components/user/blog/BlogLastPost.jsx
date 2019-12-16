@@ -30,22 +30,25 @@ class BlogLastPost extends Component {
                 <div className="row">
 
                     {blogs.map((item) => (
-                        <div className="col-lg-4">
+                        <div key={item.id} className="col-lg-4">
                             <div className="card card-background" style={{backgroundImage: "url(" + item.photo + ")"}}>
                                 <div className="card-body text-center">
                                     <div className="icon icon-shape bg-gradient-white shadow rounded-circle mb-3">
                                         <i className="ni ni-controller text-danger"/>
                                     </div>
                                     <a href="..">
-                                        <h3 className="card-title">{item.occupation.name}</h3>
+                                        <h3 className="card-title">{(item.title.length > 15 ? item.title.substring(0, 15) + "..." : item.title)}</h3>
                                     </a>
                                     <b className="desc text-white opacity-8"
-                                       dangerouslySetInnerHTML={{__html: (item.body.length > 81 ? item.body.substring(0, 81) + "..." : item.body)}}/>
+                                       dangerouslySetInnerHTML={{__html: (item.body.length > 74 ? item.body.substring(0, 74) + "..." : item.body)}}/>
+                                        <Link to={`/blog/${item.occupation.slug}/${item.slug}/`} className="text-blue">
+                                            lire la suite
+                                        </Link>
                                     <br/>
                                     <br/>
-                                    <a href=".." className={`btn btn-sm btn-${item.color.name}`}>
-                                        Watch Later
-                                    </a>
+                                    <Link to={`/blog/${item.occupation.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                        {item.occupation.name}
+                                    </Link>
                                 </div>
                             </div>
                         </div>

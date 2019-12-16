@@ -54,10 +54,12 @@ class MultiplesRouteController extends Controller
 
     public function apioccupationbyslug($slug)
     {
-        $occupation = new OccupationByStatusResource(occupation::where('status',1)->whereSlug($slug)->firstOrFail());
+        $occupation = new OccupationByStatusResource(occupation::where('status',1)
+            ->whereSlug($slug)->firstOrFail());
 
         return response()->json($occupation,200);
     }
+
 
     public function apicategoryoccupationbyslug(occupation $occupation,$slug)
     {
@@ -86,7 +88,12 @@ class MultiplesRouteController extends Controller
         );
     }
 
-    public function blog()
+
+    /* ***********++++++++++++++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++++++++++*************** */
+    /* ***********++++++++++++++++++ Ici je recuprere toutes Routes pour configurer le blog ++++++++++++++++*************** */
+    /* ***********++++++++++++++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*************** */
+
+    public function blogs()
     {
         return view('user.blog.blog');
     }
@@ -96,8 +103,39 @@ class MultiplesRouteController extends Controller
         $blogs = BlogResource::collection(blog::where('status',1)
             ->with('user','occupation','color')
             ->orderBy('created_at','DESC')->get());
-
         return response()->json($blogs,200);
+    }
+
+    public function blogsoccupation(occupation $occupation, blog $blog)
+    {
+        return view('user.blog.blog_by_occupation',[
+            'occupation' => $occupation,
+            'blog' => $blog,
+        ]);
+    }
+
+    public function apiblogsoccupation($slug)
+    {
+        $occupation = new OccupationByStatusResource(occupation::where('status',1)
+            ->whereSlug($slug)->firstOrFail());
+        return response()->json($occupation,200);
+    }
+
+    public function blogsoccupationslug(occupation $occupation,blog $blog)
+    {
+
+        return view('user.blog.show',[
+            'blog' => $blog,
+            'occupation' => $occupation,
+        ]);
+
+    }
+
+    public function apiblogsoccupationslug(occupation $occupation,$slug)
+    {
+        $blog = new BlogResource(blog::whereSlug($slug)->first());
+        return response()->json($blog,200);
+
     }
 
     public function apilastblogs()
@@ -105,9 +143,31 @@ class MultiplesRouteController extends Controller
         $blogs = BlogResource::collection(blog::where('status',1)
             ->with('user','occupation','color')
             ->latest()->take(3)->get());
-
         return response()->json($blogs,200);
     }
+
+    //public function apilastblogsinteresse(occupation $occupation)
+    //{
+    //    $blogs = BlogResource::collection(blog::where('status',1)
+    //        ->whereIn('occupation_id',$occupation)
+    //        ->with('user','occupation','color')
+    //        ->latest()->get());
+    //    return response()->json($blogs,200);
+    //}
+
+    public function apilastblogsinteresse(occupation $occupation)
+    {
+        $blogsinteresse = BlogResource::collection(blog::where('status',1)
+            ->whereIn('occupation_id',$occupation)
+            ->with('user','occupation','color')
+            ->latest()->take(4)->get());
+        return response()->json($blogsinteresse,200);
+    }
+
+
+    /* ***********++++++++++++++++++ ++++++++ ++++++++++++++++*************** */
+    /* ***********++++++++++++++++++ END ++++++++++++++++*************** */
+    /* ***********++++++++++++++++++ ++++++++++++++++++++++++++++*************** */
 
 
 }

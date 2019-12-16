@@ -60,7 +60,7 @@ class BlogList extends Component {
                                                                 </h3>
                                                                 <p className="card-description">
                                                                     <b dangerouslySetInnerHTML={{__html: (item.body.length > 180 ? item.body.substring(0, 180) + "..." : item.body)}}/>
-                                                                    <a href=".."> Read More </a>
+                                                                    <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}> lire la suite </Link>
                                                                 </p>
                                                                 <div className="author">
                                                                     <img

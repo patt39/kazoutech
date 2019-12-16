@@ -127,22 +127,22 @@ class FooterUserSite extends Component {
                     <div className="col-md-3 mx-auto">
                         <button type="button" className="btn-icon-only rounded-circle btn btn-facebook">
                             <span className="btn-inner--icon">
-                                <i className="fab fa-facebook"></i>
+                                <i className="fab fa-facebook"/>
                             </span>
                         </button>
                         <button type="button" className="btn-icon-only rounded-circle btn btn-twitter">
                             <span className="btn-inner--icon">
-                                <i className="fab fa-twitter"></i>
+                                <i className="fab fa-twitter"/>
                             </span>
                         </button>
                         <button type="button" className="btn-instagram btn-icon-only rounded-circle btn">
                             <span className="btn-inner--icon">
-                                <i className="fab fa-instagram"></i>
+                                <i className="fab fa-instagram"/>
                             </span>
                        </button>
                         <button type="button" className="btn-icon-only rounded-circle btn btn-pinterest">
                             <span className="btn-inner--icon">
-                                <i className="fab fa-pinterest"></i>
+                                <i className="fab fa-pinterest"/>
                             </span>
                         </button>
                     </div>
