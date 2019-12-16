@@ -45,18 +45,18 @@ class BlogList extends Component {
 
                                                         <div className="col-lg-4">
                                                             <div className="card-image shadow">
-                                                                <a href="..">
+                                                                <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}>
                                                                     <img className="img rounded"
                                                                          src={item.photo}/>
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-8">
                                                             <div className="card-body">
                                                                 <h3 className="card-title">
-                                                                    <a href="..">
+                                                                    <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}>
                                                                         {item.title}
-                                                                    </a>
+                                                                    </Link>
                                                                 </h3>
                                                                 <p className="card-description">
                                                                     <b dangerouslySetInnerHTML={{__html: (item.body.length > 180 ? item.body.substring(0, 180) + "..." : item.body)}}/>

@@ -97,7 +97,7 @@ class FaqController extends Controller
 
         $faq->title = $request->title;
         $faq->body = $request->body;
-        $faq->categoryfaq_id = $request->categoryfaq_id;
+       //$faq->categoryfaq_id = $request->categoryfaq_id;
 
         $faq->save();
 
@@ -204,7 +204,7 @@ class FaqController extends Controller
         $faq->title = $request->title;
         $faq->body = $request->body;
         $faq->slug = $slug;
-        $faq->categoryfaq_id = $request->categoryfaq_id;
+       //$faq->categoryfaq_id = $request->categoryfaq_id;
 
         $faq->save();
 

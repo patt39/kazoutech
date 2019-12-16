@@ -16,12 +16,15 @@ class AnnoncesSeed extends Seeder
      */
     public function run()
     {
-        $this->addInfoDatable();
+        if (config('app.env') !== 'production') {
+            $this->addInfoDatable();
+        }
+
     }
 
 
     public function addInfoDatable()
     {
-        factory(annonce::class, 300)->create();
+        factory(annonce::class, 2)->create();
     }
 }

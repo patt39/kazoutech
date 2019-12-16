@@ -73,9 +73,9 @@ class CompileTableSeeder extends Seeder
         ]);
         $admin_user->syncRoles('admin');
 
-        factory(User::class, 500)->create();
-        factory(categoryfaq::class, 5)->create();
-        factory(faq::class, 500)->create();
+        factory(User::class, 1)->create();
+        factory(categoryfaq::class, 1)->create();
+        factory(faq::class, 2)->create();
 
 
         // Output

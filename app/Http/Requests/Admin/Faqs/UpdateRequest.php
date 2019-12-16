@@ -25,13 +25,13 @@ class UpdateRequest extends BaseRequest
         return [
             'title'=>'required',
             'body'=>'required',
-            'categoryfaq_id'=>'required',
+           //'categoryfaq_id'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'categoryfaq_id.required' => 'Le champ categorie est obligatoire',
+            //'categoryfaq_id.required' => 'Le champ categorie est obligatoire',
         ];
     }
     /**

@@ -78,7 +78,6 @@
                                             <thead>
                                             <tr>
                                                 <th><b>Category Name</b></th>
-                                                <th><b>Material Icon</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edit by</b></th>
                                                 <th><b>Last Update</b></th>
@@ -90,7 +89,6 @@
                                             <tfoot>
                                             <tr>
                                                 <th><b>Category Name</b></th>
-                                                <th><b>Material Icon</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Edit by</b></th>
                                                 <th><b>Last Update</b></th>
@@ -106,7 +104,6 @@
                                                     <b>{{ (item.name.length > 30 ? item.name.substring(0,30)+ "..." : item.name) | upText }}</b>
                                                     </router-link>
                                                 </td>
-                                                <td><i :class="getMaterialIcon(item.color_name)">{{ item.icon}}</i></td>
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
@@ -190,28 +187,6 @@
                                                                    required/>
                                                             <has-error :form="form" field="name"></has-error>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
-                                                            <input v-model="form.icon" type="text" name="icon"
-                                                                   placeholder="Name icon(materialise icon)"
-                                                                   class="form-control"
-                                                                   :class="{ 'is-invalid': form.errors.has('icon') }"
-                                                                   required/>
-                                                            <has-error :form="form" field="icon"></has-error>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="bmd-label-floating"></label>
-                                                            <select name="color_name" v-model="form.color_name"
-                                                                    id="color_name" class="form-control"
-                                                                    :class="{ 'is-invalid': form.errors.has('color_name') }">
-                                                                <option value="" disabled>Choose your color</option>
-                                                                <option v-for="color in colors" :key="color.id"
-                                                                        :value="color.slug">{{color.color_name}}
-                                                                </option>
-                                                            </select>
-                                                            <has-error :form="form" field="color_name"></has-error>
-                                                        </div>
-                                                        <br>
                                                         <div class="modal-footer">
                                                             <div class="text-center">
                                                                 <button type="button" class="btn btn-danger"
