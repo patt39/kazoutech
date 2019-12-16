@@ -84,7 +84,15 @@ class CompileTableSeeder extends Seeder
 
     public function addInfoDatable()
     {
-        color::create(['name' => 'danger','user_id' =>'1',] );
+        DB::table('colors')->delete();
+        $colors = array(
+            array('name' => 'success', 'user_id' => '1'),
+            array('name' => 'danger', 'user_id' => '2'),
+            array('name' => 'info', 'user_id' => '1'),
+            array('name' => 'primary', 'user_id' => '1'),
+        );
+        DB::table('colors')->insert($colors);
+
         diploma::create(['name' =>'Baccalereat', 'user_id' =>'1',]);
 
     }

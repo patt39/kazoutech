@@ -126,7 +126,6 @@
                     id: '',
                     name: '',
                     photo: '',
-                    user: '',
                 }),
                 editorOption: {
                     // some quill options

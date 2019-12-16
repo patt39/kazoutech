@@ -6,12 +6,13 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class faq extends Model implements Auditable
 {
-   use LogsActivity,\OwenIt\Auditing\Auditable;
+   use LogsActivity,AuditableTrait;
 
   protected $fillable = ['body','title','categoryfaq_id','status'];
   protected static $logAttributes = ['user_id','body','title','categoryfaq_id','ip','status'];

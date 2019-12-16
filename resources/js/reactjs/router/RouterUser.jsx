@@ -7,6 +7,7 @@ import contactUserSite from "../components/user/contact/ContactUserSite"
 import OccupationSiteIndex from "../components/user/occupation/OccupationSiteIndex";
 import OccupationSiteSlug from "../components/user/occupation/OccupationSiteSlug";
 import CategoryOccupationShow from "../components/user/occupation/categoryoccupation/CategoryOccupationShow";
+import BlogSiteIndex from "../components/user/blog/BlogSiteIndex";
 
 
 
@@ -17,6 +18,7 @@ const RouterUser = props => (
         <Route exact path="/occupations/" component={OccupationSiteIndex}/>
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation" component={CategoryOccupationShow}/>
+        <Route exact path="/blog/" component={BlogSiteIndex}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>
         <Route exact path="/about/" component={AboutSite}/>
         <Route exact path="/contacts/" component={contactUserSite}/>

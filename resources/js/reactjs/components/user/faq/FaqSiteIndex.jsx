@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FaqUserList from "./FaqUserList";
@@ -22,15 +22,18 @@ class FaqSiteIndex extends Component {
                 faqs: [...response.data],
             }));
     }
+
     render() {
-        const { faqs } = this.state;
+        const {faqs} = this.state;
         return (
             <>
-                <NavUserSIte />
                 <div className="about-us">
+                    <NavUserSIte/>
+
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
-                            <div className="page-header-image page-header-mini" style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }} />
+                            <div className="page-header-image page-header-mini"
+                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
@@ -56,7 +59,7 @@ class FaqSiteIndex extends Component {
                                 </div>
                             </div>
                         </div>
-                        <FooterUserSite />
+                        <FooterUserSite/>
                     </div>
                 </div>
             </>
@@ -64,4 +67,5 @@ class FaqSiteIndex extends Component {
     }
 
 }
+
 export default FaqSiteIndex;

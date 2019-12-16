@@ -18,9 +18,8 @@ class occupation extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'ip','status','photo'
-    ];
+
+    protected $guarded = [];
 
     /**
      * @return array

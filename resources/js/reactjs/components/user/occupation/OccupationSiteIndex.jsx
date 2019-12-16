@@ -1,13 +1,14 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import OccupationList from "./OccupationList";
 import AllOccupation from "../../inc/AllOccupation";
 import CitySite from "../city/CitySite";
+import {Link} from "react-router-dom";
 
 
-class OccupationSiteIndex extends Component{
-    constructor(props){
+class OccupationSiteIndex extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             //
@@ -19,16 +20,18 @@ class OccupationSiteIndex extends Component{
         const composantTitle = 'Occupations et services à la persone : trouver un jobber facillement kazoutech';
         document.title = `${composantTitle} | Kaazoutech`;
     }
+
     render() {
-        let { occupations } = this.state;
-        return(
+        let {occupations} = this.state;
+        return (
             <>
-                <NavUserSIte/>
                 <div className="landing-page">
+                    <NavUserSIte/>
                     <div className="wrapper">
                         <div className="section-shaped my-0 skew-separator skew-mini">
-                           <div className="page-header page-header-small header-filter">
-                                <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
+                            <div className="page-header page-header-small header-filter">
+                                <div className="page-header-image"
+                                     style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
                                 </div>
                                 <div className="container">
                                     <div className="header-body text-center mb-7">
@@ -47,7 +50,23 @@ class OccupationSiteIndex extends Component{
                         <AllOccupation/>
 
                     </div>
-                    <CitySite/>
+                    <div className="section features-7">
+                        <div className="container">
+                            <div className="row justify-content-center mt-5">
+                                <div className="col-lg-12">
+
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-md-8 mr-auto ml-auto text-center">
+                                                <h3 className="title mb-5">Nous sommes partous</h3>
+                                            </div>
+                                        </div>
+                                        <CitySite/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="subscribe-line subscribe-line-white">
                         <div className="container">
                             <div className="row">
@@ -89,4 +108,5 @@ class OccupationSiteIndex extends Component{
         )
     }
 }
+
 export default OccupationSiteIndex;

@@ -1,8 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
 import NavUserSIte from "../../../inc/NavUserSIte";
-import OccupationHeader from "../../../inc/OccupationHeader";
-import CategoryOcupationList from "./CategoryOcupationList";
 import FooterUserSite from "../../../inc/FooterUserSite";
 import CategoryOcupationHeader from "../../../inc/CategoryOcupationHeader";
 import CitySite from "../../city/CitySite";
@@ -31,8 +28,9 @@ class CategoryOccupationShow extends Component {
         return (
 
             <>
-                <NavUserSIte/>
                 <div className="landing-page">
+                    <NavUserSIte/>
+
                     <div className="wrapper">
                         <CategoryOcupationHeader {...categoryoccupation}/>
                         <div className="cd-section" id="accordion">
@@ -61,7 +59,7 @@ class CategoryOccupationShow extends Component {
                         </div>
 
 
-                      <CitySite/>
+                        <CitySite/>
 
                     </div>
                     <FooterUserSite/>

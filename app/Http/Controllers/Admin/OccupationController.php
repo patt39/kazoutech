@@ -104,8 +104,7 @@ class OccupationController extends Controller
     {
 
         $occupation = new occupation;
-        $occupation->name = $request->name;
-        $occupation->description = $request->description;
+        $occupation->fill($request->all());;
 
         OccupationService::storeUploadImage($request,$occupation);
 

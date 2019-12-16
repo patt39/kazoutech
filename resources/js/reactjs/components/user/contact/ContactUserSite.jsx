@@ -89,8 +89,9 @@ class ContactUserSite extends Component {
     render() {
         return (
             <>
-                <NavUserSIte/>
                 <div className="landing-page">
+                    <NavUserSIte/>
+
                     <div className="wrapper">
                         <div className="page-header page-header-small header-filter">
                             <div className="page-header-image"

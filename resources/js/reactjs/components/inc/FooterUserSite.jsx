@@ -57,6 +57,11 @@ class FooterUserSite extends Component {
                                                 Media Kit
                                             </a>
                                         </li>
+                                        <li>
+                                            <Link to={'/blog'}>
+                                                Blog
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,7 +148,7 @@ class FooterUserSite extends Component {
                     </div>
                 </div>
                 <div className="copyright d-flex justify-content-center mt-4 mr-40">
-                    Copyright &copy; {1900 + new Date().getYear()}, Designed by{" "}. Realized by 
+                    Copyright &copy; {1900 + new Date().getYear()}, Designed by{" "}. Realized by
              <a href="/" className="title-red pl-2" style={{color: "red"}}> KazouGroup srl</a>
                 </div>
             </footer>

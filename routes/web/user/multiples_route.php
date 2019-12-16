@@ -9,3 +9,8 @@ Route::get('occupations/{occupation}/{categoryoccupation}','MultiplesRouteContro
 
 Route::get('faqs','MultiplesRouteController@faqs')->name('faqs');
 Route::get('faqs/c/{categoryfaq}', 'MultiplesRouteController@faqsbycategory')->name('faqs_by_category');
+
+
+Route::get('blog','MultiplesRouteController@blog')->name('blog');
+Route::get('blog/{occupation}','MultiplesRouteController@blogOccupation')->name('blog.occupation');
+Route::get('blog/{occupation}/{slug}','MultiplesRouteController@blogOccupationSlug')->name('blog.occupation_slug');

@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\admin\annonce;
+use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
 use App\Model\user\User;
@@ -104,5 +105,7 @@ class OccupationAndCategoriesSeed extends Seeder
 
 
         factory(categoryoccupation::class, 30)->create();
+
+        factory(blog::class, 200)->create();
     }
 }

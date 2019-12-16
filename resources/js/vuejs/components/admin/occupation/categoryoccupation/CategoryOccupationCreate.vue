@@ -104,7 +104,6 @@
                     name: '',
                     subject: '',
                     description: '',
-                    user: '',
                 }),
             }
         },
