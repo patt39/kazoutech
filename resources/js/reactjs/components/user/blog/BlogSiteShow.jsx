@@ -13,7 +13,6 @@ class BlogSiteShow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blogsinteresse:[],
             blog:{
                 user:[],
                 occupation:[]
@@ -26,11 +25,6 @@ class BlogSiteShow extends Component {
         let SlugOccupation = this.props.match.params.occupation;
         let url = route('api_blog_site.view',[SlugOccupation,Slugblog]);
         dyaxios.get(url).then(response => this.setState({blog: response.data,}));
-
-        dyaxios.get(route('api_active_interesse.blogs',[SlugOccupation])).then(response =>
-            this.setState({
-                blogsinteresse: [...response.data],
-            }));
     }
 
     render() {
@@ -78,9 +72,7 @@ class BlogSiteShow extends Component {
                         </div>
                         <div className="row">
 
-                            {blogsinteresse.map((item) => (
-                                <BlogPostInteresse key={item.id} {...item}/>
-                            ))}
+                            <BlogPostInteresse  {...this.props}/>
                         </div>
 
                         <div className="text-center">
