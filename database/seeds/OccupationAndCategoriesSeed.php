@@ -106,6 +106,6 @@ class OccupationAndCategoriesSeed extends Seeder
 
         factory(categoryoccupation::class, 2)->create();
 
-        factory(blog::class, 4)->create();
+        factory(blog::class, 500)->create();
     }
 }

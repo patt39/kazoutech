@@ -158,9 +158,9 @@ class MultiplesRouteController extends Controller
     public function apilastblogsinteresse(occupation $occupation)
     {
         $blogsinteresse = BlogResource::collection(blog::where('status',1)
-        
+            ->where('occupation_id','=',$occupation->id)
             ->with('user','occupation','color')
-            ->latest()->take(6)->get());
+            ->latest()->take(4)->get());
         return response()->json($blogsinteresse,200);
     }
 
