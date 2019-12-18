@@ -28,7 +28,7 @@ class BlogSiteShow extends Component {
     }
 
     render() {
-        const {blog,blogsinteresse} = this.state;
+        const {blog} = this.state;
         const composantTitle = `${blog.title}`;
         document.title = `${composantTitle} | Kaazoutech`;
         return(

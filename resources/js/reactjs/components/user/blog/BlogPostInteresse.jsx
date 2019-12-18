@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link,NavLink } from "react-router-dom";
 import moment from 'moment'
 
 require("moment/min/locales.min");
@@ -14,6 +14,7 @@ class BlogPostInteresse extends Component {
         }
     }
 
+
     componentDidMount() {
         let SlugOccupation = this.props.match.params.occupation;
         dyaxios.get(route('api_active_interesse.blogs',[SlugOccupation])).then(response =>
@@ -26,23 +27,26 @@ class BlogPostInteresse extends Component {
         const {blogsinteresse} = this.state;
         return (
             <>
+
                 {blogsinteresse.map((item) => (
-                    <div key={item.id} className="col-lg-3 col-md-6">
+                    <div key={item.id} className="col-md-6 col-lg-4 col-sm-auto">
                         <div className="card card-product">
                             <div className="card-image">
                                 <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}>
                                     <img className="img rounded" alt={item.title} src={item.photo}/>
                                 </Link>
                             </div>
-                            <div className="card-body">
-
+                            <div className="card-body text-center">
+                                <Link to={`/blog/${item.occupation.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                    {item.occupation.name}
+                                </Link>
                                 <h6 className="card-title text-center">
-                                    <Link to={`/blog/${item.occupation.slug}/${item.slug}/`} className="card-link"> {item.title}</Link>
+                                    <a href={`/blog/${item.occupation.slug}/${item.slug}/`} className="card-link"> {item.title}</a>
                                 </h6>
                                 <b/>
                                 <p className="card-description">
                                     <b dangerouslySetInnerHTML={{__html: (item.body.length > 48 ? item.body.substring(0, 48) + "..." : item.body)}}/>
-                                    <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}> lire la suite </Link>
+                                    <a href={`/blog/${item.occupation.slug}/${item.slug}/`}> lire la suite </a>
                                 </p>
                             </div>
                         </div>
