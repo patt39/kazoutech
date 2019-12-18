@@ -76,7 +76,7 @@ class BlogSiteShow extends Component {
                         </div>
 
                         <div className="text-center">
-                            <Link to={'/blog/'}
+                            <Link to={`/blog/${blog.occupation.slug}/`}
                                   className="btn btn-outline-info">Voir plus d'articles ici
                             </Link>
                         </div>
