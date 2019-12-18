@@ -31,6 +31,10 @@ class blog extends Model implements Auditable
         ];
     }
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');

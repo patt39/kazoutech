@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Blog\StoreRequest;
+use App\Http\Requests\Blog\UpdateRequest;
+use App\Services\Admin\BlogService;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BlogResource;
+use App\Model\admin\blog;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['api']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +29,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.blog.index');
     }
 
+    public function api()
+    {
+        $blogs = BlogResource::collection(blog::with('user','occupation','color')->latest()->get());
+
+        return response()->json($blogs,200);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +45,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blog.create');
     }
 
     /**
@@ -33,9 +54,16 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $blog= new blog();
+        $blog->fill($request->all());;
+
+        BlogService::storeUploadImage($request,$blog);
+
+        $blog->save();
+
+        return response('Created',Response::HTTP_CREATED);
     }
 
     /**
@@ -46,7 +74,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $blog = new BlogResource(blog::where('id', $id)->findOrFail($id));
+        return response()->json($blog,200);
     }
 
     /**
@@ -57,7 +86,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog = blog::where('id', $id)->findOrFail($id);
+
+        return view('admin.blog.edit',compact('blog'));
     }
 
     /**
@@ -67,9 +98,15 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        $blog = blog::findOrFail($id);
+
+        BlogService::updateUploadeImage($request,$blog);
+
+        $blog->update($request->all());
+
+        return response()->json($blog,200);
     }
 
     /**
@@ -80,6 +117,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = blog::findOrFail($id);
+        $blog->delete();
+
+        return ['message' => 'color deleted '];
     }
 }
