@@ -48,14 +48,14 @@ class FooterUserSite extends Component {
                                     <h4 className="mb-4">Services</h4>
                                     <ul className="links-vertical">
                                         <li>
-                                        <Link to={'/occupations'}>
+                                        <Link to={'/occupations/'}>
                                                 Nos categorie
                                         </Link>
                                         </li>
                                         <li>
-                                            <a href="..">
-                                                Media Kit
-                                            </a>
+                                            <Link to={'/annonces/'}>
+                                               Annonces
+                                            </Link>
                                         </li>
                                         <li>
                                             <Link to={'/blog/'}>

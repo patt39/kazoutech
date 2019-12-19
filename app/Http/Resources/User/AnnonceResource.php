@@ -17,12 +17,19 @@ class AnnonceResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'city' => $this->city,
-            'occupation' => $this->occupation,
             'user' => $this->user,
+            'city' => $this->city,
+            'city_id' => $this->city_id,
+            'slug' => $this->slug,
+            'title' => $this->title,
+            'status' => $this->status,
+            'body' => $this->body,
+            'photo' => $this->photo,
+            'description' => $this->description,
+            'occupation' => $this->occupation,
+            'occupation_id' => $this->occupation_id,
             'categoryoccupation' => $this->categoryoccupation,
+            'categoryoccupation_id' => $this->categoryoccupation_id,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

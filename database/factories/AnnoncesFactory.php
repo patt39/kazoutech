@@ -24,8 +24,10 @@ $factory->define(annonce::class, function (Faker $faker) {
     return [
         'title' => $title,
         'slug' => str_slug($title),
+        'photo' => $faker->imageUrl($width = 1000, $height = 900),
         'price' => $faker->randomNumber(3),
         'description' => $faker->realText(rand(50, 1000)),
+        'body' => $faker->realText(rand(50, 1000)),
 
         'categoryoccupation_id' => categoryoccupation::inRandomOrder()->first()->id,
 
