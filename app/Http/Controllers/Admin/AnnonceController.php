@@ -40,9 +40,12 @@ class AnnonceController extends Controller
 
     public function apioccupationcity(occupation $occupation,$slug)
     {
-        $annoncecity = new CityResource(city::where('slug',$occupation)->whereSlug($slug)->firstOrFail());
 
-        return response()->json($annoncecity,200);
+        $annonces = new AnnonceResource(annonce::whereIn('occupation_id',$occupation)->whereSlug($slug)->get());
+
+        dd($annonces);
+
+        return response()->json($annonces,200);
     }
 
     /**
