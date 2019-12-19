@@ -68,6 +68,7 @@ class BlogSiteIndex extends Component {
                                     <div className="col-md-12 ml-auto mr-auto">
                                         <section className="blogs-3">
                                             <div className="container">
+                                                <br/>
                                                 <div className="row">
                                                     <div className="col-lg-10 col-md-8 mx-auto">
                                                         <h2 className="title mb-5"><b>Histoires connexes</b></h2>

@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->unsignedBigInteger('country_id')->nullable()->index();
+            $table->unsignedBigInteger('occupation_id')->nullable()->index();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

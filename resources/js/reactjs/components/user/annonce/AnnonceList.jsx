@@ -36,6 +36,7 @@ class AnnonceList extends Component {
                 </div>
             </div>
 
+
         )
     }
 

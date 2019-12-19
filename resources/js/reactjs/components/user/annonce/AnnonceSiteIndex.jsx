@@ -60,12 +60,57 @@ class AnnonceSiteIndex extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
-                                                    <div className="col-lg-10 col-md-10 mx-auto">
+                                                    <div className="col-md-4">
+                                                        <div className="card mb-3">
+                                                            <div className="card-header h6">Villes</div>
+                                                            <div className="card-body">
+                                                                <ul className="list-unstyled">
+                                                                    <li className="mb-2"><a
+                                                                        href="/annonces/jardinage/couper-un-arbre/paris">Annonce a Douala</a></li>
+                                                                    <li className="mb-2"><a
+                                                                        href="/annonces/jardinage/couper-un-arbre/marseille">Annonces a Yaounde</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h2 className="title mb-5"><b>Toutes les annonces</b></h2>
 
-                                                        {annonces.map((item) => (
-                                                        <AnnonceList key={item.id} {...item}/>
-                                                        ))}
+                                                        <div className="row">
+                                                            <div className="col-md-6">
+                                                                <div className="card mb-3 text-center">
+                                                                    <div className="card-body"><p
+                                                                        className="h5 font-weight-normal mb-3 text-success">Vous aviez une annonce?</p>
+                                                                        <button className="btn btn-success mb-2"
+                                                                                type="button" disabled="">
+                                                                            <span className="spinner-grow spinner-grow-sm"
+                                                                                role="status" aria-hidden="true"/>
+                                                                            Annonce
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-md-6">
+                                                                <div className="card mb-3 text-center">
+                                                                    <div className="card-body"><p
+                                                                        className="h5 font-weight-normal mb-3 text-primary">Envie
+                                                                        de charbonner ?</p><a
+                                                                        className="btn btn-primary btn-break"
+                                                                        href="/devenez_charbonneur">Devenir Charbonneur</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div className="card">
+                                                            <div className="card-body">
+                                                                {annonces.map((item) => (
+                                                                    <AnnonceList key={item.id} {...item}/>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
 
                                                     </div>
                                                 </div>

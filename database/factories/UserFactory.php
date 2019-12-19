@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\admin\occupation;
 use App\Model\user\User;
 use Faker\Generator as Faker;
 
@@ -30,6 +31,7 @@ $factory->define(User::class, function (Faker $faker) {
         //'first_name' => $faker->firstName,
         'avatar' => $faker->imageUrl($width = 400, $height = 400),
         'avatarcover' => $faker->imageUrl,
+        'occupation_id' => occupation::inRandomOrder()->first()->id,
         'name' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
         //'phone' => $faker->unique()->numerify('+393#########'),

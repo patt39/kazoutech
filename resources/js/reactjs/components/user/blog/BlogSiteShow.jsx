@@ -30,7 +30,7 @@ class BlogSiteShow extends Component {
     render() {
         const {blog} = this.state;
         const composantTitle = `${blog.title}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `${composantTitle} | Kazoutech`;
         return(
 
             <div className="blog-post">
