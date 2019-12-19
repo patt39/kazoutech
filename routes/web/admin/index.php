@@ -14,6 +14,7 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
 
         require(__DIR__ . DIRECTORY_SEPARATOR . 'account.php');
 
+        require(__DIR__ . DIRECTORY_SEPARATOR . 'annonces.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'blog.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'faqs.php');
         require(__DIR__ . DIRECTORY_SEPARATOR . 'users.php');

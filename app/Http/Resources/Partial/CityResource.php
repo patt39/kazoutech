@@ -14,6 +14,8 @@ class CityResource extends JsonResource
      */
     public function toArray($request)
     {
+        $annonces = $this->annonces()->with('occupation','user','city')->distinct()
+            ->get()->toArray();
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -21,6 +23,7 @@ class CityResource extends JsonResource
             'city_vip' => $this->city_vip,
             'photo' => $this->photo,
             'slug' => $this->slug,
+            'annonces' => $annonces,
             'statusOnline' => $this->user->isOnline(),
             'technician_count' => $this->technicians()->get()->count(),
             'user' => $this->user,

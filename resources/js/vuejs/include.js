@@ -49,7 +49,7 @@ const router = new VueRouter({
     mode: 'history',
     linkActiveClass: "active",
     linkExactActiveClass: "active", // active class for *exact* links.
-})
+});
 
 
 

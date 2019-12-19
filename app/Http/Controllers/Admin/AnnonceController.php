@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Resources\AnnonceResource;
+
+use App\Http\Resources\OccupationResource;
+use App\Http\Resources\Partial\CityResource;
+use App\Http\Resources\User\AnnonceResource;
 use App\Model\admin\annonce;
 use App\Http\Controllers\Controller;
+use App\Model\admin\city;
+use App\Model\admin\occupation;
 use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
@@ -16,14 +21,28 @@ class AnnonceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apioccupation','apioccupationcity']]);
     }
 
     public function api()
     {
-        $annonces = AnnonceResource::collection(annonce::with('user','city')->latest()->get());
+        $annonces = AnnonceResource::collection(annonce::with('user','city','occupation')->latest()->get());
 
         return response()->json($annonces,200);
+    }
+
+    public function apioccupation($slug)
+    {
+        $annonceoccupation = new OccupationResource(occupation::whereSlug($slug)->firstOrFail());
+
+        return response()->json($annonceoccupation,200);
+    }
+
+    public function apioccupationcity(occupation $occupation,$slug)
+    {
+        $annoncecity = new CityResource(city::where('slug',$occupation)->whereSlug($slug)->firstOrFail());
+
+        return response()->json($annoncecity,200);
     }
 
     /**

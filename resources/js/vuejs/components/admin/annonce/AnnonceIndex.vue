@@ -15,12 +15,12 @@
                                     <div class="card-icon">
                                         <i class="material-icons">assignment</i>
                                     </div>
-                                    <p class="card-category"><b>All Categories Occupations</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{blogs.length}}</b></h3>
+                                    <p class="card-category"><b>All Announces</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{annonces.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">assignment</i><b>All Categories occupations</b>
+                                        <i class="material-icons">assignment</i><b>All announces</b>
                                     </div>
                                 </div>
                             </div>
@@ -36,10 +36,10 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h4 class="card-title">
-                                                <b>Datatables annonces</b>
+                                                <b>Datatables announces</b>
                                             </h4>
                                             <p class="card-title">
-                                                Categories annonces
+                                                 Announces
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -59,9 +59,9 @@
                                         </button>
                                     </div>
                                     <br>
-                                    <div v-if="$auth.can('create-occupation')" class="toolbar">
+                                    <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'categoryoccupations.create' }" class="btn btn-success btn-raised " >
+                                            <router-link :to="{ name: 'annonces.create' }" class="btn btn-success btn-raised">
                                                 <span class="btn-label">
                                                     <i class="material-icons">assignment</i>
                                                 </span>
@@ -75,9 +75,8 @@
                                             <thead>
                                             <tr>
                                                 <th><b>Title</b></th>
-                                                <th><b>Description</b></th>
+                                                <th><b>Occupation</b></th>
                                                 <th><b>City</b></th>
-                                                <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
@@ -85,9 +84,8 @@
                                             <tfoot>
                                             <tr>
                                                 <th><b>Title</b></th>
-                                                <th><b>Description</b></th>
+                                                <th><b>Occupation</b></th>
                                                 <th><b>City</b></th>
-                                                <th><b>Status</b></th>
                                                 <th><b>Edited By</b></th>
                                                 <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
@@ -95,17 +93,15 @@
                                             <tbody>
                                             <tr v-for="item in annonces" :key="item.id">
                                                 <td><b>{{ (item.title.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.title) | upText }}</b></td>
-                                                <td><b>{{ (item.description.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.description) | upText }}</b></td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/occupations/` }">
-                                                        <b>{{ (item.city) }}</b>
+                                                    <router-link  :to="{ path: `/dashboard/occupations/${item.occupation.slug}` }">
+                                                        <b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b>
                                                     </router-link>
                                                 </td>
                                                 <td>
-                                                    <div class="timeline-heading">
-                                                        <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="!item.status"  class="badge badge-danger"><b>Deactive</b></span>
-                                                    </div>
+                                                    <router-link  :to="{ path: `/dashboard/annonces/${item.city.slug}` }">
+                                                        <b>{{ (item.city.name.length > 15 ? item.city.name.substring(0,15)+ "..." : item.city.name) | upText }}</b>
+                                                    </router-link>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
@@ -287,8 +283,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                let url = "/api/annonces";
-                axios.get(url).then(response => {
+                axios.get(route('annonces_dashboard.api')).then(response => {
                     this.loaded = true;
                     this.annonces = response.data;
                     this.mydatatables()
