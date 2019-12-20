@@ -8,6 +8,7 @@ use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\User\CategoryoccupationByStatusResource;
 use App\Http\Resources\User\OccupationByStatusResource;
+use App\Http\Resources\UserResource;
 use App\Model\admin\annonce;
 use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
@@ -15,6 +16,7 @@ use App\Model\admin\categoryfaq;
 use App\Model\admin\city;
 use App\Model\admin\faq;
 use App\Model\admin\occupation;
+use App\Model\user\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -225,4 +227,16 @@ class MultiplesRouteController extends Controller
         return response()->json($annoncesoccupationcity,200);
     }
 
+
+    public function apicharbonneurs()
+    {
+        $charbonneurs = UserResource::collection(User::where('charbonneur',1)->get());
+
+        return response()->json($charbonneurs,200);
+    }
+
+    public function charbonneurs()
+    {
+        return view('user.charbonneur.charbonneurs');
+    }
 }

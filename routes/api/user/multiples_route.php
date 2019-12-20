@@ -15,3 +15,6 @@ Route::get('annonces','MultiplesRouteController@apiannonces')->name('api_active.
 Route::get('annonces/{occupation}','MultiplesRouteController@apiannoncesoccupation')->name('api_annonce_occupation_site.view');
 Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@apiannoncesoccupationslug')->name('api_annonce_site.view');
 //Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@apiannoncesoccupationcity')->name('api_annonce_occupation_city_site.view');
+
+
+Route::get('charbonneurs','MultiplesRouteController@apicharbonneurs')->name('api_active_charbonneurs');

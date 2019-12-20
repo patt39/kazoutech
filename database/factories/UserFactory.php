@@ -33,6 +33,7 @@ $factory->define(User::class, function (Faker $faker) {
         'avatarcover' => $faker->imageUrl,
         'occupation_id' => occupation::inRandomOrder()->first()->id,
         'name' => $faker->firstName,
+        'charbonneur' => $faker->boolean,
         'email' => $faker->unique()->safeEmail,
         //'phone' => $faker->unique()->numerify('+393#########'),
         'password' => bcrypt('0000000'),

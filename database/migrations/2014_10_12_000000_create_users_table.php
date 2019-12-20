@@ -19,9 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('sex')->default('Male');
-            $table->string('color_name')->default('success')->nullable();
+            $table->string('color_name')->nullable()->default('success');
             $table->string('my_status')->nullable()->default('0');
-            $table->boolean('technician')->default(false)->nullable();
+            $table->boolean('charbonneur')->nullable()->default(false);
+            $table->boolean('technician')->nullable()->default(false);
             $table->string('avatar')->nullable()->default('https://www.kazoucoin.com/assets/img/default-avatar.png');
             $table->string('avatarcover')->nullable()->default('https://www.kazoucoin.com/assets/img/photo.jpg');
             $table->timestamp('email_verified_at')->nullable();

@@ -68,9 +68,13 @@ class BlogSiteCategories extends Component {
                                                     <div className="col-lg-10 col-md-8 mx-auto">
                                                         <h2 className="title mb-5"><b>{blogsbycategy.name}</b></h2>
 
+                                                        <div className="card">
+                                                            <div className="card-body">
                                                         {blogsbycategies.map((item) => (
                                                             <BlogList key={item.id} {...item}/>
                                                         ))}
+                                                            </div>
+                                                        </div>
 
                                                     </div>
                                                 </div>
