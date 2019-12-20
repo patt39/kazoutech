@@ -19,7 +19,7 @@ class AnnonceList extends Component {
             <div key={this.props.id}
                  className="card card-blog card-plain blog-horizontal mb-5">
                 <div className="row">
-                    <div className="col-lg-10">
+                    <div className="col-lg-12">
                         <h5 className="card-title">
                             <Link to={`/annonces/${this.props.occupation.slug}/${this.props.slug}/`}>
                                 {this.props.title}
