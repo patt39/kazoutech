@@ -50,16 +50,21 @@ class NavUserSIte extends Component{
                            <li className={'nav-item'}>
                                <Link to={'/technician_become/'} className="nav-link"  role="button">
                                    <i className="ni ni-app d-lg-none"/>
-                                   <span className="nav-link-inner--text"><b>Dévenir un bosseur</b></span>
+                                   <span className="nav-link-inner--text"><b>Dévenir webtech</b></span>
                                </Link>
                            </li>
-                           <li className="dropdown nav-item">
-
-
-                           </li>
-                       </ul>
-
-
+                               <li className="nav-item">
+                                   <a href="/login" className="nav-link" role="button">
+                                       <i className="ni ni-app d-lg-none"></i>
+                                       <span className="nav-link-inner--text"><b>Connexion</b></span>
+                                   </a>
+                               </li>
+                               <li className="nav-item">
+                                   <a href="/register" className="btn btn-primary" role="button">
+                                       <span className="nav-link-inner--text pt-40">Inscription</span>
+                                   </a>
+                               </li>
+                         </ul>
                    </div>
                </div>
            </nav>

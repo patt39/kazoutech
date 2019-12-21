@@ -239,4 +239,9 @@ class MultiplesRouteController extends Controller
     {
         return view('user.charbonneur.charbonneurs');
     }
+
+    public function temoignages()
+    {
+        return view('user.page.testimonialsite');
+    }
 }

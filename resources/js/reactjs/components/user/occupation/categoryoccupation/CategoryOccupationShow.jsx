@@ -24,7 +24,7 @@ class CategoryOccupationShow extends Component {
     render() {
         const {categoryoccupation} = this.state;
         const composantTitle = `${categoryoccupation.name}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `${composantTitle} | Kazoutech`;
         return (
 
             <>
@@ -42,7 +42,7 @@ class CategoryOccupationShow extends Component {
                                         <div className="container text-center">
                                             <div className="row mb-5">
                                                 <div className="col-md-8 mx-auto">
-                                                    <h3 className="display-3">Nos offres en quelque clicks choisissez
+                                                    <h3 className="display-3">Nos offres en quelques clicks choisissez
                                                         votre
                                                         categorie</h3>
                                                 </div>

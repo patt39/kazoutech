@@ -33,7 +33,7 @@ class AnnonceSiteIndex extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h2 className="title text-white">
-                                        Rester a l'affu de toutes les annonces sur Kazoutech
+                                        Restez a l'affue de toutes les annonces sur Kazoutech
                                     </h2>
                                 </div>
                             </div>
@@ -75,14 +75,12 @@ class AnnonceSiteIndex extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h2 className="title mb-5"><b>Toutes les annonces</b></h2>
-
+                                                        <h2 className="display-3 mb-5"><b>Toutes les annonces</b></h2>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
                                                                     <div className="card-body"><p
-                                                                        className="h5 font-weight-normal mb-3 text-success">Vous
-                                                                        aviez une annonce?</p>
+                                                                        className="h5 font-weight-normal mb-3 text-success">Vous avez une annonce?</p>
                                                                         <button className="btn btn-success mb-2"
                                                                                 type="button" disabled="">
                                                                             <span

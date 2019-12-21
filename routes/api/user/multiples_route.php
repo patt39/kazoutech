@@ -18,3 +18,5 @@ Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@apiannonc
 
 
 Route::get('charbonneurs','MultiplesRouteController@apicharbonneurs')->name('api_active_charbonneurs');
+
+Route::get('temoignages','MultiplesRouteController@apitemoignages')->name('api_active_testimonials');

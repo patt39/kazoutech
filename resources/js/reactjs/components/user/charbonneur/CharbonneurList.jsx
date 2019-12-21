@@ -16,7 +16,7 @@ class CharbonneurList extends Component {
     render() {
         return (
 
-            <div  key={this.props.id} className="col-lg-4 col-md-6">
+            <div  key={this.props.id} className="col-lg-6 col-md-6">
                 <div className="card card-profile">
                     <div className="card-header bg-info"
                          style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
@@ -29,10 +29,16 @@ class CharbonneurList extends Component {
                     </div>
                     <div className="card-body pt-0">
                         <div className="d-flex justify-content-between">
-                            <a href=".."
-                               className="btn btn-sm btn-info mr-4 mt-3">Connect</a>
-                            <a href=".."
-                               className="btn btn-sm btn-default float-right mt-3">Message</a>
+                        {this.props.statusOnline ?
+                            <a href=".." className="btn btn-sm btn-info mr-4 mt-3">Connect</a>
+                            :
+                            <a href=".." className="btn btn-sm btn-danger mr-4 mt-3">Offline</a>
+                        }
+                            <button type="button" className="btn-icon-only btn-sm rounded-circle btn btn-primary">
+                                <span className="btn-inner--icon"><i className="ni ni-check-bold"/></span>
+                            </button>
+
+                            <a href=".." className="btn btn-sm btn-default float-right mt-3">Message</a>
                         </div>
                         <div className="row">
                             <div className="col">

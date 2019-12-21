@@ -26,9 +26,9 @@ class FooterUserSite extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            <a href="/concept/">
+                                             <Link to={'/concept/'}>
                                                 Notre concept
-                                        </a>
+                                            </Link>
                                         </li>
                                         <li>
                                             <Link to={'/faqs/'}>
@@ -37,7 +37,7 @@ class FooterUserSite extends Component {
                                         </li>
                                         <li>
                                             <Link to={'/contacts/'}>
-                                                Contact
+                                                Contacts
                                             </Link>
                                         </li>
                                     </ul>
@@ -62,6 +62,11 @@ class FooterUserSite extends Component {
                                                 Blog
                                             </Link>
                                         </li>
+                                        <li>
+                                            <Link to={'/temoignages/'}>
+                                                Temoignages
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -70,24 +75,24 @@ class FooterUserSite extends Component {
                                     <h4 className="mb-4">Informations</h4>
                                     <ul className="links-vertical">
                                         <li>
-                                            <a href="/">
+                                            <Link to={'/license_site/'}>
                                                 Licence
-                                </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/">
-                                                Terme et Condition
-                                </a>
+                                            <Link to={'/condition_utilisation/'}>
+                                                Terme et conitions
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/">
-                                                Politique de confidentialite
-                                </a>
+                                            <Link to={'/confidentialité/'}>
+                                                Politique de confidentialité
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/">
-                                                Legale notice
-                                </a>
+                                            <Link to={'/notice_legale/'}>
+                                                Notice légale
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -96,8 +101,7 @@ class FooterUserSite extends Component {
                                 <div className="column">
                                     <h4 className="mb-4">Newsletter</h4>
                                     <ul className="links-vertical">
-                                        <p>We handpicked the most interesting content for you. No spam. It takes one click to unsubscribe. Give
-                                it a try!</p>
+                                        <p>Ne vous mefiez pas abbonez vous a notre newsletter pour etre notifier a tout temp!</p>
                                         <form method="" action="">
                                             <div className="row">
                                                 <div className="col-sm-8">

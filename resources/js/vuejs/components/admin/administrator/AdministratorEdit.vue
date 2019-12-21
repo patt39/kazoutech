@@ -171,7 +171,6 @@
 
     </div>
 </template>
-
 <script>
     import api from '../../../api/mixins/collections';
     import StatusAdmin from "../../inc/admin/StatusAdmin";

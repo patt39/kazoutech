@@ -2,6 +2,7 @@ import React from "react";
 import {Route, Switch} from 'react-router-dom';
 import IndexSite from "../components/user/IndexSite";
 import AboutSite from "../components/user/AboutSite";
+import ConceptSite from "../components/user/ConceptSite";
 import FaqSiteIndex from "../components/user/faq/FaqSiteIndex";
 import contactUserSite from "../components/user/contact/ContactUserSite"
 import OccupationSiteIndex from "../components/user/occupation/OccupationSiteIndex";
@@ -13,6 +14,7 @@ import BlogSiteCategories from "../components/user/blog/BlogSiteCategories";
 import AnnonceSiteIndex from "../components/user/annonce/AnnonceSiteIndex";
 import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
+import TemoignageSite from "../components/user/temoignage/TemoignageSite";
 
 
 
@@ -31,7 +33,9 @@ const RouterUser = props => (
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>
         <Route exact path="/about/" component={AboutSite}/>
+        <Route exact path="/concept/" component={ConceptSite}/>
         <Route exact path="/contacts/" component={contactUserSite}/>
+        <Route exact path="/temoignages/" component={TemoignageSite}/>
     </Switch>
 );
 export default RouterUser;

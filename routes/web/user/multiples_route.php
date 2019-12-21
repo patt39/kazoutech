@@ -27,3 +27,5 @@ Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@annonceso
 Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesoccupationcity')->name('occupation.occupation_city');
 
 Route::get('charbonneurs','MultiplesRouteController@charbonneurs')->name('charbonneurs');
+
+Route::get('temoignages','MultiplesRouteController@temoignages')->name('temoignages');
