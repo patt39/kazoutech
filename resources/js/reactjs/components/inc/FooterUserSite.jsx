@@ -75,8 +75,8 @@ class FooterUserSite extends Component {
                                     <h4 className="mb-4">Informations</h4>
                                     <ul className="links-vertical">
                                         <li>
-                                            <Link to={'/license_site/'}>
-                                                Licence
+                                            <Link to={'/charbonneurs/'}>
+                                                Charbonneurs
                                             </Link>
                                         </li>
                                         <li>

@@ -1,0 +1,51 @@
+::-webkit-scrollbar-thumb {
+    background-color: #636660;
+    border-radius: 20px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+#toTop {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 1.5em;
+}
+#toTop:hover,
+.material-button:hover {
+    border: 2px solid white;
+}
+.scroll-navbar {
+    position: fixed !important;
+    border-bottom: 1px solid white;
+    box-shadow: 0 0 15px white;
+    outline: 0;
+    background: linear-gradient(to left, #979aab, #5e72e4);
+}
+.position-navbar {
+    left: 5px;
+    top: -1px;
+    position: relative;
+}
+.navbar-expand-lg .navbar-collapse {
+    position: absolute;
+    float: right;
+    right: 50px;
+}
+.navbar.navbar-main {
+    height: 100px;
+}
+@media (min-width: 768px) {
+    .navbar-transparent .navbar-brand {
+        position: relative;
+        float: left;
+        left: -15%;
+    }
+}

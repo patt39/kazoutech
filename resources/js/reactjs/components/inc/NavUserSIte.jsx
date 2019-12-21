@@ -60,8 +60,11 @@ class NavUserSIte extends Component{
                                    </a>
                                </li>
                                <li className="nav-item">
-                                   <a href="/register" className="btn btn-primary" role="button">
-                                       <span className="nav-link-inner--text pt-40">Inscription</span>
+                                   <a href="/register" className="btn btn-outline-primary" role="button">
+                                       <span className="btn-inner--icon">
+                                           <i className="ni ni-single-02"></i>
+                                       </span>
+                                       <span className="nav-link-inner--text pt-40 position-navbar">Inscription</span>
                                    </a>
                                </li>
                          </ul>

@@ -74,7 +74,7 @@ class CompileTableSeeder extends Seeder
             'created_at' => now(),
             'email_verified_at' => now(),
         ]);
-        $admin_user->syncRoles('admin');
+        $admin_user->syncRoles('super-admin');
 
 
         factory(categoryfaq::class, 1)->create();
