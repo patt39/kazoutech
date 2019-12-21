@@ -25,6 +25,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!--  Notifications Plugin    -->
 <script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
+<!--  KazouTech Js  -->
+<script src="/assets/vendor_site/js/kazoutech.js"></script>
 <!--  Plugin for Sweet Alert -->
 <script src="/assets/dashboard/assets/js/plugins/sweetalert2.js"></script>
 <script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
