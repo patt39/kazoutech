@@ -13,10 +13,9 @@ class BlogSiteShow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blogsinteresse:[],
-            blog:{
-                user:[],
-                occupation:[]
+            blog: {
+                user: [],
+                occupation: []
             }
         }
     }
@@ -24,20 +23,15 @@ class BlogSiteShow extends Component {
     componentDidMount() {
         let Slugblog = this.props.match.params.blog;
         let SlugOccupation = this.props.match.params.occupation;
-        let url = route('api_blog_site.view',[SlugOccupation,Slugblog]);
+        let url = route('api_blog_site.view', [SlugOccupation, Slugblog]);
         dyaxios.get(url).then(response => this.setState({blog: response.data,}));
-
-        dyaxios.get(route('api_active_interesse.blogs',[SlugOccupation])).then(response =>
-            this.setState({
-                blogsinteresse: [...response.data],
-            }));
     }
 
     render() {
-        const {blog,blogsinteresse} = this.state;
+        const {blog} = this.state;
         const composantTitle = `${blog.title}`;
-        document.title = `${composantTitle} | Kaazoutech`;
-        return(
+        document.title = `${composantTitle} | Kazoutech`;
+        return (
 
             <div className="blog-post">
                 <NavUserSIte/>
@@ -61,16 +55,17 @@ class BlogSiteShow extends Component {
                     </div>
                     <br/>
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-10 ml-auto mr-auto">
-                                <h6 className="category"><b>{moment(blog.created_at).format('LL')}</b></h6>
-                                <h3 className="title">{blog.title}</h3>
-                                <p dangerouslySetInnerHTML={{__html: (blog.body)}}/>
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="row">
+                                    <div className="col-md-12 ml-auto mr-auto text-justify">
+                                        <h6 className="category"><b>{moment(blog.created_at).format('LL')}</b></h6>
+                                        <h3 className="title"><b>{blog.title}</b></h3>
+                                        <p dangerouslySetInnerHTML={{__html: (blog.body)}}/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
-
 
 
                         <div className="text-center">
@@ -78,18 +73,15 @@ class BlogSiteShow extends Component {
                         </div>
                         <div className="row">
 
-                            {blogsinteresse.map((item) => (
-                                <BlogPostInteresse key={item.id} {...item}/>
-                            ))}
+                            <BlogPostInteresse  {...this.props}/>
                         </div>
 
                         <div className="text-center">
-                            <Link to={'/blog/'}
+                            <Link to={`/blog/${blog.occupation.slug}/`}
                                   className="btn btn-outline-info">Voir plus d'articles ici
                             </Link>
                         </div>
                         <br/>
-
 
 
                     </div>
@@ -100,4 +92,5 @@ class BlogSiteShow extends Component {
     }
 
 }
+
 export default BlogSiteShow;

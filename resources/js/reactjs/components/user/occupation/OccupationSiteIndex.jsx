@@ -38,7 +38,7 @@ class OccupationSiteIndex extends Component {
                                         <div className="row justify-content-center">
                                             <div className="col-xl-5 col-lg-6 col-md-8 px-5">
                                                 <h1 className="text-white">Occupations </h1>
-                                                <p className="text-lead text-white">Du service a la personne et du main
+                                                <p className="text-lead text-white">Du service à la personne et du main
                                                     à main entre particuliers</p>
                                             </div>
                                         </div>

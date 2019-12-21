@@ -3,13 +3,17 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
 import BlogLastPost from "./BlogLastPost";
+import FaqUserList from "../faq/FaqUserList";
+import {Link} from "react-router-dom";
+import moment from "moment";
 
 
 class BlogSiteIndex extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //
+            blogs: [],
+            blogsLast: []
         }
     }
 
@@ -17,9 +21,12 @@ class BlogSiteIndex extends Component {
     componentDidMount() {
         const composantTitle = 'Blog une mise a jour des informations  | Kazoutech';
         document.title = `${composantTitle}`;
+        dyaxios.get(route('api_active.blogs')).then(response => this.setState({blogs: [...response.data],}));
+        dyaxios.get(route('api_active_last.blogs')).then(response => this.setState({blogsLast: [...response.data],}))
     }
 
     render() {
+        const {blogs,blogsLast} = this.state;
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -45,10 +52,43 @@ class BlogSiteIndex extends Component {
                     <br/>
                     <div className="main main-raised">
 
-                        <BlogLastPost/>
+                        <div className="container">
+                            <div className="row">
+                                {blogsLast.map((item) => (
+                                    <BlogLastPost key={item.id} {...item}/>
+                                ))}
+                            </div>
+                        </div>
 
 
-                        <BlogList/>
+
+                        <section className="section">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-12 ml-auto mr-auto">
+                                        <section className="blogs-3">
+                                            <div className="container">
+                                                <br/>
+                                                <div className="row">
+                                                    <div className="col-lg-10 col-md-8 mx-auto">
+                                                        <h2 className="title mb-5"><b>Histoires connexes</b></h2>
+
+                                                        <div className="card">
+                                                            <div className="card-body">
+                                                        {blogs.map((item) => (
+                                                            <BlogList key={item.id} {...item} />
+                                                        ))}
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
 
                     </div>

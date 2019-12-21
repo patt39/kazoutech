@@ -223,8 +223,8 @@
 </template>
 
 <script>
-
     import StatusAdmin from "../inc/admin/StatusAdmin";
+
     export default {
         components: {StatusAdmin},
         data() {
@@ -233,7 +233,6 @@
                 user: {},
             }
         },
-
         methods:{
           //
         },

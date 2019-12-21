@@ -7,11 +7,12 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
 class city extends Model implements Auditable
 {
-    use \OwenIt\Auditing\Auditable;
+    use AuditableTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -61,6 +62,11 @@ class city extends Model implements Auditable
         return Cache::has('user-is-online-' . $this->id);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     use Sluggable;
 
     /**
@@ -85,5 +91,10 @@ class city extends Model implements Auditable
     public function technicians()
     {
         return $this->hasMany(technician::class);
+    }
+
+    public function annonces()
+    {
+        return $this->hasMany(annonce::class,'occupation_id');
     }
 }

@@ -9,90 +9,53 @@ class BlogList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blogs: []
+           //
         }
     }
 
-    componentDidMount() {
-        dyaxios.get(route('api_active.blogs')).then(response =>
-            this.setState({
-                blogs: [...response.data],
-            }));
-    }
-
-
     render() {
-        const {blogs} = this.state;
         return (
 
-            <section className="section">
-                <div className="container">
+            <div key={this.props.id}
+                 className="card card-blog card-plain blog-horizontal mb-5">
+                <div className="row">
 
-                    <div className="row">
-
-
-                        <div className="col-md-12 ml-auto mr-auto">
-                            <section className="blogs-3">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-lg-10 col-md-8 mx-auto">
-                                            <h2 className="title mb-5"><b>Histoires connexes</b></h2>
-
-                                            {blogs.map((item) => (
-                                                <div key={item.id}
-                                                     className="card card-blog card-plain blog-horizontal mb-5">
-                                                    <div className="row">
-
-                                                        <div className="col-lg-4">
-                                                            <div className="card-image shadow">
-                                                                <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}>
-                                                                    <img className="img rounded"
-                                                                         src={item.photo}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-8">
-                                                            <div className="card-body">
-                                                                <h3 className="card-title">
-                                                                    <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}>
-                                                                        {item.title}
-                                                                    </Link>
-                                                                </h3>
-                                                                <p className="card-description">
-                                                                    <b dangerouslySetInnerHTML={{__html: (item.body.length > 180 ? item.body.substring(0, 180) + "..." : item.body)}}/>
-                                                                    <Link to={`/blog/${item.occupation.slug}/${item.slug}/`}> lire la suite </Link>
-                                                                </p>
-                                                                <div className="author">
-                                                                    <img
-                                                                        src={item.user.avatar}
-                                                                        alt={item.user.name}
-                                                                        className="avatar img-raised"/>
-                                                                    <div className="text">
+                    <div className="col-lg-4">
+                        <div className="card-image shadow">
+                            <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}>
+                                <img className="img rounded"
+                                     src={this.props.photo}/>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="col-lg-8">
+                        <div className="card-body">
+                            <h3 className="card-title">
+                                <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}>
+                                    {this.props.title}
+                                </Link>
+                            </h3>
+                            <p className="card-description">
+                                <b dangerouslySetInnerHTML={{__html: (this.props.body.length > 180 ? this.props.body.substring(0, 180) + "..." : this.props.body)}}/>
+                                <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            </p>
+                            <div className="author">
+                                <img
+                                    src={this.props.user.avatar}
+                                    alt={this.props.user.name}
+                                    className="avatar img-raised"/>
+                                <div className="text">
                                                                                     <span
-                                                                                        className="name">{item.user.name}</span>
-                                                                        <div className="meta">
-                                                                            <b>{moment(item.created_at).format('LL')}</b>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            ))}
-
-                                        </div>
+                                                                                        className="name">{this.props.user.name}</span>
+                                    <div className="meta">
+                                        <b>{moment(this.props.created_at).format('LL')}</b>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
                         </div>
-
-
                     </div>
-
                 </div>
-            </section>
+            </div>
 
         )
     }

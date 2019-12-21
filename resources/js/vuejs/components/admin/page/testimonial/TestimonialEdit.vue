@@ -47,17 +47,13 @@
                                                      </div>
                                                      <div class="row">
                                                          <div class="col-md-12">
-                                                             <div class="card card-nav-tabs">
-                                                                 <div class="card-body">
-                                                                     <div class="tab-content">
-                                                                         <div class="tab-pane active" id="profile">
-                                                                             <div class="form-group">
-                                                                                 <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
-                                                                                 <br>
-                                                                                 <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
-                                                                                 <has-error :form="form" field="body"></has-error>
-                                                                             </div>
-                                                                         </div>
+                                                             <div class="tab-content">
+                                                                 <div class="tab-pane active" id="profile">
+                                                                     <div class="form-group">
+                                                                         <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
+                                                                         <br>
+                                                                         <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                         <has-error :form="form" field="body"></has-error>
                                                                      </div>
                                                                  </div>
                                                              </div>

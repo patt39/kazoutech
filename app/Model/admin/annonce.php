@@ -29,6 +29,10 @@ class annonce extends Model
         return $this->belongsTo(occupation::class,'occupation_id');
     }
 
+    public function city()
+    {
+        return $this->belongsTo(city::class,'city_id');
+    }
     /**
      * save and deleting image
      */

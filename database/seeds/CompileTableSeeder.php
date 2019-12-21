@@ -41,6 +41,7 @@ class CompileTableSeeder extends Seeder
             'name' =>'Boclair Temgoua',
             'my_status' =>'active',
             'email' => "temgoua2012@gmail.com",
+            'occupation_id' => 1,
             "password" => bcrypt('0000000'),
             'created_at' => now(),
             'email_verified_at' => now(),
@@ -52,6 +53,7 @@ class CompileTableSeeder extends Seeder
             'name' =>'Darry',
             'my_status' =>'active',
             'email' => "darrytafeng@gmail.com",
+            'occupation_id' => 1,
             "password" => bcrypt('0000000'),
             'created_at' => now(),
             'email_verified_at' => now(),
@@ -67,13 +69,14 @@ class CompileTableSeeder extends Seeder
             'name' =>'Nzeukang',
             'my_status' =>'active',
             'email' => "nzeukangrandrin@gmail.com",
+            'occupation_id' => 1,
             "password" => bcrypt('123456789'),
             'created_at' => now(),
             'email_verified_at' => now(),
         ]);
-        $admin_user->syncRoles('admin');
+        $admin_user->syncRoles('super-admin');
 
-        factory(User::class, 1)->create();
+
         factory(categoryfaq::class, 1)->create();
         factory(faq::class, 2)->create();
 

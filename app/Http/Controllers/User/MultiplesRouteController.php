@@ -4,13 +4,19 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
+use App\Http\Resources\Partial\CityResource;
+use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\User\CategoryoccupationByStatusResource;
 use App\Http\Resources\User\OccupationByStatusResource;
+use App\Http\Resources\UserResource;
+use App\Model\admin\annonce;
 use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\categoryfaq;
+use App\Model\admin\city;
 use App\Model\admin\faq;
 use App\Model\admin\occupation;
+use App\Model\user\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -123,12 +129,10 @@ class MultiplesRouteController extends Controller
 
     public function blogsoccupationslug(occupation $occupation,blog $blog)
     {
-
         return view('user.blog.show',[
             'blog' => $blog,
             'occupation' => $occupation,
         ]);
-
     }
 
     public function apiblogsoccupationslug(occupation $occupation,$slug)
@@ -158,9 +162,9 @@ class MultiplesRouteController extends Controller
     public function apilastblogsinteresse(occupation $occupation)
     {
         $blogsinteresse = BlogResource::collection(blog::where('status',1)
-        
+            ->where('occupation_id','=',$occupation->id)
             ->with('user','occupation','color')
-            ->latest()->take(6)->get());
+            ->latest()->take(3)->get());
         return response()->json($blogsinteresse,200);
     }
 
@@ -170,4 +174,74 @@ class MultiplesRouteController extends Controller
     /* ***********++++++++++++++++++ ++++++++++++++++++++++++++++*************** */
 
 
+    public function annonces()
+    {
+        return view('user.annonce.annonces');
+    }
+
+    public function apiannonces()
+    {
+        $annonces = AnnonceResource::collection(annonce::where('status',1)
+            ->with('user','occupation','city','categoryoccupation')
+            ->orderBy('created_at','DESC')->get());
+        return response()->json($annonces,200);
+    }
+
+    public function annoncesoccupation(occupation $occupation, annonce $annonce)
+    {
+        return view('user.annonce.annonce_by_occupation',[
+            'occupation' => $occupation,
+            'annonce' => $annonce,
+        ]);
+    }
+
+
+    public function apiannoncesoccupationslug(occupation $occupation,$annonce)
+    {
+        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->first());
+
+        return response()->json($annonce,200);
+    }
+
+    public function annoncesoccupationslug(occupation $occupation,annonce $annonce)
+    {
+        return view('user.annonce.show',[
+            'annonce' => $annonce,
+            'occupation' => $occupation,
+        ]);
+    }
+
+    public function apiannoncesoccupation($occupation)
+    {
+        $annoncesoccupation = new OccupationByStatusResource(occupation::where('status',1)
+            ->whereSlug($occupation)->firstOrFail());
+        return response()->json($annoncesoccupation,200);
+    }
+
+    public function apiannoncesoccupationcity($city)
+    {
+        $annoncesoccupationcity = new CityResource(city::where('status',1)
+            ->whereSlug($city)->first());
+
+        //dd($annoncesoccupationcity);
+        return response()->json($annoncesoccupationcity,200);
+    }
+
+
+    public function apicharbonneurs()
+    {
+        $charbonneurs = UserResource::collection(User::where('charbonneur',1)->get());
+
+        return response()->json($charbonneurs,200);
+    }
+
+    public function charbonneurs()
+    {
+        return view('user.charbonneur.charbonneurs');
+    }
+
+    public function temoignages()
+    {
+        return view('user.page.testimonialsite');
+    }
 }

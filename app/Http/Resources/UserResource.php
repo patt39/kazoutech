@@ -28,6 +28,7 @@ class UserResource extends JsonResource
             'avatar' => $this->avatar,
             'email_verified_at' => $this->email_verified_at,
             'provider' => $this->provider,
+            'charbonneur' => $this->charbonneur,
             'statusOnline' => $this->isOnline(),
             'followings' => $this->followings()->get()->count(),
             'followers' => $this->followers()->get()->count(),

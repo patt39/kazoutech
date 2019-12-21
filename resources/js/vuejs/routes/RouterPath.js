@@ -104,6 +104,9 @@ import CategoryOccupationIndex from "../components/admin/occupation/categoryoccu
 import CategoryOccupationEdit from "../components/admin/occupation/categoryoccupation/CategoryOccupationEdit";
 import OccupationShow from "../components/admin/occupation/occupation/OccupationShow";
 import OccupationShowCreate from "../components/admin/occupation/occupation/OccupationShowCreate";
+import BlogIndex from "../components/admin/blog/BlogIndex";
+import BlogEdit from "../components/admin/blog/BlogEdit";
+import BlogCreate from "../components/admin/blog/BlogCreate";
 
 
 
@@ -163,6 +166,12 @@ export const routes = [
     {path: '/dashboard/faqs/:id/edit/', name: 'faqs.edit', component: FaqEdit},
     {path: '/dashboard/faqs/v/sites/', name: 'faqs.dashboard_sites', component: FaqViewSites},
     {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
+
+    //Route Blogs
+    {path: '/dashboard/blogs/', name: 'blogs.index', component: BlogIndex},
+    {path: '/dashboard/blogs/create', name: 'blogs.create', component: BlogCreate},
+    {path: '/dashboard/blogs/:id/edit/', name: 'blogs.edit', component: BlogEdit},
+
     {
         path: '/dashboard/faqs/v/sites/c/:categoryfaq',
         name: 'faqs.dashboard_categoryfaq_sites',

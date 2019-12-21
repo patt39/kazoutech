@@ -132,6 +132,13 @@
                                         <span class="sidebar-normal"><b>Registration Infos</b></span>
                                     </router-link>
                                 </li>
+                                <!--Blog-->
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/blogs/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>BG</b></span>
+                                        <span class="sidebar-normal"><b>Blog</b></span>
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -212,7 +219,7 @@
                                                                 <span class="sidebar-normal"><b>Country</b></span>
                                                             </router-link>
                                                         </li>
-                                                        <!-- Cites -->
+                                                        <!-- Cities -->
                                                         <li class="nav-item">
                                                             <router-link  :to="{ name: 'cities.actives' }"  replace class="nav-link">
                                                                 <span class="sidebar-mini"><b>CI</b></span>
@@ -303,6 +310,13 @@
                         <router-link  :to="{ path: '/dashboard/technicians/' }" class="nav-link">
                             <i class="material-icons">meeting_room</i>
                             <p><b>Technicians</b></p>
+                        </router-link>
+                    </li>
+                    <!-- Annonces -->
+                    <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/annonces/' }" class="nav-link">
+                            <i class="material-icons">meeting_room</i>
+                            <p><b>Annonces</b></p>
                         </router-link>
                     </li>
                     <!-- Documentation -->

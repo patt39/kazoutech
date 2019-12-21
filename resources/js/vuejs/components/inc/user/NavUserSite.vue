@@ -49,7 +49,7 @@
                                 <span class="nav-link-inner--text"><b>Connexion</b></span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item pull-left">
                             <a href="/register" class="btn btn-primary" role="button">
                                 <span class="nav-link-inner--text pt-40">Inscription</span>
                             </a>

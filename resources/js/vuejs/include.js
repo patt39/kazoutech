@@ -38,7 +38,7 @@ Vue.use(rate);
 
 
 
-import {routes} from './routes/routes';
+import {routes} from './routes/RouterPath';
 
 /**
  * Router site
@@ -49,7 +49,7 @@ const router = new VueRouter({
     mode: 'history',
     linkActiveClass: "active",
     linkExactActiveClass: "active", // active class for *exact* links.
-})
+});
 
 
 

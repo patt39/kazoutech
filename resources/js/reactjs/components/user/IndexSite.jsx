@@ -40,7 +40,7 @@ class IndexSite extends Component {
                                         <Link to={'/occupations/'} className="btn btn-success btn-lg mt-500"
                                               name="button">
                                             <span
-                                                className="button-inner--text pt-40 text-uppercase">Demande un service</span>
+                                                className="button-inner--text pt-40 text-uppercase">Demandez un service</span>
                                         </Link>
                                     </div>
                                 </div>
@@ -66,11 +66,8 @@ class IndexSite extends Component {
                                                 profile</h6>
                                             <p
                                                 className="description opacity-8"
-                                            >We get insulted by others, lose trust for those others. We get back stabbed
-                                                by friends. It becomes harder for us to give others a hand.</p>
-                                            <a href="..." className="btn btn-primary" name="button">
-                                                <span className="nav-link-inner--text pt-40">Inscription</span>
-                                            </a>
+                                            >Votre profile technicien(ne) est est votre vitrine cequi va vous permettre d'etre visible
+                                                sur le site tout en vous valorisant donc prenez la peinne de bien la rediger en y entrant tout les informations nécessaire.</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
@@ -79,14 +76,10 @@ class IndexSite extends Component {
                                                 className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
                                                 <i className="ni ni-atom"/>
                                             </div>
-                                            <h6 className="info-title text-uppercase text-success">Dévenez bosseur</h6>
+                                            <h6 className="info-title text-uppercase text-success">Dévenez un Webtech</h6>
                                             <p className="description opacity-8"
-                                            >Don't get your heart broken by people we love, even that we give them all
-                                                we have. Then we lose family over time. As we live, our hearts turn
-                                                colder.</p>
-                                            <a href="..." className="btn btn-success" name="button">
-                                                <span className="nav-link-inner--text pt-40">Inscription</span>
-                                            </a>
+                                            >Acronyme <em style={{color: "black"}}>webtech</em> est le dimunitif du mot <em style={{color: "black"}}>web-technicien</em> qui veux tout simplement dire
+                                                dévenir technicien(ne) a partir du web tout en gardant votre statut d'auto-entrepreuneur.</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
@@ -99,12 +92,8 @@ class IndexSite extends Component {
                                                 l'argent</h6>
                                             <p
                                                 className="description opacity-8"
-                                            >What else could rust the heart more over time? Blackgold. The time is now
-                                                for it to be okay to be great. or being a bright color. For standing
-                                                out.</p>
-                                            <a href="..." className="btn btn-warning" name="button">
-                                                <span className="nav-link-inner--text pt-40">Inscription</span>
-                                            </a>
+                                            >Le but de la plateforme est de mettre en contact des demandeur de service et des prestataires de service
+                                                contre rémuneration pour pourvoire vous permettre d'affuter vos conaissance et vous arrondire vos fin de mois difficile</p>
                                         </div>
                                     </div>
                                 </div>
@@ -114,6 +103,63 @@ class IndexSite extends Component {
                         <AllOccupation/>
 
                     </div>
+                    <div className="section features-7 bg-secondary">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-10 text-center mx-auto">
+                                    <h3 className="display-3">Le service entre particuliers jamais aussi façile</h3>
+                                    <p className="lead">Pour tout vos bésoins immediat des service d'un technicien en un domaine spécifique n'hesitez plus des prestataires
+                                        de services plus de vous que jamais lançez vous et profitez en.</p>
+                                </div>
+                            </div>
+                            <div className="row justify-content-center mt-5">
+                                <div className="col-lg-12">
+                                    <div className="row row-grid">
+                                        <div className="col-lg-4">
+                                            <div className="card card-lift--hover shadow border-0">
+                                                <div className="card-body py-5">
+                                                    <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                                                        <i className="ni ni-check-bold"></i>
+                                                    </div>
+                                                    <h6 className="text-primary text-uppercase">Des profile évalués</h6>
+                                                    <p className="description mt-3">Les profiles de nos prestataires sont controller et évaluer en permenance pour vous assurer de vous apporter le meilleur qui sois en cequi conçerne leur service
+                                                        et nous nous assurons aussi de leur bonne moralité donc ne vous mefiez pas.</p>
+                                                    <a href="/charbonneur" className="btn btn-primary mt-4">Webtechnicien</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <div className="card card-lift--hover shadow border-0">
+                                                <div className="card-body py-5">
+                                                    <div className="icon icon-shape icon-shape-success rounded-circle mb-4">
+                                                        <i className="ni ni-istanbul"></i>
+                                                    </div>
+                                                    <h6 className="text-success text-uppercase">Kazoutech le meilleur</h6>
+                                                    <p className="description mt-3">Kazoutech est une plateform vrai nous avons un siege sociale des bureaux et une licence des personne de bonne moralité toujours prés a vous
+                                                        rendre le meilleur donc pour tout vos problem contactez ou rapprochez vous de nos locaux nous serons ravis de vous reçevoir et d'effaçer vos doutes.</p>
+                                                    <a href="#" className="btn btn-success mt-4">Contactez nous</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <div className="card card-lift--hover shadow border-0">
+                                                <div className="card-body py-5">
+                                                    <div className="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                                                        <i className="ni ni-planet"></i>
+                                                    </div>
+                                                    <h6 className="text-warning text-uppercase">Des utilisateurs comblés</h6>
+                                                    <p className="description mt-3">Des personnes nous on fait confiance et en parlent vous savez le bouche à bouche a été la prémiere forme de marketing et nous
+                                                        nous en passons pas écoutez cequon dit à propos de kazoutech et faite nous confiance</p>
+                                                    <a href="/temoignages" className="btn btn-warning mt-4">Temoignage</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                     <div className="section features-7">
                         <div className="container">
@@ -176,7 +222,6 @@ class IndexSite extends Component {
                     </div>
 
                     <FooterUserSite/>
-                </div>
             </>
         )
     }

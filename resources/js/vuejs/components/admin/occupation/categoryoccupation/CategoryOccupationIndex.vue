@@ -62,9 +62,9 @@
                                     <div v-if="$auth.can('create-occupation')" class="toolbar">
                                         <div class="submit text-center">
                                             <router-link :to="{ name: 'categoryoccupations.create' }" class="btn btn-success btn-raised " >
-                                     <span class="btn-label">
-                                        <i class="material-icons">assignment</i>
-                                    </span>
+                                                <span class="btn-label">
+                                                    <i class="material-icons">assignment</i>
+                                                </span>
                                                 <b class="title_hover">New Category Occupation</b>
                                             </router-link>
                                         </div>
