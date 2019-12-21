@@ -1,0 +1,7 @@
+::-webkit-scrollbar-thumb {
+    background-color: #636660;
+    border-radius: 20px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}

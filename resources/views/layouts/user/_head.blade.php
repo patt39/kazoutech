@@ -33,9 +33,10 @@
 <!-- Font Awesome Icons -->
 <link href="/assets/vendor_site/css/font-awesome.css" rel="stylesheet" />
 <link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
-<!-- CSS Files -->
+<!-- Argon CSS Files -->
 <link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.0" rel="stylesheet" />
-
+<!-- Customize KazouTech Styles -->
+<link href="/assets/css/kazoutech.css" rel="stylesheet" />
 @section('style')
 @show
 

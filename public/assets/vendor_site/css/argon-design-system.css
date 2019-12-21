@@ -20909,7 +20909,7 @@ header {
   .page-header .description {
     color: #f4f5f7; }
   .page-header.page-header-small {
-    min-height: 60vh;
+    /*min-height: 60vh;*/
     max-height: 440px; }
   .page-header.page-header-mini {
     min-height: 40vh;
