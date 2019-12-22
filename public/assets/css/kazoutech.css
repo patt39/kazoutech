@@ -42,6 +42,13 @@
 .navbar.navbar-main {
     height: 100px;
 }
+.icon-position {
+    position: relative;
+    top: 2px;
+}
+
+/*** RESPONSIVE DEVICE ***/
+/************************/
 @media (min-width: 768px) {
     .navbar-transparent .navbar-brand {
         position: relative;
