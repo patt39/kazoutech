@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Model\admin\annonce;
+use App\Model\user\profile;
+use App\Policies\AnnoncePolicy;
+use App\Policies\ProfilePolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
@@ -15,8 +19,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        'App\Model\user\profile' => 'App\Policies\ProfilePolicy',
         'App\Model\user\technician' => 'App\Policies\TechnicianPolicy',
+        profile::class => ProfilePolicy::class,
+        annonce::class => AnnoncePolicy::class,
     ];
 
     /**

@@ -24,6 +24,7 @@ class AnnonceResource extends JsonResource
             'title' => $this->title,
             'status' => $this->status,
             'body' => $this->body,
+            'price' => $this->price,
             'photo' => $this->photo,
             'description' => $this->description,
             'occupation' => $this->occupation,

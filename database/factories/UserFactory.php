@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\admin\color;
 use App\Model\admin\occupation;
 use App\Model\user\User;
 use Faker\Generator as Faker;
@@ -35,6 +36,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->firstName,
         'charbonneur' => $faker->boolean,
         'email' => $faker->unique()->safeEmail,
+        'color_name' => color::inRandomOrder()->first()->name,
         //'phone' => $faker->unique()->numerify('+393#########'),
         'password' => bcrypt('0000000'),
     ];

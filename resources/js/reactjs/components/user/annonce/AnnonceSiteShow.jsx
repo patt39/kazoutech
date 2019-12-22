@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {Button} from "reactstrap";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
@@ -18,9 +19,62 @@ class AnnonceSiteShow extends Component {
                 user: [],
                 occupation: []
             }
-        }
+        };
+        this.deleteItem = this.deleteItem.bind(this);
     }
+    deleteItem(id) {
+        Swal.fire({
+            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: 'btn btn-danger',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'No annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
 
+                const url = route('annonces.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    //Redirect after create
+                    this.props.history.push('/annonces/');
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooop! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
     componentDidMount() {
         let SlugItem = this.props.match.params.annonce;
         let SlugOccupation = this.props.match.params.occupation;
@@ -147,8 +201,7 @@ class AnnonceSiteShow extends Component {
                                                     <img src={annonce.user.avatar} alt={annonce.user.name} className="avatar" />
                                                 </a>
                                                 <div className="mx-3">
-                                                    <a href=".."
-                                                       className="text-dark font-weight-600 text-sm">{annonce.user.name}</a>
+                                                    <a href=".." className="text-dark font-weight-600 text-sm">{annonce.user.name}</a>
                                                     <small className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>
                                                 </div>
                                             </div>
@@ -159,6 +212,13 @@ class AnnonceSiteShow extends Component {
                                                         </span>
                                                     <span className="btn-inner--text">Follow</span>
                                                 </button>
+                                                <Button onClick={() => this.deleteItem(annonce.id)}
+                                                        className="btn btn-sm btn-danger btn-icon">
+                                                       <span className="btn-inner--icon icon-big">
+                                                           <i className="ni ni-fat-remove" />
+                                                       </span>
+                                                    <span className="btn-inner--text">Suprimer</span>
+                                                </Button>{" "}
                                             </div>
                                         </div>
                                         <div className="card-body">

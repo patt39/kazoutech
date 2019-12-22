@@ -31,6 +31,7 @@ const RouterUser = props => (
         <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
         <Route exact path="/annonces/:occupation/" component={AnnonceSiteByOccupation}/>
+        <Route exact path="/annonces/:occupation/:id/edit/" component={AnnonceSiteShow}/>
         <Route exact path="/annonces/:occupation/:annonce/" component={AnnonceSiteShow}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>

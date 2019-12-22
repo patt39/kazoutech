@@ -10,9 +10,66 @@ class AnnonceSiteByOccupation extends Component {
         super(props);
         this.state = {
             annoncebyoccupation: {annonces:[]},
-        }
+        };
+
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
+    // handle delete
+    deleteItem(id) {
+        Swal.fire({
+            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: 'btn btn-danger',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'No annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('annonces.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    //Redirect after create
+                    this.props.history.push('/annonces/');
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooop! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
     // lifecycle method
     componentDidMount() {
         let SlugOccupation = this.props.match.params.occupation;
@@ -115,7 +172,7 @@ class AnnonceSiteByOccupation extends Component {
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 {annoncebyoccupations.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item}/>
+                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
                                                                 ))}
                                                             </div>
                                                         </div>

@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
-import BlogList from "../blog/BlogList";
 import AnnonceOccupationList from "./AnnonceOccupationList";
 
 
@@ -11,9 +10,66 @@ class AnnonceSiteIndex extends Component {
         super(props);
         this.state = {
             annonces: [],
-        }
-    }
+        };
 
+        this.deleteItem = this.deleteItem.bind(this);
+    }
+    deleteItem(id) {
+        Swal.fire({
+            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: 'btn btn-danger',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'No annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('annonces.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    let isNotId = item => item.id !== id;
+                    let updatedItems = this.state.annonces.filter(isNotId);
+                    this.setState({annonces: updatedItems});
+
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooop! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
     // lifecycle method
     componentDidMount() {
         const composantTitle = 'Annonce toutes les annonces | Kazoutech';
@@ -93,7 +149,7 @@ class AnnonceSiteIndex extends Component {
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 {annonces.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item}/>
+                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
                                                                 ))}
                                                             </div>
                                                         </div>
