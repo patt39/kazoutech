@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Partial;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CityResource extends JsonResource
@@ -9,13 +10,14 @@ class CityResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return array
      */
     public function toArray($request)
     {
-        //$annoncebycities =  $this->annonces()->distinct()
-        //    ->get()->toArray();
+        //$annoncebycities =  $this->annonces()->with('user','occupation','city','categoryoccupation')
+        //    ->distinct()->get()->toArray();
+
 
         return [
             'id' => $this->id,

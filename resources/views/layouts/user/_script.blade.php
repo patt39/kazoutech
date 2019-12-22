@@ -22,24 +22,14 @@
 <script src="/assets/vendor_site/js/plugins/headroom.min.js"></script>
 <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
 <!--  Google Maps Plugin    -->
+<!--
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!--  Notifications Plugin    -->
-<script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
-<!--  KazouTech Js  -->
-<script src="/assets/vendor_site/js/kazoutech.js"></script>
-<!--  Plugin for Sweet Alert -->
+-->
+<script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
 <script src="/assets/dashboard/assets/js/plugins/sweetalert2.js"></script>
 <script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
-<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 <script src="{{ mix('/js/vuejs/axios.js') }}"></script>
 <script src="{{ mix('/js/reactjs/app.js') }}"></script>
-<script>
-    window.TrackJS &&
-    TrackJS.install({
-        token: "ee6fab19c5a04ac1a32a645abde4613a",
-        application: "argon-design-system-pro"
-    });
-</script>
 @if(config('app.env') != 'local')
 @endif
 

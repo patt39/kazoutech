@@ -95,6 +95,6 @@ class city extends Model implements Auditable
 
     public function annonces()
     {
-        return $this->hasMany(annonce::class,'occupation_id');
+        return $this->hasMany(annonce::class,'city_id');
     }
 }

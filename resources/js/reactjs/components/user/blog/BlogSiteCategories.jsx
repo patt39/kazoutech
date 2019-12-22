@@ -3,7 +3,6 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
 import BlogLastPost from "./BlogLastPost";
-import {Link} from "react-router-dom";
 
 
 class BlogSiteCategories extends Component {
@@ -14,7 +13,6 @@ class BlogSiteCategories extends Component {
             blogsLast: []
         }
     }
-
     componentDidMount() {
         let SlugOccupation = this.props.match.params.occupation;
         dyaxios.get(route('api_blog_occupation_site.view',SlugOccupation)).then(response => this.setState({blogsbycategy: response.data,}));
@@ -30,7 +28,7 @@ class BlogSiteCategories extends Component {
             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
-                    <div className="page-header page-header-small header-filter">
+                    <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image" style={{backgroundImage: "url(" + blogsbycategy.photo + ")"}}/>
                         <div className="content-center">
                             <div className="row">
@@ -70,6 +68,8 @@ class BlogSiteCategories extends Component {
 
                                                         <div className="card">
                                                             <div className="card-body">
+
+
                                                         {blogsbycategies.map((item) => (
                                                             <BlogList key={item.id} {...item}/>
                                                         ))}

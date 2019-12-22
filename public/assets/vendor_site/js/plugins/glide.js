@@ -154,7 +154,7 @@
     animationTimingFunc: 'cubic-bezier(.165, .840, .440, 1)',
 
     /**
-     * Wait for the animation to finish until the next site input can be processed
+     * Wait for the animation to finish until the next user input can be processed
      *
      * @type {boolean}
      */
@@ -2782,7 +2782,7 @@
 
 
       /**
-       * Handler for `swipestart` event. Calculates entry points of the site's tap.
+       * Handler for `swipestart` event. Calculates entry points of the user's tap.
        *
        * @param {Object} event
        * @return {Void}
@@ -2806,7 +2806,7 @@
 
 
       /**
-       * Handler for `swipemove` event. Calculates site's tap angle and distance.
+       * Handler for `swipemove` event. Calculates user's tap angle and distance.
        *
        * @param {Object} event
        */
@@ -2845,7 +2845,7 @@
 
 
       /**
-       * Handler for `swipeend` event. Finitializes site's tap and decides about glide move.
+       * Handler for `swipeend` event. Finitializes user's tap and decides about glide move.
        *
        * @param {Object} event
        * @return {Void}

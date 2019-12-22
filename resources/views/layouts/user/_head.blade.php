@@ -36,7 +36,9 @@
 <!-- Argon CSS Files -->
 <link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.0" rel="stylesheet" />
 <!-- Customize KazouTech Styles -->
+<!--
 <link href="/assets/css/kazoutech.css" rel="stylesheet" />
+-->
 @section('style')
 @show
 

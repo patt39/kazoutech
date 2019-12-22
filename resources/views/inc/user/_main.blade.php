@@ -7,14 +7,11 @@
 </head>
 <body>
 
-<div id="app">
 
-    @section('content')
+@section('content')
 
 
-    @show
-
-</div>
+@show
 
 @include('layouts.user._script')
 

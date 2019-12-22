@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
 import BlogList from "../blog/BlogList";
+import AnnonceOccupationList from "./AnnonceOccupationList";
 
 
 class AnnonceSiteIndex extends Component {
@@ -26,15 +27,15 @@ class AnnonceSiteIndex extends Component {
             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
-                    <div className="page-header page-header-small header-filter">
+                    <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
                              style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
-                                    <h2 className="title text-white">
+                                    <h3 className="title text-white">
                                         Restez a l'affue de toutes les annonces sur Kazoutech
-                                    </h2>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -58,22 +59,7 @@ class AnnonceSiteIndex extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
-                                                    <div className="col-md-4">
-                                                        <div className="card mb-3">
-                                                            <div className="card-header h6">Villes</div>
-                                                            <div className="card-body">
-                                                                <ul className="list-unstyled">
-                                                                    <li className="mb-2"><a
-                                                                        href="/annonces/jardinage/couper-un-arbre/paris">Annonce
-                                                                        a Douala</a></li>
-                                                                    <li className="mb-2"><a
-                                                                        href="/annonces/jardinage/couper-un-arbre/marseille">Annonces
-                                                                        a Yaounde</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                   <AnnonceOccupationList/>
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h2 className="display-3 mb-5"><b>Toutes les annonces</b></h2>
                                                         <div className="row">

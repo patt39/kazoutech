@@ -747,7 +747,7 @@
       }
     }
     /**
-     * Syncs the selected date object time with site's time input
+     * Syncs the selected date object time with user's time input
      */
     function setHoursFromInputs() {
       if (self.hourElement === undefined || self.minuteElement === undefined)

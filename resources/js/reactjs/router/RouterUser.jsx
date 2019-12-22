@@ -15,6 +15,7 @@ import AnnonceSiteIndex from "../components/user/annonce/AnnonceSiteIndex";
 import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
 import TemoignageSite from "../components/user/temoignage/TemoignageSite";
+import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
 
 
 
@@ -29,7 +30,8 @@ const RouterUser = props => (
         <Route exact path="/blog/:occupation/" component={BlogSiteCategories}/>
         <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
-        <Route exact path="/annonces/:occupation/:annonce" component={AnnonceSiteShow}/>
+        <Route exact path="/annonces/:occupation/" component={AnnonceSiteByOccupation}/>
+        <Route exact path="/annonces/:occupation/:annonce/" component={AnnonceSiteShow}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>
         <Route exact path="/about/" component={AboutSite}/>

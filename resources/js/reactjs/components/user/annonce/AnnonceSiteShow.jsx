@@ -1,8 +1,11 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
-import moment from 'moment'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
+import moment from 'moment'
+
+require("moment/min/locales.min");
+moment.locale('fr');
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -11,9 +14,9 @@ class AnnonceSiteShow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annonce:{
-                user:[],
-                occupation:[]
+            annonce: {
+                user: [],
+                occupation: []
             }
         }
     }
@@ -21,95 +24,280 @@ class AnnonceSiteShow extends Component {
     componentDidMount() {
         let SlugItem = this.props.match.params.annonce;
         let SlugOccupation = this.props.match.params.occupation;
-        let url = route('api_annonce_site.view',[SlugOccupation,SlugItem]);
-        dyaxios.get(url).then(response => this.setState({annonce: response.data,}));
+        let url = route('api_annonce_site.view', [SlugOccupation, SlugItem]);
+        dyaxios.get(url).then(response => this.setState({ annonce: response.data, }));
     }
 
     render() {
-        const {annonce} = this.state;
+        const { annonce } = this.state;
         const composantTitle = `${annonce.title}`;
         document.title = `${composantTitle} | Kazoutech`;
-        return(
+        return (
 
-            <div className="landing-page">
-                <NavUserSIte/>
+            <div className="checkout-page">
+                <NavUserSIte />
                 <div className="wrapper">
-                    <br/>
-                    <br/>
-                    <div className="row mt-4 mb-3">
-                        <div className="col-md-2 text-center">
-                            <div className="mb-2">
-                                <div className="img-user img-80">
-                                    <svg aria-hidden="true" aria-label="Profil par défaut"
-                                         className="d-inline-block align-middle" height="80" role="img" version="1.1"
-                                         viewBox="0 0 200 200" width="80">
-                                        <path
-                                            d="M128.13 126.08c-15.05-3.47-19.07-11.5-12.28-24.3C136 67.17 121.33 42 99.5 42c-22.23 0-36.8 25.2-16.33 59.77 7 12.87 2.45 20.9-12.28 24.3-15 3.48-23.9 12.64-23.9 20.8 0 8.18 26.22 11.2 52.3 11.2 26.44 0 52.72-3 52.72-11.2 0-8.17-8.84-17.32-23.9-20.8z"
-                                            fill="#737E8C" fill-rule="evenodd"></path>
-                                    </svg>
-                                </div>
+                    <div className="section-shaped my-0 skew-separator skew-mini">
+                        <div className="page-header page-header-small header-filter">
+                            <div className="page-header-image"
+                                 style={{ backgroundImage: "url(" + annonce.occupation.photo + ")" }}>
                             </div>
-                            <p className="font-size-4" itemProp="seller"><a className="text-dark"
-                                                                            href="/client/caroline-longjumeau-704111">Caroline</a>
-                            </p></div>
-                        <div className="col-md-6"><h1 className="show-job-title mb-0" itemProp="name">Couper un arbre à
-                            Longjumeau</h1><p className="text-danger"><i className="far fa-times-circle fa-lg"></i>
-                            <span className="font-weight-medium">Job clôturé</span></p><h2
-                            className="h4 show-category-title mt-2">Jardinage — <a href="/services/jardinage">Besoin
-                            d'un service similaire ?</a></h2><p className="item-job-digest"><span
-                            itemProp="availableAtOrFrom"><i className="far fa-map-marker-alt"></i> <strong>91160 Longjumeau</strong></span>
-                        </p><p className="item-job-digest"><i className="far fa-calendar-day"></i> <strong>Samedi 28
-                            décembre 2019 de 9:00 à 13:00</strong> <small>(dans 9 jours)</small></p><p
-                            className="item-job-digest"><i className="far fa-stopwatch"></i> <strong>4 h de
-                            service</strong></p><p className="item-job-digest"><i className="far fa-user"></i> <strong>Aucun
-                            jobeur n'a proposé ses services</strong></p></div>
-                        <div className="col-md-4">
-                            <div className="mb-3 text-center"><p
-                                className="mb-2 font-size-4 text-muted">Rémunération</p>
-                                <div className="d-flex align-items-center justify-content-center">
-                                    <div className="price-tag price-tag-md" itemProp="priceSpecification">
-                                        <div className="price-content">
-                                            <div className="price"><span>68,00</span> <span>€</span></div>
+                            <div className="container">
+                                <div className="header-body text-center mb-7">
+                                    <div className="row justify-content-center">
+                                        <div className="col-xl-5 col-lg-6 col-md-8 px-5">
+                                            <Link to={`/annonces/${annonce.occupation.slug}/`} className="text-white">
+                                                <h1 className="text-white">{annonce.occupation.name} </h1>
+                                            </Link>
+                                            <div className="author">
+                                                <Link to={'/annonces/'} className="text-white">
+                                                    <i className="fa fa-chevron-circle-left"/> Retour Annonces
+                                                </Link>
+                                            </div>
+                                            <p className="text-lead text-white">{annonce.title}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a className="btn btn-lg btn-blue btn-block" href="/devenez-jobeur">Proposer mes
-                                services</a></div>
+                        </div>
                     </div>
-                    <br/>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-10 ml-auto mr-auto">
-                                <h6 className="category"><b>{moment(annonce.created_at).format('LL')}</b></h6>
-                                <h3 className="title">{annonce.title}</h3>
-                                <p dangerouslySetInnerHTML={{__html: (annonce.body)}}/>
+                    <div className="upper">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-4">
+                                    <div className="container">
+                                        <h3 className="title text-white mt-3">Order summary</h3>
+                                        <div className="row">
+                                            <div className="card">
+                                                <div className="card-body">
+                                                    <div className="media align-items-center mb-3">
+                                                        <div className="col-md-5 col-6">
+                                                            <img src="../assets/img/pages/gucci.png"
+                                                                 alt="Rounded image" className="img-fluid" />
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <h2 className="h6">Shorts</h2>
+                                                            <small className="d-block opacity-8">Small</small>
+                                                        </div>
+                                                        <div className="media-body text-right">
+                                                            <span>$29</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="media align-items-center">
+                                                        <div className="col-md-5 col-6">
+                                                            <img src="../assets/img/pages/jacket.png"
+                                                                 alt="Rounded image" className="img-fluid" />
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <h2 className="h6 mb-0">Jacket</h2>
+                                                        </div>
+                                                        <div className="media-body text-right">
+                                                            <span>$999</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr className="line-info mb-3" />
+                                                    <form className="code-validate">
+                                                        <label>Discount</label>
+                                                        <div className="input-group">
+                                                            <input type="text" className="form-control"
+                                                                   name="name" placeholder="Discount Code"
+                                                                   aria-label="Discount" />
+                                                            <div className="input-group-append">
+                                                                <button type="submit"
+                                                                        className="btn btn-info">Apply
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <hr className="line-info mb-3" />
+                                                    <div className="media align-items-center">
+                                                        <h3 className="h6 opacity-8 mr-3">Subtotal</h3>
+                                                        <div className="media-body text-right">
+                                                            <span>$1038</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="media align-items-center">
+                                                        <h3 className="h6 opacity-8 mr-3">Shipping</h3>
+                                                        <div className="media-body text-right">
+                                                            <span>$5.8</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr className="line-info mb-3" />
+                                                    <div className="media align-items-center">
+                                                        <h3 className="h6">Total</h3>
+                                                        <div className="media-body text-right">
+                                                                <span
+                                                                    className="font-weight-semi-bold">$1045.8</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-8 mx-auto">
+                                    <div className="card">
+                                        <div className="card-header">
+                                            <h5 className="h3 mb-0">{annonce.title}</h5>
+                                        </div>
+                                        <div className="card-header d-flex align-items-center">
+                                            <div className="d-flex align-items-center">
+                                                <a href="..">
+                                                    <img src={annonce.user.avatar} alt={annonce.user.name} className="avatar" />
+                                                </a>
+                                                <div className="mx-3">
+                                                    <a href=".."
+                                                       className="text-dark font-weight-600 text-sm">{annonce.user.name}</a>
+                                                    <small className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>
+                                                </div>
+                                            </div>
+                                            <div className="text-right ml-auto">
+                                                <button type="button" className="btn btn-sm btn-primary btn-icon">
+                                                        <span className="btn-inner--icon icon-big">
+                                                            <i className="ni ni-fat-add" />
+                                                        </span>
+                                                    <span className="btn-inner--text">Follow</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="card-body">
+                                            <p className="mb-4">
+                                                <b dangerouslySetInnerHTML={{__html: (annonce.body)}}/>
+                                            </p>
+                                            {annonce.photo ?
+                                                <img alt="Image placeholder" src={annonce.photo}
+                                                     className="img-fluid rounded" />
+                                                : null}
+                                            <div className="row align-items-center my-3 pb-3 border-bottom">
+                                                <div className="col-sm-6">
+                                                    <div className="icon-actions">
+                                                        <a href=".." className="like active">
+                                                            <i className="ni ni-like-2" />
+                                                            <span className="text-muted">150</span>
+                                                        </a>
+                                                        <a href="..">
+                                                            <i className="ni ni-chat-round" />
+                                                            <span className="text-muted">36</span>
+                                                        </a>
+                                                        <a href="..">
+                                                            <i className="ni ni-curved-next" />
+                                                            <span className="text-muted">12</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div className="col-sm-6 d-none d-sm-block">
+                                                    <div
+                                                        className="d-flex align-items-center justify-content-sm-end">
+                                                        <div className="avatar-group">
+                                                            <a href=".."
+                                                               className="avatar avatar-xs rounded-circle"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Jessica Rowland">
+                                                                <img alt="Image placeholder"
+                                                                     src="../assets/img/faces/team-1.jpg"
+                                                                     className="" />
+                                                            </a>
+                                                            <a href=".."
+                                                               className="avatar avatar-xs rounded-circle"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Audrey Love">
+                                                                <img alt="Image placeholder"
+                                                                     src="../assets/img/faces/team-2.jpg"
+                                                                     className="rounded-circle" />
+                                                            </a>
+                                                            <a href=".."
+                                                               className="avatar avatar-xs rounded-circle"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Michael Lewis">
+                                                                <img alt="Image placeholder"
+                                                                     src="../assets/img/faces/team-3.jpg"
+                                                                     className="rounded-circle" />
+                                                            </a>
+                                                        </div>
+                                                        <small className="pl-2 font-weight-bold">and 30+
+                                                            more</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="mb-1">
+                                                <div className="media media-comment">
+                                                    <img alt="Image placeholder"
+                                                         className="media-comment-avatar rounded-circle"
+                                                         src="../assets/img/faces/team-1.jpg" />
+                                                    <div className="media-body">
+                                                        <div className="media-comment-text">
+                                                            <h6 className="h5 mt-0">Michael Lewis</h6>
+                                                            <p className="text-sm lh-160">You have the
+                                                                opportunity to play this game of life you
+                                                                need to appreciate every moment. A lot of
+                                                                people don’t appreciate the moment until it’s
+                                                                passed.</p>
+                                                            <div className="icon-actions">
+                                                                <a href=".."
+                                                                   className="like active">
+                                                                    <i className="ni ni-like-2" />
+                                                                    <span
+                                                                        className="text-muted">3 likes</span>
+                                                                </a>
+                                                                <a href="..">
+                                                                    <i className="ni ni-curved-next" />
+                                                                    <span
+                                                                        className="text-muted">2 shares</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="media media-comment">
+                                                    <img alt="Image placeholder"
+                                                         className="media-comment-avatar rounded-circle"
+                                                         src="../assets/img/faces/team-2.jpg" />
+                                                    <div className="media-body">
+                                                        <div className="media-comment-text">
+                                                            <h6 className="h5 mt-0">Jessica Stones</h6>
+                                                            <p className="text-sm lh-160">I always felt like
+                                                                I could do anything. That’s the main thing
+                                                                people are controlled by! Thoughts- their
+                                                                perception of themselves! They're slowed
+                                                                down.</p>
+                                                            <div className="icon-actions">
+                                                                <a href=".."
+                                                                   className="like active">
+                                                                    <i className="ni ni-like-2" />
+                                                                    <span
+                                                                        className="text-muted">10 likes</span>
+                                                                </a>
+                                                                <a href="..">
+                                                                    <i className="ni ni-curved-next" />
+                                                                    <span
+                                                                        className="text-muted">1 share</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="media align-items-center mt-5">
+                                                    <img alt="Image placeholder"
+                                                         className="avatar avatar-lg rounded-circle mb-4"
+                                                         src="../assets/img/faces/team-3.jpg" />
+                                                    <div className="media-body">
+                                                        <form>
+                                                                <textarea className="form-control"
+                                                                          placeholder="Write your comment"
+                                                                          rows="1" />
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-
-
-
-
-
-                        <div className="text-center">
-                            <h4 className="title">Ces postes peuvent vous interesser </h4>
-                        </div>
-                        <div className="row">
-
-
-                        </div>
-
-                        <div className="text-center">
-                            <Link to={`/blog/${annonce.occupation.slug}/`}
-                                  className="btn btn-outline-info">Voir plus d'articles ici
-                            </Link>
-                        </div>
-                        <br/>
-
-
-
                     </div>
-                    <FooterUserSite/>
+                    <FooterUserSite />
                 </div>
             </div>
         )
