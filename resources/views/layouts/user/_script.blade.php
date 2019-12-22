@@ -25,10 +25,10 @@
 <!--
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 -->
-<script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
-<script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
 <script src="/assets/dashboard/assets/js/plugins/sweetalert2.js"></script>
 <script src="/assets/vendor_site/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
+<script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
+<script src="/assets/js/kazoutech.js"></script>
 <script src="{{ mix('/js/vuejs/axios.js') }}"></script>
 <script src="{{ mix('/js/reactjs/app.js') }}"></script>
 @if(config('app.env') != 'local')

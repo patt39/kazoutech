@@ -5,6 +5,7 @@ import FooterUserSite from "../inc/FooterUserSite";
 import OccupationList from "./occupation/OccupationList";
 import CitySite from "./city/CitySite";
 import AllOccupation from "../inc/AllOccupation";
+import KazouTechSteps from "../inc/KazouTechSteps";
 
 
 class IndexSite extends Component {
@@ -25,8 +26,7 @@ class IndexSite extends Component {
         return (
             <>
                 <div className="landing-page">
-                    <NavUserSIte/>
-
+                    <NavUserSIte />
                     <div className="wrapper">
                         <div className="page-header page-header-small header-filter">
                             <div className="page-header-image"
@@ -46,62 +46,8 @@ class IndexSite extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="section features">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-md-8 mx-auto text-center">
-                                        <h3 className="display-3">Comment sa marche?</h3>
-                                        <p className="lead">Kazoutech vous offre l'opportunité de travailler tout en
-                                            restant auto-entreprenuer. Quesque vous attendez? devenez un des notre</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        <div className="info">
-                                            <div
-                                                className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle">
-                                                <i className="ni ni-settings-gear-65"/>
-                                            </div>
-                                            <h6 className="info-title text-uppercase text-primary">Créez votre
-                                                profile</h6>
-                                            <p
-                                                className="description opacity-8"
-                                            >Votre profile technicien(ne) est est votre vitrine cequi va vous permettre d'etre visible
-                                                sur le site tout en vous valorisant donc prenez la peinne de bien la rediger en y entrant tout les informations nécessaire.</p>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className="info">
-                                            <div
-                                                className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
-                                                <i className="ni ni-atom"/>
-                                            </div>
-                                            <h6 className="info-title text-uppercase text-success">Dévenez un Webtech</h6>
-                                            <p className="description opacity-8"
-                                            >Acronyme <em style={{color: "black"}}>webtech</em> est le dimunitif du mot <em style={{color: "black"}}>web-technicien</em> qui veux tout simplement dire
-                                                dévenir technicien(ne) a partir du web tout en gardant votre statut d'auto-entrepreuneur.</p>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className="info">
-                                            <div
-                                                className="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle">
-                                                <i className="ni ni-world"/>
-                                            </div>
-                                            <h6 className="info-title text-uppercase text-warning">Faite vous de
-                                                l'argent</h6>
-                                            <p
-                                                className="description opacity-8"
-                                            >Le but de la plateforme est de mettre en contact des demandeur de service et des prestataires de service
-                                                contre rémuneration pour pourvoire vous permettre d'affuter vos conaissance et vous arrondire vos fin de mois difficile</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <AllOccupation/>
-
+                        <KazouTechSteps />
+                        <AllOccupation />
                     </div>
                     <div className="section features-7 bg-secondary">
                         <div className="container">
