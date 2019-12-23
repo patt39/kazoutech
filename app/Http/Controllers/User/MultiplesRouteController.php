@@ -218,14 +218,20 @@ class MultiplesRouteController extends Controller
         return response()->json($annoncebyoccupation,200);
     }
 
-    public function apiannoncesoccupationcity($occupation,$city)
+    public function annoncesoccupationcity(occupation $occupation,city $city)
+    {
+        return view('user.annonce.annonce_by_city',[
+            'city' => $city,
+            'occupation' => $occupation,
+        ]);
+    }
+
+
+    public function apiannoncesoccupationcity(occupation $occupation,$city)
     {
         $annoncesoccupationcity = new CityResource(city::where('status',1)
-            ->whereSlug($occupation)->whereSlug($city)->first());
+            ->whereSlug($city)->first());
 
-
-
-       // dd($annoncesoccupationcity);
         return response()->json($annoncesoccupationcity,200);
     }
 

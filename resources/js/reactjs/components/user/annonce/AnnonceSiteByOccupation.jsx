@@ -10,6 +10,7 @@ class AnnonceSiteByOccupation extends Component {
         super(props);
         this.state = {
             annoncebyoccupation: {annonces:[]},
+            cities:[],
         };
 
         this.deleteItem = this.deleteItem.bind(this);
@@ -22,8 +23,8 @@ class AnnonceSiteByOccupation extends Component {
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
-            confirmButtonClass: "btn btn-success",
-            cancelButtonClass: 'btn btn-danger',
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
             confirmButtonText: 'Oui suprimer',
             cancelButtonText: 'No annuler',
             showCancelButton: true,
@@ -75,10 +76,14 @@ class AnnonceSiteByOccupation extends Component {
         let SlugOccupation = this.props.match.params.occupation;
         dyaxios.get(route('api_annonce_occupation_site.view',SlugOccupation))
             .then(response => this.setState({annoncebyoccupation: response.data,}));
+        dyaxios.get(route('api.cities_by_vip')).then(response =>
+            this.setState({
+                cities: [...response.data],
+            }));
     }
 
     render() {
-        const {annoncebyoccupation} = this.state;
+        const {annoncebyoccupation,cities} = this.state;
         const annoncebyoccupations = annoncebyoccupation.annonces;
         const composantTitle = `${annoncebyoccupation.name}`;
         document.title = `${composantTitle} | Kaazoutech`;
@@ -123,22 +128,26 @@ class AnnonceSiteByOccupation extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
+
                                                     <div className="col-md-4">
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Villes</div>
                                                             <div className="card-body">
                                                                 <ul className="list-unstyled">
-                                                                    <li className="mb-2"><a
-                                                                        href="/annonces/jardinage/couper-un-arbre/paris">Annonce
-                                                                        a Douala</a></li>
-                                                                    <li className="mb-2"><a
-                                                                        href="/annonces/jardinage/couper-un-arbre/marseille">Annonces
-                                                                        a Yaounde</a>
-                                                                    </li>
+
+                                                                    {cities.map((item) => (
+                                                                        <li key={item.id} className="mb-2">
+                                                                            <Link to={`/annonces/${annoncebyoccupation.slug}/v/${item.slug}/`}>
+                                                                                {item.name}
+                                                                            </Link>
+                                                                        </li>
+                                                                    ))}
+
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h5 className="display-3 mb-5"><b>Toutes les annonces de {annoncebyoccupation.name}</b></h5>
                                                         <div className="row">

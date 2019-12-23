@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Blog;
+namespace App\Http\Requests\Admin\Blog;
 
 use App\Http\Requests\Request;
 

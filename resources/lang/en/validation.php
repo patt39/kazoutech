@@ -127,6 +127,8 @@ return [
     |
     */
 
+    'phone_cmr' => ':attribute this is not a valid cameroon phone number',
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Blog;
+namespace App\Http\Requests\Admin\Blog;
 
 class UpdateRequest extends BaseRequest
 {
@@ -10,7 +10,7 @@ class UpdateRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->getRules('update', $this->route('blog'));
+        return $this->getRules('annoncesupdate', $this->route('annonces'));
     }
 
 } // class

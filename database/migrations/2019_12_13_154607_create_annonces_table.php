@@ -18,6 +18,8 @@ class CreateAnnoncesTable extends Migration
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->string('photo')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->longText('description')->nullable();
             $table->longText('body')->nullable();
             $table->boolean('status')->default(true);

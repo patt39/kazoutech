@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\Annonce\UpdateRequest;
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
@@ -33,6 +34,15 @@ class MultiplesRouteTraitementController extends Controller
     }
 
 
+
+    public function annonceshow(occupation $occupation,$id)
+    {
+        $annonce = new AnnonceResource(annonce::whereId($id)->firstOrFail());
+
+        return response()->json($annonce,200);
+
+    }
+
     public function annoncesedit(occupation $occupation,$id)
     {
         $annonce = annonce::findOrFail($id);
@@ -40,5 +50,13 @@ class MultiplesRouteTraitementController extends Controller
             'occupation' => $occupation,
             'annonce' => $annonce,
         ]);
+    }
+
+    public function annoncesupdate(UpdateRequest $request,occupation $occupation,$id)
+    {
+        $annonce = annonce::findOrFail($id);
+
+        $annonce->update($request->all());
+
     }
 }

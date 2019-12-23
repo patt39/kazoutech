@@ -16,6 +16,8 @@ import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
 import TemoignageSite from "../components/user/temoignage/TemoignageSite";
 import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
+import AnnonceSiteEdit from "../components/user/annonce/traitement/AnnonceSiteEdit";
+import AnnonceSiteByCity from "../components/user/annonce/AnnonceSiteByCity";
 
 
 
@@ -31,7 +33,8 @@ const RouterUser = props => (
         <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
         <Route exact path="/annonces/:occupation/" component={AnnonceSiteByOccupation}/>
-        <Route exact path="/annonces/:occupation/:id/edit/" component={AnnonceSiteShow}/>
+        <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByCity}/>
+        <Route exact path="/annonces/:occupation/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/annonces/:occupation/:annonce/" component={AnnonceSiteShow}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>

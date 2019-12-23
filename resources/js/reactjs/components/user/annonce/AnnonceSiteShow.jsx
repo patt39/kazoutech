@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {Button} from "reactstrap";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
@@ -28,8 +28,8 @@ class AnnonceSiteShow extends Component {
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
-            confirmButtonClass: "btn btn-success",
-            cancelButtonClass: 'btn btn-danger',
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
             confirmButtonText: 'Oui suprimer',
             cancelButtonText: 'No annuler',
             showCancelButton: true,
@@ -212,6 +212,12 @@ class AnnonceSiteShow extends Component {
                                                         </span>
                                                     <span className="btn-inner--text">Follow</span>
                                                 </button>
+                                                <NavLink to={`/annonces/${annonce.occupation.slug}/${annonce.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                    <span className="btn-inner--icon icon-big">
+                                                        <i className="ni ni-check-bold" />
+                                                    </span>
+                                                    <span className="btn-inner--text">editer</span>
+                                                </NavLink>
                                                 <Button onClick={() => this.deleteItem(annonce.id)}
                                                         className="btn btn-sm btn-danger btn-icon">
                                                        <span className="btn-inner--icon icon-big">
