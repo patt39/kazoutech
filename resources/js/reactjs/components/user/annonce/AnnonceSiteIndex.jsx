@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
 import AnnonceOccupationList from "./AnnonceOccupationList";
+import AnnonceCityList from "./AnnonceCityList";
 
 
 class AnnonceSiteIndex extends Component {
@@ -115,7 +116,11 @@ class AnnonceSiteIndex extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
-                                                   <AnnonceOccupationList/>
+
+                                                    <div className="col-md-4">
+                                                        <AnnonceOccupationList/>
+                                                        <AnnonceCityList/>
+                                                    </div>
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h2 className="display-3 mb-5"><b>Toutes les annonces</b></h2>
                                                         <div className="row">

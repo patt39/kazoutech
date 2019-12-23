@@ -155,13 +155,13 @@ class AnnonceSiteByOccupation extends Component {
                                                                 <div className="card mb-3 text-center">
                                                                     <div className="card-body"><p
                                                                         className="h5 font-weight-normal mb-3 text-success">Vous avez une annonce?</p>
-                                                                        <button className="btn btn-success mb-2"
+                                                                        <Link to={`/annonces/${annoncebyoccupation.slug}/new/create/`} className="btn btn-success mb-2"
                                                                                 type="button" disabled="">
                                                                             <span
                                                                                 className="spinner-grow spinner-grow-sm"
                                                                                 role="status" aria-hidden="true"/>
                                                                             Annonce
-                                                                        </button>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                             </div>

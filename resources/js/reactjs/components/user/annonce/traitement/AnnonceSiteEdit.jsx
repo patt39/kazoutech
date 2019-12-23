@@ -171,8 +171,8 @@ class AnnonceSiteEdit extends Component {
                                                 <h5 className="text-white">{this.state.title} </h5>
                                             </Link>
                                             <div className="author">
-                                                <Link to={`/annonces/${this.props.match.params.occupation}`} className="text-white">
-                                                    <i className="fa fa-chevron-circle-left" /> Retour Annonces
+                                                <Link to={`/annonces/${occupationdata.slug}`} className="text-white">
+                                                    <i className="fa fa-chevron-circle-left" /> Retour {occupationdata.name}
                                                 </Link>
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@ class AnnonceSiteEdit extends Component {
                                 <div className="row">
                                     <div className="col-lg-4">
                                         <div className="container">
-                                            <h3 className="title text-white mt-3">Order summary</h3>
+                                            <h3 className="title text-white mt-3">{occupationdata.name}</h3>
                                             <div className="row">
                                                 <div className="card">
                                                     <div className="card-body">
@@ -197,7 +197,9 @@ class AnnonceSiteEdit extends Component {
                                                                 <small className="d-block opacity-8">Prix proposer</small>
                                                             </div>
                                                             <div className="media-body text-right">
-                                                                <span><b>{this.state.price} CFA</b></span>
+                                                                {this.state.price ?
+                                                                    <span><b>{this.state.price} CFA</b></span>
+                                                                    :null}
                                                             </div>
                                                         </div>
                                                         <hr className="line-info mb-3" />

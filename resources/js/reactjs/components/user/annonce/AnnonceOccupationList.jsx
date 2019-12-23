@@ -22,22 +22,20 @@ class AnnonceOccupationList extends Component {
         const {occupations} = this.state;
         return (
 
-            <div className="col-md-4">
-                <div className="card mb-3">
-                    <div className="card-header h6">Occupations</div>
-                    <div className="card-body">
-                        <ul className="list-unstyled">
+            <div className="card mb-3">
+                <div className="card-header h6">Occupations</div>
+                <div className="card-body">
+                    <ul className="list-unstyled">
 
-                            {occupations.map((item) => (
+                        {occupations.map((item) => (
                             <li key={item.id} className="mb-2">
                                 <Link to={`/annonces/${item.slug}/`}>
                                     {item.name}
                                 </Link>
                             </li>
-                            ))}
+                        ))}
 
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
         )

@@ -11,6 +11,7 @@ class AnnonceSiteByCity extends Component {
         super(props);
         this.state = {
             annoncebycity: {annonces:[]},
+            occupations: [],
         };
 
         this.deleteItem = this.deleteItem.bind(this);
@@ -74,16 +75,16 @@ class AnnonceSiteByCity extends Component {
     // lifecycle method
     componentDidMount() {
         let SlugCity = this.props.match.params.city;
-        let SlugOccupation = this.props.match.params.occupation;
-        dyaxios.get(route('api_annonce_city_site.view',[SlugOccupation,SlugCity]))
+        dyaxios.get(route('api_annonce_by_city_site.view',SlugCity))
             .then(response => this.setState({annoncebycity: response.data,}));
+        dyaxios.get(route('api_active.occupations')).then(response => this.setState({occupations: [...response.data],}));
     }
 
     render() {
-        const {annoncebycity} = this.state;
+        const {annoncebycity,occupations} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `Annonce dans la ville de ${composantTitle} | Kaazoutech`;
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -126,7 +127,25 @@ class AnnonceSiteByCity extends Component {
                                                 <br/>
                                                 <div className="row">
 
-                                                    <AnnonceOccupationList/>
+                                                    <div className="col-md-4">
+                                                        <div className="card mb-3">
+                                                            <div className="card-header h6">Occupations</div>
+                                                            <div className="card-body">
+                                                                <ul className="list-unstyled">
+
+                                                                    {occupations.map((item) => (
+                                                                        <li key={item.id} className="mb-2">
+                                                                            <Link to={`/annonces/${item.slug}/v/${annoncebycity.slug}`}>
+                                                                                {item.name}
+                                                                            </Link>
+                                                                        </li>
+                                                                    ))}
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h5 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h5>
                                                         <div className="row">
@@ -134,13 +153,13 @@ class AnnonceSiteByCity extends Component {
                                                                 <div className="card mb-3 text-center">
                                                                     <div className="card-body"><p
                                                                         className="h5 font-weight-normal mb-3 text-success">Vous avez une annonce?</p>
-                                                                        <button className="btn btn-success mb-2"
-                                                                                type="button" disabled="">
+                                                                        <Link to={`/annonces/${this.props.match.params.occupation}/new/create/`} className="btn btn-success mb-2"
+                                                                              type="button" disabled="">
                                                                             <span
                                                                                 className="spinner-grow spinner-grow-sm"
                                                                                 role="status" aria-hidden="true"/>
                                                                             Annonce
-                                                                        </button>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                             </div>

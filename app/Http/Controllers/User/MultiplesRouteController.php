@@ -187,7 +187,7 @@ class MultiplesRouteController extends Controller
         return response()->json($annonces,200);
     }
 
-    public function annoncesoccupation(occupation $occupation, annonce $annonce)
+    public function annoncesbyoccupation(occupation $occupation, annonce $annonce)
     {
         return view('user.annonce.annonce_by_occupation',[
             'occupation' => $occupation,
@@ -195,30 +195,14 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-
-    public function apiannoncesoccupationslug(occupation $occupation,$annonce)
-    {
-        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->first());
-
-        return response()->json($annonce,200);
-    }
-
-    public function annoncesoccupationslug(occupation $occupation,annonce $annonce)
-    {
-        return view('user.annonce.show',[
-            'annonce' => $annonce,
-            'occupation' => $occupation,
-        ]);
-    }
-
-    public function apiannoncesoccupation($occupation)
+    public function apiannoncesbyoccupation($occupation)
     {
         $annoncebyoccupation = new OccupationByStatusResource(occupation::where('status',1)
             ->whereSlug($occupation)->firstOrFail());
         return response()->json($annoncebyoccupation,200);
     }
 
-    public function annoncesoccupationcity(occupation $occupation,city $city)
+    public function annoncesbyoccupationbycity(occupation $occupation,city $city)
     {
         return view('user.annonce.annonce_by_city',[
             'city' => $city,
@@ -226,13 +210,41 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-
-    public function apiannoncesoccupationcity(occupation $occupation,$city)
+    public function apiannoncesbyoccupationbycity(occupation $occupation,$city)
     {
         $annoncesoccupationcity = new CityResource(city::where('status',1)
-            ->whereSlug($city)->first());
+            ->whereSlug($city)->firstOrFail());
 
         return response()->json($annoncesoccupationcity,200);
+    }
+
+    public function annoncesoccupationshow(occupation $occupation,annonce $annonce)
+    {
+        return view('user.annonce.show',[
+            'annonce' => $annonce,
+            'occupation' => $occupation,
+        ]);
+    }
+    public function apiannoncesoccupationshow(occupation $occupation,$annonce)
+    {
+        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->firstOrFail());
+
+        return response()->json($annonce,200);
+    }
+
+    public function annoncesbycity(city $city, annonce $annonce)
+    {
+        return view('user.annonce.annonce_by_city',[
+            'city' => $city,
+            'annonce' => $annonce,
+        ]);
+    }
+
+    public function apiannoncesbycity($city)
+    {
+        $annoncecity = new CityResource(city::whereSlug($city)->firstOrFail());
+
+        return response()->json($annoncecity,200);
     }
 
 
