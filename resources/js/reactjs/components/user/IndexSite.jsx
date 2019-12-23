@@ -156,31 +156,27 @@ class IndexSite extends Component {
                         </div>
                     </div>
                 </div>
-
                 <div className="section features-7">
                     <div className="container">
-                        <div className="row justify-content-center mt-5">
+                        <div className="row justify-content-center">
                             <div className="col-lg-12">
-
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-8 mr-auto ml-auto text-center">
-                                            <h3 className="title mb-5">Nous sommes Partout au Cameroun</h3>
+                                            <h3 className="display-3 mb-5">Nous sommes Partout au Cameroun</h3>
                                         </div>
                                     </div>
                                     <CitySite/>
                                     <Link to={'/toutes-les-villes/'}
-                                          className="font-size-3 font-weight-medium d-block">
+                                          className="font-size-3 font-weight-medium d-block mt-5">
                                         Voir toutes les villes
                                         <i className="fas fa-chevron-right pl-1 font-size-1"/>
                                     </Link>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="subscribe-line subscribe-line-white">
                     <div className="container">
                         <div className="row">
@@ -216,7 +212,6 @@ class IndexSite extends Component {
                         </div>
                     </div>
                 </div>
-
                 <FooterUserSite/>
             </>
         )

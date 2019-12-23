@@ -58,6 +58,18 @@
 .page-header {
     min-height: auto;
 }
+.d-block {
+    height: inherit;
+}
+.font-weight-medium:hover .fa-chevron-right:before {
+    left: 10px;
+    transition: left 600ms;
+    position: relative;
+}
+.kazouTech-cities[data-animation="zooming"]:hover {
+    transform: scale(1.04);
+    -webkit-transform: scale(1.04);
+}
 
 
 

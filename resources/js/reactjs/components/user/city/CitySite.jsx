@@ -6,7 +6,7 @@ class CitySite extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cities:[]
+            cities: []
         }
     }
 
@@ -21,11 +21,9 @@ class CitySite extends Component {
     render() {
         const {cities} = this.state;
         return (
-
             <div className="row">
                 {cities.map((item) => (
-
-                    <div  key={item.id} className="col-sm-2 col-6" data-animation="zooming">
+                    <div key={item.id} className="col-sm-2 col-6 kazouTech-cities" data-animation="zooming">
                         <small
                             className="d-block text-uppercase font-weight-bold mb-4 text-center">
                             <b>{item.name}</b>
@@ -38,13 +36,10 @@ class CitySite extends Component {
                             />
                         </a>
                     </div>
-
                 ))}
             </div>
-
         )
     }
-
 }
 
 export default CitySite;
