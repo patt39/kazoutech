@@ -98,6 +98,8 @@ return [
     |
     */
 
+    'phone_cmr' => 'Ce numero de :attribute n\'est pas valide au Cameroun.',
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

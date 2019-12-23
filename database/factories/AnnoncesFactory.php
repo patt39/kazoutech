@@ -23,6 +23,8 @@ $factory->define(annonce::class, function (Faker $faker) {
 
     return [
         'title' => $title,
+        'address' => $faker->address,
+        'phone' => $faker->phoneNumber,
         'slug' => str_slug($title),
         'photo' => $faker->imageUrl($width = 1000, $height = 900),
         'price' => $faker->randomNumber(4),

@@ -3,9 +3,6 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
 import BlogLastPost from "./BlogLastPost";
-import FaqUserList from "../faq/FaqUserList";
-import {Link} from "react-router-dom";
-import moment from "moment";
 
 
 class BlogSiteIndex extends Component {

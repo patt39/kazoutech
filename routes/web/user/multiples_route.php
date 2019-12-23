@@ -22,7 +22,8 @@ Route::get('blog/{occupation}/{blog}','MultiplesRouteController@blogsoccupations
 
 Route::get('annonces','MultiplesRouteController@annonces')->name('annonces');
 Route::get('annonces/{occupation}','MultiplesRouteController@annoncesoccupation')->name('annonces_view');
-Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@annoncesoccupationslug')->name('occupation.occupation_slug');
+Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@annoncesoccupationslug')->name('annonce.occupation_slug');
+Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesoccupationcity')->name('annonce.city_slug');
 
 Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesoccupationcity')->name('occupation.occupation_city');
 

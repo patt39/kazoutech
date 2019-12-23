@@ -4,7 +4,6 @@ import moment from 'moment'
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import BlogPostInteresse from "./BlogPostInteresse";
-import CategoryOcupationList from "../occupation/categoryoccupation/CategoryOcupationList";
 
 require("moment/min/locales.min");
 moment.locale('fr');

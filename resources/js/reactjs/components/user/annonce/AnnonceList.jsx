@@ -41,9 +41,12 @@ class AnnonceList extends Component {
                                 </div>
                             </div>
                             <div className="text-right ml-auto">
-                                <button type="button" className={`btn btn-sm btn-${this.props.user.color_name} btn-icon`}>
-                                    <span className="btn-inner--text">{this.props.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
-                                </button>
+                                {this.props.price ?
+                                    <button type="button" className={`btn btn-sm btn-${this.props.user.color_name} btn-icon`}>
+                                        <span className="btn-inner--text">{this.props.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
+                                    </button>
+                                    : null}
+
                                 <NavLink to={`/annonces/${this.props.occupation.slug}/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
                                     <span className="btn-inner--icon icon-big">
                                         <i className="ni ni-check-bold" />

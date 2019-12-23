@@ -9,7 +9,7 @@ class BlogList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           //
+            //
         }
     }
 
@@ -37,7 +37,8 @@ class BlogList extends Component {
                             </h3>
                             <p className="card-description">
                                 <b dangerouslySetInnerHTML={{__html: (this.props.body.length > 180 ? this.props.body.substring(0, 180) + "..." : this.props.body)}}/>
-                                <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}> lire la suite </Link>
+                                <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}> lire la
+                                    suite </Link>
                             </p>
                             <div className="author">
                                 <img

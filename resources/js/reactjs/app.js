@@ -12,3 +12,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 require('./Index');
+
+import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.bubble.css';

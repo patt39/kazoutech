@@ -36,9 +36,9 @@ class NavUserSIte extends Component{
                        </div>
                        <ul className="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
                            <li className="nav-item">
-                               <a href="/dashboard" className="nav-link" role="button">
+                               <a href="/" className="nav-link" role="button">
                                    <i className="ni ni-app d-lg-none"/>
-                                   <span className="nav-link-inner--text"><b>Dashboard</b></span>
+                                   <span className="nav-link-inner--text"><b>Home</b></span>
                                </a>
                            </li>
                            <li className={'nav-item'}>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Blog\StoreRequest;
-use App\Http\Requests\Blog\UpdateRequest;
+
+use App\Http\Requests\Admin\Blog\StoreRequest;
+use App\Http\Requests\Admin\Blog\UpdateRequest;
 use App\Services\Admin\BlogService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
