@@ -46,6 +46,20 @@
     position: relative;
     top: 2px;
 }
+.carousel-caption {
+    top: 40%;
+}
+.carousel-caption h1 {
+    color: #ffffff;
+}
+.wrapper > .page-header > .container {
+    padding: 0;
+}
+.page-header {
+    min-height: auto;
+}
+
+
 
 /*** RESPONSIVE DEVICE ***/
 /************************/
@@ -54,5 +68,15 @@
         position: relative;
         float: left;
         left: -15%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .carousel-indicators {
+        display: none;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar-transparent .navbar-brand {
+        left: 0%;
     }
 }
