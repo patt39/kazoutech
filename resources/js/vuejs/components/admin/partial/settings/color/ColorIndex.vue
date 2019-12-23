@@ -94,7 +94,7 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in orderByItems" :key="item.id">
-                                                <td>{{ item.color_name | upText }}</td>
+                                                <td>{{ item.name | upText }}</td>
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span :class="getColor(item)"><b>{{ item.slug }}</b></span>
@@ -108,8 +108,8 @@
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"></button>
+                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"/>
+                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"/>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
@@ -477,12 +477,11 @@
                 this.$Progress.start();
                 api.colorItems(this.$route).then(response => {
                     this.loaded = true;
-                    this.colors = response.data.data;
+                    this.colors = response.data;
                     this.mydatatables();
                     //End Progress bar
                     this.$Progress.finish();
                 }).catch(error => {
-                    console.log(error);
                     this.errored = true
                 });
                 axios.get("/api/account/user").then(response => {

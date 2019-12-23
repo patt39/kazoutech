@@ -24,6 +24,11 @@ class categoryoccupation extends Model
     {
         return $this->belongsTo(occupation::class,'occupation_id');
     }
+
+    public function color()
+    {
+        return $this->belongsTo(color::class,'color_id');
+    }
     /**
      * save and deleting image
      */

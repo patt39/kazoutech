@@ -70,6 +70,15 @@ class OccupationController extends Controller
         ]);
     }
 
+    public function occupationedit(occupation $occupation,$id)
+    {
+        $categoryoccupation = categoryoccupation::findOrFail($id);
+        return view('admin.category_occupations.edit',[
+            'categoryoccupation' => $categoryoccupation,
+            'occupation' => $occupation,
+        ]);
+    }
+
     public function activestatus()
     {
         $occupations = OccupationByStatusResource::collection(occupation::where('status',1)->latest()->get());

@@ -21,17 +21,20 @@ class BaseRequest extends Request
             $rules = [
                 'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,',
                 'occupation_id' => 'required',
+                'color_id' => 'required',
             ];
         }
         elseif ($group === 'storecategoryoccupation'){
             $rules = [
                 'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,' .$this->id,
                 'photo' => 'required',
+                'color_id' => 'required',
             ];
         } else { // 'edit'
             $rules = [
                 'name' => 'required|string|min:2|max:100|unique:categoryoccupations,name,' .$this->id,
                 'occupation_id' => 'required',
+                'color_id' => 'required',
             ];
         }
 
@@ -51,6 +54,7 @@ class BaseRequest extends Request
     public function attributes()
     {
         return [
+            'color_id' => 'coleur obligatoire',
             'occupation_id' => 'occupation obligatoire',
         ];
     }

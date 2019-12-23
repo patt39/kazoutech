@@ -55,7 +55,7 @@ class IndexSite extends Component {
                                 <div className="col-md-10 text-center mx-auto">
                                     <h3 className="display-3">Le service entre particuliers jamais aussi façile</h3>
                                     <p className="lead">Pour tout vos bésoins immediat des service d'un technicien en un domaine spécifique n'hesitez plus des prestataires
-                                        de services plus de vous que jamais lançez vous et profitez en.</p>
+                                        de services près de vous plus que jamais. Lançez vous et profitez en.</p>
                                 </div>
                             </div>
                             <div className="row justify-content-center mt-5">

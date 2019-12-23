@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import OccupationList from "./OccupationList";
 import AllOccupation from "../../inc/AllOccupation";
 import CitySite from "../city/CitySite";
 import {Link} from "react-router-dom";

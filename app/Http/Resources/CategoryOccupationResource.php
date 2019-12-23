@@ -14,6 +14,8 @@ class CategoryOccupationResource extends JsonResource
      */
     public function toArray($request)
     {
+        $annonces = $this->annonces()->with('occupation','user','city','categoryoccupation')->distinct()
+            ->get()->toArray();
         return [
             'id' => $this->id,
             'photo' => $this->photo,
@@ -23,6 +25,9 @@ class CategoryOccupationResource extends JsonResource
             'status' => $this->status,
             'occupation_id' => $this->occupation_id,
             'occupation' => $this->occupation,
+            'annonces' => $annonces,
+            'color' => $this->color,
+            'color_id' => $this->color_id,
             'slug' => $this->slug,
             'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),

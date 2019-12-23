@@ -23,7 +23,8 @@ Route::get('blog/{occupation}/{blog}','MultiplesRouteController@blogsoccupations
 Route::get('annonces','MultiplesRouteController@annonces')->name('annonces');
 Route::get('annonces/{occupation}','MultiplesRouteController@annoncesbyoccupation')->name('annonces_view');
 Route::get('annonces/v/{city}','MultiplesRouteController@annoncesbycity')->name('annonces_view_city');
-Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@annoncesoccupationshow')->name('annonce.occupation_slug');
+Route::get('annonces/{occupation}/{categoryoccupation}','MultiplesRouteController@annoncesbycategoryoccupation')->name('annonces_view_categoryoccupation');
+//Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@annoncesoccupationshow')->name('annonce.occupation_slug');
 Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesbyoccupationbycity')->name('occupation.occupation_city');
 
 Route::get('charbonneurs','MultiplesRouteController@charbonneurs')->name('charbonneurs');

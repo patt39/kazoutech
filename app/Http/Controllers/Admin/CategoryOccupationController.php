@@ -23,7 +23,7 @@ class CategoryOccupationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','apioccupationbyslugedit']]);
     }
     /**
      * Display a listing of the resource.
@@ -86,13 +86,24 @@ class CategoryOccupationController extends Controller
        return response()->json($categoryoccupation,200);
     }
 
+    public function updatecategoryoccupation(StoreCategoryCoccupationRequest $request, occupation $occupation,$id)
+    {
+        $categoryoccupation = categoryoccupation::findOrFail($id);
+
+        CategoryOccupationService::updateUploadeImage($request,$categoryoccupation);
+
+        $categoryoccupation->update($request->all());
+
+       return response()->json($categoryoccupation,200);
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  categoryoccupation $categoryoccupation
      * @return \Illuminate\Http\JsonResponse|Response
      */
-    public function show($id)
+    public function apioccupationbyslugedit(occupation $occupation,$id)
     {
         $categoryoccupation = new CategoryOccupationResource(categoryoccupation::where('id', $id)
             ->findOrFail($id));

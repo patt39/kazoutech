@@ -16,6 +16,7 @@
                                         <i class="material-icons">assignment</i>
                                     </div>
                                     <p class="card-category"><b v-text="occupation.name"/></p>
+                                    <h3 class="card-title" style="color:red;"><b>{{occupation.categoryoccupations.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -111,7 +112,7 @@
                                                             <span class="toggle"/>
                                                         </label>
                                                     </button>
-                                                    <router-link :to="{ name: 'categoryoccupations.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
+                                                    <router-link :to="{ name: 'occupations.show_dashboard_edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
                                                                  class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>

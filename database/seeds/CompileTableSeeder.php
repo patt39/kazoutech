@@ -89,10 +89,10 @@ class CompileTableSeeder extends Seeder
     {
         DB::table('colors')->delete();
         $colors = array(
-            array('name' => 'success', 'user_id' => '1'),
-            array('name' => 'danger', 'user_id' => '2'),
-            array('name' => 'info', 'user_id' => '1'),
-            array('name' => 'primary', 'user_id' => '1'),
+            array('name' => 'success', 'slug' => 'success', 'user_id' => '1'),
+            array('name' => 'danger', 'slug' => 'danger', 'user_id' => '2'),
+            array('name' => 'info', 'slug' => 'info', 'user_id' => '1'),
+            array('name' => 'primary', 'slug' => 'primary', 'user_id' => '1'),
         );
         DB::table('colors')->insert($colors);
 

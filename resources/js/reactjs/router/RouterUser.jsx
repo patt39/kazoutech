@@ -20,6 +20,8 @@ import AnnonceSiteEdit from "../components/user/annonce/traitement/AnnonceSiteEd
 import AnnonceSiteByOccupationCity from "../components/user/annonce/AnnonceSiteByOccupationCity";
 import AnnonceSiteCreate from "../components/user/annonce/traitement/AnnonceSiteCreate";
 import AnnonceSiteByCity from "../components/user/annonce/AnnonceSiteByCity";
+import AnnonceSiteByOccupationbyCategoryoccupation
+    from "../components/user/annonce/AnnonceSiteByOccupationbyCategoryoccupation";
 
 
 
@@ -34,6 +36,7 @@ const RouterUser = props => (
         <Route exact path="/blog/:occupation/" component={BlogSiteCategories}/>
         <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
+        <Route exact path="/annonces/c/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
         <Route exact path="/annonces/v/:city" component={AnnonceSiteByCity}/>
         <Route exact path="/annonces/:occupation/" component={AnnonceSiteByOccupation}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
+use App\Http\Resources\CategoryOccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\User\CategoryoccupationByStatusResource;
@@ -247,6 +248,23 @@ class MultiplesRouteController extends Controller
         return response()->json($annoncecity,200);
     }
 
+    public function annoncesbycategoryoccupation(occupation $occupation,categoryoccupation $categoryoccupation)
+    {
+        return view('user.annonce.annonce_by_categoryoccupation',[
+            'occupation' => $occupation,
+            'categoryoccupation' => $categoryoccupation,
+        ]);
+    }
+
+    public function apiannoncesbycategoryoccupation(occupation $occupation,$categoryoccupation)
+    {
+        $annoncesoccupationcategoryoccupation = new CategoryOccupationResource(
+            categoryoccupation::where('status',0)
+            ->whereSlug($categoryoccupation)->first());
+
+
+        return response()->json($annoncesoccupationcategoryoccupation,200);
+    }
 
     public function apicharbonneurs()
     {
