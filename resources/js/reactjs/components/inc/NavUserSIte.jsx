@@ -10,7 +10,7 @@ class NavUserSIte extends Component{
            <nav id="navbar-main" className="navbar navbar-main navbar-expand-lg navbar-transparent headroom">
                <div className={'container'}>
                    <Link to={'/'}  className="navbar-brand mr-lg-5">
-                   <img src="/assets/vendor_site/img/brand/white.png"/>
+                   <img src=".." alt={'Kazoutech'}/>
                    </Link>
                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
                            aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
