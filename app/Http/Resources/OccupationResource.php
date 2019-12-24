@@ -14,7 +14,7 @@ class OccupationResource extends JsonResource
      */
     public function toArray($request)
     {
-        $annonces = $this->annonces()->with('occupation','user','city')->distinct()
+        $annonces = $this->annonces()->with('occupation','user','city','categoryoccupation')->distinct()
             ->get()->toArray();
         return [
             'id' => $this->id,

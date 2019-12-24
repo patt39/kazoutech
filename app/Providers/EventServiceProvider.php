@@ -53,7 +53,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
         about::observe(AboutObserver::class);
         categoryfaq::observe(CategoryfaqObserver::class);
-        color::observe(ColorObserver::class);
         contact::observe(ContactObserver::class);
         faq::observe(FaqObserver::class);
         note::observe(NoteObserver::class);

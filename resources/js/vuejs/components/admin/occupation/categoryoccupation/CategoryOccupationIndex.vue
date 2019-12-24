@@ -122,7 +122,7 @@
                                                             <span class="toggle"/>
                                                         </label>
                                                     </button>
-                                                    <router-link :to="{ name: 'categoryoccupations.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
+                                                    <router-link :to="{ path: `/dashboard/occupations/v/${item.occupation.slug}/${item.id}/edit/` }" v-if="$auth.can('edit-occupation')"
                                                                  class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>

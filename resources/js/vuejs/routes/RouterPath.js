@@ -86,7 +86,6 @@ import ColorAuditing from "../components/admin/partial/settings/color/ColorAudit
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
 import SubscriberIndex from "../components/admin/contact/SubscriberIndex";
-import ProfileUserIndex from "../components/user/profile/ProfileUserIndex";
 import ProfileUserEdit from "../components/user/profile/ProfileUserEdit";
 import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable";
 import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
@@ -98,15 +97,14 @@ import IndexSite from "../components/user/IndexSite";
 
 /* Services routes */
 import OccupationsSite from "../components/user/pages/services/OccupationsSite";
-import CategoryOccupationCreate from "../components/admin/occupation/categoryoccupation/CategoryOccupationCreate";
 import OccupationUserSlug from "../components/user/pages/services/OccupationUserSlug";
 import CategoryOccupationIndex from "../components/admin/occupation/categoryoccupation/CategoryOccupationIndex";
-import CategoryOccupationEdit from "../components/admin/occupation/categoryoccupation/CategoryOccupationEdit";
 import OccupationShow from "../components/admin/occupation/occupation/OccupationShow";
-import OccupationShowCreate from "../components/admin/occupation/occupation/OccupationShowCreate";
+import OccupationShowCreate from "../components/admin/occupation/occupation/categoryoccupation/OccupationShowCreate";
 import BlogIndex from "../components/admin/blog/BlogIndex";
 import BlogEdit from "../components/admin/blog/BlogEdit";
 import BlogCreate from "../components/admin/blog/BlogCreate";
+import OccupationShowEdit from "../components/admin/occupation/occupation/categoryoccupation/OccupationShowEdit";
 
 
 
@@ -141,10 +139,9 @@ export const routes = [
     {path: '/dashboard/occupations/:id/edit', name: 'occupations.edit', component: OccupationEdit},
     {path: '/dashboard/occupations/v/:occupation', name: 'occupations.show_dashboard', component: OccupationShow},
     {path: '/dashboard/occupations/v/:occupation/create/', name: 'occupations.show_dashboard_create', component: OccupationShowCreate},
+    {path: '/dashboard/occupations/v/:occupation/:id/edit', name: 'occupations.show_dashboard_edit', component: OccupationShowEdit},
 
     {path: '/dashboard/categoryoccupations/', name: 'categoryoccupations.index', component: CategoryOccupationIndex},
-    {path: '/dashboard/categoryoccupations/create', name: 'categoryoccupations.create', component: CategoryOccupationCreate},
-    {path: '/dashboard/categoryoccupations/:id/edit', name: 'categoryoccupations.edit', component: CategoryOccupationEdit},
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},
     {path: '/dashboard/cities/actives/', name: 'cities.index', component: CityIndex},

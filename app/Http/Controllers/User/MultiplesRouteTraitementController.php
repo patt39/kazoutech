@@ -34,6 +34,12 @@ class MultiplesRouteTraitementController extends Controller
     }
 
 
+    public function annoncescreate(occupation $occupation)
+    {
+        return view('user.annonce.create',[
+            'occupation' => $occupation,
+        ]);
+    }
 
     public function annonceshow(occupation $occupation,$id)
     {

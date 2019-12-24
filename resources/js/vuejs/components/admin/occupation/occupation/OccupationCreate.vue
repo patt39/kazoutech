@@ -35,7 +35,7 @@
                                                                             <label>Name occupation<span style="color: red;">*</span></label>
                                                                             <input v-model="form.name" type="text" name="name"
                                                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" >
-                                                                            <has-error :form="form" field="name"></has-error>
+                                                                            <has-error :form="form" field="name"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -66,7 +66,7 @@
                                                                                     </a>
                                                                                 </div>
                                                                             </div>
-                                                                            <has-error :form="form" field="photo"></has-error>
+                                                                            <has-error :form="form" field="photo"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -78,7 +78,7 @@
                                                                                           :class="{ 'is-invalid': form.errors.has('description') }"
                                                                                           :options="editorOption">
                                                                             </quill-editor>
-                                                                            <has-error :form="form" field="body"></has-error>
+                                                                            <has-error :form="form" field="body"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>

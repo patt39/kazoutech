@@ -43,12 +43,9 @@ class ColorController extends Controller
 
     public function api()
     {
-        //$colors = new ColorCollection(Color::with('user')->latest()->get());
-        $colors = Cache::rememberForever('colors', function () {
-            return ColorResource::collection(Color::with('user')
-                ->with('user')->latest()->get());
-        });
-        return $colors;
+        $colors = ColorResource::collection(Color::with('user')
+            ->with('user')->latest()->get());
+        return response()->json($colors,200);
     }
 
     public function apiauditing($color)

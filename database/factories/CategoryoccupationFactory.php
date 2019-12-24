@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\admin\categoryoccupation;
+use App\Model\admin\color;
 use App\Model\admin\occupation;
 use App\Model\user\User;
 use Faker\Generator as Faker;
@@ -17,11 +18,14 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(categoryoccupation::class, function (Faker $faker) {
+    $name = $faker->unique()->userName;
     return [
-        'name' => $faker->unique()->userName,
+        'name' => $name,
+        'slug' => str_slug($name),
         'status' => $faker->boolean,
         'description' => $faker->paragraph,
         'photo' => $faker->imageUrl($width = 1000, $height = 900),
+        'color_id' => color::inRandomOrder()->first()->id,
         'occupation_id' => function () {
             return occupation::inRandomOrder()->first()->id;
         },

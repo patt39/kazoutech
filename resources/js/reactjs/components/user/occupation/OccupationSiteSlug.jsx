@@ -4,7 +4,6 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import OccupationHeader from "../../inc/OccupationHeader";
 import CategoryOcupationList from "./categoryoccupation/CategoryOcupationList";
-import OccupationList from "./OccupationList";
 import CitySite from "../city/CitySite";
 
 
@@ -41,6 +40,8 @@ class OccupationSiteSlug extends Component {
                             <div className="accordion-1">
                                 <div className="container">
 
+
+
                                     <div className={'row'}>
 
                                         <div className="container text-center">
@@ -53,7 +54,19 @@ class OccupationSiteSlug extends Component {
                                             </div>
                                             <div className="row align-items-center">
                                                 {occupationCategories.map((item) => (
-                                                    <CategoryOcupationList key={item.id} {...item}/>
+                                                <div className="col-lg-4">
+                                                    <div className="card card-background"
+                                                         style={{backgroundImage: "url(" + item.photo + ")"}}>
+                                                        <div className="card-body text-center">
+                                                            <Link to={`/annonces/${occupation.slug}/o/${item.slug}/`}>
+                                                                <h2 className="card-title">{item.name}</h2>
+                                                            </Link>
+                                                            <Link to={`/annonces/${occupation.slug}/c/${item.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                                                En savoir plus
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 ))}
                                             </div>
                                         </div>
