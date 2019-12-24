@@ -78,7 +78,9 @@ class AnnonceSiteShow extends Component {
     componentDidMount() {
         let SlugItem = this.props.match.params.annonce;
         let SlugOccupation = this.props.match.params.occupation;
-        let url = route('api_annonce_site.view', [SlugOccupation, SlugItem]);
+        let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
+        let SlugCity = this.props.match.params.city;
+        let url = route('api_annonce_site.view', [SlugOccupation,SlugCategoryoccupation,SlugCity,SlugItem]);
         dyaxios.get(url).then(response => this.setState({ annonce: response.data, }));
     }
 
@@ -212,7 +214,7 @@ class AnnonceSiteShow extends Component {
                                                         </span>
                                                     <span className="btn-inner--text">Follow</span>
                                                 </button>
-                                                <NavLink to={`/annonces/${annonce.occupation.slug}/${annonce.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                <NavLink to={`/annonces/${annonce.occupation.slug}/p/${annonce.id}/edit`} className="btn btn-sm btn-success btn-icon">
                                                     <span className="btn-inner--icon icon-big">
                                                         <i className="ni ni-check-bold" />
                                                     </span>

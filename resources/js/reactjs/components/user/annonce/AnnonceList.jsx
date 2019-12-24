@@ -22,13 +22,13 @@ class AnnonceList extends Component {
                 <div className="row">
                     <div className="col-lg-12">
                         <h5 className="card-title">
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.slug}/`}>
+                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
                                 {this.props.title}
                             </Link>
                         </h5>
                         <p className="card-description">
                             <b dangerouslySetInnerHTML={{ __html: (this.props.body.length > 156 ? this.props.body.substring(0, 156) + "..." : this.props.body) }} />
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
                         </p>
                         <div className="card-header d-flex align-items-center">
                             <div className="d-flex align-items-center">
@@ -47,7 +47,7 @@ class AnnonceList extends Component {
                                     </button>
                                     : null}
 
-                                <NavLink to={`/annonces/${this.props.occupation.slug}/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                <NavLink to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
                                     <span className="btn-inner--icon icon-big">
                                         <i className="ni ni-check-bold" />
                                     </span>

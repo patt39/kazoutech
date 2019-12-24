@@ -26,6 +26,9 @@ class categoryfaq extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 
     protected static function boot()
     {

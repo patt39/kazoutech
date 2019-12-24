@@ -22,6 +22,8 @@ import AnnonceSiteCreate from "../components/user/annonce/traitement/AnnonceSite
 import AnnonceSiteByCity from "../components/user/annonce/AnnonceSiteByCity";
 import AnnonceSiteByOccupationbyCategoryoccupation
     from "../components/user/annonce/AnnonceSiteByOccupationbyCategoryoccupation";
+import AnnonceSiteByOccupationCategoryoccupationCity
+    from "../components/user/annonce/AnnonceSiteByOccupationCategoryoccupationCity";
 
 
 
@@ -36,13 +38,14 @@ const RouterUser = props => (
         <Route exact path="/blog/:occupation/" component={BlogSiteCategories}/>
         <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
-        <Route exact path="/annonces/c/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation/:city" component={AnnonceSiteByOccupationCategoryoccupationCity}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation/:city/:annonce/" component={AnnonceSiteShow}/>
         <Route exact path="/annonces/v/:city" component={AnnonceSiteByCity}/>
         <Route exact path="/annonces/:occupation/" component={AnnonceSiteByOccupation}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>
-        <Route exact path="/annonces/:occupation/new/create/" component={AnnonceSiteCreate}/>
-        <Route exact path="/annonces/:occupation/:id/edit/" component={AnnonceSiteEdit}/>
-        <Route exact path="/annonces/:occupation/:annonce/" component={AnnonceSiteShow}/>
+        <Route exact path="/annonces/:occupation/new/p/create/" component={AnnonceSiteCreate}/>
+        <Route exact path="/annonces/:occupation/p/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>
         <Route exact path="/about/" component={AboutSite}/>

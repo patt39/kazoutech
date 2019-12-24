@@ -21,7 +21,7 @@ class CreateCategoryoccupationsTable extends Migration
             $table->string('photo')->nullable();
             $table->string('link')->nullable();
             $table->string('slug')->nullable();
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->unsignedBigInteger('color_id')->nullable();
             $table->timestamps();
 

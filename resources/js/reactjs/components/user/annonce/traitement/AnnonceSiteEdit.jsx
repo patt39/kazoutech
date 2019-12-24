@@ -171,7 +171,7 @@ class AnnonceSiteEdit extends Component {
                                                 <h5 className="text-white">{this.state.title} </h5>
                                             </Link>
                                             <div className="author">
-                                                <Link to={`/annonces/${occupationdata.slug}`} className="text-white">
+                                                <Link to={`/annonces/${occupationdata.slug}/`} className="text-white">
                                                     <i className="fa fa-chevron-circle-left" /> Retour {occupationdata.name}
                                                 </Link>
                                             </div>

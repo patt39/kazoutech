@@ -5,10 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\CategoryOccupationResource;
+use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\User\CategoryoccupationByStatusResource;
-use App\Http\Resources\User\OccupationByStatusResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\annonce;
 use App\Model\admin\blog;
@@ -18,8 +18,6 @@ use App\Model\admin\city;
 use App\Model\admin\faq;
 use App\Model\admin\occupation;
 use App\Model\user\User;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class MultiplesRouteController extends Controller
 {
@@ -61,7 +59,7 @@ class MultiplesRouteController extends Controller
 
     public function apioccupationbyslug($slug)
     {
-        $occupation = new OccupationByStatusResource(occupation::where('status',1)
+        $occupation = new OccupationResource(occupation::where('status',1)
             ->whereSlug($slug)->firstOrFail());
 
         return response()->json($occupation,200);
@@ -123,7 +121,7 @@ class MultiplesRouteController extends Controller
 
     public function apiblogsoccupation($slug)
     {
-        $occupation = new OccupationByStatusResource(occupation::where('status',1)
+        $occupation = new OccupationResource(occupation::where('status',1)
             ->whereSlug($slug)->firstOrFail());
         return response()->json($occupation,200);
     }
@@ -198,7 +196,7 @@ class MultiplesRouteController extends Controller
 
     public function apiannoncesbyoccupation($occupation)
     {
-        $annoncebyoccupation = new OccupationByStatusResource(occupation::where('status',1)
+        $annoncebyoccupation = new OccupationResource(occupation::where('status',1)
             ->whereSlug($occupation)->firstOrFail());
         return response()->json($annoncebyoccupation,200);
     }
@@ -211,43 +209,6 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function apiannoncesbyoccupationbycity(occupation $occupation,$city)
-    {
-        $annoncesoccupationcity = new CityResource(city::where('status',1)
-            ->whereSlug($city)->firstOrFail());
-
-        return response()->json($annoncesoccupationcity,200);
-    }
-
-    public function annoncesoccupationshow(occupation $occupation,annonce $annonce)
-    {
-        return view('user.annonce.show',[
-            'annonce' => $annonce,
-            'occupation' => $occupation,
-        ]);
-    }
-    public function apiannoncesoccupationshow(occupation $occupation,$annonce)
-    {
-        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->firstOrFail());
-
-        return response()->json($annonce,200);
-    }
-
-    public function annoncesbycity(city $city, annonce $annonce)
-    {
-        return view('user.annonce.annonce_by_city',[
-            'city' => $city,
-            'annonce' => $annonce,
-        ]);
-    }
-
-    public function apiannoncesbycity($city)
-    {
-        $annoncecity = new CityResource(city::whereSlug($city)->firstOrFail());
-
-        return response()->json($annoncecity,200);
-    }
-
     public function annoncesbycategoryoccupation(occupation $occupation,categoryoccupation $categoryoccupation)
     {
         return view('user.annonce.annonce_by_categoryoccupation',[
@@ -256,14 +217,43 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function apiannoncesbycategoryoccupation(occupation $occupation,$categoryoccupation)
+    public function apiannoncesbycategoryoccupation($occupation,$categoryoccupation)
     {
-        $annoncesoccupationcategoryoccupation = new CategoryOccupationResource(
-            categoryoccupation::where('status',0)
+        $annoncesoccupationcategoryoccupation = new CategoryOccupationResource(categoryoccupation::where('status',1)
             ->whereSlug($categoryoccupation)->first());
 
-
         return response()->json($annoncesoccupationcategoryoccupation,200);
+    }
+
+
+    public function annoncesbycity($occupation,$categoryoccupation,city $city, annonce $annonce)
+    {
+        return view('user.annonce.annonce_by_city',[
+            'city' => $city,
+            'annonce' => $annonce,
+        ]);
+    }
+
+
+    public function apiannoncesbycity($occupation,$categoryoccupation,$city)
+    {
+        $annoncecity = new CityResource(city::whereSlug($city)->firstOrFail());
+
+        return response()->json($annoncecity,200);
+    }
+
+    public function annoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
+    {
+        return view('user.annonce.show',[
+            'annonce' => $annonce,
+        ]);
+    }
+
+    public function apiannoncesoccupationshow($occupation,$categoryoccupation,$city,$annonce)
+    {
+        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->firstOrFail());
+
+        return response()->json($annonce,200);
     }
 
     public function apicharbonneurs()
