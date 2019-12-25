@@ -36,6 +36,7 @@ $factory->define(User::class, function (Faker $faker) {
         'occupation_id' => occupation::inRandomOrder()->first()->id,
         'name' => $faker->firstName,
         'charbonneur' => $faker->boolean,
+        'status_profile_verify' => $faker->boolean,
         'email' => $faker->unique()->safeEmail,
         'color_name' => color::inRandomOrder()->first()->name,
         'city_id' => city::inRandomOrder()->first()->id,

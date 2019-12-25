@@ -109,7 +109,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur Kazoutech sur la ville de <b>{annoncebycity.name}</b>
+                                        Restez a l'affue de toutes les annonces sur Kazoutech dans la ville de <b>{annoncebycity.name}</b>
                                     </h4>
                                     <div className="author">
                                         <Link to={'/annonces/'} className="text-white">
@@ -168,7 +168,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h5>
+                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces à {annoncebycity.name}</b></h5>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">

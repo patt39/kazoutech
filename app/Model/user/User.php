@@ -42,6 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     protected $dates = ['deleted_at'];
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'status_profile_verify' => 'boolean',
     ];
 
     protected static function boot()

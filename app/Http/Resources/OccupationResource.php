@@ -23,6 +23,8 @@ class OccupationResource extends JsonResource
         $annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
             ->distinct()->get()->toArray();
 
+        $users =  $this->userbycities()->with('city')->distinct()->get()->toArray();
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -30,6 +32,7 @@ class OccupationResource extends JsonResource
             'slug' => $this->slug,
             'photo' => $this->photo,
             'description' => $this->description,
+            'users' => $users,
             'categoryoccupations' => $categoryoccupations,
             'blogs' => $blogbycategories,
             'annonces' => $annonces,

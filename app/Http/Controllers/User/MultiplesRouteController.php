@@ -282,6 +282,19 @@ class MultiplesRouteController extends Controller
         return response()->json($charbonneursbycity,200);
     }
 
+    public function charbonneursbyoccupation($city,occupation $occupation)
+    {
+        return view('user.charbonneur.charbonneurs_by_occupation',[
+            'occupation' => $occupation,
+        ]);
+    }
+
+    public function apicharbonneursbyoccupation($city,$occupation)
+    {
+        $charbonneursbyoccupation = new OccupationResource(occupation::whereSlug($occupation)->firstOrFail());
+
+        return response()->json($charbonneursbyoccupation,200);
+    }
     public function temoignages()
     {
         return view('user.page.testimonialsite');

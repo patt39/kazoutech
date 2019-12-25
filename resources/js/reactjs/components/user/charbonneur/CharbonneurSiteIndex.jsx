@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {Link} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
+import CharbonneurCityList from "./CharbonneurCityList";
 
 
 class CharbonneurSiteIndex extends Component {
@@ -10,16 +11,10 @@ class CharbonneurSiteIndex extends Component {
         super(props);
         this.state = {
             charbonneurs: [],
-            cities: [],
         }
     }
-
     // lifecycle method
     componentDidMount() {
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
-            this.setState({
-                cities: [...response.data],
-            }));
         const composantTitle = 'Charbonneurs | Kazoutech';
         document.title = `${composantTitle}`;
 
@@ -30,7 +25,7 @@ class CharbonneurSiteIndex extends Component {
     }
 
     render() {
-        const {charbonneurs,cities} = this.state;
+        const {charbonneurs} = this.state;
         return (
 
             <div className="about-us">
@@ -56,22 +51,7 @@ class CharbonneurSiteIndex extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4">
-                                    <div className="card mb-3">
-                                        <div className="card-header h6">Villes</div>
-                                        <div className="card-body">
-                                            <ul className="list-unstyled">
-
-                                                {cities.map((item) => (
-                                                    <li key={item.id} className="mb-2">
-                                                        <Link to={`/charbonneurs/${item.slug}/`}>
-                                                            {item.name}
-                                                        </Link>
-                                                    </li>
-                                                ))}
-
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <CharbonneurCityList/>
                                 </div>
                                 <div className="col-lg-8 mx-auto mt-4">
                                     <div className="row">

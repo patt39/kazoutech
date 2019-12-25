@@ -30,5 +30,6 @@ Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesby
 
 Route::get('charbonneurs','MultiplesRouteController@charbonneurs')->name('charbonneurs');
 Route::get('charbonneurs/{city}','MultiplesRouteController@charbonneursbycity')->name('charbonneurs_by_city');
+Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
 
 Route::get('temoignages','MultiplesRouteController@temoignages')->name('temoignages');

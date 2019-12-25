@@ -115,8 +115,9 @@ class occupation extends Model implements Auditable
         return $this->hasMany(annonce::class,'occupation_id');
     }
 
-    public function users()
+
+    public function userbycities()
     {
-        return $this->hasMany(User::class,'occupation_id');
+        return $this->hasMany(User::class,'city_id');
     }
 }

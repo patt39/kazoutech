@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {Link} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
+import CharbonneurCityList from "./CharbonneurCityList";
 
 
 class CharbonneurSiteByCity extends Component {
@@ -10,26 +11,24 @@ class CharbonneurSiteByCity extends Component {
         super(props);
         this.state = {
             charbonneursbycity: {users:[]},
-            cities: [],
+            occupations:[],
         }
     }
 
     // lifecycle method
     componentDidMount() {
         let SlugCity = this.props.match.params.city;
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
-            this.setState({
-                cities: [...response.data],
-            }));
         dyaxios.get(route('api_active_charbonneurs_city.view',[SlugCity]))
             .then(response =>
                 this.setState({
                     charbonneursbycity: response.data,
                 }));
+        dyaxios.get(route('api_active.occupations')).then(response =>
+            this.setState({occupations: [...response.data],}));
     }
 
     render() {
-        const {charbonneursbycity,cities} = this.state;
+        const {charbonneursbycity,occupations} = this.state;
         const composantTitle = `${charbonneursbycity.name}`;
         document.title = `Charbonneurs dans la ville de ${composantTitle} | Kaazoutech`;
         let users = charbonneursbycity.users;
@@ -58,22 +57,27 @@ class CharbonneurSiteByCity extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4">
+
                                     <div className="card mb-3">
-                                        <div className="card-header h6">Villes</div>
+                                        <div className="card-header h6">Occupations</div>
                                         <div className="card-body">
                                             <ul className="list-unstyled">
 
-                                                {cities.map((item) => (
+                                                {occupations.map((item) => (
                                                     <li key={item.id} className="mb-2">
-                                                        <Link to={`/charbonneurs/${item.slug}/`}>
-                                                            {item.name}
-                                                        </Link>
+                                                        {item.status ?
+                                                            <Link to={`/charbonneurs/${charbonneursbycity.slug}/${item.slug}/`}>
+                                                                {item.name}
+                                                            </Link>
+                                                            :null}
                                                     </li>
                                                 ))}
 
                                             </ul>
                                         </div>
                                     </div>
+
+                                   <CharbonneurCityList/>
                                 </div>
                                 <div className="col-lg-8 mx-auto mt-4">
                                     <div className="row">

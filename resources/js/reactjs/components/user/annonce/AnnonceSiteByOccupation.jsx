@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
 import {Link} from "react-router-dom";
+import AnnonceOccupationList from "./AnnonceOccupationList";
 
 
 class AnnonceSiteByOccupation extends Component {
@@ -131,11 +132,11 @@ class AnnonceSiteByOccupation extends Component {
                                                 <div className="row">
 
                                                     <div className="col-md-4">
+
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Categories</div>
                                                             <div className="card-body">
                                                                 <ul className="list-unstyled">
-
                                                                     {annoncebycategoryoccupations.map((item) => (
                                                                         <li key={item.id} className="mb-2">
                                                                             {item.status ?
@@ -145,10 +146,12 @@ class AnnonceSiteByOccupation extends Component {
                                                                                 :null}
                                                                         </li>
                                                                     ))}
-
                                                                 </ul>
                                                             </div>
                                                         </div>
+
+                                                        <AnnonceOccupationList/>
+
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
