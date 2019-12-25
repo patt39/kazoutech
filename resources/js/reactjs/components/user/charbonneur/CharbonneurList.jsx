@@ -21,7 +21,7 @@ class CharbonneurList extends Component {
                     <div className="card-header bg-info"
                          style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
                         <div className="card-avatar">
-                            <NavLink to={`/user/${this.props.username}`}>
+                            <NavLink to={`/user/${this.props.username}/`}>
                                 <img className="img img-raised rounded-circle"
                                      src={this.props.avatar}/>
                             </NavLink>
