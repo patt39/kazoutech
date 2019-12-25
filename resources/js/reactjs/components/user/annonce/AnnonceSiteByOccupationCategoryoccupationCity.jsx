@@ -150,9 +150,9 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                                     {cities.map((item) => (
                                                                         <li key={item.id} className="mb-2">
-                                                                            <a href={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.slug}/`}>
+                                                                            <NavLink to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.slug}/`}>
                                                                                 {item.name}
-                                                                            </a>
+                                                                            </NavLink>
                                                                         </li>
                                                                     ))}
 

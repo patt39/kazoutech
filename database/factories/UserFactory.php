@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\admin\city;
 use App\Model\admin\color;
 use App\Model\admin\occupation;
 use App\Model\user\User;
@@ -37,6 +38,7 @@ $factory->define(User::class, function (Faker $faker) {
         'charbonneur' => $faker->boolean,
         'email' => $faker->unique()->safeEmail,
         'color_name' => color::inRandomOrder()->first()->name,
+        'city_id' => city::inRandomOrder()->first()->id,
         //'phone' => $faker->unique()->numerify('+393#########'),
         'password' => bcrypt('0000000'),
     ];

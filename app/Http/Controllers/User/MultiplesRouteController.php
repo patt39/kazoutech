@@ -8,7 +8,6 @@ use App\Http\Resources\CategoryOccupationResource;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
-use App\Http\Resources\User\CategoryoccupationByStatusResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\annonce;
 use App\Model\admin\blog;
@@ -68,7 +67,7 @@ class MultiplesRouteController extends Controller
 
     public function apicategoryoccupationbyslug(occupation $occupation,$slug)
     {
-        $categoryoccupation = new CategoryoccupationByStatusResource(categoryoccupation::whereSlug($slug)->first());
+        $categoryoccupation = new CategoryOccupationResource(categoryoccupation::whereSlug($slug)->first());
 
         return response()->json($categoryoccupation,200);
     }
@@ -256,16 +255,31 @@ class MultiplesRouteController extends Controller
         return response()->json($annonce,200);
     }
 
-    public function apicharbonneurs()
-    {
-        $charbonneurs = UserResource::collection(User::where('charbonneur',1)->get());
-
-        return response()->json($charbonneurs,200);
-    }
 
     public function charbonneurs()
     {
         return view('user.charbonneur.charbonneurs');
+    }
+
+    public function apicharbonneurs()
+    {
+        $charbonneurs = UserResource::collection(User::where('charbonneur',1)->with('city')
+            ->orderBy('created_at', 'DESC')->paginate(10));
+
+        return response()->json($charbonneurs,200);
+    }
+
+    public function charbonneursbycity(city $city)
+    {
+        return view('user.charbonneur.charbonneurs_by_city',[
+            'city' => $city,
+        ]);
+    }
+    public function apicharbonneursbycity($city)
+    {
+        $charbonneursbycity = new CityResource(city::whereSlug($city)->firstOrFail());
+
+        return response()->json($charbonneursbycity,200);
     }
 
     public function temoignages()

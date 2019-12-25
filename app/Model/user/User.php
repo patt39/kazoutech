@@ -3,6 +3,7 @@
 namespace App\Model\user;
 
 use App\Mail\NewUserWelcomeMail;
+use App\Model\admin\city;
 use App\Model\admin\country;
 use App\Model\admin\task;
 use App\Notifications\VerifyEmailUsers;
@@ -118,5 +119,10 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     public function profile()
     {
         return $this->hasOne(profile::class,'user_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(city::class,'city_id');
     }
 }
