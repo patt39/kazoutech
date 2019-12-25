@@ -32,11 +32,11 @@ class AnnonceList extends Component {
                         </p>
                         <div className="card-header d-flex align-items-center">
                             <div className="d-flex align-items-center">
-                                <a href="..">
+                                <NavLink to={`/user/${this.props.user.username}/`}>
                                     <img src={this.props.user.avatar} alt={this.props.user.name} className="avatar" />
-                                </a>
+                                </NavLink>
                                 <div className="mx-3">
-                                    <a href=".." className="text-dark font-weight-600 text-sm">{this.props.user.name}</a>
+                                    <NavLink to={`/user/${this.props.user.username}/`} className="text-dark font-weight-600 text-sm">{this.props.user.name}</NavLink>
                                     <small className="d-block text-muted">{moment(this.props.created_at).startOf('hour').fromNow()}</small>
                                 </div>
                             </div>

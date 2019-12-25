@@ -295,6 +295,7 @@ class MultiplesRouteController extends Controller
 
         return response()->json($charbonneursbyoccupation,200);
     }
+
     public function temoignages()
     {
         return view('user.page.testimonialsite');

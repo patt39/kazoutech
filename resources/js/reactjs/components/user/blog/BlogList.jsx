@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import moment from 'moment'
 
 require("moment/min/locales.min");
@@ -41,13 +41,14 @@ class BlogList extends Component {
                                     suite </Link>
                             </p>
                             <div className="author">
-                                <img
-                                    src={this.props.user.avatar}
-                                    alt={this.props.user.name}
-                                    className="avatar img-raised"/>
+                                <NavLink to={`/user/${this.props.user.username}/`}>
+                                    <img src={this.props.user.avatar} alt={this.props.user.name}
+                                         className="avatar img-raised"/>
+                                </NavLink>
                                 <div className="text">
-                                                                                    <span
-                                                                                        className="name">{this.props.user.name}</span>
+                                    <NavLink to={`/user/${this.props.user.username}/`}>
+                                        <span className="name">{this.props.user.name}</span>
+                                    </NavLink>
                                     <div className="meta">
                                         <b>{moment(this.props.created_at).format('LL')}</b>
                                     </div>

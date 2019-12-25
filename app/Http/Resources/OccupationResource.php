@@ -14,16 +14,18 @@ class OccupationResource extends JsonResource
      */
     public function toArray($request)
     {
+        $occupation_id = $this->id;
         $categoryoccupations =  $this->categoryoccupations()->with('occupation','user','color')
-            ->distinct()->get()->toArray();
+            ->whereIn('occupation_id',[$occupation_id])->distinct()->get()->toArray();
 
         $blogbycategories =  $this->blogs()->with('occupation','user')
             ->distinct()->get()->toArray();
 
         $annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
-            ->distinct()->get()->toArray();
+            ->whereIn('occupation_id',[$occupation_id])->distinct()->get()->toArray();
 
-        $users =  $this->userbycities()->with('city')->distinct()->get()->toArray();
+        $users =  $this->userbycities()->with('city')
+            ->distinct()->get()->toArray();
 
         return [
             'id' => $this->id,

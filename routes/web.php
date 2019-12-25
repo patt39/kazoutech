@@ -33,8 +33,6 @@ Route::group(['namespace' => 'Admin'], function () {
     //All Route Partials
     Route::group(['namespace' => 'Partial'], function () {
 
-        Route::get('/@{username}', 'AccountController@profileView')->name('profile.view');
-
         // Admin Route categories
         Route::resource('/dashboard/categories', 'CategoryController');
         Route::get('/dashboard/active_categories/{id}', 'CategoryController@active')->name('active_categories');

@@ -3,6 +3,8 @@
 namespace App\Model\user;
 
 use App\Mail\NewUserWelcomeMail;
+use App\Model\admin\annonce;
+use App\Model\admin\blog;
 use App\Model\admin\city;
 use App\Model\admin\country;
 use App\Model\admin\task;
@@ -125,5 +127,15 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     public function city()
     {
         return $this->belongsTo(city::class,'city_id');
+    }
+
+    public function annonces()
+    {
+        return $this->hasMany(annonce::class,'user_id');
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(blog::class,'user_id');
     }
 }

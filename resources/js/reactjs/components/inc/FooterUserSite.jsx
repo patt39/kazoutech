@@ -12,7 +12,7 @@ class FooterUserSite extends Component {
                     <div className="content">
                         <div className="row mb-5">
                             <div className="column mr-auto">
-                                <img src="/assets/vendor_site/img/brand/blue.png" className="logo logo-sm" alt="" />
+                                <img src=".." className="logo logo-sm" alt="Kazoutech" />
                             </div>
                         </div>
                         <div className="row">

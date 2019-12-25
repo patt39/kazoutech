@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import moment from 'moment'
 
 require("moment/min/locales.min");
@@ -21,10 +21,10 @@ class CharbonneurList extends Component {
                     <div className="card-header bg-info"
                          style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
                         <div className="card-avatar">
-                            <a href="..">
+                            <NavLink to={`/user/${this.props.username}`}>
                                 <img className="img img-raised rounded-circle"
                                      src={this.props.avatar}/>
-                            </a>
+                            </NavLink>
                         </div>
                     </div>
                     <div className="card-body pt-0">
@@ -63,13 +63,12 @@ class CharbonneurList extends Component {
                             </div>
                         </div>
                         <div className="text-center">
-                            <h5 className="h4">
-                                Melanie Paisley<span
-                                className="font-weight-light">, 31</span>
-                            </h5>
-                            <div className="font-weight-300">
-                                <i className="ni location_pin mr-2"/>{this.props.name}
-                            </div>
+                            <h5 className="h4">{this.props.name}</h5>
+                            {this.props.city_id ?
+                                <div className="font-weight-300">
+                                    <i className="ni location_pin mr-2"/>{this.props.city.name}
+                                </div>
+                                :null}
                         </div>
                     </div>
                 </div>

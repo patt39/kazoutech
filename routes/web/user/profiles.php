@@ -6,6 +6,7 @@
  * Time: 02:28
  */
 
+Route::get('/user/{username}', 'ProfileController@profileView')->name('profile.view');
 Route::get('profiles/u/{id}','ProfileController@show')->name('profiles.show');
 Route::put('profiles/{profile}','ProfileController@update');
 Route::get('dashboard/myprofile/p/{profile}/edit','ProfileController@edit')->name('admin.profiles_edit');

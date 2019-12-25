@@ -213,11 +213,11 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                                 </p>
                                                                                 <div className="card-header d-flex align-items-center">
                                                                                     <div className="d-flex align-items-center">
-                                                                                        <a href="..">
+                                                                                        <NavLink to={`/user/${item.user.username}/`}>
                                                                                             <img src={item.user.avatar} alt={item.user.name} className="avatar" />
-                                                                                        </a>
+                                                                                        </NavLink>
                                                                                         <div className="mx-3">
-                                                                                            <a href=".." className="text-dark font-weight-600 text-sm">{item.user.name}</a>
+                                                                                            <NavLink to={`/user/${item.user.username}/`} className="text-dark font-weight-600 text-sm">{item.user.name}</NavLink>
                                                                                             <small className="d-block text-muted">{moment(item.created_at).startOf('hour').fromNow()}</small>
                                                                                         </div>
                                                                                     </div>

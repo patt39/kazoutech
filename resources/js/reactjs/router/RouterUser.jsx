@@ -26,6 +26,7 @@ import AnnonceSiteByOccupationCategoryoccupationCity
     from "../components/user/annonce/AnnonceSiteByOccupationCategoryoccupationCity";
 import CharbonneurSiteByCity from "../components/user/charbonneur/CharbonneurSiteByCity";
 import CharbonneurSiteByOccupation from "../components/user/charbonneur/CharbonneurSiteByOccupation";
+import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
 
 
 
@@ -33,12 +34,13 @@ const RouterUser = props => (
 
     <Switch>
         <Route exact path="/" component={IndexSite}/>
+        <Route exact path="/user/:username/" component={ProfileSiteIndex}/>
         <Route exact path="/occupations/" component={OccupationSiteIndex}/>
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation" component={CategoryOccupationShow}/>
         <Route exact path="/blog/" component={BlogSiteIndex}/>
-        <Route exact path="/blog/:occupation/" component={BlogSiteCategories}/>
-        <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
+        <Route exact path="/blog/:occupation/" component={withRouter(BlogSiteCategories)}/>
+        <Route exact path="/blog/:occupation/:blog/" component={withRouter(BlogSiteShow)}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation/:city" component={withRouter(AnnonceSiteByOccupationCategoryoccupationCity)}/>
