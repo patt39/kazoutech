@@ -28,6 +28,7 @@ class AnnonceResource extends JsonResource
             'photo' => $this->photo,
             'description' => $this->description,
             'address' => $this->address,
+            'user_id' => $this->user_id,
             'phone' => $this->phone,
             'occupation' => $this->occupation,
             'occupation_id' => $this->occupation_id,

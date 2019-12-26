@@ -47,19 +47,28 @@ class AnnonceList extends Component {
                                     </button>
                                     : null}
 
-                                <NavLink to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
-                                    <span className="btn-inner--icon icon-big">
-                                        <i className="ni ni-check-bold" />
-                                    </span>
-                                    <span className="btn-inner--text">editer</span>
-                                </NavLink>
-                                <Button onClick={() => this.props.deleteItem(this.props.id)}
-                                    className="btn btn-sm btn-danger btn-icon">
-                                    <span className="btn-inner--icon icon-big">
-                                        <i className="ni ni-fat-remove" />
-                                    </span>
-                                    <span className="btn-inner--text">Suprimer</span>
-                                </Button>{" "}
+                                {!$guest ?
+                                    <>
+                                        {$userKazou.id === this.props.user_id ?
+                                            <>
+                                                <NavLink to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                    <span className="btn-inner--icon icon-big">
+                                                        <i className="ni ni-check-bold" />
+                                                    </span>
+                                                    <span className="btn-inner--text">editer</span>
+                                                </NavLink>
+                                                <Button onClick={() => this.props.deleteItem(this.props.id)}
+                                                        className="btn btn-sm btn-danger btn-icon">
+                                                        <span className="btn-inner--icon icon-big">
+                                                            <i className="ni ni-fat-remove" />
+                                                        </span>
+                                                    <span className="btn-inner--text">Suprimer</span>
+                                                </Button>{" "}
+                                            </>
+                                            :null}
+                                    </>
+
+                                    :null}
                             </div>
                         </div>
 
