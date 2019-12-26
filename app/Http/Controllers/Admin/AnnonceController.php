@@ -125,20 +125,14 @@ class AnnonceController extends Controller
     {
         $annonce = annonce::findOrFail($id);
 
-        $oldFilename = $annonce->photo;
-        File::delete(public_path($oldFilename));
-        $annonce->delete();
-        return ['message' => 'Annonce deleted '];
-
-        //$this->authorize('update',$annonce);
-        //if(auth()->user()->id === $annonce->user_id) {
-        //    $oldFilename = $annonce->photo;
-        //    File::delete(public_path($oldFilename));
-        //    $annonce->delete();
-        //    return ['message' => 'Annonce deleted '];
-        //}else{
-        //    return back()
-        //        ->with('error',"Unauthorized edit this article contact Author.");
-        //}
+         $this->authorize('update',$annonce);
+         if(auth()->user()->id === $annonce->user_id) {
+             $oldFilename = $annonce->photo;
+             File::delete(public_path($oldFilename));
+             $annonce->delete();
+             return ['message' => 'Annonce deleted '];
+         }else{
+             return ['error',"Unauthorized edit this article contact Author."];
+         }
     }
 }

@@ -218,7 +218,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                                         </NavLink>
                                                                                         <div className="mx-3">
                                                                                             <NavLink to={`/user/${item.user.username}/`} className="text-dark font-weight-600 text-sm">{item.user.name}</NavLink>
-                                                                                            <small className="d-block text-muted">{moment(item.created_at).startOf('hour').fromNow()}</small>
+                                                                                            <small className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div className="text-right ml-auto">

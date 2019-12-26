@@ -2,10 +2,8 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {NavLink} from "react-router-dom";
-import {Button} from "reactstrap";
 import moment from "moment";
 import ProfileSiteAnnonces from "./ProfileSiteAnnonces";
-import AnnonceList from "../annonce/AnnonceList";
 import ProfileSiteBlogs from "./ProfileSiteBlogs";
 
 
@@ -14,16 +12,129 @@ class ProfileSiteIndex extends Component {
         super(props);
         this.state = {
             userProfile : {annonces:[],blogs:[],city:[]},
-        }
+        };
+
+        this.deleteAnnonce = this.deleteAnnonce.bind(this);
     }
 
-    // lifecycle method
-    componentDidMount() {
+    deleteAnnonce(id) {
+        Swal.fire({
+            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'Non annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('annonces.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    //Redirect after create
+                    this.loadItem();
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooop! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
+
+    deleteBlog(id) {
+        Swal.fire({
+            title: 'Ete vous sure de vouloir suprimer cette article de blog?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'Non annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('annonces.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    //Redirect after create
+                    this.loadItem();
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooop! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
+
+    loadItem() {
         let Username = this.props.match.params.username;
         dyaxios.get(route('api_profile.view',[Username])).then(response =>
-                this.setState({
-                    userProfile: response.data,
-                }));
+            this.setState({
+                userProfile: response.data,
+            }));
+    }
+    // lifecycle method
+    componentDidMount() {
+      this.loadItem();
     }
 
     render() {
@@ -111,7 +222,7 @@ class ProfileSiteIndex extends Component {
                                             <div className="row">
 
                                                 {annonces.map((item) => (
-                                                    <ProfileSiteAnnonces key={item.id} {...item} />
+                                                    <ProfileSiteAnnonces key={item.id} {...item} deleteAnnonce={this.deleteAnnonce}/>
                                                 ))}
 
                                             </div>
@@ -124,7 +235,7 @@ class ProfileSiteIndex extends Component {
                                                 <div className="row">
 
                                                     {blogs.map((item) => (
-                                                        <ProfileSiteBlogs key={item.id} {...item} />
+                                                        <ProfileSiteBlogs key={item.id} {...item} deleteBlog={this.deleteBlog}/>
                                                     ))}
 
                                                 </div>

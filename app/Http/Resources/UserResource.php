@@ -16,11 +16,12 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $blogs = $this->blogs()->with('occupation','user')
-            ->whereIn('user_id', [$this->id])->distinct()->get()->toArray();
+        $user_id = $this->id;
+        $blogs = $this->blogs()->with('occupation','user')->whereIn('user_id', [$user_id])
+            ->distinct()->orderBy('created_at','DESC')->get()->toArray();
 
         $annonces = $this->annonces()->with('occupation','user','city','categoryoccupation')
-            ->whereIn('user_id', [$this->id])->distinct()->get()->toArray();
+            ->whereIn('user_id', [$user_id])->distinct()->orderBy('created_at','DESC')->get()->toArray();
 
         return [
             'id' => $this->id,

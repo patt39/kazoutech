@@ -220,7 +220,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                                         </a>
                                                                                         <div className="mx-3">
                                                                                             <a href=".." className="text-dark font-weight-600 text-sm">{item.user.name}</a>
-                                                                                            <small className="d-block text-muted">{moment(item.created_at).startOf('hour').fromNow()}</small>
+                                                                                            <small className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div className="text-right ml-auto">
