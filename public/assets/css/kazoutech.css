@@ -46,6 +46,51 @@
     position: relative;
     top: 2px;
 }
+.carousel-caption {
+    top: 40%;
+}
+.carousel-caption h1 {
+    color: #ffffff;
+}
+.wrapper > .page-header > .container {
+    padding: 0;
+}
+.page-header {
+    min-height: auto;
+}
+.d-block {
+    height: inherit;
+}
+.font-weight-medium:hover .fa-chevron-right:before {
+    left: 10px;
+    transition: left 600ms;
+    position: relative;
+}
+.kazouTech-cities[data-animation="zooming"]:hover {
+    transform: scale(1.04);
+    -webkit-transform: scale(1.04);
+}
+.kazouTech-dropdown {
+    position: absolute;
+    transform: translate3d(0px, 42px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+}
+.kazouTech-divider {
+    border-bottom: 1px solid #ffffff;
+}
+.kazouTech-red-color {
+    color: #d12420 !important;
+}
+.footer .footer-description {
+    padding: 20px 0px;
+    text-align: justify;
+    opacity: 1;
+}
+.btn-wrapper a.btn {
+    color: #ffffff;
+}
 
 /*** RESPONSIVE DEVICE ***/
 /************************/
@@ -54,5 +99,15 @@
         position: relative;
         float: left;
         left: -15%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .carousel-indicators {
+        display: none;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar-transparent .navbar-brand {
+        left: 0%;
     }
 }

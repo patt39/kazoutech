@@ -35,7 +35,6 @@ class NavUserSIte extends Component{
                            </div>
                        </div>
                        <ul className="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-
                            <li className={'nav-item'}>
                                <Link to={'/occupations/'} className="nav-link"  role="button">
                                    <i className="ni ni-app d-lg-none"/>
@@ -66,40 +65,36 @@ class NavUserSIte extends Component{
                                    </li>
                                </>
                                :
-                              <>
-                                  {$userKazou.my_status === 'active' ?
-                                      <li className="nav-item">
-                                          <a href="/dashboard" className="nav-link" role="button">
-                                              <i className="ni ni-app d-lg-none"/>
-                                              <span className="nav-link-inner--text"><b>Dashboard</b></span>
-                                          </a>
-                                      </li>
-                                      :null}
-                                  <li className="nav-item dropdown">
-                                      <a href=".." className="nav-link" data-toggle="dropdown" role="button">
-                                          <i className="ni ni-tablet-button d-lg-none"/>
-                                          <span className="nav-link-inner--text">App Pages</span>
-                                      </a>
-                                      <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                          <a className="dropdown-item" href="..">
-                                              <i className="ni ni-lock-circle-open text-muted"/>
-                                              Account Settings
-                                          </a>
-                                          <a className="dropdown-item" href="..">
-                                              <i className="ni ni-tv-2 text-danger"/>
-                                              Login Page
-                                          </a>
-                                          <a className="dropdown-item" href="..">
-                                              <i className="ni ni-air-baloon text-pink"/>
-                                              Register Page
-                                          </a>
-                                          <a className="dropdown-item" href="..">
-                                              <i className="ni ni-atom text-info"/>
-                                              Reset Page
-                                          </a>
-                                      </div>
-                                  </li>
-                              </>
+                               <li className="nav-item dropdown">
+                                   <a href=".." className="nav-link" data-toggle="dropdown" role="button">
+                                       <i className="ni ni-tablet-button d-lg-none"/>
+                                       <span className="nav-link-inner--text">App Pages</span>
+                                   </a>
+                                   <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                       {$userKazou.my_status === 'active' ?
+                                           <a href="/dashboard" className="dropdown-item">
+                                               <i className="ni ni-building text-muted"/>
+                                               <b>Dashboard</b>
+                                           </a>
+                                           :null}
+                                       <a className="dropdown-item" href="..">
+                                           <i className="ni ni-lock-circle-open text-muted"/>
+                                           Account Settings
+                                       </a>
+                                       <a className="dropdown-item" href="..">
+                                           <i className="ni ni-tv-2 text-danger"/>
+                                           Login Page
+                                       </a>
+                                       <a className="dropdown-item" href="..">
+                                           <i className="ni ni-air-baloon text-pink"/>
+                                           Register Page
+                                       </a>
+                                       <a className="dropdown-item" href="..">
+                                           <i className="ni ni-atom text-info"/>
+                                           Reset Page
+                                       </a>
+                                   </div>
+                               </li>
                            }
 
                          </ul>

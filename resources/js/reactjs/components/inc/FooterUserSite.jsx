@@ -10,29 +10,45 @@ class FooterUserSite extends Component {
             <footer className="footer footer-big bg-gradient-default">
                 <div className="container">
                     <div className="content">
-                        <div className="row mb-5">
-                            <div className="column mr-auto">
-                                <img src=".." className="logo logo-sm" alt="Kazoutech" />
-                            </div>
-                        </div>
                         <div className="row">
-                            <div className="col-md-2">
+                            <div className="col-md-3">
                                 <div className="column">
-                                    <h4 className="mb-4">Presentation</h4>
-                                    <ul className="links-vertical">
+                                    <Link to={'/'}>
+                                        <img src="/assets/vendor_site/img/brand/blue.png" className="logo" alt="Kazoutech"/>
+                                    </Link>
+                                </div>
+                                <div className="btn-wrapper profile text-left mt-3">
+                                    <a target="_blank" href="https://twitter.com/creativetim" className="btn btn-sm"
+                                       data-toggle="tooltip" data-original-title="Follow us">
+                                        <i className="fab fa-twitter"/>
+                                    </a>
+                                    <a target="_blank" href="https://www.facebook.com/creativetim"
+                                       className="btn btn-sm" data-toggle="tooltip" data-original-title="Like us">
+                                        <i className="fab fa-facebook-square"/>
+                                    </a>
+                                    <a target="_blank" href="https://dribbble.com/creativetim"
+                                       className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow us">
+                                        <i className="fab fa-slack"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="col-md-2 col-6">
+                                <div className="column">
+                                    <h4 className="mt-3">Company</h4>
+                                    <ul>
                                         <li>
                                             <Link to={'/about/'}>
                                                 A propos de nous
                                             </Link>
                                         </li>
                                         <li>
-                                             <Link to={'/concept/'}>
+                                            <Link to={'/concept/'}>
                                                 Notre concept
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to={'/faqs/'}>
-                                                Faq
+                                                FAQs
                                             </Link>
                                         </li>
                                         <li>
@@ -43,18 +59,23 @@ class FooterUserSite extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-2 col-6">
                                 <div className="column">
-                                    <h4 className="mb-4">Services</h4>
-                                    <ul className="links-vertical">
+                                    <h4 className="mt-3">Services</h4>
+                                    <ul>
                                         <li>
-                                        <Link to={'/occupations/'}>
+                                            <Link to={'/occupations/'}>
                                                 Nos categorie
-                                        </Link>
+                                            </Link>
                                         </li>
                                         <li>
                                             <Link to={'/annonces/'}>
-                                               Annonces
+                                                Annonces
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to={'/charbonneurs/'}>
+                                                Charbonneurs
                                             </Link>
                                         </li>
                                         <li>
@@ -70,90 +91,133 @@ class FooterUserSite extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 col-6">
                                 <div className="column">
-                                    <h4 className="mb-4">Informations</h4>
-                                    <ul className="links-vertical">
+                                    <h4 className="mt-3">Top Annonces</h4>
+                                    <ul>
                                         <li>
-                                            <Link to={'/charbonneurs/'}>
-                                                Charbonneurs
-                                            </Link>
+                                            <a href="#">
+                                                Peinture intérieure
+                                            </a>
                                         </li>
                                         <li>
-                                            <Link to={'/condition_utilisation/'}>
-                                                Terme et conitions
-                                            </Link>
+                                            <a href="#">
+                                                Soudure Portails
+                                            </a>
                                         </li>
                                         <li>
-                                            <Link to={'/confidentialité/'}>
-                                                Politique de confidentialité
-                                            </Link>
+                                            <a href="#">
+                                                Menuisérie Meubles
+                                            </a>
                                         </li>
                                         <li>
-                                            <Link to={'/notice_legale/'}>
-                                                Notice légale
-                                            </Link>
+                                            <a href="#">
+                                                Mécanicien de voitures
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-md-5">
+                            <div className="col-md-2 col-6">
                                 <div className="column">
-                                    <h4 className="mb-4">Newsletter</h4>
-                                    <ul className="links-vertical">
-                                        <p>Ne vous mefiez pas abbonez vous a notre newsletter pour etre notifier a tout temp!</p>
-                                        <form method="" action="">
-                                            <div className="row">
-                                                <div className="col-sm-8">
-                                                    <div className="form-group">
-                                                        <div className="input-group mb-4">
-                                                            <div className="input-group-prepend">
-                                                            <span className="input-group-text">
-                                                                <i className="ni ni-email-83" /></span>
-                                                            </div>
-                                                            <input className="form-control" placeholder="votre Email..."
-                                                                   type="text" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-sm-4">
-                                                    <button type="button" className="btn btn-primary btn-block">souscrivez
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <h4 className="mt-3">Top Villes</h4>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                Douala
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Yaoundé
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Nkongsamba
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Kribi
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        <hr className="kazouTech-divider"/>
+                        <div className="row">
+                            <div className="col-md-9">
+                                <div className="column">
+                                    <nav>
+                                        <ul>
+                                            <li className="d-inline-block">
+                                                <div className="copyright d-flex justify-content-center">
+                                                    Copyright &copy; { new Date().getFullYear()}, Realized by
+                                                    <a href="/" className="pl-2 kazouTech-red-color"> KazouGroup Srl</a>
+                                                </div>
+                                            </li>
+                                            <li className="d-inline-block">
+                                                <Link to={'/condition_utilisation/'} className="nav-link">
+                                                    Terms &amp; Conditions
+                                                </Link>
+                                            </li>
+                                            <li className="d-inline-block">
+                                                <Link to={'/confidentialité/'} className="nav-link">
+                                                    Privacy Policy
+                                                </Link>
+                                            </li>
+                                            <li className="d-inline-block">
+                                                <Link to={'/notice_legale/'} target="_blank" className="nav-link">
+                                                    Legal Notice
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="dropdown">
+                                    Language:
+                                    <div className="btn btn-link text-primary " href="#" role="button"
+                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="ni ni-chat-round"></i>
+                                        <span>English</span>
+                                    </div>
+                                    <div className="dropdown-menu kazouTech-dropdown" x-placement="top-start">
+                                        <a href="#" className="dropdown-item">
+                                            <span>Deutch</span>
+                                        </a>
+                                        <a href="#" className="dropdown-item active">
+                                            <span>English</span>
+                                        </a>
+                                        <a href="#" className="dropdown-item">
+                                            <span>Español</span>
+                                        </a>
+                                        <a href="#" className="dropdown-item">
+                                            <span>Français</span>
+                                        </a>
+                                        <a href="#" className="dropdown-item">
+                                            <span>Italiano</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="footer-description">
+                                    Mastercard is a registered trademark and the circles design is a trademark of
+                                    Mastercard International Incorporated. The Spendesk Prepaid Card/This card is
+                                    issued by Transact Payments Limited pursuant to licence by Mastercard
+                                    International Incorporated. The Spendesk accounts are issued by Transact
+                                    Payments Limited. Transact Payments Limited is authorised and regulated by the
+                                    Gibraltar Financial Services Commission.
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <hr className="bg-white opacity-3" />
-                    <div className="col-md-3 mx-auto">
-                        <button type="button" className="btn-icon-only rounded-circle btn btn-facebook">
-                            <span className="btn-inner--icon">
-                                <i className="fab fa-facebook"/>
-                            </span>
-                        </button>
-                        <button type="button" className="btn-icon-only rounded-circle btn btn-twitter">
-                            <span className="btn-inner--icon">
-                                <i className="fab fa-twitter"/>
-                            </span>
-                        </button>
-                        <button type="button" className="btn-instagram btn-icon-only rounded-circle btn">
-                            <span className="btn-inner--icon">
-                                <i className="fab fa-instagram"/>
-                            </span>
-                       </button>
-                        <button type="button" className="btn-icon-only rounded-circle btn btn-pinterest">
-                            <span className="btn-inner--icon">
-                                <i className="fab fa-pinterest"/>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div className="copyright d-flex justify-content-center mt-4 mr-40">
-                    Copyright &copy; {1900 + new Date().getYear()}, Designed by{" "}. Realized by
-             <a href="/" className="title-red pl-2" style={{color: "red"}}> KazouGroup srl</a>
                 </div>
             </footer>
         )
