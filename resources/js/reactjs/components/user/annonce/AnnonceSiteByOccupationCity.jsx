@@ -20,7 +20,7 @@ class AnnonceSiteByOccupationCity extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -91,7 +91,7 @@ class AnnonceSiteByOccupationCity extends Component {
         const {annoncebycity,cities} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
-        document.title = `Annonce dans la ville de ${composantTitle} | Kaazoutech`;
+        document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -116,15 +116,10 @@ class AnnonceSiteByOccupationCity extends Component {
                     </div>
                     <br/>
                     <div className="main main-raised">
-
                         <div className="container">
                             <div className="row">
-
-
                             </div>
                         </div>
-
-
                         <section className="section">
                             <div className="container">
                                 <div className="row">

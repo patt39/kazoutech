@@ -30,7 +30,7 @@ class CharbonneurSiteByCity extends Component {
     render() {
         const {charbonneursbycity,occupations} = this.state;
         const composantTitle = `${charbonneursbycity.name}`;
-        document.title = `Charbonneurs dans la ville de ${composantTitle} | Kaazoutech`;
+        document.title = `Charbonneurs dans la ville de ${composantTitle} | Kazoutech`;
         let users = charbonneursbycity.users;
         return (
 
@@ -57,7 +57,6 @@ class CharbonneurSiteByCity extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4">
-
                                     <div className="card mb-3">
                                         <div className="card-header h6">Occupations</div>
                                         <div className="card-body">

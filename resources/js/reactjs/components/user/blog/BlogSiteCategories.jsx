@@ -23,7 +23,7 @@ class BlogSiteCategories extends Component {
         const {blogsbycategy,blogsLast} = this.state;
         const blogsbycategies = blogsbycategy.blogs;
         const composantTitle = `${blogsbycategy.name}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
                 <NavUserSIte/>

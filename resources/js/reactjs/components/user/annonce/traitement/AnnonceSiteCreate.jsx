@@ -152,11 +152,11 @@ class AnnonceSiteCreate extends Component {
                                     <div className="row justify-content-center">
                                         <div className="col-xl-5 col-lg-6 col-md-8 px-5">
                                             <Link to={`/annonces/`} className="text-white">
-                                                <h5 className="text-white">{this.state.title} </h5>
+                                                <h5 className="text-white">{this.state.title}</h5>
                                             </Link>
                                             <div className="author">
                                                 <Link to={`/annonces/${occupationdata.slug}`} className="text-white">
-                                                    <i className="fa fa-chevron-circle-left" /> Retour {occupationdata.name}
+                                                    <i className="fa fa-chevron-circle-left"/> Retour {occupationdata.name}
                                                 </Link>
                                             </div>
                                         </div>

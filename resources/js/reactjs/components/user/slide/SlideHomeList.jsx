@@ -36,8 +36,6 @@ class SlideHomeList extends Component{
 
                         <div className="carousel-inner">
 
-
-
                             <div className="carousel-item active">
                                 <img className="d-block w-100"
                                      src="https://images.unsplash.com/photo-1457904375453-3e1fc2fc76f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1800&q=80"

@@ -20,7 +20,7 @@ class AnnonceSiteByOccupation extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -88,7 +88,7 @@ class AnnonceSiteByOccupation extends Component {
         const annoncebyoccupations = annoncebyoccupation.annonces;
         const annoncebycategoryoccupations = annoncebyoccupation.categoryoccupations;
         const composantTitle = `${annoncebyoccupation.name}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
                 <NavUserSIte/>

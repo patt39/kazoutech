@@ -23,7 +23,7 @@ class AllOccupation extends Component {
             <div className="container text-center">
                 <div className="row mb-5">
                     <div className="col-md-12 mx-auto">
-                        <h3 className="display-3">Une prestation à domicile? ou sein de votre business personel?</h3>
+                        <h3 className="display-3">Une prestation à domicile? ou au sein de votre business personnel?</h3>
                         <p className="lead">Pour chaque situation et proche de votre localité, trouvez le(s) prestataire(s) dont les compétences répondent à vos attentes et à votre niveau d’exigence.</p>
                     </div>
                 </div>

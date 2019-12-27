@@ -60,8 +60,8 @@ class IndexSite extends Component {
                                                         service
                                                         et nous nous assurons aussi de leur bonne moralité donc ne vous
                                                         mefiez pas.</p>
-                                                    <a href="/charbonneur"
-                                                       className="btn btn-primary mt-4">Webtechnicien</a>
+                                                    <a href="/charbonneurs"
+                                                       className="btn btn-primary mt-4">charbonneurs</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@ class IndexSite extends Component {
                                                         rendre le meilleur donc pour tout vos problem contactez ou
                                                         rapprochez vous de nos locaux nous serons ravis de vous reçevoir
                                                         et d'effaçer vos doutes.</p>
-                                                    <a href="#" className="btn btn-success mt-4">Contactez nous</a>
+                                                    <a href="/contacts" className="btn btn-success mt-4">Contactez nous</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@ class IndexSite extends Component {
                                                         nous en passons pas écoutez cequon dit à propos de kazoutech et
                                                         faite nous confiance</p>
                                                     <a href="/temoignages"
-                                                       className="btn btn-warning mt-4">Temoignage</a>
+                                                       className="btn btn-warning btn-center">Temoignage</a>
                                                 </div>
                                             </div>
                                         </div>

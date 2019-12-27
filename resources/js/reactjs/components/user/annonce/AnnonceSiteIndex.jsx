@@ -17,7 +17,7 @@ class AnnonceSiteIndex extends Component {
     }
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -103,11 +103,8 @@ class AnnonceSiteIndex extends Component {
                         <div className="container">
                             <div className="row">
 
-
                             </div>
                         </div>
-
-
                         <section className="section">
                             <div className="container">
                                 <div className="row">

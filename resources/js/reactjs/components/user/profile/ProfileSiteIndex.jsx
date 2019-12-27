@@ -73,7 +73,7 @@ class ProfileSiteIndex extends Component {
 
     deleteBlog(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette article de blog?',
+            title: 'Etes vous sure de vouloir suprimer cette article du blog?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -112,7 +112,7 @@ class ProfileSiteIndex extends Component {
                     /** End alert ***/
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {

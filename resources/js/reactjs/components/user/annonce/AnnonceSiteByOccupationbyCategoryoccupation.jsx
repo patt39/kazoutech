@@ -22,7 +22,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -62,7 +62,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
 
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -93,7 +93,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
         const {annoncebycategoryoccupation,cities} = this.state;
         const annoncebycategoryoccupations = annoncebycategoryoccupation.annonces;
         const composantTitle = `${annoncebycategoryoccupation.name}`;
-        document.title = `Annonce de ${composantTitle} | Kaazoutech`;
+        document.title = `Annonce de ${composantTitle} | Kazoutech`;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         return (
@@ -127,8 +127,6 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
 
                             </div>
                         </div>
-
-
                         <section className="section">
                             <div className="container">
                                 <div className="row">

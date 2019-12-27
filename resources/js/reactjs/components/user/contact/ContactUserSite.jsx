@@ -53,7 +53,7 @@ class ContactUserSite extends Component {
         };
         dyaxios.post(route('contact.save'), item)
             .then(() => {
-                $.notify('<strong>Mercis pour votre message ...</strong>', {
+                $.notify('<strong>Merçi pour votre message ...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -110,7 +110,7 @@ class ContactUserSite extends Component {
                                 <div className="col-md-8 ml-auto mr-auto text-center mt-5">
                                     <span className="badge badge-info">Laissez un message</span>
                                     <h1 className="title">Dites nous tout à propos de <b>vous</b></h1>
-                                    <h4 className="desc">Si vous avez des questions ou just saluez nous somme toujous a
+                                    <h4 className="desc">Si vous avez des questions ou just saluez, nous somme toujous a
                                         votre disposition.</h4>
                                 </div>
                             </div>

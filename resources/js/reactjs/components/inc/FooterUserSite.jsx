@@ -123,7 +123,7 @@ class FooterUserSite extends Component {
                                     <h4 className="mt-3">Top Villes</h4>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="/service/douala">
                                                 Douala
                                             </a>
                                         </li>
@@ -155,7 +155,9 @@ class FooterUserSite extends Component {
                                             <li className="d-inline-block">
                                                 <div className="copyright d-flex justify-content-center">
                                                     Copyright &copy; { new Date().getFullYear()}, Realized by
-                                                    <a href="/" className="pl-2 kazouTech-red-color"> KazouGroup Srl</a>
+                                                    <div>
+                                                        <a href="/" className="pl-2 display-red" style={{color: "red"}}>KazouGroup Srl</a>
+                                                    </div>
                                                 </div>
                                             </li>
                                             <li className="d-inline-block">

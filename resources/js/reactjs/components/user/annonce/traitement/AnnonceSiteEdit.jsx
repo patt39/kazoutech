@@ -363,13 +363,10 @@ class AnnonceSiteEdit extends Component {
                                                 </div>
                                                 <br />
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <FooterUserSite />

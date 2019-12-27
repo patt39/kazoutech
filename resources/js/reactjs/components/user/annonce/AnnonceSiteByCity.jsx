@@ -18,7 +18,7 @@ class AnnonceSiteByCity extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -82,7 +82,7 @@ class AnnonceSiteByCity extends Component {
         const {annoncebycity,occupations} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
-        document.title = `Annonce dans la ville de ${composantTitle} | Kaazoutech`;
+        document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -94,7 +94,7 @@ class AnnonceSiteByCity extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur Kazoutech sur la ville de <b>{annoncebycity.name}</b>
+                                        Restez a l'affue de toutes les annonces sur Kazoutech dans la ville de <b>{annoncebycity.name}</b>
                                     </h4>
                                     <div className="author">
                                         <Link to={'/annonces/'} className="text-white">
@@ -111,11 +111,8 @@ class AnnonceSiteByCity extends Component {
                         <div className="container">
                             <div className="row">
 
-
                             </div>
                         </div>
-
-
                         <section className="section">
                             <div className="container">
                                 <div className="row">
@@ -124,7 +121,6 @@ class AnnonceSiteByCity extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
-
                                                     <div className="col-md-4">
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Occupations</div>
@@ -181,8 +177,6 @@ class AnnonceSiteByCity extends Component {
                                                                 ))}
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>

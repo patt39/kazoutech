@@ -24,7 +24,7 @@ class AnnonceSiteShow extends Component {
     }
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -226,9 +226,9 @@ class AnnonceSiteShow extends Component {
                                                                 </NavLink>
                                                                 <Button onClick={() => this.deleteItem(annonce.id)}
                                                                         className="btn btn-sm btn-danger btn-icon">
-                                                       <span className="btn-inner--icon icon-big">
-                                                           <i className="ni ni-fat-remove" />
-                                                       </span>
+                                                                        <span className="btn-inner--icon icon-big">
+                                                                            <i className="ni ni-fat-remove" />
+                                                                        </span>
                                                                     <span className="btn-inner--text">Suprimer</span>
                                                                 </Button>{" "}
                                                             </>

@@ -53,8 +53,6 @@ class ProfileSiteBlogs extends Component {
 
                         :null}
 
-
-
                 </div>
                 <div className="card card-blog card-plain">
                     <div className="card-image shadow">
