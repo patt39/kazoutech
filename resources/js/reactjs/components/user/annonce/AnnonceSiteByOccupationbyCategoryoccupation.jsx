@@ -226,19 +226,27 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                                             </button>
                                                                                             : null}
 
-                                                                                        <NavLink to={`/annonces/${SlugOccupation}/p/${item.id}/edit`} className="btn btn-sm btn-success btn-icon">
-                                                                                                <span className="btn-inner--icon icon-big">
-                                                                                                    <i className="ni ni-check-bold" />
-                                                                                                </span>
-                                                                                            <span className="btn-inner--text">editer</span>
-                                                                                        </NavLink>
-                                                                                        <Button onClick={() => this.deleteItem(item.id)}
-                                                                                                className="btn btn-sm btn-danger btn-icon">
-                                                                                                    <span className="btn-inner--icon icon-big">
-                                                                                                        <i className="ni ni-fat-remove" />
-                                                                                                    </span>
-                                                                                            <span className="btn-inner--text">Suprimer</span>
-                                                                                        </Button>{" "}
+                                                                                        {!$guest ?
+                                                                                            <>
+                                                                                                {$userKazou.id === item.user_id ?
+                                                                                                    <>
+                                                                                                    <NavLink to={`/annonces/${SlugOccupation}/p/annonce/${item.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                                                                            <span className="btn-inner--icon icon-big">
+                                                                                                                <i className="ni ni-check-bold" />
+                                                                                                            </span>
+                                                                                                        <span className="btn-inner--text">editer</span>
+                                                                                                    </NavLink>
+                                                                                                    <Button onClick={() => this.deleteItem(item.id)}
+                                                                                                            className="btn btn-sm btn-danger btn-icon">
+                                                                                                                <span className="btn-inner--icon icon-big">
+                                                                                                                    <i className="ni ni-fat-remove" />
+                                                                                                                </span>
+                                                                                                        <span className="btn-inner--text">Suprimer</span>
+                                                                                                    </Button>{" "}
+                                                                                                    </>
+                                                                                                    :null}
+                                                                                            </>
+                                                                                            :null}
                                                                                     </div>
                                                                                 </div>
 

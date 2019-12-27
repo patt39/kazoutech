@@ -15,7 +15,7 @@ class CharbonneurCityList extends Component {
 
 
     componentDidMount() {
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
+        dyaxios.get(route('api.cities_by_status')).then(response =>
             this.setState({
                 cities: [...response.data],
             }));
