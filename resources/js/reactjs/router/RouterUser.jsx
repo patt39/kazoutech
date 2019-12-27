@@ -49,7 +49,7 @@ const RouterUser = props => (
         <Route exact path="/annonces/:occupation/" component={withRouter(AnnonceSiteByOccupation)}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>
         <Route exact path="/annonces/:occupation/new/p/create/" component={AnnonceSiteCreate}/>
-        <Route exact path="/annonces/:occupation/p/:id/edit/" component={AnnonceSiteEdit}/>
+        <Route exact path="/annonces/:occupation/p/annonce/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/charbonneurs/:city/" component={withRouter(CharbonneurSiteByCity)}/>
         <Route exact path="/charbonneurs/:city/:occupation/" component={withRouter(CharbonneurSiteByOccupation)}/>

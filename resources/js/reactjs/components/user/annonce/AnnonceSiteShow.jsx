@@ -199,11 +199,11 @@ class AnnonceSiteShow extends Component {
                                         </div>
                                         <div className="card-header d-flex align-items-center">
                                             <div className="d-flex align-items-center">
-                                                <a href="..">
+                                                <NavLink to={`/user/${annonce.user.username}/`}>
                                                     <img src={annonce.user.avatar} alt={annonce.user.name} className="avatar" />
-                                                </a>
+                                                </NavLink>
                                                 <div className="mx-3">
-                                                    <a href=".." className="text-dark font-weight-600 text-sm">{annonce.user.name}</a>
+                                                    <NavLink to={`/user/${annonce.user.username}/`} className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
                                                     <small className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>
                                                 </div>
                                             </div>
@@ -218,7 +218,7 @@ class AnnonceSiteShow extends Component {
                                                     <>
                                                         {$userKazou.id === annonce.user_id ?
                                                             <>
-                                                                <NavLink to={`/annonces/${annonce.occupation.slug}/p/${annonce.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                                <NavLink to={`/annonces/${annonce.occupation.slug}/p/annonce/${annonce.id}/edit`} className="btn btn-sm btn-success btn-icon">
                                                     <span className="btn-inner--icon icon-big">
                                                         <i className="ni ni-check-bold" />
                                                     </span>

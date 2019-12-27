@@ -6,6 +6,7 @@ import OccupationList from "./occupation/OccupationList";
 import CitySite from "./city/CitySite";
 import AllOccupation from "../inc/AllOccupation";
 import KazouTechSteps from "../inc/KazouTechSteps";
+import SlideHomeList from "./slide/SlideHomeList";
 
 
 class IndexSite extends Component {
@@ -28,55 +29,7 @@ class IndexSite extends Component {
                 <div className="landing-page">
                     <NavUserSIte/>
                     <div className="wrapper">
-                        <div className="page-header page-header-small header-filter">
-                            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                                <ol className="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0"
-                                        className="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
-                                <div className="carousel-inner">
-                                    <div className="carousel-item active">
-                                        <img className="d-block w-100"
-                                             src="https://images.unsplash.com/photo-1457904375453-3e1fc2fc76f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1800&q=80"
-                                             alt="First slide"/>
-                                        <div className="carousel-caption d-none d-md-block">
-                                            <h1 className="display-1">Titre Text</h1>
-                                            <p>Sous-titre Text</p>
-                                        </div>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img className="d-block w-100"
-                                             src="https://images.unsplash.com/photo-1526404801122-40fc40fca08f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2553&q=80"
-                                             alt="Second slide"/>
-                                        <div className="carousel-caption d-none d-md-block">
-                                            <h1 className="display-1">Titre Text</h1>
-                                            <p>Sous-titre Text</p>
-                                        </div>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img className="d-block w-100"
-                                             src="https://images.unsplash.com/photo-1524095731963-b4e38d1b3329?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
-                                             alt="Third slide"/>
-                                        <div className="carousel-caption d-none d-md-block">
-                                            <h1 className="display-1">Titre Text</h1>
-                                            <p>Sous-titre Text</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a className="carousel-control-prev" href="#carouselExampleIndicators"
-                                   role="button" data-slide="prev">
-                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span className="sr-only">Previous</span>
-                                </a>
-                                <a className="carousel-control-next" href="#carouselExampleIndicators"
-                                   role="button" data-slide="next">
-                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span className="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
+                        <SlideHomeList/>
                     </div>
                     <KazouTechSteps/>
                     <AllOccupation/>

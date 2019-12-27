@@ -280,6 +280,25 @@
                             </ul>
                         </div>
                     </li>
+                    <!-- Slide pages-->
+                    <li v-if="$auth.can('slide_image')" class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#AllSlides">
+                            <i class="material-icons">photo</i>
+                            <p><b>Slide Pages</b>
+                                <b class="caret"/>
+                            </p>
+                        </a>
+                        <div class="collapse" id="AllSlides">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/slidehomes/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>SH</b></span>
+                                        <span class="sidebar-normal"><b>Slide Home</b></span>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <!-- Contacts -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#contactsSettings">

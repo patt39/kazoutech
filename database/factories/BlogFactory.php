@@ -26,7 +26,7 @@ $factory->define(blog::class, function (Faker $faker) {
         'slug' => str_slug($title),
         'color_id' => color::inRandomOrder()->first()->id,
         'photo' => $faker->imageUrl($width = 1000, $height = 900),
-        'body' => $faker->realText(rand(1000, 4000)),
+        'body' => $faker->realText(rand(10000, 40000)),
         'occupation_id' => occupation::inRandomOrder()->first()->id,
         'user_id' => user::inRandomOrder()->first()->id,
     ];

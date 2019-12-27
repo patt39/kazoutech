@@ -5,6 +5,7 @@ use App\Model\admin\color;
 use App\Model\admin\faq;
 use App\Model\admin\occupation;
 use App\Model\admin\partial\diploma;
+use App\Model\admin\slide\slidehome;
 use App\Model\user\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -79,6 +80,7 @@ class CompileTableSeeder extends Seeder
 
         factory(categoryfaq::class, 1)->create();
         factory(faq::class, 2)->create();
+        factory(slidehome::class, 8)->create();
 
 
         // Output

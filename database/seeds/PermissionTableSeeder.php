@@ -184,6 +184,10 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-slide']);
 
 
+        //Create slide page permissions
+        Permission::create(['guard_name' => 'web' , 'name' => 'slide_image']);
+
+
         //Create permissions permissions
         Permission::create(['guard_name' => 'web' , 'name' => 'all-permission']);
         Permission::create(['guard_name' => 'web' , 'name' => 'create-permission']);

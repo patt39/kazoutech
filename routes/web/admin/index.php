@@ -32,6 +32,9 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:web'], function(){
         /** C'est route son dans la cartella partial */
         require(__DIR__ . DIRECTORY_SEPARATOR . 'partial'. DIRECTORY_SEPARATOR . 'index.php');
 
+        /** C'est route son dans la cartella slide */
+        require(__DIR__ . DIRECTORY_SEPARATOR . 'slide'. DIRECTORY_SEPARATOR . 'all_slides.php');
+
 
         /** C'est route son dans la cartella info */
         require(__DIR__ . DIRECTORY_SEPARATOR . 'info'. DIRECTORY_SEPARATOR . 'legal_notice.php');

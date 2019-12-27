@@ -105,6 +105,9 @@ import BlogIndex from "../components/admin/blog/BlogIndex";
 import BlogEdit from "../components/admin/blog/BlogEdit";
 import BlogCreate from "../components/admin/blog/BlogCreate";
 import OccupationShowEdit from "../components/admin/occupation/occupation/categoryoccupation/OccupationShowEdit";
+import SlidehomeIndex from "../components/admin/slide/slidehome/SlidehomeIndex";
+import SlidehomeEdit from "../components/admin/slide/slidehome/SlidehomeEdit";
+import SlidehomeCreate from "../components/admin/slide/slidehome/SlidehomeCreate";
 
 
 
@@ -245,6 +248,11 @@ export const routes = [
     { path: '/dashboard/testimonials/create', name: 'testimonials.create', component: TestimonialCreate },
     { path: '/dashboard/testimonials/:id/edit', name: 'testimonials.edit', component: TestimonialEdit },
     { path: '/dashboard/testimonials/tm/:testimonial', name: 'testimonials.vector', component: TestimonialShow },
+
+    //Route slide Home
+    { path: '/dashboard/slidehomes', name: 'slidehomes.index', component: SlidehomeIndex },
+    { path: '/dashboard/slidehomes/create', name: 'slidehomes.create', component: SlidehomeCreate },
+    { path: '/dashboard/slidehomes/:id/edit', name: 'slidehomes.edit', component: SlidehomeEdit },
 
 
     /* Legal Mention route  */

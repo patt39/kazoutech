@@ -56,12 +56,16 @@ class ProfileSiteAnnonces extends Component {
                                                     </Button>{" "}
                                                     <div className="dropdown-menu dropdown-menu-right"
                                                          style={{position: "absolute", transform: "translate3d(16px, 25px, 0px)", top: "0px", left: "0px", willChange: "transform",}}>
-                                                        <a className="dropdown-item"
-                                                           href="..">Action</a>
-                                                        <Link to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="dropdown-item">Editer</Link>
+                                                        <a className="dropdown-item" href="..">
+                                                            <i className="ni ni-single-02"/> Profile
+                                                        </a>
+                                                        <a className="dropdown-item" href="..">
+                                                            <i className="ni ni-notification-70"/> Mute conversation
+                                                        </a>
+                                                        <Link to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="dropdown-item"> <i className="ni ni-key-25"></i> Editer</Link>
 
                                                         <a style={{cursor : "pointer"}} className="dropdown-item"  onClick={() => this.props.deleteAnnonce(this.props.id)}>
-                                                            <span className="btn-inner--text">Suprimer</span>
+                                                             <i className="ni ni-fat-remove"></i> Suprimer
                                                         </a>
                                                     </div>
                                                 </div>

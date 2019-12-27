@@ -93,9 +93,8 @@ class ContactUserSite extends Component {
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <div className="page-header page-header-small header-filter">
-                            <div className="page-header-image"
-                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
