@@ -41,17 +41,17 @@ class AnnonceList extends Component {
                                 </div>
                             </div>
                             <div className="text-right ml-auto">
-                                {this.props.price ?
+
+                                    {this.props.price && (
                                     <button type="button" className={`btn btn-sm btn-${this.props.user.color_name} btn-icon`}>
                                         <span className="btn-inner--text">{this.props.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
-                                    </button>
-                                    : null}
+                                    </button>)}
 
-                                {!$guest ?
+                                {!$guest && (
                                     <>
-                                        {$userKazou.id === this.props.user_id ?
+                                        {$userKazou.id === this.props.user_id && (
                                             <>
-                                                <NavLink to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                <NavLink to={`/annonces/${this.props.occupation.slug}/p/annonce/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
                                                     <span className="btn-inner--icon icon-big">
                                                         <i className="ni ni-check-bold" />
                                                     </span>
@@ -65,10 +65,10 @@ class AnnonceList extends Component {
                                                     <span className="btn-inner--text">Suprimer</span>
                                                 </Button>{" "}
                                             </>
-                                            :null}
-                                    </>
+                                        )}
 
-                                    :null}
+                                    </>
+                                )}
                             </div>
                         </div>
 

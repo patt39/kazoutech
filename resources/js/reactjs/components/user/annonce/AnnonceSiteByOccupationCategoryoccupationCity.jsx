@@ -12,8 +12,8 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annoncebycity: {annonces:[]},
-            cities:[],
+            annoncebycity: {annonces: []},
+            cities: [],
         };
 
         this.deleteItem = this.deleteItem.bind(this);
@@ -35,7 +35,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
         }).then((result) => {
             if (result.value) {
 
-                const url = route('annonces.destroy',id);
+                const url = route('annonces.destroy', id);
                 //Envoyer la requet au server
                 dyaxios.delete(url).then(() => {
 
@@ -74,12 +74,13 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
             }
         });
     }
+
     // lifecycle method
     componentDidMount() {
         let SlugCity = this.props.match.params.city;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
-        dyaxios.get(route('api_annonce_occupation_categoryoccupation_city_site.view',[SlugOccupation,SlugCategoryoccupation,SlugCity]))
+        dyaxios.get(route('api_annonce_occupation_categoryoccupation_city_site.view', [SlugOccupation, SlugCategoryoccupation, SlugCity]))
             .then(response =>
                 this.setState({
                     annoncebycity: response.data,
@@ -91,7 +92,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
     }
 
     render() {
-        const {annoncebycity,cities} = this.state;
+        const {annoncebycity, cities} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
         document.title = `Annonce dans la ville de ${composantTitle} | Kaazoutech`;
@@ -109,7 +110,8 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur Kazoutech dans la ville de <b>{annoncebycity.name}</b>
+                                        Restez a l'affue de toutes les annonces sur Kazoutech dans la ville
+                                        de <b>{annoncebycity.name}</b>
                                     </h4>
                                     <div className="author">
                                         <Link to={'/annonces/'} className="text-white">
@@ -150,15 +152,16 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                                     {cities.map((item) => (
                                                                         <li key={item.id} className="mb-2">
-                                                                            <NavLink to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.slug}/`}>
+                                                                            <NavLink
+                                                                                to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.slug}/`}>
                                                                                 {item.name}
                                                                             </NavLink>
                                                                         </li>
                                                                     ))}
 
                                                                     <li className="mb-2">
-                                                                        <Link to={`/all_cities/`} >
-                                                                          Autre ville...
+                                                                        <Link to={`/all_cities/`}>
+                                                                            Autre ville...
                                                                         </Link>
                                                                     </li>
                                                                 </ul>
@@ -168,14 +171,18 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces à {annoncebycity.name}</b></h5>
+                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces
+                                                            à {annoncebycity.name}</b></h5>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
                                                                     <div className="card-body"><p
-                                                                        className="h5 font-weight-normal mb-3 text-success">Vous avez une annonce?</p>
-                                                                        <Link to={`/annonces/${SlugOccupation}/new/p/create/`} className="btn btn-success mb-2"
-                                                                              type="button" disabled="">
+                                                                        className="h5 font-weight-normal mb-3 text-success">Vous
+                                                                        avez une annonce?</p>
+                                                                        <Link
+                                                                            to={`/annonces/${SlugOccupation}/new/p/create/`}
+                                                                            className="btn btn-success mb-2"
+                                                                            type="button" disabled="">
                                                                             <span
                                                                                 className="spinner-grow spinner-grow-sm"
                                                                                 role="status" aria-hidden="true"/>
@@ -205,44 +212,71 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                         <div className="row">
                                                                             <div className="col-lg-12">
                                                                                 <h5 className="card-title">
-                                                                                    <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${SlugCity}/${item.slug}/`}>
+                                                                                    <Link
+                                                                                        to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${SlugCity}/${item.slug}/`}>
                                                                                         {item.title}
                                                                                     </Link>
                                                                                 </h5>
                                                                                 <p className="card-description">
-                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 156 ? item.body.substring(0, 156) + "..." : item.body) }} />
-                                                                                    <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${SlugCity}/${item.slug}/`}> lire la suite </Link>
+                                                                                    <b dangerouslySetInnerHTML={{__html: (item.body.length > 156 ? item.body.substring(0, 156) + "..." : item.body)}}/>
+                                                                                    <Link
+                                                                                        to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${SlugCity}/${item.slug}/`}> lire
+                                                                                        la suite </Link>
                                                                                 </p>
-                                                                                <div className="card-header d-flex align-items-center">
-                                                                                    <div className="d-flex align-items-center">
+                                                                                <div
+                                                                                    className="card-header d-flex align-items-center">
+                                                                                    <div
+                                                                                        className="d-flex align-items-center">
                                                                                         <a href="..">
-                                                                                            <img src={item.user.avatar} alt={item.user.name} className="avatar" />
+                                                                                            <img src={item.user.avatar}
+                                                                                                 alt={item.user.name}
+                                                                                                 className="avatar"/>
                                                                                         </a>
                                                                                         <div className="mx-3">
-                                                                                            <a href=".." className="text-dark font-weight-600 text-sm">{item.user.name}</a>
-                                                                                            <small className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
+                                                                                            <a href=".."
+                                                                                               className="text-dark font-weight-600 text-sm">{item.user.name}</a>
+                                                                                            <small
+                                                                                                className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div className="text-right ml-auto">
                                                                                         {item.price ?
-                                                                                            <button type="button" className={`btn btn-sm btn-${item.user.color_name} btn-icon`}>
-                                                                                                <span className="btn-inner--text">{item.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
+                                                                                            <button type="button"
+                                                                                                    className={`btn btn-sm btn-${item.user.color_name} btn-icon`}>
+                                                                                                <span
+                                                                                                    className="btn-inner--text">{item.price.toLocaleString(navigator.language, {minimumFractionDigits: 0})} FCFA</span>
                                                                                             </button>
                                                                                             : null}
 
-                                                                                        <NavLink to={`/annonces/${SlugOccupation}/p/${item.id}/edit`} className="btn btn-sm btn-success btn-icon">
-                                                                                                <span className="btn-inner--icon icon-big">
-                                                                                                    <i className="ni ni-check-bold" />
-                                                                                                </span>
-                                                                                            <span className="btn-inner--text">editer</span>
-                                                                                        </NavLink>
-                                                                                        <Button onClick={() => this.deleteItem(item.id)}
-                                                                                                className="btn btn-sm btn-danger btn-icon">
-                                                                                                    <span className="btn-inner--icon icon-big">
-                                                                                                        <i className="ni ni-fat-remove" />
+                                                                                        {!$guest && (
+                                                                                            <>
+                                                                                                {$userKazou.id === item.user_id && (
+                                                                                                    <>
+                                                                                                        <NavLink
+                                                                                                            to={`/annonces/${SlugOccupation}/p/annonce/${item.id}/edit`}
+                                                                                                            className="btn btn-sm btn-success btn-icon">
+                                                                                                            <span
+                                                                                                                className="btn-inner--icon icon-big">
+                                                                                                                <i className="ni ni-check-bold"/>
+                                                                                                            </span>
+                                                                                                            <span
+                                                                                                                className="btn-inner--text">editer</span>
+                                                                                                        </NavLink>
+                                                                                                        <Button
+                                                                                                            onClick={() => this.deleteItem(item.id)}
+                                                                                                            className="btn btn-sm btn-danger btn-icon">
+                                                                                                    <span
+                                                                                                        className="btn-inner--icon icon-big">
+                                                                                                        <i className="ni ni-fat-remove"/>
                                                                                                     </span>
-                                                                                            <span className="btn-inner--text">Suprimer</span>
-                                                                                        </Button>{" "}
+                                                                                                            <span
+                                                                                                                className="btn-inner--text">Suprimer</span>
+                                                                                                        </Button>{" "}
+                                                                                                    </>
+                                                                                                )}
+
+                                                                                            </>
+                                                                                        )}
                                                                                     </div>
                                                                                 </div>
 
