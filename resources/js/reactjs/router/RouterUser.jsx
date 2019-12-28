@@ -10,7 +10,7 @@ import OccupationSiteSlug from "../components/user/occupation/OccupationSiteSlug
 import CategoryOccupationShow from "../components/user/occupation/categoryoccupation/CategoryOccupationShow";
 import BlogSiteIndex from "../components/user/blog/BlogSiteIndex";
 import BlogSiteShow from "../components/user/blog/BlogSiteShow";
-import BlogSiteCategories from "../components/user/blog/BlogSiteCategories";
+import BlogSiteByCategoriesOccupation from "../components/user/blog/BlogSiteByCategoriesOccupation";
 import AnnonceSiteIndex from "../components/user/annonce/AnnonceSiteIndex";
 import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
@@ -39,12 +39,12 @@ const RouterUser = props => (
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation" component={CategoryOccupationShow}/>
         <Route exact path="/blog/" component={BlogSiteIndex}/>
-        <Route exact path="/blog/:occupation/" component={withRouter(BlogSiteCategories)}/>
+        <Route exact path="/blog/:occupation/" component={withRouter(BlogSiteByCategoriesOccupation)}/>
         <Route exact path="/blog/:occupation/:blog/" component={withRouter(BlogSiteShow)}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation/:city" component={withRouter(AnnonceSiteByOccupationCategoryoccupationCity)}/>
-        <Route exact path="/annonces/:occupation/:catagoryoccupation/:city/:annonce/" component={AnnonceSiteShow}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation/:city/:annonce/" component={withRouter(AnnonceSiteShow)}/>
         <Route exact path="/annonces/v/:city" component={AnnonceSiteByCity}/>
         <Route exact path="/annonces/:occupation/" component={withRouter(AnnonceSiteByOccupation)}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>

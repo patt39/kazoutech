@@ -107,7 +107,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur <b>{annoncebycategoryoccupation.name}</b>
+                                        Restez à l'affût de toutes les annonces sur <b>{annoncebycategoryoccupation.name}</b>
                                     </h4>
                                     <div className="author">
                                         <Link to={`/annonces/${SlugOccupation}/`} className="text-white">

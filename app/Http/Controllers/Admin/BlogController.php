@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
 use App\Model\admin\blog;
 use Illuminate\Http\Request;
+use File;
 use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
@@ -114,13 +115,20 @@ class BlogController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function destroy($id)
     {
         $blog = blog::findOrFail($id);
-        $blog->delete();
 
-        return ['message' => 'color deleted '];
+        $this->authorize('update',$blog);
+        if(auth()->user()->id === $blog->user_id) {
+            $oldFilename = $blog->photo;
+            File::delete(public_path($oldFilename));
+            $blog->delete();
+            return ['message' => 'Blog post deleted '];
+        }else{
+            return ['error',"Unauthorized edit this article contact Author."];
+        }
     }
 }

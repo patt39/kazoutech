@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
-import {Link} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 
 class AnnonceSiteByCity extends Component {
     constructor(props) {
@@ -129,9 +129,9 @@ class AnnonceSiteByCity extends Component {
 
                                                                     {occupations.map((item) => (
                                                                         <li key={item.id} className="mb-2">
-                                                                            <Link to={`/annonces/${item.slug}/v/${annoncebycity.slug}`}>
+                                                                            <NavLink to={`/annonces/${item.slug}/v/${annoncebycity.slug}`}>
                                                                                 {item.name}
-                                                                            </Link>
+                                                                            </NavLink>
                                                                         </li>
                                                                     ))}
 

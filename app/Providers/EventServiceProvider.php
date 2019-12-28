@@ -2,21 +2,20 @@
 
 namespace App\Providers;
 
+use App\Model\admin\blog;
 use App\Model\admin\page\about;
 use App\Model\admin\categoryfaq;
-use App\Model\admin\color;
 use App\Model\admin\contact;
 use App\Model\admin\faq;
 use App\Model\admin\info\documentation;
 use App\Model\admin\note;
 use App\Model\admin\occupation;
 use App\Model\admin\partial\diploma;
-use App\Model\admin\task;
 use App\Model\user\technician;
 use App\Model\user\User;
 use App\Observers\Admin\AboutObserver;
+use App\Observers\Admin\BlogsObserver;
 use App\Observers\Admin\CategoryfaqObserver;
-use App\Observers\Admin\ColorObserver;
 use App\Observers\Admin\ContactObserver;
 use App\Observers\Admin\FaqObserver;
 use App\Observers\Admin\NoteObserver;
@@ -52,6 +51,7 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
         about::observe(AboutObserver::class);
+        blog::observe(BlogsObserver::class);
         categoryfaq::observe(CategoryfaqObserver::class);
         contact::observe(ContactObserver::class);
         faq::observe(FaqObserver::class);

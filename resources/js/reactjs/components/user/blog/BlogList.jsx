@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link, NavLink} from "react-router-dom";
 import moment from 'moment'
+import {Button} from "reactstrap";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -40,20 +41,44 @@ class BlogList extends Component {
                                 <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}> lire la
                                     suite </Link>
                             </p>
-                            <div className="author">
-                                <NavLink to={`/user/${this.props.user.username}/`}>
-                                    <img src={this.props.user.avatar} alt={this.props.user.name}
-                                         className="avatar img-raised"/>
-                                </NavLink>
-                                <div className="text">
+
+                            <div className="card-header d-flex align-items-center">
+                                <div className="d-flex align-items-center">
                                     <NavLink to={`/user/${this.props.user.username}/`}>
-                                        <span className="name">{this.props.user.name}</span>
+                                        <img src={this.props.user.avatar} alt={this.props.user.name} className="avatar" />
                                     </NavLink>
-                                    <div className="meta">
-                                        <b>{moment(this.props.created_at).format('LL')}</b>
+                                    <div className="mx-3">
+                                        <NavLink to={`/user/${this.props.user.username}/`} className="text-dark font-weight-600 text-sm">{this.props.user.name}</NavLink>
+                                        <small className="d-block text-muted">{moment(this.props.created_at).fromNow()}</small>
                                     </div>
                                 </div>
+                                <div className="text-right ml-auto">
+
+                                    {!$guest && (
+                                        <>
+                                            {$userKazou.id === this.props.user_id && (
+                                                <>
+                                                    <NavLink to={`/blog/`} className="btn btn-sm btn-success btn-icon">
+                                                    <span className="btn-inner--icon icon-big">
+                                                        <i className="ni ni-check-bold" />
+                                                    </span>
+                                                        <span className="btn-inner--text">editer</span>
+                                                    </NavLink>
+                                                    <Button onClick={() => this.props.deleteItem(this.props.id)}
+                                                            className="btn btn-sm btn-danger btn-icon">
+                                                        <span className="btn-inner--icon icon-big">
+                                                            <i className="ni ni-fat-remove" />
+                                                        </span>
+                                                        <span className="btn-inner--text">Suprimer</span>
+                                                    </Button>{" "}
+                                                </>
+                                            )}
+
+                                        </>
+                                    )}
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

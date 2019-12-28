@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 import moment from 'moment'
 
 require("moment/min/locales.min");
@@ -32,9 +32,9 @@ class AnnonceCityList extends Component {
 
                         {cities.map((item) => (
                             <li key={item.id} className="mb-2">
-                                <Link to={`/annonces/v/${item.slug}/`}>
+                                <NavLink to={`/annonces/v/${item.slug}/`}>
                                     {item.name}
-                                </Link>
+                                </NavLink>
                             </li>
                         ))}
 

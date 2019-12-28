@@ -25,8 +25,6 @@ class FaqController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api','catagoryfaqapi','bystatussitesapi','bystatuscatagoryfaqapi']]);
-        // Middleware lock account
-        //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.

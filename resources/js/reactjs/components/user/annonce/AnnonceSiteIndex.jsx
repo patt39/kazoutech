@@ -91,7 +91,7 @@ class AnnonceSiteIndex extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h3 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur Kazoutech
+                                        Restez à l'affût de toutes les annonces sur Kazoutech
                                     </h3>
                                 </div>
                             </div>

@@ -17,11 +17,8 @@ class AnnonceSiteShow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annonce: {
-                user: [],
-                occupation: [],
-                annonceinderesse:{annonces:[]},
-            }
+            annonceinteresse:{annonces:[]},
+            annonce: {user: [], occupation: [],}
         };
         this.deleteItem = this.deleteItem.bind(this);
     }
@@ -94,14 +91,14 @@ class AnnonceSiteShow extends Component {
          * Ici je recupere touts les annonce par sous category pour proposer
          */
         let urlinteress = route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]);
-        dyaxios.get(urlinteress).then(response => this.setState({annonceinderesse: response.data,}));
+        dyaxios.get(urlinteress).then(response => this.setState({annonceinteresse: response.data,}));
     }
 
     render() {
-        const {annonce,annonceinderesse} = this.state;
+        const {annonce,annonceinteresse} = this.state;
         const composantTitle = `${annonce.title}`;
         document.title = `${composantTitle} | Kazoutech`;
-        //const annonceinderesses = annonceinderesse.annonces;
+        const annonceinderesses = annonceinteresse.annonces;
         return (
 
             <div className="checkout-page">
@@ -171,9 +168,15 @@ class AnnonceSiteShow extends Component {
                                             <div className="card">
                                                 <div className="card-body">
 
-                                                    {annonceinderesses.map((item) => (
-                                                    <AnnoncePostInteresse key={item.id} {...item}/>
-                                                    ))}
+                                                    {annonceinderesses > 0 && (
+                                                        <>
+                                                            {annonceinderesses.map((item) => (
+                                                                <AnnoncePostInteresse key={item.id} {...item}/>
+                                                            ))}
+                                                        </>
+
+                                                    )}
+
                                                 </div>
 
 

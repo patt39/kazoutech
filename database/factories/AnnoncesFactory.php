@@ -19,7 +19,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(annonce::class, function (Faker $faker) {
-    $title  = $faker->realText(rand(10,30));
+    $title  = $faker->realText(rand(40,60));
 
     return [
         'title' => $title,

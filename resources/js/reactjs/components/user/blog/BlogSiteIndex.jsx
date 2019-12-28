@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
 import BlogLastPost from "./BlogLastPost";
+import BlogOccupationList from "./BlogOccupationList";
 
 
 class BlogSiteIndex extends Component {
@@ -11,9 +12,65 @@ class BlogSiteIndex extends Component {
         this.state = {
             blogs: [],
             blogsLast: []
-        }
+        };
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
+    deleteItem(id) {
+        Swal.fire({
+            title: 'Etes vous sure de vouloir suprimer cette article de blog?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'No annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('blogs.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    let isNotId = item => item.id !== id;
+                    let updatedItems = this.state.blogs.filter(isNotId);
+                    this.setState({blogs: updatedItems});
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Article de blog suprimé avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooopss! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
     // lifecycle method
     componentDidMount() {
         const composantTitle = 'Blog une mise a jour des informations  | Kazoutech';
@@ -34,8 +91,8 @@ class BlogSiteIndex extends Component {
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
-                                    <h3 className="title text-white">A Place for Entrepreneurs to Share and Discover
-                                        New Stories</h3>
+                                    <h5 className="title text-white">A Place for Entrepreneurs to Share and Discover
+                                        New Stories</h5>
                                     <a href="#button" className="btn btn-warning btn-round btn-icon-only">
                                         <i className="fab fa-twitter"/>
                                     </a>
@@ -61,6 +118,9 @@ class BlogSiteIndex extends Component {
 
                         <section className="section">
                             <div className="container">
+
+                                <BlogOccupationList/>
+
                                 <div className="row">
                                     <div className="col-md-12 ml-auto mr-auto">
                                         <section className="blogs-3">
@@ -72,9 +132,9 @@ class BlogSiteIndex extends Component {
 
                                                         <div className="card">
                                                             <div className="card-body">
-                                                        {blogs.map((item) => (
-                                                            <BlogList key={item.id} {...item} />
-                                                        ))}
+                                                            {blogs.map((item) => (
+                                                                <BlogList key={item.id} {...item} deleteItem={this.deleteItem}/>
+                                                            ))}
                                                             </div>
                                                         </div>
 

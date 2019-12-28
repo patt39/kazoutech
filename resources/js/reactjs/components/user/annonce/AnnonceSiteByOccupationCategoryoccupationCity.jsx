@@ -110,11 +110,11 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur Kazoutech dans la ville
+                                        Restez a l'affue de toutes les annonces dans la ville
                                         de <b>{annoncebycity.name}</b>
                                     </h4>
                                     <div className="author">
-                                        <Link to={'/annonces/'} className="text-white">
+                                        <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/`} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> Retour Annonces
                                         </Link>
                                     </div>
@@ -140,7 +140,6 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                 <div className="row">
 
                                                     <div className="col-md-4">
-                                                        <AnnonceOccupationList/>
 
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Villes</div>
@@ -165,6 +164,8 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                             </div>
                                                         </div>
+
+                                                        <AnnonceOccupationList/>
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
