@@ -11,7 +11,7 @@ class TestimonialSite extends Component {
 
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Testimonails';
+        const composantTitle = 'Testimonials';
         document.title = `${composantTitle} | Kazoutech`;
     }
 

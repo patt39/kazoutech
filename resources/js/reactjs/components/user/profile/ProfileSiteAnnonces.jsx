@@ -62,10 +62,12 @@ class ProfileSiteAnnonces extends Component {
                                                         <a className="dropdown-item" href="..">
                                                             <i className="ni ni-notification-70"/> Mute conversation
                                                         </a>
-                                                        <Link to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="dropdown-item"> <i className="ni ni-key-25"></i> Editer</Link>
+                                                        <NavLink to={`/annonces/${this.props.occupation.slug}/p/annonce/${this.props.id}/edit`} className="dropdown-item">
+                                                            <i className="ni ni-key-25"/> Editer
+                                                        </NavLink>
 
                                                         <a style={{cursor : "pointer"}} className="dropdown-item"  onClick={() => this.props.deleteAnnonce(this.props.id)}>
-                                                             <i className="ni ni-fat-remove"></i> Suprimer
+                                                             <i className="ni ni-fat-remove"/> Suprimer
                                                         </a>
                                                     </div>
                                                 </div>

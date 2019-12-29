@@ -1,8 +1,24 @@
 import React,{Component} from "react";
-import {Link} from 'react-router-dom';
+import {Link,NavLink} from 'react-router-dom';
 
 
 class NavUserSIte extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+        this.navLogout = this.navLogout.bind(this);
+    }
+
+    navLogout(e){
+        axios.post('/logout')
+            .then(() => {
+            location.replace(`/`);
+        }).catch(() => {
+            //
+        });
+    }
 
     render(){
 
@@ -56,9 +72,9 @@ class NavUserSIte extends Component{
                                        </a>
                                    </li>
                                    <li className="nav-item">
-                                       <a href="/register" className="btn btn-outline-primary" role="button">
+                                       <a href="/register" className="btn btn-outline-primary">
                                        <span className="btn-inner--icon">
-                                           <i className="ni ni-single-02"></i>
+                                           <i className="ni ni-fat-add"/>
                                        </span>
                                            <span className="nav-link-inner--text pt-40 position-navbar">Inscription</span>
                                        </a>
@@ -67,31 +83,26 @@ class NavUserSIte extends Component{
                                :
                                <li className="nav-item dropdown">
                                    <a href=".." className="nav-link" data-toggle="dropdown" role="button">
-                                       <i className="ni ni-tablet-button d-lg-none"/>
-                                       <span className="nav-link-inner--text">App Pages</span>
+                                       <span className="nav-link-inner--text"><b>{$userKazou.name}</b></span>
                                    </a>
                                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                       {$userKazou.my_status === 'active' ?
+                                       {$userKazou.my_status === 'active' && (
                                            <a href="/dashboard" className="dropdown-item">
                                                <i className="ni ni-building text-muted"/>
-                                               <b>Dashboard</b>
+                                               Dashboard
                                            </a>
-                                           :null}
-                                       <a className="dropdown-item" href="..">
+                                       )}
+                                       <NavLink to={`/user/profile/edit/`} className="dropdown-item">
                                            <i className="ni ni-lock-circle-open text-muted"/>
-                                           Account Settings
-                                       </a>
-                                       <a className="dropdown-item" href="..">
-                                           <i className="ni ni-tv-2 text-danger"/>
-                                           Login Page
-                                       </a>
-                                       <a className="dropdown-item" href="..">
-                                           <i className="ni ni-air-baloon text-pink"/>
-                                           Register Page
-                                       </a>
-                                       <a className="dropdown-item" href="..">
+                                           Editer mon profile
+                                       </NavLink>
+                                       <NavLink to={`/charbonneur/${$userKazou.username}/`} className="dropdown-item">
+                                           <i className="ni ni-circle-08 text-success"/>
+                                           Mon profile
+                                       </NavLink>
+                                       <a className="dropdown-item" onClick={() => this.navLogout()}>
                                            <i className="ni ni-atom text-info"/>
-                                           Reset Page
+                                          Déconnexion
                                        </a>
                                    </div>
                                </li>

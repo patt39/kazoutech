@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 class KazouTechSteps extends Component {
 
@@ -21,7 +22,7 @@ class KazouTechSteps extends Component {
                             <div className="card card-project">
                                 <a href="#">
                                     <div className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle mx-auto">
-                                        <i className="ni ni-circle-08"></i>
+                                        <i className="ni ni-circle-08"/>
                                     </div>
                                 </a>
                                 <div className="card-body">
@@ -29,7 +30,7 @@ class KazouTechSteps extends Component {
                                     <p className="card-description">Remplissez le formulaire d'inscription en ligne en précisant vos informations personnelles pour vous faire boostez par les entreprises qui valoriseront vos prestations de services.</p>
                                     <div className="card-footer">
                                         <a href="/register" className="btn btn-link text-primary">
-                                            <i className="ni ni-bold-right icon-position"></i> Je m'inscris
+                                            <i className="ni ni-bold-right icon-position"/> Je m'inscris
                                         </a>
                                     </div>
                                 </div>
@@ -37,18 +38,18 @@ class KazouTechSteps extends Component {
                         </div>
                         <div className="col-lg-4 col-md-6">
                             <div className="card card-project">
-                                <a href="#">
+                                <Link to={'/charbonneurs/'}>
                                     <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mx-auto">
                                         <i className="ni ni-check-bold"></i>
                                     </div>
-                                </a>
+                                </Link>
                                 <div className="card-body">
                                     <h4 className="card-title mt-3">Choisissez votre charbonneur(euse)</h4>
                                     <p className="card-description">Des jobeurs compétents et proches de votre localité, de chez vous vous proposent leurs services à tout moment.</p>
                                     <div className="card-footer">
-                                        <a href="/charbonneurs" className="btn btn-link text-success"><i
-                                            className="ni ni-bold-right icon-position"></i> J'ai besoin d'un charbonneur
-                                        </a>
+                                        <Link to={'/charbonneurs/'} className="btn btn-link text-success">
+                                            <i className="ni ni-bold-right icon-position"/> J'ai besoin d'un charbonneur
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

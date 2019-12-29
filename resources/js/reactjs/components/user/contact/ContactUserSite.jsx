@@ -230,8 +230,8 @@ class ContactUserSite extends Component {
                                         className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
                                         <i className="ni ni-square-pin"/>
                                     </div>
-                                    <h4 className="info-title">Addresse</h4>
-                                    <p className="description px-0">12124 First Street, nr 54</p>
+                                    <h4 className="info-title">Contact</h4>
+                                    <p className="description px-0">Kazoutesch Srl, Milan / Italy </p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-6">
@@ -251,7 +251,7 @@ class ContactUserSite extends Component {
                                         <i className="ni ni-mobile-button"/>
                                     </div>
                                     <h4 className="info-title">Phone</h4>
-                                    <p className="description px-0">+1(424) 535 3523</p>
+                                    <p className="description px-0">+39 3425712192 / +39 3296187465 </p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-6">

@@ -26,7 +26,7 @@ class CharbonneurCityList extends Component {
         return (
 
             <div className="card mb-3">
-                <div className="card-header h6">Villes</div>
+                <div className="card-header h6">Les charbonneurs da la Ville de </div>
                 <div className="card-body">
                     <ul className="list-unstyled">
 

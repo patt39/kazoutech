@@ -15,11 +15,12 @@ class ProfileSiteIndex extends Component {
         };
 
         this.deleteAnnonce = this.deleteAnnonce.bind(this);
+        this.deleteBlog = this.deleteBlog.bind(this);
     }
 
     deleteAnnonce(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            text: 'Ete vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -73,9 +74,9 @@ class ProfileSiteIndex extends Component {
 
     deleteBlog(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette article du blog?',
+            text: 'Etes vous sure de vouloir suprimer cette article du blog?',
             animation: false,
-            customClass: 'animated shake',
+            customClass: 'animated pulse',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
@@ -86,7 +87,7 @@ class ProfileSiteIndex extends Component {
         }).then((result) => {
             if (result.value) {
 
-                const url = route('annonces.destroy',id);
+                const url = route('blogs.destroy',id);
                 //Envoyer la requet au server
                 dyaxios.delete(url).then(() => {
 
@@ -149,11 +150,9 @@ class ProfileSiteIndex extends Component {
                 <NavUserSIte/>
                 <div className="wrapper">
                     <section className="section-profile-cover section-shaped my-0">
-                            {userProfile.city_id ?
-                            <img className="bg-image" src={userProfile.city.photo} style={{width: "100%"}}/>
-                            :
-                            <img className="bg-image" src="/assets/vendor_site/img/pages/mohamed.jpg" style={{width: "100%"}}/>
-                            }
+                            {userProfile.city_id && (
+                                <img className="bg-image" src={userProfile.city.photo} style={{width: "100%"}}/>
+                            )}
                             <div className="separator separator-bottom separator-skew">
                                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +167,7 @@ class ProfileSiteIndex extends Component {
                                     <div className="row justify-content-center">
                                         <div className="col-lg-3 order-lg-2">
                                             <div className="card-profile-image">
-                                                <NavLink to={`/user/${userProfile.username}`}>
+                                                <NavLink to={`/charbonneur/${userProfile.username}/`}>
                                                     <img src={userProfile.avatar}
                                                          className="rounded-circle"/>
                                                 </NavLink>
@@ -176,13 +175,13 @@ class ProfileSiteIndex extends Component {
                                         </div>
                                         <div className="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                             <div className="card-profile-actions py-4 mt-lg-0">
+                                                <a href="#" className="btn btn-sm btn-info mr-4">Editer mon profile</a>
                                                 <a href="#" className="btn btn-sm btn-info mr-4">Connect</a>
-                                                {userProfile.status_profile_verify ?
-                                                    <button type={'button'} className="btn btn-sm btn-success float-right">
-                                                        <span className="btn-inner--icon"><i className="ni ni-check-bold"/></span>
+                                                {userProfile.status_profile_verify && (
+                                                    <button  type={'button'} className="btn btn-sm btn-success float-right">
+                                                        <i className="ni ni-check-bold"/>Identité vérifiée
                                                     </button>
-                                                 :null}
-                                                <a href="#" className="btn btn-sm btn-default float-right">Message</a>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col-lg-4 order-lg-1">
@@ -204,20 +203,28 @@ class ProfileSiteIndex extends Component {
                                     </div>
                                     <div className="text-center mt-5">
                                         <h3>{userProfile.name}<span className="font-weight-light">, 27</span></h3>
-                                        {userProfile.city_id ?
+                                        {userProfile.city_id && (
                                             <div className="h6 font-weight-300">
                                                 <i className="ni location_pin mr-2"/><b>{userProfile.city.name}</b>
                                             </div>
-                                            :null}
+                                        )}
 
                                         <div className="h6 mt-4"><i className="ni business_briefcase-24 mr-2"/>Solution
                                             Manager - Creative Tim Officer
                                         </div>
-                                        <div><i className="ni education_hat mr-2"/>University of Computer Science
+                                        <div>
+                                            <i className="ni education_hat mr-2"/>University of Computer Science
+                                        </div>
+
+                                        <br/>
+                                        <div className="mt-2 text-center">
+                                            <NavLink to={`/occupations/`} className="btn btn-info btn-hp btn-break">
+                                                De quel service avez-vous besoin ?
+                                            </NavLink>
                                         </div>
                                     </div>
 
-                                    {annonces.length > 0 ?
+                                    {annonces.length > 0 && (
                                         <div className="mt-5 py-5 border-top text-left">
                                             <div className="row">
 
@@ -227,9 +234,9 @@ class ProfileSiteIndex extends Component {
 
                                             </div>
                                         </div>
-                                        :null}
+                                    )}
 
-                                    {blogs.length > 0 ?
+                                    {blogs.length > 0 && (
                                         <div className="mt-5 py-5 border-top text-center">
                                             <div className="row justify-content-center">
                                                 <div className="row">
@@ -242,7 +249,7 @@ class ProfileSiteIndex extends Component {
 
                                             </div>
                                         </div>
-                                        :null}
+                                    )}
 
                                 </div>
                             </div>

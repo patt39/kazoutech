@@ -158,10 +158,11 @@ class AnnonceSiteEdit extends Component {
             <div className="checkout-page">
                 <NavUserSIte />
                 <div className="wrapper">
+
                     <div className="section-shaped my-0 skew-separator skew-mini">
-                        <div className="page-header page-header-small header-filter">
+                        <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image"
-                                style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}>
+                                 style={{ backgroundImage: "url(" + occupationdata.photo + ")" }}>
                             </div>
                             <div className="container">
                                 <div className="header-body text-center mb-7">
@@ -170,17 +171,18 @@ class AnnonceSiteEdit extends Component {
                                             <Link to={`/annonces/`} className="text-white">
                                                 <h5 className="text-white">{this.state.title} </h5>
                                             </Link>
-                                            <div className="author">
+                                            <p className="text-lead text-white">
                                                 <Link to={`/annonces/${occupationdata.slug}/`} className="text-white">
                                                     <i className="fa fa-chevron-circle-left" /> Retour {occupationdata.name}
                                                 </Link>
-                                            </div>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div className="upper">
                         <div className="container">
                             <form className="js-validate" onSubmit={this.updateItem}>
@@ -214,27 +216,6 @@ class AnnonceSiteEdit extends Component {
                                                                 {this.renderErrorFor('price')}
                                                             </div>
                                                         </div>
-                                                        <hr className="line-info mb-3" />
-                                                        <div className="media align-items-center">
-                                                            <h3 className="h6 opacity-8 mr-3">Subtotal</h3>
-                                                            <div className="media-body text-right">
-                                                                <span>$1038</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="media align-items-center">
-                                                            <h3 className="h6 opacity-8 mr-3">Shipping</h3>
-                                                            <div className="media-body text-right">
-                                                                <span>$5.8</span>
-                                                            </div>
-                                                        </div>
-                                                        <hr className="line-info mb-3" />
-                                                        <div className="media align-items-center">
-                                                            <h3 className="h6">Total</h3>
-                                                            <div className="media-body text-right">
-                                                                <span
-                                                                    className="font-weight-semi-bold">$1045.8</span>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,6 +227,11 @@ class AnnonceSiteEdit extends Component {
 
 
                                             <div className="container">
+                                                <p className="text-right text-info">
+                                                    <Link to={`/annonces/${occupationdata.slug}/`} className="text-info">
+                                                         Voir le rendu de la mise à jour
+                                                    </Link>
+                                                </p>
                                                 <h3 className="title mt-3">{this.state.title}</h3>
                                                 <div className="row">
                                                     <div className="col-md-12">

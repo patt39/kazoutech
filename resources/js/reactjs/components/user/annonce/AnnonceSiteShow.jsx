@@ -194,12 +194,12 @@ class AnnonceSiteShow extends Component {
                                         </div>
                                         <div className="card-header d-flex align-items-center">
                                             <div className="d-flex align-items-center">
-                                                <NavLink to={`/user/${annonce.user.username}/`}>
+                                                <NavLink to={`/charbonneur/${annonce.user.username}/`}>
                                                     <img src={annonce.user.avatar} alt={annonce.user.name}
                                                          className="avatar"/>
                                                 </NavLink>
                                                 <div className="mx-3">
-                                                    <NavLink to={`/user/${annonce.user.username}/`}
+                                                    <NavLink to={`/charbonneur/${annonce.user.username}/`}
                                                              className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
                                                     <small
                                                         className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>

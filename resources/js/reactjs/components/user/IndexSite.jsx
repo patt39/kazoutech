@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import {Link} from 'react-router-dom'
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
-import OccupationList from "./occupation/OccupationList";
 import CitySite from "./city/CitySite";
 import AllOccupation from "../inc/AllOccupation";
 import KazouTechSteps from "../inc/KazouTechSteps";
 import SlideHomeList from "./slide/SlideHomeList";
+import SubscribeLine from "./SubscribeLine";
 
 
 class IndexSite extends Component {
@@ -51,7 +51,7 @@ class IndexSite extends Component {
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                                                        <i className="ni ni-check-bold"></i>
+                                                        <i className="ni ni-check-bold"/>
                                                     </div>
                                                     <h6 className="text-primary text-uppercase">Des profile évalués</h6>
                                                     <p className="description mt-3">Les profiles de nos prestataires
@@ -60,8 +60,7 @@ class IndexSite extends Component {
                                                         service
                                                         et nous nous assurons aussi de leur bonne moralité donc ne vous
                                                         mefiez pas.</p>
-                                                    <a href="/charbonneurs"
-                                                       className="btn btn-primary mt-4">charbonneurs</a>
+                                                    <Link to={`/charbonneurs/`} className="btn btn-primary mt-4">charbonneurs</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,7 +69,7 @@ class IndexSite extends Component {
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-success rounded-circle mb-4">
-                                                        <i className="ni ni-istanbul"></i>
+                                                        <i className="ni ni-istanbul"/>
                                                     </div>
                                                     <h6 className="text-success text-uppercase">Kazoutech le
                                                         meilleur</h6>
@@ -80,7 +79,7 @@ class IndexSite extends Component {
                                                         rendre le meilleur donc pour tout vos problem contactez ou
                                                         rapprochez vous de nos locaux nous serons ravis de vous reçevoir
                                                         et d'effaçer vos doutes.</p>
-                                                    <a href="/contacts" className="btn btn-success mt-4">Contactez nous</a>
+                                                    <Link to={'/contacts/'} className="btn btn-success mt-4">Contactez nous</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,7 +88,7 @@ class IndexSite extends Component {
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                                                        <i className="ni ni-planet"></i>
+                                                        <i className="ni ni-planet"/>
                                                     </div>
                                                     <h6 className="text-warning text-uppercase">Des utilisateurs
                                                         comblés</h6>
@@ -98,8 +97,8 @@ class IndexSite extends Component {
                                                         forme de marketing et nous
                                                         nous en passons pas écoutez cequon dit à propos de kazoutech et
                                                         faite nous confiance</p>
-                                                    <a href="/temoignages"
-                                                       className="btn btn-warning btn-center">Temoignage</a>
+                                                    <Link to={'/temoignages/'}
+                                                       className="btn btn-warning btn-center">Temoignage</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,34 +133,15 @@ class IndexSite extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-5 mr-auto">
-                                <h4 className="title">Restez a l'affue chaque semaine!</h4>
+                                <h4 className="title">Restez à l'affût chaque semaine!</h4>
                                 <p className="description">
-                                    Rejoigniez notre newsletter et ayez de nos nouvelle chaque semaine n ayez craint
+                                    Rejoigniez notre newsletter et ayez de nos nouvelles chaque semaine n'ayez crainte
                                     nous detestons aussi les spam
                                 </p>
                             </div>
-                            <div className="col-lg-6 d-flex justify-content-center flex-column ml-auto">
-                                <form method="" action="">
-                                    <div className="row">
-                                        <div className="col-sm-8">
-                                            <div className="form-group">
-                                                <div className="input-group mb-4">
-                                                    <div className="input-group-prepend">
-                                                            <span className="input-group-text">
-                                                                <i className="ni ni-email-83"/></span>
-                                                    </div>
-                                                    <input className="form-control" placeholder="votre Email..."
-                                                           type="text"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <button type="button" className="btn btn-success btn-block">souscrivez
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+
+                           <SubscribeLine/>
+
                         </div>
                     </div>
                 </div>

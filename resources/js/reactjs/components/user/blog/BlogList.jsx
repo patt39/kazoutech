@@ -44,11 +44,11 @@ class BlogList extends Component {
 
                             <div className="card-header d-flex align-items-center">
                                 <div className="d-flex align-items-center">
-                                    <NavLink to={`/user/${this.props.user.username}/`}>
+                                    <NavLink to={`/charbonneur/${this.props.user.username}/`}>
                                         <img src={this.props.user.avatar} alt={this.props.user.name} className="avatar" />
                                     </NavLink>
                                     <div className="mx-3">
-                                        <NavLink to={`/user/${this.props.user.username}/`} className="text-dark font-weight-600 text-sm">{this.props.user.name}</NavLink>
+                                        <NavLink to={`/charbonneur/${this.props.user.username}/`} className="text-dark font-weight-600 text-sm">{this.props.user.name}</NavLink>
                                         <small className="d-block text-muted">{moment(this.props.created_at).fromNow()}</small>
                                     </div>
                                 </div>
