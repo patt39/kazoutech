@@ -115,9 +115,9 @@ class CityController extends Controller
      * @param city $city
      * @return ResponseFactory|\Illuminate\Http\Response
      */
-    public function status(city $city)
+    public function status($id)
     {
-        $city = city::findOrFail($city->id);
+        $city = city::findOrFail($id);
         $city->update(['status' => !$city->status]);
 
         return response('Update',Response::HTTP_CREATED);
@@ -127,9 +127,9 @@ class CityController extends Controller
      * @param city $city
      * @return ResponseFactory|\Illuminate\Http\Response
      */
-    public function city_vip(city $city)
+    public function city_vip($id)
     {
-        $city = city::findOrFail($city->id);
+        $city = city::findOrFail($id);
         $city->update(['city_vip' => !$city->city_vip]);
 
         return response('Update',Response::HTTP_CREATED);

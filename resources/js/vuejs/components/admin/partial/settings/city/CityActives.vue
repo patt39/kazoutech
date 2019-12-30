@@ -463,7 +463,7 @@
             changeCityVip(item){
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get(`/dashboard/change_city_vip_cities/${item.id}`, {
+                axios.get(`/dashboard/cities/change_city_vip_cities/${item.id}`, {
                     city_vip: item.city_vip,
                 }).then(res => {
 

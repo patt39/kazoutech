@@ -112,7 +112,7 @@ class FooterUserSite extends Component {
                                         </li>
                                         <li>
                                             <a href="#">
-                                                Mécanicien de voitures
+                                                Méccanicien de voitures
                                             </a>
                                         </li>
                                     </ul>
@@ -123,7 +123,7 @@ class FooterUserSite extends Component {
                                     <h4 className="mt-3">Top Villes</h4>
                                     <ul>
                                         <li>
-                                            <a href="/service/douala">
+                                            <a href="...">
                                                 Douala
                                             </a>
                                         </li>

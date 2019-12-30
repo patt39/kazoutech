@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import FooterUserSite from "../inc/FooterUserSite";
 import NavUserSIte from "../inc/NavUserSIte";
 
@@ -17,14 +17,13 @@ class AboutSite extends Component {
 
     render() {
         return (
-
             <>
                 <div className="about-us">
-                    <NavUserSIte/>
+                    <NavUserSIte />
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image page-header-mini"
-                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
+                                style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }} />
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
@@ -39,14 +38,14 @@ class AboutSite extends Component {
                                     <div className="col-lg-4 mr-auto text-left mt-4">
                                         <div className="card bg-default shadow border-0">
                                             <img src="/assets/vendor_site/img/theme/img-1-1200x1000.jpg"
-                                                 className="card-img-top"/>
+                                                className="card-img-top" />
                                             <blockquote className="card-blockquote">
                                                 <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-                                                     viewBox="0 0 583 95" className="svg-bg">
+                                                    viewBox="0 0 583 95" className="svg-bg">
                                                     <polygon points="0,52 583,95 0,95"
-                                                             className="fill-default"></polygon>
+                                                        className="fill-default"></polygon>
                                                     <polygon points="0,42 583,95 683,0 0,95" opacity=".2"
-                                                             className="fill-default"></polygon>
+                                                        className="fill-default"></polygon>
                                                 </svg>
                                                 <h4 className="display-4 text-white">Technologies pour tous</h4>
                                                 <p className="lead text-italic text-white">Les nouvelles technologies
@@ -120,16 +119,16 @@ class AboutSite extends Component {
                                     <div className="col-lg-10 mx-auto">
                                         <h3 className="display-3 mb-5">Notre Derniér Blogpost</h3>
                                         <div className="card card-blog card-background card-grande"
-                                             data-animation="zooming">
+                                            data-animation="zooming">
                                             <div className="full-background"
-                                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/sections/unsplashs.jpg' + ")"}}></div>
+                                                style={{ backgroundImage: "url(" + '/assets/vendor_site/img/sections/unsplashs.jpg' + ")" }}></div>
                                             <a href="javascript:;">
                                                 <div className="card-body mb-4">
                                                     <h2 className="card-title">Miami Vice</h2>
                                                     <p className="card-description text-white">Une simple illustration
                                                         de comment nous travaillons pour toujours vous apporter le
                                                         meilleur de nos service</p>
-                                                    <br/>
+                                                    <br />
                                                 </div>
                                             </a>
                                         </div>
@@ -148,228 +147,193 @@ class AboutSite extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div id="carouselExampleControls" className="carousel slide carousel-team">
-                                        <div className="carousel-inner">
-                                            <div className="carousel-item active">
-                                                <div className="container">
-                                                    <div className="row">
-                                                        <div className="col-md-5 p-5">
-                                                            <div className="p-4">
-                                                                <img
-                                                                    className="rounded shadow transform-perspective-left"
-                                                                    src="/assets/vendor_site/img/theme/kareya-saleh.jpg"
-                                                                    alt="First slide"/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-7">
-                                                            <div className="wrapper p-md-0">
-                                                                <h3 className="card-title display-3">Boclair
-                                                                    Temgoua</h3>
-                                                                <div className="lead">
-                                                                    Artist is a term applied to a person who engages in
-                                                                    an activity deemed to be an art. An artist also may
-                                                                    be defined unofficially as "a person should is one
-                                                                    who expresses him- or herself through a medium". He
-                                                                    is should a descriptive term applied to a person who
-                                                                    engages in an activity deemed to be an art.
-                                                                </div>
-                                                                <ul className="list-unstyled mb-0">
-                                                                    <li className="py-1">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <div>
-                                                                                <div
-                                                                                    className="badge badge-circle badge-info mr-3">
-                                                                                    <i className="ni ni-atom"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p className="mb-1">Entrepreneur</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li className="py-1">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <div>
-                                                                                <div
-                                                                                    className="badge badge-circle badge-success mr-3">
-                                                                                    <i className="ni ni-user-run"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p className="mb-1">Urban
-                                                                                    exploration</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                                <div className="footer text-left">
-                                                                    <a href=".."
-                                                                       className="btn btn-twitter btn-sm rounded-circle"><i
-                                                                        className="fab fa-twitter"></i></a>
-                                                                    <a href=".."
-                                                                       className="btn btn-facebook btn-sm rounded-circle"><i
-                                                                        className="fab fa-facebook-square"></i></a>
-                                                                    <a href=".."
-                                                                       className="btn btn-dribbble btn-sm rounded-circle"><i
-                                                                        className="fab fa-dribbble"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                    <div className="col-lg-4 col-md-6">
+                                        <div className="card card-profile" data-image="profile-image">
+                                            <div className="card-header">
+                                                <div className="card-image">
+                                                    <a href="javascript:;">
+                                                        <img className="img rounded"
+                                                            src="/assets/vendor_site/img/faces/ali-pazani.jpg" />
+                                                    </a>
                                                 </div>
                                             </div>
-                                            <div className="carousel-item">
-                                                <div className="container">
-                                                    <div className="row">
-                                                        <div className="col-md-5 p-5">
-                                                            <div className="p-4">
-                                                                <img
-                                                                    className="rounded shadow transform-perspective-left"
-                                                                    src="/assets/vendor_site/img/theme/lucy.jpg"
-                                                                    alt="First slide"/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-7">
-                                                            <div className="wrapper p-md-0">
-                                                                <h1 className="card-title">Patrick Noubissi</h1>
-                                                                <div className="lead">
-                                                                    Artist is a term applied to a person who engages in
-                                                                    an activity deemed to be an art. An artist also may
-                                                                    be defined unofficially as "a person should is one
-                                                                    who expresses him- or herself through a medium". He
-                                                                    is should a descriptive term applied to a person who
-                                                                    engages in an activity deemed to be an art."
+                                            <div className="card-body pt-0">
+                                                <h4 className="display-4 mb-0">Boclair Temgoua</h4>
+                                                <p className="lead">UX Designer</p>
+                                                <div className="table-responsive">
+                                                    <ul className="list-unstyled ">
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-info mr-3">
+                                                                        <i className="ni ni-atom"></i>
+                                                                    </div>
                                                                 </div>
-                                                                <ul className="list-unstyled mb-0">
-                                                                    <li className="py-1">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <div>
-                                                                                <div
-                                                                                    className="badge badge-circle badge-info mr-3">
-                                                                                    <i className="ni ni-atom"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p className="mb-1">Dedicated
-                                                                                    entrepreneur</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li className="py-1">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <div>
-                                                                                <div
-                                                                                    className="badge badge-circle badge-success mr-3">
-                                                                                    <i className="ni ni-user-run"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p className="mb-1">Urban
-                                                                                    exploration</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                                <div className="footer text-left">
-                                                                    <a href=".."
-                                                                       className="btn btn-twitter btn-sm rounded-circle"><i
-                                                                        className="fab fa-twitter"></i></a>
-                                                                    <a href=".."
-                                                                       className="btn btn-facebook btn-sm rounded-circle"><i
-                                                                        className="fab fa-facebook-square"></i></a>
-                                                                    <a href=".."
-                                                                       className="btn btn-dribbble btn-sm rounded-circle"><i
-                                                                        className="fab fa-dribbble"></i></a>
+                                                                <div>
+                                                                    <h6 className="mb-1">Keen on great
+                                                                                design</h6>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="carousel-item">
-                                                <div className="container">
-                                                    <div className="row">
-                                                        <div className="col-md-5 p-5">
-                                                            <div className="p-4">
-                                                                <img
-                                                                    className="rounded shadow transform-perspective-left"
-                                                                    src="/assets/vendor_site/img/theme/willy-dade.jpg"
-                                                                    alt="First slide"/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-7">
-                                                            <div className="wrapper p-md-0">
-                                                                <h1 className="card-title">Randrin Nzeukang</h1>
-                                                                <div className="lead">
-                                                                    Artist is a term applied to a person who engages in
-                                                                    an activity deemed to be an art. An artist also may
-                                                                    be defined unofficially as "a person should is one
-                                                                    who expresses him- or herself through a medium". He
-                                                                    is should a descriptive term applied to a person who
-                                                                    engages in an activity deemed to be an art."
+                                                        </li>
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-success mr-3">
+                                                                        <i className="ni ni-user-run"></i>
+                                                                    </div>
                                                                 </div>
-                                                                <ul className="list-unstyled mb-0">
-                                                                    <li className="py-1">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <div>
-                                                                                <div
-                                                                                    className="badge badge-circle badge-info mr-3">
-                                                                                    <i className="ni ni-atom"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p className="mb-1">Dedicated
-                                                                                    entrepreneur</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li className="py-1">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <div>
-                                                                                <div
-                                                                                    className="badge badge-circle badge-success mr-3">
-                                                                                    <i className="ni ni-user-run"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p className="mb-1">Urban
-                                                                                    exploration</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                                <div className="footer text-left">
-                                                                    <a href=".."
-                                                                       className="btn btn-twitter btn-sm rounded-circle"><i
-                                                                        className="fab fa-twitter"></i></a>
-                                                                    <a href=".."
-                                                                       className="btn btn-facebook btn-sm rounded-circle"><i
-                                                                        className="fab fa-facebook-square"></i></a>
-                                                                    <a href=".."
-                                                                       className="btn btn-dribbble btn-sm rounded-circle"><i
-                                                                        className="fab fa-dribbble"></i></a>
+                                                                <div>
+                                                                    <h6 className="mb-1">Outdors lover</h6>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        </li>
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-danger mr-3">
+                                                                        <i className="ni ni-chart-bar-32"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">Super friendly support
+                                                                                team</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a className="carousel-control-prev" href="#carouselExampleControls"
-                                           role="button" data-slide="prev">
-                                            <i className="ni ni-bold-left"></i>
-                                            <span className="sr-only">Previous</span>
-                                        </a>
-                                        <a className="carousel-control-next" href="#carouselExampleControls"
-                                           role="button" data-slide="next">
-                                            <i className="ni ni-bold-right"></i>
-                                            <span className="sr-only">Next</span>
-                                        </a>
+                                    </div>
+                                    <div className="col-lg-4 col-md-6">
+                                        <div className="card card-profile" data-image="profile-image">
+                                            <div className="card-header">
+                                                <div className="card-image">
+                                                    <a href="javascript:;">
+                                                        <img className="img rounded"
+                                                            src="/assets/vendor_site/img/faces/team-5.jpg" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div className="card-body pt-0">
+                                                <h4 className="display-4 mb-0">Patrick Noubissi</h4>
+                                                <p className="lead">Team Lead</p>
+                                                <div className="table-responsive">
+                                                    <ul className="list-unstyled ">
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-info mr-3">
+                                                                        <i className="ni ni-atom"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">Dedicated
+                                                                                entrepreneur</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-success mr-3">
+                                                                        <i className="ni ni-user-run"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">Urban exploration</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-danger mr-3">
+                                                                        <i className="ni ni-chart-bar-32"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">Able to get good at
+                                                                                everything</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-4 col-md-6">
+                                        <div className="card card-profile" data-image="profile-image">
+                                            <div className="card-header">
+                                                <div className="card-image">
+                                                    <a href="javascript:;">
+                                                        <img className="img rounded"
+                                                            src="/assets/vendor_site/img/faces/atikh.jpg" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div className="card-body pt-0">
+                                                <h4 className="display-4 mb-0">Randrin</h4>
+                                                <p className="lead">Content Creator</p>
+                                                <div className="table-responsive">
+                                                    <ul className="list-unstyled ">
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-info mr-3">
+                                                                        <i className="ni ni-atom"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">High quality
+                                                                                publication</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-success mr-3">
+                                                                        <i className="ni ni-user-run"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">Storytelling</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li className="py-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div>
+                                                                    <div
+                                                                        className="badge badge-circle badge-danger mr-3">
+                                                                        <i className="ni ni-chart-bar-32"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 className="mb-1">Master of words
+                                                                                qualification</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                        <FooterUserSite/>
+                        <FooterUserSite />
                     </div>
                 </div>
             </>
