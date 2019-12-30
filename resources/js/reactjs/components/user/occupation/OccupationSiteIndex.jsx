@@ -3,7 +3,6 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AllOccupation from "../../inc/AllOccupation";
 import CitySite from "../city/CitySite";
-import {Link} from "react-router-dom";
 
 
 class OccupationSiteIndex extends Component {
@@ -92,7 +91,8 @@ class OccupationSiteIndex extends Component {
                                                 </div>
                                             </div>
                                             <div className="col-sm-4">
-                                                <button type="button" className="btn btn-success btn-block">souscrivez
+                                                <button type="button" className="btn btn-success btn-block">
+                                                    souscrivez
                                                 </button>
                                             </div>
                                         </div>

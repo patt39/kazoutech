@@ -3,6 +3,9 @@
 namespace App\Model\user;
 
 use App\Mail\NewUserWelcomeMail;
+use App\Model\admin\annonce;
+use App\Model\admin\blog;
+use App\Model\admin\city;
 use App\Model\admin\country;
 use App\Model\admin\task;
 use App\Notifications\VerifyEmailUsers;
@@ -41,6 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     protected $dates = ['deleted_at'];
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'status_profile_verify' => 'boolean',
     ];
 
     protected static function boot()
@@ -118,5 +122,20 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     public function profile()
     {
         return $this->hasOne(profile::class,'user_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(city::class,'city_id');
+    }
+
+    public function annonces()
+    {
+        return $this->hasMany(annonce::class,'user_id');
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(blog::class,'user_id');
     }
 }

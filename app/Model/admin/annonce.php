@@ -19,6 +19,10 @@ class annonce extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
     public function categoryoccupation()
     {
         return $this->belongsTo(categoryoccupation::class,'categoryoccupation_id');

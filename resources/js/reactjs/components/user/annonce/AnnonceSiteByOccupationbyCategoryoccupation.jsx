@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
+import moment from "moment";
+import {Button} from "reactstrap";
 
 
 class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
@@ -76,10 +78,10 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
     componentDidMount() {
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         let SlugOccupation = this.props.match.params.occupation;
-        dyaxios.get(route('api_annonce_city_site.view',[SlugOccupation,SlugCategoryoccupation]))
+        dyaxios.get(route('api_annonce_occupation_categoryoccupation_site.view',[SlugOccupation,SlugCategoryoccupation]))
             .then(response =>
                 this.setState({
-                    annoncebycity: response.data,
+                    annoncebycategoryoccupation: response.data,
                 }));
         dyaxios.get(route('api.cities_by_vip')).then(response =>
             this.setState({
@@ -91,7 +93,9 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
         const {annoncebycategoryoccupation,cities} = this.state;
         const annoncebycategoryoccupations = annoncebycategoryoccupation.annonces;
         const composantTitle = `${annoncebycategoryoccupation.name}`;
-        document.title = `Annonce dans la ville de ${composantTitle} | Kaazoutech`;
+        document.title = `Annonce de ${composantTitle} | Kaazoutech`;
+        let SlugOccupation = this.props.match.params.occupation;
+        let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -106,7 +110,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                         Restez a l'affue de toutes les annonces sur <b>{annoncebycategoryoccupation.name}</b>
                                     </h4>
                                     <div className="author">
-                                        <Link to={'/annonces/'} className="text-white">
+                                        <Link to={`/annonces/${SlugOccupation}/`} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> Retour Annonces
                                         </Link>
                                     </div>
@@ -144,9 +148,9 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
 
                                                                     {cities.map((item) => (
                                                                         <li key={item.id} className="mb-2">
-                                                                            <a href={`/annonces/${this.props.match.params.occupation}/v/${item.slug}/`}>
+                                                                            <Link to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
                                                                                 {item.name}
-                                                                            </a>
+                                                                            </Link>
                                                                         </li>
                                                                     ))}
 
@@ -168,7 +172,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                 <div className="card mb-3 text-center">
                                                                     <div className="card-body"><p
                                                                         className="h5 font-weight-normal mb-3 text-success">Vous avez une annonce?</p>
-                                                                        <Link to={`/annonces/${this.props.match.params.occupation}/new/create/`} className="btn btn-success mb-2"
+                                                                        <Link to={`/annonces/${SlugOccupation}/new/create/`} className="btn btn-success mb-2"
                                                                               type="button" disabled="">
                                                                             <span
                                                                                 className="spinner-grow spinner-grow-sm"
@@ -194,7 +198,55 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 {annoncebycategoryoccupations.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
+                                                                    <div key={item.id}
+                                                                         className="card card-blog card-plain blog-horizontal mb-5">
+                                                                        <div className="row">
+                                                                            <div className="col-lg-12">
+                                                                                <h5 className="card-title">
+                                                                                    <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.city.slug}/${item.slug}/`}>
+                                                                                        {item.title}
+                                                                                    </Link>
+                                                                                </h5>
+                                                                                <p className="card-description">
+                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 156 ? item.body.substring(0, 156) + "..." : item.body) }} />
+                                                                                    <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.city.slug}/${item.slug}/`}> lire la suite </Link>
+                                                                                </p>
+                                                                                <div className="card-header d-flex align-items-center">
+                                                                                    <div className="d-flex align-items-center">
+                                                                                        <NavLink to={`/user/${item.user.username}/`}>
+                                                                                            <img src={item.user.avatar} alt={item.user.name} className="avatar" />
+                                                                                        </NavLink>
+                                                                                        <div className="mx-3">
+                                                                                            <NavLink to={`/user/${item.user.username}/`} className="text-dark font-weight-600 text-sm">{item.user.name}</NavLink>
+                                                                                            <small className="d-block text-muted">{moment(item.created_at).startOf('hour').fromNow()}</small>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div className="text-right ml-auto">
+                                                                                        {item.price ?
+                                                                                            <button type="button" className={`btn btn-sm btn-${item.user.color_name} btn-icon`}>
+                                                                                                <span className="btn-inner--text">{item.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
+                                                                                            </button>
+                                                                                            : null}
+
+                                                                                        <NavLink to={`/annonces/${SlugOccupation}/p/${item.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                                                                <span className="btn-inner--icon icon-big">
+                                                                                                    <i className="ni ni-check-bold" />
+                                                                                                </span>
+                                                                                            <span className="btn-inner--text">editer</span>
+                                                                                        </NavLink>
+                                                                                        <Button onClick={() => this.deleteItem(item.id)}
+                                                                                                className="btn btn-sm btn-danger btn-icon">
+                                                                                                    <span className="btn-inner--icon icon-big">
+                                                                                                        <i className="ni ni-fat-remove" />
+                                                                                                    </span>
+                                                                                            <span className="btn-inner--text">Suprimer</span>
+                                                                                        </Button>{" "}
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 ))}
                                                             </div>
                                                         </div>

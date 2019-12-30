@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch,withRouter} from 'react-router-dom';
 import IndexSite from "../components/user/IndexSite";
 import AboutSite from "../components/user/AboutSite";
 import ConceptSite from "../components/user/ConceptSite";
@@ -22,6 +22,11 @@ import AnnonceSiteCreate from "../components/user/annonce/traitement/AnnonceSite
 import AnnonceSiteByCity from "../components/user/annonce/AnnonceSiteByCity";
 import AnnonceSiteByOccupationbyCategoryoccupation
     from "../components/user/annonce/AnnonceSiteByOccupationbyCategoryoccupation";
+import AnnonceSiteByOccupationCategoryoccupationCity
+    from "../components/user/annonce/AnnonceSiteByOccupationCategoryoccupationCity";
+import CharbonneurSiteByCity from "../components/user/charbonneur/CharbonneurSiteByCity";
+import CharbonneurSiteByOccupation from "../components/user/charbonneur/CharbonneurSiteByOccupation";
+import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
 
 
 
@@ -29,21 +34,25 @@ const RouterUser = props => (
 
     <Switch>
         <Route exact path="/" component={IndexSite}/>
+        <Route exact path="/user/:username/" component={ProfileSiteIndex}/>
         <Route exact path="/occupations/" component={OccupationSiteIndex}/>
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation" component={CategoryOccupationShow}/>
         <Route exact path="/blog/" component={BlogSiteIndex}/>
-        <Route exact path="/blog/:occupation/" component={BlogSiteCategories}/>
-        <Route exact path="/blog/:occupation/:blog/" component={BlogSiteShow}/>
+        <Route exact path="/blog/:occupation/" component={withRouter(BlogSiteCategories)}/>
+        <Route exact path="/blog/:occupation/:blog/" component={withRouter(BlogSiteShow)}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
-        <Route exact path="/annonces/c/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation/:city" component={withRouter(AnnonceSiteByOccupationCategoryoccupationCity)}/>
+        <Route exact path="/annonces/:occupation/:catagoryoccupation/:city/:annonce/" component={AnnonceSiteShow}/>
         <Route exact path="/annonces/v/:city" component={AnnonceSiteByCity}/>
-        <Route exact path="/annonces/:occupation/" component={AnnonceSiteByOccupation}/>
+        <Route exact path="/annonces/:occupation/" component={withRouter(AnnonceSiteByOccupation)}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>
-        <Route exact path="/annonces/:occupation/new/create/" component={AnnonceSiteCreate}/>
-        <Route exact path="/annonces/:occupation/:id/edit/" component={AnnonceSiteEdit}/>
-        <Route exact path="/annonces/:occupation/:annonce/" component={AnnonceSiteShow}/>
+        <Route exact path="/annonces/:occupation/new/p/create/" component={AnnonceSiteCreate}/>
+        <Route exact path="/annonces/:occupation/p/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
+        <Route exact path="/charbonneurs/:city/" component={withRouter(CharbonneurSiteByCity)}/>
+        <Route exact path="/charbonneurs/:city/:occupation/" component={withRouter(CharbonneurSiteByOccupation)}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>
         <Route exact path="/about/" component={AboutSite}/>
         <Route exact path="/concept/" component={ConceptSite}/>

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import OccupationHeader from "../../inc/OccupationHeader";
-import CategoryOcupationList from "./categoryoccupation/CategoryOcupationList";
 import CitySite from "../city/CitySite";
 
 
@@ -61,7 +60,7 @@ class OccupationSiteSlug extends Component {
                                                             <Link to={`/annonces/${occupation.slug}/o/${item.slug}/`}>
                                                                 <h2 className="card-title">{item.name}</h2>
                                                             </Link>
-                                                            <Link to={`/annonces/${occupation.slug}/c/${item.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                                            <Link to={`/annonces/${occupation.slug}/${item.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
                                                                 En savoir plus
                                                             </Link>
                                                         </div>

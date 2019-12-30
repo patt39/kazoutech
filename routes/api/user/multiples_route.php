@@ -14,11 +14,14 @@ Route::get('all_last_blogs_interesse/{occupation}','MultiplesRouteController@api
 Route::get('annonces','MultiplesRouteController@apiannonces')->name('api_active.annonces');
 Route::get('annonces/v/{city}','MultiplesRouteController@apiannoncesbycity')->name('api_annonce_by_city_site.view');
 Route::get('annonces/{occupation}','MultiplesRouteController@apiannoncesbyoccupation')->name('api_annonce_occupation_site.view');
-Route::get('annonces/{occupation}/{categoryoccupation}','MultiplesRouteController@apiannoncesbycategoryoccupation')->name('api_annonce_occupation_site.view');
-//Route::get('annonces/{occupation}/{annonce}','MultiplesRouteController@apiannoncesoccupationshow')->name('api_annonce_site.view');
+Route::get('annonces/{occupation}/{categoryoccupation}','MultiplesRouteController@apiannoncesbycategoryoccupation')->name('api_annonce_occupation_categoryoccupation_site.view');
+Route::get('annonces/{occupation}/{categoryoccupation}/{city}','MultiplesRouteController@apiannoncesbycity')->name('api_annonce_occupation_categoryoccupation_city_site.view');
+Route::get('annonces/{occupation}/{categoryoccupation}/{city}/{annonce}','MultiplesRouteController@apiannoncesoccupationshow')->name('api_annonce_site.view');
 Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@apiannoncesbyoccupationbycity')->name('api_annonce_city_site.view');
 
 
 Route::get('charbonneurs','MultiplesRouteController@apicharbonneurs')->name('api_active_charbonneurs');
+Route::get('charbonneurs/{city}','MultiplesRouteController@apicharbonneursbycity')->name('api_active_charbonneurs_city.view');
+Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@apicharbonneursbyoccupation')->name('api_active_charbonneurs_occupation.view');
 
 Route::get('temoignages','MultiplesRouteController@apitemoignages')->name('api_active_testimonials');

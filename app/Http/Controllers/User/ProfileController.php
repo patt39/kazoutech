@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Resources\user\ProfileResource;
+use App\Http\Resources\UserResource;
 use App\Model\user\profile;
 use App\Model\user\User;
 use Illuminate\Http\Request;
@@ -18,19 +19,20 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => ['view','profileView']]);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return ProfileResource|\Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
         $profile = new ProfileResource(profile::where('id', $id)->findOrFail($id));
-        return $profile;
+
+        return response()->json($profile,200);
     }
 
     /**
@@ -54,6 +56,23 @@ class ProfileController extends Controller
         }
 
 
+    }
+
+    public function view($username)
+    {
+        $user = new UserResource(User::where('username', $username)->firstOrFail());
+
+        return response()->json($user,200);
+    }
+
+    public function profileView($username)
+    {
+        if($username) {
+            $user = User::where('username', $username)->firstOrFail();
+        } else {
+            $user = User::findOrFail(auth()->user()->id);
+        }
+        return view("user.profile.profileIndex")->withUser($user);
     }
 
     /**
@@ -84,7 +103,7 @@ class ProfileController extends Controller
 
     /**
      * @param profile $profile
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function statusOnline(profile $profile)
     {

@@ -43,6 +43,10 @@ class color extends Model implements Auditable
         return $this->belongsTo(User::class);
     }
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
     /**
      * save and deleting image
      */

@@ -8,7 +8,7 @@
 @auth
     <meta name="userID" content="{{ auth()->user()->id }}">
     <script>
-        window.user = {!! json_encode([
+    window.userKazouteh = {!! json_encode([
     'roles' => auth()->user()->roles,
     'permissions' => auth()->user()->getAllPermissions(),
     ]) !!}
@@ -16,7 +16,7 @@
 @endauth
 <script>window.Kazoutech = { csrfToken: '{{ csrf_token() }}' }; </script>
 <script>
-    window.user = {!! json_encode([
+    window.userKazouteh = {!! json_encode([
     'user' => auth()->user(),
     'guest' => auth()->guest(),
     'authcheck' => auth()->check(),

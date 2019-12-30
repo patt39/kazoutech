@@ -3,13 +3,14 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
 import {Link} from "react-router-dom";
+import AnnonceOccupationList from "./AnnonceOccupationList";
 
 
 class AnnonceSiteByOccupation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annoncebyoccupation: {annonces:[]},
+            annoncebyoccupation: {annonces:[],categoryoccupations:[]},
             cities:[],
         };
 
@@ -85,6 +86,7 @@ class AnnonceSiteByOccupation extends Component {
     render() {
         const {annoncebyoccupation,cities} = this.state;
         const annoncebyoccupations = annoncebyoccupation.annonces;
+        const annoncebycategoryoccupations = annoncebyoccupation.categoryoccupations;
         const composantTitle = `${annoncebyoccupation.name}`;
         document.title = `${composantTitle} | Kaazoutech`;
         return (
@@ -130,22 +132,26 @@ class AnnonceSiteByOccupation extends Component {
                                                 <div className="row">
 
                                                     <div className="col-md-4">
+
                                                         <div className="card mb-3">
-                                                            <div className="card-header h6">Villes</div>
+                                                            <div className="card-header h6">Categories</div>
                                                             <div className="card-body">
                                                                 <ul className="list-unstyled">
-
-                                                                    {cities.map((item) => (
+                                                                    {annoncebycategoryoccupations.map((item) => (
                                                                         <li key={item.id} className="mb-2">
-                                                                            <Link to={`/annonces/${annoncebyoccupation.slug}/v/${item.slug}/`}>
-                                                                                {item.name}
-                                                                            </Link>
+                                                                            {item.status ?
+                                                                                <Link to={`/annonces/${annoncebyoccupation.slug}/${item.slug}/`}>
+                                                                                    {item.name}
+                                                                                </Link>
+                                                                                :null}
                                                                         </li>
                                                                     ))}
-
                                                                 </ul>
                                                             </div>
                                                         </div>
+
+                                                        <AnnonceOccupationList/>
+
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
@@ -155,7 +161,7 @@ class AnnonceSiteByOccupation extends Component {
                                                                 <div className="card mb-3 text-center">
                                                                     <div className="card-body"><p
                                                                         className="h5 font-weight-normal mb-3 text-success">Vous avez une annonce?</p>
-                                                                        <Link to={`/annonces/${annoncebyoccupation.slug}/new/create/`} className="btn btn-success mb-2"
+                                                                        <Link to={`/annonces/${annoncebyoccupation.slug}/new/p/create/`} className="btn btn-success mb-2"
                                                                                 type="button" disabled="">
                                                                             <span
                                                                                 className="spinner-grow spinner-grow-sm"

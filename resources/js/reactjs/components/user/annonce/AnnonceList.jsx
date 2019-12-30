@@ -22,21 +22,21 @@ class AnnonceList extends Component {
                 <div className="row">
                     <div className="col-lg-12">
                         <h5 className="card-title">
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.slug}/`}>
+                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
                                 {this.props.title}
                             </Link>
                         </h5>
                         <p className="card-description">
                             <b dangerouslySetInnerHTML={{ __html: (this.props.body.length > 156 ? this.props.body.substring(0, 156) + "..." : this.props.body) }} />
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
                         </p>
                         <div className="card-header d-flex align-items-center">
                             <div className="d-flex align-items-center">
-                                <a href="..">
+                                <NavLink to={`/user/${this.props.user.username}/`}>
                                     <img src={this.props.user.avatar} alt={this.props.user.name} className="avatar" />
-                                </a>
+                                </NavLink>
                                 <div className="mx-3">
-                                    <a href=".." className="text-dark font-weight-600 text-sm">{this.props.user.name}</a>
+                                    <NavLink to={`/user/${this.props.user.username}/`} className="text-dark font-weight-600 text-sm">{this.props.user.name}</NavLink>
                                     <small className="d-block text-muted">{moment(this.props.created_at).startOf('hour').fromNow()}</small>
                                 </div>
                             </div>
@@ -47,19 +47,28 @@ class AnnonceList extends Component {
                                     </button>
                                     : null}
 
-                                <NavLink to={`/annonces/${this.props.occupation.slug}/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
-                                    <span className="btn-inner--icon icon-big">
-                                        <i className="ni ni-check-bold" />
-                                    </span>
-                                    <span className="btn-inner--text">editer</span>
-                                </NavLink>
-                                <Button onClick={() => this.props.deleteItem(this.props.id)}
-                                    className="btn btn-sm btn-danger btn-icon">
-                                    <span className="btn-inner--icon icon-big">
-                                        <i className="ni ni-fat-remove" />
-                                    </span>
-                                    <span className="btn-inner--text">Suprimer</span>
-                                </Button>{" "}
+                                {!$guest ?
+                                    <>
+                                        {$userKazou.id === this.props.user_id ?
+                                            <>
+                                                <NavLink to={`/annonces/${this.props.occupation.slug}/p/${this.props.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                    <span className="btn-inner--icon icon-big">
+                                                        <i className="ni ni-check-bold" />
+                                                    </span>
+                                                    <span className="btn-inner--text">editer</span>
+                                                </NavLink>
+                                                <Button onClick={() => this.props.deleteItem(this.props.id)}
+                                                        className="btn btn-sm btn-danger btn-icon">
+                                                        <span className="btn-inner--icon icon-big">
+                                                            <i className="ni ni-fat-remove" />
+                                                        </span>
+                                                    <span className="btn-inner--text">Suprimer</span>
+                                                </Button>{" "}
+                                            </>
+                                            :null}
+                                    </>
+
+                                    :null}
                             </div>
                         </div>
 

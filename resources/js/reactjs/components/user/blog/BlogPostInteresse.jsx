@@ -41,12 +41,12 @@ class BlogPostInteresse extends Component {
                                     {item.occupation.name}
                                 </Link>
                                 <h6 className="card-title text-center">
-                                    <a href={`/blog/${item.occupation.slug}/${item.slug}/`} className="card-link"> {item.title}</a>
+                                    <NavLink to={`/blog/${item.occupation.slug}/${item.slug}/`} className="card-link"> {item.title}</NavLink>
                                 </h6>
                                 <b/>
                                 <p className="card-description">
                                     <b dangerouslySetInnerHTML={{__html: (item.body.length > 48 ? item.body.substring(0, 48) + "..." : item.body)}}/>
-                                    <a href={`/blog/${item.occupation.slug}/${item.slug}/`}> lire la suite </a>
+                                    <NavLink to={`/blog/${item.occupation.slug}/${item.slug}/`}> lire la suite </NavLink>
                                 </p>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ class AccountController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','view','profileView']]);
+        $this->middleware('auth',['except' => ['api','view']]);
     }
     /**
      * Display a listing of the resource.
@@ -88,15 +88,7 @@ class AccountController extends Controller
         return view('user.profile.profileEdit',compact('user'));
     }
 
-    public function profileView($username)
-    {
-        if($username) {
-            $user = User::where('username', $username)->firstOrFail();
-        } else {
-            $user = User::findOrFail(auth()->user()->id);
-        }
-        return view("user.profile.profileIndex")->withUser($user);
-    }
+
 
 
     public function user()

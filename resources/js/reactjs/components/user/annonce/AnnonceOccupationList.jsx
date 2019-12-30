@@ -29,9 +29,11 @@ class AnnonceOccupationList extends Component {
 
                         {occupations.map((item) => (
                             <li key={item.id} className="mb-2">
-                                <Link to={`/annonces/${item.slug}/`}>
-                                    {item.name}
-                                </Link>
+                                {item.status ?
+                                    <Link to={`/annonces/${item.slug}/`}>
+                                        {item.name}
+                                    </Link>
+                                    :null}
                             </li>
                         ))}
 

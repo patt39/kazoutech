@@ -10,6 +10,11 @@ class FooterUserSite extends Component {
             <footer className="footer footer-big bg-gradient-default">
                 <div className="container">
                     <div className="content">
+                        <div className="row mb-5">
+                            <div className="column mr-auto">
+                                <img src=".." className="logo logo-sm" alt="Kazoutech" />
+                            </div>
+                        </div>
                         <div className="row">
                             <div className="col-md-3">
                                 <div className="column">

@@ -5,15 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Occupations\StoreRequest;
 use App\Http\Requests\Occupations\UpdateRequest;
 use App\Http\Resources\OccupationResource;
-use App\Http\Resources\User\OccupationByStatusResource;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
 use App\Services\Admin\OccupationService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
-use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
 use File;
 
@@ -51,7 +48,7 @@ class OccupationController extends Controller
 
     public function apioccupationbyslug($slug)
     {
-        $occupation = new OccupationByStatusResource(occupation::whereSlug($slug)->firstOrFail());
+        $occupation = new OccupationResource(occupation::whereSlug($slug)->firstOrFail());
 
         return response()->json($occupation,200);
     }
@@ -81,14 +78,14 @@ class OccupationController extends Controller
 
     public function activestatus()
     {
-        $occupations = OccupationByStatusResource::collection(occupation::where('status',1)->latest()->get());
+        $occupations = OccupationResource::collection(occupation::where('status',1)->latest()->get());
 
         return response()->json($occupations,200);
     }
 
     public function apibystatus()
     {
-        $occupations =   OccupationByStatusResource::collection(occupation::with('user')
+        $occupations =   OccupationResource::collection(occupation::with('user')
             ->where('status',1)->latest()->get());
         return $occupations;
     }
