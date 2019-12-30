@@ -119,7 +119,7 @@ class BlogSiteIndex extends Component {
                         <section className="section">
                             <div className="container">
 
-                                <BlogOccupationList/>
+                                <BlogOccupationList />
 
                                 <div className="row">
                                     <div className="col-md-12 ml-auto mr-auto">
