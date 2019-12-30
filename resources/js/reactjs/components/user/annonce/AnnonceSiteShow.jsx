@@ -101,34 +101,31 @@ class AnnonceSiteShow extends Component {
         const annonceinderesses = annonceinteresse.annonces;
         return (
 
-            <div className="checkout-page">
+            <div className="blog-posts">
                 <NavUserSIte/>
                 <div className="wrapper">
-                    <div className="section-shaped my-0 skew-separator skew-mini">
-                        <div className="page-header page-header-small header-filter">
-                            <div className="page-header-image"
-                                 style={{backgroundImage: "url(" + annonce.occupation.photo + ")"}}>
-                            </div>
-                            <div className="container">
-                                <div className="header-body text-center mb-7">
-                                    <div className="row justify-content-center">
-                                        <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                            <Link to={`/annonces/${annonce.occupation.slug}/`} className="text-white">
-                                                <h1 className="text-white">{annonce.occupation.name} </h1>
+                    <div className="page-header page-header-mini header-filter">
+                        <div className="page-header-image"
+                             style={{backgroundImage: "url(" + annonce.occupation.photo + ")"}}/>
+                        <div className="container">
+                            <div className="header-body text-center mb-7">
+                                <div className="row justify-content-center">
+                                    <div className="col-xl-5 col-lg-6 col-md-8 px-5">
+                                        <Link to={`/annonces/${annonce.occupation.slug}/`} className="text-white">
+                                            <h1 className="text-white">{annonce.occupation.name} </h1>
+                                        </Link>
+                                        <div className="author">
+                                            <Link to={'/annonces/'} className="text-white">
+                                                <i className="fa fa-chevron-circle-left"/> Retour Annonces
                                             </Link>
-                                            <div className="author">
-                                                <Link to={'/annonces/'} className="text-white">
-                                                    <i className="fa fa-chevron-circle-left"/> Retour Annonces
-                                                </Link>
-                                            </div>
-                                            <p className="text-lead text-white">{annonce.title}</p>
                                         </div>
+                                        <p className="text-lead text-white">{annonce.title}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="upper">
+                    <div className="main main-raised">
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-4">

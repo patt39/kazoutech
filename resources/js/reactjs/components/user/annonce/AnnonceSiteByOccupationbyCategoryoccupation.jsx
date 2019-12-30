@@ -137,6 +137,8 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                 <div className="row">
 
                                                     <div className="col-md-4">
+
+
                                                         <AnnonceOccupationList/>
 
                                                         <div className="card mb-3">

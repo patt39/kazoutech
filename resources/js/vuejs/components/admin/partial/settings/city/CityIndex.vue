@@ -448,7 +448,7 @@
             changeStatus(item) {
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get(`/dashboard/change_status_cities/${item.id}`, {
+                axios.get(`/dashboard/cities/change_status_cities/${item.id}`, {
                     status: item.status,
                 }).then(res => {
 

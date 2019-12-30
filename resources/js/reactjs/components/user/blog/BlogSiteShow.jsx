@@ -63,13 +63,9 @@ class BlogSiteShow extends Component {
                         </div>
 
 
-                        <div className="text-center">
-                            <h4 className="title">Ces postes peuvent vous interesser </h4>
-                        </div>
-                        <div className="row">
 
-                            <BlogPostInteresse  {...this.props}/>
-                        </div>
+
+                        <BlogPostInteresse  {...this.props}/>
 
                         <div className="text-center">
                             <Link to={`/blog/${blog.occupation.slug}/`}

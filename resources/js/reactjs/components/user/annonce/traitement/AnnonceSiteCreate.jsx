@@ -142,30 +142,27 @@ class AnnonceSiteCreate extends Component {
             <div className="checkout-page">
                 <NavUserSIte />
                 <div className="wrapper">
-                    <div className="section-shaped my-0 skew-separator skew-mini">
-                        <div className="page-header page-header-small header-filter">
-                            <div className="page-header-image"
-                                style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}>
-                            </div>
-                            <div className="container">
-                                <div className="header-body text-center mb-7">
-                                    <div className="row justify-content-center">
-                                        <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                            <Link to={`/annonces/`} className="text-white">
-                                                <h5 className="text-white">{this.state.title}</h5>
+                    <div className="page-header page-header-mini header-filter">
+                        <div className="page-header-image"
+                             style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}/>
+                        <div className="container">
+                            <div className="header-body text-center mb-7">
+                                <div className="row justify-content-center">
+                                    <div className="col-xl-5 col-lg-6 col-md-8 px-5">
+                                        <Link to={`/annonces/`} className="text-white">
+                                            <h5 className="text-white">{this.state.title}</h5>
+                                        </Link>
+                                        <div className="author">
+                                            <Link to={`/annonces/${occupationdata.slug}`} className="text-white">
+                                                <i className="fa fa-chevron-circle-left"/> Retour {occupationdata.name}
                                             </Link>
-                                            <div className="author">
-                                                <Link to={`/annonces/${occupationdata.slug}`} className="text-white">
-                                                    <i className="fa fa-chevron-circle-left"/> Retour {occupationdata.name}
-                                                </Link>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="upper">
+                    <div className="main main-raised">
                         <div className="container">
                             <form className="js-validate" onSubmit={this.createItem}>
                                 <div className="row">

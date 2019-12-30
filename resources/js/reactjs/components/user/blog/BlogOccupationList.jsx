@@ -25,12 +25,12 @@ class BlogOccupationList extends Component {
             <div className={'row'}>
                 <div className="col-md-12 ml-auto mr-auto text-center">
 
-                    {occupations.map((item) => (
+                    {occupations.map((item,index) => (
                         <>
-                          <NavLink key={item.id} to={`/blog/${item.slug}/`}
+                          <Link key={index} to={`/blog/${item.slug}/`}
                               className="btn btn-outline-primary ">
                               {item.name}
-                          </NavLink>
+                          </Link>
                         </>
 
                     ))}

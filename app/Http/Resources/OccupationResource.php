@@ -16,7 +16,10 @@ class OccupationResource extends JsonResource
     {
 
         $categoryoccupations =  $this->categoryoccupations()->with('occupation','user','color')
-            ->whereIn('occupation_id',[$this->id])->distinct()->get()->toArray();
+            ->whereIn('occupation_id',[$this->id])
+            ->where(function ($q) {
+                $q->where('status',1);
+            })->distinct()->get()->toArray();
 
 
         $blogbycategories =  $this->blogs()->with('occupation','user')
