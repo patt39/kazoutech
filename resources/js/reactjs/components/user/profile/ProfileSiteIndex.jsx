@@ -175,7 +175,15 @@ class ProfileSiteIndex extends Component {
                                         </div>
                                         <div className="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                             <div className="card-profile-actions py-4 mt-lg-0">
-                                                <a href="#" className="btn btn-sm btn-info mr-4">Editer mon profile</a>
+                                                {!$guest && (
+                                                  <>
+                                                      {$userKazou.id === userProfile.id  && (
+                                                          <a href="#" className="btn btn-sm btn-info mr-4">Editer mon profile</a>
+                                                      )}
+                                                  </>
+
+                                                )}
+
                                                 <a href="#" className="btn btn-sm btn-info mr-4">Connect</a>
                                                 {userProfile.status_profile_verify && (
                                                     <button  type={'button'} className="btn btn-sm btn-success float-right">
