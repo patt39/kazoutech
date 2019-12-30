@@ -105,9 +105,18 @@
     .carousel-indicators {
         display: none;
     }
+    ul.navbar-nav li a.btn {
+        width: 100%;
+    }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
     .navbar-transparent .navbar-brand {
         left: 0%;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    #navbar_global {
+        margin: 0px -170px 0px;
+        position: relative;
     }
 }

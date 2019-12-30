@@ -24,7 +24,6 @@ class BlogOccupationList extends Component {
 
             <div className={'row'}>
                 <div className="col-md-12 ml-auto mr-auto text-center">
-
                     {occupations.map((item,index) => (
                         <>
                           <Link key={index} to={`/blog/${item.slug}/`}
@@ -32,7 +31,6 @@ class BlogOccupationList extends Component {
                               {item.name}
                           </Link>
                         </>
-
                     ))}
 
                 </div>
