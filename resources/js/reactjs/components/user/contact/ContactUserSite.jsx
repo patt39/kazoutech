@@ -231,7 +231,7 @@ class ContactUserSite extends Component {
                                         <i className="ni ni-square-pin"/>
                                     </div>
                                     <h4 className="info-title">Contact</h4>
-                                    <p className="description px-0">Kazoutesch Srl, Milan / Italy </p>
+                                    <p className="description px-0">Kazoutech Srl, Milan / Italy </p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-6">
