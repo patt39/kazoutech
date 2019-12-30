@@ -50,7 +50,7 @@ class TestimonialSite extends Component {
                                                             Don't be scared of the truth because we need to restart the
                                                             human foundation in truth And I love you...
                                                         </p>
-                                                        <a href="javascript:;"
+                                                        <a href=".."
                                                             className="btn btn-info btn-round">Follow</a>
                                                     </div>
                                                 </div>
@@ -67,7 +67,7 @@ class TestimonialSite extends Component {
                                                             Don't be scared of the truth because we need to restart the
                                                             human foundation in truth And I love you...
                                                         </p>
-                                                        <a href="javascript:;"
+                                                        <a href=".."
                                                             className="btn btn-info btn-round">Follow</a>
                                                     </div>
                                                 </div>
@@ -84,7 +84,7 @@ class TestimonialSite extends Component {
                                                             Don't be scared of the truth because we need to restart the
                                                             human foundation in truth And I love you...
                                                         </p>
-                                                        <a href="javascript:;"
+                                                        <a href=".."
                                                             className="btn btn-info btn-round">Follow</a>
                                                     </div>
                                                 </div>
@@ -101,7 +101,7 @@ class TestimonialSite extends Component {
                                                             Don't be scared of the truth because we need to restart the
                                                             human foundation in truth And I love you...
                                                         </p>
-                                                        <a href="javascript:;"
+                                                        <a href=".."
                                                             className="btn btn-info btn-round">Follow</a>
                                                     </div>
                                                 </div>
@@ -118,7 +118,7 @@ class TestimonialSite extends Component {
                                                             Don't be scared of the truth because we need to restart the
                                                             human foundation in truth And I love you...
                                                         </p>
-                                                        <a href="javascript:;"
+                                                        <a href=".."
                                                             className="btn btn-info btn-round">Follow</a>
                                                     </div>
                                                 </div>
@@ -135,7 +135,7 @@ class TestimonialSite extends Component {
                                                             Don't be scared of the truth because we need to restart the
                                                             human foundation in truth And I love you...
                                                         </p>
-                                                        <a href="javascript:;"
+                                                        <a href=".."
                                                             className="btn btn-info btn-round">Follow</a>
                                                     </div>
                                                 </div>

@@ -26,43 +26,41 @@ class FaqSiteIndex extends Component {
     render() {
         const {faqs} = this.state;
         return (
-            <>
-                <div className="about-us">
-                    <NavUserSIte/>
+            <div className="landing-page">
+                <NavUserSIte/>
 
-                    <div className="wrapper">
-                        <div className="page-header page-header-mini header-filter">
-                            <div className="page-header-image page-header-mini"
-                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-10 mx-auto text-center">
-                                        <h2 className="display-2 text-white">Frequently Asked Questions(FAQs)</h2>
-                                    </div>
+                <div className="wrapper">
+                    <div className="page-header page-header-mini header-filter">
+                        <div className="page-header-image page-header-mini"
+                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-10 mx-auto text-center">
+                                    <h2 className="display-2 text-white">Frequently Asked Questions(FAQs)</h2>
                                 </div>
                             </div>
                         </div>
-                        <div className="cd-section" id="accordion">
-                            <div className="accordion-1">
-                                <div className="container">
+                    </div>
+                    <div className="cd-section" id="accordion">
+                        <div className="accordion-1">
+                            <div className="container">
 
-                                    <div className={'row'}>
-                                        <div className="col-md-12 ml-auto">
-                                            <div className="accordion" id="accordionFaqs">
-                                                {faqs.map((item) => (
-                                                    <FaqUserList key={item.id} {...item} />
-                                                ))}
-                                            </div>
+                                <div className={'row'}>
+                                    <div className="col-md-12 ml-auto">
+                                        <div className="accordion" id="accordionFaqs">
+                                            {faqs.map((item) => (
+                                                <FaqUserList key={item.id} {...item} />
+                                            ))}
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
-                        <FooterUserSite/>
                     </div>
+                    <FooterUserSite/>
                 </div>
-            </>
+            </div>
         )
     }
 

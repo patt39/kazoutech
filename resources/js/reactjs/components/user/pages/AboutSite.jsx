@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FooterUserSite from "../inc/FooterUserSite";
-import NavUserSIte from "../inc/NavUserSIte";
+import FooterUserSite from "../../inc/FooterUserSite";
+import NavUserSIte from "../../inc/NavUserSIte";
 
 
 class AboutSite extends Component {
@@ -122,7 +122,7 @@ class AboutSite extends Component {
                                             data-animation="zooming">
                                             <div className="full-background"
                                                 style={{ backgroundImage: "url(" + '/assets/vendor_site/img/sections/unsplashs.jpg' + ")" }}></div>
-                                            <a href="javascript:;">
+                                            <a href="..">
                                                 <div className="card-body mb-4">
                                                     <h2 className="card-title">Miami Vice</h2>
                                                     <p className="card-description text-white">Une simple illustration
@@ -146,12 +146,14 @@ class AboutSite extends Component {
                                             conaitre nous somme toujours a votre disposition </p>
                                     </div>
                                 </div>
+
+
                                 <div className="row">
                                     <div className="col-lg-4 col-md-6">
                                         <div className="card card-profile" data-image="profile-image">
                                             <div className="card-header">
                                                 <div className="card-image">
-                                                    <a href="javascript:;">
+                                                    <a href="..">
                                                         <img className="img rounded"
                                                             src="/assets/vendor_site/img/faces/ali-pazani.jpg" />
                                                     </a>
@@ -212,7 +214,7 @@ class AboutSite extends Component {
                                         <div className="card card-profile" data-image="profile-image">
                                             <div className="card-header">
                                                 <div className="card-image">
-                                                    <a href="javascript:;">
+                                                    <a href="..">
                                                         <img className="img rounded"
                                                             src="/assets/vendor_site/img/faces/team-5.jpg" />
                                                     </a>
@@ -273,7 +275,7 @@ class AboutSite extends Component {
                                         <div className="card card-profile" data-image="profile-image">
                                             <div className="card-header">
                                                 <div className="card-image">
-                                                    <a href="javascript:;">
+                                                    <a href="..">
                                                         <img className="img rounded"
                                                             src="/assets/vendor_site/img/faces/atikh.jpg" />
                                                     </a>

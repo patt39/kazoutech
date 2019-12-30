@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import FooterUserSite from "../inc/FooterUserSite";
-import NavUserSIte from "../inc/NavUserSIte";
-import SubscribeLine from "./SubscribeLine";
+import FooterUserSite from "../../inc/FooterUserSite";
+import NavUserSIte from "../../inc/NavUserSIte";
+import SubscribeLine from "../SubscribeLine";
 
 
 class ConceptSite extends Component {
@@ -320,18 +320,20 @@ class ConceptSite extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="subscribe-line subscribe-line-white">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-lg-5 mr-auto">
-                                            <h4 className="title">Restez a l'affue chaque semaine!</h4>
-                                            <p className="description">
-                                                Rejoigniez notre newsletter et ayez de nos nouvelle chaque semaine n ayez craint
-                                                nous detestons aussi les spam
-                                                    </p>
-                                        </div>
-                                        <SubscribeLine />
+                        </div>
+                        <div className="subscribe-line subscribe-line-white">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-lg-5 mr-auto">
+                                        <h4 className="title">Restez à l'affût chaque semaine!</h4>
+                                        <p className="description">
+                                            Rejoigniez notre newsletter et ayez de nos nouvelles chaque semaine n'ayez crainte
+                                            nous detestons aussi les spam
+                                        </p>
                                     </div>
+
+                                    <SubscribeLine/>
+
                                 </div>
                             </div>
                         </div>

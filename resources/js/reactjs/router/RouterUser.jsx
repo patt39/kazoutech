@@ -1,8 +1,8 @@
 import React from "react";
 import {Route, Switch,withRouter} from 'react-router-dom';
 import IndexSite from "../components/user/IndexSite";
-import AboutSite from "../components/user/AboutSite";
-import ConceptSite from "../components/user/ConceptSite";
+import AboutSite from "../components/user/pages/AboutSite";
+import ConceptSite from "../components/user/pages/ConceptSite";
 import FaqSiteIndex from "../components/user/faq/FaqSiteIndex";
 import contactUserSite from "../components/user/contact/ContactUserSite"
 import OccupationSiteIndex from "../components/user/occupation/OccupationSiteIndex";
