@@ -156,7 +156,7 @@ class FooterUserSite extends Component {
                                                 <div className="copyright d-flex justify-content-center">
                                                     Copyright &copy; { new Date().getFullYear()}, Realized by
                                                     <div>
-                                                        <a href="/" className="pl-2 display-red" style={{color: "red"}}>KazouGroup Srl</a>
+                                                        <a href="/" className="pl-2 text-primary">KazouGroup Srl</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -210,12 +210,9 @@ class FooterUserSite extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="footer-description">
-                                    Mastercard is a registered trademark and the circles design is a trademark of
-                                    Mastercard International Incorporated. The Spendesk Prepaid Card/This card is
-                                    issued by Transact Payments Limited pursuant to licence by Mastercard
-                                    International Incorporated. The Spendesk accounts are issued by Transact
-                                    Payments Limited. Transact Payments Limited is authorised and regulated by the
-                                    Gibraltar Financial Services Commission.
+                                    Le jobbing pour tous et par tous faite partit de la camunauté kazoutech et beneficiez du service à
+                                    la personne partout sur le teritoire. Le jobbing n'as jamias été aussi facile et à la porter de tous alor 
+                                    venez et lancez vous et faite vous de L'argent tout en donnant le sourir au autres.
                                 </div>
                             </div>
                         </div>

@@ -281,7 +281,7 @@ class AboutSite extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="card-body pt-0">
-                                                        <h4 className="display-4 mb-0">Randrin</h4>
+                                                        <h4 className="display-4 mb-0">Randrin Nzeukang</h4>
                                                         <p className="lead">Content Creator</p>
                                                         <div className="table-responsive">
                                                             <ul className="list-unstyled ">

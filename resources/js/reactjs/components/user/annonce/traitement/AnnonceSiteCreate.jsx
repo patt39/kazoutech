@@ -227,8 +227,6 @@ class AnnonceSiteCreate extends Component {
 
                                     <div className="col-md-8 mx-auto">
                                         <div className="card">
-
-
                                             <div className="container">
                                                 <h3 className="title mt-3">{this.state.title}</h3>
                                                 <div className="row">
@@ -237,7 +235,7 @@ class AnnonceSiteCreate extends Component {
                                                             Titre de votre annonce
                                                             <span className="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" placeholder="Titre de votre annonce" aria-label="Tite de l'annonce"
+                                                        <input type="text" placeholder="Titre de votre annonce" aria-label="Titre de l'annonce"
                                                             required="required"
                                                             className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
                                                             name='title'
@@ -347,8 +345,6 @@ class AnnonceSiteCreate extends Component {
                                                 </div>
                                                 <br />
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>

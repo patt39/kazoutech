@@ -28,6 +28,11 @@ class MultiplesRouteTraitementController extends Controller
         ]);
     }
 
+    public function blogscreate()
+    {
+        return view('user.blog.create');
+    }
+
     public function annonceshow(occupation $occupation,$id)
     {
         $annonce = new AnnonceResource(annonce::whereId($id)->firstOrFail());

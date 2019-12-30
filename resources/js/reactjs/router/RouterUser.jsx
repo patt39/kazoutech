@@ -10,6 +10,7 @@ import OccupationSiteSlug from "../components/user/occupation/OccupationSiteSlug
 import CategoryOccupationShow from "../components/user/occupation/categoryoccupation/CategoryOccupationShow";
 import BlogSiteIndex from "../components/user/blog/BlogSiteIndex";
 import BlogSiteShow from "../components/user/blog/BlogSiteShow";
+import BlogSiteCreate from "../components/user/blog/traitement/BlogSiteCreate";
 import BlogSiteByCategoriesOccupation from "../components/user/blog/BlogSiteByCategoriesOccupation";
 import AnnonceSiteIndex from "../components/user/annonce/AnnonceSiteIndex";
 import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
@@ -44,6 +45,7 @@ const RouterUser = props => (
         <Route exact path="/blog/" component={BlogSiteIndex}/>
         <Route exact path="/blog/:occupation/" component={withRouter(BlogSiteByCategoriesOccupation)}/>
         <Route exact path="/blog/:occupation/:blog/" component={withRouter(BlogSiteShow)}/>
+        <Route exact path="/blogs/create/" component={BlogSiteCreate}/>
         <Route exact path="/annonces/" component={AnnonceSiteIndex}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation/:city" component={withRouter(AnnonceSiteByOccupationCategoryoccupationCity)}/>
