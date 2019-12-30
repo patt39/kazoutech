@@ -16,5 +16,6 @@ return [
     'throttle' => 'Tentatives de connexion trop nombreuses. Veuillez essayer de nouveau dans :seconds secondes.',
     'username' => 'Adresse e-mail ou nom d\'utilisateur non valide',
     'password' => 'Mot de passe incorrect',
+
 ];
 

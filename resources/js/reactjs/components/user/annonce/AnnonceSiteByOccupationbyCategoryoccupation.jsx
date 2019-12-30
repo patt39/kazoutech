@@ -22,7 +22,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -62,7 +62,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
 
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -93,7 +93,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
         const {annoncebycategoryoccupation,cities} = this.state;
         const annoncebycategoryoccupations = annoncebycategoryoccupation.annonces;
         const composantTitle = `${annoncebycategoryoccupation.name}`;
-        document.title = `Annonce de ${composantTitle} | Kaazoutech`;
+        document.title = `Annonce de ${composantTitle} | Kazoutech`;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         return (
@@ -107,7 +107,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur <b>{annoncebycategoryoccupation.name}</b>
+                                        Restez à l'affût de toutes les annonces sur <b>{annoncebycategoryoccupation.name}</b>
                                     </h4>
                                     <div className="author">
                                         <Link to={`/annonces/${SlugOccupation}/`} className="text-white">
@@ -127,8 +127,6 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
 
                             </div>
                         </div>
-
-
                         <section className="section">
                             <div className="container">
                                 <div className="row">
@@ -139,6 +137,8 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                 <div className="row">
 
                                                     <div className="col-md-4">
+
+
                                                         <AnnonceOccupationList/>
 
                                                         <div className="card mb-3">
@@ -213,12 +213,12 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                                 </p>
                                                                                 <div className="card-header d-flex align-items-center">
                                                                                     <div className="d-flex align-items-center">
-                                                                                        <NavLink to={`/user/${item.user.username}/`}>
+                                                                                        <NavLink to={`/charbonneur/${item.user.username}/`}>
                                                                                             <img src={item.user.avatar} alt={item.user.name} className="avatar" />
                                                                                         </NavLink>
                                                                                         <div className="mx-3">
-                                                                                            <NavLink to={`/user/${item.user.username}/`} className="text-dark font-weight-600 text-sm">{item.user.name}</NavLink>
-                                                                                            <small className="d-block text-muted">{moment(item.created_at).startOf('hour').fromNow()}</small>
+                                                                                            <NavLink to={`/charbonneur/${item.user.username}/`} className="text-dark font-weight-600 text-sm">{item.user.name}</NavLink>
+                                                                                            <small className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div className="text-right ml-auto">
@@ -228,19 +228,27 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                                             </button>
                                                                                             : null}
 
-                                                                                        <NavLink to={`/annonces/${SlugOccupation}/p/${item.id}/edit`} className="btn btn-sm btn-success btn-icon">
-                                                                                                <span className="btn-inner--icon icon-big">
-                                                                                                    <i className="ni ni-check-bold" />
-                                                                                                </span>
-                                                                                            <span className="btn-inner--text">editer</span>
-                                                                                        </NavLink>
-                                                                                        <Button onClick={() => this.deleteItem(item.id)}
-                                                                                                className="btn btn-sm btn-danger btn-icon">
-                                                                                                    <span className="btn-inner--icon icon-big">
-                                                                                                        <i className="ni ni-fat-remove" />
-                                                                                                    </span>
-                                                                                            <span className="btn-inner--text">Suprimer</span>
-                                                                                        </Button>{" "}
+                                                                                        {!$guest ?
+                                                                                            <>
+                                                                                                {$userKazou.id === item.user_id ?
+                                                                                                    <>
+                                                                                                    <NavLink to={`/annonces/${SlugOccupation}/p/annonce/${item.id}/edit`} className="btn btn-sm btn-success btn-icon">
+                                                                                                            <span className="btn-inner--icon icon-big">
+                                                                                                                <i className="ni ni-check-bold" />
+                                                                                                            </span>
+                                                                                                        <span className="btn-inner--text">editer</span>
+                                                                                                    </NavLink>
+                                                                                                    <Button onClick={() => this.deleteItem(item.id)}
+                                                                                                            className="btn btn-sm btn-danger btn-icon">
+                                                                                                                <span className="btn-inner--icon icon-big">
+                                                                                                                    <i className="ni ni-fat-remove" />
+                                                                                                                </span>
+                                                                                                        <span className="btn-inner--text">Suprimer</span>
+                                                                                                    </Button>{" "}
+                                                                                                    </>
+                                                                                                    :null}
+                                                                                            </>
+                                                                                            :null}
                                                                                     </div>
                                                                                 </div>
 

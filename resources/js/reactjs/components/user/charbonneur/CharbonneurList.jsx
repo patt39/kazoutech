@@ -21,7 +21,7 @@ class CharbonneurList extends Component {
                     <div className="card-header bg-info"
                          style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
                         <div className="card-avatar">
-                            <NavLink to={`/user/${this.props.username}/`}>
+                            <NavLink to={`/charbonneur/${this.props.username}/`}>
                                 <img className="img img-raised rounded-circle"
                                      src={this.props.avatar}/>
                             </NavLink>
@@ -34,11 +34,11 @@ class CharbonneurList extends Component {
                             :
                             <a href=".." className="btn btn-sm btn-danger mr-4 mt-3">Offline</a>
                         }
-                            {this.props.status_profile_verify ?
+                            {this.props.status_profile_verify && (
                                 <button type="button" className="btn-icon-only btn-sm rounded-circle btn btn-success" title={'Profile verifier'}>
                                     <span className="btn-inner--icon"><i className="ni ni-check-bold"/></span>
                                 </button>
-                                :null}
+                            )}
 
 
                             <a href=".." className="btn btn-sm btn-default float-right mt-3">Message</a>

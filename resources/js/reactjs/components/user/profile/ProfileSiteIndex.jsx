@@ -2,10 +2,8 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {NavLink} from "react-router-dom";
-import {Button} from "reactstrap";
 import moment from "moment";
 import ProfileSiteAnnonces from "./ProfileSiteAnnonces";
-import AnnonceList from "../annonce/AnnonceList";
 import ProfileSiteBlogs from "./ProfileSiteBlogs";
 
 
@@ -14,16 +12,130 @@ class ProfileSiteIndex extends Component {
         super(props);
         this.state = {
             userProfile : {annonces:[],blogs:[],city:[]},
-        }
+        };
+
+        this.deleteAnnonce = this.deleteAnnonce.bind(this);
+        this.deleteBlog = this.deleteBlog.bind(this);
     }
 
-    // lifecycle method
-    componentDidMount() {
+    deleteAnnonce(id) {
+        Swal.fire({
+            text: 'Ete vous sure de vouloir suprimer cette annonce?',
+            animation: false,
+            customClass: 'animated shake',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'Non annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('annonces.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    //Redirect after create
+                    this.loadItem();
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooop! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
+
+    deleteBlog(id) {
+        Swal.fire({
+            text: 'Etes vous sure de vouloir suprimer cette article du blog?',
+            animation: false,
+            customClass: 'animated pulse',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success btn-sm",
+            cancelButtonClass: 'btn btn-danger btn-sm',
+            confirmButtonText: 'Oui suprimer',
+            cancelButtonText: 'Non annuler',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+
+                const url = route('blogs.destroy',id);
+                //Envoyer la requet au server
+                dyaxios.delete(url).then(() => {
+
+                    //Redirect after create
+                    this.loadItem();
+                    /** Alert notify bootstrapp **/
+                    $.notify({
+                            // title: 'Update FAQ',
+                            message: 'Annonce suprimée avec success'
+                        },
+                        {
+                            allow_dismiss: false,
+                            type: 'primary',
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            },
+                        });
+                    /** End alert ***/
+                }).catch(() => {
+                    //Failled message
+                    $.notify("Ooopss! Une erreur est survenue", {
+                        allow_dismiss: false,
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
+            }
+        });
+    }
+
+    loadItem() {
         let Username = this.props.match.params.username;
         dyaxios.get(route('api_profile.view',[Username])).then(response =>
-                this.setState({
-                    userProfile: response.data,
-                }));
+            this.setState({
+                userProfile: response.data,
+            }));
+    }
+    // lifecycle method
+    componentDidMount() {
+      this.loadItem();
     }
 
     render() {
@@ -38,11 +150,9 @@ class ProfileSiteIndex extends Component {
                 <NavUserSIte/>
                 <div className="wrapper">
                     <section className="section-profile-cover section-shaped my-0">
-                            {userProfile.city_id ?
-                            <img className="bg-image" src={userProfile.city.photo} style={{width: "100%"}}/>
-                            :
-                            <img className="bg-image" src="/assets/vendor_site/img/pages/mohamed.jpg" style={{width: "100%"}}/>
-                            }
+                            {userProfile.city_id && (
+                                <img className="bg-image" src={userProfile.city.photo} style={{width: "100%"}}/>
+                            )}
                             <div className="separator separator-bottom separator-skew">
                                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +167,7 @@ class ProfileSiteIndex extends Component {
                                     <div className="row justify-content-center">
                                         <div className="col-lg-3 order-lg-2">
                                             <div className="card-profile-image">
-                                                <NavLink to={`/user/${userProfile.username}`}>
+                                                <NavLink to={`/charbonneur/${userProfile.username}/`}>
                                                     <img src={userProfile.avatar}
                                                          className="rounded-circle"/>
                                                 </NavLink>
@@ -65,13 +175,21 @@ class ProfileSiteIndex extends Component {
                                         </div>
                                         <div className="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                             <div className="card-profile-actions py-4 mt-lg-0">
+                                                {!$guest && (
+                                                  <>
+                                                      {$userKazou.id === userProfile.id  && (
+                                                          <a href="#" className="btn btn-sm btn-info mr-4">Editer mon profile</a>
+                                                      )}
+                                                  </>
+
+                                                )}
+
                                                 <a href="#" className="btn btn-sm btn-info mr-4">Connect</a>
-                                                {userProfile.status_profile_verify ?
-                                                    <button type={'button'} className="btn btn-sm btn-success float-right">
-                                                        <span className="btn-inner--icon"><i className="ni ni-check-bold"/></span>
+                                                {userProfile.status_profile_verify && (
+                                                    <button  type={'button'} className="btn btn-sm btn-success float-right">
+                                                        <i className="ni ni-check-bold"/>Identité vérifiée
                                                     </button>
-                                                 :null}
-                                                <a href="#" className="btn btn-sm btn-default float-right">Message</a>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col-lg-4 order-lg-1">
@@ -93,45 +211,53 @@ class ProfileSiteIndex extends Component {
                                     </div>
                                     <div className="text-center mt-5">
                                         <h3>{userProfile.name}<span className="font-weight-light">, 27</span></h3>
-                                        {userProfile.city_id ?
+                                        {userProfile.city_id && (
                                             <div className="h6 font-weight-300">
                                                 <i className="ni location_pin mr-2"/><b>{userProfile.city.name}</b>
                                             </div>
-                                            :null}
+                                        )}
 
                                         <div className="h6 mt-4"><i className="ni business_briefcase-24 mr-2"/>Solution
                                             Manager - Creative Tim Officer
                                         </div>
-                                        <div><i className="ni education_hat mr-2"/>University of Computer Science
+                                        <div>
+                                            <i className="ni education_hat mr-2"/>University of Computer Science
+                                        </div>
+
+                                        <br/>
+                                        <div className="mt-2 text-center">
+                                            <NavLink to={`/occupations/`} className="btn btn-info btn-hp btn-break">
+                                                De quel service avez-vous besoin ?
+                                            </NavLink>
                                         </div>
                                     </div>
 
-                                    {annonces.length > 0 ?
+                                    {annonces.length > 0 && (
                                         <div className="mt-5 py-5 border-top text-left">
                                             <div className="row">
 
                                                 {annonces.map((item) => (
-                                                    <ProfileSiteAnnonces key={item.id} {...item} />
+                                                    <ProfileSiteAnnonces key={item.id} {...item} deleteAnnonce={this.deleteAnnonce}/>
                                                 ))}
 
                                             </div>
                                         </div>
-                                        :null}
+                                    )}
 
-                                    {blogs.length > 0 ?
+                                    {blogs.length > 0 && (
                                         <div className="mt-5 py-5 border-top text-center">
                                             <div className="row justify-content-center">
                                                 <div className="row">
 
                                                     {blogs.map((item) => (
-                                                        <ProfileSiteBlogs key={item.id} {...item} />
+                                                        <ProfileSiteBlogs key={item.id} {...item} deleteBlog={this.deleteBlog}/>
                                                     ))}
 
                                                 </div>
 
                                             </div>
                                         </div>
-                                        :null}
+                                    )}
 
                                 </div>
                             </div>

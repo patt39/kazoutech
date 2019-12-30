@@ -15,7 +15,7 @@ class CharbonneurCityList extends Component {
 
 
     componentDidMount() {
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
+        dyaxios.get(route('api.cities_by_status')).then(response =>
             this.setState({
                 cities: [...response.data],
             }));
@@ -26,7 +26,7 @@ class CharbonneurCityList extends Component {
         return (
 
             <div className="card mb-3">
-                <div className="card-header h6">Villes</div>
+                <div className="card-header h6">Les charbonneurs da la Ville de </div>
                 <div className="card-body">
                     <ul className="list-unstyled">
 

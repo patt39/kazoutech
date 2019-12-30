@@ -14,9 +14,13 @@ class CategoryOccupationResource extends JsonResource
      */
     public function toArray($request)
     {
-        $categoryoccupation_id = $this->id;
         $annonces = $this->annonces()->with('occupation','user','city','categoryoccupation')
-            ->whereIn('categoryoccupation_id',[$categoryoccupation_id])->distinct()->get()->toArray();
+            ->whereIn('categoryoccupation_id',[$this->id])
+            ->where(function ($q) {
+                $q->whereIn('occupation_id',[$this->occupation_id])
+                ->where('status',1);
+            })->distinct()->get()->toArray();
+
         return [
             'id' => $this->id,
             'photo' => $this->photo,

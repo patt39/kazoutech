@@ -39,6 +39,7 @@
 <!-- Customize KazouTech Styles -->
 <link href="/assets/css/kazoutech.css" rel="stylesheet" />
 
+
 @section('style')
 @show
 

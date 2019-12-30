@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AllOccupation from "../../inc/AllOccupation";
 import CitySite from "../city/CitySite";
+import SubscribeLine from "../../user/SubscribeLine"
 
 
 class OccupationSiteIndex extends Component {
@@ -15,8 +16,8 @@ class OccupationSiteIndex extends Component {
 
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Occupations et services à la persone : trouver un jobber facillement kazoutech';
-        document.title = `${composantTitle} | Kaazoutech`;
+        const composantTitle = 'Occupations et services à la persone : trouver un jobbeur facillement kazoutech';
+        document.title = `${composantTitle} | Kazoutech`;
     }
 
     render() {
@@ -52,7 +53,6 @@ class OccupationSiteIndex extends Component {
                         <div className="container">
                             <div className="row justify-content-center mt-5">
                                 <div className="col-lg-12">
-
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-md-8 mr-auto ml-auto text-center">
@@ -75,29 +75,7 @@ class OccupationSiteIndex extends Component {
                                         nous detestons aussi les spam
                                     </p>
                                 </div>
-                                <div className="col-lg-6 d-flex justify-content-center flex-column ml-auto">
-                                    <form method="" action="">
-                                        <div className="row">
-                                            <div className="col-sm-8">
-                                                <div className="form-group">
-                                                    <div className="input-group mb-4">
-                                                        <div className="input-group-prepend">
-                                                            <span className="input-group-text">
-                                                                <i className="ni ni-email-83"/></span>
-                                                        </div>
-                                                        <input className="form-control" placeholder="votre Email..."
-                                                               type="text"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-sm-4">
-                                                <button type="button" className="btn btn-success btn-block">
-                                                    souscrivez
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <SubscribeLine/>
                             </div>
                         </div>
                     </div>

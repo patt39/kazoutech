@@ -54,26 +54,18 @@ class BlogSiteShow extends Component {
                     </div>
                     <br/>
                     <div className="container">
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="row">
-                                    <div className="col-md-12 ml-auto mr-auto text-justify">
-                                        <h6 className="category"><b>{moment(blog.created_at).format('LL')}</b></h6>
-                                        <h3 className="title"><b>{blog.title}</b></h3>
-                                        <p dangerouslySetInnerHTML={{__html: (blog.body)}}/>
-                                    </div>
-                                </div>
+                        <div className="row">
+                            <div className="col-md-10 ml-auto mr-auto text-justify">
+                                <h6 className="category"><b>{moment(blog.created_at).format('LL')}</b></h6>
+                                <h3 className="title"><b>{blog.title}</b></h3>
+                                <p dangerouslySetInnerHTML={{__html: (blog.body)}}/>
                             </div>
                         </div>
 
 
-                        <div className="text-center">
-                            <h4 className="title">Ces postes peuvent vous interesser </h4>
-                        </div>
-                        <div className="row">
 
-                            <BlogPostInteresse  {...this.props}/>
-                        </div>
+
+                        <BlogPostInteresse  {...this.props}/>
 
                         <div className="text-center">
                             <Link to={`/blog/${blog.occupation.slug}/`}

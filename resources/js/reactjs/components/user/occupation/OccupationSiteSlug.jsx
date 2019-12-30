@@ -53,14 +53,14 @@ class OccupationSiteSlug extends Component {
                                             </div>
                                             <div className="row align-items-center">
                                                 {occupationCategories.map((item) => (
-                                                <div className="col-lg-4">
+                                                <div key={item.id} className="col-lg-4">
                                                     <div className="card card-background"
                                                          style={{backgroundImage: "url(" + item.photo + ")"}}>
                                                         <div className="card-body text-center">
-                                                            <Link to={`/annonces/${occupation.slug}/o/${item.slug}/`}>
+                                                            <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
                                                                 <h2 className="card-title">{item.name}</h2>
                                                             </Link>
-                                                            <Link to={`/annonces/${occupation.slug}/${item.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                                            <Link to={`/occupations/${occupation.slug}/${item.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
                                                                 En savoir plus
                                                             </Link>
                                                         </div>

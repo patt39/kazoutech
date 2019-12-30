@@ -2,10 +2,11 @@ import React, {Component} from "react";
 import {Link} from 'react-router-dom'
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
-import OccupationList from "./occupation/OccupationList";
 import CitySite from "./city/CitySite";
 import AllOccupation from "../inc/AllOccupation";
 import KazouTechSteps from "../inc/KazouTechSteps";
+import SlideHomeList from "./slide/SlideHomeList";
+import SubscribeLine from "./SubscribeLine";
 
 
 class IndexSite extends Component {
@@ -28,55 +29,7 @@ class IndexSite extends Component {
                 <div className="landing-page">
                     <NavUserSIte/>
                     <div className="wrapper">
-                        <div className="page-header page-header-small header-filter">
-                            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                                <ol className="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0"
-                                        className="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
-                                <div className="carousel-inner">
-                                    <div className="carousel-item active">
-                                        <img className="d-block w-100"
-                                             src="https://images.unsplash.com/photo-1457904375453-3e1fc2fc76f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1800&q=80"
-                                             alt="First slide"/>
-                                        <div className="carousel-caption d-none d-md-block">
-                                            <h1 className="display-1">Titre Text</h1>
-                                            <p>Sous-titre Text</p>
-                                        </div>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img className="d-block w-100"
-                                             src="https://images.unsplash.com/photo-1526404801122-40fc40fca08f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2553&q=80"
-                                             alt="Second slide"/>
-                                        <div className="carousel-caption d-none d-md-block">
-                                            <h1 className="display-1">Titre Text</h1>
-                                            <p>Sous-titre Text</p>
-                                        </div>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img className="d-block w-100"
-                                             src="https://images.unsplash.com/photo-1524095731963-b4e38d1b3329?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
-                                             alt="Third slide"/>
-                                        <div className="carousel-caption d-none d-md-block">
-                                            <h1 className="display-1">Titre Text</h1>
-                                            <p>Sous-titre Text</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a className="carousel-control-prev" href="#carouselExampleIndicators"
-                                   role="button" data-slide="prev">
-                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span className="sr-only">Previous</span>
-                                </a>
-                                <a className="carousel-control-next" href="#carouselExampleIndicators"
-                                   role="button" data-slide="next">
-                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span className="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
+                        <SlideHomeList/>
                     </div>
                     <KazouTechSteps/>
                     <AllOccupation/>
@@ -98,7 +51,7 @@ class IndexSite extends Component {
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                                                        <i className="ni ni-check-bold"></i>
+                                                        <i className="ni ni-check-bold"/>
                                                     </div>
                                                     <h6 className="text-primary text-uppercase">Des profile évalués</h6>
                                                     <p className="description mt-3">Les profiles de nos prestataires
@@ -107,8 +60,7 @@ class IndexSite extends Component {
                                                         service
                                                         et nous nous assurons aussi de leur bonne moralité donc ne vous
                                                         mefiez pas.</p>
-                                                    <a href="/charbonneur"
-                                                       className="btn btn-primary mt-4">Webtechnicien</a>
+                                                    <Link to={`/charbonneurs/`} className="btn btn-primary mt-4">charbonneurs</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,7 +69,7 @@ class IndexSite extends Component {
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-success rounded-circle mb-4">
-                                                        <i className="ni ni-istanbul"></i>
+                                                        <i className="ni ni-istanbul"/>
                                                     </div>
                                                     <h6 className="text-success text-uppercase">Kazoutech le
                                                         meilleur</h6>
@@ -127,7 +79,7 @@ class IndexSite extends Component {
                                                         rendre le meilleur donc pour tout vos problem contactez ou
                                                         rapprochez vous de nos locaux nous serons ravis de vous reçevoir
                                                         et d'effaçer vos doutes.</p>
-                                                    <a href="#" className="btn btn-success mt-4">Contactez nous</a>
+                                                    <Link to={'/contacts/'} className="btn btn-success mt-4">Contactez nous</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,7 +88,7 @@ class IndexSite extends Component {
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                                                        <i className="ni ni-planet"></i>
+                                                        <i className="ni ni-planet"/>
                                                     </div>
                                                     <h6 className="text-warning text-uppercase">Des utilisateurs
                                                         comblés</h6>
@@ -145,8 +97,8 @@ class IndexSite extends Component {
                                                         forme de marketing et nous
                                                         nous en passons pas écoutez cequon dit à propos de kazoutech et
                                                         faite nous confiance</p>
-                                                    <a href="/temoignages"
-                                                       className="btn btn-warning mt-4">Temoignage</a>
+                                                    <Link to={'/temoignages/'}
+                                                       className="btn btn-warning btn-center">Temoignage</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,34 +133,15 @@ class IndexSite extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-5 mr-auto">
-                                <h4 className="title">Restez a l'affue chaque semaine!</h4>
+                                <h4 className="title">Restez à l'affût chaque semaine!</h4>
                                 <p className="description">
-                                    Rejoigniez notre newsletter et ayez de nos nouvelle chaque semaine n ayez craint
+                                    Rejoigniez notre newsletter et ayez de nos nouvelles chaque semaine n'ayez crainte
                                     nous detestons aussi les spam
                                 </p>
                             </div>
-                            <div className="col-lg-6 d-flex justify-content-center flex-column ml-auto">
-                                <form method="" action="">
-                                    <div className="row">
-                                        <div className="col-sm-8">
-                                            <div className="form-group">
-                                                <div className="input-group mb-4">
-                                                    <div className="input-group-prepend">
-                                                            <span className="input-group-text">
-                                                                <i className="ni ni-email-83"/></span>
-                                                    </div>
-                                                    <input className="form-control" placeholder="votre Email..."
-                                                           type="text"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <button type="button" className="btn btn-success btn-block">souscrivez
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+
+                           <SubscribeLine/>
+
                         </div>
                     </div>
                 </div>

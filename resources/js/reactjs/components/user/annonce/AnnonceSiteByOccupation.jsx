@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./AnnonceList";
-import {Link} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
 
 
@@ -20,7 +20,7 @@ class AnnonceSiteByOccupation extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Ete vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -84,11 +84,11 @@ class AnnonceSiteByOccupation extends Component {
     }
 
     render() {
-        const {annoncebyoccupation,cities} = this.state;
+        const {annoncebyoccupation} = this.state;
         const annoncebyoccupations = annoncebyoccupation.annonces;
         const annoncebycategoryoccupations = annoncebyoccupation.categoryoccupations;
         const composantTitle = `${annoncebyoccupation.name}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -100,7 +100,7 @@ class AnnonceSiteByOccupation extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces sur Kazoutech
+                                        Restez à l'affût de toutes les annonces de <b>{annoncebyoccupation.name}</b> sur Kazoutech
                                     </h4>
                                     <div className="author">
                                         <Link to={'/annonces/'} className="text-white">
@@ -139,11 +139,11 @@ class AnnonceSiteByOccupation extends Component {
                                                                 <ul className="list-unstyled">
                                                                     {annoncebycategoryoccupations.map((item) => (
                                                                         <li key={item.id} className="mb-2">
-                                                                            {item.status ?
-                                                                                <Link to={`/annonces/${annoncebyoccupation.slug}/${item.slug}/`}>
+                                                                            {item.status && (
+                                                                                <NavLink to={`/annonces/${annoncebyoccupation.slug}/${item.slug}/`}>
                                                                                     {item.name}
-                                                                                </Link>
-                                                                                :null}
+                                                                                </NavLink>
+                                                                            )}
                                                                         </li>
                                                                     ))}
                                                                 </ul>

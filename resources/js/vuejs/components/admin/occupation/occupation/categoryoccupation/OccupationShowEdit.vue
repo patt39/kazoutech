@@ -126,7 +126,7 @@
                                                         </router-link>
                                                         <button v-if="$auth.can('edit-occupation')" id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                             <i class="material-icons">save_alt</i>
-                                                            <b class="title_hover">Save</b>
+                                                            <b class="title_hover">Update</b>
                                                         </button>
                                                     </div>
                                                 </div>

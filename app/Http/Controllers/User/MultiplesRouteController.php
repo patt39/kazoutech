@@ -122,6 +122,7 @@ class MultiplesRouteController extends Controller
     {
         $occupation = new OccupationResource(occupation::where('status',1)
             ->whereSlug($slug)->firstOrFail());
+
         return response()->json($occupation,200);
     }
 

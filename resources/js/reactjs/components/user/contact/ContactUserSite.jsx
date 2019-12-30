@@ -53,7 +53,7 @@ class ContactUserSite extends Component {
         };
         dyaxios.post(route('contact.save'), item)
             .then(() => {
-                $.notify('<strong>Mercis pour votre message ...</strong>', {
+                $.notify('<strong>Merçi pour votre message ...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -93,9 +93,8 @@ class ContactUserSite extends Component {
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <div className="page-header page-header-small header-filter">
-                            <div className="page-header-image"
-                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
@@ -111,7 +110,7 @@ class ContactUserSite extends Component {
                                 <div className="col-md-8 ml-auto mr-auto text-center mt-5">
                                     <span className="badge badge-info">Laissez un message</span>
                                     <h1 className="title">Dites nous tout à propos de <b>vous</b></h1>
-                                    <h4 className="desc">Si vous avez des questions ou just saluez nous somme toujous a
+                                    <h4 className="desc">Si vous avez des questions ou just saluez, nous somme toujous a
                                         votre disposition.</h4>
                                 </div>
                             </div>
@@ -231,8 +230,8 @@ class ContactUserSite extends Component {
                                         className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
                                         <i className="ni ni-square-pin"/>
                                     </div>
-                                    <h4 className="info-title">Addresse</h4>
-                                    <p className="description px-0">12124 First Street, nr 54</p>
+                                    <h4 className="info-title">Contact</h4>
+                                    <p className="description px-0">Kazoutech Srl, Milan / Italy </p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-6">
@@ -252,7 +251,7 @@ class ContactUserSite extends Component {
                                         <i className="ni ni-mobile-button"/>
                                     </div>
                                     <h4 className="info-title">Phone</h4>
-                                    <p className="description px-0">+1(424) 535 3523</p>
+                                    <p className="description px-0">+39 3425712192 / +39 3296187465 </p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-6">

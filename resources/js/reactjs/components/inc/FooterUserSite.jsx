@@ -10,28 +10,25 @@ class FooterUserSite extends Component {
             <footer className="footer footer-big bg-gradient-default">
                 <div className="container">
                     <div className="content">
-                        <div className="row mb-5">
-                            <div className="column mr-auto">
-                                <img src=".." className="logo logo-sm" alt="Kazoutech" />
-                            </div>
-                        </div>
                         <div className="row">
                             <div className="col-md-3">
                                 <div className="column">
-                                    <img src="/assets/vendor_site/img/brand/blue.png" className="logo" alt=""/>
+                                    <Link to={'/'}>
+                                        <img src="/assets/vendor_site/img/brand/blue.png" className="logo" alt="Kazoutech"/>
+                                    </Link>
                                 </div>
                                 <div className="btn-wrapper profile text-left mt-3">
                                     <a target="_blank" href="https://twitter.com/creativetim" className="btn btn-sm"
                                        data-toggle="tooltip" data-original-title="Follow us">
-                                        <i className="fab fa-twitter"></i>
+                                        <i className="fab fa-twitter"/>
                                     </a>
                                     <a target="_blank" href="https://www.facebook.com/creativetim"
                                        className="btn btn-sm" data-toggle="tooltip" data-original-title="Like us">
-                                        <i className="fab fa-facebook-square"></i>
+                                        <i className="fab fa-facebook-square"/>
                                     </a>
                                     <a target="_blank" href="https://dribbble.com/creativetim"
                                        className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow us">
-                                        <i className="fab fa-slack"></i>
+                                        <i className="fab fa-slack"/>
                                     </a>
                                 </div>
                             </div>
@@ -115,7 +112,7 @@ class FooterUserSite extends Component {
                                         </li>
                                         <li>
                                             <a href="#">
-                                                Mécanicien de voitures
+                                                Méccanicien de voitures
                                             </a>
                                         </li>
                                     </ul>
@@ -126,7 +123,7 @@ class FooterUserSite extends Component {
                                     <h4 className="mt-3">Top Villes</h4>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="...">
                                                 Douala
                                             </a>
                                         </li>
@@ -158,7 +155,9 @@ class FooterUserSite extends Component {
                                             <li className="d-inline-block">
                                                 <div className="copyright d-flex justify-content-center">
                                                     Copyright &copy; { new Date().getFullYear()}, Realized by
-                                                    <a href="/" className="pl-2 kazouTech-red-color"> KazouGroup Srl</a>
+                                                    <div>
+                                                        <a href="/" className="pl-2 display-red" style={{color: "red"}}>KazouGroup Srl</a>
+                                                    </div>
                                                 </div>
                                             </li>
                                             <li className="d-inline-block">

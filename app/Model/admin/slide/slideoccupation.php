@@ -12,7 +12,7 @@ class slideoccupation extends Model
 
     protected $guarded = [];
 
-   protected $table = 'slideoccupation';
+   protected $table = 'slideoccupations';
 
 
     public function user()

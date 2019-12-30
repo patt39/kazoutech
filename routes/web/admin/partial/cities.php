@@ -40,11 +40,11 @@ Route::get(
 )->name('cities.actives');
 
 Route::get(
-    '/dashboard/change_status_cities/{city}',
+    '/dashboard/cities/change_status_cities/{id}',
     'CityController@status'
 )->name('status_cities');
 
 Route::get(
-    '/dashboard/change_city_vip_cities/{city}',
+    '/dashboard/cities/change_city_vip_cities/{id}',
     'CityController@city_vip'
 )->name('city_vip_cities');
