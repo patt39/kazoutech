@@ -105,7 +105,7 @@ class AnnonceSiteShow extends Component {
                 <NavUserSIte/>
                 <div className="wrapper">
                     <div className="section-shaped my-0 skew-separator skew-mini">
-                        <div className="page-header page-header-small header-filter">
+                        <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image"
                                  style={{backgroundImage: "url(" + annonce.occupation.photo + ")"}}>
                             </div>

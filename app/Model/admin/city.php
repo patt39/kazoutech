@@ -43,14 +43,12 @@ class city extends Model implements Auditable
                 $model->user_id = auth()->id();
             }
             $model->slug = str_slug($model->name);
-            $model->ip = request()->ip();
         });
         static::updating(function($model){
             if (auth()->check()){
                 $model->user_id = auth()->id();
             }
             $model->slug = str_slug($model->name);
-            $model->ip = request()->ip();
         });
     }
 

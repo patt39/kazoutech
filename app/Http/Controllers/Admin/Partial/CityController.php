@@ -117,6 +117,7 @@ class CityController extends Controller
      */
     public function status(city $city)
     {
+        $city = city::findOrFail($city->id);
         $city->update(['status' => !$city->status]);
 
         return response('Update',Response::HTTP_CREATED);
@@ -128,6 +129,7 @@ class CityController extends Controller
      */
     public function city_vip(city $city)
     {
+        $city = city::findOrFail($city->id);
         $city->update(['city_vip' => !$city->city_vip]);
 
         return response('Update',Response::HTTP_CREATED);

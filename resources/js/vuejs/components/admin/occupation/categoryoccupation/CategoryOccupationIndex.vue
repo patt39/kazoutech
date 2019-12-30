@@ -97,7 +97,7 @@
                                                 <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
                                                 <td><b>{{item.name}}</b></td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/occupations/` }">
+                                                    <router-link  :to="{ path: `/dashboard/occupations/v/${item.occupation.slug}/` }">
                                                         <b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b>
                                                     </router-link>
                                                 </td>
@@ -115,13 +115,6 @@
                                                     </a>
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <button v-if="$auth.can('edit-occupation')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
-                                                        <label>
-                                                            <input type="checkbox" name="status" v-model="item.status"
-                                                                   @change="changeStatus(item)"/>
-                                                            <span class="toggle"/>
-                                                        </label>
-                                                    </button>
                                                     <router-link :to="{ path: `/dashboard/occupations/v/${item.occupation.slug}/${item.id}/edit/` }" v-if="$auth.can('edit-occupation')"
                                                                  class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
@@ -246,43 +239,6 @@
                             });
                         })
                     }
-                })
-            },
-            /** Ici c'est pour changer le status **/
-            changeStatus(item){
-                //Start Progress bar
-                this.$Progress.start();
-                dyaxios.get(route('status_categoryoccupations',item.id), {
-                    status: item.status,
-                }).then(res => {
-
-                    $.notify('<strong>Category updated Successfully.</strong>', {
-                        allow_dismiss: false,
-                        type: 'info',
-                        placement: {
-                            from: 'bottom',
-                            align: 'right'
-                        },
-                        animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
-                        },
-                    });
-
-                    Fire.$emit('ItemGetter');
-                    //End Progress bar
-                    this.$Progress.finish();
-                }).catch(() => {
-                    //Failled message
-                    this.$Progress.fail();
-                    //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
                 })
             },
             loadItems() {
