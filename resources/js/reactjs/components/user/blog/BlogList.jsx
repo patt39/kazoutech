@@ -58,7 +58,7 @@ class BlogList extends Component {
                                         <>
                                             {$userKazou.id === this.props.user_id && (
                                                 <>
-                                                    <NavLink to={`/blog/`} className="btn btn-sm btn-success btn-icon">
+                                                    <NavLink to={`/blog/p/${this.props.id}/edit/`} className="btn btn-sm btn-success btn-icon">
                                                     <span className="btn-inner--icon icon-big">
                                                         <i className="ni ni-check-bold" />
                                                     </span>

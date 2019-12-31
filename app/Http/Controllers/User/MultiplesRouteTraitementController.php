@@ -4,8 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Annonce\UpdateRequest;
+use App\Http\Resources\BlogResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Model\admin\annonce;
+use App\Model\admin\blog;
 use App\Model\admin\occupation;
 
 class MultiplesRouteTraitementController extends Controller
@@ -44,10 +46,16 @@ class MultiplesRouteTraitementController extends Controller
     public function annoncesedit(occupation $occupation,$id)
     {
         $annonce = annonce::findOrFail($id);
-        return view('user.annonce.edit',[
-            'occupation' => $occupation,
-            'annonce' => $annonce,
-        ]);
+        $this->authorize('update',$annonce);
+        if(auth()->user()->id === $annonce->user_id) {
+
+            return view('user.annonce.edit',[
+                'occupation' => $occupation,
+                'annonce' => $annonce,
+            ]);
+        }else{
+            return ['error',"Unauthorized edit this article contact Author."];
+        }
     }
 
     public function annoncesupdate(UpdateRequest $request,occupation $occupation,$id)
@@ -56,5 +64,26 @@ class MultiplesRouteTraitementController extends Controller
 
         $annonce->update($request->all());
 
+    }
+
+
+    public function blogshow($id)
+    {
+        $blog = new BlogResource(blog::whereId($id)->firstOrFail());
+        return response()->json($blog,200);
+
+    }
+
+    public function blogedit($id)
+    {
+        $blog = blog::findOrFail($id);
+        $this->authorize('update',$blog);
+        if(auth()->user()->id === $blog->user_id) {
+            return view('user.blog.edit',[
+                'blog' => $blog,
+            ]);
+        }else{
+            return ['error',"Unauthorized edit this article contact Author."];
+        }
     }
 }

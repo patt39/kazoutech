@@ -29,6 +29,7 @@ import CharbonneurSiteByCity from "../components/user/charbonneur/CharbonneurSit
 import CharbonneurSiteByOccupation from "../components/user/charbonneur/CharbonneurSiteByOccupation";
 import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
 import LoginSIteIndex from "../components/user/auth/LoginSIteIndex";
+import BlogSiteEdit from "../components/user/blog/traitement/BlogSiteEdit";
 
 
 
@@ -43,6 +44,7 @@ const RouterUser = props => (
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation" component={CategoryOccupationShow}/>
         <Route exact path="/blog/" component={BlogSiteIndex}/>
+        <Route exact path="/blog/p/:id/edit" component={BlogSiteEdit}/>
         <Route exact path="/blog/:occupation/" component={withRouter(BlogSiteByCategoriesOccupation)}/>
         <Route exact path="/blog/:occupation/:blog/" component={withRouter(BlogSiteShow)}/>
         <Route exact path="/blogs/create/" component={BlogSiteCreate}/>
