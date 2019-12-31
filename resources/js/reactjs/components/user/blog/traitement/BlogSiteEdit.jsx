@@ -13,6 +13,8 @@ class BlogSiteEdit extends Component {
         super(props);
 
         this.updateItem = this.updateItem.bind(this);
+        this.updateImage = this.updateImage.bind(this);
+        this.removeImage = this.removeImage.bind(this);
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.hasErrorFor = this.hasErrorFor.bind(this);
         this.renderErrorFor = this.renderErrorFor.bind(this);
@@ -23,7 +25,8 @@ class BlogSiteEdit extends Component {
             photo: '',
             occupation_id: '',
             occupations:[],
-            errors: []
+            errors: [],
+            showDefaultImage: false
         };
         this.modules = {
             toolbar: [
@@ -68,7 +71,19 @@ class BlogSiteEdit extends Component {
             )
         }
     }
-
+    updateImage(e){
+        e.preventDefault();
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        reader.onloadend = (file) => {
+            this.setState({ file: file, photo: reader.result, showDefaultImage: false });
+        };
+        reader.readAsDataURL(file)
+    }
+    removeImage(e){
+        e.preventDefault();
+        this.setState({ file: '', photo: '', showDefaultImage: true });
+    }
     updateItem(e) {
         let Id = this.props.match.params.id;
         e.preventDefault();
@@ -79,7 +94,7 @@ class BlogSiteEdit extends Component {
             photo: this.state.photo,
             occupation_id: this.state.occupation_id,
         };
-        dyaxios.post(route('blog_site.update', [Id]), item)
+        dyaxios.put(route('blogs.update',Id), item)
             .then(() => {
                 $.notify('<strong>Blog mise à jour avec success...</strong>', {
                     allow_dismiss: false,
@@ -127,7 +142,7 @@ class BlogSiteEdit extends Component {
     }
 
     render() {
-        const { occupations } = this.state;
+        const { occupations,photo } = this.state;
         const composantTitle = `${this.state.title}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
@@ -168,6 +183,7 @@ class BlogSiteEdit extends Component {
                                                             required="required"
                                                             className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
                                                             name='title'
+                                                            maxLength="200"
                                                             value={this.state.title}
                                                             onChange={this.handleFieldChange}
                                                         />
@@ -191,49 +207,25 @@ class BlogSiteEdit extends Component {
                                                 </div>
                                                 <br />
                                                 <div className="row">
-                                                    <div className="col-md-8 ml-auto mr-auto">
+                                                    <div className="col-md-4 ml-auto mr-auto">
                                                         <div className="profile text-center">
-                                                            <br/>
-                                                                <div className="fileinput fileinput-new text-center"
-                                                                     data-provides="fileinput">
-                                                                    <div className="fileinput-new thumbnail">
-                                                                        <img src="getImagesave()" alt="form.slug"/>
-                                                                    </div>
-                                                                    <div
-                                                                        className="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                    <div>
-                                                                        <span style={{cursor: "pointer"}}
-                                                                                className="btn btn-raised btn-success btn-file">
-                                                                               <span
-                                                                                  className="fileinput-new">
-                                                                                   <i className="material-icons">insert_photo</i>
-                                                                                       <b>Add Slide</b>
-                                                                                </span>
-                                                                               <span
-                                                                                   className="fileinput-exists"
-                                                                                   style={{cursor: "pointer"}}>
-                                                                                   <i className="material-icons">photo_library</i>
-                                                                                   <b>Change</b>
-                                                                                </span>
-                                                                                <input id="photo"
-                                                                                change="updateImage"
-                                                                                type="file"
-                                                                                className="form-control"
-                                                                                name="photo"/>
-                                                                               <has-error form="form" field="photo"/>
-                                                                        </span>
-                                                                <a href="#pablo"
-                                                                   className="btn btn-danger fileinput-exists"
-                                                                   data-dismiss="fileinput">
-                                                                    <i className="material-icons">cancel</i>
-                                                                    <b>Remove</b>
-                                                                </a>
+                                                            <img src={this.state.showDefaultImage ? "https://www.kazoucoin.com/assets/img/photo.jpg" : photo} alt={'name'}/>
+                                                            <input id="photo" type="file" onChange={this.updateImage} className={`form-control ${this.hasErrorFor('photo') ? 'is-invalid' : ''} kazouImageCarousel-file-upload`} name="photo"/>
+                                                            {this.renderErrorFor('photo')}
+                                                            <div className="cta-submit">
+                                                                <label htmlFor="photo" className="btn btn-icon btn-primary">
+                                                                    <span className="btn-inner--icon"><i className="ni ni-image"/></span>
+                                                                    <span className="btn-inner--text">Add Image</span>
+                                                                </label>
+                                                                <button hidden={this.state.showDefaultImage ? true : false} onClick={this.removeImage} className="btn btn-icon btn-danger">
+                                                                    <span className="btn-inner--icon"><i className="ni ni-fat-remove"/></span>
+                                                                    <span className="btn-inner--text">Remove</span>
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                            <br/>
+                                                <br/>
                                                 <div className="row">
                                                     <div className="col-md-12">
                                                         <div className="form-group">

@@ -42,6 +42,13 @@ class BlogSiteShow extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h1 className="title text-white">{blog.title}</h1>
+                                    <div className="author">
+                                        <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
+                                            <i className="fa fa-chevron-circle-left"/> Retour
+                                        </a>
+                                    </div>
+
+                                    <br/>
                                     <a href="#button" className="btn btn-warning btn-round btn-icon-only">
                                         <i className="fa fa-twitter"/>
                                     </a>

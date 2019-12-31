@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 /**
- * Class UpdateRequest
+ * Class UpdateBlogRequest
  * @package App\Http\Requests\User\Account
  */
 class UpdateRequest extends BaseRequest

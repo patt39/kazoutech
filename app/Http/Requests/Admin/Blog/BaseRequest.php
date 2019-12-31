@@ -19,13 +19,15 @@ class BaseRequest extends Request
     {
         if ($group == 'store') {
             $rules = [
-                'title' => 'required|string|min:2|max:25|unique:blogs,title,',
+                'title' => 'required|string|min:2|max:200',
+                'photo' => 'required',
                 'occupation_id' => 'required',
             ];
         }
         else { // 'edit'
             $rules = [
-                'title' => 'required|string|min:2|max:25|unique:blogs,title,' .$this->id,
+                'title' => 'required|string|min:2|max:200',
+                'photo' => 'required',
                 'occupation_id' => 'required',
             ];
         }

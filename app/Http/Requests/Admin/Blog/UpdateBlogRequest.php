@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Requests\Admin\Blog;
 
-class StoreRequest extends BaseRequest
+class UpdateBlogRequest extends BaseRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -10,7 +10,7 @@ class StoreRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->getRules('store');
+        return $this->getRules('annoncesupdate', $this->route('annonces'));
     }
 
 } // class

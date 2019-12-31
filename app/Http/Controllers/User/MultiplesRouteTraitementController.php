@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Blog\UpdateBlogRequest;
 use App\Http\Requests\User\Annonce\UpdateRequest;
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\User\AnnonceResource;
@@ -65,7 +66,6 @@ class MultiplesRouteTraitementController extends Controller
         $annonce->update($request->all());
 
     }
-
 
     public function blogshow($id)
     {

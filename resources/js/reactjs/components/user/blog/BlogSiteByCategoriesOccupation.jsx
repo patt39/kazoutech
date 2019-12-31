@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
 import BlogLastPost from "./BlogLastPost";
 import BlogOccupationList from "./BlogOccupationList";
+import {Link} from "react-router-dom";
 
 
 class BlogSiteByCategoriesOccupation extends Component {
@@ -127,6 +128,10 @@ class BlogSiteByCategoriesOccupation extends Component {
                                                     <div className="col-lg-10 col-md-8 mx-auto">
                                                         <h2 className="title mb-5"><b>{blogsbycategy.name}</b></h2>
 
+                                                        <Link to={`/blog/p/create/`} className="btn btn-primary btn-center btn-larg">
+                                                            Ajouter un nouveau article de blog
+                                                        </Link>
+                                                        <br/><br/>
                                                         <div className="card">
                                                             <div className="card-body">
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Http\Requests\Admin\Blog\StoreRequest;
-use App\Http\Requests\Admin\Blog\UpdateRequest;
+use App\Http\Requests\Admin\Blog\StoreBlogRequest;
+use App\Http\Requests\Admin\Blog\UpdateBlogRequest;
 use App\Services\Admin\BlogService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
@@ -56,7 +56,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(StoreBlogRequest $request)
     {
         $blog= new blog();
         $blog->fill($request->all());;
@@ -100,7 +100,7 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateBlogRequest $request, $id)
     {
         $blog = blog::findOrFail($id);
 
