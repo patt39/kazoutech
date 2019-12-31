@@ -111,6 +111,15 @@ class BlogController extends Controller
         return response()->json($blog,200);
     }
 
+
+    public function status($id)
+    {
+        $blog = blog::findOrFail($id);
+        $blog->update(['status' => !$blog->status]);
+
+        return response('Update',Response::HTTP_CREATED);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
