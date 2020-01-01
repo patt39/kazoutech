@@ -65,7 +65,7 @@ class FooterUserSite extends Component {
                                     <ul>
                                         <li>
                                             <Link to={'/occupations/'}>
-                                                Nos categorie
+                                                Nos Categorie
                                             </Link>
                                         </li>
                                         <li>

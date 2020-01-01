@@ -18,7 +18,6 @@ class SlideHomeList extends Component {
     render() {
         const {slidehomes} = this.state;
         const slidehomeslength = slidehomes.length;
-        var i = 0;
         return (
 
             <div className="page-header page-header-small header-filter">
