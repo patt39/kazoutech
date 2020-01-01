@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class SubscribeLine extends Component{
+class SubscribeLine extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,10 +19,12 @@ class SubscribeLine extends Component{
         });
         this.state.errors[event.target.name] = '';
     }
+
     // Handle Errors
     hasErrorFor(field) {
         return !!this.state.errors[field];
     }
+
     renderErrorFor(field) {
         if (this.hasErrorFor(field)) {
             return (
@@ -66,37 +68,55 @@ class SubscribeLine extends Component{
     }
 
     render() {
-        return(
-
-            <div className="col-lg-6 d-flex justify-content-center flex-column ml-auto">
-                <form method="POST" onSubmit={this.saveItem}>
+        return (
+            <div className="kazouTechSubscribe-wrapper subscribe-line subscribe-line-white">
+                <div className="container">
                     <div className="row">
-                        <div className="col-sm-8">
-                            <div className="form-group">
-                                <div className="input-group mb-4">
-                                    <div className="input-group-prepend">
+                        <div className="col-lg-6 mr-auto">
+                            <h4 className="title kazouTech-white-color">Restez à l'affût des dernières nouvelles !</h4>
+                            <p className="description kazouTech-white-color">
+                                Inscrivez-vous gratuitement à notre newletters et soyez contacter par mail en premiers
+                                chaque week-end pour les offres de prèmier choix.
+                            </p>
+                        </div>
+                        <div className="col-lg-6 d-flex justify-content-center flex-column ml-auto">
+                            <form method="POST" onSubmit={this.saveItem}>
+                                <div className="row">
+                                    <div className="col-sm-8">
+                                        <div className="form-group">
+                                            <div className="input-group mb-4">
+                                                <div className="input-group-prepend">
                                                             <span className="input-group-text">
                                                                 <i className="ni ni-email-83"/></span>
+                                                </div>
+                                                <input type="email" placeholder="Votre email..."
+                                                       aria-label="Votre email"
+                                                       required="required"
+                                                       id="user_email"
+                                                       className={`form-control ${this.hasErrorFor('user_email') ? 'is-invalid' : ''}`}
+                                                       name='user_email'
+                                                       value={this.state.user_email}
+                                                       onChange={this.handleFieldChange}/>
+                                                {this.renderErrorFor('user_email')}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <input type="email" placeholder="Votre email..." aria-label="Votre email"
-                                           required="required"
-                                           id="user_email"
-                                           className={`form-control ${this.hasErrorFor('user_email') ? 'is-invalid' : ''}`}
-                                           name='user_email'
-                                           value={this.state.user_email}
-                                           onChange={this.handleFieldChange}/>
-                                    {this.renderErrorFor('user_email')}
+                                    <div className="col-sm-4">
+                                        <button type="submit" className="btn btn-success btn-block">
+                                            <span className="btn-inner--icon">
+                                               <i className="ni ni-check-bold"/>
+                                           </span>
+                                            <span className="nav-link-inner--text pt-40 position-navbar">Souscrivez</span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <button type="submit" className="btn btn-success btn-block">souscrivez
-                            </button>
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         )
     }
 }
+
 export default SubscribeLine;

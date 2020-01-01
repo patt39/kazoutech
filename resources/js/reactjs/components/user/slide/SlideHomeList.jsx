@@ -18,6 +18,7 @@ class SlideHomeList extends Component {
     render() {
         const {slidehomes} = this.state;
         const slidehomeslength = slidehomes.length;
+        var i = 0;
         return (
 
             <div className="page-header page-header-small header-filter">
@@ -25,8 +26,9 @@ class SlideHomeList extends Component {
                     <div id="carouselHomeIndicators" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
                             <li data-target="#carouselHomeIndicators" data-slide-to="0" className="active"></li>
-                            <li data-target="#carouselHomeIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselHomeIndicators" data-slide-to="2"></li>
+                            {slidehomes.map((value, index) => {
+                                return <li key={index} data-target="#carouselHomeIndicators" data-slide-to={index + 1}></li>
+                            })}
                         </ol>
                         <div className="carousel-inner">
                             <div className="carousel-item active">
@@ -34,8 +36,8 @@ class SlideHomeList extends Component {
                                      src="https://www.servizidiwebmarketing.it/wp-content/uploads/2019/03/0-E-mail-marketing-come-farlo-1-1800x900.jpg"
                                      alt="First slide"/>
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h1 className="display-1">Titre Text</h1>
-                                    <p>Sous-titre Text</p>
+                                    <h1 className="display-1 kazouTech-red-color">Bienvenue chez KazouTech</h1>
+                                    <p>Trouvez le prestataire idéal pour tous les services du quotidien</p>
                                 </div>
                             </div>
 
@@ -45,8 +47,8 @@ class SlideHomeList extends Component {
                                          src={item.photo}
                                          alt={item.title}/>
                                     <div className="carousel-caption d-none d-md-block">
-                                        <h1 className="display-1">Titre Text</h1>
-                                        <p>Sous-titre Text</p>
+                                        <h1 className="display-1 kazouTech-red-color">{item.title}</h1>
+                                        <p>{item.description}</p>
                                     </div>
                                 </div>
                             ))}

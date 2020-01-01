@@ -20,7 +20,8 @@ class AllOccupation extends Component {
     render() {
         const {occupations} = this.state;
         return (
-            <div className="container text-center">
+            <div className="kazouTechOccupations-wrapper">
+                <div className=" container text-center">
                 <div className="row mb-5">
                     <div className="col-md-12 mx-auto">
                         <h3 className="display-3">Une prestation à domicile? ou au sein de votre business personnel?</h3>
@@ -32,6 +33,7 @@ class AllOccupation extends Component {
                         <OccupationList key={item.id} {...item} />
                     ))}
                 </div>
+            </div>
             </div>
         )
     }
