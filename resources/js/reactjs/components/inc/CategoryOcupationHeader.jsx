@@ -20,9 +20,6 @@ class CategoryOcupationHeader extends Component {
                                     <i className="fa fa-chevron-circle-left"/> Retour {this.props.occupation.name}
                                 </Link>
                             </div>
-                            <br/>
-                            <p className="text-lead text-white"
-                               dangerouslySetInnerHTML={{__html: this.props.description}}/>
                         </div>
                     </div>
                 </div>

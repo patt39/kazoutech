@@ -15,6 +15,10 @@ class OccupationResource extends JsonResource
     public function toArray($request)
     {
 
+        $categoryoccupationsadmin =  $this->categoryoccupations()->with('occupation','user','color')
+            ->whereIn('occupation_id',[$this->id])->distinct()->get()->toArray();
+
+
         $categoryoccupations =  $this->categoryoccupations()->with('occupation','user','color')
             ->whereIn('occupation_id',[$this->id])
             ->where(function ($q) {
@@ -48,6 +52,7 @@ class OccupationResource extends JsonResource
             'description' => $this->description,
             'users' => $users,
             'categoryoccupations' => $categoryoccupations,
+            'categoryoccupationsadmin' => $categoryoccupationsadmin,
             'blogs' => $blogbycategories,
             'annonces' => $annonces,
             'user' => $this->user,

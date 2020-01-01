@@ -84,17 +84,21 @@ class OccupationSiteSlug extends Component {
                                                             </div>
                                                         </div>
                                                         <CitySite/>
+
+                                                        <br/>
+                                                        <div className="row">
+                                                            <h4 className="title">Tous nos articles sur <strong>{occupation.name} </strong> sont sur notre blog</h4>
+                                                            <div className="col-md-12">
+                                                                <div dangerouslySetInnerHTML={{__html: occupation.description}}/>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="row">
-                                        <div className="col-md-12 mx-auto">
-                                            <div dangerouslySetInnerHTML={{__html: occupation.description}}/>
-                                        </div>
-                                    </div>
+                                    <br/>
                                 </div>
                             </div>
                         </div>

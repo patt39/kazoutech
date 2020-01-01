@@ -39,12 +39,13 @@ class CategoryOccupationShow extends Component {
 
                                     <div className={'row'}>
 
-                                        <div className="container text-center">
+                                        <div className="container">
                                             <div className="row mb-5">
-                                                <div className="col-md-8 mx-auto">
-                                                    <h3 className="display-3">Nos offres en quelques clicks choisissez
-                                                        votre
-                                                        categorie</h3>
+                                                <div className="col-lg-12 mr-auto">
+                                                    <br>
+                                                    </br>
+                                                    <h3 className="display-4">Pour tout vos bésoin d'installation électrique</h3>
+                                                    <div className="description" dangerouslySetInnerHTML={{__html: categoryoccupation.description}}/>
                                                 </div>
                                             </div>
                                             <div className="row align-items-center">

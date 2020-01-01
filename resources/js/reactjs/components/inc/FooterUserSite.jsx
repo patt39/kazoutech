@@ -14,7 +14,7 @@ class FooterUserSite extends Component {
                             <div className="col-md-3">
                                 <div className="column">
                                     <Link to={'/'}>
-                                        <img src="/assets/vendor_site/img/brand/blue.png" className="logo" alt="Kazoutech"/>
+                                        <img src=".." className="logo" alt="Kazoutech"/>
                                     </Link>
                                 </div>
                                 <div className="btn-wrapper profile text-left mt-3">

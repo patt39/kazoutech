@@ -74,11 +74,12 @@
                                                                     <div class="col-md-12">
                                                                         <div class="media-body">
                                                                             <label class="bmd-label-floating">Tell about for you<span style="color: red;">*</span></label>
-                                                                            <quill-editor v-model="form.description"
-                                                                                          :class="{ 'is-invalid': form.errors.has('description') }"
-                                                                                          :options="editorOption">
-                                                                            </quill-editor>
-                                                                            <has-error :form="form" field="body"></has-error>
+                                                                            <vue-editor v-model="form.description"
+                                                                                        :editorToolbar="customToolbar"
+                                                                                        :class="{ 'is-invalid': form.errors.has('description') }">
+
+                                                                            </vue-editor>
+                                                                            <has-error :form="form" field="body"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -128,20 +129,26 @@
                     photo: '',
                     description: '',
                 }),
-                editorOption: {
-                    // some quill options
-                    modules: {
-                        toolbar: [
-                            [{ 'font': [] }],
-                            [{ 'size': ['small', false, 'large', 'huge'] }],
-                            ['bold', 'italic', 'underline'],
-                            [{'list': 'ordered'}, {'list': 'bullet'}],
-                            [{ 'align': [] }],
-                            [{ 'color': [] }, { 'background': [] }],
-                            ['clean']
-                        ]
-                    }
-                }
+                customToolbar: [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'font': [] }],
+                    //[{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
+                    //[{ 'size': ['small', false, 'large', 'huge'] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'align': [] }],
+                    //[{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    ['blockquote', 'code-block'],
+                    //['blockquote', 'code-block'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+                    //[{ 'script': 'sub'}, { 'script': 'super' }],
+                    //[{ 'indent': '-1'}, { 'indent': '+1' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    //['link', 'image', 'video', 'formula'],
+                    ['link'],
+                    //[{ 'direction': 'rtl' }],
+                    ['clean'],
+                    //['emoji'],
+                ]
             }
         },
         methods: {
