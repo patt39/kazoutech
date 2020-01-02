@@ -24,24 +24,13 @@ class SlideHomeList extends Component {
                 {slidehomeslength > 0 && (
                     <div id="carouselHomeIndicators" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
-                            <li data-target="#carouselHomeIndicators" data-slide-to="0" className="active"></li>
-                            {slidehomes.map((value, index) => {
-                                return <li key={index} data-target="#carouselHomeIndicators" data-slide-to={index + 1}></li>
+                            {slidehomes.map((value,index) => {
+                                return <li key={value.id} data-target="#carouselHomeIndicators" data-slide-to={index} className={index === 0 ? "active" : ""}/>
                             })}
                         </ol>
                         <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img className="d-block w-100"
-                                     src="https://www.servizidiwebmarketing.it/wp-content/uploads/2019/03/0-E-mail-marketing-come-farlo-1-1800x900.jpg"
-                                     alt="First slide"/>
-                                <div className="carousel-caption d-none d-md-block">
-                                    <h1 className="display-1 kazouTech-red-color">Bienvenue chez KazouTech</h1>
-                                    <p>Trouvez le prestataire idéal pour tous les services du quotidien</p>
-                                </div>
-                            </div>
-
-                            {slidehomes.map((item) => (
-                                <div key={item.id} className="carousel-item">
+                            {slidehomes.map((item,index) => (
+                                <div key={item.id} className={`carousel-item ${index === 0 ? "active" : ""}`}>
                                     <img className="d-block w-100"
                                          src={item.photo}
                                          alt={item.title}/>
