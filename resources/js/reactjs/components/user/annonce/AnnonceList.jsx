@@ -22,13 +22,17 @@ class AnnonceList extends Component {
                 <div className="row">
                     <div className="col-lg-12">
                         <h5 className="card-title">
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
-                                {this.props.title}
-                            </Link>
+                            {this.props.categoryoccupation !== null &&(
+                                <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
+                                    {this.props.title}
+                                </Link>
+                            )}
                         </h5>
                         <p className="card-description">
                             <b dangerouslySetInnerHTML={{ __html: (this.props.body.length > 156 ? this.props.body.substring(0, 156) + "..." : this.props.body) }} />
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            {this.props.categoryoccupation !== null && (
+                                <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            )}
                         </p>
                         <div className="card-header d-flex align-items-center">
                             <div className="d-flex align-items-center">

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 class SlideHomeList extends Component {
     constructor(props) {
@@ -35,7 +36,8 @@ class SlideHomeList extends Component {
                                          src={item.photo}
                                          alt={item.title}/>
                                     <div className="carousel-caption d-none d-md-block">
-                                        <h1 className="display-1 kazouTech-red-color">{item.title}</h1>
+                                        <h1 className="title text-white">{item.title}</h1>
+
                                         <p>{item.description}</p>
                                     </div>
                                 </div>

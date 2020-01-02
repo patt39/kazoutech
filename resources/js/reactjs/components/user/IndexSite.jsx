@@ -47,7 +47,7 @@ class IndexSite extends Component {
                                 <div className="col-lg-12">
                                     <div className="row row-grid">
                                         <div className="col-lg-4">
-                                            <div className="card card-lift--hover shadow border-0">
+                                            <div className="card card-lift--hover shadow border-0 text-center">
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-primary rounded-circle mb-4">
@@ -65,7 +65,7 @@ class IndexSite extends Component {
                                             </div>
                                         </div>
                                         <div className="col-lg-4">
-                                            <div className="card card-lift--hover shadow border-0">
+                                            <div className="card card-lift--hover shadow border-0 text-center">
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-success rounded-circle mb-4">
@@ -84,7 +84,7 @@ class IndexSite extends Component {
                                             </div>
                                         </div>
                                         <div className="col-lg-4">
-                                            <div className="card card-lift--hover shadow border-0">
+                                            <div className="card card-lift--hover shadow border-0 text-center">
                                                 <div className="card-body py-5">
                                                     <div
                                                         className="icon icon-shape icon-shape-warning rounded-circle mb-4">
@@ -98,7 +98,7 @@ class IndexSite extends Component {
                                                         nous en passons pas écoutez cequon dit à propos de kazoutech et
                                                         faite nous confiance</p>
                                                     <Link to={'/temoignages/'}
-                                                       className="btn btn-warning btn-center">Temoignage</Link>
+                                                       className="btn btn-warning">Temoignage</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +129,20 @@ class IndexSite extends Component {
                         </div>
                     </div>
                 </div>
-                <SubscribeLine/>
+                <div className="subscribe-line subscribe-line-white">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-5 mr-auto">
+                                <h4 className="title">Restez a l'affue chaque semaine!</h4>
+                                <p className="description">
+                                    Inscrivez-vous gratuitement à notre newletters et soyez contacter par mail en premiers
+                                    chaque week-end pour les offres de prèmier choix.
+                                </p>
+                            </div>
+                            <SubscribeLine/>
+                        </div>
+                    </div>
+                </div>
                 <FooterUserSite/>
             </>
         )

@@ -71,8 +71,8 @@ class OccupationSiteIndex extends Component {
                                 <div className="col-lg-5 mr-auto">
                                     <h4 className="title">Restez a l'affue chaque semaine!</h4>
                                     <p className="description">
-                                        Rejoigniez notre newsletter et ayez de nos nouvelle chaque semaine n ayez craint
-                                        nous detestons aussi les spam
+                                        Inscrivez-vous gratuitement à notre newletters et soyez contacter par mail en premiers
+                                        chaque week-end pour les offres de prèmier choix.
                                     </p>
                                 </div>
                                 <SubscribeLine/>
