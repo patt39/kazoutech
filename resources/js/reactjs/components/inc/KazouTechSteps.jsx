@@ -9,12 +9,12 @@ class KazouTechSteps extends Component {
 
     render() {
         return (
-            <div className="project-2 my-5">
+            <div className="kazouTechSteps-wrapper bg-default">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 mx-auto text-center my-5">
-                            <h3 className="display-3">Comment ça marche chez KazouTech?</h3>
-                            <p className="lead">3 simples étapes pour devenir charbonneur(euse) sur notre plateforme et vous faire contactez par des demandeurs de services en ligne. </p>
+                            <h3 className="display-3 kazouTech-red-color">Comment ça marche chez KazouTech?</h3>
+                            <p className="lead kazouTech-white-color">3 simples étapes pour devenir charbonneur(euse) sur notre plateforme et vous faire contactez par des demandeurs de services en ligne. </p>
                         </div>
                     </div>
                     <div className="row">

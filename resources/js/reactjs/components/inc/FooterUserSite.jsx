@@ -38,12 +38,12 @@ class FooterUserSite extends Component {
                                     <ul>
                                         <li>
                                             <Link to={'/about/'}>
-                                                A propos de nous
+                                                A Propos de Nous
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to={'/concept/'}>
-                                                Notre concept
+                                                Notre Concept
                                             </Link>
                                         </li>
                                         <li>
@@ -65,7 +65,7 @@ class FooterUserSite extends Component {
                                     <ul>
                                         <li>
                                             <Link to={'/occupations/'}>
-                                                Nos categorie
+                                                Nos Categorie
                                             </Link>
                                         </li>
                                         <li>
@@ -97,7 +97,7 @@ class FooterUserSite extends Component {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                Peinture intérieure
+                                                Peinture Intérieure
                                             </a>
                                         </li>
                                         <li>
@@ -123,7 +123,7 @@ class FooterUserSite extends Component {
                                     <h4 className="mt-3">Top Villes</h4>
                                     <ul>
                                         <li>
-                                            <a href="...">
+                                            <a href="#">
                                                 Douala
                                             </a>
                                         </li>

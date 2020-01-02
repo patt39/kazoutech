@@ -129,22 +129,7 @@ class IndexSite extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="subscribe-line subscribe-line-white">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-5 mr-auto">
-                                <h4 className="title">Restez à l'affût chaque semaine!</h4>
-                                <p className="description">
-                                    Rejoigniez notre newsletter et ayez de nos nouvelles chaque semaine n'ayez crainte
-                                    nous detestons aussi les spam
-                                </p>
-                            </div>
-
-                           <SubscribeLine/>
-
-                        </div>
-                    </div>
-                </div>
+                <SubscribeLine/>
                 <FooterUserSite/>
             </>
         )
