@@ -9,6 +9,6 @@ Route::put('annonces/{occupation}/p/annonce/{id}','MultiplesRouteTraitementContr
 
 
 //Route blog traitement
-Route::get('blog/p/create','MultiplesRouteTraitementController@blogscreate')->name('blog_site.create');
+Route::get('blog/p/new/create','MultiplesRouteTraitementController@blogscreate')->name('blog_site.create');
 Route::get('blogId/p/{id}/','MultiplesRouteTraitementController@blogshow')->name('blog_site.show');
 Route::get('blog/p/{id}/edit','MultiplesRouteTraitementController@blogedit')->name('blog_site.edit');
