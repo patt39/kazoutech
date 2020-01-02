@@ -32,7 +32,7 @@ class SlideHomeList extends Component {
                         <div className="carousel-inner">
                             {slidehomes.map((item,index) => (
                                 <div key={item.id} className={`carousel-item ${index === 0 ? "active" : ""}`}>
-                                    <img className="d-block w-100"
+                                    <img className="d-block w-100 kazouTech-carousel-image"
                                          src={item.photo}
                                          alt={item.title}/>
                                     <div className="carousel-caption d-none d-md-block">
