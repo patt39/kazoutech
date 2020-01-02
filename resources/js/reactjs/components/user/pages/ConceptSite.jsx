@@ -22,25 +22,12 @@ class ConceptSite extends Component {
                 <div className="about-us">
                     <NavUserSIte />
                     <div className="wrapper">
-                        <div className="page-header  header-filter">
-                            <div className="page-header-image" style={{ backgroundImage: "url(" + '/assets/vendor_site/img/sections/broofoac.jpg' + ")" }}></div>
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/sections/broofoac.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
-                                        <h2 className="display-2 text-white">Concept Kazoutech</h2>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="floating-box bg-default">
-                                        <div className="box text-center">
-                                            <div className="icon icon-shape bg-primary icon-xl rounded-circle text-white">
-                                                <i className="ni ni-spaceship"></i>
-                                            </div>
-                                        </div>
-                                        <blockquote className="blockquote text-center mt-4">
-                                            <p className="title mb-0 text-white" stlyle="font-size: 60px">Bienvenue</p>
-                                        </blockquote>
-                                        <h2 className="lead text-white p-5"><em style={{ color: "red" }}>Kazoutech </em> est une plateforme de demande et de prestation de services en ligne.Principalement nous mettons en contact des particuliers et des technicien(ne) pour des services precis.Nous travaillons aussi avec des entreprises de dans le batiment et le genie civile.A noter que  sur notre plateforme, le prestataire a le status d'auto-entrepreneur et travail a sa guise.</h2>
+                                        <h3 className="display-2 text-white">Concept site</h3>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +36,7 @@ class ConceptSite extends Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-8 text-center mx-auto">
-                                        <h3 className="display-3" style={{ color: "red" }}>Nos Valeurs</h3>
+                                        <h3 className="display-3">Nos Valeurs</h3>
                                         <p className="lead">La capacité de faire confiance a des gens rencontrer sur le net est un atout quon aquiet avec le temp.</p>
                                     </div>
                                 </div>
@@ -262,7 +249,7 @@ class ConceptSite extends Component {
                                 <div className="container">
                                     <div className="row text-center justify-content-center">
                                         <div className="col-lg-8">
-                                            <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour jobbeurs</span></h3>
+                                            <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour Charbonneurs (jobbeurs)</span></h3>
                                             <p className="lead text-white">Le jobbing n'as jamais été facile mais pour vous apportez le meilleurs des services et assurez votre sécurité et integrité,
                                                 voiçi quelque conseils pratique.</p>
                                         </div>
@@ -274,7 +261,7 @@ class ConceptSite extends Component {
                                                     <i className="ni ni-hat-3 text-info"></i>
                                                 </div>
                                                 <div className="description pl-4">
-                                                    <h5 className="title text-info">Respect de l'heure</h5>
+                                                    <h5 className="text-info">Respect de l'heure</h5>
                                                     <p>Honorer toujour a vos rendez-vous en arrivant a l'heure chez votre clients et fixer préalablement avec se dernier toutes les taches à accomplir et a la fin verifiez bien quelles ont été
                                                         accomplit come il le fallait pour éviter des mal-entendu cela fait partit du professionalisme.</p>
                                                 </div>
@@ -286,7 +273,7 @@ class ConceptSite extends Component {
                                                     <i className="ni ni-istanbul text-warning"></i>
                                                 </div>
                                                 <div className="description pl-4">
-                                                    <h5 className="title text-warning">Equipement</h5>
+                                                    <h5 className="text-warning">Equipement</h5>
                                                     <p>votre équipement fait partit de l 'extension de votre talent donc n'hesitez pas de toujours vous munir du meilleur materiel pour chaque tache sans oublier votre équipement de sécurité
                                                         pour faciliter votre travail et vous permettre de rester en forme pour votre job.</p>
 
@@ -301,7 +288,7 @@ class ConceptSite extends Component {
                                                     <i className="ni ni-trophy text-danger"></i>
                                                 </div>
                                                 <div className="description pl-4">
-                                                    <h5 className="title text-danger">Rémuneration</h5>
+                                                    <h5 className="text-danger">Rémuneration</h5>
                                                     <p>Assurez-vous que la rémuneration établit avec votre client sois claire pour eviter des malentendu après le travail accomplit en cas d'heure supplementaire définissez avec votre client ceaui vous revient de droit.</p>
                                                 </div>
                                             </div>
@@ -312,7 +299,7 @@ class ConceptSite extends Component {
                                                     <i className="ni ni-image text-success"></i>
                                                 </div>
                                                 <div className="description pl-4">
-                                                    <h5 className="title text-success">Réalisation</h5>
+                                                    <h5 className="text-success">Réalisation</h5>
                                                     <p>Offrez toujours le meilleur de vos service pendant vos job cela boostera votre notorieté a la fois sur la plateforme et le marché du jobbing n'hesitez pas de nettoyer votre site aprés le job accomplit et demander a votre client de vous évaluez.</p>
                                                 </div>
                                             </div>
