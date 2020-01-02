@@ -8,7 +8,7 @@ class OccupationList extends Component {
     render() {
         return (
 
-            <div key={this.props.id} className="col-lg-3">
+            <div key={this.props.id} className="col-lg-4">
                 <div className="card card-blog card-background" data-animation="zooming">
                     <div className="full-background" style={{ backgroundImage: "url(" + this.props.photo + ")" }} />
                     <Link to={`/occupations/${this.props.slug}/`}>
