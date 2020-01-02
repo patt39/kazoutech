@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin\Slide;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SlideHomes\StoreRequest;
+use App\Http\Requests\SlideHomes\UpdateRequest;
 use App\Http\Resources\Slide\SlideHomeResource;
 use App\Model\admin\slide\slidehome;
-use Illuminate\Http\Request;
+use App\Services\Admin\SlidehomeService;
 use File;
+use Symfony\Component\HttpFoundation\Response;
 
 class SlidehomeController extends Controller
 {
@@ -49,7 +52,7 @@ class SlidehomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slide.slidehome.create');
     }
 
     /**
@@ -58,9 +61,16 @@ class SlidehomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $slidehome= new slidehome();
+        $slidehome->fill($request->all());;
+
+        SlidehomeService::storeUploadImage($request,$slidehome);
+
+        $slidehome->save();
+
+        return response('Created',Response::HTTP_CREATED);
     }
 
 
@@ -83,7 +93,9 @@ class SlidehomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $slidehome = new SlideHomeResource(slidehome::where('id', $id)->findOrFail($id));
+
+        return response()->json($slidehome,200);
     }
 
     /**
@@ -94,7 +106,8 @@ class SlidehomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slidehome = slidehome::where('id', $id)->findOrFail($id);
+        return view('admin.slide.slidehome.edit', compact('slidehome'));
     }
 
     /**
@@ -102,11 +115,17 @@ class SlidehomeController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        $slidehome = slidehome::findOrFail($id);
+
+        SlidehomeService::updateUploadeImage($request,$slidehome);
+
+        $slidehome->update($request->all());
+
+        return response()->json($slidehome,200);
     }
 
     /**

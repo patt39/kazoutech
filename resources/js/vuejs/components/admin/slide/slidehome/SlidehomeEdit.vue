@@ -8,246 +8,127 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="loaded" class="row">
-                        <div class="col-md-12 expo">
-                            <div class="card card-stats">
-                                <div :class="getColorCardUser()">
-                                    <div class="card-icon">
-                                        <i class="material-icons">person_outline</i>
-                                    </div>
-                                    <p class="card-category"><b>All Slide Home page</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{slidehomes.length}}</b></h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">person_outline</i><b>All Slide Home page</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div v-if="!loaded" class="submit">
-                        <LoaderLdsDefault/>
-                    </div>
-                    <div v-if="loaded" class="row">
-                        <div class="col-md-12 expo">
-                            <div class="card">
-                                <div :class="getColorHeaderUser()">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h4 class="card-title">
-                                                <b>Datatables Members</b>
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 expo">
+                                    <div class="card">
+                                        <div :class="getColorCardUser()" style="margin-top: -5px;">
+                                            <div class="card-icon">
+                                                <i class="material-icons">slideshow</i>
+                                            </div>
+                                            <br>
+                                            <h4 class="card-title" style="margin-top: 0px;"><b>Edit</b> -
+                                                <small class="category">{{ form.title}}</small>
                                             </h4>
-                                            <p class="card-title">
-                                                Platform Creators
-                                            </p>
                                         </div>
-                                        <div class="col-md-6 text-right">
-                                            <span>
-                                                <i id="tooltipSize" class="material-icons">person_outline</i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="card-body">
-                                    <div class="header text-right">
-                                        <button @click="reload"
-                                                class="btn btn-success btn-raised button_note btn-sm"
-                                                title="Refresh Page">
-                                            <i class="material-icons">replay</i>
-                                            <b class="title_hover">Refresh</b>
-                                        </button>
-                                    </div>
-                                    <div v-if="$auth.can('create-about')" class="toolbar">
-                                        <div class="submit text-center">
-                                            <router-link :to="{ name: 'slide_image' }" id="button_hover"
-                                                         class="btn btn-success btn-raised ">
-                                               <span class="btn-label">
-                                                   <i class="material-icons">person_outline</i>
-                                               </span>
-                                                <b class="title_hover">New Image slide home</b>
-                                            </router-link>
-                                        </div>
-                                    </div>
-                                    <div class="material-datatables">
-                                        <table id="datatables" class="table table-striped table-no-bordered table-hover"
-                                               cellspacing="0" width="100%" style="width:100%">
-                                            <thead>
-                                            <tr>
-                                                <th><b>Image</b></th>
-                                                <th><b>Title</b></th>
-                                                <th><b>Status</b></th>
-                                                <th><b>Edit By</b></th>
-                                                <th><b>Last Update</b></th>
-                                                <th class="disabled-sorting text-right"><b>Actions</b></th>
-                                            </tr>
-                                            </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th><b>Image</b></th>
-                                                <th><b>Title</b></th>
-                                                <th><b>Status</b></th>
-                                                <th><b>Edit By</b></th>
-                                                <th><b>Last Update</b></th>
-                                                <th class="text-right"><b>Actions</b></th>
-                                            </tr>
-                                            </tfoot>
-                                            <tbody>
-                                            <tr v-for="item in abouts" :key="item.id">
-                                                <td><img :src="item.photo"
-                                                         style="width: 50px; height: 50px;  top: 15px; left: 15px; border-radius: 50%">
-                                                </td>
-                                                <td>{{ (item.title.length > 15 ? item.title.substring(0,15)+
-                                                    "..." : item.title) | upText }}
-                                                </td>
-                                                <td>
-                                                    <div class="timeline-heading">
-                                                        <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="!item.status"
-                                                              class="badge badge-danger"><b>Deactive</b></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button"
-                                                                class="btn btn-success btn-round btn-just-icon btn-sm"
-                                                                title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button"
-                                                                class="btn btn-danger btn-round btn-just-icon btn-sm"
-                                                                title="Administrator Offline"></button>
-                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+
-                                                        "..." : item.user.name) | upText }}
-                                                    </a>
-                                                </td>
-                                                <td><b>{{ item.updated_at | myDate }}</b></td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" class="togglebutton btn btn-link btn-sm btn-sm">
-                                                        <label>
-                                                            <input type="checkbox" name="status" v-model="item.status"
-                                                                   @change="changeStatus(item)"/>
-                                                            <span class="toggle"></span>
-                                                        </label>
-                                                    </button>
-                                                    <router-link v-if="$auth.can('edit-about')"
-                                                                 :to="{ path: `/dashboard/abouts/${item.id}/edit` }"
-                                                                 class="btn btn-link  btn-success btn-round btn-just-icon"
-                                                                 title="Edit">
-                                                        <i class="material-icons">edit</i>
-                                                    </router-link>
-
-                                                    <button v-if="$auth.can('delete-about')"
-                                                            @click="deleteItem(item.id)"
-                                                            class="btn btn-link btn-danger btn-round btn-just-icon"
-                                                            title="Delete">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <!-- Modal show member -->
-                                    <div class="modal fade" id="viewNew" tabindex="-1" role="dialog"
-                                         aria-labelledby="addNewLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true"></span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-10 ml-auto mr-auto">
-                                                            <div style="padding-top: -100px;"
-                                                                 class="profile text-center ">
-                                                                <div class="avatar">
-                                                                    <div class="fileinput fileinput-new text-center"
-                                                                         data-provides="fileinput">
-                                                                        <div
-                                                                            class="fileinput-new thumbnail img-circle img-raised">
-                                                                            <img :src="about.photo"
-                                                                                 :alt="about.first_name">
+                                        <div class="card-body">
+                                            <form id="RegisterValidation" @submit.prevent="updateItem()" role="form"
+                                                  method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
+                                                <div class="col-md-12">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label>Title <span style="color: red;">*</span></label>
+                                                                            <input v-model="form.title" type="text" name="title"
+                                                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" >
+                                                                            <has-error :form="form" field="title"></has-error>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Text Link</label>
+                                                                            <input v-model="form.text_link" type="text" name="text_link"
+                                                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('text_link') }" >
+                                                                            <has-error :form="form" field="text_link"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Redirect Link</label>
+                                                                            <input v-model="form.redirect_link" type="text" name="redirect_link" placeholder="Example: /example/"
+                                                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('redirect_link') }" >
+                                                                            <has-error :form="form" field="redirect_link"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div v-if="form.redirect_link.length > 0"  class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label></label>
+                                                                             <select name="color_id" v-model="form.color_link" id="color_link" class="form-control"
+                                                                                :class="{ 'is-invalid': form.errors.has('color_link') }">
+                                                                            <option value="" disabled>Choose Color</option>
+                                                                            <option v-for="color in colors" :key="color.id" :value="color.slug">{{color.name}}</option>
+                                                                        </select>
+                                                                            <has-error :form="form" field="color_link"></has-error>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-8 ml-auto mr-auto">
+                                                                        <div class="profile text-center">
+                                                                            <br>
+                                                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                                                <div class="fileinput-new thumbnail">
+                                                                                    <img :src="getImagesave()" :alt="form.slug">
+                                                                                </div>
+                                                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                                                <div>
+                                                                                    <span class="btn btn-raised btn-success btn-file">
+                                                                                        <span class="fileinput-new" style="cursor: pointer">
+                                                                                             <i class="material-icons">slideshow</i>
+                                                                                                  <b>Add Slide</b>
+                                                                                        </span>
+                                                                                        <span class="fileinput-exists" style="cursor: pointer">
+                                                                                             <i class="material-icons">photo_library</i>
+                                                                                            <b>Change</b>
+                                                                                         </span>
+                                                                                        <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
+                                                                                     </span>
+                                                                                    <a href="#pablo" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
+                                                                                        <i class="material-icons">cancel</i>
+                                                                                        <b>Remove</b>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <has-error :form="form" field="photo"></has-error>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="media-body">
+                                                                            <label class="bmd-label-floating">Slidehome text<span style="color: red;">*</span></label>
+                                                                            <quill-editor v-model="form.description"
+                                                                                          :class="{ 'is-invalid': form.errors.has('description') }"
+                                                                                          :options="editorOption">
+                                                                            </quill-editor>
+                                                                            <has-error :form="form" field="description"></has-error>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="about.last_name" type="text"
-                                                                       name="last_name"
-                                                                       class="form-control" placeholder="Full Name..."
-                                                                       disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="about.first_name" type="text"
-                                                                       class="form-control" name="First Name"
-                                                                       placeholder="Role..." disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="about.fblink" type="text" name="fblink"
-                                                                       class="form-control"
-                                                                       placeholder="Facebook Username" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="about.instlink" type="text"
-                                                                       name="instlink"
-                                                                       class="form-control"
-                                                                       placeholder="Instagram Username" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!--<div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.twlink" type="text" name="twlink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('twlink') }" placeholder="Tweeter Username" disabled>
-                                                                <has-error :form="form" field="twlink"></has-error>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.linklink" type="text" name="linklink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('linklink') }" placeholder="Linkedin Username" disabled>
-                                                                <has-error :form="form" field="linklink"></has-error>
-                                                            </div>
-                                                        </div>-->
-                                                    </div>
-                                                    <div class="form-group text-justify">
-                                                        <p v-html="about.description"></p>
-                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <hr>
+                                                <div class="submit">
                                                     <div class="text-center">
-                                                        <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">
-                                                <span class="btn-label">
-                                                    <i class="material-icons">clear</i>
-                                                    <b>Close</b>
-                                                </span>
+                                                        <router-link id="button_hover" :to="{ name: 'slidehomes.index' }" class="btn btn-danger" data-toggle="tab">
+                                                            <i class="material-icons">chevron_left</i>
+                                                            <b class="title_hover">Back</b>
+                                                        </router-link>
+                                                        <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                            <i class="material-icons">save_alt</i>
+                                                            <b class="title_hover">Update</b>
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <br>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -258,165 +139,100 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
 <script>
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
-    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
-
+    import LoaderEllipsis from "../../../inc/animation/LoaderEllipsis";
     export default {
-        props: {
-            checked: Boolean
-        },
-        components: {
-            LoaderLdsDefault,
-            StatusAdmin,
-        },
+        components: {StatusAdmin, LoaderEllipsis },
         data() {
             return {
-                loaded: false,
                 editmode: false,
-                abouts: {},
-                user: {},
-                about: {
-                    'user': ''
-                },
+                user: '',
+                occupations: {},
+                colors: {},
+                form: new Form({
+                    id: '',
+                    title: '',
+                    photo: '',
+                    description: '',
+                    redirect_link: '',
+                    text_link: '',
+                    color_link: '',
+                }),
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            ['bold', 'italic', 'underline'],
+                            [{'list': 'ordered'}, {'list': 'bullet'}],
+                            [{ 'align': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            ['clean']
+                        ]
+                    }
+                }
             }
         },
         methods: {
-            mydatatables() {
-                $(function () {
-                    $('#datatables').DataTable({
-                        "pagingType": "full_numbers",
-                        "lengthMenu": [
-                            [10, 25, 50, -1],
-                            [10, 25, 50, "All"]
-                        ],
-                        order: [[0, 'desc'], [3, 'asc']],
-                        responsive: true,
-                        stateSave: true,
-                        destroy: true,
-                        retrieve: true,
-                        autoFill: true,
-                        colReorder: true,
-                        language: {
-                            search: "<i class='material-icons'>search</i>",
-                            searchPlaceholder: "Search Record",
-                        },
-                        "sPaginationType": "full_numbers",
-
+            getColorCardUser(){
+                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
+                return colorCard;
+            },
+            getColorHeaderUser(){
+                let colorHeader = 'card-header card-header-' + this.user.color_name;
+                return colorHeader;
+            },
+            getImagesave(){
+                let photo = (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
+                return photo;
+            },
+            updateImage(e){
+                //console.log('uploadert')
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                if (file['size'] < 6000775){
+                    reader.onloadend = (file) => {
+                        //console.log('RESULT',reader.result)
+                        this.form.photo = reader.result
+                    };
+                    reader.readAsDataURL(file);
+                }else{
+                    this.$Progress.fail();
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Your image is very big',
+                        buttonsStyling: false,
+                        confirmButtonClass: "btn btn-success",
                     });
-                });
+                }
             },
-            getColorCardUser() {
-                return 'card-header card-header-icon card-header-' + this.user.color_name;
-            },
-            getColorHeaderUser() {
-                return 'card-header card-header-' + this.user.color_name;
-            },
-            getUser(item) {
-                //Progress bar star
-                this.$Progress.start();
-                location.replace(`/dashboard/users/p/${item.user.username}/`);
-                //Progres bar
-                this.$Progress.finish()
-            },
-            viewItem(item) {
-                //Masquer le modal après la création
-                $('#viewNew').modal('show');
-                //On passe les information
-                this.about = item;
-            },
-            deleteItem(id) {
-                //Alert delete
-                Swal.fire({
-                    title: 'Delete Member?',
-                    text: "Are you sure you want to delete this member?",
-                    type: 'warning',
-                    animation: false,
-                    customClass: 'animated shake',
-                    buttonsStyling: false,
-                    confirmButtonClass: "btn btn-success",
-                    cancelButtonClass: 'btn btn-danger',
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'Cancel',
-                    showCancelButton: true,
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.value) {
-                        //Start Progress bar
-                        this.$Progress.start();
-                        //Envoyer la requete au server
-                        axios.delete("/dashboard/abouts/" + id).then(() => {
-
-                            /** Alert notify bootstrapp **/
-                            var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                                allow_dismiss: false,
-                                showProgressbar: true,
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                },
-                            });
-                            setTimeout(function () {
-                                notify.update({
-                                    'type': 'success',
-                                    'message': '<strong>Member deleted Successfully.</strong>',
-                                    'progress': 75
-                                });
-                            }, 2000);
-                            /** End alert ***/
-
-                            //End Progress bar
-                            this.$Progress.finish();
-
-                            Fire.$emit('ItemGetter');
-                        }).catch(() => {
-                            //Failled message
-                            this.$Progress.fail();
-                            //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
-                                type: 'danger',
-                                animate: {
-                                    enter: 'animated bounceInDown',
-                                    exit: 'animated bounceOutUp'
-                                }
-                            });
-                        })
-                    }
-                })
-            },
-
-            /** Ici c'est l'activation de la data  **/
-            changeStatus(item){
+            updateItem() {
                 //Start Progress bar
                 this.$Progress.start();
-                axios.get(`/dashboard/change_status_abouts/${item.id}`, {
-                    status: item.status,
-                }).then(res => {
 
-                    $.notify('<strong>Member update Successfully.</strong>', {
-                        allow_dismiss: false,
-                        type: 'info',
-                        placement: {
-                            from: 'bottom',
-                            align: 'center'
-                        },
-                        animate: {
-                            enter: "animated fadeInUp",
-                            exit: "animated fadeOutDown"
-                        },
-                    });
-
-                    Fire.$emit('ItemGetter');
-                    //End Progress bar
-                    this.$Progress.finish();
-                }).catch(() => {
+                let url = route('slidehomes.update',this.form.id);
+                this.form.put(url)
+                    .then(() => {
+                        /** Debut de l'alert **/
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                            allow_dismiss: false,
+                            showProgressbar: true
+                        });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Data updated successfully.</strong>', 'progress': 75});
+                        }, 2000);
+                        setTimeout(() => this.$router.push({ name: 'slidehomes.index' }));
+                        /** Fin alert **/
+                        //End Progress bar
+                        this.$Progress.finish();
+                    }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    //Alert error
                     $.notify("Ooop! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
@@ -426,31 +242,17 @@
                     });
                 })
             },
-            loadItems() {
-                let vm = this;
-                //Start Progress bar
-                vm.$Progress.start();
-                axios.get("/api/abouts").then(response => {
-                    vm.loaded = true;
-                    vm.abouts = response.data.data;
-                    vm.mydatatables();
-                    //End Progress bar
-                    vm.$Progress.finish();
-                });
-                axios.get("/api/account/user").then(response => {
-                    vm.user = response.data.data
-                });
-
-            },
-            reload() {
-                this.loadItems()
-            },
         },
-        created() {
-            this.loadItems();
-            Fire.$on('ItemGetter', () => {
-                this.loadItems();
-            });
+        mounted() {
+            //Start Progress bar
+            this.$Progress.start();
+            let Idslidehome = this.$route.params.id;
+            let url = route('slidehomes.show',Idslidehome);
+            dyaxios.get(url).then(({data}) => this.form.fill(data));
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
+            axios.get("/api/colors").then(response => {this.colors = response.data});
+            //End Progress bar
+            this.$Progress.finish();
         }
     }
 </script>

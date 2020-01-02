@@ -1,6 +1,6 @@
 @extends('inc.admin._main')
-@section('title', '- Admin Slode')
-@section('sectionTitle', 'Blogs')
+@section('title', '- Admin Slide')
+@section('sectionTitle', 'slides')
 
 @section('style')
 

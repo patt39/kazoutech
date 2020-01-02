@@ -10,7 +10,7 @@ class UpdateBlogRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->getRules('annoncesupdate', $this->route('annonces'));
+        return $this->getRules('update', $this->route('blogs'));
     }
 
 } // class

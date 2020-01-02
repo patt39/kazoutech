@@ -172,7 +172,7 @@
                     <!-- Links Partial -->
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#partialExamples">
-                            <i class="material-icons">contact_support</i>
+                            <i class="material-icons">list</i>
                             <p><b>Partials</b>
                                 <b class="caret"></b>
                             </p>
@@ -334,7 +334,7 @@
                     <!-- Annonces -->
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/annonces/' }" class="nav-link">
-                            <i class="material-icons">meeting_room</i>
+                            <i class="material-icons">all_out</i>
                             <p><b>Annonces</b></p>
                         </router-link>
                     </li>

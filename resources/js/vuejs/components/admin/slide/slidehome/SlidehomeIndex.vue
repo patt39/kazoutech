@@ -13,14 +13,14 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">photo</i>
+                                        <i class="material-icons">slideshow</i>
                                     </div>
                                     <p class="card-category"><b>All Slide Home page</b>
                                     <h3 class="card-title" style="color:red;"><b>{{slidehomes.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">photo</i><b>All Slide Home page</b>
+                                        <i class="material-icons">slideshow</i><b>All Slide Home page</b>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <span>
-                                                <i id="tooltipSize" class="material-icons">photo</i>
+                                                <i id="tooltipSize" class="material-icons">slideshow</i>
                                             </span>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                             <router-link :to="{ name: 'slidehomes.create' }" id="button_hover"
                                                          class="btn btn-success btn-raised ">
                                                <span class="btn-label">
-                                                   <i class="material-icons">person_outline</i>
+                                                   <i class="material-icons">slideshow</i>
                                                </span>
                                                 <b class="title_hover">New Image slide home</b>
                                             </router-link>
@@ -95,11 +95,10 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in slidehomes" :key="item.id">
-                                                <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px">
-                                                </td>
-                                                <td>{{ (item.title.length > 15 ? item.title.substring(0,15)+
-                                                    "..." : item.title) | upText }}
-                                                </td>
+                                                <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
+                                                <td v-if="item.title !== null">{{ (item.title.length > 15 ? item.title.substring(0,15)+
+                                                    "..." : item.title) | upText }}</td>
+                                                <td v-else>...</td>
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status" class="badge badge-info"><b>Active</b></span>

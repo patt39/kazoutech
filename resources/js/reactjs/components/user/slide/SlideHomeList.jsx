@@ -37,7 +37,9 @@ class SlideHomeList extends Component {
                                          alt={item.title}/>
                                     <div className="carousel-caption d-none d-md-block">
                                         <h1 className="title text-white">{item.title}</h1>
-
+                                        {item.redirect_link !== null && (
+                                            <Link to={`${item.redirect_link}`} className={`btn btn-${item.color_link}`}>{item.text_link}</Link>
+                                        )}
                                         <p>{item.description}</p>
                                     </div>
                                 </div>

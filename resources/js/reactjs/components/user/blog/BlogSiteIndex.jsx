@@ -127,7 +127,7 @@ class BlogSiteIndex extends Component {
                                                     <div className="col-lg-10 col-md-8 mx-auto">
                                                         <h2 className="title mb-5"><b>Histoires connexes</b></h2>
 
-                                                        <Link to={`/blog/p/new/create/`} className="btn btn-primary btn-center btn-larg">
+                                                        <Link to={`/blog/p/new/create/`} className="btn btn-primary">
                                                             Ajouter un nouveau article de blog
                                                         </Link>
                                                         <br/><br/>
