@@ -195,16 +195,12 @@ class ProfileSiteIndex extends Component {
                                         <div className="col-lg-4 order-lg-1">
                                             <div className="card-profile-stats d-flex justify-content-center">
                                                 <div>
-                                                    <span className="heading">22</span>
-                                                    <span className="description">Friends</span>
+                                                    <span className="heading">{blogs.length}</span>
+                                                    <span className="description" title={'Aticles de blog'}>Blog</span>
                                                 </div>
                                                 <div>
-                                                    <span className="heading">10</span>
-                                                    <span className="description">Photos</span>
-                                                </div>
-                                                <div>
-                                                    <span className="heading">89</span>
-                                                    <span className="description">Comments</span>
+                                                    <span className="heading">{annonces.length}</span>
+                                                    <span className="description" title={'Toutes les annonces'}>Annonces</span>
                                                 </div>
                                             </div>
                                         </div>

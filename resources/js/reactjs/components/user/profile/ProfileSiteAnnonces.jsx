@@ -20,13 +20,17 @@ class ProfileSiteAnnonces extends Component {
                 <div className="row">
                     <div className="card-body">
                         <h6 className="card-title">
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
-                                {this.props.title}
-                            </Link>
+                            {this.props.categoryoccupation && (
+                                <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
+                                    {this.props.title}
+                                </Link>
+                            )}
                         </h6>
                         <p className="card-description">
                             <b dangerouslySetInnerHTML={{ __html: (this.props.body.length > 156 ? this.props.body.substring(0, 156) + "..." : this.props.body) }} />
-                            <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            {this.props.categoryoccupation && (
+                                <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
+                            )}
                         </p>
 
                         <div className="card-description">
@@ -56,12 +60,6 @@ class ProfileSiteAnnonces extends Component {
                                                     </Button>{" "}
                                                     <div className="dropdown-menu dropdown-menu-right"
                                                          style={{position: "absolute", transform: "translate3d(16px, 25px, 0px)", top: "0px", left: "0px", willChange: "transform",}}>
-                                                        <a className="dropdown-item" href="..">
-                                                            <i className="ni ni-single-02"/> Profile
-                                                        </a>
-                                                        <a className="dropdown-item" href="..">
-                                                            <i className="ni ni-notification-70"/> Mute conversation
-                                                        </a>
                                                         <NavLink to={`/annonces/${this.props.occupation.slug}/p/annonce/${this.props.id}/edit`} className="dropdown-item">
                                                             <i className="ni ni-key-25"/> Editer
                                                         </NavLink>

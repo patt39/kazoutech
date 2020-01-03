@@ -13,14 +13,14 @@
                             <div class="card card-stats">
                                 <div :class="getColorCardUser()">
                                     <div class="card-icon">
-                                        <i class="material-icons">assignment</i>
+                                        <i class="material-icons">all_out</i>
                                     </div>
                                     <p class="card-category"><b>All Announces</b>
                                     <h3 class="card-title" style="color:red;"><b>{{annonces.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">assignment</i><b>All announces</b>
+                                        <i class="material-icons">all_out</i><b>All announces</b>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <span>
-                                                <i id="tooltipSize" class="material-icons">color_lens</i>
+                                                <i id="tooltipSize" class="material-icons">all_out</i>
                                             </span>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                     <br>
                                     <div class="toolbar">
                                         <div class="submit text-center">
-                                            <router-link :to="{ name: 'annonces.create' }" class="btn btn-success btn-raised">
+                                            <router-link :to="{ name: 'annonces.create' }" class="btn btn-success btn-raised" id="button_hover">
                                                 <span class="btn-label">
                                                     <i class="material-icons">assignment</i>
                                                 </span>
@@ -78,7 +78,7 @@
                                                 <th><b>Occupation</b></th>
                                                 <th><b>City</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delet-occupation'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -118,7 +118,7 @@
                                                             <span class="toggle"/>
                                                         </label>
                                                     </button>
-                                                    <router-link :to="{ name: 'categoryoccupations.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
+                                                    <router-link :to="{ name: 'annonces.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
                                                                  class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
                                                         <i class="material-icons">edit</i>
                                                     </router-link>

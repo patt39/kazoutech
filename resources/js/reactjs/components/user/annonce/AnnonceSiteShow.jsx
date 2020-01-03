@@ -99,6 +99,7 @@ class AnnonceSiteShow extends Component {
         const composantTitle = `${annonce.title}`;
         document.title = `${composantTitle} | Kazoutech`;
         const annonceinderesses = annonceinteresse.annonces;
+        console.log(annonceinteresse);
         return (
 
             <div className="blog-posts">
@@ -217,9 +218,9 @@ class AnnonceSiteShow extends Component {
                                                                 <NavLink
                                                                     to={`/annonces/${annonce.occupation.slug}/p/annonce/${annonce.id}/edit`}
                                                                     className="btn btn-sm btn-success btn-icon">
-                                                    <span className="btn-inner--icon icon-big">
-                                                        <i className="ni ni-check-bold"/>
-                                                    </span>
+                                                                    <span className="btn-inner--icon icon-big">
+                                                                        <i className="ni ni-check-bold"/>
+                                                                    </span>
                                                                     <span className="btn-inner--text">editer</span>
                                                                 </NavLink>
                                                                 <Button onClick={() => this.deleteItem(annonce.id)}

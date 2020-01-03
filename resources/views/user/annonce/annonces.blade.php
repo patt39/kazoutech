@@ -1,6 +1,6 @@
 @extends('inc.user._main')
 <?php $item = htmlspecialchars(config('app.name'));?>
-@section('title', 'Annonce toutes les annonces | '.$item)
+@section('title', 'Annonces toutes les annonces | '.$item)
 
 @section('style')
 @endsection

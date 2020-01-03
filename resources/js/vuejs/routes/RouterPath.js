@@ -18,6 +18,7 @@ import MessageIndex from "../components/admin/user/message/MessageIndex";
 import MessageSend from "../components/admin/user/message/MessageSend";
 import MessageView from "../components/admin/user/message/MessageView";
 import OccupationIndex from "../components/admin/occupation/occupation/OccupationIndex";
+import AnnonceIndex from "../components/admin/annonce/AnnonceIndex"
 import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
@@ -148,6 +149,10 @@ export const routes = [
     //Route cities
     {path: '/dashboard/cities/', name: 'cities.actives', component: CityActives},
     {path: '/dashboard/cities/actives/', name: 'cities.index', component: CityIndex},
+
+    //Route annonces
+    {path: '/dashboard/annonces/', name: 'annonces.index', component: AnnonceIndex},
+
 
     //Route diplomas
     {path: '/dashboard/diplomas/', name: 'diplomas.index', component: DiplomaIndex},

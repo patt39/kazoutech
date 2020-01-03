@@ -16,7 +16,7 @@ class PermissionTableSeeder extends Seeder
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
 
-        // Create roles (Please don't delete this it's verry important !)
+        // Create roles (Please don't delete this it's very important !)
 
         Role::create(['guard_name' => 'web', 'name' => 'user']);
         Role::create(['guard_name' => 'web', 'name' => 'visitor']);
@@ -54,7 +54,7 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-testimonial']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-testimonial']);
 
-        // create permissions testimonials
+        // create permissions settings
         Permission::create(['guard_name' => 'web' , 'name' => 'create-setting']);
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-setting']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-setting']);
@@ -88,6 +88,12 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['guard_name' => 'web' , 'name' => 'edit-occupation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'delete-occupation']);
         Permission::create(['guard_name' => 'web' , 'name' => 'publish-occupation']);
+
+        //Create Permissions Annonces
+        Permission::create(['guard_name' => 'web' , 'name' => 'create-annonce']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'edit-annonce']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'delete-annonce']);
+        Permission::create(['guard_name' => 'web' , 'name' => 'publish-annonce']);
 
         //Create Diplomas
         Permission::create(['guard_name' => 'web' , 'name' => 'create-diploma']);

@@ -39,9 +39,9 @@ class ProfileSiteBlogs extends Component {
                                         <button className="btn btn-icon-only btn-outline-secondary btn-sm">
                                             <i className="ni ni-notification-70"/>
                                         </button>
-                                        <button className="btn btn-icon-only btn-outline-secondary btn-sm">
-                                            <i className="ni ni-chat-round"/>
-                                        </button>
+                                        <Link to={`/blog/p/${this.props.id}/edit/`} className="btn btn-icon-only btn-outline-secondary btn-sm" title={`Editer ${this.props.title}`}>
+                                            <i className="fa fa-edit"/>
+                                        </Link>
                                         <button onClick={() => this.props.deleteBlog(this.props.id)} title={'Suprimer cette article'}
                                                 className="btn btn-icon-only btn-outline-secondary btn-sm">
                                             <i className="fa fa-trash"/>
