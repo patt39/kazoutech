@@ -86,13 +86,13 @@ class BlogSiteIndex extends Component {
             <div className="blog-post">
                 <NavUserSIte />
                 <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
+                    <div className="page-header kazouTech-page-header-mini header-filter">
                         <div className="page-header-image"
                             style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }} />
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
-                                    <h5 className="title text-white">Bienvenue dans la comunauté</h5>
+                                    <h5 className="display-2 text-white">Bienvenue dans la comunauté</h5>
                                     <Link to={`/blog/`} className="btn btn-warning btn-round btn-icon-only">
                                         <i className="fab fa-twitter" />
                                     </Link>

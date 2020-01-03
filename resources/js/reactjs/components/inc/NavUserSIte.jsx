@@ -84,6 +84,7 @@ class NavUserSIte extends Component {
                                 :
                                 <li className="nav-item dropdown">
                                     <a href=".." className="nav-link" data-toggle="dropdown" role="button">
+                                        <span><img src={$userKazou.avatar} className="avatar"/></span>
                                         <span className="nav-link-inner--text"><b>{$userKazou.name}</b></span>
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
