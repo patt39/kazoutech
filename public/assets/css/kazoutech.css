@@ -82,7 +82,8 @@
     background-color: #d12420 !important;
 }
 .kazouTechSteps-wrapper,
-.kazouTechOccupations-wrapper {
+.kazouTechOccupations-wrapper,
+.kazouTechAbout-wrapper {
     padding: 3rem 0rem !important;
 }
 .ni-bold-up::before {
@@ -182,4 +183,7 @@
 }
 .profile button {
     margin-top: -7px;
+}
+.kazouTech-page-header-mini {
+    min-height: 80vh !important;
 }

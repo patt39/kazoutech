@@ -93,12 +93,12 @@ class ContactUserSite extends Component {
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <div className="page-header page-header-mini header-filter">
+                        <div className="page-header kazouTech-page-header-mini header-filter">
                             <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
-                                        <h3 className="display-2 text-white">Contactez nous ici</h3>
+                                        <h3 className="display-2 text-white">Contactez Nous ...</h3>
                                     </div>
                                 </div>
                             </div>
@@ -106,23 +106,26 @@ class ContactUserSite extends Component {
                     </div>
                     <div className="main">
                         <div className="container-fluid">
-                            <div className="row mt-5 mb-4 pt-5">
+                            <div className="row mt-5 mb-4">
                                 <div className="col-md-8 ml-auto mr-auto text-center mt-5">
-                                    <span className="badge badge-info">Laissez un message</span>
+                                    <button className="btn btn-icon btn-primary mb-5" type="button">
+                                        <span className="btn-inner--icon"><i className="ni ni-email-83"></i></span>
+                                        <span className="btn-inner--text">Laissez-nous un message</span>
+                                    </button>
                                     <h1 className="title">Dites nous tout à propos de <b>vous</b></h1>
-                                    <h4 className="desc">Si vous avez des questions ou just saluez, nous somme toujous a
+                                    <h4 className="desc">Si vous avez des questions ou juste un salut, nous sommes à
                                         votre disposition.</h4>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-6 mx-auto ">
-                                    <form role="form" className="card  p-3" id="contact-form"
+                                    <form role="form" className="card bg-secondary p-3" id="contact-form"
                                           onSubmit={this.createItem} acceptCharset="UTF-8">
                                         <div className="card-body">
                                             <div className="row">
                                                 <div className="col-md-6">
                                                     <div className="form-group">
-                                                        <label>Prénom<span style={{color: "red"}}>*</span></label>
+                                                        <label>Prénom <span className="kazouTech-red-color">*</span></label>
                                                         <div className="input-group input-group-alternative">
                                                             <div className="input-group-prepend">
                                                                 <span className="input-group-text">
@@ -133,7 +136,7 @@ class ContactUserSite extends Component {
                                                                    type='text'
                                                                    className={`form-control ${this.hasErrorFor('first_name') ? 'is-invalid' : ''}`}
                                                                    name='first_name'
-                                                                   placeholder="Prénom..."
+                                                                   placeholder="Prénom ..."
                                                                    value={this.state.first_name}
                                                                    onChange={this.handleFieldChange}
                                                             />
@@ -143,7 +146,7 @@ class ContactUserSite extends Component {
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="form-group">
-                                                        <label>Nom<span style={{color: "red"}}>*</span></label>
+                                                        <label>Nom <span className="kazouTech-red-color">*</span></label>
                                                         <div className="input-group input-group-alternative">
                                                             <div className="input-group-prepend">
                                                                 <span className="input-group-text"><i
@@ -153,8 +156,8 @@ class ContactUserSite extends Component {
                                                                    type='text'
                                                                    className={`form-control ${this.hasErrorFor('last_name') ? 'is-invalid' : ''}`}
                                                                    name='last_name'
-                                                                   placeholder="Nom..."
-                                                                   aria-label="Last Name..."
+                                                                   placeholder="Nom ..."
+                                                                   aria-label="Last Name ..."
                                                                    value={this.state.last_name}
                                                                    onChange={this.handleFieldChange}
                                                             />
@@ -164,7 +167,7 @@ class ContactUserSite extends Component {
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <label>Addresse émail<span style={{color: "red"}}>*</span></label>
+                                                <label>Addresse Email <span className="kazouTech-red-color">*</span></label>
                                                 <div className="input-group input-group-alternative">
                                                     <div className="input-group-prepend">
                                                         <span className="input-group-text"><i
@@ -174,8 +177,8 @@ class ContactUserSite extends Component {
                                                            type='email'
                                                            className={`form-control ${this.hasErrorFor('email') ? 'is-invalid' : ''}`}
                                                            name='email'
-                                                           placeholder="Email..."
-                                                           aria-label="Email..."
+                                                           placeholder="Email ..."
+                                                           aria-label="Email ..."
                                                            value={this.state.email}
                                                            onChange={this.handleFieldChange}
                                                     />
@@ -183,7 +186,7 @@ class ContactUserSite extends Component {
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <label>Subject<span style={{color: "red"}}>*</span></label>
+                                                <label>Subject <span className="kazouTech-red-color">*</span></label>
                                                 <div className="input-group input-group-alternative">
                                                     <div className="input-group-prepend">
                                                         <span className="input-group-text"><i
@@ -193,8 +196,8 @@ class ContactUserSite extends Component {
                                                            type='text'
                                                            className={`form-control ${this.hasErrorFor('subject') ? 'is-invalid' : ''}`}
                                                            name='subject'
-                                                           placeholder="Object..."
-                                                           aria-label="Object..."
+                                                           placeholder="Object ..."
+                                                           aria-label="Object ..."
                                                            value={this.state.subject}
                                                            onChange={this.handleFieldChange}
                                                     />
@@ -202,18 +205,21 @@ class ContactUserSite extends Component {
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <label>Votre message<span style={{color: "red"}}>*</span></label>
+                                                <label>Votre Message <span className="kazouTech-red-color">*</span></label>
                                                 <textarea name="message" value={this.state.message}
                                                           onChange={this.handleFieldChange}
-                                                          placeholder={'Message...'}
+                                                          placeholder={'Message ...'}
                                                           className={`form-control ${this.hasErrorFor('message') ? 'is-invalid' : ''} form-control-alternative"`}
                                                           id="message"
                                                           rows="6"/>
                                                 {this.renderErrorFor('message')}
                                             </div>
                                             <div className="text-center">
-                                                <button type="submit"
-                                                        className="btn btn-primary">Envoyer
+                                                <button type="submit" className="btn btn-success">
+                                                    <span className="btn-inner--icon">
+                                                       <i className="ni ni-check-bold"/>
+                                                    </span>
+                                                    <span className="nav-link-inner--text pt-40 position-navbar">Envoyer</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -222,6 +228,7 @@ class ContactUserSite extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="contactus-3">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-6 col-6">
@@ -265,6 +272,7 @@ class ContactUserSite extends Component {
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                     <FooterUserSite/>
                 </div>

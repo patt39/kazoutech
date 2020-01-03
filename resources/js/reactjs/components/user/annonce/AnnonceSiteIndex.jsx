@@ -84,7 +84,7 @@ class AnnonceSiteIndex extends Component {
             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
+                    <div className="page-header kazouTech-page-header-mini header-filter">
                         <div className="page-header-image"
                              style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
                         <div className="content-center">

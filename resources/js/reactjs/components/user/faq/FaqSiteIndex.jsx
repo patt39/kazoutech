@@ -30,13 +30,13 @@ class FaqSiteIndex extends Component {
                 <NavUserSIte/>
 
                 <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
+                    <div className="page-header kazouTech-page-header-mini header-filter">
                         <div className="page-header-image page-header-mini"
                              style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
-                                    <h2 className="display-2 text-white">Frequently Asked Questions(FAQs)</h2>
+                                    <h2 className="display-2 text-white">Frequently Asked Questions (FAQs)</h2>
                                 </div>
                             </div>
                         </div>

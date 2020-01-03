@@ -21,13 +21,13 @@ class AboutSite extends Component {
                 <div className="about-us">
                     <NavUserSIte />
                     <div className="wrapper">
-                        <div className="page-header page-header-mini header-filter">
+                        <div className="page-header kazouTech-page-header-mini header-filter">
                             <div className="page-header-image page-header-mini"
                                 style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }} />
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
-                                        <h2 className="display-2 text-white">A propos de nous...</h2>
+                                        <h2 className="display-2 text-white">A Propos de nous ...</h2>
                                     </div>
                                 </div>
                             </div>
@@ -47,10 +47,10 @@ class AboutSite extends Component {
                                                     <polygon points="0,42 583,95 683,0 0,95" opacity=".2"
                                                         className="fill-default"></polygon>
                                                 </svg>
-                                                <h4 className="display-4 text-white">Technologies pour tous</h4>
-                                                <p className="lead text-italic text-white">Les nouvelles technologies
-                                                    pour et a la porter de tous pour amegliorer les relation humaines et
-                                                    le service entre voisin.</p>
+                                                <h4 className="display-4 text-white">Comment KazouTech est né ?</h4>
+                                                <p className="lead text-italic text-white">KazouTech est né d’un besoin identifié
+                                                    sur des personnes compétentes, invisibles au public, qui ont du savoir-faire et à un prix accessible à tous.
+                                                    D'où le site dédié aux services à domicile ...</p>
                                             </blockquote>
                                         </div>
                                     </div>
@@ -62,11 +62,9 @@ class AboutSite extends Component {
                                                         className="icon icon-shape bg-warning shadow rounded-circle text-primary">
                                                         <i className="ni ni-satisfied text-white"></i>
                                                     </div>
-                                                    <h5 className="info-title">Meilleur des services</h5>
-                                                    <p className="description opacity-8">Sur notre plateforme nous
-                                                        travaillons avec des personne honnete et digne de confiance qui
-                                                        saurons vous apporter les meilleur des services qui sois dans de
-                                                        bréf délais.</p>
+                                                    <h5 className="info-title">Meilleurs des services</h5>
+                                                    <p className="description text-justify">Nous sommes un site dédié aux services à domicile.
+                                                        Nous nous sommes donné comme mission d’améliorer le quotidien des gens, en rendant le service à domicile accessible par l’usage et par le prix.</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -75,10 +73,11 @@ class AboutSite extends Component {
                                                         className="icon icon-shape bg-info shadow rounded-circle text-primary">
                                                         <i className="ni ni-palette text-white"></i>
                                                     </div>
-                                                    <h5 className="info-title">Pèspectifs de travail</h5>
-                                                    <p className="description opacity-8">Nous nous assurons du bon
-                                                        déroulement de votre tache tout en réspectant les consigne de
-                                                        securité et le droit du travail.</p>
+                                                    <h5 className="info-title">perspectives de travail</h5>
+                                                    <p className="description text-justify">
+                                                        Nous permettons à des gens de se simplifier la vie et à d’autres de changer leur réalité économique pour la rendre plus confortable.
+                                                        Nous nous assurons du bon déroulement de votre tâche tout en respectant les consignes de
+                                                        sécurité et le droit du travail.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,9 +89,9 @@ class AboutSite extends Component {
                                                         <i className="ni ni-user-run text-white"></i>
                                                     </div>
                                                     <h5 className="info-title">Transparence</h5>
-                                                    <p className="description opacity-8">La transparence et la
-                                                        reconnaisançe sont de valeurs que nous mettons a avant et
-                                                        cherchons a amegliorer sans cèsse pour un avenir meilleur.</p>
+                                                    <p className="description text-justify">En choisissant KazouTech, vous choisissez la sérénité.
+                                                        Nous vous accompagnons de l’expression de votre besoin à la réalisation de celui-ci en vous permettant
+                                                        de rencontrer des Charbonneurs (Prestataires de service) dans un cade légal et sécurisé.</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -102,10 +101,9 @@ class AboutSite extends Component {
                                                         <i className="ni ni-glasses-2 text-white"></i>
                                                     </div>
                                                     <h5 className="info-title">Révenue garantit</h5>
-                                                    <p className="description opacity-8">En fin mais pas de moindre nous
-                                                        voulons apporter une assurance de revenue pour arrondir les fin
-                                                        de mois difficile tout en conservant votre statut
-                                                        d'auto-entrepreneur.</p>
+                                                    <p className="description text-justify">Sur notre plateforme, nous permettons à certains de gagner du temps
+                                                        et de se simplifier la vie et à d’autres de développer une activité de service pour réaliser un complément
+                                                        de revenu ou un revenu complet.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,11 +111,11 @@ class AboutSite extends Component {
                                 </div>
                             </div>
                         </div>
-                        <section className="blogs-6">
+                        <section className="kazouTechAbout-wrapper blogs-6">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-lg-10 mx-auto">
-                                        <h3 className="display-3 mb-5">Notre Derniér Blogpost</h3>
+                                    <div className="col-lg-12 mx-auto">
+                                        <h3 className="display-3 mb-5">Notre Dernier Blogpost</h3>
                                         <div className="card card-blog card-background card-grande"
                                             data-animation="zooming">
                                             <div className="full-background"
@@ -136,18 +134,15 @@ class AboutSite extends Component {
                                 </div>
                             </div>
                         </section>
-                        <section className="team">
+                        <section className="kazouTechAbout-wrapper team">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-md-8 ml-auto mr-auto text-center">
-                                        <h3 className="display-3">Notre super Equipe</h3>
-                                        <p className="lead">En quelque mots les artisans derriere cette ingenieuse
-                                            immagination se presente. Nhesitez pas de nous contacter pour mieux nous
-                                            conaitre nous somme toujours a votre disposition </p>
+                                    <div className="col-md-12 ml-auto mr-auto text-center">
+                                        <h3 className="display-3">Notre Equipe</h3>
+                                        <p className="lead">En quelque mots les fondateurs derrière cette ingénieuse imagination se présente.
+                                            N'hesitez pas à nous contacter pour mieux en savoir sur nos services.</p>
                                     </div>
                                 </div>
-
-
                                 <div className="row">
                                     <div className="col-lg-4 col-md-6">
                                         <div className="card card-profile" data-image="profile-image">
@@ -341,7 +336,6 @@ class AboutSite extends Component {
             </>
         )
     }
-
 }
 
 export default AboutSite;

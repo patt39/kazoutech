@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from 'react-router-dom'
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
-import CitySite from "./city/CitySite";
+import PageCitySite from "./city/PageCitySite";
 import AllOccupation from "../inc/AllOccupation";
 import KazouTechSteps from "../inc/KazouTechSteps";
 import SlideHomeList from "./slide/SlideHomeList";
@@ -108,41 +108,8 @@ class IndexSite extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="section features-7">
-                    <div className="container">
-                        <div className="row justify-content-center">
-                            <div className="col-lg-12">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-8 mr-auto ml-auto text-center">
-                                            <h3 className="display-3 mb-5">Nous sommes Partout au Cameroun</h3>
-                                        </div>
-                                    </div>
-                                    <CitySite/>
-                                    <Link to={'/toutes-les-villes/'}
-                                          className="font-size-3 font-weight-medium d-block mt-5">
-                                        Voir toutes les villes
-                                        <i className="fas fa-chevron-right pl-1 font-size-1"/>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="subscribe-line subscribe-line-white">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-5 mr-auto">
-                                <h4 className="title">Restez a l'affue chaque semaine!</h4>
-                                <p className="description">
-                                    Inscrivez-vous gratuitement à notre newletters et soyez contacter par mail en premiers
-                                    chaque week-end pour les offres de prèmier choix.
-                                </p>
-                            </div>
-                            <SubscribeLine/>
-                        </div>
-                    </div>
-                </div>
+                <PageCitySite/>
+                <SubscribeLine/>
                 <FooterUserSite/>
             </>
         )

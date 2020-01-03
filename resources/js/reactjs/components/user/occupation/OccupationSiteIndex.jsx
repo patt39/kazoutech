@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AllOccupation from "../../inc/AllOccupation";
-import CitySite from "../city/CitySite";
 import SubscribeLine from "../../user/SubscribeLine"
+import PageCitySite from "../city/PageCitySite";
 
 
 class OccupationSiteIndex extends Component {
@@ -45,40 +45,10 @@ class OccupationSiteIndex extends Component {
                                 </div>
                             </div>
                         </div>
-
                         <AllOccupation/>
-
                     </div>
-                    <div className="section features-7">
-                        <div className="container">
-                            <div className="row justify-content-center mt-5">
-                                <div className="col-lg-12">
-                                    <div className="container">
-                                        <div className="row">
-                                            <div className="col-md-8 mr-auto ml-auto text-center">
-                                                <h3 className="title mb-5">Nous sommes partous</h3>
-                                            </div>
-                                        </div>
-                                        <CitySite/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="subscribe-line subscribe-line-white">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-5 mr-auto">
-                                    <h4 className="title">Restez a l'affue chaque semaine!</h4>
-                                    <p className="description">
-                                        Inscrivez-vous gratuitement à notre newletters et soyez contacter par mail en premiers
-                                        chaque week-end pour les offres de prèmier choix.
-                                    </p>
-                                </div>
-                                <SubscribeLine/>
-                            </div>
-                        </div>
-                    </div>
+                    <PageCitySite/>
+                    <SubscribeLine/>
                     <FooterUserSite/>
                 </div>
             </>
