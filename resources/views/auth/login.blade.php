@@ -49,15 +49,15 @@
                            </a>
                        </li>
                        <li class="nav-item">
-                           <a href="/login" class="nav-link" role="button">
+                           <a href="{{ route('login') }}" class="nav-link" role="button">
                                <i class="ni ni-app d-lg-none"></i>
                                <span class="nav-link-inner--text"><b>Connexion</b></span>
                            </a>
                        </li>
                        <li class="nav-item">
-                           <a href="/register" class="btn btn-outline-primary">
+                           <a href="{{ route('register') }}" class="btn btn-outline-primary">
                                        <span class="btn-inner--icon">
-                                           <i class="ni ni-fat-add"></i>
+                                           <i class="ni ni-circle-08"></i>
                                        </span>
                                <span class="nav-link-inner--text pt-40 position-navbar">Inscription</span>
                            </a>
@@ -77,7 +77,7 @@
                <span></span>
                <span></span>
            </div>
-           <div class="container pt-lg-md">
+           <div class="container pt-lg-md mt-6">
                <div class="row justify-content-center">
                    <div class="col-lg-5">
                        <div class="card bg-secondary shadow border-0">
@@ -98,7 +98,6 @@
                                    </a>
                                </div>
                            </div>
-
                            <div id="app_kazoutech"></div>
                        </div>
                        <div class="row mt-3">
