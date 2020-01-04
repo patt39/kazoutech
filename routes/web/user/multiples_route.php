@@ -33,3 +33,10 @@ Route::get('charbonneurs/{city}','MultiplesRouteController@charbonneursbycity')-
 Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
 
 Route::get('temoignages','MultiplesRouteController@temoignages')->name('temoignages');
+
+//Route infos
+Route::get('politique_confidentialité','MultiplesRouteController@politiques')->name('politique_confidentialité');
+Route::get('condition_utilisation','MultiplesRouteController@conditions')->name('condition_utilisation');
+Route::get('licence_site','MultiplesRouteController@licence')->name('licence_site');
+
+

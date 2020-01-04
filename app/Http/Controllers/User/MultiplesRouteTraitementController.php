@@ -26,6 +26,7 @@ class MultiplesRouteTraitementController extends Controller
 
     public function annoncescreate(occupation $occupation)
     {
+        dd($occupation);
         return view('user.annonce.create',[
             'occupation' => $occupation,
         ]);

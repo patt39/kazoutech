@@ -15,6 +15,7 @@ import BlogSiteByCategoriesOccupation from "../components/user/blog/BlogSiteByCa
 import AnnonceSiteIndex from "../components/user/annonce/AnnonceSiteIndex";
 import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
+import DevenirCharbonneur from "../components/user/charbonneur/DevenirCharbonneur";
 import TemoignageSite from "../components/user/temoignage/TemoignageSite";
 import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
 import AnnonceSiteEdit from "../components/user/annonce/traitement/AnnonceSiteEdit";
@@ -55,9 +56,10 @@ const RouterUser = props => (
         <Route exact path="/annonces/v/:city" component={AnnonceSiteByCity}/>
         <Route exact path="/annonces/:occupation/" component={withRouter(AnnonceSiteByOccupation)}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>
-        <Route exact path="/annonces/:occupation/new/p/create/" component={AnnonceSiteCreate}/>
+        <Route exact path="/annonces/:occupation/p/annonce/create/" component={AnnonceSiteCreate}/>
         <Route exact path="/annonces/:occupation/p/annonce/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
+        <Route exact path="/devenir_charbonneur/" component={DevenirCharbonneur}/>
         <Route exact path="/charbonneurs/:city/" component={withRouter(CharbonneurSiteByCity)}/>
         <Route exact path="/charbonneurs/:city/:occupation/" component={withRouter(CharbonneurSiteByOccupation)}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>

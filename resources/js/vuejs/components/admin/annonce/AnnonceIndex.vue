@@ -59,16 +59,6 @@
                                         </button>
                                     </div>
                                     <br>
-                                    <div class="toolbar">
-                                        <div class="submit text-center">
-                                            <router-link :to="{ name: 'annonces.create' }" class="btn btn-success btn-raised" id="button_hover">
-                                                <span class="btn-label">
-                                                    <i class="material-icons">assignment</i>
-                                                </span>
-                                                <b class="title_hover">New Announce</b>
-                                            </router-link>
-                                        </div>
-                                    </div>
                                     <div class="material-datatables">
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover"
                                                cellspacing="0" width="100%" style="width:100%">
@@ -118,10 +108,9 @@
                                                             <span class="toggle"/>
                                                         </label>
                                                     </button>
-                                                    <router-link :to="{ name: 'annonces.edit', params: { id: item.id  } }" v-if="$auth.can('edit-occupation')"
-                                                                 class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
-                                                        <i class="material-icons">edit</i>
-                                                    </router-link>
+                                                    <button  @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                        <i class="material-icons">visibility</i>
+                                                    </button>
                                                     <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>

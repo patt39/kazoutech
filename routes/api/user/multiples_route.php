@@ -25,3 +25,9 @@ Route::get('charbonneurs/{city}','MultiplesRouteController@apicharbonneursbycity
 Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@apicharbonneursbyoccupation')->name('api_active_charbonneurs_occupation.view');
 
 Route::get('temoignages','MultiplesRouteController@apitemoignages')->name('api_active_testimonials');
+
+
+
+Route::get('conditions','MultiplesRouteController@apiconditions')->name('condition.view');
+Route::get('licence','MultiplesRouteController@apilicence')->name('licence.view');
+Route::get('confidentiality','MultiplesRouteController@apiconfidentiality')->name('confidentiality.view');

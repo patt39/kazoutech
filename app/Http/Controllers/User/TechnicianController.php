@@ -38,7 +38,7 @@ class TechnicianController extends Controller
         return view('admin.technician.index');
     }
 
-    public function bosseur()
+    public function charboneur()
     {
         return view('user.page.technician.technicianBecome');
     }

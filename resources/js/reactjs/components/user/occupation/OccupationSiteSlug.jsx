@@ -26,7 +26,7 @@ class OccupationSiteSlug extends Component {
         const {occupation} = this.state;
         const occupationCategories = occupation.categoryoccupations;
         const composantTitle = `${occupation.name}`;
-        document.title = `${composantTitle} | Kaazoutech`;
+        document.title = `${composantTitle} | Kazoutech`;
 
         return (
             <>

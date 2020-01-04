@@ -210,9 +210,9 @@ class FooterUserSite extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="footer-description">
-                                    Le jobbing pour tous et par tous faite partit de la camunauté kazoutech et beneficiez du service à
-                                    la personne partout sur le teritoire. Le jobbing n'as jamias été aussi facile et à la porter de tous alor
-                                    venez et lancez vous et faite vous de L'argent tout en donnant le sourir au autres.
+                                    Le charbon pour tous et par tous faite partit de la camunauté kazoutech et beneficiez du service à
+                                    la personne partout sur le teritoire. Le charbon n'a jamais été aussi facile et à la porter de tous(tes) alors
+                                    venez et lancez vous et faite vous de L'argent tout en donnant le sourir au autres &#128525;.
                                 </div>
                             </div>
                         </div>

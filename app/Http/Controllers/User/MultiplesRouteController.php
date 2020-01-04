@@ -41,6 +41,21 @@ class MultiplesRouteController extends Controller
         return view('user.occupation.occupations');
     }
 
+    public function conditions()
+    {
+        return view('user.infos.conditions.index');
+    }
+
+    public function politiques()
+    {
+        return view('user.infos.politique.index');
+    }
+
+    public function licence()
+    {
+        return view('user.infos.licence.index');
+    }
+
     public function occupation(occupation $occupation)
     {
         return view('user.occupation.show',[
