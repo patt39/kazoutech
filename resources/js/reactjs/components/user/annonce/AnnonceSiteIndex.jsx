@@ -90,8 +90,8 @@ class AnnonceSiteIndex extends Component {
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
-                                    <h3 className="title text-white">
-                                        Restez à l'affût de toutes les annonces sur Kazoutech
+                                    <h3 className="display-2 text-white">
+                                        Restez à l'affût de toutes les annonces sur KazouTech
                                     </h3>
                                 </div>
                             </div>
@@ -99,10 +99,8 @@ class AnnonceSiteIndex extends Component {
                     </div>
                     <br/>
                     <div className="main main-raised">
-
                         <div className="container">
                             <div className="row">
-
                             </div>
                         </div>
                         <section className="section">
@@ -113,7 +111,6 @@ class AnnonceSiteIndex extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
-
                                                     <div className="col-md-4">
                                                         <AnnonceOccupationList/>
                                                         <AnnonceCityList/>
@@ -146,8 +143,6 @@ class AnnonceSiteIndex extends Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 {annonces.map((item) => (
@@ -155,27 +150,20 @@ class AnnonceSiteIndex extends Component {
                                                                 ))}
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </section>
-
-
                                     </div>
                                 </div>
                             </div>
                         </section>
-
-
                     </div>
                     <FooterUserSite/>
                 </div>
             </div>
         )
     }
-
 }
 
 export default AnnonceSiteIndex;

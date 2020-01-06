@@ -242,8 +242,8 @@ class AnnonceSiteShow extends Component {
                                             <p className="mb-4">
                                                 <b dangerouslySetInnerHTML={{__html: (annonce.body)}}/>
                                             </p>
-                                            {annonce.photo ?
-                                                <img alt="Image placeholder" src={annonce.photo}
+                                            {annonce.photo !== null ?
+                                                <img alt={annonce.photo} src={annonce.photo}
                                                      className="img-fluid rounded"/>
                                                 : null}
                                             <div className="row align-items-center my-3 pb-3 border-bottom">

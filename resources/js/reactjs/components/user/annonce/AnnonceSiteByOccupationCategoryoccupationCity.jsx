@@ -178,7 +178,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                         className="h5 font-weight-normal mb-3 text-success">Vous
                                                                         avez une annonce?</p>
                                                                         <Link
-                                                                            to={`/annonces/${SlugOccupation}/new/p/create/`}
+                                                                            to={`/annonces/${SlugOccupation}/p/annonce/new/create/`}
                                                                             className="btn btn-success mb-2"
                                                                             type="button" disabled="">
                                                                             <span

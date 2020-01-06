@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 
 
+
 class LoginSIteIndex extends Component{
     constructor(props) {
         super(props);
@@ -79,8 +80,6 @@ class LoginSIteIndex extends Component{
                             </button>
                         </div>
                     )}
-
-
                 </div>
                 <form method="POST" onSubmit={this.saveItem}>
 

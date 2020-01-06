@@ -35,7 +35,7 @@ class ConceptSite extends Component {
                         <div className="section features features-5">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-md-8 text-center mx-auto">
+                                    <div className="col-md-10 text-center mx-auto">
                                         <h3 className="display-3">Nos Valeurs</h3>
                                         <p className="lead">La capacité de faire confiance a des gens rencontrer sur le net est un atout quon aquiet avec le temp.</p>
                                     </div>
@@ -54,7 +54,7 @@ class ConceptSite extends Component {
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -66,7 +66,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -78,7 +78,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -103,7 +103,7 @@ class ConceptSite extends Component {
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -115,7 +115,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -127,7 +127,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -154,7 +154,7 @@ class ConceptSite extends Component {
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -166,7 +166,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -178,7 +178,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -203,7 +203,7 @@ class ConceptSite extends Component {
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -215,7 +215,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -227,7 +227,7 @@ class ConceptSite extends Component {
                                                             </li>
                                                             <li>
                                                                 <div className="d-flex align-items-center">
-                                                                    <div>
+                                                                    <div className="kazouTech-red-color">
                                                                         <div className="mr-3">
                                                                             <i className="ni ni-check-bold"></i>
                                                                         </div>
@@ -248,8 +248,8 @@ class ConceptSite extends Component {
                             <div className="section features-3 my-5" style={{ backgroundImage: "url(" + '/assets/vendor_site/img/ill/p31.svg' + ")" }}>
                                 <div className="container">
                                     <div className="row text-center justify-content-center">
-                                        <div className="col-lg-8">
-                                            <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour Charbonneurs (jobbeurs)</span></h3>
+                                        <div className="col-lg-10">
+                                            <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour Charbonneurs (Jobbeurs)</span></h3>
                                             <p className="lead text-white">Le jobbing n'as jamais été facile mais pour vous apportez le meilleurs des services et assurez votre sécurité et integrité,
                                                 voiçi quelque conseils pratique.</p>
                                         </div>

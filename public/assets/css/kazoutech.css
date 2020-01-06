@@ -116,9 +116,11 @@
     text-align: justify;
     opacity: 1;
 }
+/*
 .btn-wrapper a.btn {
     color: #ffffff;
 }
+ */
 
 /*** RESPONSIVE DEVICE ***/
 /************************/
@@ -186,4 +188,8 @@
 }
 .kazouTech-page-header-mini {
     min-height: 80vh !important;
+}
+.features-5 .info {
+    padding: 20px;
+    text-align: justify !important;
 }

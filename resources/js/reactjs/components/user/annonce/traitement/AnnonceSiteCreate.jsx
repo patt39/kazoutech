@@ -153,7 +153,7 @@ class AnnonceSiteCreate extends Component {
                                             <h5 className="text-white">{this.state.title}</h5>
                                         </Link>
                                         <div className="author">
-                                            <Link to={`/annonces/${occupationdata.slug}`} className="text-white">
+                                            <Link to={`/annonces/${occupationdata.slug}/`} className="text-white">
                                                 <i className="fa fa-chevron-circle-left"/> Retour {occupationdata.name}
                                             </Link>
                                         </div>
@@ -290,7 +290,7 @@ class AnnonceSiteCreate extends Component {
                                                             <input type="text"
                                                                 className={`form-control ${this.hasErrorFor('address') ? 'is-invalid' : ''}`}
                                                                 name="address"
-                                                                placeholder="420 Long Beach, CA"
+                                                                placeholder="Biyem-Assi"
                                                                 aria-label="420 Long Beach, CA" required="required"
                                                                 defaultValue={this.state.address}
                                                                 onChange={this.handleFieldChange}
