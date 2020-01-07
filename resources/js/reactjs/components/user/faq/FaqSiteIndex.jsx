@@ -58,8 +58,8 @@ class FaqSiteIndex extends Component {
                             </div>
                         </div>
                     </div>
-                    <FooterUserSite/>
                 </div>
+                <FooterUserSite/>
             </div>
         )
     }

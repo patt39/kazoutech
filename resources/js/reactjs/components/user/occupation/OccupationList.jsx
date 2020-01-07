@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 
 class OccupationList extends Component {
@@ -10,7 +10,7 @@ class OccupationList extends Component {
 
             <div key={this.props.id} className="col-lg-4">
                 <div className="card card-blog card-background" data-animation="zooming">
-                    <div className="full-background" style={{ backgroundImage: "url(" + this.props.photo + ")" }} />
+                    <div className="full-background" style={{backgroundImage: "url(" + this.props.photo + ")"}}/>
                     <Link to={`/occupations/${this.props.slug}/`}>
                         <div className="card-body">
                             <div className="content-bottom">
@@ -24,4 +24,5 @@ class OccupationList extends Component {
     }
 
 }
+
 export default OccupationList;
