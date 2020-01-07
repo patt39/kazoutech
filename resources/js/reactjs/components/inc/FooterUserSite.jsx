@@ -154,7 +154,7 @@ class FooterUserSite extends Component {
                                         <ul>
                                             <li className="d-inline-block">
                                                 <div className="copyright d-flex justify-content-center">
-                                                    Copyright &copy; { new Date().getFullYear()}, Realized by
+                                                    Copyright 2020 &copy; { new Date().getFullYear()}, Realized by
                                                     <div>
                                                         <a href="/" className="pl-2 text-primary">KazouGroup Srl</a>
                                                     </div>
@@ -184,24 +184,15 @@ class FooterUserSite extends Component {
                                     Language:
                                     <div className="btn btn-link text-primary " href="#" role="button"
                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i className="ni ni-chat-round"></i>
-                                        <span>English</span>
+                                        <i className="ni ni-chat-round"/>
+                                        <span>Français</span>
                                     </div>
                                     <div className="dropdown-menu kazouTech-dropdown" x-placement="top-start">
-                                        <a href="#" className="dropdown-item">
-                                            <span>Deutch</span>
-                                        </a>
                                         <a href="#" className="dropdown-item active">
-                                            <span>English</span>
-                                        </a>
-                                        <a href="#" className="dropdown-item">
-                                            <span>Español</span>
-                                        </a>
-                                        <a href="#" className="dropdown-item">
                                             <span>Français</span>
                                         </a>
                                         <a href="#" className="dropdown-item">
-                                            <span>Italiano</span>
+                                            <span>English</span>
                                         </a>
                                     </div>
                                 </div>

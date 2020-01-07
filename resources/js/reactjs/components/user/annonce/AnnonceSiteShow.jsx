@@ -17,7 +17,7 @@ class AnnonceSiteShow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annonceinteresse:{annonces:[]},
+            annonceinteressebycategoryoccupation:{annoncesinteres:[]},
             annonce: {user: [], occupation: [],}
         };
         this.deleteItem = this.deleteItem.bind(this);
@@ -88,18 +88,17 @@ class AnnonceSiteShow extends Component {
         let url = route('api_annonce_site.view', [SlugOccupation, SlugCategoryoccupation, SlugCity, SlugItem]);
         dyaxios.get(url).then(response => this.setState({annonce: response.data,}));
         /**
-         * Ici je recupere touts les annonce par sous category pour proposer
+         * Ici je recupere touts les annonces par categoryoccupation pour proposer
          */
         let urlinteress = route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]);
-        dyaxios.get(urlinteress).then(response => this.setState({annonceinteresse: response.data,}));
+        dyaxios.get(urlinteress).then(response => this.setState({annonceinteressebycategoryoccupation: response.data,}));
     }
 
     render() {
-        const {annonce,annonceinteresse} = this.state;
+        const {annonce,annonceinteressebycategoryoccupation} = this.state;
         const composantTitle = `${annonce.title}`;
         document.title = `${composantTitle} | Kazoutech`;
-        const annonceinderesses = annonceinteresse.annonces;
-        console.log(annonceinteresse);
+        const annonceinderesses = annonceinteressebycategoryoccupation.annoncesinteres;
         return (
 
             <div className="blog-posts">
@@ -163,23 +162,15 @@ class AnnonceSiteShow extends Component {
                                                 </div>
                                             </div>
 
+                                            {annonceinderesses.length > 0 ?
                                             <div className="card">
+                                                <div className="card-header h6">Regarder aussi</div>
                                                 <div className="card-body">
-
-                                                    {annonceinderesses > 0 && (
-                                                        <>
-                                                            {annonceinderesses.map((item) => (
-                                                                <AnnoncePostInteresse key={item.id} {...item}/>
-                                                            ))}
-                                                        </>
-
-                                                    )}
-
+                                                    {annonceinderesses.map((item) => (
+                                                        <AnnoncePostInteresse key={item.id} {...item}/>
+                                                    ))}
                                                 </div>
-
-
-                                            </div>
-
+                                            </div>:null}
                                         </div>
 
                                     </div>
@@ -257,79 +248,39 @@ class AnnonceSiteShow extends Component {
                                                             <i className="ni ni-chat-round"/>
                                                             <span className="text-muted">36</span>
                                                         </a>
-                                                        <a href="..">
-                                                            <i className="ni ni-curved-next"/>
-                                                            <span className="text-muted">12</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="col-sm-6 d-none d-sm-block">
-                                                    <div
-                                                        className="d-flex align-items-center justify-content-sm-end">
-                                                        <div className="avatar-group">
-                                                            <a href=".."
-                                                               className="avatar avatar-xs rounded-circle"
-                                                               data-toggle="tooltip"
-                                                               data-original-title="Jessica Rowland">
-                                                                <img alt="Image placeholder"
-                                                                     src="../assets/img/faces/team-1.jpg"
-                                                                     className=""/>
-                                                            </a>
-                                                            <a href=".."
-                                                               className="avatar avatar-xs rounded-circle"
-                                                               data-toggle="tooltip"
-                                                               data-original-title="Audrey Love">
-                                                                <img alt="Image placeholder"
-                                                                     src="../assets/img/faces/team-2.jpg"
-                                                                     className="rounded-circle"/>
-                                                            </a>
-                                                            <a href=".."
-                                                               className="avatar avatar-xs rounded-circle"
-                                                               data-toggle="tooltip"
-                                                               data-original-title="Michael Lewis">
-                                                                <img alt="Image placeholder"
-                                                                     src="../assets/img/faces/team-3.jpg"
-                                                                     className="rounded-circle"/>
-                                                            </a>
-                                                        </div>
-                                                        <small className="pl-2 font-weight-bold">and 30+
-                                                            more</small>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="mb-1">
                                                 <div className="media media-comment">
-                                                    <img alt="Image placeholder"
+                                                    <img alt={$userKazou.name}
                                                          className="media-comment-avatar rounded-circle"
-                                                         src="../assets/img/faces/team-1.jpg"/>
+                                                         src={$userKazou.avatar}/>
                                                     <div className="media-body">
                                                         <div className="media-comment-text">
-                                                            <h6 className="h5 mt-0">Michael Lewis</h6>
+                                                            <h6 className="h5 mt-0">{$userKazou.name}</h6>
                                                             <p className="text-sm lh-160">You have the
                                                                 opportunity to play this game of life you
                                                                 need to appreciate every moment. A lot of
                                                                 people don’t appreciate the moment until it’s
                                                                 passed.</p>
                                                             <div className="icon-actions">
+
                                                                 <a href=".."
                                                                    className="like active">
                                                                     <i className="ni ni-like-2"/>
                                                                     <span
-                                                                        className="text-muted">3 likes</span>
+                                                                        className="text-muted">3</span>
                                                                 </a>
-                                                                <a href="..">
-                                                                    <i className="ni ni-curved-next"/>
-                                                                    <span
-                                                                        className="text-muted">2 shares</span>
-                                                                </a>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="media media-comment">
-                                                    <img alt="Image placeholder"
+                                                    <img alt={$userKazou.name}
                                                          className="media-comment-avatar rounded-circle"
-                                                         src="../assets/img/faces/team-2.jpg"/>
+                                                         src={$userKazou.avatar}/>
                                                     <div className="media-body">
                                                         <div className="media-comment-text">
                                                             <h6 className="h5 mt-0">Jessica Stones</h6>
@@ -343,25 +294,20 @@ class AnnonceSiteShow extends Component {
                                                                    className="like active">
                                                                     <i className="ni ni-like-2"/>
                                                                     <span
-                                                                        className="text-muted">10 likes</span>
-                                                                </a>
-                                                                <a href="..">
-                                                                    <i className="ni ni-curved-next"/>
-                                                                    <span
-                                                                        className="text-muted">1 share</span>
+                                                                        className="text-muted">10</span>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="media align-items-center mt-5">
-                                                    <img alt="Image placeholder"
-                                                         className="avatar avatar-lg rounded-circle mb-4"
-                                                         src="../assets/img/faces/team-3.jpg"/>
+                                                    <img alt={$userKazou.name}
+                                                         className="media-comment-avatar rounded-circle"
+                                                         src={$userKazou.avatar}/>
                                                     <div className="media-body">
                                                         <form>
                                                                 <textarea className="form-control"
-                                                                          placeholder="Write your comment"
+                                                                          placeholder=" "
                                                                           rows="1"/>
                                                         </form>
                                                     </div>
@@ -374,8 +320,8 @@ class AnnonceSiteShow extends Component {
                             </div>
                         </div>
                     </div>
-                    <FooterUserSite/>
                 </div>
+                <FooterUserSite/>
             </div>
         )
     }

@@ -25,9 +25,10 @@ class AnnoncePostInteresse extends Component {
                    <p dangerouslySetInnerHTML={{ __html: (this.props.title.length > 38 ? this.props.title.substring(0, 38) + "..." : this.props.title) }} />
                </Link>
                <div  className="media-body text-right">
-                   <button type="button" className={`btn btn-sm btn-info btn-icon`}>
-                       <span className="btn-inner--text">30032 FCFA</span>
-                   </button>
+                   {this.props.price && (
+                   <button type="button" className={`btn btn-sm btn-${this.props.user.color_name} btn-icon`}>
+                       <span className="btn-inner--text">{this.props.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
+                   </button>)}
                    <button type="button" className={`btn btn-sm btn-${this.props.user.color_name} btn-icon`}>
                        <span className="btn-inner--text">{this.props.city.name}</span>
                    </button>
