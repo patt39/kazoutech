@@ -5,7 +5,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
 import AnnoncePostInteresse from "./AnnoncePostInteresse";
-import AnnonceList from "./AnnonceList";
+import CommentCreate from "../comment/CommentCreate";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -217,7 +217,7 @@ class AnnonceSiteShow extends Component {
                                                                 <Button onClick={() => this.deleteItem(annonce.id)}
                                                                         className="btn btn-sm btn-danger btn-icon">
                                                                         <span className="btn-inner--icon icon-big">
-                                                                            <i className="ni ni-fat-remove" />
+                                                                            <i className="ni ni-fat-remove"/>
                                                                         </span>
                                                                     <span className="btn-inner--text">Suprimer</span>
                                                                 </Button>{" "}
@@ -253,12 +253,12 @@ class AnnonceSiteShow extends Component {
                                             </div>
                                             <div className="mb-1">
                                                 <div className="media media-comment">
-                                                    <img alt={$userKazou.name}
+                                                    <img alt={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}
                                                          className="media-comment-avatar rounded-circle"
-                                                         src={$userKazou.avatar}/>
+                                                         src={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}/>
                                                     <div className="media-body">
                                                         <div className="media-comment-text">
-                                                            <h6 className="h5 mt-0">{$userKazou.name}</h6>
+                                                            <h6 className="h5 mt-0">Boclair Temgoua</h6>
                                                             <p className="text-sm lh-160">You have the
                                                                 opportunity to play this game of life you
                                                                 need to appreciate every moment. A lot of
@@ -272,15 +272,21 @@ class AnnonceSiteShow extends Component {
                                                                     <span
                                                                         className="text-muted">3</span>
                                                                 </a>
+                                                                <a href=".." className="text-success" title="Editer votre commentaire">
+                                                                    <i className="fa fa-edit"/>
+                                                                </a>
+                                                                <a href=".." className="text-danger" title="Suprimer votre commentaire">
+                                                                    <i className="fa fa-trash"/>
+                                                                </a>
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="media media-comment">
-                                                    <img alt={$userKazou.name}
+                                                    <img alt={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}
                                                          className="media-comment-avatar rounded-circle"
-                                                         src={$userKazou.avatar}/>
+                                                         src={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}/>
                                                     <div className="media-body">
                                                         <div className="media-comment-text">
                                                             <h6 className="h5 mt-0">Jessica Stones</h6>
@@ -289,6 +295,20 @@ class AnnonceSiteShow extends Component {
                                                                 people are controlled by! Thoughts- their
                                                                 perception of themselves! They're slowed
                                                                 down.</p>
+                                                            <form>
+                                                                <textarea className="form-control"
+                                                                   placeholder="laissez un commentaire à cette annonce..."
+                                                                   defaultValue={'I could do anything. That’s the main thing perception of themselves! They\'re slowed people are controlled by! Thoughts- their'}
+                                                                   rows="2"/>
+                                                                <div className="text-right ml-auto">
+                                                                    <button className="btn btn-sm btn-secondary btn-icon" type="button">
+                                                                        <span className="btn-inner--text">Annuller</span>
+                                                                    </button>
+                                                                    <button className="btn btn-sm btn-success btn-icon" type="submit">
+                                                                        <span className="btn-inner--text">Poster</span>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                             <div className="icon-actions">
                                                                 <a href=".."
                                                                    className="like active">
@@ -296,21 +316,28 @@ class AnnonceSiteShow extends Component {
                                                                     <span
                                                                         className="text-muted">10</span>
                                                                 </a>
+                                                                <a href=".." className="text-success" title="Editer votre commentaire">
+                                                                    <i className="fa fa-edit"/>
+                                                                </a>
+                                                                <a href=".." className="text-danger" title="Suprimer votre commentaire">
+                                                                    <i className="fa fa-trash"/>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="media align-items-center mt-5">
-                                                    <img alt={$userKazou.name}
-                                                         className="media-comment-avatar rounded-circle"
-                                                         src={$userKazou.avatar}/>
-                                                    <div className="media-body">
-                                                        <form>
-                                                                <textarea className="form-control"
-                                                                          placeholder=" "
-                                                                          rows="1"/>
-                                                        </form>
-                                                    </div>
+
+                                                    {$guest ?
+                                                        <h6 className="text-center">
+                                                            <strong className="title text-center">S'il vous plait
+                                                                <a href="#" className="text-info" data-toggle="modal" data-target="#loginModal"> Connectez vous </a> ou
+                                                                <a href="/register/" className="text-info"> Inscrivez vous </a> pour laisser votre commentaire
+                                                            </strong>
+                                                        </h6>
+                                                        :
+                                                        <CommentCreate/>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
