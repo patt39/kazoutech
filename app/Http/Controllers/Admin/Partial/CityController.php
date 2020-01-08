@@ -71,6 +71,7 @@ class CityController extends Controller
     public function apibyvip()
     {
         $cities = CityByStatusResource::collection(city::with('user')
+            ->where('status',1)
             ->where('city_vip',1)
             ->orderBy('name','desc')
             ->get());
