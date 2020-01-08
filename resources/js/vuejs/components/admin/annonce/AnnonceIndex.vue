@@ -68,6 +68,7 @@
                                                 <th><b>Occupation</b></th>
                                                 <th><b>City</b></th>
                                                 <th><b>Edited By</b></th>
+                                                <th><b>Annonces</b></th>
                                                 <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delet-occupation'))">Actions</b></th>
                                             </tr>
                                             </thead>
@@ -77,6 +78,7 @@
                                                 <th><b>Occupation</b></th>
                                                 <th><b>City</b></th>
                                                 <th><b>Edited By</b></th>
+                                                <th><b>Annonce</b></th>
                                                 <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
@@ -100,6 +102,7 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
+                                               <td><b v-html="item.annonce_count"/></td>
                                                 <td class="td-actions text-right">
                                                     <button v-if="$auth.can('edit-occupation')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
                                                         <label>
@@ -119,6 +122,54 @@
                                             </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                     <!-- Modal view annonces -->
+                                    <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addNewLabel"><b>View announce</b></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Title</label>
+                                                                <input v-model="annonce.title" type="text" name="title" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Category</label>
+                                                                <input v-model="annonce.occupation.name" type="text" name="name" maxlength="25" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input v-model="annonce.description" type="text" name="description" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    <div class="modal-footer">
+                                                    <button class="btn btn-danger" data-dismiss="modal" type="button">
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">clear</i>
+                                                        <b>Close</b>
+                                                    </span>
+                                                    </button>
+                                                      </div>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -140,6 +191,11 @@
                 loaded: false,
                 user: {},
                 annonces: {},
+                annonce: {
+                     title: '',
+                     occupation: '',
+                     description: '',
+                },
             }
         },
         methods: {
@@ -182,6 +238,12 @@
                 //Progres bar
                 this.$Progress.finish()
             },
+            viewItem (item) {
+                //Masquer le modal après la création
+                $("#viewNew").modal("show");
+                //On passe les informations
+                this.annonce = item;
+            },
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
@@ -202,7 +264,7 @@
                         //Start Progress bar
                         this.$Progress.start();
                         //Envoyer la requete au server
-                        let url = route('annonce.destroy',id);
+                        let url = route('annonces.destroy',id);
                         dyaxios.delete(url).then(() => {
                             Fire.$emit('ItemGetter');
                             /** Alert notify bootstrapp **/
@@ -234,7 +296,7 @@
             changeStatus(item){
                 //Start Progress bar
                 this.$Progress.start();
-                dyaxios.get(route('status_annonces',item.id), {
+                dyaxios.get(route('status_annonce',item.id), {
                     status: item.status,
                 }).then(res => {
 

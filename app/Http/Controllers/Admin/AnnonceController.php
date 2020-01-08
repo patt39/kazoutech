@@ -69,6 +69,14 @@ class AnnonceController extends Controller
     {
         //
     }
+   
+    public function status($id)
+    {
+        $annonce = annonce::findOrFail($id);
+        $annonce->update(['status' => !$annonce->status]);
+
+        return response()->json($annonce,200);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -81,39 +89,6 @@ class AnnonceController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

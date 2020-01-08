@@ -84,15 +84,15 @@ class AnnonceSiteIndex extends Component {
             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
-                    <div className="page-header kazouTech-page-header-mini header-filter">
+                    <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
                              style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
-                                    <h3 className="display-2 text-white">
+                                    <h6 className="display-2 text-white">
                                         Restez à l'affût de toutes les annonces sur KazouTech
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                         </div>

@@ -8,19 +8,19 @@ class TermConditionSite extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            condition: {},
+            conditions: {},
         }
     }
 
     // lifecycle method
     componentDidMount() {
-        let item = this.props.match.params.condition;
-        let url = route('occupations.view', item);
-        dyaxios.get(url).then(response => this.setState({condition: response.data,}));
+        let item = this.props.match.params.conditions;
+        let url = route('conditions.view', item);
+        dyaxios.get(url).then(response => this.setState({conditions: response.data}));
     }
 
     render() {
-        const {condition} = this.state;
+        const {conditions} = this.state;
         const composantTitle = 'Terme et condition';
         document.title = `${composantTitle} | Kazoutech`;
 
@@ -29,8 +29,12 @@ class TermConditionSite extends Component {
                 <div className="landing-page">
                     <NavUserSIte/>
 
-                    <div className="col-md-12">
-                        <div dangerouslySetInnerHTML={{__html: condition.body}}/>
+                    <div className="container">
+                        <div className="row mb-5">
+                            <div className="col-lg-12 mx-auto">
+                                <div className="description" dangerouslySetInnerHTML={{__html: conditions.body}}/>
+                            </div>
+                        </div>
                     </div>
                     <FooterUserSite/>
                 </div>

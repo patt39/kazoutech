@@ -28,6 +28,6 @@ Route::get('temoignages','MultiplesRouteController@apitemoignages')->name('api_a
 
 
 
-Route::get('conditions','MultiplesRouteController@apiconditions')->name('condition.view');
-Route::get('licence','MultiplesRouteController@apilicence')->name('licence.view');
-Route::get('confidentiality','MultiplesRouteController@apiconfidentiality')->name('confidentiality.view');
+Route::get('conditions','MultiplesRouteController@apiconditions')->name('conditions.view');
+Route::get('licence','MultiplesRouteController@apilicence')->name('licences.view');
+Route::get('confidentiality','MultiplesRouteController@apiconfidentiality')->name('confidentialities.view');

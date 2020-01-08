@@ -22,7 +22,6 @@ class CreateOccupationsTable extends Migration
             $table->boolean('status')->default(false)->nullable();
             $table->string('ip')->nullable();
             $table->timestamps();
-
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

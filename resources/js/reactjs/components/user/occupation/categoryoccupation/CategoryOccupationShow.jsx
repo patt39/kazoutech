@@ -44,7 +44,7 @@ class CategoryOccupationShow extends Component {
                                                 <div className="col-lg-12 mr-auto">
                                                     <br>
                                                     </br>
-                                                    <h3 className="display-4">Pour tout vos bésoin d'installation électrique</h3>
+                                                    <h3 className="display-4">Pour tout vos bésoin <b>{categoryoccupation.name}</b></h3>
                                                     <div className="description" dangerouslySetInnerHTML={{__html: categoryoccupation.description}}/>
                                                 </div>
                                             </div>
@@ -54,14 +54,10 @@ class CategoryOccupationShow extends Component {
                                         </div>
 
                                     </div>
-
+                                    <CitySite/>
                                 </div>
                             </div>
                         </div>
-
-
-                        <CitySite/>
-
                     </div>
                     <FooterUserSite/>
                 </div>

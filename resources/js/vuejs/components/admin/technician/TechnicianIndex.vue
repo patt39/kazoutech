@@ -264,7 +264,7 @@
             }
         },
         methods: {
-            viewItem(item) {
+           viewItem (item) {
                 //Masquer le modal après la création
                 $("#viewNew").modal("show");
                 //On passe les informations
