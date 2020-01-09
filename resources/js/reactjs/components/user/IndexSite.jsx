@@ -107,10 +107,12 @@ class IndexSite extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <PageCitySite/>
+                    <SubscribeLine/>
+                    <FooterUserSite/>
+
                 </div>
-                <PageCitySite/>
-                <SubscribeLine/>
-                <FooterUserSite/>
             </>
         )
     }

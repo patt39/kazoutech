@@ -5,7 +5,8 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
 import AnnoncePostInteresse from "./AnnoncePostInteresse";
-import AnnonceList from "./AnnonceList";
+import CommentCreate from "../comment/CommentCreate";
+import ReactQuill from "react-quill";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -16,13 +17,103 @@ moment.locale('fr');
 class AnnonceSiteShow extends Component {
     constructor(props) {
         super(props);
+
+
+        this.deleteItem = this.deleteItem.bind(this);
+        this.loginItem = this.loginItem.bind(this);
+        this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.hasErrorFor = this.hasErrorFor.bind(this);
+        this.renderErrorFor = this.renderErrorFor.bind(this);
+
         this.state = {
-            annonceinteresse:{annonces:[]},
+            username: '',
+            email: '',
+            password: '',
+            remember: true,
+            errors: [],
+
+            annonceinteressebycategoryoccupation:{annoncesinteres:[]},
             annonce: {user: [], occupation: [],}
         };
-        this.deleteItem = this.deleteItem.bind(this);
+        this.modules = {
+            toolbar: [
+                ['bold', 'italic'],
+                [{ 'color': [] }],
+            ]
+        };
+        this.formats = [
+            'bold', 'italic',
+            'color'
+        ];
+    }
+    // Handle Change
+    handleChangeBody(value) {
+        this.setState({ body: value });
+        document.querySelector('.editor-control').classList.remove('is-invalid');
     }
 
+    handleFieldChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+        this.state.errors[event.target.name] = '';
+    }
+    // Handle Errors
+    hasErrorFor(field) {
+        return !!this.state.errors[field];
+    }
+    renderErrorFor(field) {
+        if (this.hasErrorFor(field)) {
+            return (
+                <span className='invalid-feedback'>
+                    <strong>{this.state.errors[field][0]}</strong>
+                </span>
+            )
+        }
+    }
+    componentDidMount() {
+        let SlugItem = this.props.match.params.annonce;
+        let SlugOccupation = this.props.match.params.occupation;
+        let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
+        let SlugCity = this.props.match.params.city;
+        /**
+         * Ici je recupere l'annonce pour l'afficer
+         */
+        let url = route('api_annonce_site.view', [SlugOccupation, SlugCategoryoccupation, SlugCity, SlugItem]);
+        dyaxios.get(url).then(response => this.setState({annonce: response.data,}));
+        /**
+         * Ici je recupere touts les annonces par categoryoccupation pour proposer
+         */
+        let urlinteress = route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]);
+        dyaxios.get(urlinteress).then(response => this.setState({annonceinteressebycategoryoccupation: response.data,}));
+    }
+    loginItem(e) {
+        e.preventDefault();
+
+        let item = {
+            username: this.state.username,
+            password: this.state.password,
+            remember: this.state.remember,
+        };
+        dyaxios.post(route('login'), item)
+            .then(() => {
+                //Masquer le modal après la connexion
+                $('#loginModal').modal('hide');
+                window.location.reload();
+            }).catch(error => {
+            this.setState({
+                errors: error.response.data.errors
+            });
+            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+                allow_dismiss: false,
+                type: 'danger',
+                animate: {
+                    enter: 'animated bounceInDown',
+                    exit: 'animated bounceOutUp'
+                }
+            });
+        })
+    }
     deleteItem(id) {
         Swal.fire({
             title: 'Etes vous sure de vouloir suprimer cette annonce?',
@@ -77,29 +168,13 @@ class AnnonceSiteShow extends Component {
         });
     }
 
-    componentDidMount() {
-        let SlugItem = this.props.match.params.annonce;
-        let SlugOccupation = this.props.match.params.occupation;
-        let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
-        let SlugCity = this.props.match.params.city;
-        /**
-         * Ici je recupere l'annonce pour l'afficer
-         */
-        let url = route('api_annonce_site.view', [SlugOccupation, SlugCategoryoccupation, SlugCity, SlugItem]);
-        dyaxios.get(url).then(response => this.setState({annonce: response.data,}));
-        /**
-         * Ici je recupere touts les annonce par sous category pour proposer
-         */
-        let urlinteress = route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]);
-        dyaxios.get(urlinteress).then(response => this.setState({annonceinteresse: response.data,}));
-    }
+
 
     render() {
-        const {annonce,annonceinteresse} = this.state;
+        const {annonce,annonceinteressebycategoryoccupation} = this.state;
         const composantTitle = `${annonce.title}`;
         document.title = `${composantTitle} | Kazoutech`;
-        const annonceinderesses = annonceinteresse.annonces;
-        console.log(annonceinteresse);
+        const annonceinderesses = annonceinteressebycategoryoccupation.annoncesinteres;
         return (
 
             <div className="blog-posts">
@@ -163,23 +238,15 @@ class AnnonceSiteShow extends Component {
                                                 </div>
                                             </div>
 
+                                            {annonceinderesses.length > 0 ?
                                             <div className="card">
+                                                <div className="card-header h6">Regarder aussi</div>
                                                 <div className="card-body">
-
-                                                    {annonceinderesses > 0 && (
-                                                        <>
-                                                            {annonceinderesses.map((item) => (
-                                                                <AnnoncePostInteresse key={item.id} {...item}/>
-                                                            ))}
-                                                        </>
-
-                                                    )}
-
+                                                    {annonceinderesses.map((item) => (
+                                                        <AnnoncePostInteresse key={item.id} {...item}/>
+                                                    ))}
                                                 </div>
-
-
-                                            </div>
-
+                                            </div>:null}
                                         </div>
 
                                     </div>
@@ -199,8 +266,7 @@ class AnnonceSiteShow extends Component {
                                                 <div className="mx-3">
                                                     <NavLink to={`/charbonneur/${annonce.user.username}/`}
                                                              className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
-                                                    <small
-                                                        className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>
+                                                    <small className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>
                                                 </div>
                                             </div>
                                             <div className="text-right ml-auto">
@@ -226,7 +292,7 @@ class AnnonceSiteShow extends Component {
                                                                 <Button onClick={() => this.deleteItem(annonce.id)}
                                                                         className="btn btn-sm btn-danger btn-icon">
                                                                         <span className="btn-inner--icon icon-big">
-                                                                            <i className="ni ni-fat-remove" />
+                                                                            <i className="ni ni-fat-remove"/>
                                                                         </span>
                                                                     <span className="btn-inner--text">Suprimer</span>
                                                                 </Button>{" "}
@@ -249,122 +315,136 @@ class AnnonceSiteShow extends Component {
                                             <div className="row align-items-center my-3 pb-3 border-bottom">
                                                 <div className="col-sm-6">
                                                     <div className="icon-actions">
-                                                        <a href=".." className="like active">
-                                                            <i className="ni ni-like-2"/>
-                                                            <span className="text-muted">150</span>
-                                                        </a>
+                                                        {$guest ?
+
+                                                            <a href="#"  className="like" data-toggle="modal" data-target="#loginModal">
+                                                                <i className="ni ni-like-2"/>
+                                                                <span className="text-muted">150 j'aime</span>
+                                                            </a>
+                                                            :
+
+                                                            <a href=".." className="like active">
+                                                                <i className="ni ni-like-2"/>
+                                                                <span className="text-muted">150 j'aime</span>
+                                                            </a>
+
+                                                        }
                                                         <a href="..">
                                                             <i className="ni ni-chat-round"/>
-                                                            <span className="text-muted">36</span>
+                                                            <span className="text-muted">36 commentaires</span>
                                                         </a>
-                                                        <a href="..">
-                                                            <i className="ni ni-curved-next"/>
-                                                            <span className="text-muted">12</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="col-sm-6 d-none d-sm-block">
-                                                    <div
-                                                        className="d-flex align-items-center justify-content-sm-end">
-                                                        <div className="avatar-group">
-                                                            <a href=".."
-                                                               className="avatar avatar-xs rounded-circle"
-                                                               data-toggle="tooltip"
-                                                               data-original-title="Jessica Rowland">
-                                                                <img alt="Image placeholder"
-                                                                     src="../assets/img/faces/team-1.jpg"
-                                                                     className=""/>
-                                                            </a>
-                                                            <a href=".."
-                                                               className="avatar avatar-xs rounded-circle"
-                                                               data-toggle="tooltip"
-                                                               data-original-title="Audrey Love">
-                                                                <img alt="Image placeholder"
-                                                                     src="../assets/img/faces/team-2.jpg"
-                                                                     className="rounded-circle"/>
-                                                            </a>
-                                                            <a href=".."
-                                                               className="avatar avatar-xs rounded-circle"
-                                                               data-toggle="tooltip"
-                                                               data-original-title="Michael Lewis">
-                                                                <img alt="Image placeholder"
-                                                                     src="../assets/img/faces/team-3.jpg"
-                                                                     className="rounded-circle"/>
-                                                            </a>
-                                                        </div>
-                                                        <small className="pl-2 font-weight-bold">and 30+
-                                                            more</small>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="mb-1">
                                                 <div className="media media-comment">
-                                                    <img alt="Image placeholder"
+                                                    <img alt={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}
                                                          className="media-comment-avatar rounded-circle"
-                                                         src="../assets/img/faces/team-1.jpg"/>
+                                                         src={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}/>
                                                     <div className="media-body">
                                                         <div className="media-comment-text">
-                                                            <h6 className="h5 mt-0">Michael Lewis</h6>
+                                                            <h6 className="h6 mt-0">
+                                                                Boclair Temgoua
+                                                                <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
+                                                            </h6>
                                                             <p className="text-sm lh-160">You have the
                                                                 opportunity to play this game of life you
                                                                 need to appreciate every moment. A lot of
                                                                 people don’t appreciate the moment until it’s
                                                                 passed.</p>
                                                             <div className="icon-actions">
+
                                                                 <a href=".."
-                                                                   className="like active">
+                                                                   className="like">
                                                                     <i className="ni ni-like-2"/>
                                                                     <span
-                                                                        className="text-muted">3 likes</span>
+                                                                        className="text-muted">3 j'aime</span>
                                                                 </a>
-                                                                <a href="..">
-                                                                    <i className="ni ni-curved-next"/>
-                                                                    <span
-                                                                        className="text-muted">2 shares</span>
+                                                                <a href=".." className="text-success" title="Editer votre commentaire">
+                                                                    <i className="fa fa-edit"/> editer
                                                                 </a>
+                                                                <a href=".." className="text-danger" title="Suprimer votre commentaire">
+                                                                    <i className="fa fa-trash"/> suprimer
+                                                                </a>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="media media-comment">
-                                                    <img alt="Image placeholder"
+                                                    <img alt={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}
                                                          className="media-comment-avatar rounded-circle"
-                                                         src="../assets/img/faces/team-2.jpg"/>
+                                                         src={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}/>
                                                     <div className="media-body">
                                                         <div className="media-comment-text">
-                                                            <h6 className="h5 mt-0">Jessica Stones</h6>
+                                                            <h6 className="h6 mt-0">
+                                                                Jessica Stones
+                                                                <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
+                                                            </h6>
                                                             <p className="text-sm lh-160">I always felt like
                                                                 I could do anything. That’s the main thing
                                                                 people are controlled by! Thoughts- their
                                                                 perception of themselves! They're slowed
                                                                 down.</p>
+                                                            <form>
+                                                                <textarea className="form-control"
+                                                                   placeholder="laissez un commentaire à cette annonce..."
+                                                                   defaultValue={'I could do anything. That’s the main thing perception of themselves! They\'re slowed people are controlled by! Thoughts- their'}
+                                                                   rows="2"/>
+                                                                <div className="text-right ml-auto">
+                                                                    <button className="btn btn-sm btn-secondary btn-icon" type="button">
+                                                                        <span className="btn-inner--text">Annuller</span>
+                                                                    </button>
+                                                                    <button className="btn btn-sm btn-success btn-icon" type="submit">
+                                                                        <span className="btn-inner--text">Poster</span>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                             <div className="icon-actions">
                                                                 <a href=".."
                                                                    className="like active">
                                                                     <i className="ni ni-like-2"/>
                                                                     <span
-                                                                        className="text-muted">10 likes</span>
+                                                                        className="text-muted">10 j'aime</span>
                                                                 </a>
-                                                                <a href="..">
-                                                                    <i className="ni ni-curved-next"/>
-                                                                    <span
-                                                                        className="text-muted">1 share</span>
+                                                                <a href=".." className="text-success" title="Editer votre commentaire">
+                                                                    <i className="fa fa-edit"/> editer
+                                                                </a>
+                                                                <a href=".." className="text-danger" title="Suprimer votre commentaire">
+                                                                    <i className="fa fa-trash"/> suprimer
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="media align-items-center mt-5">
-                                                    <img alt="Image placeholder"
-                                                         className="avatar avatar-lg rounded-circle mb-4"
-                                                         src="../assets/img/faces/team-3.jpg"/>
-                                                    <div className="media-body">
-                                                        <form>
-                                                                <textarea className="form-control"
-                                                                          placeholder="Write your comment"
-                                                                          rows="1"/>
-                                                        </form>
-                                                    </div>
+
+                                                    {$guest ?
+                                                        <h6 className="text-center">
+                                                            <strong className="title text-center">S'il vous plait
+                                                                <a href="#" className="text-info" data-toggle="modal" data-target="#loginModal"> connectez vous </a> ou
+                                                                <a href="/register/" className="text-info"> inscrivez vous </a> pour laisser votre commentaire
+                                                            </strong>
+                                                        </h6>
+                                                        :
+                                                        <div className="media-body">
+                                                            <form>
+                                                                <ReactQuill theme="snow" modules={this.modules}
+                                                                            formats={this.formats}
+                                                                            placeholder={'laissez un commentaire à cette annonce...'}
+                                                                            className={`editor-control ${this.hasErrorFor('body') ? 'is-invalid' : ''}`}
+                                                                            value={this.state.body || ''}
+                                                                            onChange={this.handleChangeBody}/>
+
+                                                                <br/>
+                                                                <div className="text-right ml-auto">
+                                                                    <button className="btn btn-sm btn-success btn-icon" type="submit">
+                                                                        <span className="btn-inner--text">Poster</span>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -374,8 +454,114 @@ class AnnonceSiteShow extends Component {
                             </div>
                         </div>
                     </div>
-                    <FooterUserSite/>
                 </div>
+
+                <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered modal-sm" role="document">
+                        <div className="modal-content">
+                            <div className="modal-body p-0">
+                                <div className="card bg-secondary shadow border-0 mb-0">
+                                    <div className="card-header bg-white pb-5">
+                                        <div className="text-muted text-center mb-3">
+                                            <small>Se connecter avec</small>
+                                        </div>
+                                        <div className="btn-wrapper text-center">
+                                            <a href=".." className="btn btn-neutral btn-icon">
+                                            <span className="btn-inner--icon">
+                                              <img src="/assets/site/assets/img/icons/common/github.svg"/>
+                                            </span>
+                                                <span className="btn-inner--text">Google</span>
+                                            </a>
+                                            <a href=".." className="btn btn-neutral btn-icon">
+                                                <span className="btn-inner--icon">
+                                                <img src="/assets/site/assets/img/icons/common/google.svg"/>
+                                                </span>
+                                                <span className="btn-inner--text">Github</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="card-body px-lg-5 py-lg-5">
+                                        <div className="text-center text-muted mb-4">
+                                            <small>Ou connectez-vous avec vos identifiants</small>
+
+                                            {this.state.errors.length > 0 && (
+                                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <span className="alert-inner--text"><strong>Danger!</strong> This is an error alert—check it out!</span>
+                                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <form method="POST" onSubmit={this.loginItem}>
+
+                                            <div className="form-group mb-3">
+                                                <div className="input-group input-group-alternative">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">
+                                                            <i className="ni ni-email-83"/>
+                                                        </span>
+                                                    </div>
+
+                                                    <input type="text" placeholder="Pseudo ou votre numero de téléphone" aria-label="Pseudo ou votre numero de téléphone"
+                                                           required="required"
+                                                           id="username"
+                                                           className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
+                                                           name='username'
+                                                           value={this.state.username}
+                                                           onChange={this.handleFieldChange} autoComplete="username" autoFocus />
+                                                    {this.renderErrorFor('username')}
+                                                </div>
+                                            </div>
+                                            <div className="form-group">
+                                                <div className="input-group input-group-alternative">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">
+                                                            <i className="ni ni-lock-circle-open"/>
+                                                        </span>
+                                                    </div>
+
+                                                    <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
+                                                           required="required"
+                                                           id="password"
+                                                           className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}
+                                                           name='password'
+                                                           value={this.state.password}
+                                                           onChange={this.handleFieldChange}
+                                                           autoComplete="password" autoFocus/>
+                                                    {this.renderErrorFor('password')}
+                                                </div>
+                                            </div>
+                                            <div className="custom-control custom-control-alternative custom-checkbox">
+                                                <input className="custom-control-input" id="remember" type="checkbox"
+                                                       defaultChecked={this.state.remember} value={this.state.remember} name="remember" onChange={this.handleFieldChange}/>
+                                                <label className="custom-control-label" htmlFor="remember">
+                                                    <span>Se souvenir de moi</span>
+                                                </label>
+                                            </div>
+                                            <div className="text-center">
+                                                <button type="submit" className="btn btn-primary my-4">Se connecter</button>
+                                            </div>
+                                            <div className="row mt-3">
+                                                <div className="col-6">
+                                                    <a className="text-light" href="..">
+                                                        <small>Mot de passe oublié</small>
+                                                    </a>
+                                                </div>
+                                                <div className="col-6 text-right">
+                                                    <a href="/register/" className="text-light">
+                                                        <small>Inscrivez vous</small>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <FooterUserSite/>
             </div>
         )
     }

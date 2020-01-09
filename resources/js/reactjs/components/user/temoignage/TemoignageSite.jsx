@@ -22,13 +22,13 @@ class TestimonialSite extends Component {
                 <div className="about-us">
                     <NavUserSIte />
                     <div className="wrapper">
-                        <div className="page-header kazouTech-page-header-mini header-filter">
+                        <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image page-header-mini"
                                 style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/mohamed.jpg' + ")" }} />
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
-                                        <h2 className="display-2 text-white">Avis des clients satisfaits</h2>
+                                        <h4 className="display-2 text-white">Avis des clients satisfaits</h4>
                                     </div>
                                 </div>
                             </div>

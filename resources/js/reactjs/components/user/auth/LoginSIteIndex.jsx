@@ -50,7 +50,7 @@ class LoginSIteIndex extends Component{
         };
         dyaxios.post(route('login'), item)
             .then(() => {
-                location.reload();
+                window.location.reload();
             }).catch(error => {
             this.setState({
                 errors: error.response.data.errors

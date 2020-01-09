@@ -11,7 +11,7 @@ class OccupationSiteSlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupation: {categoryoccupations: [],blogs:[]},
+            occupation: {categoryoccupations: [], blogs: []},
         }
     }
 
@@ -38,11 +38,7 @@ class OccupationSiteSlug extends Component {
                         <div className="cd-section" id="accordion">
                             <div className="accordion-1">
                                 <div className="container">
-
-
-
                                     <div className={'row'}>
-
                                         <div className="container text-center">
                                             <div className="row mb-5">
                                                 <div className="col-md-8 mx-auto">
@@ -53,19 +49,22 @@ class OccupationSiteSlug extends Component {
                                             </div>
                                             <div className="row align-items-center">
                                                 {occupationCategories.map((item) => (
-                                                <div key={item.id} className="col-lg-4">
-                                                    <div className="card card-background"
-                                                         style={{backgroundImage: "url(" + item.photo + ")"}}>
-                                                        <div className="card-body text-center">
-                                                            <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
-                                                                <h2 className="card-title">{item.name}</h2>
-                                                            </Link>
-                                                            <Link to={`/occupations/${occupation.slug}/${item.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
-                                                                En savoir plus
-                                                            </Link>
+                                                    <div key={item.id} className="col-lg-4">
+                                                        <div className="card card-background"
+                                                             style={{backgroundImage: "url(" + item.photo + ")"}}>
+                                                            <div className="card-body text-center">
+                                                                <Link
+                                                                    to={`/occupations/${occupation.slug}/${item.slug}/`}>
+                                                                    <h2 className="card-title">{item.name}</h2>
+                                                                </Link>
+                                                                <Link
+                                                                    to={`/occupations/${occupation.slug}/${item.slug}/`}
+                                                                    className={`btn btn-sm btn-${item.color.name}`}>
+                                                                    En savoir plus
+                                                                </Link>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                                 ))}
                                             </div>
                                         </div>
@@ -87,9 +86,12 @@ class OccupationSiteSlug extends Component {
 
                                                         <br/>
                                                         <div className="row">
-                                                            <h4 className="title">Tous nos articles sur <strong>{occupation.name} </strong> sont sur notre blog</h4>
+                                                            <h4 className="title">Tous nos articles
+                                                                sur <strong>{occupation.name} </strong> sont sur notre
+                                                                blog</h4>
                                                             <div className="col-md-12">
-                                                                <div dangerouslySetInnerHTML={{__html: occupation.description}}/>
+                                                                <div
+                                                                    dangerouslySetInnerHTML={{__html: occupation.description}}/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -102,8 +104,6 @@ class OccupationSiteSlug extends Component {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                     <FooterUserSite/>
                 </div>

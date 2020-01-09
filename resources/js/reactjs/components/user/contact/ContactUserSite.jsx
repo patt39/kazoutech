@@ -94,7 +94,8 @@ class ContactUserSite extends Component {
 
                     <div className="wrapper">
                         <div className="page-header kazouTech-page-header-mini header-filter">
-                            <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
+                            <div className="page-header-image"
+                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
@@ -125,7 +126,8 @@ class ContactUserSite extends Component {
                                             <div className="row">
                                                 <div className="col-md-6">
                                                     <div className="form-group">
-                                                        <label>Prénom <span className="kazouTech-red-color">*</span></label>
+                                                        <label>Prénom <span
+                                                            className="kazouTech-red-color">*</span></label>
                                                         <div className="input-group input-group-alternative">
                                                             <div className="input-group-prepend">
                                                                 <span className="input-group-text">
@@ -146,7 +148,8 @@ class ContactUserSite extends Component {
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="form-group">
-                                                        <label>Nom <span className="kazouTech-red-color">*</span></label>
+                                                        <label>Nom <span
+                                                            className="kazouTech-red-color">*</span></label>
                                                         <div className="input-group input-group-alternative">
                                                             <div className="input-group-prepend">
                                                                 <span className="input-group-text"><i
@@ -167,7 +170,8 @@ class ContactUserSite extends Component {
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <label>Addresse Email <span className="kazouTech-red-color">*</span></label>
+                                                <label>Addresse Email <span
+                                                    className="kazouTech-red-color">*</span></label>
                                                 <div className="input-group input-group-alternative">
                                                     <div className="input-group-prepend">
                                                         <span className="input-group-text"><i
@@ -205,7 +209,8 @@ class ContactUserSite extends Component {
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <label>Votre Message <span className="kazouTech-red-color">*</span></label>
+                                                <label>Votre Message <span
+                                                    className="kazouTech-red-color">*</span></label>
                                                 <textarea name="message" value={this.state.message}
                                                           onChange={this.handleFieldChange}
                                                           placeholder={'Message ...'}
@@ -219,7 +224,8 @@ class ContactUserSite extends Component {
                                                     <span className="btn-inner--icon">
                                                        <i className="ni ni-check-bold"/>
                                                     </span>
-                                                    <span className="nav-link-inner--text pt-40 position-navbar">Envoyer</span>
+                                                    <span
+                                                        className="nav-link-inner--text pt-40 position-navbar">Envoyer</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -229,50 +235,50 @@ class ContactUserSite extends Component {
                         </div>
                     </div>
                     <div className="contactus-3">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-3 col-md-6 col-6">
-                                <div className="info info-hover">
-                                    <div
-                                        className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
-                                        <i className="ni ni-square-pin"/>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-3 col-md-6 col-6">
+                                    <div className="info info-hover">
+                                        <div
+                                            className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
+                                            <i className="ni ni-square-pin"/>
+                                        </div>
+                                        <h4 className="info-title">Contact</h4>
+                                        <p className="description px-0">Kazoutech Srl, Milan / Italy </p>
                                     </div>
-                                    <h4 className="info-title">Contact</h4>
-                                    <p className="description px-0">Kazoutech Srl, Milan / Italy </p>
                                 </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6 col-6">
-                                <div className="info info-hover">
-                                    <div
-                                        className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
-                                        <i className="ni ni-email-83"/>
+                                <div className="col-lg-3 col-md-6 col-6">
+                                    <div className="info info-hover">
+                                        <div
+                                            className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
+                                            <i className="ni ni-email-83"/>
+                                        </div>
+                                        <h4 className="info-title">Email</h4>
+                                        <p className="description px-0">hello@email.com</p>
                                     </div>
-                                    <h4 className="info-title">Email</h4>
-                                    <p className="description px-0">hello@email.com</p>
                                 </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6 col-6">
-                                <div className="info info-hover">
-                                    <div
-                                        className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
-                                        <i className="ni ni-mobile-button"/>
+                                <div className="col-lg-3 col-md-6 col-6">
+                                    <div className="info info-hover">
+                                        <div
+                                            className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
+                                            <i className="ni ni-mobile-button"/>
+                                        </div>
+                                        <h4 className="info-title">Phone</h4>
+                                        <p className="description px-0">+39 3425712192 / +39 3296187465 </p>
                                     </div>
-                                    <h4 className="info-title">Phone</h4>
-                                    <p className="description px-0">+39 3425712192 / +39 3296187465 </p>
                                 </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6 col-6">
-                                <div className="info info-hover">
-                                    <div
-                                        className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
-                                        <i className="ni ni-circle-08"/>
+                                <div className="col-lg-3 col-md-6 col-6">
+                                    <div className="info info-hover">
+                                        <div
+                                            className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
+                                            <i className="ni ni-circle-08"/>
+                                        </div>
+                                        <h4 className="info-title">Contact</h4>
+                                        <p className="description px-0">Andrew Samian</p>
                                     </div>
-                                    <h4 className="info-title">Contact</h4>
-                                    <p className="description px-0">Andrew Samian</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                     <FooterUserSite/>
                 </div>

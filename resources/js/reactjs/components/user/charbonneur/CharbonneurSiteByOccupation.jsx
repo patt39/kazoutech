@@ -30,8 +30,10 @@ class CharbonneurSiteByOccupation extends Component {
         dyaxios.get(route('api_active.occupations')).then(response =>
                 this.setState({occupations: [...response.data],}));
 
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
-            this.setState({cities: [...response.data],}));
+        dyaxios.get(route('api.cities_by_status')).then(response =>
+            this.setState({
+                cities: [...response.data],
+            }));
     }
 
     render() {
@@ -50,7 +52,7 @@ class CharbonneurSiteByOccupation extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
-                                    <h5 className="display-2 text-white">Charbonneurs en {charbonneursbyoccupation.name} dans la ville de {charbonneursbycity.name} </h5>
+                                    <h6 className="display-2 text-white">Charbonneurs en {charbonneursbyoccupation.name} dans la ville de {charbonneursbycity.name} </h6>
                                     <div className="description">
                                         <Link to={'/charbonneurs/'} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> Tous les charbonneurs
