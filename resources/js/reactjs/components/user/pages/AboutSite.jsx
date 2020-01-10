@@ -115,7 +115,7 @@ class AboutSite extends Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12 mx-auto">
-                                        <h3 className="display-3 mb-5">Notre Dernier Blogpost</h3>
+                                        <h3 className="display-3 mb-5">Notre Dernier Article de Blog</h3>
                                         <div className="card card-blog card-background card-grande"
                                             data-animation="zooming">
                                             <div className="full-background"
@@ -143,193 +143,105 @@ class AboutSite extends Component {
                                             N'hesitez pas à nous contacter pour mieux en savoir sur nos services.</p>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col-lg-4 col-md-6">
-                                        <div className="card card-profile" data-image="profile-image">
-                                            <div className="card-header">
-                                                <div className="card-image">
-                                                    <a href="..">
-                                                        <img className="img rounded"
-                                                            src="/assets/vendor_site/img/faces/ali-pazani.jpg" />
-                                                    </a>
+                                <div className="section features-4">
+                            <div className="container">
+                                <div className="row align-items-center">
+                                    <div className="col-lg-12 mx-auto mt-4">
+                                        <div className="row">
+                                            <div className="col-md-6 col-lg-4">
+                                                <div className="card card-profile" data-image="img-rounded">
+                                                    <div className="card-avatar">
+                                                        <img className="img" src="/assets/vendor_site/img/faces/team-1.jpg" />
+                                                    </div>
+                                                    <div className="card-body ">
+                                                        <h6 className="card-category text-gray">Project Manager</h6>
+                                                        <h4 className="card-title">Boclair Temgoua</h4>
+                                                        <p className="card-description">
+                                                            Don't be scared of the truth because we need to restart the
+                                                            human foundation in truth And I love you...
+                                                        </p>
+                                                        <div className="btn-wrapper profile text-center mt-3">
+                                                            <a target="_blank" href="https://twitter.com/creativetim" className="btn btn-sm"
+                                                               data-toggle="tooltip" data-original-title="Follow me">
+                                                                <i className="fab fa-twitter"/>
+                                                            </a>
+                                                            <a target="_blank" href="https://www.facebook.com/creativetim"
+                                                               className="btn btn-sm" data-toggle="tooltip" data-original-title="Like me">
+                                                                <i className="fab fa-facebook-square"/>
+                                                            </a>
+                                                            <a target="_blank" href="https://dribbble.com/creativetim"
+                                                               className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow me">
+                                                                <i className="fab fa-instagram"/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="card-body pt-0">
-                                                <h4 className="display-4 mb-0">Boclair Temgoua</h4>
-                                                <p className="lead">UX Designer</p>
-                                                <div className="table-responsive">
-                                                    <ul className="list-unstyled ">
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-info mr-3">
-                                                                        <i className="ni ni-atom"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Keen on great
-                                                                                design</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-success mr-3">
-                                                                        <i className="ni ni-user-run"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Outdors lover</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-danger mr-3">
-                                                                        <i className="ni ni-chart-bar-32"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Super friendly support
-                                                                                team</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                            <div className="col-md-6 col-lg-4">
+                                                <div className="card card-profile" data-image="img-rounded">
+                                                    <div className="card-avatar">
+                                                        <img className="img" src="/assets/vendor_site/img/faces/team-1.jpg" />
+                                                    </div>
+                                                    <div className="card-body ">
+                                                        <h6 className="card-category text-gray">Project Manager</h6>
+                                                        <h4 className="card-title">Patrick Noubissi</h4>
+                                                        <p className="card-description">
+                                                            Don't be scared of the truth because we need to restart the
+                                                            human foundation in truth And I love you...
+                                                        </p>
+                                                        <div className="btn-wrapper profile text-center mt-3">
+                                                            <a target="_blank" href="https://twitter.com/creativetim" className="btn btn-sm"
+                                                               data-toggle="tooltip" data-original-title="Follow me">
+                                                                <i className="fab fa-twitter"/>
+                                                            </a>
+                                                            <a target="_blank" href="https://www.facebook.com/creativetim"
+                                                               className="btn btn-sm" data-toggle="tooltip" data-original-title="Like me">
+                                                                <i className="fab fa-facebook-square"/>
+                                                            </a>
+                                                            <a target="_blank" href="https://dribbble.com/creativetim"
+                                                               className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow me">
+                                                                <i className="fab fa-instagram"/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6">
-                                        <div className="card card-profile" data-image="profile-image">
-                                            <div className="card-header">
-                                                <div className="card-image">
-                                                    <a href="..">
-                                                        <img className="img rounded"
-                                                            src="/assets/vendor_site/img/faces/team-5.jpg" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div className="card-body pt-0">
-                                                <h4 className="display-4 mb-0">Patrick Noubissi</h4>
-                                                <p className="lead">Team Lead</p>
-                                                <div className="table-responsive">
-                                                    <ul className="list-unstyled ">
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-info mr-3">
-                                                                        <i className="ni ni-atom"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Dedicated
-                                                                                entrepreneur</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-success mr-3">
-                                                                        <i className="ni ni-user-run"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Urban exploration</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-danger mr-3">
-                                                                        <i className="ni ni-chart-bar-32"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Able to get good at
-                                                                                everything</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6">
-                                        <div className="card card-profile" data-image="profile-image">
-                                            <div className="card-header">
-                                                <div className="card-image">
-                                                    <a href="..">
-                                                        <img className="img rounded"
-                                                            src="/assets/vendor_site/img/faces/atikh.jpg" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div className="card-body pt-0">
-                                                <h4 className="display-4 mb-0">Randrin</h4>
-                                                <p className="lead">Content Creator</p>
-                                                <div className="table-responsive">
-                                                    <ul className="list-unstyled ">
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-info mr-3">
-                                                                        <i className="ni ni-atom"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">High quality
-                                                                                publication</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-success mr-3">
-                                                                        <i className="ni ni-user-run"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Storytelling</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="py-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div>
-                                                                    <div
-                                                                        className="badge badge-circle badge-danger mr-3">
-                                                                        <i className="ni ni-chart-bar-32"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 className="mb-1">Master of words
-                                                                                qualification</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                            <div className="col-md-6 col-lg-4">
+                                                <div className="card card-profile" data-image="img-rounded">
+                                                    <div className="card-avatar">
+                                                        <img className="img" src="/assets/vendor_site/img/faces/team-1.jpg" />
+                                                    </div>
+                                                    <div className="card-body ">
+                                                        <h6 className="card-category text-gray">Project Manager</h6>
+                                                        <h4 className="card-title">Randrin Nzeukang</h4>
+                                                        <p className="card-description">
+                                                            Don't be scared of the truth because we need to restart the
+                                                            human foundation in truth And I love you...
+                                                        </p>
+                                                        <div className="btn-wrapper profile text-center mt-3">
+                                                            <a target="_blank" href="https://twitter.com/creativetim" className="btn btn-sm"
+                                                               data-toggle="tooltip" data-original-title="Follow me">
+                                                                <i className="fab fa-twitter"/>
+                                                            </a>
+                                                            <a target="_blank" href="https://www.facebook.com/creativetim"
+                                                               className="btn btn-sm" data-toggle="tooltip" data-original-title="Like me">
+                                                                <i className="fab fa-facebook-square"/>
+                                                            </a>
+                                                            <a target="_blank" href="https://dribbble.com/creativetim"
+                                                               className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow me">
+                                                                <i className="fab fa-instagram"/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </div>
+                    </section>
                         <FooterUserSite />
                     </div>
                 </div>

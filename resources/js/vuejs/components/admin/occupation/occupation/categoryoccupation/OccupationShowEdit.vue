@@ -105,9 +105,22 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="media-body">
-                                                                        <label class="bmd-label-floating">Tell about for you<span style="color: red;">*</span></label>
+                                                                        <label class="bmd-label-floating">Write something<span style="color: red;">*</span></label>
                                                                         <quill-editor v-model="form.description"
                                                                                       :class="{ 'is-invalid': form.errors.has('description') }"
+                                                                                      :options="editorOption">
+                                                                        </quill-editor>
+                                                                        <has-error :form="form" field="description"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br/>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="media-body">
+                                                                        <label class="bmd-label-floating">Say something<span style="color: red;">*</span></label>
+                                                                        <quill-editor v-model="form.body"
+                                                                                      :class="{ 'is-invalid': form.errors.has('body') }"
                                                                                       :options="editorOption">
                                                                         </quill-editor>
                                                                         <has-error :form="form" field="body"/>
@@ -160,6 +173,7 @@
                     id: '',
                     name: '',
                     photo: '',
+                    body: '',
                     description: '',
                     occupation_id: '',
                     color_id: '',

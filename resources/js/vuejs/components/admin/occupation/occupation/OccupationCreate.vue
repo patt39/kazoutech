@@ -73,7 +73,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="media-body">
-                                                                            <label class="bmd-label-floating">Tell about for you<span style="color: red;">*</span></label>
+                                                                            <label class="bmd-label-floating">Say something<span style="color: red;">*</span></label>
                                                                             <quill-editor v-model="form.description"
                                                                                           :class="{ 'is-invalid': form.errors.has('description') }"
                                                                                           :options="editorOption">
