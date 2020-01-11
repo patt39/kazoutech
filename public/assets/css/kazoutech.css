@@ -102,6 +102,33 @@
 .kazouTech-divider {
     border-bottom: 1px solid #ffffff;
 }
+.kazouTech-register-divider {
+     background-color: inherit;
+     margin-top: 1em;
+     line-height: 1.5;
+     margin: 30px 0;
+     color: #6c747e;
+ }
+.kazouTech-register-divider:before {
+    content: '';
+    border-bottom: 0.0625em solid #e3e5e8;
+    display: block;
+    height: 0.5em;
+}
+.kazouTech-register-divider:after {
+    background-color: inherit;
+    content: attr(data-label);
+    background: white;
+    display: block;
+    height: 1em;
+    margin: -0.7em auto 0;
+    text-align: center;
+    width: 3em;
+    text-transform: uppercase;
+}
+.kazouTech-register-submit .btn {
+    width: 100%;
+}
 .kazouTech-red-color {
     color: #d12420 !important;
 }
@@ -115,6 +142,15 @@
     padding: 20px 0px;
     text-align: justify;
     opacity: 1;
+}
+
+.kazouTech-register-container {
+    max-width: 1215px;
+}
+.login-page .kazouTech-register-upper {
+    margin-top: -100px;
+    z-index: 2;
+    position: relative;
 }
 /*
 .btn-wrapper a.btn {
@@ -158,6 +194,12 @@
     .page-header {
         min-height: 70vh;
     }
+    .login-page .kazouTech-register-upper {
+        margin-top: 40px;
+    }
+    .kazouTech-register-right-block {
+        top: 0px !important;
+    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -192,4 +234,19 @@
 .features-5 .info {
     padding: 20px;
     text-align: justify !important;
+}
+.card-background .card-body .content-bottom .kazouTech-content-bottom {
+    display: grid;
+    margin: 0px 10px 0px 5px;
+}
+.kazouTech-register-icon {
+    position: relative;
+    top: 3px;
+}
+.kazouTech-register-gender {
+    display: flex;
+}
+.kazouTech-register-right-block {
+    position: relative;
+    top: -50px;
 }
