@@ -17,6 +17,7 @@ import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
 import DevenirCharbonneur from "../components/user/charbonneur/DevenirCharbonneur";
 import TemoignageSite from "../components/user/temoignage/TemoignageSite";
+import TermConditionSite from "../components/user/infos/TermConditionSite";
 import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
 import AnnonceSiteEdit from "../components/user/annonce/traitement/AnnonceSiteEdit";
 import AnnonceSiteByOccupationCity from "../components/user/annonce/AnnonceSiteByOccupationCity";
@@ -67,6 +68,7 @@ const RouterUser = props => (
         <Route exact path="/concept/" component={ConceptSite}/>
         <Route exact path="/contacts/" component={contactUserSite}/>
         <Route exact path="/temoignages/" component={TemoignageSite}/>
+        <Route exact path="/condition_utilisation/" component={TermConditionSite}/>
     </Switch>
 );
 export default RouterUser;

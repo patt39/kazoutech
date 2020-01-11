@@ -155,7 +155,7 @@ class AnnonceSiteByOccupation extends Component {
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces de {annoncebyoccupation.name}</b></h5>
+                                                        <h3 className="display-3 mb-5"><b>Toutes les annonces de {annoncebyoccupation.name}</b></h3>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">

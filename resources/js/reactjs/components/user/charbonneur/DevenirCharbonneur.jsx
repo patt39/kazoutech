@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
+import {Link} from "react-router-dom";
 import NavUserSIte from "../../inc/NavUserSIte";
 
 
 class DevenirCharbonneur extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            //
+        }
 
     }
 
@@ -20,100 +24,68 @@ class DevenirCharbonneur extends Component {
             <>
                 <div className="about-us">
                     <NavUserSIte />
-                    <div class="wrapper">
-                        <div className="section-shaped my-0 skew-separator skew-mini">
-                            <div className="page-header page-header-small header-filter">
-                                <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
-                                </div>
+                    <div className="wrapper">
+                        <div className="section-shaped">
+                            <div className="page-header page-header-mini header-filter">
+                                <div className="page-header-image"
+                                     style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/georgie.jpg' + ")"}}/>
                                 <div className="container">
                                     <div className="header-body text-center mb-7">
                                         <div className="row justify-content-center">
                                             <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                                <h1 className="text-white">Your account</h1>
-                                                <p className="text-lead text-white">That’s the main thing people are controlled by! Thoughts - their perception of themselves!</p>
+                                                <h2 className="text-white">Créez votre compte</h2>
+                                                <p className="text-lead text-white">Le jobbing à votre porter dévenez charbonneur</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-secondary">
+                        <div className="main main-raised">
                             <div className="container bg-white card mb-0">
                                 <div className="row">
-                                    <div className="col-md-3">
-                                        <div className="section">
-                                            <section className="text-center">
-                                                <div className="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                    <div className="fileinput-new thumbnail img-circle img-raised">
-                                                        <img src="../assets/img/placeholder.jpg" alt="..."/>
-                                                    </div>
-                                                    <div className="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
-                                                    <div>
-                                                        <span className="btn btn-raised btn-round btn-primary btn-file btn-sm mx-auto mt-3">
-                                                        <span className="fileinput-new">Add Photo</span>
-                                                        <span className="fileinput-exists">Change</span>
-                                                        <input type="file" name="..."/></span>
-                                                        <br/>
-                                                            <a href="#pablo" className="btn btn-danger btn-round fileinput-exists btn-simple btn-sm" data-dismiss="fileinput"><i className="tim-icons icon-simple-remove"></i> Remove</a>
-                                                    </div>
-                                                </div>
-                                                <h3 className="title mt-4">Charlie Bailey</h3>
-                                            </section>
-                                            <br></br>
-                                                <div>
-                                                    <div className="progress-container progress-primary">
-                                                        <span className="progress-badge">Profile Completion</span>
-                                                        <div className="progress-wrapper">
-                                                            <div className="progress-info">
-                                                                <div className="progress-percentage">
-                                                                    <span className="text-primary">80%</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="progress">
-                                                                <div className="progress-bar bg-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-8 ml-auto">
+                                    <div className="col-md-10 mx-auto">
                                         <div className="section">
                                             <div className="tab-content">
                                                 <div className="tab-pane active" id="link1">
                                                     <div>
                                                         <header>
-                                                            <h2 className="text-uppercase">General information</h2>
+                                                            <h3 className="text-uppercase text-center">Information Generale</h3>
                                                         </header>
-                                                        <hr className="line-primary"/><br/>
-                                                        <form>
+                                                        <br/><br/>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels" htmlFor="#firstName">First Name</label>
+                                                                    <label className="labels" htmlFor="#firstName">Nom</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
                                                                     <div className="form-group">
-                                                                        <input id="firstName" name="firstName" className="form-control" type="text" value="Charlie" required="required"/>
+                                                                        <input id="nom" name="nom"
+                                                                               className="form-control" type="text"
+                                                                               value="Charlie" required="required"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels" htmlFor="#lastName">Last Name</label>
+                                                                    <label className="labels" htmlFor="prénom">Prénom</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
                                                                     <div className="form-group">
-                                                                        <input id="lastName" name="lastName" className="form-control" type="text" value="Bailey" required="required"/>
+                                                                        <input id="prénom" name="prénom"
+                                                                               className="form-control" type="text"
+                                                                               value="Bailey" required="required"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels">I’m</label>
+                                                                    <label className="labels">Sex</label>
                                                                 </div>
                                                                 <div className="col-md-4 align-self-center">
                                                                     <div className="form-group">
-                                                                        <select className="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                                                                        <select className="form-control" data-trigger
+                                                                                name="choices-single-default"
+                                                                                id="choices-single-default">
                                                                             <option value="2">Male</option>
                                                                             <option value="3">Female</option>
                                                                         </select>
@@ -122,17 +94,21 @@ class DevenirCharbonneur extends Component {
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels">Birth Date</label>
+                                                                    <label className="labels">Date de naiscançe</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
                                                                     <div className="row">
                                                                         <div className="col-md-4 align-self-center">
                                                                             <div className="form-group">
-                                                                                <select className="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                                                                                <select className="form-control"
+                                                                                        data-trigger
+                                                                                        name="choices-single-default"
+                                                                                        id="choices-single-default">
                                                                                     <option>January</option>
                                                                                     <option>February</option>
                                                                                     <option>March</option>
-                                                                                    <option selected="selected">April</option>
+                                                                                    <option selected="selected">April
+                                                                                    </option>
                                                                                     <option>May</option>
                                                                                     <option>June</option>
                                                                                     <option>July</option>
@@ -146,7 +122,10 @@ class DevenirCharbonneur extends Component {
                                                                         </div>
                                                                         <div className="col-md-4">
                                                                             <div className="form-group">
-                                                                                <select className="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                                                                                <select className="form-control"
+                                                                                        data-trigger
+                                                                                        name="choices-single-default"
+                                                                                        id="choices-single-default">
                                                                                     <option>1</option>
                                                                                     <option>2</option>
                                                                                     <option>3</option>
@@ -157,7 +136,8 @@ class DevenirCharbonneur extends Component {
                                                                                     <option>8</option>
                                                                                     <option>9</option>
                                                                                     <option>10</option>
-                                                                                    <option selected="selected">11</option>
+                                                                                    <option selected="selected">11
+                                                                                    </option>
                                                                                     <option>12</option>
                                                                                     <option>13</option>
                                                                                     <option>14</option>
@@ -183,11 +163,15 @@ class DevenirCharbonneur extends Component {
                                                                         </div>
                                                                         <div className="col-md-4">
                                                                             <div className="form-group">
-                                                                                <select className="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                                                                                <select className="form-control"
+                                                                                        data-trigger
+                                                                                        name="choices-single-default"
+                                                                                        id="choices-single-default">
                                                                                     <option>1986</option>
                                                                                     <option>1987</option>
                                                                                     <option>1988</option>
-                                                                                    <option selected="selected">1989</option>
+                                                                                    <option selected="selected">1989
+                                                                                    </option>
                                                                                     <option>1990</option>
                                                                                     <option>1991</option>
                                                                                     <option>1992</option>
@@ -226,76 +210,93 @@ class DevenirCharbonneur extends Component {
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels" htmlFor="#email">Email</label>
+                                                                    <label className="labels"
+                                                                           htmlFor="#email">Email</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
                                                                     <div className="form-group">
-                                                                        <input id="email" name="email" className="form-control" type="email" value="charlie.bailey@example.com" required="required"/>
+                                                                        <input id="email" name="email"
+                                                                               className="form-control" type="email"
+                                                                               value="charlie.bailey@example.com"
+                                                                               required="required"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels" htmlFor="#confirmEmail">Confirm Email</label>
+                                                                    <label className="labels" htmlFor="#confirmEmail">Confirmer
+                                                                        l'Email</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
                                                                     <div className="form-group">
-                                                                        <input id="confirmEmail" name="confirmEmail" className="form-control" type="email" value="charlie.bailey@example.com" required="required"/>
+                                                                        <input id="confirmEmail" name="confirmEmail"
+                                                                               className="form-control" type="email"
+                                                                               value="charlie.bailey@example.com"
+                                                                               required="required"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels" htmlFor="#location">Your Location</label>
+                                                                    <label className="labels" htmlFor="#location">Ville</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
                                                                     <div className="form-group">
-                                                                        <input id="location" name="location" className="form-control" type="text" value="Sydney, A" required="required"/>
+                                                                        <input id="ville" name="ville"
+                                                                               className="form-control" type="text"
+                                                                               value="Sydney, A" required="required"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels" htmlFor="#phone">Phone Number</label>
+                                                                    <label className="labels" htmlFor="#phone">Télefone</label>
                                                                 </div>
                                                                 <div className="col-md-4 align-self-center">
                                                                     <div className="form-group">
-                                                                        <input id="phone" name="phone" className="form-control" type="tel" value="+40 745 031 200" required="required"/>
+                                                                        <input id="phone" name="phone"
+                                                                               className="form-control" type="tel"
+                                                                               value="+40 745 031 200"
+                                                                               required="required"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels">Language</label>
+                                                                    <label className="labels">Langue</label>
                                                                 </div>
                                                                 <div className="col-md-4 align-self-center">
                                                                     <div className="form-group">
-                                                                        <select className="form-control" data-trigger name="choices-single-default" id="choices-single-default">
-                                                                            <option selected>English</option>
-                                                                            <option value="2">French</option>
-                                                                            <option value="3">Spanish</option>
-                                                                            <option value="4">Deutsche</option>
-                                                                            <option value="4">Russian</option>
+                                                                        <select className="form-control" data-trigger
+                                                                                name="choices-single-default"
+                                                                                id="choices-single-default">
+                                                                            <option selected>Français</option>
+                                                                            <option value="2">English</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
                                                                 <div className="col-md-3 align-self-center">
-                                                                    <label className="labels">Skills</label>
+                                                                    <label className="labels">Aptitudes</label>
                                                                 </div>
                                                                 <div className="col-md-9 align-self-center">
-                                                                    <input id="badges" type="text" value="VueJs,Angular,Laravel,React" placeholder="+ Add"/>
+                                                                    <input id="badges" type="text"
+                                                                           value="maçonnerie,Charpenterie,Plomberie,Electricité"
+                                                                           placeholder="+ Add"/>
                                                                 </div>
                                                             </div>
                                                             <div className="row mt-5">
                                                                 <div className="col-md-6">
-                                                                    <button className="btn btn-primary" type="submit">Save Changes</button>
-                                                                    <button className="btn btn-outline-primary" type="reset">Cancel</button>
+                                                                    <button className="btn btn-primary"
+                                                                            type="submit">Confirmer
+                                                                    </button>
+                                                                    <button className="btn btn-outline-primary"
+                                                                            type="reset">Annuler
+                                                                    </button>
                                                                 </div>
                                                             </div>
-                                                         </form>
-                                                     </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -303,6 +304,179 @@ class DevenirCharbonneur extends Component {
                                 </div>
                             </div>
                         </div>
+                        <div className="section features-1">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-8 mx-auto text-center">
+                                        <h3 className="display-3">Comment et pourquoi dévenir charbonneur</h3>
+                                        <p className="lead">En remplissant ce formulaire ci-dessus vous dévenez automtiquement un charbonneur chez nous et jouissez de beaucoups d'avantages.</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <div className="info">
+                                            <div
+                                                className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle">
+                                                <i className="ni ni-settings-gear-65"></i>
+                                            </div>
+                                            <h6 className="info-title text-uppercase text-primary">Enregister vous</h6>
+                                            <p className="description opacity-8">Enregistrez-vous et créer votre profile charbonneur(euse) pour pouvoire profiter de nos services et vous faire de l'argent.</p>
+                                            <Link to={'/register'} className="text-primary">Enregistrez vous
+                                                <i className="ni ni-bold-right text-primary"></i>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="info">
+                                            <div
+                                                className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
+                                                <i className="ni ni-atom"></i>
+                                            </div>
+                                            <h6 className="info-title text-uppercase text-success">Identifiez vous</h6>
+                                            <p className="description opacity-8">Pour vous fair identifier et signer votre contrat de charbonneur, passer a nos locaux qaund vous voulais ne vous inquieter pas cela ne prend que quelques minutes.</p>
+                                            <Link to={'/contacts'} className="text-primary">En savoir plus
+                                                <i className="ni ni-bold-right text-primary"></i>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="info">
+                                            <div
+                                                className="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle">
+                                                <i className="ni ni-world"></i>
+                                            </div>
+                                            <h6 className="info-title text-uppercase text-warning">Dévenez charbonneur</h6>
+                                            <p className="description opacity-8">En créant votre profile et vous faisant identifier remplissez enfin le formulaire ci-dessus pour definitivement faire partir de la communauté .</p>
+                                            <Link to={'/devenez_charbonneur'} className="text-primary">Dévenez charbonneur
+                                                <i className="ni ni-bold-right text-primary"></i>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="section features-2">
+                            <div className="container">
+                                <div className="row align-items-center">
+                                    <div className="col-lg-4 col-md-8 mr-auto text-left">
+                                        <div className="pr-md-5">
+                                            <div
+                                                className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle mb-5">
+                                                <i className="ni ni-favourite-28"></i>
+                                            </div>
+                                            <h3>Vous décider</h3>
+                                            <p>Chez kazoutech vous etes votre propre patron vous travailler avec qui vous voulez et come vous voulez surtout sélon vos tariff sans oublier que le client est roi.</p>
+                                            <ul className="list-unstyled mt-5">
+                                                <li className="py-2">
+                                                    <div className="d-flex align-items-center">
+                                                        <div>
+                                                            <div className="badge badge-circle badge-primary mr-3">
+                                                                <i className="ni ni-settings-gear-65"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h6 className="mb-0">Travaillez a votre guise</h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li className="py-2">
+                                                    <div className="d-flex align-items-center">
+                                                        <div>
+                                                            <div className="badge badge-circle badge-primary mr-3">
+                                                                <i className="ni ni-html5"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h6 className="mb-0">Affutez vos competences</h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li className="py-2">
+                                                    <div className="d-flex align-items-center">
+                                                        <div>
+                                                            <div className="badge badge-circle badge-primary mr-3">
+                                                                <i className="ni ni-satisfied"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h6 className="mb-0">Augmentez vos réveneu</h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-7 col-md-12 pl-md-0">
+                                        <div className="row">
+                                            <div className="col-lg-4 col-md-4">
+                                                <div className="info text-left bg-info shadow">
+                                                    <div
+                                                        className="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                                        <i className="ni ni-satisfied text-info"></i>
+                                                    </div>
+                                                    <h5 className="info-title text-white">Argent</h5>
+                                                    <p className="description">Chez kazoutech vous décider vous meme de votre salaire sélon le travail.</p>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-md-4">
+                                                <div className="info text-left bg-danger info-raised shadow">
+                                                    <div
+                                                        className="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                                        <i className="ni ni-palette text-danger"></i>
+                                                    </div>
+                                                    <h5 className="info-title text-white">Creativité</h5>
+                                                    <p className="description">Vous gagnez en creativité et prenez cnfiance chaque fois que vous rélever un défi.</p>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-md-4">
+                                                <div className="info text-left bg-default shadow">
+                                                    <div
+                                                        className="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                                        <i className="ni ni-spaceship text-default"></i>
+                                                    </div>
+                                                    <h5 className="info-title text-white">Competences</h5>
+                                                    <p className="description">Vous gagner en competences et experience en travaillant chaque fois et partout sur le territoire.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-4 col-md-4">
+                                                <div className="info text-left bg-primary shadow">
+                                                    <div
+                                                        className="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                                        <i className="ni ni-planet text-primary"></i>
+                                                    </div>
+                                                    <h5 className="info-title text-white">Temp</h5>
+                                                    <p className="description">Vous gagnez en temp des demandeur de services vous contacte directement n'importe ou sur le territoire</p>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-md-4">
+                                                <div className="info text-left bg-warning info-raised shadow">
+                                                    <div
+                                                        className="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                                        <i className="ni ni-glasses-2 text-warning"></i>
+                                                    </div>
+                                                    <h5 className="info-title text-white">Notorieté</h5>
+                                                    <p className="description">Vous gagner en notorieté en travaillant pour plusieur personne et faite valoire vos competences.</p>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-md-4">
+                                                <div className="info text-left bg-success shadow">
+                                                    <div
+                                                        className="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                                        <i className="ni ni-notification-70 text-success"></i>
+                                                    </div>
+                                                    <h5 className="info-title text-white">Career</h5>
+                                                    <p className="description">Vous avez l'opportunité de faire career et gagner dignement votre vie.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
                         <FooterUserSite/>
                     </div>
                 </div>
@@ -310,5 +484,6 @@ class DevenirCharbonneur extends Component {
         )
     }
 }
+
 
 export default DevenirCharbonneur;

@@ -89,7 +89,7 @@ class LoginController extends Controller
 
         if ( ! User::where('username', $request->username)->where('password', bcrypt($request->password))->first() ) {
             throw ValidationException::withMessages([
-                'password' => Lang::get('auth.password'),
+                $this->username() => Lang::get('auth.username'),
             ]);
         }
 

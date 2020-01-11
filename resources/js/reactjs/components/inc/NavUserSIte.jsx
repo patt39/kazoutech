@@ -11,7 +11,7 @@ class NavUserSIte extends Component {
     navLogout(e) {
         axios.post('/logout')
             .then(() => {
-                location.replace(`/`);
+                window.location.reload();
             }).catch(() => {
             //
         });

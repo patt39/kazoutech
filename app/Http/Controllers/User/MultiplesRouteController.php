@@ -8,8 +8,10 @@ use App\Http\Resources\CategoryOccupationResource;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
+use App\Http\Resources\Info\ConditionResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\annonce;
+use App\Model\admin\info\condition;
 use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\categoryfaq;
@@ -46,6 +48,10 @@ class MultiplesRouteController extends Controller
         return view('user.infos.conditions.index');
     }
 
+    public function apiconditions()
+    {
+        return ConditionResource::collection(Condition::with('user')->latest()->get());
+    }
     public function politiques()
     {
         return view('user.infos.politique.index');

@@ -15,6 +15,7 @@ class CommentCreate extends Component {
                 <form>
                   <textarea className="form-control"
                         placeholder="laissez un commentaire à cette annonce..." rows="2"/>
+
                     <div className="text-right ml-auto">
                         <button className="btn btn-sm btn-success btn-icon" type="submit">
                             <span className="btn-inner--text">Poster</span>

@@ -154,7 +154,7 @@ class FooterUserSite extends Component {
                                         <ul>
                                             <li className="d-inline-block">
                                                 <div className="copyright d-flex justify-content-center">
-                                                    Copyright 2020 &copy; { new Date().getFullYear()}, Realized by
+                                                    Copyright { new Date().getFullYear()}, Realized by
                                                     <div>
                                                         <a href="/" className="pl-2 text-primary">KazouGroup Srl</a>
                                                     </div>
