@@ -18,7 +18,12 @@ class CityResource extends JsonResource
         $annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
             ->distinct()->get()->toArray();
 
-        $users =  $this->userbycities()->with('city')->distinct()->get()->toArray();
+        $users =  $this->userbycities()->with('city')
+            ->where(function ($q) {
+                $q->whereIn('city_id',[$this->id])
+                    ->where('charbonneur',1)
+                    ->with('city');
+            })->distinct()->get()->toArray();
 
 
         return [

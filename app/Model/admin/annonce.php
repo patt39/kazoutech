@@ -2,9 +2,11 @@
 
 namespace App\Model\admin;
 
+use App\Model\user\like;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class annonce extends Model
@@ -54,6 +56,11 @@ class annonce extends Model
                 $model->user_id = auth()->id();
             }
         });
+    }
+
+    public function visits()
+    {
+        return visits($this);
     }
 
     public function getRouteKeyName()

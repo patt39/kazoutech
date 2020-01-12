@@ -123,7 +123,7 @@ return [
 
     'attributes' => [
         'name' => 'nom',
-        'username' => "username",
+        'username' => "pseudo",
         'email' => 'adresse courriel',
         'first_name' => 'prénom',
         'last_name' => 'nom',

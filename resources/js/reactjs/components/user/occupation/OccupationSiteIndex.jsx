@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AllOccupation from "../../inc/AllOccupation";
+import AllOccupation from "./AllOccupation";
 import SubscribeLine from "../../user/SubscribeLine"
 import PageCitySite from "../city/PageCitySite";
 

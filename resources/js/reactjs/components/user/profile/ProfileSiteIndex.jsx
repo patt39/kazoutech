@@ -226,6 +226,7 @@ class ProfileSiteIndex extends Component {
                                                 De quel service avez-vous besoin ?
                                             </NavLink>
                                         </div>
+                                        <br/>
                                     </div>
 
                                     {annonces.length > 0 && (

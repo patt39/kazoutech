@@ -270,12 +270,7 @@ class AnnonceSiteShow extends Component {
                                                 </div>
                                             </div>
                                             <div className="text-right ml-auto">
-                                                <button type="button" className="btn btn-sm btn-primary btn-icon">
-                                                        <span className="btn-inner--icon icon-big">
-                                                            <i className="ni ni-fat-add"/>
-                                                        </span>
-                                                    <span className="btn-inner--text">Follow</span>
-                                                </button>
+                                                <span className="badge badge-primary">{annonce.visits} vues</span>
 
                                                 {!$guest && (
                                                     <>
@@ -319,14 +314,24 @@ class AnnonceSiteShow extends Component {
 
                                                             <a href="#"  className="like" data-toggle="modal" data-target="#loginModal">
                                                                 <i className="ni ni-like-2"/>
-                                                                <span className="text-muted">150 j'aime</span>
+                                                                <span className="text-muted">{annonce.likes} j'aime</span>
                                                             </a>
                                                             :
+                                                          <>
+                                                              {annonce.is_liked_by_user ?
 
-                                                            <a href=".." className="like active">
-                                                                <i className="ni ni-like-2"/>
-                                                                <span className="text-muted">150 j'aime</span>
-                                                            </a>
+                                                                  <a href=".." className="like active">
+                                                                      <i className="ni ni-like-2"/>
+                                                                      <span className="text-muted">150 j'aime</span>
+                                                                  </a>
+                                                                  :
+                                                                  <a href=".." className="like">
+                                                                      <i className="ni ni-like-2"/>
+                                                                      <span className="text-muted">{annonce.likes} j'aime</span>
+                                                                  </a>
+
+                                                              }
+                                                          </>
 
                                                         }
                                                         <a href="..">

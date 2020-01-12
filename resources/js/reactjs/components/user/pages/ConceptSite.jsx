@@ -22,7 +22,7 @@ class ConceptSite extends Component {
                 <div className="about-us">
                     <NavUserSIte />
                     <div className="wrapper">
-                        <div className="page-header kazouTech-page-header-mini header-filter">
+                        <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/sections/broofoac.jpg' + ")"}}/>
                             <div className="container">
                                 <div className="row">

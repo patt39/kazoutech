@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
 import PageCitySite from "./city/PageCitySite";
-import AllOccupation from "../inc/AllOccupation";
+import AllOccupation from "./occupation/AllOccupation";
 import KazouTechSteps from "../inc/KazouTechSteps";
 import SlideHomeList from "./slide/SlideHomeList";
 import SubscribeLine from "./SubscribeLine";

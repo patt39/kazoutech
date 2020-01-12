@@ -35,7 +35,7 @@
                                                                             <label>Title <span style="color: red;">*</span></label>
                                                                             <input v-model="form.title" type="text" name="title"
                                                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" >
-                                                                            <has-error :form="form" field="title"></has-error>
+                                                                            <has-error :form="form" field="title"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -56,7 +56,7 @@
                                                                             <has-error :form="form" field="redirect_link"/>
                                                                         </div>
                                                                     </div>
-                                                                    <div v-if="form.redirect_link.length > 0"  class="col-md-12">
+                                                                    <div v-if="form.redirect_link.length"  class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label></label>
                                                                              <select name="color_id" v-model="form.color_link" id="color_link" class="form-control"
@@ -64,7 +64,7 @@
                                                                             <option value="" disabled>Choose Color</option>
                                                                             <option v-for="color in colors" :key="color.id" :value="color.slug">{{color.name}}</option>
                                                                         </select>
-                                                                            <has-error :form="form" field="color_link"></has-error>
+                                                                            <has-error :form="form" field="color_link"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -95,7 +95,7 @@
                                                                                     </a>
                                                                                 </div>
                                                                             </div>
-                                                                            <has-error :form="form" field="photo"></has-error>
+                                                                            <has-error :form="form" field="photo"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -107,7 +107,7 @@
                                                                                           :class="{ 'is-invalid': form.errors.has('description') }"
                                                                                           :options="editorOption">
                                                                             </quill-editor>
-                                                                            <has-error :form="form" field="description"></has-error>
+                                                                            <has-error :form="form" field="description"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>

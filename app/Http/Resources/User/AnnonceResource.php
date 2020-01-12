@@ -31,6 +31,8 @@ class AnnonceResource extends JsonResource
             'user_id' => $this->user_id,
             'phone' => $this->phone,
             'occupation' => $this->occupation,
+            'visits' => $this->visits()->count(),
+            'is_liked_by_user' => $this->user->is_liked_by_user,
             'occupation_id' => $this->occupation_id,
             'categoryoccupation' => $this->categoryoccupation,
             'categoryoccupation_id' => $this->categoryoccupation_id,

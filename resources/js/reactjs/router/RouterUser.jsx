@@ -15,7 +15,6 @@ import BlogSiteByCategoriesOccupation from "../components/user/blog/BlogSiteByCa
 import AnnonceSiteIndex from "../components/user/annonce/AnnonceSiteIndex";
 import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
-import DevenirCharbonneur from "../components/user/charbonneur/DevenirCharbonneur";
 import TemoignageSite from "../components/user/temoignage/TemoignageSite";
 import TermConditionSite from "../components/user/infos/TermConditionSite";
 import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
@@ -32,6 +31,7 @@ import CharbonneurSiteByOccupation from "../components/user/charbonneur/Charbonn
 import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
 import LoginSIteIndex from "../components/user/auth/LoginSIteIndex";
 import BlogSiteEdit from "../components/user/blog/traitement/BlogSiteEdit";
+import DevenirCharbonneurSite from "../components/user/auth/DevenirCharbonneurSite";
 
 
 
@@ -60,7 +60,6 @@ const RouterUser = props => (
         <Route exact path="/annonces/:occupation/p/annonce/new/create/" component={AnnonceSiteCreate}/>
         <Route exact path="/annonces/:occupation/p/annonce/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
-        <Route exact path="/devenir_charbonneur/" component={DevenirCharbonneur}/>
         <Route exact path="/charbonneurs/:city/" component={withRouter(CharbonneurSiteByCity)}/>
         <Route exact path="/charbonneurs/:city/:occupation/" component={withRouter(CharbonneurSiteByOccupation)}/>
         <Route exact path="/faqs/" component={FaqSiteIndex}/>
@@ -69,6 +68,7 @@ const RouterUser = props => (
         <Route exact path="/contacts/" component={contactUserSite}/>
         <Route exact path="/temoignages/" component={TemoignageSite}/>
         <Route exact path="/condition_utilisation/" component={TermConditionSite}/>
+        <Route exact path="/devenir_charbonneur/" component={DevenirCharbonneurSite}/>
     </Switch>
 );
 export default RouterUser;

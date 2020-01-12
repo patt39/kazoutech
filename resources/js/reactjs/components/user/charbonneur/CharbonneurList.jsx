@@ -65,9 +65,11 @@ class CharbonneurList extends Component {
                         <div className="text-center">
                             <h5 className="h4">{this.props.name}</h5>
                             {this.props.city_id ?
-                                <div className="font-weight-300">
-                                    <i className="ni location_pin mr-2"/>{this.props.city.name}
-                                </div>
+                               <Link to={`/charbonneurs/${this.props.city.slug}/`}>
+                                   <div className="font-weight-300">
+                                       <i className="ni location_pin mr-2"/>{this.props.city.name}
+                                   </div>
+                               </Link>
                                 :null}
                         </div>
                     </div>

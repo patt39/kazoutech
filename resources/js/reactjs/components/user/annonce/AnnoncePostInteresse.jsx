@@ -22,7 +22,7 @@ class AnnoncePostInteresse extends Component {
         return (
            <>
                <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
-                   <p dangerouslySetInnerHTML={{ __html: (this.props.title.length > 38 ? this.props.title.substring(0, 38) + "..." : this.props.title) }} />
+                   <p dangerouslySetInnerHTML={{ __html: (this.props.title.length > 30 ? this.props.title.substring(0, 30) + "..." : this.props.title) }} />
                </Link>
                <div  className="media-body text-right">
                    {this.props.price && (

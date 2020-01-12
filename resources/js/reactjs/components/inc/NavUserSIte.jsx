@@ -54,16 +54,16 @@ class NavUserSIte extends Component {
                                     <span className="nav-link-inner--text"><b>Demander un service</b></span>
                                 </Link>
                             </li>
-                            <li className={'nav-item'}>
-                                <Link to={'/devenir_charbonneur/'} className="nav-link" role="button">
-                                    <i className="ni ni-app d-lg-none"/>
-                                    <span className="nav-link-inner--text">
-                                        <b>Dévenir charbonneur</b>
-                                    </span>
-                                </Link>
-                            </li>
                             {$guest ?
                                 <>
+                                    <li className={'nav-item'}>
+                                        <a href={'/devenir_charbonneur/'} className="nav-link" role="button">
+                                            <i className="ni ni-app d-lg-none"/>
+                                            <span className="nav-link-inner--text">
+                                                <b>Dévenir charbonneur</b>
+                                            </span>
+                                        </a>
+                                    </li>
                                     <li className="nav-item">
                                         <a href="/login" className="btn btn-default">
                                             <span className="btn-inner--icon">
@@ -94,14 +94,14 @@ class NavUserSIte extends Component {
                                                 Dashboard
                                             </a>
                                         )}
-                                        <NavLink to={`/user/profile/edit/`} className="dropdown-item">
+                                        <Link to={`/user/profile/edit/`} className="dropdown-item">
                                             <i className="ni ni-lock-circle-open text-muted"/>
                                             Editer mon profile
-                                        </NavLink>
-                                        <NavLink to={`/charbonneur/${$userKazou.username}/`} className="dropdown-item">
+                                        </Link>
+                                        <Link to={`/charbonneur/${$userKazou.username}/`} className="dropdown-item">
                                             <i className="ni ni-circle-08 text-success"/>
                                             Mon profile
-                                        </NavLink>
+                                        </Link>
                                         <a className="dropdown-item" onClick={() => this.navLogout()}>
                                             <i className="ni ni-atom text-info"/>
                                             Déconnexion

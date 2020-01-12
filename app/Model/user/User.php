@@ -37,14 +37,26 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
         'color_name',
         'avatar',
         'avatarcover',
+        'charbonneur',
+        'phone',
+        'day',
+        'month',
+        'year',
         'password',
-        'country_id'
+        'country_id',
+        'city_id',
+        'occupation_id',
+        'sex',
+        'notifier_plans',
+        'notifier_newletter',
     ];
 
     protected $dates = ['deleted_at'];
     protected $casts = [
         'email_verified_at' => 'datetime',
         'status_profile_verify' => 'boolean',
+        'notifier_newletter' => 'boolean',
+        'charbonneur' => 'boolean',
     ];
 
     protected static function boot()
@@ -59,7 +71,6 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
             $user->profile()->create([
                 'first_name' => $user->name,
             ]);
-            //Mail::to($user->email)->send(new NewUserWelcomeMail());
         });
         static::updating(function($user){
             $user->technician()->update([

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e15c180677276c9723a697c7fc503dc",
+    "content-hash": "53767e5640ab2590d9903f0a90993038",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -180,33 +180,38 @@
         },
         {
             "name": "awssat/laravel-visits",
-            "version": "2.0.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awssat/laravel-visits.git",
-                "reference": "aa79c94fcd8af503c3796df3eb01e19a921589cd"
+                "reference": "adcb8901e87d8f6c5af4be97bf2ffc14abc94d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/aa79c94fcd8af503c3796df3eb01e19a921589cd",
-                "reference": "aa79c94fcd8af503c3796df3eb01e19a921589cd",
+                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/adcb8901e87d8f6c5af4be97bf2ffc14abc94d3b",
+                "reference": "adcb8901e87d8f6c5af4be97bf2ffc14abc94d3b",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.5||^6.0",
+                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0",
                 "jaybizzle/crawler-detect": "^1.2",
-                "php": "~7.1",
-                "predis/predis": "^1.1",
+                "php": "^7.2",
                 "spatie/laravel-referer": "^1.3",
                 "torann/geoip": "^1.0"
             },
             "require-dev": {
                 "doctrine/dbal": "^2.5",
                 "fzaninotto/faker": "^1.6",
-                "illuminate/database": "~5.5||^6.0",
-                "mockery/mockery": "^0.9.5 || ^1.0",
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "^6.1"
+                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0",
+                "mockery/mockery": "^1.2",
+                "orchestra/testbench": "^3.5 || ^3.6 || ^3.7 || ^3.8 || ^4.0",
+                "phpunit/phpunit": "^8.3",
+                "predis/predis": "^1.1"
+            },
+            "suggest": {
+                "ext-redis": "Needed if you are using redis as engine data of laravel-visits",
+                "illuminate/database": "Needed if you are using database as engine data of laravel-visits",
+                "predis/predis": "Needed if you are using redis as data engine of laravel-visits"
             },
             "type": "library",
             "extra": {
@@ -215,16 +220,16 @@
                 },
                 "laravel": {
                     "providers": [
-                        "awssat\\Visits\\VisitsServiceProvider"
+                        "Awssat\\Visits\\VisitsServiceProvider"
                     ],
                     "aliases": {
-                        "Visits": "awssat\\Visits\\Visits"
+                        "Visits": "Awssat\\Visits\\Visits"
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "awssat\\Visits\\": "src"
+                    "Awssat\\Visits\\": "src"
                 },
                 "files": [
                     "src/helpers.php"
@@ -255,7 +260,7 @@
                 "redis",
                 "visits"
             ],
-            "time": "2019-09-10T12:03:55+00:00"
+            "time": "2019-12-14T04:15:49+00:00"
         },
         {
             "name": "barryvdh/laravel-cors",
