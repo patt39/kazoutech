@@ -123,6 +123,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required',new PhoneCmrRule],
             'username' => ['required', 'string', 'max:255','alpha_dash','unique:users'],
             'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
@@ -139,7 +140,9 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'phone' => $data['phone'],
             'username' => $data['username'],
+            'notifier_newletter' => $data['notifier_newletter'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

@@ -32,6 +32,7 @@ import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
 import LoginSIteIndex from "../components/user/auth/LoginSIteIndex";
 import BlogSiteEdit from "../components/user/blog/traitement/BlogSiteEdit";
 import DevenirCharbonneurSite from "../components/user/auth/DevenirCharbonneurSite";
+import RegisterUserSite from "../components/user/auth/RegisterUserSite";
 
 
 
@@ -69,6 +70,7 @@ const RouterUser = props => (
         <Route exact path="/temoignages/" component={TemoignageSite}/>
         <Route exact path="/condition_utilisation/" component={TermConditionSite}/>
         <Route exact path="/devenir_charbonneur/" component={DevenirCharbonneurSite}/>
+        <Route exact path="/register/" component={RegisterUserSite}/>
     </Switch>
 );
 export default RouterUser;
