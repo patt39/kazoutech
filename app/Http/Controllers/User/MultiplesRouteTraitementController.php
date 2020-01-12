@@ -59,6 +59,16 @@ class MultiplesRouteTraitementController extends Controller
         }
     }
 
+    public function annoncelike(occupation $occupation,$id)
+    {
+
+        $annonce = annonce::where('id', $id)->findOrFail($id);
+
+        $response = auth()->user()->toggleLike($annonce);
+        return response()->json(['success'=>$response]);
+
+    }
+
     public function annoncesupdate(UpdateRequest $request,occupation $occupation,$id)
     {
         $annonce = annonce::findOrFail($id);

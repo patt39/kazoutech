@@ -2,15 +2,19 @@
 
 namespace App\Model\admin;
 
-use App\Model\user\like;
 use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Overtrue\LaravelFollow\Traits\CanBeLiked;
+use Overtrue\LaravelFollow\Traits\CanLike;
+use OwenIt\Auditing\Auditable as AuditableTrait;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class annonce extends Model
+class annonce extends Model implements Auditable
 {
+
+    use CanBeLiked,CanLike,AuditableTrait;
 
     protected $guarded = [];
 

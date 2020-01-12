@@ -71,7 +71,7 @@ class AnnonceSiteShow extends Component {
             )
         }
     }
-    componentDidMount() {
+    loadItems(){
         let SlugItem = this.props.match.params.annonce;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
@@ -86,6 +86,30 @@ class AnnonceSiteShow extends Component {
          */
         let urlinteress = route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]);
         dyaxios.get(urlinteress).then(response => this.setState({annonceinteressebycategoryoccupation: response.data,}));
+    }
+    componentDidMount() {
+        this.loadItems();
+    }
+
+    /** Ici nous les utilisateurs active leurs posts **/
+    likeItem(annonce) {
+        //let SlugOccupation = this.props.match.params.occupation;
+        //Start Progress bar
+        dyaxios.get(route('annonces_site.like', [annonce.occupation.slug,annonce.id]))
+            .then(() => {
+                this.loadItems();
+
+            }).catch(() => {
+            //Failled message
+            $.notify("Ooop! Une erreur est survenue", {
+                allow_dismiss: false,
+                type: 'danger',
+                animate: {
+                    enter: 'animated bounceInDown',
+                    exit: 'animated bounceOutUp'
+                }
+            });
+        });
     }
     loginItem(e) {
         e.preventDefault();
@@ -114,6 +138,8 @@ class AnnonceSiteShow extends Component {
             });
         })
     }
+
+
     deleteItem(id) {
         Swal.fire({
             title: 'Etes vous sure de vouloir suprimer cette annonce?',
@@ -314,24 +340,13 @@ class AnnonceSiteShow extends Component {
 
                                                             <a href="#"  className="like" data-toggle="modal" data-target="#loginModal">
                                                                 <i className="ni ni-like-2"/>
-                                                                <span className="text-muted">{annonce.likes} j'aime</span>
+                                                                <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
                                                             :
-                                                          <>
-                                                              {annonce.is_liked_by_user ?
-
-                                                                  <a href=".." className="like active">
-                                                                      <i className="ni ni-like-2"/>
-                                                                      <span className="text-muted">150 j'aime</span>
-                                                                  </a>
-                                                                  :
-                                                                  <a href=".." className="like">
-                                                                      <i className="ni ni-like-2"/>
-                                                                      <span className="text-muted">{annonce.likes} j'aime</span>
-                                                                  </a>
-
-                                                              }
-                                                          </>
+                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className="like active">
+                                                                <i className="ni ni-like-2"/>
+                                                                <span className="text-muted">{annonce.likers} j'aime</span>
+                                                            </a>
 
                                                         }
                                                         <a href="..">
