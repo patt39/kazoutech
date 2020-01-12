@@ -56,7 +56,7 @@
                                                                             <has-error :form="form" field="redirect_link"/>
                                                                         </div>
                                                                     </div>
-                                                                    <div v-if="form.redirect_link.length"  class="col-md-12">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label></label>
                                                                              <select name="color_id" v-model="form.color_link" id="color_link" class="form-control"
