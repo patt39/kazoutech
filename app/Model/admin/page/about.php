@@ -27,6 +27,7 @@ class about extends Model implements Auditable
         'ip',
         'status',
         'photo',
+        'role',
         'description'
     ];
     protected static $logAttributes = [
@@ -39,6 +40,7 @@ class about extends Model implements Auditable
         'ip',
         'status',
         'photo',
+        'role',
         'description'
     ];
 

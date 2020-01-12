@@ -25,53 +25,61 @@
                                             </div>
                                             <br>
                                             <div class="card-body">
-                                                <alert-error :form="form"></alert-error>
+                                                <alert-error :form="form"/>
                                                 <form id="RegisterValidation" @submit.prevent="createItem()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label>Prénom</label>
                                                                 <input v-model="form.first_name" type="text" name="first_name"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="Prénom">
-                                                                <has-error :form="form" field="first_name"></has-error>
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="...">
+                                                                <has-error :form="form" field="first_name"/>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label>Nom</label>
                                                                 <input v-model="form.last_name" type="text" name="last_name"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="Nom">
-                                                                <has-error :form="form" field="last_name"></has-error>
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="...">
+                                                                <has-error :form="form" field="last_name"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Role ou Function</label>
+                                                                <input v-model="form.role" type="text" name="role"
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('role') }" placeholder="...">
+                                                                <has-error :form="form" field="role"/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label>Facebook Username</label>
                                                                 <input v-model="form.fblink" type="text" name="fblink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('fblink') }" placeholder="Facebook Username">
-                                                                <has-error :form="form" field="fblink"></has-error>
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('fblink') }" placeholder="...">
+                                                                <has-error :form="form" field="fblink"/>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label>Instagram Username</label>
                                                                 <input v-model="form.instlink" type="text" name="instlink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('instlink') }" placeholder="Instagram Username">
-                                                                <has-error :form="form" field="instlink"></has-error>
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('instlink') }" placeholder="...">
+                                                                <has-error :form="form" field="instlink"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Twitter Username</label>
+                                                                <input v-model="form.twlink" type="text" name="twlink"
+                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('twlink') }" placeholder="...">
+                                                                <has-error :form="form" field="twlink"/>
                                                             </div>
                                                         </div>
                                                         <!--
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.twlink" type="text" name="twlink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('twlink') }" placeholder="Tweeter Username">
-                                                                <has-error :form="form" field="twlink"></has-error>
-                                                            </div>
-                                                        </div>
                                                         <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
@@ -109,11 +117,11 @@
                                                                             <br/>
                                                                             <a href="#pablo"
                                                                                class="btn btn-danger fileinput-exists"
-                                                                               data-dismiss="fileinput"><i class="fa fa-times"></i>
+                                                                               data-dismiss="fileinput"><i class="fa fa-times"/>
                                                                                 <b>Remove</b>
                                                                             </a>
                                                                         </div>
-                                                                        <has-error :form="form" field="photo"></has-error>
+                                                                        <has-error :form="form" field="photo"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -121,25 +129,23 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card card-nav-tabs">
-                                                                <div class="card-body">
-                                                                    <div class="tab-content">
-                                                                        <div class="tab-pane active" id="profile">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
-                                                                                <br>
-                                                                                <vue-editor v-model="form.description" :editorToolbar="customToolbar"></vue-editor>
-                                                                                <div class="form-check">
-                                                                                    <label class="form-check-label pull-right">
-                                                                                        You can use the
-                                                                                        <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
-                                                                                            Markdown here
-                                                                                        </a>
-                                                                                        <span class="form-check-sign"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <has-error :form="form" field="description"></has-error>
+                                                            <div class="card-body">
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active" id="profile">
+                                                                        <div class="form-group">
+                                                                            <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
+                                                                            <br>
+                                                                            <vue-editor v-model="form.description" :editorToolbar="customToolbar"/>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label pull-right">
+                                                                                    You can use the
+                                                                                    <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
+                                                                                        Markdown here
+                                                                                    </a>
+                                                                                    <span class="form-check-sign"/>
+                                                                                </label>
                                                                             </div>
+                                                                            <has-error :form="form" field="description"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>

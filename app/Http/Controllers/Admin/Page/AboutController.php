@@ -22,7 +22,7 @@ class AboutController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api','aboutmember']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -42,6 +42,14 @@ class AboutController extends Controller
             return AboutResource::collection(about::with('user')->latest()->get());
         });
         return $abouts;
+    }
+
+    public function aboutmember()
+    {
+        $abouts = AboutResource::collection(about::with('user')
+            ->where('status',1)->orderBy('created_at','asc')->get());
+
+        return response()->json($abouts,200);
     }
 
     /**
@@ -67,6 +75,7 @@ class AboutController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'description' => 'required',
+            'role' => 'required',
             'photo' => 'required',
         ]);
 
@@ -76,6 +85,7 @@ class AboutController extends Controller
         $about->twlink = $request->twlink;
         $about->instlink = $request->instlink;
         $about->last_name = $request->last_name;
+        $about->role = $request->role;
         $about->first_name = $request->first_name;
         $about->description = $request->description;
 
@@ -150,6 +160,7 @@ class AboutController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'description' => 'required',
+            'role' => 'required',
             'photo' => 'required',
         ]);
 

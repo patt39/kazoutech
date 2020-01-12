@@ -21,6 +21,7 @@ class AboutResource extends JsonResource
             'twlink' => $this->twlink,
             'instlink' => $this->instlink,
             'photo' => $this->photo,
+            'role' => $this->role,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'description' => $this->description,

@@ -21,6 +21,10 @@ class AddInfoDataToUsersTable extends Migration
             $table->boolean('notifier_newletter')->default(true);
             $table->string('phone')->nullable();
         });
+
+        Schema::table('abouts', function (Blueprint $table) {
+            $table->string('role')->nullable();
+        });
     }
 
     /**
@@ -30,8 +34,7 @@ class AddInfoDataToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('abouts');
     }
 }

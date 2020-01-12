@@ -163,7 +163,7 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
-                                                        <span aria-hidden="true"></span>
+                                                        <span aria-hidden="true"/>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
@@ -185,50 +185,56 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label class="bmd-label-floating"/>
                                                                 <input v-model="about.last_name" type="text"
                                                                        name="last_name"
                                                                        class="form-control" placeholder="Full Name..."
                                                                        disabled>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label class="bmd-label-floating"/>
                                                                 <input v-model="about.first_name" type="text"
                                                                        class="form-control" name="First Name"
                                                                        placeholder="Role..." disabled>
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating"/>
+                                                                <input v-model="about.role" type="text"
+                                                                       class="form-control" name="role"
+                                                                       placeholder="Role ou Function..." disabled>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
+                                                                <label>Facebook Username</label>
                                                                 <input v-model="about.fblink" type="text" name="fblink"
-                                                                       class="form-control"
-                                                                       placeholder="Facebook Username" disabled>
+                                                                       class="form-control" placeholder="...">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="about.instlink" type="text"
-                                                                       name="instlink"
-                                                                       class="form-control"
-                                                                       placeholder="Instagram Username" disabled>
+                                                                <label>Instagram Username</label>
+                                                                <input v-model="about.instlink" type="text" name="instlink"
+                                                                       class="form-control" placeholder="...">
                                                             </div>
                                                         </div>
-                                                        <!--<div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating"></label>
-                                                                <input v-model="form.twlink" type="text" name="twlink"
-                                                                       class="form-control" :class="{ 'is-invalid': form.errors.has('twlink') }" placeholder="Tweeter Username" disabled>
-                                                                <has-error :form="form" field="twlink"></has-error>
+                                                                <label>Twitter Username</label>
+                                                                <input v-model="about.twlink" type="text" name="twlink"
+                                                                       class="form-control" placeholder="...">
                                                             </div>
                                                         </div>
+                                                        <!--
                                                         <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating"></label>
@@ -239,7 +245,7 @@
                                                         </div>-->
                                                     </div>
                                                     <div class="form-group text-justify">
-                                                        <p v-html="about.description"></p>
+                                                        <p v-html="about.description"/>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
