@@ -182,15 +182,15 @@ class DevenirCharbonneurSite extends Component{
                             <select  value={this.state.month} className={`form-control ${this.hasErrorFor('month') ? 'is-invalid' : ''}`} onChange={this.handleFieldChange}
                                     name="month" id="month" required="required">
                                 <option value="" disabled>Selectioner le mois</option>
-                                <option value={'1'}>January</option>
-                                <option value={'2'}>February</option>
-                                <option value={'3'}>March</option>
-                                <option value={'4'}>April</option>
-                                <option value={'5'}>May</option>
-                                <option value={'6'}>June</option>
-                                <option value={'7'}>July</option>
-                                <option value={'8'}>August</option>
-                                <option value={'9'}>September</option>
+                                <option value={'01'}>January</option>
+                                <option value={'02'}>February</option>
+                                <option value={'03'}>March</option>
+                                <option value={'04'}>April</option>
+                                <option value={'05'}>May</option>
+                                <option value={'06'}>June</option>
+                                <option value={'07'}>July</option>
+                                <option value={'08'}>August</option>
+                                <option value={'09'}>September</option>
                                 <option value={'10'}>October</option>
                                 <option value={'11'}>November</option>
                                 <option value={'12'}>December</option>
@@ -352,7 +352,7 @@ class DevenirCharbonneurSite extends Component{
                     <div className="col-md-12">
                         <div className="custom-control custom-checkbox mt-2">
                             <input className={`custom-control-input ${this.hasErrorFor('notifier_newletter') ? 'is-invalid' : ''}`} id="customCheck1" type="checkbox"
-                                   defaultChecked={isChecked} value={this.state.notifier_newletter} name="notifier_newletter" onChange={this.toggleChange}/>
+                                   defaultChecked={isChecked} value={this.state.notifier_newletter} name="notifier_newletter" onChange={this.toggleChange} checked={isChecked}/>
                             <label className="custom-control-label" htmlFor="customCheck1">
                                 <span>Je souhaite recevoir les bons plans des partenaires</span>
                             </label>

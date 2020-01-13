@@ -233,7 +233,7 @@ class RegisterUserSite extends Component{
                                                                     <i className="ni ni-mobile-button"/>
                                                                 </span>
                                                     </div>
-                                                    <input type="text" placeholder="Votre Numéro de Télephone ..." aria-label="Votre Numéro de Télephone ..."
+                                                    <input type="tel" pattern="[0-9]*" inputMode="numeric" placeholder="Votre Numéro de Télephone ..." aria-label="Votre Numéro de Télephone ..."
                                                            required="required"
                                                            id="phone"
                                                            className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}
@@ -291,7 +291,7 @@ class RegisterUserSite extends Component{
                                                 <div className="col-md-12">
                                                     <div className="custom-control custom-checkbox mt-2">
                                                         <input className={`custom-control-input ${this.hasErrorFor('notifier_newletter') ? 'is-invalid' : ''}`} id="customCheck1" type="checkbox"
-                                                               defaultChecked={isChecked} value={this.state.notifier_newletter} name="notifier_newletter" onChange={this.toggleChange}/>
+                                                               defaultChecked={isChecked} value={this.state.notifier_newletter} name="notifier_newletter" onChange={this.toggleChange} checked={isChecked}/>
                                                         <label className="custom-control-label" htmlFor="customCheck1">
                                                             <span>Je souhaite recevoir les bons plans des partenaires</span>
                                                         </label>

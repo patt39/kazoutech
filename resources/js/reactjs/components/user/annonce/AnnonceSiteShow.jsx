@@ -337,17 +337,15 @@ class AnnonceSiteShow extends Component {
                                                 <div className="col-sm-6">
                                                     <div className="icon-actions">
                                                         {$guest ?
-
                                                             <a href="#"  className="like" data-toggle="modal" data-target="#loginModal">
                                                                 <i className="ni ni-like-2"/>
                                                                 <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
                                                             :
-                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className="like active">
+                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className={`like ${annonce.likers === 1 ? "active" : ""}`}>
                                                                 <i className="ni ni-like-2"/>
                                                                 <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
-
                                                         }
                                                         <a href="..">
                                                             <i className="ni ni-chat-round"/>

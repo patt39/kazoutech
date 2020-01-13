@@ -265,6 +265,7 @@ class MultiplesRouteController extends Controller
 
     public function annoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
     {
+        auth()->user()->hasLiked($annonce);
         $annonce->visits()->increment();
         return view('user.annonce.show',[
             'annonce' => $annonce,
