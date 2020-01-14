@@ -10,13 +10,69 @@ import BlogOccupationList from "./BlogOccupationList";
 class BlogSiteIndex extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            blogs: [],
-            blogsLast: []
-        };
         this.deleteItem = this.deleteItem.bind(this);
+        this.loginblogItem = this.loginblogItem.bind(this);
+        this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.hasErrorFor = this.hasErrorFor.bind(this);
+        this.renderErrorFor = this.renderErrorFor.bind(this);
+        this.state = {
+            username: '',
+            email: '',
+            password: '',
+            remember: true,
+            blogs: [],
+            blogsLast: [],
+            errors: [],
+        };
     }
 
+    handleFieldChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+        this.state.errors[event.target.name] = '';
+    }
+    // Handle Errors
+    hasErrorFor(field) {
+        return !!this.state.errors[field];
+    }
+    renderErrorFor(field) {
+        if (this.hasErrorFor(field)) {
+            return (
+                <span className='invalid-feedback'>
+                    <strong>{this.state.errors[field][0]}</strong>
+                </span>
+            )
+        }
+    }
+
+    loginblogItem(e) {
+        e.preventDefault();
+
+        let item = {
+            username: this.state.username,
+            password: this.state.password,
+            remember: this.state.remember,
+        };
+        dyaxios.post(route('login'), item)
+            .then(() => {
+                //Masquer le modal après la connexion
+                $('#loginblogItem').modal('hide');
+                window.location.replace(`/blog/p/new/create/`);
+            }).catch(error => {
+            this.setState({
+                errors: error.response.data.errors
+            });
+            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+                allow_dismiss: false,
+                type: 'danger',
+                animate: {
+                    enter: 'animated bounceInDown',
+                    exit: 'animated bounceOutUp'
+                }
+            });
+        })
+    }
     deleteItem(id) {
         Swal.fire({
             title: 'Etes vous sure de vouloir suprimer cette article de blog?',
@@ -127,9 +183,15 @@ class BlogSiteIndex extends Component {
                                                     <div className="col-lg-10 col-md-8 mx-auto">
                                                         <h2 className="title mb-5"><b>Histoires connexes</b></h2>
 
+                                                        {$guest ?
+                                                        <a href="#"  className="btn btn-primary" data-toggle="modal" data-target="#loginblogModal">
+                                                            Ajouter un nouveau article de blog
+                                                        </a>
+                                                            :
                                                         <Link to={`/blog/p/new/create/`} className="btn btn-primary">
                                                             Ajouter un nouveau article de blog
                                                         </Link>
+                                                        }
                                                         <br/><br/>
                                                         <div className="card">
                                                             <div className="card-body">
@@ -147,6 +209,104 @@ class BlogSiteIndex extends Component {
                                 </div>
                             </div>
                         </section>
+                    </div>
+
+                    <div className="modal fade" id="loginblogModal" tabIndex="-1" role="dialog" aria-labelledby="loginblogModal" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered modal-sm" role="document">
+                            <div className="modal-content">
+                                <div className="modal-body p-0">
+                                    <div className="card bg-secondary shadow border-0 mb-0">
+                                        <div className="card-header bg-white pb-5">
+                                            <div className="text-muted text-center mb-3">
+                                                <small>Se connecter</small>
+                                            </div>
+                                            <div className="btn-wrapper text-center">
+                                                <a href=".." className="btn btn-neutral btn-icon">
+                                            <span className="btn-inner--icon">
+                                              <img src="/assets/site/assets/img/icons/common/github.svg"/>
+                                            </span>
+                                                    <span className="btn-inner--text">Google</span>
+                                                </a>
+                                                <a href=".." className="btn btn-neutral btn-icon">
+                                                <span className="btn-inner--icon">
+                                                <img src="/assets/site/assets/img/icons/common/google.svg"/>
+                                                </span>
+                                                    <span className="btn-inner--text">Github</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="card-body px-lg-5 py-lg-5">
+                                            <div className="text-center text-muted mb-4">
+                                                <small>Ou connectez-vous avec vos identifiants</small>
+
+                                            </div>
+                                            <form onSubmit={this.loginblogItem}>
+
+                                                <div className="form-group mb-3">
+                                                    <div className="input-group input-group-alternative">
+                                                        <div className="input-group-prepend">
+                                                        <span className="input-group-text">
+                                                            <i className="ni ni-email-83"/>
+                                                        </span>
+                                                        </div>
+
+                                                        <input type="text" placeholder="Pseudo ou votre numero de téléphone" aria-label="Pseudo ou votre numero de téléphone"
+                                                               required="required"
+                                                               id="username"
+                                                               className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
+                                                               name='username'
+                                                               value={this.state.username}
+                                                               onChange={this.handleFieldChange} autoComplete="username" autoFocus />
+                                                        {this.renderErrorFor('username')}
+                                                    </div>
+                                                </div>
+                                                <div className="form-group">
+                                                    <div className="input-group input-group-alternative">
+                                                        <div className="input-group-prepend">
+                                                        <span className="input-group-text">
+                                                            <i className="ni ni-lock-circle-open"/>
+                                                        </span>
+                                                        </div>
+
+                                                        <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
+                                                               required="required"
+                                                               id="password"
+                                                               className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}
+                                                               name='password'
+                                                               value={this.state.password}
+                                                               onChange={this.handleFieldChange}
+                                                               autoComplete="password" autoFocus/>
+                                                        {this.renderErrorFor('password')}
+                                                    </div>
+                                                </div>
+                                                <div className="custom-control custom-control-alternative custom-checkbox">
+                                                    <input className="custom-control-input" id="remember" type="checkbox"
+                                                           defaultChecked={this.state.remember} value={this.state.remember} name="remember" onChange={this.handleFieldChange}/>
+                                                    <label className="custom-control-label" htmlFor="remember">
+                                                        <span>Se souvenir de moi</span>
+                                                    </label>
+                                                </div>
+                                                <div className="text-center">
+                                                    <button type="submit" className="btn btn-primary my-4">Se connecter</button>
+                                                </div>
+                                                <div className="row mt-3">
+                                                    <div className="col-6">
+                                                        <a className="text-light" href="..">
+                                                            <small>Mot de passe oublié</small>
+                                                        </a>
+                                                    </div>
+                                                    <div className="col-6 text-right">
+                                                        <a href="/register/" className="text-light">
+                                                            <small>Inscrivez vous</small>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <FooterUserSite />
                 </div>

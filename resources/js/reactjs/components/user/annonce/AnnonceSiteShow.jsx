@@ -342,7 +342,7 @@ class AnnonceSiteShow extends Component {
                                                                 <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
                                                             :
-                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className={`like ${annonce.likers === 1 ? "active" : ""}`}>
+                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className={`like ${annonce.likers === (annonce.likers) ? "active" : ""}`}>
                                                                 <i className="ni ni-like-2"/>
                                                                 <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
