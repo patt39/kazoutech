@@ -22,7 +22,7 @@ import LicenceSite from "../components/user/infos/LicenceSite";
 import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
 import AnnonceSiteEdit from "../components/user/annonce/traitement/AnnonceSiteEdit";
 import AnnonceSiteByOccupationCity from "../components/user/annonce/AnnonceSiteByOccupationCity";
-import AnnonceSiteCreate from "../components/user/annonce/traitement/AnnonceSiteCreate";
+import AnnonceSiteByOccupationCreate from "../components/user/annonce/traitement/AnnonceSiteByOccupationCreate";
 import AnnonceSiteByCity from "../components/user/annonce/AnnonceSiteByCity";
 import AnnonceSiteByOccupationbyCategoryoccupation
     from "../components/user/annonce/AnnonceSiteByOccupationbyCategoryoccupation";
@@ -36,6 +36,8 @@ import LoginSIteIndex from "../components/user/auth/LoginSIteIndex";
 import BlogSiteEdit from "../components/user/blog/traitement/BlogSiteEdit";
 import DevenirCharbonneurSite from "../components/user/auth/DevenirCharbonneurSite";
 import RegisterUserSite from "../components/user/auth/RegisterUserSite";
+import AnnonceSiteByCategoryoccupationCreate
+    from "../components/user/annonce/traitement/AnnonceSiteByCategoryoccupationCreate";
 
 
 
@@ -59,10 +61,11 @@ const RouterUser = props => (
         <Route exact path="/annonces/:occupation/:catagoryoccupation" component={AnnonceSiteByOccupationbyCategoryoccupation}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation/:city" component={withRouter(AnnonceSiteByOccupationCategoryoccupationCity)}/>
         <Route exact path="/annonces/:occupation/:catagoryoccupation/:city/:annonce/" component={withRouter(AnnonceSiteShow)}/>
+        <Route exact path="/occupations/:occupation/:categoryoccupation/new/create/" component={AnnonceSiteByCategoryoccupationCreate}/>
         <Route exact path="/annonces/v/:city" component={AnnonceSiteByCity}/>
         <Route exact path="/annonces/:occupation/" component={withRouter(AnnonceSiteByOccupation)}/>
         <Route exact path="/annonces/:occupation/v/:city" component={AnnonceSiteByOccupationCity}/>
-        <Route exact path="/annonces/:occupation/p/annonce/new/create/" component={AnnonceSiteCreate}/>
+        <Route exact path="/annonces/:occupation/p/annonce/new/create/" component={AnnonceSiteByOccupationCreate}/>
         <Route exact path="/annonces/:occupation/p/annonce/:id/edit/" component={AnnonceSiteEdit}/>
         <Route exact path="/charbonneurs/" component={CharbonneurSiteIndex}/>
         <Route exact path="/charbonneurs/:city/" component={withRouter(CharbonneurSiteByCity)}/>

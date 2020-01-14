@@ -8,6 +8,7 @@ Route::put('annonces/{occupation}/p/annonce/{id}','MultiplesRouteTraitementContr
 Route::get('user/{occupation}/annonce/like/{id}','MultiplesRouteTraitementController@annoncelike')->name('annonces_site.like');
 
 
+Route::get('occupations/{occupation}/{categoryoccupation}/new/create','MultiplesRouteTraitementController@annoncesbycategoryoccupationcreate')->name('annonces_site.save_by_catgoryoccupation');
 
 //Route blog traitement
 Route::get('blog/p/new/create','MultiplesRouteTraitementController@blogscreate')->name('blog_site.create');

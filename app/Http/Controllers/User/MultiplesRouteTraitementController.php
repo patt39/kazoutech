@@ -9,6 +9,7 @@ use App\Http\Resources\BlogResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Model\admin\annonce;
 use App\Model\admin\blog;
+use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
 
 class MultiplesRouteTraitementController extends Controller
@@ -28,6 +29,14 @@ class MultiplesRouteTraitementController extends Controller
     {
         return view('user.annonce.create',[
             'occupation' => $occupation,
+        ]);
+    }
+
+    public function annoncesbycategoryoccupationcreate(occupation $occupation,categoryoccupation  $categoryoccupation)
+    {
+        return view('user.annonce.categoryoccupationcreate',[
+            'occupation' => $occupation,
+            'categoryoccupation' => $categoryoccupation,
         ]);
     }
 

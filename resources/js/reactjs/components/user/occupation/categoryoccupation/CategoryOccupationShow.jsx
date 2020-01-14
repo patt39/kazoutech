@@ -47,11 +47,11 @@ class CategoryOccupationShow extends Component {
                                     <div className="row mb-5">
                                         <div className="col-lg-12 mr-auto mb-2">
                                             <br/>
-                                            <h3 className="display-3">Pour tout vos bésoin <b>{categoryoccupation.name}</b></h3>
+                                            <h4 className="display-3">Pour tout vos bésoin <b>{categoryoccupation.name}</b></h4>
                                             <div className="description mb-2" dangerouslySetInnerHTML={{ __html: categoryoccupation.description }} />
                                             <br/>
                                             <div>
-                                                <Link to={`/annonces/${itemoccupation}/p/annonce/new/create/`} className="btn btn-success btn-lg">
+                                                <Link to={`/occupations/${itemoccupation}/${categoryoccupation.slug}/new/create/`} className="btn btn-success btn-lg">
                                                     Demander un services en {categoryoccupation.name}
                                                 </Link>
                                             </div>

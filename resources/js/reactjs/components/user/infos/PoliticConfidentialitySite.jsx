@@ -35,7 +35,7 @@ class PoliticConfidentialitySite extends Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
-                                        <h2 className="display-2 text-white">Politique de Confidentialité</h2>
+                                        <h3 className="display-2 text-white">Politique de Confidentialité</h3>
                                     </div>
                                 </div>
                             </div>
