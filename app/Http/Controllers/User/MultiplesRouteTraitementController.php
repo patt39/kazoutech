@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\UpdateBlogRequest;
+use App\Http\Requests\User\Annonce\StoreRequest;
 use App\Http\Requests\User\Annonce\UpdateRequest;
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\User\AnnonceResource;
@@ -38,6 +39,21 @@ class MultiplesRouteTraitementController extends Controller
             'occupation' => $occupation,
             'categoryoccupation' => $categoryoccupation,
         ]);
+    }
+
+    public function annoncesbycategoryoccupationstore(StoreRequest $request, occupation $occupation,categoryoccupation  $categoryoccupation)
+    {
+        $annonce = new annonce();
+
+        $annonce->fill($request->all());
+        $annonce->occupation_id = $occupation->id;
+        $categoryoccupation->categoryoccupation_id = $categoryoccupation->id;
+
+        //CategoryOccupationService::storeUploadImage($request,$categoryoccupation);
+
+        $annonce->save();
+
+        return response()->json($annonce,200);
     }
 
     public function blogscreate()

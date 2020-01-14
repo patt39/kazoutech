@@ -501,15 +501,6 @@ class AnnonceSiteShow extends Component {
                                     <div className="card-body px-lg-5 py-lg-5">
                                         <div className="text-center text-muted mb-4">
                                             <small>Ou connectez-vous avec vos identifiants</small>
-
-                                            {this.state.errors.length > 0 && (
-                                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <span className="alert-inner--text"><strong>Danger!</strong> This is an error alert—check it out!</span>
-                                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                            )}
                                         </div>
                                         <form method="POST" onSubmit={this.loginItem}>
 

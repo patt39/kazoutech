@@ -59,7 +59,7 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         $blog= new blog();
-        $blog->fill($request->all());;
+        $blog->fill($request->all());
 
         BlogService::storeUploadImage($request,$blog);
 
