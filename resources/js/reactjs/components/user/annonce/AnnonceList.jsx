@@ -34,6 +34,7 @@ class AnnonceList extends Component {
                                 <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
                             )}
                         </p>
+                        {this.props.user !== null && (
                         <div className="card-header d-flex align-items-center">
                             <div className="d-flex align-items-center">
                                 <NavLink to={`/charbonneur/${this.props.user.username}/`}>
@@ -77,6 +78,7 @@ class AnnonceList extends Component {
                                 )}
                             </div>
                         </div>
+                        )}
 
                     </div>
                 </div>
