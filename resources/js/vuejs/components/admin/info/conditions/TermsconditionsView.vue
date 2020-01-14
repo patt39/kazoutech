@@ -59,19 +59,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-8 ml-auto mr-auto">
-                                                                            <div class="profile text-center">
-                                                                                <br>
-                                                                                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                                                    <div class="fileinput-new thumbnail">
-                                                                                        <img :src="condition.photo" :alt="condition.slug">
-                                                                                    </div>
-                                                                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                    <br>
                                                                     <div class="form-group">
                                                                         <label class="bmd-label-floating"></label>
                                                                         <vue-editor :disabled=true v-model="condition.body" :editorToolbar="customToolbar"></vue-editor>

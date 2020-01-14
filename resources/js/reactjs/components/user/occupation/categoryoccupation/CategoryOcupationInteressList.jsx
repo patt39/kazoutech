@@ -22,12 +22,12 @@ class CategoryOcupationInteressList extends Component {
                            <div className="mr-1">
                                <strong>
                                    <Link className="font-size-3 card-title" to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}>
-                                       {this.props.title.length > 30 ? this.props.title.substring(0, 30) + "..." : this.props.title}
+                                       {this.props.title.length > 27 ? this.props.title.substring(0, 27) + "..." : this.props.title}
                                    </Link>
                                </strong>
                                <div className="mt-2">
                                    <div className="mb-1 text-muted card-description font-size-2"
-                                        dangerouslySetInnerHTML={{ __html: (this.props.body.length > 140 ? this.props.body.substring(0, 140) + "..." : this.props.body) }}/>
+                                        dangerouslySetInnerHTML={{ __html: (this.props.body.length > 128 ? this.props.body.substring(0, 128) + "..." : this.props.body) }}/>
                                </div>
                            </div>
                            <div className="d-flex align-items-baseline justify-content-between mt-3 font-weight-medium">
@@ -39,7 +39,7 @@ class CategoryOcupationInteressList extends Component {
                                    <div className="price-content">
                                        <div className="price">
                                            <span>{this.props.price}</span>
-                                           <span>€</span>
+                                           <span> FCFA</span>
                                        </div>
                                    </div>
                                </div>

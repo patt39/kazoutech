@@ -27,37 +27,35 @@
                                                 <form id="RegisterValidation" @submit.prevent="createItem()" role="form"
                                                       method="POST" action="" accept-charset="UTF-8" @keydown="form.onKeydown($event)">
                                                     <div class="col-md-12">
-                                                        <div class="card card-nav-tabs">
-                                                            <div class="card-body">
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane active" id="profile">
+                                                        <div class="card-body">
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane active" id="profile">
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label class="bmd-label-floating"></label>
+                                                                                    <input v-model="form.title" type="text" name="title"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" placeholder="Presentation title">
+                                                                                    <has-error :form="form" field="title"></has-error>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <br>
                                                                         <div class="form-group">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="bmd-label-floating"></label>
-                                                                                        <input v-model="form.title" type="text" name="title"
-                                                                                               class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" placeholder="Presentation title">
-                                                                                        <has-error :form="form" field="title"></has-error>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
+                                                                            <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label pull-right">
+                                                                                    You can use the
+                                                                                    <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
+                                                                                        Markdown here
+                                                                                    </a>
+                                                                                    <span class="form-check-sign"></span>
+                                                                                </label>
                                                                             </div>
-                                                                            <br>
-                                                                            <br>
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
-                                                                                <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
-                                                                                <div class="form-check">
-                                                                                    <label class="form-check-label pull-right">
-                                                                                        You can use the
-                                                                                        <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
-                                                                                            Markdown here
-                                                                                        </a>
-                                                                                        <span class="form-check-sign"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <has-error :form="form" field="body"></has-error>
-                                                                            </div>
+                                                                            <has-error :form="form" field="body"></has-error>
                                                                         </div>
                                                                     </div>
                                                                 </div>

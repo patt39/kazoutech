@@ -56,10 +56,6 @@ import TechnicianByOccupation from "../components/admin/technician/by/Technician
 
 
 /* Legal information dans la cartalla info */
-import LegalnoticeIndex from "../components/admin/info/legalnotice/LegalnoticeIndex";
-import LegalnoticeCreate from "../components/admin/info/legalnotice/LegalnoticeCreate";
-import LegalnoticeEdit from "../components/admin/info/legalnotice/LegalnoticeEdit";
-import LegalnoticeView from "../components/admin/info/legalnotice/LegalnoticeView";
 import LicenceIndex from "../components/admin/info/licence/LicenceIndex";
 import LicenceCreate from "../components/admin/info/licence/LicenceCreate";
 import LicenceEdit from "../components/admin/info/licence/LicenceEdit";
@@ -250,10 +246,6 @@ export const routes = [
 
     /* Legal Mention route  */
     { path: '/dashboard/documentations', name: 'documentations.index', component: DocumentationIndex },
-    { path: '/dashboard/legal_notice', name: 'legal_notice.index', component: LegalnoticeIndex },
-    { path: '/dashboard/legal_notice/create', name: 'legal_notice.create', component: LegalnoticeCreate },
-    { path: '/dashboard/legal_notice/:id/edit', name: 'legal_notice.edit', component: LegalnoticeEdit },
-    { path: '/dashboard/legal_notice/lm/:id', name: 'legal_notice.view', component: LegalnoticeView, },
     { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
     { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
     { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },

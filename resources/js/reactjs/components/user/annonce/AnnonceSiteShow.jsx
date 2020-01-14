@@ -292,7 +292,7 @@ class AnnonceSiteShow extends Component {
                                                 <div className="mx-3">
                                                     <NavLink to={`/charbonneur/${annonce.user.username}/`}
                                                              className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
-                                                    <small className="d-block text-muted">{moment(annonce.created_at).startOf('hour').fromNow()}</small>
+                                                    <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
                                                 </div>
                                             </div>
                                             <div className="text-right ml-auto">

@@ -18758,22 +18758,22 @@ hr {
   border: none; }
 
 .card-profile .card-avatar {
-  max-width: 130px;
-  max-height: 130px;
+  max-width: 160px;
+  max-height: 160px;
   margin: 70px auto 0; }
   .card-profile .card-avatar img {
     width: 100%;
     border: 3px solid #fff;
     -webkit-transform: scale(1);
             transform: scale(1);
-    border-radius: 50% !important;
+    border-radius: 100% !important;
     -webkit-transition: all 0.15s ease;
     transition: all 0.15s ease; }
     .card-profile .card-avatar img:hover {
       -webkit-transform: scale(1.03);
               transform: scale(1.03); }
   .card-profile .card-avatar + .card-body {
-    margin-top: 15px; }
+    margin-top: 25px; }
 
 .card-profile.card-plain .card-header {
   border-radius: 0.25rem; }

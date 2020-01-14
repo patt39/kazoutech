@@ -171,8 +171,6 @@
 </template>
 
 <script>
-    import TopNav from "../../../inc/admin/TopNav";
-    import FooterAdmin from "../../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../../inc/admin/StatusAdmin";
     import Loaded from "../../../inc/animation/Loaded";
     import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
@@ -355,8 +353,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/conditions";
-                axios.get(url).then(response => {
+                dyaxios.get(route('conditions.api')).then(response => {
                     this.loaded = true;
                     this.conditions = response.data.data;
                     this.mydatatables();

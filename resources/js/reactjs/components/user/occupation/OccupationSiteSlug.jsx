@@ -11,7 +11,7 @@ class OccupationSiteSlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupation: {categoryoccupations: [], blogs: []},
+            occupation: {categoryoccupations: [], blogs: [],blogbyoccupations: []},
         }
     }
 
@@ -25,6 +25,7 @@ class OccupationSiteSlug extends Component {
     render() {
         const {occupation} = this.state;
         const occupationCategories = occupation.categoryoccupations;
+        const allblogbyoccupations = occupation.blogbyoccupations;
         const composantTitle = `${occupation.name}`;
         document.title = `${composantTitle} | Kazoutech`;
 
@@ -78,19 +79,61 @@ class OccupationSiteSlug extends Component {
                                                     <div className="container">
                                                         <div className="row">
                                                             <div className="col-md-8 mr-auto ml-auto text-center">
-                                                                <h3 className="title mb-5">Nous sommes plus proche de
-                                                                    vous !</h3>
+                                                                <h4 className="title mb-5">Nous sommes plus proche de
+                                                                    vous !</h4>
                                                             </div>
                                                         </div>
                                                         <CitySite/>
 
                                                         <br/>
+                                                        {allblogbyoccupations.length > 0 && (
+
+                                                            <div className="row">
+                                                                <div className="col-md-12 mx-auto">
+                                                                    <h4 className="title">Tous nos articles
+                                                                        sur <strong>{occupation.name} </strong> sont sur
+                                                                        notre
+                                                                        blog</h4>
+                                                                    <br/>
+                                                                    <div className="row">
+
+                                                                        {allblogbyoccupations.map((item) => (
+                                                                            <div className="col-lg-4 col-md-6">
+                                                                                <div className="card card-blog card-plain">
+                                                                                    <div className="card-image shadow">
+                                                                                        <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
+                                                                                            <img className="img rounded"
+                                                                                                 src={item.photo}/>
+                                                                                        </Link>
+                                                                                    </div>
+                                                                                    <div className="card-body">
+
+                                                                                        <div className="text-center">
+                                                                                            <Link to={`/blog/${occupation.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                                                                                {occupation.name}
+                                                                                            </Link>
+                                                                                        </div>
+
+                                                                                        <h6 className="card-title">
+                                                                                            <Link to={`/blog/${occupation.slug}/`} >{item.title}</Link>
+                                                                                        </h6>
+                                                                                        <p className="card-description">
+                                                                                            <b dangerouslySetInnerHTML={{__html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body)}}/>
+                                                                                            <Link to={`/blog/${occupation.slug}/${item.slug}/`} >lire la suite</Link>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        ))}
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )}
+
                                                         <div className="row">
-                                                            <h4 className="title">Tous nos articles
-                                                                sur <strong>{occupation.name} </strong> sont sur notre
-                                                                blog</h4>
                                                             <div className="col-md-12">
-                                                                <div
+                                                                <div className={'card-description'}
                                                                     dangerouslySetInnerHTML={{__html: occupation.description}}/>
                                                             </div>
                                                         </div>

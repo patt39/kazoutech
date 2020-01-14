@@ -8,5 +8,5 @@
 
 Route::group(['namespace' => 'Info'], function(){
 
-    Route::get('conditions', 'ConditionController@api');
+    Route::get('conditions_dashboard', 'ConditionController@api')->name('conditions.api');
 });

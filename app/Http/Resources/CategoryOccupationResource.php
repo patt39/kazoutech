@@ -22,10 +22,10 @@ class CategoryOccupationResource extends JsonResource
             })->distinct()->get()->toArray();
 
         $annoncesinteres = $this->annonces()->with('occupation','user','city','categoryoccupation')
-            ->whereIn('categoryoccupation_id',[$this->id])
+            ->whereIn('categoryoccupation_id',[$this->id])->orderBy('created_at','DESC')->take(3)
             ->where(function ($q) {
                 $q->whereIn('occupation_id',[$this->occupation_id])
-                ->where('status',1)->orderBy('created_at','DESC')->take(3);
+                ->where('status',1);
             })->distinct()->get()->toArray();
 
         return [

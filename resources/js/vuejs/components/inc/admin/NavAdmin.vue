@@ -328,7 +328,7 @@
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/technicians/' }" class="nav-link">
                             <i class="material-icons">meeting_room</i>
-                            <p><b>Technicians</b></p>
+                            <p><b>Charbonneurs</b></p>
                         </router-link>
                     </li>
                     <!-- Annonces -->
@@ -474,12 +474,6 @@
                        </a>
                        <div class="collapse" id="legalsExamples">
                            <ul class="nav">
-                               <li class="nav-item">
-                                   <router-link  :to="{ path: '/dashboard/legal_notice/' }" class="nav-link">
-                                       <span class="sidebar-mini"><b>LN</b></span>
-                                       <span class="sidebar-normal"><b>Legal Notice</b></span>
-                                   </router-link>
-                               </li>
                                <li class="nav-item">
                                    <router-link  :to="{ path: '/dashboard/licence_site/' }" class="nav-link">
                                        <span class="sidebar-mini"><b>LS</b></span>

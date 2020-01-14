@@ -83,7 +83,7 @@ class CompileTableSeeder extends Seeder
 
         factory(categoryfaq::class, 1)->create();
         factory(faq::class, 2)->create();
-        factory(slidehome::class, 8)->create();
+        factory(slidehome::class, 3)->create();
 
 
         // Output

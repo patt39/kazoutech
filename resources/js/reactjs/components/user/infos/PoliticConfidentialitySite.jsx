@@ -47,7 +47,7 @@ class PoliticConfidentialitySite extends Component {
                                         <div className="card card-profile" data-image="img-rounded">
                                             <div className="row justify-content-center pt-100 pb-5">
                                                 {confidentialities.map((item) => (
-                                                    <div className="col-lg-11">
+                                                    <div key={item.id} className="col-lg-11">
                                                         <h3 className="display-3">{item.title}</h3>
                                                         <div className="description mb-2"
                                                              dangerouslySetInnerHTML={{__html: item.body}}/>

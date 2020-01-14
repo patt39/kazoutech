@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import {NavLink} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 
 
 class ProfileUserSiteIndex extends Component {
@@ -30,13 +30,25 @@ class ProfileUserSiteIndex extends Component {
                     </div>
                     <div className="main main-raised">
                         <div className="container mb-5 upper">
-                            <div className="row">
-                                <div className="col-md-8">
+                            <div className="row justify-content-center">
+                                <div className="col-lg-12">
                                     <div className="card card-profile" data-image="img-rounded">
                                         <div className="card-avatar">
-                                            <img className="rounded-circle" src="/assets/vendor_site/img/faces/team-1.jpg" />
+                                            <img className="rounded-circle" src="/assets/vendor_site/img/faces/team-1.jpg"/>
                                         </div>
-                                        <div className="card-body ">
+                                        <div className="row justify-content-center">
+                                        <div className="col-md-1">
+                                            <Link to={'/'} className="btn btn-link text-primary" type="button">
+                                                <i className="ni ni-settings-gear-65"></i>
+                                            </Link>
+                                        </div>
+                                        <div className="col-md-1">
+                                            <Link to={'/'} className="btn btn-link text-primary" type="button">
+                                                <i className="ni ni-book-bookmark"></i>
+                                            </Link>
+                                        </div>
+                                        </div>
+                                        <div className="card-body">
                                             <h3>Jessica Jones<span className="font-weight-light">, 27</span></h3>
                                             <div className="h6 font-weight-300"><i className="ni location_pin mr-2"></i>Bucharest,
                                                 Romania
@@ -60,62 +72,6 @@ class ProfileUserSiteIndex extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-4">
-                                    <div className="card">
-                                        <div className="card-header">
-                                            <div className="row">
-                                                <div className="col-md-12">
-                                                    <div className="media align-items-center">
-                                                        <div className="media-body">
-                                                                <span className="text-muted text-small">last seen today at 1:53am</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-md-1 col-4">
-                                                    <div className="dropdown">
-                                                        <button className="btn btn-link text-primary" type="button" data-toggle="dropdown">
-                                                            <i className="ni ni-settings-gear-65"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div className="col-md-1 col-3">
-                                                    <button className="btn btn-link btn-text" type="button" data-toggle="tooltip" data-placement="top" title="Video call">
-                                                        <i className="ni ni-book-bookmark"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="card-body">
-                                            <div className="row justify-content-end text-right">
-                                                <div className="col-auto">
-                                                    <div className="card bg-gradient-primary text-white">
-                                                        <div className="card-body p-2">
-                                                            <p className="mb-1">
-                                                                Awesome, blog is important source material for anyone who creates apps? <br/>
-                                                            beacuse these blogs offer a lot of information about website development.
-                                                            </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="row justify-content-end text-right">
-                                            <div className="col-auto">
-                                                <div className="card bg-gradient-primary text-white">
-                                                    <div className="card-body p-2">
-                                                        <p className="mb-0">
-                                                            At the end of the day … the native dev apps is where users are
-                                                        </p>
-                                                        <div>
-                                                            <small className="opacity-60">4:47pm</small>
-                                                            <i className="ni ni-check-bold"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                             <div className="nav-wrapper">
                                 <ul className="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text"

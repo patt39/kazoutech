@@ -26,8 +26,14 @@ class OccupationResource extends JsonResource
             })->distinct()->get()->toArray();
 
 
-        $blogbycategories =  $this->blogs()->with('occupation','user')
+        $blogbycategories =  $this->blogs()->with('occupation','user','color')
             ->whereIn('occupation_id',[$this->id])
+            ->where(function ($q) {
+                $q->where('status',1);
+            })->distinct()->get()->toArray();
+
+        $blogbyoccupations =  $this->blogs()->with('occupation','user','color')
+            ->whereIn('occupation_id',[$this->id])->orderBy('created_at','DESC')->take(3)
             ->where(function ($q) {
                 $q->where('status',1);
             })->distinct()->get()->toArray();
@@ -54,6 +60,7 @@ class OccupationResource extends JsonResource
             'categoryoccupations' => $categoryoccupations,
             'categoryoccupationsadmin' => $categoryoccupationsadmin,
             'blogs' => $blogbycategories,
+            'blogbyoccupations' => $blogbyoccupations,
             'annonces' => $annonces,
             'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),
