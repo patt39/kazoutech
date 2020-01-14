@@ -14,7 +14,7 @@ class CategoryOcupationList extends Component {
                     <Link to={`/occupations/${this.props.occupation.slug}/${this.props.slug}`}>
                         <div className="card-body">
                             <div className="content-bottom">
-                                <h5 className="card-title text-uppercase">{this.props.name}</h5>
+                                <h6 className="card-title text-uppercase">{this.props.name}</h6>
                             </div>
                         </div>
                     </Link>

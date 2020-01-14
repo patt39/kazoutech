@@ -21,7 +21,7 @@ class OccupationSiteIndex extends Component {
     }
 
     render() {
-        let {occupations} = this.state;
+
         return (
             <>
                 <div className="landing-page">

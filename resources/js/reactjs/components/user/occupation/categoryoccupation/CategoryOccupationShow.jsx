@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import NavUserSIte from "../../../inc/NavUserSIte";
 import {Link, NavLink} from 'react-router-dom';
 import FooterUserSite from "../../../inc/FooterUserSite";
-import CategoryOcupationHeader from "../../../inc/CategoryOcupationHeader";
+import CategoryOcupationHeader from "./CategoryOcupationHeader";
 import CitySite from "../../city/CitySite";
 import CategoryOcupationInteressList from "./CategoryOcupationInteressList";
 import AnnonceList from "../../annonce/AnnonceList";

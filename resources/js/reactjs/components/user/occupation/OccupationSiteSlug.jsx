@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
-import OccupationHeader from "../../inc/OccupationHeader";
+import OccupationHeader from "./OccupationHeader";
 import CitySite from "../city/CitySite";
 
 
