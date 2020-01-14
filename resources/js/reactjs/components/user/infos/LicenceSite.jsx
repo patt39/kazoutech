@@ -9,58 +9,60 @@ class LicenceSite extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            licence: [],
+            licences: [],
         }
     }
 
     // lifecycle method
     componentDidMount() {
-        let item = this.props.match.params.licence;
-        let url = route('licence.view', item);
-        dyaxios.get(url).then(response => this.setState({licence: response.data}));
+        let url = route('api_active.conditions');
+        dyaxios.get(url).then(response => this.setState({licences: response.data}));
     }
 
     render() {
-        const {licence} = this.state;
+        const {licences} = this.state;
         const composantTitle = 'Terme et condition';
         document.title = `${composantTitle} | Kazoutech`;
 
         return (
             <>
                 <div className="landing-page">
-                <NavUserSIte/>
+                    <NavUserSIte/>
 
-                <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
-                        <div className="page-header-image page-header-mini"
-                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/kevin-grieve.jpg' + ")"}}/>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-10 mx-auto text-center">
-                                    <h2 className="display-2 text-white">Notre Licence</h2>
+                    <div className="wrapper">
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image page-header-mini"
+                                 style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/kevin-grieve.jpg' + ")"}}/>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-lg-10 mx-auto text-center">
+                                        <h2 className="display-2 text-white">Notre Licence</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="main main-raised">
+                            <div className="container mt--100 mb-5 upper">
+                                <div className="row">
+                                    <div className="col-lg-12 mx-auto">
+                                        <div className="card card-profile" data-image="img-rounded">
+                                            <div className="row justify-content-center pt-100 pb-5">
+                                                {licences.map((item) => (
+                                                    <div className="col-lg-11">
+                                                        <h3 className="display-3">{item.title}</h3>
+                                                        <div className="description mb-2"
+                                                             dangerouslySetInnerHTML={{__html: item.body}}/>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="main main-raised">
-                        <div className="container mt--100 mb-5 upper">
-                            <div className="row">
-                            <div className="col-lg-12 mx-auto">
-                                <div className="card card-profile" data-image="img-rounded">
-                                    <div className="row justify-content-center pt-100 pb-5">
-                                        <div className="col-lg-11">
-                                            <h3 className="display-3">{licence.title}</h3>
-                                            <div className="description mb-2" dangerouslySetInnerHTML={{ __html: licence.body }} />
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                   </div>
+                    <FooterUserSite/>
                 </div>
-                <FooterUserSite/>
-            </div>
             </>
 
         )

@@ -52,7 +52,7 @@ class MultiplesRouteController extends Controller
         return view('user.infos.conditions.index');
     }
 
-    public function apicondition()
+    public function apiconditions()
     {
         $conditions = ConditionResource::collection(condition::where('status',1)
             ->with('user')->get());
@@ -66,11 +66,12 @@ class MultiplesRouteController extends Controller
     }
 
 
-    public function apiconfidentiality()
+    public function apiconfidentialities()
     {
-        $confidentiality = PolicyprivacyResource::collection(policyprivacy::where('status',1)
+        $confidentialities = PolicyprivacyResource::collection(policyprivacy::where('status',1)
         ->with('user')->get());
-        return response()->json($confidentiality,200);
+
+        return response()->json($confidentialities,200);
     }
 
     public function licence()
@@ -78,11 +79,12 @@ class MultiplesRouteController extends Controller
         return view('user.infos.licence.index');
     }
 
-    public function apilicence()
+    public function apilicences()
     {
-        $licence = LicenceResource::collection(licencesite::where('status',1)
+        $licences = LicencesiteResource::collection(licencesite::where('status',1)
         ->with('user')->get());
-        return response()->json($licence,200);
+
+        return response()->json($licences,200);
     }
 
     public function occupation(occupation $occupation)

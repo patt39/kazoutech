@@ -171,7 +171,7 @@ class FooterUserSite extends Component {
                                                 </Link>
                                             </li>
                                             <li className="d-inline-block">
-                                                <Link to={'/licence_site/'} target="_blank" className="nav-link">
+                                                <Link to={'/licence_site/'} className="nav-link">
                                                     Licence Site
                                                 </Link>
                                             </li>

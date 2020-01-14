@@ -83,18 +83,14 @@ import ColorAuditing from "../components/admin/partial/settings/color/ColorAudit
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
 import SubscriberIndex from "../components/admin/contact/SubscriberIndex";
-import ProfileUserEdit from "../components/user/profile/ProfileUserEdit";
 import TaskIndexDatable from "../components/admin/partial/task/TaskIndexDatable";
 import FaqViewSites from "../components/admin/faq/admin/FaqViewSites";
 import FaqByCategoryViewSites from "../components/admin/faq/admin/FaqByCategoryViewSites";
 import UserCardIndex from "../components/admin/user/UserCardIndex";
 import OccupationEdit from "../components/admin/occupation/occupation/OccupationEdit";
 import OccupationCreate from "../components/admin/occupation/occupation/OccupationCreate";
-import IndexSite from "../components/user/IndexSite";
 
 /* Services routes */
-import OccupationsSite from "../components/user/pages/services/OccupationsSite";
-import OccupationUserSlug from "../components/user/pages/services/OccupationUserSlug";
 import CategoryOccupationIndex from "../components/admin/occupation/categoryoccupation/CategoryOccupationIndex";
 import OccupationShow from "../components/admin/occupation/occupation/OccupationShow";
 import OccupationShowCreate from "../components/admin/occupation/occupation/categoryoccupation/OccupationShowCreate";
@@ -274,40 +270,5 @@ export const routes = [
     { path: '/dashboard/conditions/create', name: 'conditions.create', component: TermsconditionsCreate },
     { path: '/dashboard/conditions/:id/edit', name: 'conditions.edit', component: TermsconditionsEdit },
     { path: '/dashboard/conditions/lm/:condition', name: 'conditions.view', component: TermsconditionsView },
-
-
-    /** Ici je recupere les route du site **/
-     //Route index
-    {
-        path: '/',
-        name: 'index.site',
-        component: IndexSite,
-        meta: {title: 'Technicians services to particulars'}
-    },
-    {
-        path: '/home/',
-        name: 'home',
-        component: IndexSite,
-        meta: {title: 'Technicians services to particulars'}
-    },
-
-
-    //Route services
-    {
-        path: '/occupations/',
-        name: 'occupations.site',
-        component: OccupationsSite,
-        meta: {title: 'Occupations et services à la persone : trouver un jobber facillement kazoutech'}
-    },
-    {
-        path: '/occupations/:slug/',
-        name: 'occupations.slug',
-        component: OccupationUserSlug,
-        meta: {title: 'Technicians services to particulars'}
-    },
-
-    //Route profile user
-    //{path: '/:username', name: 'profile.view', component: ProfileUserIndex},
-    {path: '/profile/edit/', name: 'profile.edit', component: ProfileUserEdit},
 
 ];

@@ -25,7 +25,6 @@ class BlogSiteCreate extends Component {
             photo: '',
             occupation_id: '',
             categoryoccupation_id: '',
-            occupationdata: { categoryoccupations: [] },
             occupations: [],
             errors: [],
             showDefaultImage: false
@@ -129,7 +128,6 @@ class BlogSiteCreate extends Component {
     // get all the tasks from backend
     loadItems() {
         let SlugOccupation = this.props.match.params.occupation;
-        dyaxios.get(route('occupations.apioccupationbyslug', [SlugOccupation])).then(response => this.setState({ occupationdata: response.data, }));
         dyaxios.get(route('api_active.occupations')).then(response => this.setState({ occupations: [...response.data], }));
     }
 

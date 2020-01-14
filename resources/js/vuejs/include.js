@@ -206,13 +206,10 @@ Vue.component('pagination-link', require('./components/inc/vendor/PaginationComp
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('alert-permission', require('./components/inc/admin/components/AlertPermission').default);
 Vue.component('errored-loading', require('./components/inc/animation/Errored').default);
-Vue.component('link-verify', require('./components/user/auth/LinkVerify').default);
-Vue.component('newsletter-index', require('./components/user/newsletter/NewsletterIndex').default);
 Vue.component('loader-ellipsis', require('./components/inc/animation/LoaderEllipsis').default);
 Vue.component('nav-admin', require('./components/inc/admin/NavAdmin').default);
 Vue.component('top-nav', require('./components/inc/admin/TopNav').default);
 Vue.component('footer-admin', require('./components/inc/admin/FooterAdmin').default);
-Vue.component('contact-us', require('./components/user/contact/ContactUser').default);
 
 
 /**
