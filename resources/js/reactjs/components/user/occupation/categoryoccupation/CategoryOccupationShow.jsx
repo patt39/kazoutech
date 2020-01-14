@@ -123,8 +123,8 @@ class CategoryOccupationShow extends Component {
                                                 </Link>
                                             }
                                             <br/>
-                                            <h3 className="display-4">Dérnier annonces
-                                                en <b>{categoryoccupation.name}</b></h3>
+                                            <h4 className="display-4">Dérnier annonces
+                                                en <b>{categoryoccupation.name}</b></h4>
 
                                             <div className="row">
 
