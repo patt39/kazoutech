@@ -41,37 +41,8 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-8 ml-auto mr-auto">
-                                                                                <div class="profile text-center">
-                                                                                    <br>
-                                                                                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                                                        <div class="fileinput-new thumbnail">
-                                                                                            <img :src="getImagesave()" :alt="form.slug">
-                                                                                        </div>
-                                                                                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                                        <div>
-                                                                                                <span class="btn btn-raised btn-success btn-file">
-                                                                                                   <span class="fileinput-new" style="cursor: pointer">
-                                                                                                       <i class="material-icons">insert_photo</i>
-                                                                                                           <b>Add Slide</b>
-                                                                                                    </span>
-                                                                                                   <span class="fileinput-exists" style="cursor: pointer">
-                                                                                                       <i class="material-icons">photo_library</i>
-                                                                                                       <b>Change</b>
-                                                                                                    </span>
-                                                                                                    <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
-                                                                                                </span>
-                                                                                            <a href="#pablo" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
-                                                                                                <i class="material-icons">cancel</i>
-                                                                                                <b>Remove</b>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <has-error :form="form" field="photo"></has-error>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        <br>
+                                                                         <br>
                                                                         <div class="form-group">
                                                                             <label class="bmd-label-floating">Description <span style="color: red;">*</span></label>
                                                                             <vue-editor v-model="form.body" :editorToolbar="customToolbar"></vue-editor>
@@ -170,31 +141,6 @@
             getColorHeaderUser(){
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
-            },
-            getImagesave(){
-                let photo = (this.form.photo.length > 200) ? this.form.photo : this.form.photo;
-                return photo;
-            },
-            updateImage(e){
-                //console.log('uploadert')
-                let file = e.target.files[0];
-                console.log(file);
-                let reader = new FileReader();
-                if (file['size'] < 6000775){
-                    reader.onloadend = (file) => {
-                        //console.log('RESULT',reader.result)
-                        this.form.photo = reader.result
-                    };
-                    reader.readAsDataURL(file);
-                }else{
-                    this.$Progress.fail();
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Your image is very big',
-                        buttonsStyling: false,
-                        confirmButtonClass: "btn btn-success",
-                    });
-                }
             },
             updateItem() {
                 //Start Progress bar

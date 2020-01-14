@@ -21,7 +21,12 @@ class ProfileController extends Controller
     {
         $this->middleware('auth',['except' => ['view','profileView']]);
     }
+     
 
+    public function profileUser()
+    {
+        return view('user.profile.profileUserIndex');
+    }
     /**
      * Display the specified resource.
      *

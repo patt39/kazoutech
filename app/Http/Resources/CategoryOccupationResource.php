@@ -25,7 +25,7 @@ class CategoryOccupationResource extends JsonResource
             ->whereIn('categoryoccupation_id',[$this->id])
             ->where(function ($q) {
                 $q->whereIn('occupation_id',[$this->occupation_id])
-                ->where('status',1)->take(4);
+                ->where('status',1)->orderBy('created_at','DESC')->take(3);
             })->distinct()->get()->toArray();
 
         return [
@@ -35,6 +35,7 @@ class CategoryOccupationResource extends JsonResource
             'subject' => $this->subject,
             'description' => $this->description,
             'body' => $this->body,
+            'price' => $this->price,
             'status' => $this->status,
             'occupation_id' => $this->occupation_id,
             'occupation' => $this->occupation,

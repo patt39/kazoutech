@@ -208,7 +208,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                                     </Link>
                                                                                 </h5>
                                                                                 <p className="card-description">
-                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 156 ? item.body.substring(0, 156) + "..." : item.body) }} />
+                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 140 ? item.body.substring(0, 140) + "..." : item.body) }} />
                                                                                     <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.city.slug}/${item.slug}/`}> lire la suite </Link>
                                                                                 </p>
                                                                                 <div className="card-header d-flex align-items-center">

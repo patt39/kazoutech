@@ -18225,12 +18225,12 @@ hr {
   font-size: .8em; }
 
 .chat {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd; }
+  border-top: 1px  #ddd;
+  border-bottom: 1px  #ddd; }
   @media (min-width: 992px) {
     .chat .section {
       min-height: 100vh;
-      max-height: 999px; } }
+      max-height: 1200px; } }
   .chat .media-body span {
     font-size: 14px; }
   .chat .list-group {

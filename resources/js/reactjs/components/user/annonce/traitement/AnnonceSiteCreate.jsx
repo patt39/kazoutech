@@ -153,9 +153,9 @@ class AnnonceSiteCreate extends Component {
                                             <h5 className="text-white">{this.state.title}</h5>
                                         </Link>
                                         <div className="author">
-                                            <Link to={`/annonces/${occupationdata.slug}/`} className="text-white">
+                                            <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
                                                 <i className="fa fa-chevron-circle-left"/> Retour {occupationdata.name}
-                                            </Link>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

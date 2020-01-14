@@ -166,13 +166,13 @@ class FooterUserSite extends Component {
                                                 </Link>
                                             </li>
                                             <li className="d-inline-block">
-                                                <Link to={'/confidentialité/'} className="nav-link">
+                                                <Link to={'/politique_confidentialité/'} className="nav-link">
                                                     Privacy Policy
                                                 </Link>
                                             </li>
                                             <li className="d-inline-block">
-                                                <Link to={'/notice_legale/'} target="_blank" className="nav-link">
-                                                    Legal Notice
+                                                <Link to={'/licence_site/'} target="_blank" className="nav-link">
+                                                    Licence Site
                                                 </Link>
                                             </li>
                                         </ul>

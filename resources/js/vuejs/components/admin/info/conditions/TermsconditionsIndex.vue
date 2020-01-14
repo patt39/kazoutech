@@ -78,7 +78,6 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Image</b></th>
                                                 <th><b>Title Condition</b></th>
                                                 <th><b>Text Condition</b></th>
                                                 <th><b>Status</b></th>
@@ -88,7 +87,6 @@
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Image</b></th>
                                                 <th><b>Title Condition</b></th>
                                                 <th><b>Text Condition</b></th>
                                                 <th><b>Status</b></th>
@@ -98,8 +96,6 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in conditions" :key="item.id">
-                                                <td><img :src="item.photo"
-                                                         style="height: 50px; width: 80px;border-radius: 10px"></td>
                                                 <td>{{ (item.title.length > 20 ? item.title.substring(0,20)+ "..." :
                                                     item.title) | upText }}
                                                 </td>

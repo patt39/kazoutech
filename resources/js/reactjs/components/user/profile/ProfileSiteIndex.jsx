@@ -20,7 +20,7 @@ class ProfileSiteIndex extends Component {
 
     deleteAnnonce(id) {
         Swal.fire({
-            text: 'Ete vous sure de vouloir suprimer cette annonce?',
+            text: 'Etes vous sure de vouloir suprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,

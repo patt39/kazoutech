@@ -14,7 +14,7 @@ class condition extends Model implements Auditable
     use LogsActivity,\OwenIt\Auditing\Auditable;
 
     protected $table = 'conditions';
-    protected $fillable = ['title', 'body','photo','status'];
+    protected $fillable = ['title', 'body','status'];
     protected static $logAttributes = ['title','body'];
     /**
      * @return array

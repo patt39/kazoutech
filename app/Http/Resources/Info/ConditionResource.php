@@ -19,8 +19,6 @@ class ConditionResource extends JsonResource
             'ip' => $this->ip,
             'title' => $this->title,
             'body' => $this->body,
-            'image' => $this->image,
-            'photo' => $this->photo,
             'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),
             'slug' => $this->slug,

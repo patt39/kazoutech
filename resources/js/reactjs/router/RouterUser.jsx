@@ -17,6 +17,8 @@ import AnnonceSiteShow from "../components/user/annonce/AnnonceSiteShow";
 import CharbonneurSiteIndex from "../components/user/charbonneur/CharbonneurSiteIndex";
 import TemoignageSite from "../components/user/temoignage/TemoignageSite";
 import TermConditionSite from "../components/user/infos/TermConditionSite";
+import PoliticConfidentialitySite from "../components/user/infos/PoliticConfidentialitySite";
+import LicenceSite from "../components/user/infos/LicenceSite";
 import AnnonceSiteByOccupation from "../components/user/annonce/AnnonceSiteByOccupation";
 import AnnonceSiteEdit from "../components/user/annonce/traitement/AnnonceSiteEdit";
 import AnnonceSiteByOccupationCity from "../components/user/annonce/AnnonceSiteByOccupationCity";
@@ -29,6 +31,7 @@ import AnnonceSiteByOccupationCategoryoccupationCity
 import CharbonneurSiteByCity from "../components/user/charbonneur/CharbonneurSiteByCity";
 import CharbonneurSiteByOccupation from "../components/user/charbonneur/CharbonneurSiteByOccupation";
 import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
+import ProfileUserSiteIndex from "../components/user/profile/ProfileUserSiteIndex";
 import LoginSIteIndex from "../components/user/auth/LoginSIteIndex";
 import BlogSiteEdit from "../components/user/blog/traitement/BlogSiteEdit";
 import DevenirCharbonneurSite from "../components/user/auth/DevenirCharbonneurSite";
@@ -43,6 +46,7 @@ const RouterUser = props => (
         <Route exact path="/home" component={IndexSite}/>
         <Route exact path="/login" component={LoginSIteIndex}/>
         <Route exact path="/charbonneur/:username/" component={withRouter(ProfileSiteIndex)}/>
+        <Route exact path="/user" component={withRouter(ProfileUserSiteIndex)}/>
         <Route exact path="/occupations/" component={OccupationSiteIndex}/>
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation" component={CategoryOccupationShow}/>
@@ -69,6 +73,8 @@ const RouterUser = props => (
         <Route exact path="/contacts/" component={contactUserSite}/>
         <Route exact path="/temoignages/" component={TemoignageSite}/>
         <Route exact path="/condition_utilisation/" component={TermConditionSite}/>
+        <Route exact path="/licence_site/" component={LicenceSite}/>
+        <Route exact path="/politique_confidentialité/" component={PoliticConfidentialitySite}/>
         <Route exact path="/devenir_charbonneur/" component={DevenirCharbonneurSite}/>
         <Route exact path="/register/" component={RegisterUserSite}/>
     </Switch>

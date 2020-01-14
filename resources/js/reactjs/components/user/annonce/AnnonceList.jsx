@@ -29,7 +29,7 @@ class AnnonceList extends Component {
                             )}
                         </h5>
                         <p className="card-description">
-                            <b dangerouslySetInnerHTML={{ __html: (this.props.body.length > 156 ? this.props.body.substring(0, 156) + "..." : this.props.body) }} />
+                            <b dangerouslySetInnerHTML={{ __html: (this.props.body.length > 140 ? this.props.body.substring(0, 140) + "..." : this.props.body) }} />
                             {this.props.categoryoccupation !== null && (
                                 <Link to={`/annonces/${this.props.occupation.slug}/${this.props.categoryoccupation.slug}/${this.props.city.slug}/${this.props.slug}/`}> lire la suite </Link>
                             )}

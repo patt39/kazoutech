@@ -41,11 +41,6 @@ import TechnicianEdit from "../components/admin/technician/TechnicianEdit";
 import FollowerIndex from "../components/admin/follow/FollowerIndex";
 import FollowingIndex from "../components/admin/follow/FollowingIndex";
 import AdminAccount from "../components/admin/account/AdminAccount";
-import RegisterIndex from "../components/user/auth/RegisterIndex";
-import ContactUser from "../components/user/contact/ContactUser";
-import AboutSite from "../components/user/pages/AboutSite";
-import FaqsSite from "../components/user/pages/FaqsSite";
-import ConceptSite from "../components/user/pages/ConceptSite";
 import ActivityIndex from "../components/admin/partial/activity/ActivityIndex";
 import LinkIndex from "../components/admin/partial/link/LinkIndex";
 import TechnicianView from "../components/admin/technician/TechnicianView";
@@ -58,7 +53,9 @@ import TechnicianProfileIndex from "../components/user/profile/TechnicianProfile
 import TechnicianProfileEdit from "../components/user/profile/TechnicianProfileEdit";
 import TechnicianByCity from "../components/admin/technician/by/TechnicianByCity";
 import TechnicianByOccupation from "../components/admin/technician/by/TechnicianByOccupation";
-import LoginIndex from "../components/user/auth/LoginIndex";
+
+
+
 
 /* Legal information dans la cartalla info */
 import LegalnoticeIndex from "../components/admin/info/legalnotice/LegalnoticeIndex";
@@ -82,7 +79,6 @@ import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEd
 import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
 import CityActives from "../components/admin/partial/settings/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/admin/FaqByCategoryIndex";
-import TechnicianBecomeSite from "../components/user/pages/TechnicianBecomeSite";
 import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
 import AuditIndex from "../components/admin/audit/AuditIndex";
 import UserTrah from "../components/admin/user/UserTrah";
@@ -295,10 +291,6 @@ export const routes = [
         meta: {title: 'Technicians services to particulars'}
     },
 
-    //Route pages
-    {path: '/about/', name: 'about', component: AboutSite},
-    {path: '/faqs', name: 'faqs', component: FaqsSite},
-    {path: '/concept', name: 'concept', component: ConceptSite},
 
     //Route services
     {
@@ -313,17 +305,6 @@ export const routes = [
         component: OccupationUserSlug,
         meta: {title: 'Technicians services to particulars'}
     },
-
-     //Route devenir bosseur
-     {path: '/technician_become', name: 'technician_become', component: TechnicianBecomeSite},
-
-
-    //Route auth
-    {path: '/register/', name: 'register', component: RegisterIndex},
-    {path: '/login/', name: 'login', component: LoginIndex},
-
-    //Route contact page
-    {path: '/contacts/', name: 'contact_cm', component: ContactUser},
 
     //Route profile user
     //{path: '/:username', name: 'profile.view', component: ProfileUserIndex},

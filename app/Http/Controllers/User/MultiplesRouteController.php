@@ -9,9 +9,13 @@ use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\Info\ConditionResource;
+use App\Http\Resources\Info\PolicyprivacyResource;
+use App\Http\Resources\Info\licencesiteResource;
 use App\Http\Resources\UserResource;
 use App\Model\admin\annonce;
 use App\Model\admin\info\condition;
+use App\Model\admin\info\licencesite;
+use App\Model\admin\info\policyprivacy;
 use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\categoryfaq;
@@ -48,18 +52,37 @@ class MultiplesRouteController extends Controller
         return view('user.infos.conditions.index');
     }
 
-    public function apiconditions()
+    public function apicondition()
     {
-        return ConditionResource::collection(Condition::with('user')->latest()->get());
+        $conditions = ConditionResource::collection(condition::where('status',1)
+            ->with('user')->get());
+        return response()->json($conditions,200);
     }
+
+
     public function politiques()
     {
         return view('user.infos.politique.index');
     }
 
+
+    public function apiconfidentiality()
+    {
+        $confidentiality = PolicyprivacyResource::collection(policyprivacy::where('status',1)
+        ->with('user')->get());
+        return response()->json($confidentiality,200);
+    }
+
     public function licence()
     {
         return view('user.infos.licence.index');
+    }
+
+    public function apilicence()
+    {
+        $licence = LicenceResource::collection(licencesite::where('status',1)
+        ->with('user')->get());
+        return response()->json($licence,200);
     }
 
     public function occupation(occupation $occupation)
