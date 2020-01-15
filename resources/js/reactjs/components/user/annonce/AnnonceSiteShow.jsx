@@ -234,35 +234,6 @@ class AnnonceSiteShow extends Component {
                                     <div className="container">
                                         <h3 className="title text-white mt-3">Order summary</h3>
                                         <div className="row">
-                                            <div className="card">
-                                                <div className="card-body">
-                                                    <div className="media align-items-center mb-3">
-                                                        <div className="col-md-5 col-6">
-                                                            <img src="../assets/img/pages/gucci.png"
-                                                                 alt="Rounded image" className="img-fluid"/>
-                                                        </div>
-                                                        <div className="media-body">
-                                                            <h2 className="h6">Shorts</h2>
-                                                            <small className="d-block opacity-8">Small</small>
-                                                        </div>
-                                                        <div className="media-body text-right">
-                                                            <span>$29</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="media align-items-center">
-                                                        <div className="col-md-5 col-6">
-                                                            <img src="../assets/img/pages/jacket.png"
-                                                                 alt="Rounded image" className="img-fluid"/>
-                                                        </div>
-                                                        <div className="media-body">
-                                                            <h2 className="h6 mb-0">Jacket</h2>
-                                                        </div>
-                                                        <div className="media-body text-right">
-                                                            <span>$999</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             {annonceinderesses.length > 0 ?
                                             <div className="card">
