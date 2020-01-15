@@ -23,7 +23,9 @@ class BlogSiteEdit extends Component {
             title: '',
             body: '',
             photo: '',
+            color_id: '',
             occupation_id: '',
+            colors:[],
             occupations:[],
             errors: [],
             showDefaultImage: false
@@ -92,6 +94,7 @@ class BlogSiteEdit extends Component {
             title: this.state.title,
             body: this.state.body,
             photo: this.state.photo,
+            color_id: this.state.color_id,
             occupation_id: this.state.occupation_id,
         };
         dyaxios.put(route('blogs.update',Id), item)
@@ -128,11 +131,13 @@ class BlogSiteEdit extends Component {
         let Id = this.props.match.params.id;
         let url = route('blog_site.show', [Id]);
         dyaxios.get(route('api_active.occupations')).then(response => this.setState({ occupations: [...response.data], }));
+        dyaxios.get(route('api.colors')).then(response => this.setState({ colors: [...response.data], }));
         dyaxios.get(url).then(response =>
             this.setState({
                 body: response.data.body,
                 title: response.data.title,
                 photo: response.data.photo,
+                color_id: response.data.color_id,
                 occupation_id: response.data.occupation_id,
             }));
     }
@@ -142,7 +147,7 @@ class BlogSiteEdit extends Component {
     }
 
     render() {
-        const { occupations,photo } = this.state;
+        const { occupations,colors,photo} = this.state;
         const composantTitle = `${this.state.title}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
@@ -157,9 +162,9 @@ class BlogSiteEdit extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">{this.state.title}</h4>
-                                    <Link to={'/blog/'} className="text-white">
-                                        <i className="fa fa-chevron-circle-left"/> Retour au blog
-                                    </Link>
+                                    <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
+                                        <i className="fa fa-chevron-circle-left"/> Retour
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +179,7 @@ class BlogSiteEdit extends Component {
                                             <div className="container">
                                                 <h3 className="title mt-3">{this.state.title}</h3>
                                                 <div className="row">
-                                                    <div className="col-md-6">
+                                                    <div className="col-md-12">
                                                         <label className="labels">
                                                             Titre de votre blog
                                                             <span className="text-danger">*</span>
@@ -189,6 +194,9 @@ class BlogSiteEdit extends Component {
                                                         />
                                                         {this.renderErrorFor('title')}
                                                     </div>
+                                                </div>
+                                                <div className="row">
+
                                                     <div className="col-md-6">
                                                         <label className="labels">
                                                             Category de l'article
@@ -203,6 +211,22 @@ class BlogSiteEdit extends Component {
                                                             ))}
                                                         </select>
                                                         {this.renderErrorFor('occupation_id')}
+                                                    </div>
+
+                                                    <div className="col-md-6">
+                                                        <label className="labels">
+                                                            Donner une couleur à l'article
+                                                            <span className="text-danger">*</span>
+                                                        </label>
+                                                        <select name={'color_id'} value={this.state.color_id}
+                                                                className={`form-control`}
+                                                                id="color_id" onChange={this.handleFieldChange}>
+                                                            <option value="" disabled>Selectioner une couleur</option>
+                                                            {colors.map((item) => (
+                                                                <option key={item.id} value={item.id}>{item.name}</option>
+                                                            ))}
+                                                        </select>
+                                                        {this.renderErrorFor('color_id')}
                                                     </div>
                                                 </div>
                                                 <br />

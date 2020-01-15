@@ -39,7 +39,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                 //Envoyer la requet au server
                 dyaxios.delete(url).then(() => {
 
-                    //Redirect after create
+                    //Redirect after delete
                     this.props.history.push('/annonces/');
                     /** Alert notify bootstrapp **/
                     $.notify({

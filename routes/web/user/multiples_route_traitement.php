@@ -13,5 +13,6 @@ Route::post('occupations/{occupation}/{categoryoccupation}/new/store','Multiples
 
 //Route blog traitement
 Route::get('blog/p/new/create','MultiplesRouteTraitementController@blogscreate')->name('blog_site.create');
+Route::post('blog/p/new/store','MultiplesRouteTraitementController@blogsstore')->name('blog_site.store');
 Route::get('blogId/p/{id}/','MultiplesRouteTraitementController@blogshow')->name('blog_site.show');
 Route::get('blog/p/{id}/edit','MultiplesRouteTraitementController@blogedit')->name('blog_site.edit');

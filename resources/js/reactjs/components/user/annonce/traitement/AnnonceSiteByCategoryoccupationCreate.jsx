@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
 import ReactQuill from 'react-quill';
 import NavUserSIte from "../../../inc/NavUserSIte";
 import FooterUserSite from "../../../inc/FooterUserSite";
@@ -144,26 +143,25 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
             <div className="checkout-page">
                 <NavUserSIte />
                 <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
+
+                    <div className="page-header kazouTech-page-header-mini header-filter">
                         <div className="page-header-image"
-                             style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}/>
+                             style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}></div>
                         <div className="container">
-                            <div className="header-body text-center mb-7">
-                                <div className="row justify-content-center">
-                                    <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                        <Link to={`/occupations/${SlugOccupation}/${categoryoccupationdata.name}/`} className="text-white">
-                                            <h5 className="text-white">{this.state.title}</h5>
-                                        </Link>
-                                        <div className="author">
-                                            <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
-                                                <i className="fa fa-chevron-circle-left"/> Retour {categoryoccupationdata.name}
-                                            </a>
-                                        </div>
+                            <div className="row">
+                                <div className="col-lg-10 mx-auto text-center">
+                                    <h3 className="display-3 text-white">Annonce</h3>
+                                    <h5 className="text-white">{this.state.title}</h5>
+                                    <div className="mt-4 mb-4 text-center social-container">
+                                        <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
+                                            <i className="fa fa-chevron-circle-left"/> Retour {categoryoccupationdata.name}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div className="main main-raised">
                         <div className="container">
                             <form className="js-validate" onSubmit={this.createItem}>

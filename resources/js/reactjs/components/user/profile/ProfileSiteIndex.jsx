@@ -184,7 +184,6 @@ class ProfileSiteIndex extends Component {
 
                                                 )}
 
-                                                <a href="#" className="btn btn-sm btn-info mr-4">Connect</a>
                                                 {userProfile.status_profile_verify && (
                                                     <button  type={'button'} className="btn btn-sm btn-success float-right">
                                                         <i className="ni ni-check-bold"/>Identité vérifiée

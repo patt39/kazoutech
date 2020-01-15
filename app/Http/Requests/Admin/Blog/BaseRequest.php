@@ -21,6 +21,7 @@ class BaseRequest extends Request
             $rules = [
                 'title' => 'required|string|min:2|max:200',
                 'photo' => 'required',
+                'color_id' => 'required',
                 'occupation_id' => 'required',
             ];
         }
@@ -28,6 +29,7 @@ class BaseRequest extends Request
             $rules = [
                 'title' => 'required|string|min:2|max:200',
                 'photo' => 'required',
+                'color_id' => 'required',
                 'occupation_id' => 'required',
             ];
         }
@@ -48,6 +50,7 @@ class BaseRequest extends Request
     public function attributes()
     {
         return [
+            'color_id' => 'couleur obligatoire',
             'occupation_id' => 'occupation obligatoire',
         ];
     }

@@ -43,8 +43,7 @@ class ColorController extends Controller
 
     public function api()
     {
-        $colors = ColorResource::collection(Color::with('user')
-            ->with('user')->latest()->get());
+        $colors = ColorResource::collection(Color::with('user')->latest()->get());
         return response()->json($colors,200);
     }
 

@@ -166,7 +166,7 @@ class DevenirCharbonneurSite extends Component{
                                     </span>
                             </div>
                             <input type="number"
-                                   placeholder="Jour de Naissance ..." aria-label="Jour de Naissance ..."
+                                   placeholder="Exemple:(02,10) ..." aria-label="Jour de Naissance ..."
                                    required="required"
                                    id="day" maxLength="2"
                                    className={`form-control ${this.hasErrorFor('day') ? 'is-invalid' : ''}`}

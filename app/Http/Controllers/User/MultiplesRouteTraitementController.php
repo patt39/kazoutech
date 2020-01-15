@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Blog\StoreBlogRequest;
 use App\Http\Requests\Admin\Blog\UpdateBlogRequest;
 use App\Http\Requests\User\Annonce\StoreRequest;
 use App\Http\Requests\User\Annonce\UpdateRequest;
@@ -12,6 +13,8 @@ use App\Model\admin\annonce;
 use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
+use App\Services\Admin\BlogService;
+use Symfony\Component\HttpFoundation\Response;
 
 class MultiplesRouteTraitementController extends Controller
 {
@@ -59,6 +62,17 @@ class MultiplesRouteTraitementController extends Controller
     public function blogscreate()
     {
         return view('user.blog.create');
+    }
+
+    public function blogsstore(StoreBlogRequest $request)
+    {
+        $blog= new blog();
+
+        $blog->fill($request->all());
+        BlogService::storeUploadImage($request,$blog);
+        $blog->save();
+
+        return response('Created',Response::HTTP_CREATED);
     }
 
     public function annonceshow(occupation $occupation,$id)

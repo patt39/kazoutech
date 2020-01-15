@@ -23,8 +23,9 @@ class BlogSiteCreate extends Component {
             title: '',
             body: '',
             photo: '',
+            color_id: '',
             occupation_id: '',
-            categoryoccupation_id: '',
+            colors: [],
             occupations: [],
             errors: [],
             showDefaultImage: false
@@ -86,18 +87,21 @@ class BlogSiteCreate extends Component {
         this.setState({ file: '', photo: '', showDefaultImage: true });
     }
     createItem(e) {
-        let SlugOccupationcreate = this.props.match.params.occupation;
         e.preventDefault();
 
         let item = {
             title: this.state.title,
             body: this.state.body,
             photo: this.state.photo,
+            color_id: this.state.color_id,
             description: this.state.description,
-            categoryoccupation_id: this.state.categoryoccupation_id,
+            occupation_id: this.state.occupation_id,
         };
-        dyaxios.post(route('blogs_site.create', [SlugOccupationcreate]), item)
+        dyaxios.post(route('blog_site.store'), item)
             .then(() => {
+
+                //Redirect after create
+                this.props.history.push('/blog/');
                 $.notify('<strong>Blog créer avec success...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
@@ -127,8 +131,8 @@ class BlogSiteCreate extends Component {
 
     // get all the tasks from backend
     loadItems() {
-        let SlugOccupation = this.props.match.params.occupation;
         dyaxios.get(route('api_active.occupations')).then(response => this.setState({ occupations: [...response.data], }));
+        dyaxios.get(route('api.colors')).then(response => this.setState({ colors: [...response.data], }));
     }
 
     componentDidMount() {
@@ -136,9 +140,9 @@ class BlogSiteCreate extends Component {
     }
 
     render() {
-        const { occupations,photo } = this.state;
         const composantTitle = `Nouvelle article de blog`;
         document.title = `${composantTitle} | Kazoutech`;
+        const { occupations,colors,photo} = this.state;
         return (
 
             <div className="blog-posts">
@@ -151,9 +155,9 @@ class BlogSiteCreate extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">{this.state.title}</h4>
-                                    <Link to={'/blog/'} className="text-white">
-                                        <i className="fa fa-chevron-circle-left"/> Retour au blog
-                                    </Link>
+                                    <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
+                                        <i className="fa fa-chevron-circle-left"/> Retour
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -169,13 +173,13 @@ class BlogSiteCreate extends Component {
                                                 <div className="container">
                                                     <h3 className="title mt-3">{this.state.title}</h3>
                                                     <div className="row">
-                                                        <div className="col-md-6">
+                                                        <div className="col-md-12">
                                                             <label className="labels">
                                                                 Titre de votre blog
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="text" placeholder="Titre de votre blog" aria-label="Titre du blog"
-                                                                   required="required"
+                                                                   required={'required'}
                                                                    className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
                                                                    name='title'
                                                                    maxLength="200"
@@ -184,6 +188,9 @@ class BlogSiteCreate extends Component {
                                                             />
                                                             {this.renderErrorFor('title')}
                                                         </div>
+                                                    </div>
+                                                    <div className={'row'}>
+
                                                         <div className="col-md-6">
                                                             <label className="labels">
                                                                 Category de l'article
@@ -198,6 +205,22 @@ class BlogSiteCreate extends Component {
                                                                 ))}
                                                             </select>
                                                             {this.renderErrorFor('occupation_id')}
+                                                        </div>
+
+                                                        <div className="col-md-6">
+                                                            <label className="labels">
+                                                                Donner une couleur à l'article
+                                                                <span className="text-danger">*</span>
+                                                            </label>
+                                                            <select name={'color_id'} value={this.state.color_id}
+                                                                    className={`form-control`}
+                                                                    id="color_id" onChange={this.handleFieldChange}>
+                                                                <option value="" disabled>Selectioner une couleur</option>
+                                                                {colors.map((item) => (
+                                                                    <option key={item.id} value={item.id}>{item.name}</option>
+                                                                ))}
+                                                            </select>
+                                                            {this.renderErrorFor('color_id')}
                                                         </div>
                                                     </div>
                                                     <br />

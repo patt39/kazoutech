@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import moment from 'moment'
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import BlogPostInteresse from "./BlogPostInteresse";
+import {Button} from "reactstrap";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -31,61 +32,54 @@ class BlogSiteShow extends Component {
         const composantTitle = `${blog.title}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
+            <>
+                <div className="landing-page">
+                    <NavUserSIte/>
 
-            <div className="blog-post">
-                <NavUserSIte/>
-                <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
-                        <div className="page-header-image"
-                             style={{backgroundImage: "url(" + blog.photo + ")"}}/>
-                        <div className="content-center">
-                            <div className="row">
-                                <div className="col-md-6 mx-auto text-center">
-                                    <h1 className="title text-white">{blog.title}</h1>
-                                    <div className="author">
-                                        <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
-                                            <i className="fa fa-chevron-circle-left"/> Retour
-                                        </a>
+                    <div className="wrapper">
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image page-header-mini"
+                                 style={{backgroundImage: "url(" + blog.photo + ")"}}/>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-lg-10 mx-auto text-center">
+                                        <h4 className="display-4 text-white">{blog.title}</h4>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="main main-raised">
+                            <div className="container mt--100 mb-5 upper">
+                                <div className="row">
+                                    <div className="col-lg-12 mx-auto">
+                                        <div className="card card-profile" data-image="img-rounded">
+                                            <div className="row justify-content-center pt-100 pb-5">
+                                                <div className="col-lg-11">
+                                                    <h3 className="display-3">{blog.title}</h3>
+                                                    <div className="description mb-2"
+                                                         dangerouslySetInnerHTML={{__html: blog.body}}/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <br/>
-                                    <a href="#button" className="btn btn-warning btn-round btn-icon-only">
-                                        <i className="fa fa-twitter"/>
-                                    </a>
-                                    <a href="#button" className="btn btn-warning btn-round btn-icon-only">
-                                        <i className="fa fa-instagram"/>
-                                    </a>
+                                <BlogPostInteresse  {...this.props}/>
+
+                                <div className="text-center">
+                                    <Link to={`/blog/${blog.occupation.slug}/`}
+                                          className="btn btn-outline-info">Voir plus d'articles ici
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br/>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-10 ml-auto mr-auto text-justify">
-                                <h6 className="category"><b>{moment(blog.created_at).format('LL')}</b></h6>
-                                <h3 className="title"><b>{blog.title}</b></h3>
-                                <p dangerouslySetInnerHTML={{__html: (blog.body)}}/>
-                            </div>
-                        </div>
-
-
-
-
-                        <BlogPostInteresse  {...this.props}/>
-
-                        <div className="text-center">
-                            <Link to={`/blog/${blog.occupation.slug}/`}
-                                  className="btn btn-outline-info">Voir plus d'articles ici
-                            </Link>
-                        </div>
-                        <br/>
-
-
-                    </div>
                     <FooterUserSite/>
                 </div>
-            </div>
+
+            </>
+
+
         )
     }
 

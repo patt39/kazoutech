@@ -128,9 +128,11 @@ class BlogSiteByCategoriesOccupation extends Component {
                                                     <div className="col-lg-10 col-md-8 mx-auto">
                                                         <h2 className="title mb-5"><b>{blogsbycategy.name}</b></h2>
 
-                                                        <Link to={`/blog/p/new/create/`} className="btn btn-primary btn-center btn-larg">
-                                                            Ajouter un nouveau article de blog
-                                                        </Link>
+                                                        {!$guest &&(
+                                                            <Link to={`/blog/p/new/create/`} className="btn btn-primary btn-center btn-larg">
+                                                                Ajouter un nouveau article de blog
+                                                            </Link>
+                                                        )}
                                                         <br/><br/>
                                                         <div className="card">
                                                             <div className="card-body">

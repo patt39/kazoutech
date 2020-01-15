@@ -1,6 +1,6 @@
 <?php
 
-Route::get('colors', 'ColorController@api');
+Route::get('colors', 'ColorController@api')->name('api.colors');
 
 Route::get(
     'colors/auditing/{color}',
