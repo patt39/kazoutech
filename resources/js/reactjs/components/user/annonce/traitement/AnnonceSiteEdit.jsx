@@ -224,11 +224,6 @@ class AnnonceSiteEdit extends Component {
 
 
                                             <div className="container">
-                                                <p className="text-right text-info">
-                                                    <Link to={`/annonces/${occupationdata.slug}/`} className="text-info">
-                                                         Voir le rendu de la mise à jour
-                                                    </Link>
-                                                </p>
                                                 <h3 className="title mt-3">{this.state.title}</h3>
                                                 <div className="row">
                                                     <div className="col-md-12">
