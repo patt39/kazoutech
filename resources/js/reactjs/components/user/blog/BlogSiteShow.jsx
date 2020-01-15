@@ -56,7 +56,7 @@ class BlogSiteShow extends Component {
                                             <div className="row justify-content-center pt-100 pb-5">
                                                 <div className="col-lg-11">
                                                     <h3 className="display-3">{blog.title}</h3>
-                                                    <div className="description mb-2"
+                                                    <div className="description mb-2 text-justify"
                                                          dangerouslySetInnerHTML={{__html: blog.body}}/>
                                                 </div>
                                             </div>
