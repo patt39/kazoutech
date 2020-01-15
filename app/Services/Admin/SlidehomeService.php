@@ -23,7 +23,7 @@ class SlidehomeService
                 mkdir($dir, 0775, true);
             }
             $destinationPath = public_path("assets/img/slidehome/{$name}");
-            Image::make($request->photo)->save($destinationPath);
+            Image::make($request->photo)->fit(1800,900)->save($destinationPath);
             //Save Image to database
             $myfilename = "/assets/img/slidehome/{$name}";
             $slidehome->photo = $myfilename;
@@ -46,7 +46,7 @@ class SlidehomeService
                 ($request->photo,';')))[1])[1];
             $dir = 'assets/img/slidehome/';
             if(!file_exists($dir)){mkdir($dir, 0775, true);}
-            Image::make($request->photo)->save(public_path('assets/img/slidehome/').$name);
+            Image::make($request->photo)->fit(1800,900)->save(public_path('assets/img/slidehome/').$name);
             $request->merge(['photo' =>  "/assets/img/slidehome/{$name}"]);
             $oldFilename = $currentPhoto;
             File::delete(public_path($oldFilename));
