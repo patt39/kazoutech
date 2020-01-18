@@ -124,7 +124,7 @@ class RegisterUserSite extends Component{
                             </div>
                         </div>
                         <div className="row align-items-center">
-                            <div className="mr-auto ml-auto mt-5 mb-5">
+                            <div className="mr-auto ml-auto mt-5 mb-5 text-center">
                                 <h4 className="header-6">Vous avez déjà un compte ? <a
                                     href="https://www.kazoutech.com/login">Connectez-vous</a></h4>
                             </div>
