@@ -5,8 +5,6 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
 import AnnoncePostInteresse from "./AnnoncePostInteresse";
-import CommentCreate from "../comment/CommentCreate";
-import ReactQuill from "react-quill";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -35,23 +33,7 @@ class AnnonceSiteShow extends Component {
             annonceinteressebycategoryoccupation:{annoncesinteres:[]},
             annonce: {user: [], occupation: [],}
         };
-        this.modules = {
-            toolbar: [
-                ['bold', 'italic'],
-                [{ 'color': [] }],
-            ]
-        };
-        this.formats = [
-            'bold', 'italic',
-            'color'
-        ];
     }
-    // Handle Change
-    handleChangeBody(value) {
-        this.setState({ body: value });
-        document.querySelector('.editor-control').classList.remove('is-invalid');
-    }
-
     handleFieldChange(event) {
         this.setState({
             [event.target.name]: event.target.value,
@@ -313,127 +295,12 @@ class AnnonceSiteShow extends Component {
                                                                 <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
                                                             :
-                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className={`like ${annonce.likers === (annonce.likers) ? "active" : ""}`}>
+                                                            <a style={{cursor: "pointer"}}  onClick={() => this.likeItem(annonce)} className={`like active`}>
                                                                 <i className="ni ni-like-2"/>
                                                                 <span className="text-muted">{annonce.likers} j'aime</span>
                                                             </a>
                                                         }
-                                                        <a href="..">
-                                                            <i className="ni ni-chat-round"/>
-                                                            <span className="text-muted">36 commentaires</span>
-                                                        </a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div className="mb-1">
-                                                <div className="media media-comment">
-                                                    <img alt={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}
-                                                         className="media-comment-avatar rounded-circle"
-                                                         src={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}/>
-                                                    <div className="media-body">
-                                                        <div className="media-comment-text">
-                                                            <h6 className="h6 mt-0">
-                                                                Boclair Temgoua
-                                                                <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
-                                                            </h6>
-                                                            <p className="text-sm lh-160">You have the
-                                                                opportunity to play this game of life you
-                                                                need to appreciate every moment. A lot of
-                                                                people don’t appreciate the moment until it’s
-                                                                passed.</p>
-                                                            <div className="icon-actions">
-
-                                                                <a href=".."
-                                                                   className="like">
-                                                                    <i className="ni ni-like-2"/>
-                                                                    <span
-                                                                        className="text-muted">3 j'aime</span>
-                                                                </a>
-                                                                <a href=".." className="text-success" title="Editer votre commentaire">
-                                                                    <i className="fa fa-edit"/> editer
-                                                                </a>
-                                                                <a href=".." className="text-danger" title="Suprimer votre commentaire">
-                                                                    <i className="fa fa-trash"/> suprimer
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="media media-comment">
-                                                    <img alt={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}
-                                                         className="media-comment-avatar rounded-circle"
-                                                         src={'/assets/vendor_site/img/pages/nathan-dumlao.jpg'}/>
-                                                    <div className="media-body">
-                                                        <div className="media-comment-text">
-                                                            <h6 className="h6 mt-0">
-                                                                Jessica Stones
-                                                                <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
-                                                            </h6>
-                                                            <p className="text-sm lh-160">I always felt like
-                                                                I could do anything. That’s the main thing
-                                                                people are controlled by! Thoughts- their
-                                                                perception of themselves! They're slowed
-                                                                down.</p>
-                                                            <form>
-                                                                <textarea className="form-control"
-                                                                   placeholder="laissez un commentaire à cette annonce..."
-                                                                   defaultValue={'I could do anything. That’s the main thing perception of themselves! They\'re slowed people are controlled by! Thoughts- their'}
-                                                                   rows="2"/>
-                                                                <div className="text-right ml-auto">
-                                                                    <button className="btn btn-sm btn-secondary btn-icon" type="button">
-                                                                        <span className="btn-inner--text">Annuller</span>
-                                                                    </button>
-                                                                    <button className="btn btn-sm btn-success btn-icon" type="submit">
-                                                                        <span className="btn-inner--text">Poster</span>
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                            <div className="icon-actions">
-                                                                <a href=".."
-                                                                   className="like active">
-                                                                    <i className="ni ni-like-2"/>
-                                                                    <span
-                                                                        className="text-muted">10 j'aime</span>
-                                                                </a>
-                                                                <a href=".." className="text-success" title="Editer votre commentaire">
-                                                                    <i className="fa fa-edit"/> editer
-                                                                </a>
-                                                                <a href=".." className="text-danger" title="Suprimer votre commentaire">
-                                                                    <i className="fa fa-trash"/> suprimer
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="media align-items-center mt-5">
-
-                                                    {$guest ?
-                                                        <h6 className="text-center">
-                                                            <strong className="title text-center">S'il vous plait
-                                                                <a href="#" className="text-info" data-toggle="modal" data-target="#loginModal"> connectez vous </a> ou
-                                                                <a href="/register/" className="text-info"> inscrivez vous </a> pour laisser votre commentaire
-                                                            </strong>
-                                                        </h6>
-                                                        :
-                                                        <div className="media-body">
-                                                            <form>
-                                                                <ReactQuill theme="snow" modules={this.modules}
-                                                                            formats={this.formats}
-                                                                            placeholder={'laissez un commentaire à cette annonce...'}
-                                                                            className={`editor-control ${this.hasErrorFor('body') ? 'is-invalid' : ''}`}
-                                                                            value={this.state.body || ''}
-                                                                            onChange={this.handleChangeBody}/>
-
-                                                                <br/>
-                                                                <div className="text-right ml-auto">
-                                                                    <button className="btn btn-sm btn-success btn-icon" type="submit">
-                                                                        <span className="btn-inner--text">Poster</span>
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -524,7 +391,7 @@ class AnnonceSiteShow extends Component {
                                             </div>
                                             <div className="row mt-3">
                                                 <div className="col-6">
-                                                    <a className="text-light" href="..">
+                                                    <a className="text-light" href="/password/reset/">
                                                         <small>Mot de passe oublié</small>
                                                     </a>
                                                 </div>

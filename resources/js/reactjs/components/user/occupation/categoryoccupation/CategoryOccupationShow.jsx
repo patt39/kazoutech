@@ -3,9 +3,7 @@ import NavUserSIte from "../../../inc/NavUserSIte";
 import {Link, NavLink} from 'react-router-dom';
 import FooterUserSite from "../../../inc/FooterUserSite";
 import CategoryOcupationHeader from "./CategoryOcupationHeader";
-import CitySite from "../../city/CitySite";
 import CategoryOcupationInteressList from "./CategoryOcupationInteressList";
-import AnnonceList from "../../annonce/AnnonceList";
 
 
 class CategoryOccupationShow extends Component {
@@ -228,7 +226,7 @@ class CategoryOccupationShow extends Component {
                                                     </div>
                                                     <div className="row mt-3">
                                                         <div className="col-6">
-                                                            <a className="text-light" href="..">
+                                                            <a className="text-light" href="/password/reset/">
                                                                 <small>Mot de passe oublié</small>
                                                             </a>
                                                         </div>

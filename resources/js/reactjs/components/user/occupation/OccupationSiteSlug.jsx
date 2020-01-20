@@ -115,7 +115,7 @@ class OccupationSiteSlug extends Component {
                                                                                         </div>
 
                                                                                         <h6 className="card-title">
-                                                                                            <Link to={`/blog/${occupation.slug}/`} >{item.title}</Link>
+                                                                                            <Link to={`/blog/${occupation.slug}/${item.slug}/`} >{item.title}</Link>
                                                                                         </h6>
                                                                                         <p className="card-description">
                                                                                             <b dangerouslySetInnerHTML={{__html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body)}}/>
