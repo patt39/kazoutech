@@ -16,7 +16,7 @@ Tip 2: you can also add an image using data-image tag
         <div class="user">
             <div class="photo">
                 @if(Auth::user()->avatar)
-                    <img src="{{ Auth::user()->avatar  }}" />
+                   <img src="{{ Auth::user()->avatar  }}" /> 
                 @endif
             </div>
             <div class="user-info">

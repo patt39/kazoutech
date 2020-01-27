@@ -39,7 +39,7 @@ class CharbonneurSiteByOccupation extends Component {
     render() {
         const {charbonneursbyoccupation,charbonneursbycity,occupations,cities} = this.state;
         const composantTitle = `${charbonneursbyoccupation.name}`;
-        document.title = `Charbonneurs dans la ville de ${composantTitle} | Kazoutech`;
+        document.title = `Charbonneurs en ${charbonneursbyoccupation.name} dans la ville de ${composantTitle} | Kazoutech`;
         let users = charbonneursbyoccupation.users;
         return (
 

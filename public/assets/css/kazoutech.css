@@ -38,14 +38,15 @@
     top: 40%;
 }
 
-/**
+
 .scroll-navbar {
     position: fixed !important;
     border-bottom: 1px solid white;
     box-shadow: 0 0 15px white;
     outline: 0;
-    background: linear-gradient(to left, #979aab, #5e72e4);
+    background: linear-gradient(to top, #172b4d, #6273d0);
 }
+/**
 .navbar-expand-lg .navbar-collapse {
     position: absolute;
     float: right;
@@ -205,9 +206,17 @@
 @media only screen and (max-width: 900px) {
     .carousel-caption {
         top: 30%;
+        left: 5%;
+        right: 5%;
+    }
+    .carousel .carousel-item .title {
+        font-size: 25px;
     }
     .display-1 {
         font-size: 1.5rem;
+    }
+    .kazouTech-title-mobile {
+        display: none;
     }
 }
 

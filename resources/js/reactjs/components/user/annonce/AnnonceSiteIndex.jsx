@@ -138,7 +138,7 @@ class AnnonceSiteIndex extends Component {
                                                                         className="h5 font-weight-normal mb-3 text-primary">Envie
                                                                         de charbonner ?</p><a
                                                                         className="btn btn-primary btn-break"
-                                                                        href="/devenez_charbonneur">Devenir
+                                                                        href={'/devenir_charbonneur/'}>Devenir
                                                                         Charbonneur</a></div>
                                                                 </div>
                                                             </div>

@@ -15,7 +15,7 @@
             <div class="page-header-image" style="background-image: url('/assets/vendor_site/img/pages/photo-15.jpg');"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-10 mx-auto text-center">
+                    <div class="col-lg-10 mt-5 mx-auto text-center">
                         <h3 class="display-3 text-white">Bienvenue chez KazouTech !</h3>
                         <h5 class="text-white">Développez votre activité de service à la personne, choisissez vos jobs et augmentez vos revenus.</h5>
                         <h5 class="text-white">Suivez nous</h5>

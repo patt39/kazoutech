@@ -11,6 +11,9 @@ compile_vue(output);
 
 if (mix.inProduction()) {
     mix.version();
+    mix.browserSync({
+        proxy: 'kazoutech.com'
+    });
 }
 
 

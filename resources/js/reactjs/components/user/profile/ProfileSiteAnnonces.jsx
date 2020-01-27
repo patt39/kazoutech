@@ -40,7 +40,7 @@ class ProfileSiteAnnonces extends Component {
                                 </NavLink>
                                 <div className="mx-3">
                                     <NavLink to={`/user/${this.props.user.username}/`} className="text-dark font-weight-600 text-sm">{this.props.user.name}</NavLink>
-                                    <small className="d-block text-muted">{moment(this.props.created_at).fromNow()}</small>
+                                    <small className="d-block text-muted">{moment(this.props.created_at).format('LLL')}</small>
                                 </div>
 
                                 {!$guest ?
