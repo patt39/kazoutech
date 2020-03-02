@@ -35,7 +35,7 @@
 <link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
 <!-- Argon CSS Files -->
 <link rel="stylesheet" href="/assets/dashboard/assets/css/plugins/animate.css">
-<link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.0" rel="stylesheet" />
+<link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.2" rel="stylesheet" />
 <!-- Customize KazouTech Styles -->
 
 <!--
