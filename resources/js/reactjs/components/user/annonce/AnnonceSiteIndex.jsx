@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import AnnonceOccupationList from "./AnnonceOccupationList";
 import AnnonceCityList from "./AnnonceCityList";
 

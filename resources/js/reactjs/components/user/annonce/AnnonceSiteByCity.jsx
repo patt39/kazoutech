@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import {Link,NavLink} from "react-router-dom";
 
 class AnnonceSiteByCity extends Component {

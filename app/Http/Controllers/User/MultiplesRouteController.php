@@ -224,27 +224,12 @@ class MultiplesRouteController extends Controller
         return view('user.annonce.annonces');
     }
 
-    public function apiannonces()
-    {
-        $annonces = AnnonceResource::collection(annonce::where('status',1)
-            ->with('user','occupation','city','categoryoccupation')
-            ->orderBy('created_at','DESC')->get());
-        return response()->json($annonces,200);
-    }
-
     public function annoncesbyoccupation(occupation $occupation, annonce $annonce)
     {
         return view('user.annonce.annonce_by_occupation',[
             'occupation' => $occupation,
             'annonce' => $annonce,
         ]);
-    }
-
-    public function apiannoncesbyoccupation($occupation)
-    {
-        $annoncebyoccupation = new OccupationResource(occupation::where('status',1)
-            ->whereSlug($occupation)->firstOrFail());
-        return response()->json($annoncebyoccupation,200);
     }
 
     public function annoncesbyoccupationbycity(occupation $occupation,city $city)
@@ -263,14 +248,6 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function apiannoncesbycategoryoccupation($occupation,$categoryoccupation)
-    {
-        $annoncesoccupationcategoryoccupation = new CategoryOccupationResource(categoryoccupation::where('status',1)
-            ->whereSlug($categoryoccupation)->first());
-
-        return response()->json($annoncesoccupationcategoryoccupation,200);
-    }
-
 
     public function annoncesbycity($occupation,$categoryoccupation,city $city, annonce $annonce)
     {
@@ -280,14 +257,6 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-
-    public function apiannoncesbycity($occupation,$categoryoccupation,$city)
-    {
-        $annoncecity = new CityResource(city::whereSlug($city)->firstOrFail());
-
-        return response()->json($annoncecity,200);
-    }
-
     public function annoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
     {
         $annonce->visits()->increment();
@@ -295,14 +264,6 @@ class MultiplesRouteController extends Controller
             'annonce' => $annonce,
         ]);
     }
-
-    public function apiannoncesoccupationshow($occupation,$categoryoccupation,$city,$annonce)
-    {
-        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->firstOrFail());
-
-        return response()->json($annonce,200);
-    }
-
 
     public function charbonneurs()
     {

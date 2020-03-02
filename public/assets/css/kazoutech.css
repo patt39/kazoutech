@@ -45,6 +45,7 @@
     box-shadow: 0 0 15px white;
     outline: 0;
     background: linear-gradient(to top, #172b4d, #6273d0);
+    height: 80px;
 }
 /**
 .navbar-expand-lg .navbar-collapse {

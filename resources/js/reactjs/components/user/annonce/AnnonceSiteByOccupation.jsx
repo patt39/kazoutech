@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import {Link,NavLink} from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
 
@@ -87,7 +87,7 @@ class AnnonceSiteByOccupation extends Component {
         const {annoncebyoccupation} = this.state;
         const annoncebyoccupations = annoncebyoccupation.annonces;
         const annoncebycategoryoccupations = annoncebyoccupation.categoryoccupations;
-        const composantTitle = `${annoncebyoccupation.name}`;
+        const composantTitle = `${annoncebyoccupation.name || "Kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
@@ -146,6 +146,7 @@ class AnnonceSiteByOccupation extends Component {
                                                                             )}
                                                                         </li>
                                                                     ))}
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -186,9 +187,11 @@ class AnnonceSiteByOccupation extends Component {
 
                                                         <div className="card">
                                                             <div className="card-body">
-                                                                {annoncebyoccupations.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
-                                                                ))}
+
+                                                            {annoncebyoccupations.map((item) => (
+                                                                <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
+                                                            ))}
+
                                                             </div>
                                                         </div>
 

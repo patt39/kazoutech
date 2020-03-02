@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import {Link, NavLink} from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
 import moment from "moment";
 import {Button} from "reactstrap";
+import NavCategoryandCity from "./inc/NavCategoryandCity";
 
 
 class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
@@ -85,16 +86,22 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                 this.setState({
                     annoncebycity: response.data,
                 }));
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
+
+        dyaxios.get(route('api.apiannoncesbycategoryoccupationcountbycity',[SlugOccupation,SlugCategoryoccupation])).then(response =>
             this.setState({
                 cities: [...response.data],
+            }));
+
+        dyaxios.get(route('apiannoncesbyoccupationcount.view',[SlugOccupation,SlugCategoryoccupation])).then(response =>
+            this.setState({
+                catagoryoccupations: [...response.data],
             }));
     }
 
     render() {
         const {annoncebycity, cities} = this.state;
         const annoncebycities = annoncebycity.annonces;
-        const composantTitle = `${annoncebycity.name}`;
+        const composantTitle = `${annoncebycity.name || "kazoutech"}`;
         document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         let SlugOccupation = this.props.match.params.occupation;
@@ -141,29 +148,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                     <div className="col-md-4">
 
-                                                        <div className="card mb-3">
-                                                            <div className="card-header h6">Villes</div>
-                                                            <div className="card-body">
-                                                                <ul className="list-unstyled">
-
-                                                                    {cities.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            <NavLink
-                                                                                to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.slug}/`}>
-                                                                                {item.name}
-                                                                            </NavLink>
-                                                                        </li>
-                                                                    ))}
-
-                                                                    <li className="mb-2">
-                                                                        <Link to={`/all_cities/`}>
-                                                                            Autre ville...
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-
-                                                            </div>
-                                                        </div>
+                                                        <NavCategoryandCity {...this.props}/>
 
                                                         <AnnonceOccupationList/>
                                                     </div>
