@@ -17,6 +17,20 @@ class AnnonceController extends Controller
 {
 
 
+    public function apiannoncesbycities()
+    {
+        $annonces = city::with('user')
+            ->where('status',1)
+            ->withCount(['annonces' => function ($q){
+                $q->where('status',1)
+                    ->with('user','occupation','city','categoryoccupation')
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) {
+                        $q->where('status',1);});
+            }])->orderBy('annonces_count','desc')->take(6)->distinct()->get();
+        return response()->json($annonces,200);
+    }
     public function apiannonces()
     {
         $annonces = AnnonceResource::collection(annonce::where('status',1)
@@ -28,10 +42,37 @@ class AnnonceController extends Controller
         return response()->json($annonces,200);
     }
 
+    public function apiannoncesbycityslug(city $city)
+    {
+        $annoncebyoccupation = city::where('status',1)
+            ->with([
+                'annonces' => function ($q) use ($city){
+                    $q->where(['status' => 1])
+                        ->whereIn('city_id',[$city->id])
+                        ->with('user','occupation','city','categoryoccupation')
+                        ->whereHas('city', function ($q) use ($city) {$q->where('status',1);})
+                        ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                        ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                        ->orderBy('created_at','DESC')->distinct()->paginate(40)->toArray();},
+            ])
+            ->whereSlug($city->slug)->first();
+
+        return response()->json($annoncebyoccupation,200);
+    }
+
+
     public function apiannoncesbyoccupation(occupation $occupation)
     {
         $annoncebyoccupation = occupation::where('status',1)
-            ->whereSlug($occupation->slug)->with([
+        ->withCount(['annonces' => function ($q) use ($occupation){
+            $q->where(['status' => 1])
+                ->with('user','occupation','city','categoryoccupation')
+                ->whereIn('occupation_id',[$occupation->id])
+                ->whereHas('city', function ($q) {$q->where('status',1);})
+                ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                    $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+        }])->whereSlug($occupation->slug)->with([
                 'annonces' => function ($q) use ($occupation){
                     $q->where(['status' => 1])
                         ->with('user','occupation','city','categoryoccupation')
@@ -56,7 +97,16 @@ class AnnonceController extends Controller
     public function apiannoncesbycategoryoccupation(occupation $occupation,categoryoccupation $categoryoccupation)
     {
         $annoncesoccupationcategoryoccupation = categoryoccupation::where('status',1)
-            ->whereSlug($categoryoccupation->slug)->with([
+        ->withCount(['annonces' => function ($q) use ($occupation,$categoryoccupation){
+            $q->where(['status' => 1])
+                ->with('user','occupation','city','categoryoccupation')
+                ->whereIn('occupation_id',[$occupation->id])
+                ->whereIn('categoryoccupation_id',[$categoryoccupation->id])
+                ->whereHas('city', function ($q) {$q->where('status',1);})
+                ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                    $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+        }])->whereSlug($categoryoccupation->slug)->with([
                 'annonces' => function ($q) use ($occupation,$categoryoccupation){
                     $q->where(['status' => 1])
                         ->with('user','occupation','city','categoryoccupation')
@@ -109,9 +159,20 @@ class AnnonceController extends Controller
     }
 
 
-    public function apiannoncesbycity(occupation $occupation,categoryoccupation $categoryoccupation,$city)
+    public function apiannoncesbyoccupationcity(occupation $occupation,categoryoccupation $categoryoccupation,city $city)
     {
-        $annoncecity = city::whereSlug($city)->with([
+        $annoncecity = city::whereSlug($city->slug)
+         ->withCount(['annonces' => function ($q) use ($occupation,$categoryoccupation,$city){
+            $q->where(['status' => 1])
+                ->with('user','occupation','city','categoryoccupation')
+                ->whereIn('occupation_id',[$occupation->id])
+                ->whereIn('categoryoccupation_id',[$categoryoccupation->id])
+                ->whereIn('city_id',[$city->id])
+                ->whereHas('city', function ($q) {$q->where('status',1);})
+                ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                    $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+        }])->with([
             'annonces' => function ($q) use ($occupation,$categoryoccupation){
                 $q->where(['status' => 1])
                     ->with('user','occupation','city','categoryoccupation')

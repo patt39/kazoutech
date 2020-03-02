@@ -160,6 +160,7 @@ class AnnonceSiteByOccupationCity extends Component {
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h3 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h3>
+                                                        
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">

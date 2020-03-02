@@ -249,6 +249,14 @@ class MultiplesRouteController extends Controller
     }
 
 
+    public function annoncesbycityslug(city $city)
+    {
+        return view('user.annonce.annonce_by_city',[
+            'city' => $city,
+        ]);
+    }
+
+
     public function annoncesbycity($occupation,$categoryoccupation,city $city, annonce $annonce)
     {
         return view('user.annonce.annonce_by_city',[
@@ -284,6 +292,8 @@ class MultiplesRouteController extends Controller
             'city' => $city,
         ]);
     }
+
+
     public function apicharbonneursbycity($city)
     {
         $charbonneursbycity = new CityResource(city::whereSlug($city)->firstOrFail());

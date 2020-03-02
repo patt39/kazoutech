@@ -100,13 +100,18 @@ class AnnonceSiteByOccupation extends Component {
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        Restez à l'affût de toutes les annonces de <b>{annoncebyoccupation.name}</b> sur Kazoutech
+                                    Annonces <b>{annoncebyoccupation.name}</b> au Cameroun
                                     </h4>
                                     <div className="author">
                                         <Link to={'/annonces/'} className="text-white">
-                                            <i className="fa fa-chevron-circle-left"/> Retour Annonces
+                                            <i className="fa fa-chevron-circle-left"/> Retour aux annonces
                                         </Link>
                                     </div>
+                                    <br/>
+                                    <span>Toutes les annonces <b style={{textTransform: "lowercase"}}>{annoncebyoccupation.name}</b> au Cameroun</span>
+                                    <br/>
+                                    <span>{annoncebyoccupation.annonces_count} {annoncebyoccupation.annonces_count > 1 ? "annonces" : "annonce"} <b style={{textTransform: "lowercase"}}>{annoncebyoccupation.name}</b> au Cameroun</span> 
+      
                                 </div>
                             </div>
                         </div>
@@ -131,10 +136,9 @@ class AnnonceSiteByOccupation extends Component {
                                                 <br/>
                                                 <div className="row">
 
-                                                    <div className="col-md-4">
+                                                    <div className="col-lg-4 col-md-12 mx-auto">
 
-                                                        <div className="card mb-3">
-                                                            <div className="card-header h6">Categories</div>
+                                                        <div className="card mb-3"><div className="card-header h6" style={{ textTransform: "capitalize" }}>Annonces {annoncebyoccupation.name}</div>
                                                             <div className="card-body">
                                                                 <ul className="list-unstyled">
                                                                     {annoncebycategoryoccupations.map((item) => (
@@ -155,8 +159,10 @@ class AnnonceSiteByOccupation extends Component {
 
                                                     </div>
 
-                                                    <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h3 className="display-3 mb-5"><b>Toutes les annonces de {annoncebyoccupation.name}</b></h3>
+                                                    <div className="col-lg-8 col-md-12 mx-auto">
+                                                        <h4 className="title">
+                                                            Toutes les annonces <b>{annoncebyoccupation.name}</b>
+                                                        </h4>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">

@@ -186,29 +186,8 @@ class AnnonceSiteShow extends Component {
         return (
 
             <div className="blog-posts">
-                <NavUserSIte/>
+
                 <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
-                        <div className="page-header-image"
-                             style={{backgroundImage: "url(" + annonce.occupation.photo + ")"}}/>
-                        <div className="container">
-                            <div className="header-body text-center mb-7">
-                                <div className="row justify-content-center">
-                                    <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                        <Link to={`/annonces/${annonce.occupation.slug}/`} className="text-white">
-                                            <h1 className="text-white">{annonce.occupation.name} </h1>
-                                        </Link>
-                                        <div className="author">
-                                            <Link to={'/annonces/'} className="text-white">
-                                                <i className="fa fa-chevron-circle-left"/> Retour Annonces
-                                            </Link>
-                                        </div>
-                                        <p className="text-lead text-white">{annonce.title}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className="main main-raised">
                         <div className="container">
                             <div className="row">
@@ -217,6 +196,7 @@ class AnnonceSiteShow extends Component {
                                         <h3 className="title text-white mt-3">Order summary</h3>
                                         <div className="row">
 
+                                            {/*
                                             {annonceinderesses.length > 0 ?
                                             <div className="card">
                                                 <div className="card-header h6">Regarder aussi</div>
@@ -226,6 +206,8 @@ class AnnonceSiteShow extends Component {
                                                     ))}
                                                 </div>
                                             </div>:null}
+                                            */}
+
                                         </div>
 
                                     </div>
