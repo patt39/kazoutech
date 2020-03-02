@@ -46,9 +46,13 @@ class OccupationController extends Controller
     }
 
 
-    public function apioccupationbyslug($slug)
+    public function apioccupationbyslug(occupation $occupation)
     {
-        $occupation = new OccupationResource(occupation::whereSlug($slug)->firstOrFail());
+        $occupation = occupation::whereSlug($occupation->slug)->with([
+                'categoryoccupations' => function ($q) use ($occupation){
+                    $q->with('user','occupation')->orderBy('created_at','DESC')
+                        ->distinct()->get()->toArray();},])
+            ->first();;
 
         return response()->json($occupation,200);
     }

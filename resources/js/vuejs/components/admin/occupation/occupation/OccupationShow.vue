@@ -90,7 +90,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in occupation.categoryoccupationsadmin" :key="item.id">
+                                            <tr v-for="item in occupation.categoryoccupations" :key="item.id">
                                                 <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
                                                 <td><b>{{item.name}}</b></td>
                                                 <td>
@@ -147,7 +147,7 @@
                 loaded: false,
                 user: {},
                 occupation: {
-                    categoryoccupationsadmin: {
+                    categoryoccupations: {
                         occupation:'',
                     }
                 },
