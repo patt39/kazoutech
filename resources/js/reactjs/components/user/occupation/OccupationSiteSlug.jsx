@@ -11,7 +11,7 @@ class OccupationSiteSlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupation: {categoryoccupations: [], blogs: [],blogbyoccupations: []},
+            occupation: {categoryoccupations: [], blogs: []},
         }
     }
 
@@ -25,8 +25,8 @@ class OccupationSiteSlug extends Component {
     render() {
         const {occupation} = this.state;
         const occupationCategories = occupation.categoryoccupations;
-        const allblogbyoccupations = occupation.blogbyoccupations;
-        const composantTitle = `${occupation.name}`;
+        const allblogbyoccupations = occupation.blogs;
+        const composantTitle = `${occupation.name || "kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
 
         return (
@@ -35,7 +35,9 @@ class OccupationSiteSlug extends Component {
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <OccupationHeader {...occupation}/>
+
+                        <OccupationHeader {...this.props} {...occupation}/>
+
                         <div className="cd-section" id="accordion">
                             <div className="accordion-1">
                                 <div className="container">
@@ -43,31 +45,30 @@ class OccupationSiteSlug extends Component {
                                         <div className="container text-center">
                                             <div className="row mb-5">
                                                 <div className="col-md-8 mx-auto">
-                                                    <h3 className="display-3">Nos offres en quelque clicks choisissez
-                                                        votre
-                                                        categorie</h3>
+                                                    <h3 className="title">
+                                                       <b> Nos offres en quelques clicks choisissez le service qui vous intéresse</b>
+                                                    </h3>
                                                 </div>
                                             </div>
                                             <div className="row align-items-center">
                                                 {occupationCategories.map((item) => (
-                                                    <div key={item.id} className="col-lg-4">
-                                                        <div className="card card-background"
-                                                             style={{backgroundImage: "url(" + item.photo + ")"}}>
-                                                            <div className="card-body text-center">
-                                                                <Link
-                                                                    to={`/occupations/${occupation.slug}/${item.slug}/`}>
-                                                                    <h2 className="card-title">{item.name}</h2>
-                                                                </Link>
-                                                                <Link
-                                                                    to={`/occupations/${occupation.slug}/${item.slug}/`}
-                                                                    className={`btn btn-sm btn-${item.color.name}`}>
-                                                                    En savoir plus
-                                                                </Link>
+                                                    <div key={item.id} className="col-lg-4 mx-auto">
+                                                        <Link  to={`/occupations/${occupation.slug}/${item.slug}/`}>
+                                                            <div className="card card-background"
+                                                                 style={{backgroundImage: "url(" + item.photo + ")"}}>
+                                                                <div className="card-body text-center">
+                                                                    <Link
+                                                                        to={`/occupations/${occupation.slug}/${item.slug}/`}>
+                                                                        <h3 className="card-title">{item.name}</h3>
+                                                                    </Link>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </Link>
+
                                                     </div>
                                                 ))}
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -130,6 +131,7 @@ class OccupationSiteSlug extends Component {
                                                                 </div>
                                                             </div>
                                                         )}
+
 
                                                         <div className="row">
                                                             <div className="col-md-12">

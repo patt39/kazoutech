@@ -25,6 +25,6 @@ class AnnoncesSeed extends Seeder
 
     public function addInfoDatable()
     {
-        factory(annonce::class, 1000)->create();
+        factory(annonce::class, 3500)->create();
     }
 }

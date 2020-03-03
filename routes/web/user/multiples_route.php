@@ -30,8 +30,8 @@ Route::get('annonces/{occupation}/{categoryoccupation}/{city}/{annonce}','Multip
 Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesbyoccupationbycity')->name('occupation.occupation_city');
 
 Route::get('charbonneurs','MultiplesRouteController@charbonneurs')->name('charbonneurs');
-Route::get('charbonneurs/{city}','MultiplesRouteController@charbonneursbycity')->name('charbonneurs_by_city');
-Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
+Route::get('charbonneurs/{occupation}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
+Route::get('charbonneurs/{occupation}/{city}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
 
 Route::get('temoignages','MultiplesRouteController@temoignages')->name('temoignages');
 

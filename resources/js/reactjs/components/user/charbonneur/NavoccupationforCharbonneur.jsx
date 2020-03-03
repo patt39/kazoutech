@@ -5,34 +5,32 @@ import moment from 'moment'
 require("moment/min/locales.min");
 moment.locale('fr');
 
-class CharbonneurCityList extends Component {
+class NavoccupationforCharbonneur extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cities: [],
+            occupations: [],
         }
     }
 
 
     componentDidMount() {
-        dyaxios.get(route('api.cities_by_status')).then(response =>
-            this.setState({
-                cities: [...response.data],
-            }));
+        dyaxios.get(route('api_active.occupations')).then(response =>
+            this.setState({occupations: [...response.data],}));
     }
 
     render() {
-        const {cities} = this.state;
+        const {occupations} = this.state;
         return (
 
             <div className="card mb-3">
-                <div className="card-header h6">Les charbonneurs da la Ville de </div>
+                <div className="card-header h6"><b>Profils des charbonneurs</b> </div>
                 <div className="card-body">
                     <ul className="list-unstyled">
 
-                        {cities.map((item) => (
+                        {occupations.map((item) => (
                             <li key={item.id} className="mb-2">
-                                <NavLink to={`/charbonneurs/${this.props.slug}/${item.slug}/`}>
+                                <NavLink to={`/charbonneurs/${item.slug}/`}>
                                     {item.name}
                                 </NavLink>
                             </li>
@@ -46,4 +44,4 @@ class CharbonneurCityList extends Component {
 
 }
 
-export default CharbonneurCityList;
+export default NavoccupationforCharbonneur;

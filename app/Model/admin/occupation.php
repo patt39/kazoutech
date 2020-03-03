@@ -120,4 +120,9 @@ class occupation extends Model implements Auditable
     {
         return $this->hasMany(User::class,'city_id');
     }
+
+    public function userbyoccupations()
+    {
+        return $this->hasMany(User::class,'occupation_id');
+    }
 }

@@ -63,8 +63,11 @@ class CityController extends Controller
     {
         $cities = CityByStatusResource::collection(city::with('user')
             ->where('status',1)
-            ->orderBy('name','asc')
-            ->get());
+            ->withCount(['userbycities' => function ($q){
+                $q->with('city','occupation','profile');
+            }])
+            ->orderBy('userbycities_count','desc')
+            ->distinct()->get());
         return response()->json($cities,200);
     }
 

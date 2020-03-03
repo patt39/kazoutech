@@ -129,7 +129,9 @@ class AnnonceSiteByOccupationCity extends Component {
                                                 <br/>
                                                 <div className="row">
 
-                                                    <div className="col-md-4">
+
+
+                                                    <div className="col-lg-4 col-md-12 mx-auto">
 
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Villes</div>
@@ -158,9 +160,9 @@ class AnnonceSiteByOccupationCity extends Component {
 
                                                     </div>
 
-                                                    <div className="col-lg-8 col-md-10 mx-auto">
+                                                    <div className="col-lg-8 col-md-12 mx-auto">
                                                         <h3 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h3>
-                                                        
+
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
@@ -199,6 +201,7 @@ class AnnonceSiteByOccupationCity extends Component {
 
 
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </section>

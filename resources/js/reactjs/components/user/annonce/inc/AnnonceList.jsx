@@ -46,9 +46,10 @@ class AnnonceList extends Component {
                                 </div>
                             </div>
                             <div className="text-right ml-auto">
-                                <button type="button" className={`btn btn-sm btn-primary btn-icon`}>
+                                {/**  <button type="button" className={`btn btn-sm btn-primary btn-icon`}>
                                     <span className="badge badge-primary">{this.props.visits} vues</span>
-                                </button>
+                                </button>*/}
+                               
                                     {this.props.price && (
                                     <button type="button" className={`btn btn-sm btn-${this.props.user.color_name} btn-icon`}>
                                         <span className="btn-inner--text">{this.props.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>

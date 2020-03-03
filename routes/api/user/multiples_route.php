@@ -16,8 +16,8 @@ Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@apiannonce
 
 
 Route::get('charbonneurs','MultiplesRouteController@apicharbonneurs')->name('api_active_charbonneurs');
-Route::get('charbonneurs/{city}','MultiplesRouteController@apicharbonneursbycity')->name('api_active_charbonneurs_city.view');
-Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@apicharbonneursbyoccupation')->name('api_active_charbonneurs_occupation.view');
+Route::get('charbonneurs/{occupation}','MultiplesRouteController@apicharbonneursbyoccupation')->name('api_active_charbonneurs_occupation.view');
+Route::get('charbonneurs/{occupation}/{city}','MultiplesRouteController@apicharbonneursbyoccupationcity')->name('api_active_charbonneurs_occupation_city.view');
 
 Route::get('temoignages','MultiplesRouteController@apitemoignages')->name('api_active_testimonials');
 

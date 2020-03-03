@@ -7,6 +7,7 @@ use App\Model\admin\annonce;
 use App\Model\admin\blog;
 use App\Model\admin\city;
 use App\Model\admin\country;
+use App\Model\admin\occupation;
 use App\Model\admin\task;
 use App\Notifications\VerifyEmailUsers;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -140,6 +141,11 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     public function city()
     {
         return $this->belongsTo(city::class,'city_id');
+    }
+
+    public function occupation()
+    {
+        return $this->belongsTo(occupation::class,'occupation_id');
     }
 
     public function annonces()

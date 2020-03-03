@@ -85,6 +85,7 @@ class AnnonceController extends Controller
             ])->with([
                 'categoryoccupations' => function ($q) use ($occupation){
                     $q->where(['status' => 1])
+                        ->with('user','occupation','color')
                         ->whereIn('occupation_id',[$occupation->id])
                         ->whereHas('occupation', function ($q) {$q->where('status',1);})
                         ->orderBy('created_at','DESC')->distinct()->get()->toArray();},])

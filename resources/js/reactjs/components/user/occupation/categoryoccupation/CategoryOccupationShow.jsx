@@ -20,7 +20,7 @@ class CategoryOccupationShow extends Component {
             password: '',
             remember: true,
             errors: [],
-            categoryoccupation: {user: [], occupation: [], annoncesinteres: []}
+            categoryoccupation: {user: [], occupation: [], annonces: []}
         }
     }
 
@@ -83,8 +83,8 @@ class CategoryOccupationShow extends Component {
 
     render() {
         const {categoryoccupation} = this.state;
-        const composantTitle = `${categoryoccupation.name}`;
-        const annoncebycategoryoccupations = categoryoccupation.annoncesinteres;
+        const composantTitle = `${categoryoccupation.name || "kazoutech"}`;
+        const annoncebycategoryoccupations = categoryoccupation.annonces;
         let itemoccupation = this.props.match.params.occupation;
         document.title = `${composantTitle} | Kazoutech`;
         return (
@@ -94,7 +94,7 @@ class CategoryOccupationShow extends Component {
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <CategoryOcupationHeader {...categoryoccupation} />
+                        <CategoryOcupationHeader {...this.props} {...categoryoccupation} />
                         <div className="container">
 
                             <div className={'row'}>

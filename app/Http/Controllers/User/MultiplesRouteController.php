@@ -4,10 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
-use App\Http\Resources\CategoryOccupationResource;
 use App\Http\Resources\OccupationResource;
-use App\Http\Resources\Partial\CityResource;
-use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\Info\ConditionResource;
 use App\Http\Resources\Info\PolicyprivacyResource;
 use App\Http\Resources\Info\licencesiteResource;
@@ -102,18 +99,62 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function apioccupationbyslug($slug)
+    public function apioccupationbyslug(occupation $occupation)
     {
-        $occupation = new OccupationResource(occupation::where('status',1)
-            ->whereSlug($slug)->firstOrFail());
+        $occupation = occupation::where('status',1)
+            ->withCount(['annonces' => function ($q) use ($occupation){
+                $q->where(['status' => 1])
+                    ->with('user','occupation','city','categoryoccupation')
+                    ->whereIn('occupation_id',[$occupation->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                        $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+            }])->whereSlug($occupation->slug)
+            ->with([
+                'categoryoccupations' => function ($q) use ($occupation){
+                    $q->where(['status' => 1])
+                        ->whereIn('occupation_id',[$occupation->id])
+                        ->with('user','occupation','color')
+                        ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                        ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+                ])->with([
+                'blogs' => function ($q) use ($occupation){
+                    $q->where(['status' => 1])
+                        ->whereIn('occupation_id',[$occupation->id])
+                        ->with('occupation','user','color')
+                        ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                        ->orderBy('created_at','DESC')->take(3)->distinct()->get()->toArray();},
+                ])
+            ->first();
 
         return response()->json($occupation,200);
     }
 
 
-    public function apicategoryoccupationbyslug(occupation $occupation,$slug)
+    public function apicategoryoccupationbyslug(occupation $occupation,categoryoccupation $categoryoccupation)
     {
-        $categoryoccupation = new CategoryOccupationResource(categoryoccupation::whereSlug($slug)->first());
+        $categoryoccupation = categoryoccupation::whereSlug($categoryoccupation->slug)
+            ->with('user','occupation','color')
+            ->withCount(['annonces' => function ($q) use ($occupation){
+                $q->where(['status' => 1])
+                    ->with('user','occupation','city','categoryoccupation')
+                    ->whereIn('occupation_id',[$occupation->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                        $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+            }])->with([
+                'annonces' => function ($q) use ($occupation,$categoryoccupation){
+                    $q->where(['status' => 1])
+                        ->with('user','occupation','city','categoryoccupation')
+                        ->whereIn('occupation_id',[$occupation->id])
+                        ->whereIn('categoryoccupation_id',[$categoryoccupation->id])
+                        ->whereHas('city', function ($q) {$q->where('status',1);})
+                        ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                        ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                        ->orderBy('created_at','DESC')->take(3)->distinct()->get()->toArray();},
+            ])->first();
 
         return response()->json($categoryoccupation,200);
     }
@@ -195,15 +236,6 @@ class MultiplesRouteController extends Controller
         return response()->json($blogs,200);
     }
 
-    //public function apilastblogsinteresse(occupation $occupation)
-    //{
-    //    $blogs = BlogResource::collection(blog::where('status',1)
-    //        ->whereIn('occupation_id',$occupation)
-    //        ->with('user','occupation','color')
-    //        ->latest()->get());
-    //    return response()->json($blogs,200);
-    //}
-
     public function apilastblogsinteresse(occupation $occupation)
     {
         $blogsinteresse = BlogResource::collection(blog::where('status',1)
@@ -280,41 +312,75 @@ class MultiplesRouteController extends Controller
 
     public function apicharbonneurs()
     {
-        $charbonneurs = UserResource::collection(User::where('charbonneur',1)->with('city')
-            ->orderBy('created_at', 'DESC')->paginate(10));
+        $charbonneurs = UserResource::collection(User::where('charbonneur',1)
+            ->with('city')
+            ->whereHas('city', function ($q) {$q->where('status',1);})
+            ->orderBy('created_at', 'DESC')->paginate(40));
 
         return response()->json($charbonneurs,200);
     }
 
-    public function charbonneursbycity(city $city)
-    {
-        return view('user.charbonneur.charbonneurs_by_city',[
-            'city' => $city,
-        ]);
-    }
-
-
-    public function apicharbonneursbycity($city)
-    {
-        $charbonneursbycity = new CityResource(city::whereSlug($city)->firstOrFail());
-
-        return response()->json($charbonneursbycity,200);
-    }
-
-    public function charbonneursbyoccupation($city,occupation $occupation)
+    public function charbonneursbyoccupation(occupation $occupation)
     {
         return view('user.charbonneur.charbonneurs_by_occupation',[
             'occupation' => $occupation,
         ]);
     }
 
-    public function apicharbonneursbyoccupation($city,$occupation)
+
+    public function apicharbonneursbyoccupation(occupation $occupation)
     {
-        $charbonneursbyoccupation = new OccupationResource(occupation::whereSlug($occupation)->firstOrFail());
+        $charbonneursbyoccupation= occupation::whereSlug($occupation->slug)->with('user')
+
+            ->withCount(['userbyoccupations' => function ($q) use ($occupation){
+                $q->with('city','occupation','profile')
+                    ->whereIn('occupation_id',[$occupation->id])
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('city', function ($q) {$q->where('status',1);});
+            }])->with([
+            'userbyoccupations' => function ($q) use ($occupation){
+                $q->with('city','occupation','profile')
+                    ->whereIn('occupation_id',[$occupation->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                    ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+            ])
+            ->firstOrFail();
 
         return response()->json($charbonneursbyoccupation,200);
     }
 
+    public function apicharbonneursbyoccupationcity(occupation $occupation,city $city)
+    {
+        $charbonneursbyoccupationcity = city::whereSlug($city->slug)->with('user')
+
+            ->withCount(['userbycities' => function ($q) use ($occupation,$city){
+                $q->with('city','occupation','profile')
+                    ->whereIn('occupation_id',[$occupation->id])
+                    ->whereIn('city_id',[$city->id])
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('city', function ($q) {$q->where('status',1);});
+            }])->with([
+                'userbycities' => function ($q) use ($occupation,$city){
+                    $q->with('city','occupation','profile')
+                        ->whereIn('occupation_id',[$occupation->id])
+                        ->whereIn('city_id',[$city->id])
+                        ->whereHas('city', function ($q) {$q->where('status',1);})
+                        ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                        ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+            ])
+            ->firstOrFail();
+
+        return response()->json($charbonneursbyoccupationcity,200);
+    }
+
+    public function charbonneursbycity(occupation $occupation,city $city)
+    {
+        return view('user.charbonneur.charbonneurs_by_city',[
+            'city' => $city,
+        ]);
+    }
+    
     public function temoignages()
     {
         return view('user.page.testimonialsite');

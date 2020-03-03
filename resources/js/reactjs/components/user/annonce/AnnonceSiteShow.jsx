@@ -180,40 +180,42 @@ class AnnonceSiteShow extends Component {
 
     render() {
         const {annonce,annonceinteressebycategoryoccupation} = this.state;
-        const composantTitle = `${annonce.title}`;
+        const composantTitle = `${annonce.title || "kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
         const annonceinderesses = annonceinteressebycategoryoccupation.annoncesinteres;
         return (
 
-            <div className="blog-posts">
+            <div className="landing-page">
+                <NavUserSIte/>
 
+                <div className="wrapper">
+                    <div className="page-header page-header-mini header-filter">
+                        <div className="page-header-image"
+                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-10 mx-auto text-center">
+                                    <h4 className="title text-white">
+                                        {annonce.title}
+                                    </h4>
+                                    <div className="author">
+
+                                        <a href="#" onClick={this.props.history.goBack} className="text-white">
+                                            <i className="fa fa-chevron-circle-left"/> <b>Retour au annonces </b>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="wrapper">
                     <div className="main main-raised">
                         <div className="container">
+                            <br/>
                             <div className="row">
-                                <div className="col-lg-4">
-                                    <div className="container">
-                                        <h3 className="title text-white mt-3">Order summary</h3>
-                                        <div className="row">
 
-                                            {/*
-                                            {annonceinderesses.length > 0 ?
-                                            <div className="card">
-                                                <div className="card-header h6">Regarder aussi</div>
-                                                <div className="card-body">
-                                                    {annonceinderesses.map((item) => (
-                                                        <AnnoncePostInteresse key={item.id} {...item}/>
-                                                    ))}
-                                                </div>
-                                            </div>:null}
-                                            */}
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div className="col-md-8 mx-auto">
+                                <div className="col-md-8">
                                     <div className="card">
                                         <div className="card-header">
                                             <h5 className="h3 mb-0">{annonce.title}</h5>
@@ -231,7 +233,13 @@ class AnnonceSiteShow extends Component {
                                                 </div>
                                             </div>
                                             <div className="text-right ml-auto">
-                                                <span className="badge badge-primary">{annonce.visits} vues</span>
+                                                {/*
+                                                  <span className="badge badge-primary">{annonce.visits} vues</span>
+                                                */}
+                                                {annonce.price && (
+                                                    <button type="button" className={`btn btn-sm btn-${annonce.user.color_name} btn-icon`}>
+                                                        <span className="btn-inner--text">{annonce.price.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} FCFA</span>
+                                                    </button>)}
 
                                                 {!$guest && (
                                                     <>
@@ -288,6 +296,80 @@ class AnnonceSiteShow extends Component {
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div className="col-md-4 ">
+                                    <div className="container">
+
+                                        <div className="submit text-center">
+                                            <a href="#" className="btn btn-icon btn-3 btn-primary" >
+                                                <span className="btn-inner--text">Proposer mes services</span>
+                                            </a>
+                                        </div>
+                                        <br/>
+
+
+                                        <div className="card">
+                                            <div className="card-header d-flex align-items-center">
+                                                <div className="d-flex align-items-center">
+                                                    <a href="#">
+                                                        <img src="/assets/vendor_site/img/pages/photo-15.jpg" className="avatar"/>
+                                                    </a>
+                                                    <div className="mx-3">
+                                                        <Link to={`/`}
+                                                           className="text-dark font-weight-600 text-sm">Informa Koije</Link>
+                                                        <small className="d-block text-muted">3 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="card-body">
+                                                <p className="mb-1">
+                                                    Personal profiles are the perfect way for you to grab their
+                                                    attention and persuade recruiters to continue reading your CV
+                                                </p>
+                                            </div>
+                                            <div className="card-header d-flex align-items-center">
+                                                <div className="d-flex align-items-center">
+                                                    <a href="#">
+                                                        <img src="/assets/vendor_site/img/pages/photo-15.jpg" className="avatar"/>
+                                                    </a>
+                                                    <div className="mx-3">
+                                                        <Link to={`/`}
+                                                           className="text-dark font-weight-600 text-sm">Boclair Temgoua</Link>
+                                                        <small className="d-block text-muted">3 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="card-body">
+                                                <p className="mb-1">
+                                                    Personal profiles are the perfect way for you to grab their
+                                                    attention and persuade recruiters to continue reading your CV
+                                                </p>
+                                            </div>
+                                            <div className="card-header d-flex align-items-center">
+                                                <div className="d-flex align-items-center">
+                                                    <a href="#">
+                                                        <img src="/assets/vendor_site/img/pages/photo-15.jpg" className="avatar"/>
+                                                    </a>
+                                                    <div className="mx-3">
+                                                        <Link to={`/`}
+                                                           className="text-dark font-weight-600 text-sm">Kokiko</Link>
+                                                        <small className="d-block text-muted">3 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="card-body">
+                                                <p className="mb-1">
+                                                    Personal profiles are the perfect way for you to grab their
+                                                    attention and persuade recruiters to continue reading your CV
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
 
                             </div>
                         </div>
