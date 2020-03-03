@@ -30,9 +30,9 @@
 <script src="/assets/dashboard/assets/js/plugins/bootstrap-notify.js"></script>
 <!-- JavaScript KazouTech -->
 
-<!--
+
 <script src="/assets/js/kazoutech.js"></script>
--->
+
 
 
 <script src="{{ mix('/js/vuejs/axios.js') }}"></script>

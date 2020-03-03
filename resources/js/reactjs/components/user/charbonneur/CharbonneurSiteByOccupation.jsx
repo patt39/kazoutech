@@ -38,7 +38,7 @@ class CharbonneurSiteByOccupation extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
-                                    <h4 className="title text-white">Charbonneurs en <b style={{ textTransform: "lowercase" }}> {charbonneursbyoccupation.name}</b> au Cameroun </h4>
+                                    <h4 className="title text-white">Trouver le meilleur <b style={{ textTransform: "lowercase" }}> {charbonneursbyoccupation.name}</b> au Cameroun </h4>
                                     <div className="description">
                                         <Link to={'/charbonneurs/'} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> Tous les charbonneurs
@@ -46,6 +46,11 @@ class CharbonneurSiteByOccupation extends Component {
                                     </div>
                                     <div className="text-white">
                                         <span>{charbonneursbyoccupation.userbyoccupations_count} {charbonneursbyoccupation.userbyoccupations_count > 1 ? "charbonneurs" : "charbonneur"} <b style={{ textTransform: "lowercase" }}> {charbonneursbyoccupation.name}</b></span>
+                                    </div>
+                                    <div className="mt-3">
+                                        <Link to={`/occupations/${charbonneursbyoccupation.slug}/`} className="btn btn-lg btn-primary">
+                                            Demander un service {charbonneursbyoccupation.name}
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +67,7 @@ class CharbonneurSiteByOccupation extends Component {
 
 
                                 </div>
-                                <div className="col-lg-8 mx-auto mt-4">
+                                <div className="col-md-8 ">
                                     <div className="row">
 
                                         {users.map((item) => (

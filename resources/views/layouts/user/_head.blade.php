@@ -38,9 +38,8 @@
 <link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.2" rel="stylesheet" />
 <!-- Customize KazouTech Styles -->
 
-<!--
 <link href="/assets/css/kazoutech.css" rel="stylesheet" />
--->
+
 
 
 
