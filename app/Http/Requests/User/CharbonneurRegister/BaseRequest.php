@@ -31,7 +31,10 @@ class BaseRequest extends Request
                 'name' => 'required|string|min:2|max:100',
                 'day' => 'required|numeric|digits_between:1,2',
                 'month' => 'required|numeric|digits_between:1,2',
-                'year' => 'required|numeric|digits_between:4,4',
+                '
+                
+                
+                ' => 'required|numeric|digits_between:4,4',
                 'city_id' => 'required',
                 'sex' => 'required',
                 'occupation_id' => 'required',

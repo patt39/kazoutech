@@ -243,7 +243,7 @@ class ContactUserSite extends Component {
                                             className="icon icon-shape icon-shape-primary icon-lg shadow rounded-circle text-primary">
                                             <i className="ni ni-square-pin"/>
                                         </div>
-                                        <h4 className="info-title">Contact</h4>
+                                        <h4 className="info-title">Office</h4>
                                         <p className="description px-0">Kazoutech Srl, Milan / Italy </p>
                                     </div>
                                 </div>

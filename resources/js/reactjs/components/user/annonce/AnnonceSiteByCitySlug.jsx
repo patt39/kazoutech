@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import {Link,NavLink} from "react-router-dom";
+import NavAnnoncesByCities from "./inc/NavAnnoncesByCities";
 
-class AnnonceSiteByCity extends Component {
+class AnnonceSiteByCitySlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,13 +74,13 @@ class AnnonceSiteByCity extends Component {
     // lifecycle method
     componentDidMount() {
         let SlugCity = this.props.match.params.city;
-        dyaxios.get(route('api_annonce_by_city_site.view',SlugCity))
+        dyaxios.get(route('api_annonces_by_city_slug_site.view',SlugCity))
             .then(response => this.setState({annoncebycity: response.data,}));
         dyaxios.get(route('api_active.occupations')).then(response => this.setState({occupations: [...response.data],}));
     }
 
     render() {
-        const {annoncebycity,occupations} = this.state;
+        const {annoncebycity} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
         document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
@@ -122,26 +123,15 @@ class AnnonceSiteByCity extends Component {
                                                 <br/>
                                                 <div className="row">
                                                     <div className="col-md-4">
-                                                        <div className="card mb-3">
-                                                            <div className="card-header h6">Occupations</div>
-                                                            <div className="card-body">
-                                                                <ul className="list-unstyled">
 
-                                                                    {occupations.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            <NavLink to={`/annonces/${item.slug}/v/${annoncebycity.slug}`}>
-                                                                                {item.name}
-                                                                            </NavLink>
-                                                                        </li>
-                                                                    ))}
 
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+
+                                                        <NavAnnoncesByCities/>
+
                                                     </div>
 
                                                     <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h5>
+                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces dans la ville de {annoncebycity.name}</b></h5>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
@@ -198,4 +188,4 @@ class AnnonceSiteByCity extends Component {
 
 }
 
-export default AnnonceSiteByCity;
+export default AnnonceSiteByCitySlug;

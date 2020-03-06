@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import AnnonceOccupationList from "./AnnonceOccupationList";
 import AnnonceCityList from "./AnnonceCityList";
+import NavAnnoncesByCities from "./inc/NavAnnoncesByCities";
 
 
 class AnnonceSiteIndex extends Component {
@@ -113,7 +114,7 @@ class AnnonceSiteIndex extends Component {
                                                 <div className="row">
                                                     <div className="col-md-4">
                                                         <AnnonceOccupationList/>
-                                                        <AnnonceCityList/>
+                                                        <NavAnnoncesByCities/>
                                                     </div>
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h3 className="display-3 mb-5"><b>Toutes les annonces</b></h3>
@@ -138,7 +139,7 @@ class AnnonceSiteIndex extends Component {
                                                                         className="h5 font-weight-normal mb-3 text-primary">Envie
                                                                         de charbonner ?</p><a
                                                                         className="btn btn-primary btn-break"
-                                                                        href="/devenez_charbonneur">Devenir
+                                                                        href={'/devenir_charbonneur/'}>Devenir
                                                                         Charbonneur</a></div>
                                                                 </div>
                                                             </div>

@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import FooterUserSite from "../../inc/FooterUserSite";
-import NavUserSIte from "../../inc/NavUserSIte";
-import SubscribeLine from "../SubscribeLine";
-
 
 class AboutMemberList extends Component {
     constructor(props) {

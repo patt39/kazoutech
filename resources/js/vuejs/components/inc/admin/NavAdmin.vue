@@ -338,6 +338,12 @@
                             <p><b>Annonces</b></p>
                         </router-link>
                     </li>
+                     <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/annonces/assigned' }" class="nav-link">
+                            <i class="material-icons">assignment</i>
+                            <p><b>Annonces assigned</b></p>
+                        </router-link>
+                    </li>
                     <!-- Documentation -->
                     <li class="nav-item">
                         <router-link  :to="{ path: '/dashboard/documentations/' }" class="nav-link">

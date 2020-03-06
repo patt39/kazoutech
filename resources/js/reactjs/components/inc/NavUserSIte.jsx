@@ -20,7 +20,7 @@ class NavUserSIte extends Component {
     render() {
 
         return (
-            <nav id="navbar-main" className="navbar navbar-main navbar-expand-md navbar-transparent headroom">
+            <nav className="navbar navbar-expand-md fixed-top navbar-transparent " color-on-scroll="400">
                 <div className={'container'}>
                     <Link to={'/'} className="navbar-brand mr-lg-5">
                         <img src=".." alt={'Kazoutech'}/>

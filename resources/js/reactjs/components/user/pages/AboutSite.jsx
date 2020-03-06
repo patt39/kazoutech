@@ -74,7 +74,7 @@ class AboutSite extends Component {
                                                         className="icon icon-shape bg-info shadow rounded-circle text-primary">
                                                         <i className="ni ni-palette text-white"></i>
                                                     </div>
-                                                    <h5 className="info-title">perspectives de travail</h5>
+                                                    <h5 className="info-title">Perspectives de travail</h5>
                                                     <p className="description text-justify">
                                                         Nous permettons à des gens de se simplifier la vie et à d’autres de changer leur réalité économique pour la rendre plus confortable.
                                                         Nous nous assurons du bon déroulement de votre tâche tout en respectant les consignes de
@@ -92,7 +92,7 @@ class AboutSite extends Component {
                                                     <h5 className="info-title">Transparence</h5>
                                                     <p className="description text-justify">En choisissant KazouTech, vous choisissez la sérénité.
                                                         Nous vous accompagnons de l’expression de votre besoin à la réalisation de celui-ci en vous permettant
-                                                        de rencontrer des Charbonneurs (Prestataires de service) dans un cade légal et sécurisé.</p>
+                                                        de rencontrer des Charbonneurs (Prestataires de service) dans un cadre légal et sécurisé.</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">

@@ -46,9 +46,13 @@ class OccupationController extends Controller
     }
 
 
-    public function apioccupationbyslug($slug)
+    public function apioccupationbyslug(occupation $occupation)
     {
-        $occupation = new OccupationResource(occupation::whereSlug($slug)->firstOrFail());
+        $occupation = occupation::whereSlug($occupation->slug)->with([
+                'categoryoccupations' => function ($q) use ($occupation){
+                    $q->with('user','occupation')->orderBy('created_at','DESC')
+                        ->distinct()->get()->toArray();},])
+            ->first();;
 
         return response()->json($occupation,200);
     }
@@ -78,7 +82,12 @@ class OccupationController extends Controller
 
     public function activestatus()
     {
-        $occupations = OccupationResource::collection(occupation::where('status',1)->latest()->get());
+        $occupations = occupation::where('status',1)->with('user')
+            ->withCount(['userbyoccupations' => function ($q){
+                $q->with('city','occupation','profile')
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);});
+            }])->orderBy('userbyoccupations_count','DESC')->get();
 
         return response()->json($occupations,200);
     }

@@ -114,6 +114,11 @@
                                                     <button  @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
                                                     </button>
+                                                    <router-link :to="{ name: 'annonces.assignment' }" class="restore-lk btn btn-primary btn-just-icon btn-sm" title="Assigne task">
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">reply</i>
+                                                    </span>
+                                                    </router-link>
                                                     <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>

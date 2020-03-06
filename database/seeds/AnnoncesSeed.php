@@ -3,6 +3,7 @@
 use App\Model\admin\annonce;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
+use App\Model\admin\taskuserassign;
 use App\Model\user\User;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -26,5 +27,6 @@ class AnnoncesSeed extends Seeder
     public function addInfoDatable()
     {
         factory(annonce::class, 500)->create();
+        factory(taskuserassign::class, 3500)->create();
     }
 }

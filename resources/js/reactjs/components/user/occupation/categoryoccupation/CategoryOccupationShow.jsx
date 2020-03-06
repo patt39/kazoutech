@@ -3,9 +3,7 @@ import NavUserSIte from "../../../inc/NavUserSIte";
 import {Link, NavLink} from 'react-router-dom';
 import FooterUserSite from "../../../inc/FooterUserSite";
 import CategoryOcupationHeader from "./CategoryOcupationHeader";
-import CitySite from "../../city/CitySite";
 import CategoryOcupationInteressList from "./CategoryOcupationInteressList";
-import AnnonceList from "../../annonce/AnnonceList";
 
 
 class CategoryOccupationShow extends Component {
@@ -22,7 +20,7 @@ class CategoryOccupationShow extends Component {
             password: '',
             remember: true,
             errors: [],
-            categoryoccupation: {user: [], occupation: [], annoncesinteres: []}
+            categoryoccupation: {user: [], occupation: [], annonces: []}
         }
     }
 
@@ -85,8 +83,8 @@ class CategoryOccupationShow extends Component {
 
     render() {
         const {categoryoccupation} = this.state;
-        const composantTitle = `${categoryoccupation.name}`;
-        const annoncebycategoryoccupations = categoryoccupation.annoncesinteres;
+        const composantTitle = `${categoryoccupation.name || "kazoutech"}`;
+        const annoncebycategoryoccupations = categoryoccupation.annonces;
         let itemoccupation = this.props.match.params.occupation;
         document.title = `${composantTitle} | Kazoutech`;
         return (
@@ -96,7 +94,7 @@ class CategoryOccupationShow extends Component {
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <CategoryOcupationHeader {...categoryoccupation} />
+                        <CategoryOcupationHeader {...this.props} {...categoryoccupation} />
                         <div className="container">
 
                             <div className={'row'}>
@@ -228,7 +226,7 @@ class CategoryOccupationShow extends Component {
                                                     </div>
                                                     <div className="row mt-3">
                                                         <div className="col-6">
-                                                            <a className="text-light" href="..">
+                                                            <a className="text-light" href="/password/reset/">
                                                                 <small>Mot de passe oublié</small>
                                                             </a>
                                                         </div>

@@ -143,31 +143,87 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
             <div className="checkout-page">
                 <NavUserSIte />
                 <div className="wrapper">
-
-                    <div className="page-header kazouTech-page-header-mini header-filter">
+                    <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
-                             style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}></div>
+                             style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}/>
                         <div className="container">
-                            <div className="row">
-                                <div className="col-lg-10 mx-auto text-center">
-                                    <h3 className="display-3 text-white">Annonce</h3>
-                                    <h5 className="text-white">{this.state.title}</h5>
-                                    <div className="mt-4 mb-4 text-center social-container">
-                                        <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
-                                            <i className="fa fa-chevron-circle-left"/> Retour {categoryoccupationdata.name}
-                                        </a>
+                            <div className="header-body text-center mb-7">
+                                <div className="row justify-content-center">
+                                    <div className="col-xl-5 col-lg-6 col-md-8 px-5">
+                                        <Link to={`/annonces/`} className="text-white">
+                                            <h5 className="text-white">{this.state.title}</h5>
+                                        </Link>
+                                        <div className="author">
+                                            <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
+                                                <i className="fa fa-chevron-circle-left"/> Retour {categoryoccupationdata.name}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div className="main main-raised">
                         <div className="container">
                             <form className="js-validate" onSubmit={this.createItem}>
                                 <div className="row">
+                                    <div className="col-lg-4">
+                                        <div className="container">
+                                            <h3 className="title text-white mt-3">{categoryoccupationdata .name}</h3>
+                                            <div className="row">
+                                                <div className="card">
+                                                    <div className="card-body">
+                                                        <div className="media align-items-center">
+                                                            <div className="media-body">
+                                                                <h2 className="h6">Prix</h2>
+                                                                <small className="d-block opacity-8">Prix proposer</small>
+                                                            </div>
+                                                            <div className="media-body text-right">
+                                                                {this.state.price ?
+                                                                    <span><b>{this.state.price} CFA</b></span>
+                                                                    :null}
+                                                            </div>
+                                                        </div>
+                                                        <hr className="line-info mb-3" />
+                                                        <div className="code-validate">
+                                                            <label>Proposez un prix</label>
+                                                            <div className="input-group">
+                                                                <input type="number"  className={`form-control ${this.hasErrorFor('price') ? 'is-invalid' : ''}`}
+                                                                       name="price" placeholder="Proposez un prix"
+                                                                       value={this.state.price}
+                                                                       onChange={this.handleFieldChange}
+                                                                       aria-label="Proposez un prix pour cette annonce" />
+                                                                {this.renderErrorFor('price')}
+                                                            </div>
+                                                        </div>
+                                                        <hr className="line-info mb-3" />
+                                                        <div className="media align-items-center">
+                                                            <h3 className="h6 opacity-8 mr-3">Subtotal</h3>
+                                                            <div className="media-body text-right">
+                                                                <span>$1038</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media align-items-center">
+                                                            <h3 className="h6 opacity-8 mr-3">Shipping</h3>
+                                                            <div className="media-body text-right">
+                                                                <span>$5.8</span>
+                                                            </div>
+                                                        </div>
+                                                        <hr className="line-info mb-3" />
+                                                        <div className="media align-items-center">
+                                                            <h3 className="h6">Total</h3>
+                                                            <div className="media-body text-right">
+                                                                <span
+                                                                    className="font-weight-semi-bold">$1045.8</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <div className="col-md-10 mx-auto">
+                                    <div className="col-md-8 mx-auto">
                                         <div className="card">
                                             <div className="container">
                                                 <h3 className="title mt-3">{this.state.title}</h3>
@@ -178,11 +234,11 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                             <span className="text-danger">*</span>
                                                         </label>
                                                         <input type="text" placeholder="Titre de votre annonce" aria-label="Titre de l'annonce"
-                                                            required="required"
-                                                            className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
-                                                            name='title'
-                                                            value={this.state.title}
-                                                            onChange={this.handleFieldChange}
+                                                               required="required"
+                                                               className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
+                                                               name='title'
+                                                               value={this.state.title}
+                                                               onChange={this.handleFieldChange}
                                                         />
                                                         {this.renderErrorFor('title')}
                                                     </div>
@@ -196,8 +252,8 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <select name={'city_id'} value={this.state.city_id}
-                                                                className={`form-control`}
-                                                                id="city_id" onChange={this.handleFieldChange}>
+                                                                    className={`form-control`}
+                                                                    id="city_id" onChange={this.handleFieldChange}>
                                                                 <option value="" disabled>Selectioner une ville</option>
                                                                 {cities.map((item) => (
                                                                     <option key={item.id} value={item.id}>{item.name}</option>
@@ -212,16 +268,16 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                     <div className="col-md-7">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Votre addresse de residance.
-                                                                    <span className="text-danger">*</span>
+                                                                Votre addresse de residance
+                                                                <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="text"
-                                                                className={`form-control ${this.hasErrorFor('address') ? 'is-invalid' : ''}`}
-                                                                name="address"
-                                                                placeholder="Biyem-Assi"
-                                                                aria-label="420 Long Beach, CA" required="required"
-                                                                defaultValue={this.state.address}
-                                                                onChange={this.handleFieldChange}
+                                                                   className={`form-control ${this.hasErrorFor('address') ? 'is-invalid' : ''}`}
+                                                                   name="address"
+                                                                   placeholder="Biyem-Assi"
+                                                                   aria-label="420 Long Beach, CA" required="required"
+                                                                   defaultValue={this.state.address}
+                                                                   onChange={this.handleFieldChange}
                                                             />
                                                             {this.renderErrorFor('title')}
                                                         </div>
@@ -233,11 +289,11 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="tel" className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}
-                                                                placeholder="Numero de telephone valide"
-                                                                aria-label="Numero de telephone valide"
-                                                                name={'phone'}
-                                                                value={this.state.phone}
-                                                                onChange={this.handleFieldChange}
+                                                                   placeholder="Numero de telephone valide"
+                                                                   aria-label="Numero de telephone valide"
+                                                                   name={'phone'}
+                                                                   value={this.state.phone}
+                                                                   onChange={this.handleFieldChange}
                                                             />
                                                             {this.renderErrorFor('phone')}
                                                         </div>

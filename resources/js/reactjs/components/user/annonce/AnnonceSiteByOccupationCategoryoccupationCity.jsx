@@ -1,18 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
-import {Link, NavLink} from "react-router-dom";
+import AnnonceList from "./inc/AnnonceList";
+import { Link, NavLink } from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
-import moment from "moment";
-import {Button} from "reactstrap";
 
 
 class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annoncebycity: {annonces: []},
+            annoncebycity: { annonces: [] },
+            annoncebycategoryoccupation: [],
+            catagoryoccupations: [],
             cities: [],
         };
 
@@ -43,9 +43,9 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                     this.props.history.push('/annonces/');
                     /** Alert notify bootstrapp **/
                     $.notify({
-                            // title: 'Update FAQ',
-                            message: 'Annonce suprimée avec success'
-                        },
+                        // title: 'Update FAQ',
+                        message: 'Annonce suprimée avec success'
+                    },
                         {
                             allow_dismiss: false,
                             type: 'primary',
@@ -85,44 +85,54 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                 this.setState({
                     annoncebycity: response.data,
                 }));
-        dyaxios.get(route('api.cities_by_vip')).then(response =>
+        dyaxios.get(route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]))
+            .then(response =>
+                this.setState({
+                    annoncebycategoryoccupation: response.data,
+                }));
+        dyaxios.get(route('api.apiannoncesbycategoryoccupationcountbycity', [SlugOccupation, SlugCategoryoccupation])).then(response =>
             this.setState({
                 cities: [...response.data],
+            }));
+        dyaxios.get(route('apiannoncesbyoccupationcount.view', [SlugOccupation, SlugCategoryoccupation])).then(response =>
+            this.setState({
+                catagoryoccupations: [...response.data],
             }));
     }
 
     render() {
-        const {annoncebycity, cities} = this.state;
+        const { annoncebycity, annoncebycategoryoccupation, cities, catagoryoccupations } = this.state;
         const annoncebycities = annoncebycity.annonces;
-        const composantTitle = `${annoncebycity.name}`;
-        document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
+        const composantTitle = `${annoncebycity.name || "kazoutech"}`;
+        document.title = `Annonce ${annoncebycategoryoccupation.name || ""} dans la ville de ${composantTitle} | Kazoutech`;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCity = this.props.match.params.city;
         return (
             <div className="blog-post">
-                <NavUserSIte/>
+                <NavUserSIte />
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
-                             style={{backgroundImage: "url(" + annoncebycity.photo + ")"}}/>
+                            style={{ backgroundImage: "url(" + annoncebycity.photo + ")" }} />
                         <div className="content-center">
-                            <div className="row">
-                                <div className="col-md-6 mx-auto text-center">
-                                    <h4 className="title text-white">
-                                        Restez a l'affue de toutes les annonces dans la ville
-                                        de <b>{annoncebycity.name}</b>
-                                    </h4>
-                                    <div className="author">
-                                        <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/`} className="text-white">
-                                            <i className="fa fa-chevron-circle-left"/> Retour Annonces
-                                        </Link>
-                                    </div>
+                            <div className="col-md-6 mx-auto text-center">
+                                <h4 className="title text-white">
+                                    Annonces de <b>{annoncebycategoryoccupation.name}</b> à {annoncebycity.name}
+                                </h4>
+                                <div className="author">
+                                    <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/`} className="text-white">
+                                        <i className="fa fa-chevron-circle-left" /> Retour {annoncebycategoryoccupation.name}
+                                    </Link>
                                 </div>
+                                <br />
+                                    <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+                                    <br />
+                                    <span>{annoncebycity.annonces_count} {annoncebycity.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycity.name}</b> au Cameroun</span>
                             </div>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div className="main main-raised">
 
                         <div className="container">
@@ -136,21 +146,24 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                     <div className="col-md-12 ml-auto mr-auto">
                                         <section className="blogs-3">
                                             <div className="container">
-                                                <br/>
+                                                <br />
                                                 <div className="row">
 
-                                                    <div className="col-md-4">
+                                                    <div className="col-lg-4 col-md-12 mx-auto ">
 
                                                         <div className="card mb-3">
-                                                            <div className="card-header h6">Villes</div>
-                                                            <div className="card-body">
-                                                                <ul className="list-unstyled">
 
+                                                            <div className="card-header h6"
+                                                                style={{ textTransform: "capitalize" }}><b>Villes</b>
+                                                            </div>
+                                                            <div className="card-body">
+
+                                                                <ul className="list-unstyled">
                                                                     {cities.map((item) => (
                                                                         <li key={item.id} className="mb-2">
                                                                             <NavLink
-                                                                                to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${item.slug}/`}>
-                                                                                {item.name}
+                                                                                to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
+                                                                                <span style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
                                                                             </NavLink>
                                                                         </li>
                                                                     ))}
@@ -162,15 +175,39 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                     </li>
                                                                 </ul>
 
+
                                                             </div>
                                                         </div>
 
-                                                        <AnnonceOccupationList/>
+
+                                                        <div className="card mb-3">
+
+                                                            <div className="card-header h6"><b>Annonces <span
+                                                                style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
+                                                            </div>
+                                                            <div className="card-body">
+
+                                                                <ul className="list-unstyled">
+
+                                                                    {catagoryoccupations.map((item) => (
+                                                                        <li key={item.id} className="mb-2">
+                                                                            <Link to={`/annonces/${SlugOccupation}/${item.slug}/${SlugCity}/`}>
+                                                                                {item.name}
+                                                                            </Link>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <AnnonceOccupationList />
                                                     </div>
 
-                                                    <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h5 className="display-3 mb-5"><b>Toutes les annonces
-                                                            à {annoncebycity.name}</b></h5>
+                                                    <div className="col-lg-8 col-md-12 mx-auto">
+                                                        <h4 className="title">
+                                                            Toutes les annonces <b>{annoncebycategoryoccupation.name}</b>
+                                                        </h4>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
@@ -183,7 +220,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                             type="button" disabled="">
                                                                             <span
                                                                                 className="spinner-grow spinner-grow-sm"
-                                                                                role="status" aria-hidden="true"/>
+                                                                                role="status" aria-hidden="true" />
                                                                             Annonce
                                                                         </Link>
                                                                     </div>
@@ -194,8 +231,8 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                     <div className="card-body"><p
                                                                         className="h5 font-weight-normal mb-3 text-primary">Envie
                                                                         de charbonner ?</p><a
-                                                                        className="btn btn-primary btn-break"
-                                                                        href="/devenez_charbonneur">Devenir
+                                                                            className="btn btn-primary btn-break"
+                                                                            href="/devenez_charbonneur">Devenir
                                                                         Charbonneur</a></div>
                                                                 </div>
                                                             </div>
@@ -205,82 +242,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 {annoncebycities.map((item) => (
-                                                                    <div key={item.id}
-                                                                         className="card card-blog card-plain blog-horizontal mb-5">
-                                                                        <div className="row">
-                                                                            <div className="col-lg-12">
-                                                                                <h5 className="card-title">
-                                                                                    <Link
-                                                                                        to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${SlugCity}/${item.slug}/`}>
-                                                                                        {item.title}
-                                                                                    </Link>
-                                                                                </h5>
-                                                                                <p className="card-description">
-                                                                                    <b dangerouslySetInnerHTML={{__html: (item.body.length > 140 ? item.body.substring(0, 140) + "..." : item.body)}}/>
-                                                                                    <Link
-                                                                                        to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/${SlugCity}/${item.slug}/`}> lire
-                                                                                        la suite </Link>
-                                                                                </p>
-                                                                                <div
-                                                                                    className="card-header d-flex align-items-center">
-                                                                                    <div
-                                                                                        className="d-flex align-items-center">
-                                                                                        <a href="..">
-                                                                                            <img src={item.user.avatar}
-                                                                                                 alt={item.user.name}
-                                                                                                 className="avatar"/>
-                                                                                        </a>
-                                                                                        <div className="mx-3">
-                                                                                            <a href=".."
-                                                                                               className="text-dark font-weight-600 text-sm">{item.user.name}</a>
-                                                                                            <small
-                                                                                                className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div className="text-right ml-auto">
-                                                                                        {item.price ?
-                                                                                            <button type="button"
-                                                                                                    className={`btn btn-sm btn-${item.user.color_name} btn-icon`}>
-                                                                                                <span
-                                                                                                    className="btn-inner--text">{item.price.toLocaleString(navigator.language, {minimumFractionDigits: 0})} FCFA</span>
-                                                                                            </button>
-                                                                                            : null}
-
-                                                                                        {!$guest && (
-                                                                                            <>
-                                                                                                {$userKazou.id === item.user_id && (
-                                                                                                    <>
-                                                                                                        <NavLink
-                                                                                                            to={`/annonces/${SlugOccupation}/p/annonce/${item.id}/edit`}
-                                                                                                            className="btn btn-sm btn-success btn-icon">
-                                                                                                            <span
-                                                                                                                className="btn-inner--icon icon-big">
-                                                                                                                <i className="ni ni-check-bold"/>
-                                                                                                            </span>
-                                                                                                            <span
-                                                                                                                className="btn-inner--text">editer</span>
-                                                                                                        </NavLink>
-                                                                                                        <Button
-                                                                                                            onClick={() => this.deleteItem(item.id)}
-                                                                                                            className="btn btn-sm btn-danger btn-icon">
-                                                                                                    <span
-                                                                                                        className="btn-inner--icon icon-big">
-                                                                                                        <i className="ni ni-fat-remove"/>
-                                                                                                    </span>
-                                                                                                            <span
-                                                                                                                className="btn-inner--text">Suprimer</span>
-                                                                                                        </Button>{" "}
-                                                                                                    </>
-                                                                                                )}
-
-                                                                                            </>
-                                                                                        )}
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem} />
                                                                 ))}
                                                             </div>
                                                         </div>
@@ -299,7 +261,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
 
                     </div>
-                    <FooterUserSite/>
+                    <FooterUserSite />
                 </div>
             </div>
         )

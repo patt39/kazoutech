@@ -15,15 +15,15 @@ class CityResource extends JsonResource
      */
     public function toArray($request)
     {
-        $annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
-            ->distinct()->get()->toArray();
+      //$annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
+      //    ->distinct()->get()->toArray();
 
-        $users =  $this->userbycities()->with('city')
-            ->where(function ($q) {
-                $q->whereIn('city_id',[$this->id])
-                    ->where('charbonneur',1)
-                    ->with('city');
-            })->distinct()->get()->toArray();
+      //$users =  $this->userbycities()->with('city')
+      //    ->where(function ($q) {
+      //        $q->whereIn('city_id',[$this->id])
+      //            ->where('charbonneur',1)
+      //            ->with('city');
+      //    })->distinct()->get()->toArray();
 
 
         return [
@@ -33,8 +33,8 @@ class CityResource extends JsonResource
             'city_vip' => $this->city_vip,
             'photo' => $this->photo,
             'slug' => $this->slug,
-            'annonces' => $annonces,
-            'users' => $users,
+            //'annonces' => $annonces,
+            //'users' => $users,
             'statusOnline' => $this->user->isOnline(),
             //'technician_count' => $this->technicians()->get()->count(),
             'user' => $this->user,

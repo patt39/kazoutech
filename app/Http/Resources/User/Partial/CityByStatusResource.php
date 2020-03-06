@@ -21,6 +21,7 @@ class CityByStatusResource extends JsonResource
             'city_vip' => $this->city_vip,
             'photo' => $this->photo,
             'slug' => $this->slug,
+            'userbycities_count' => $this->userbycities_count,
         ];
     }
 }

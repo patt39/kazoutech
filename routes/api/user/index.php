@@ -16,6 +16,8 @@ Route::group(['namespace' => 'User'], function(){
 
     require(__DIR__ . DIRECTORY_SEPARATOR . 'profiles.php');
 
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'annonce.php');
+
     require(__DIR__ . DIRECTORY_SEPARATOR . 'subscribers.php');
 
 });

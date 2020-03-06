@@ -35,22 +35,22 @@ class SlideHomeList extends Component {
                                     <img className="d-block w-100 kazouTech-carousel-image"
                                          src={item.photo}
                                          alt={item.title}/>
-                                    <div className="carousel-caption d-none d-md-block">
+                                    <div className="carousel-caption d-md-block">
                                         <h1 className="title text-white">{item.title}</h1>
                                         {item.redirect_link !== null && (
                                             <Link to={`${item.redirect_link}`} className={`btn btn-${item.color_link}`}>{item.text_link}</Link>
                                         )}
-                                        <p>{item.description}</p>
+                                        <p className="kazouTech-title-mobile">{item.description}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                        <a className="carousel-control-prev" href="#carouselHomeIndicators" role="button"
+                        <a className="carousel-control-prev kazouTech-title-mobile" href="#carouselHomeIndicators" role="button"
                            data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"/>
                             <span className="sr-only">Previous</span>
                         </a>
-                        <a className="carousel-control-next" href="#carouselHomeIndicators" role="button"
+                        <a className="carousel-control-next kazouTech-title-mobile" href="#carouselHomeIndicators" role="button"
                            data-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"/>
                             <span className="sr-only">Next</span>

@@ -38,9 +38,9 @@ class IndexSite extends Component {
                             <div className="row">
                                 <div className="col-md-10 text-center mx-auto">
                                     <h3 className="display-3">Le service entre particuliers jamais aussi façile</h3>
-                                    <p className="lead">Pour tout vos bésoins immediat des service d'un technicien en un
-                                        domaine spécifique n'hesitez plus des prestataires
-                                        de services plus de vous que jamais lançez vous et profitez en.</p>
+                                    <p className="lead">Pour tout vos bésoins immediat des service d'un technicien(ne) en un
+                                        domaine spécifique n'hesitez plus. Des prestataires
+                                        de services proche de vous que jamais lançez vous et profitez en.</p>
                                 </div>
                             </div>
                             <div className="row justify-content-center mt-5">
@@ -55,7 +55,7 @@ class IndexSite extends Component {
                                                     </div>
                                                     <h6 className="text-primary text-uppercase">Des profile évalués</h6>
                                                     <p className="description mt-3">Les profiles de nos prestataires
-                                                        sont controller et évaluer en permenance pour vous assurer de
+                                                        sont controller et évaluer en permenance pour vous rassurer et
                                                         vous apporter le meilleur qui sois en cequi conçerne leur
                                                         service
                                                         et nous nous assurons aussi de leur bonne moralité donc ne vous
@@ -75,8 +75,8 @@ class IndexSite extends Component {
                                                         meilleur</h6>
                                                     <p className="description mt-3">Kazoutech est une plateform vrai
                                                         nous avons un siege sociale des bureaux et une licence des
-                                                        personne de bonne moralité toujours prés a vous
-                                                        rendre le meilleur donc pour tout vos problem contactez ou
+                                                        personnes de bonne moralité toujours prés a vous
+                                                        rendre le meilleur donc pour tout vos problemes contactez ou
                                                         rapprochez vous de nos locaux nous serons ravis de vous reçevoir
                                                         et d'effaçer vos doutes.</p>
                                                     <Link to={'/contacts/'} className="btn btn-success mt-4">Contactez nous</Link>
