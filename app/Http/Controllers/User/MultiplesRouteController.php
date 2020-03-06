@@ -313,7 +313,8 @@ class MultiplesRouteController extends Controller
     public function apicharbonneurs()
     {
         $charbonneurs = UserResource::collection(User::where('charbonneur',1)
-            ->with('city')
+            ->with('city','occupation')
+            ->whereHas('occupation', function ($q) {$q->where('status',1);})
             ->whereHas('city', function ($q) {$q->where('status',1);})
             ->orderBy('created_at', 'DESC')->paginate(40));
 
@@ -330,16 +331,17 @@ class MultiplesRouteController extends Controller
 
     public function apicharbonneursbyoccupation(occupation $occupation)
     {
-        $charbonneursbyoccupation= occupation::whereSlug($occupation->slug)->with('user')
-
+        $charbonneursbyoccupation= occupation::whereSlug($occupation->slug)
             ->withCount(['userbyoccupations' => function ($q) use ($occupation){
                 $q->with('city','occupation','profile')
+                    ->where('charbonneur',1)
                     ->whereIn('occupation_id',[$occupation->id])
                     ->whereHas('occupation', function ($q) {$q->where('status',1);})
                     ->whereHas('city', function ($q) {$q->where('status',1);});
             }])->with([
             'userbyoccupations' => function ($q) use ($occupation){
                 $q->with('city','occupation','profile')
+                    ->where('charbonneur',1)
                     ->whereIn('occupation_id',[$occupation->id])
                     ->whereHas('city', function ($q) {$q->where('status',1);})
                     ->whereHas('occupation', function ($q) {$q->where('status',1);})
@@ -356,6 +358,7 @@ class MultiplesRouteController extends Controller
 
             ->withCount(['userbycities' => function ($q) use ($occupation,$city){
                 $q->with('city','occupation','profile')
+                    ->where('charbonneur',1)
                     ->whereIn('occupation_id',[$occupation->id])
                     ->whereIn('city_id',[$city->id])
                     ->whereHas('occupation', function ($q) {$q->where('status',1);})
@@ -363,6 +366,7 @@ class MultiplesRouteController extends Controller
             }])->with([
                 'userbycities' => function ($q) use ($occupation,$city){
                     $q->with('city','occupation','profile')
+                        ->where('charbonneur',1)
                         ->whereIn('occupation_id',[$occupation->id])
                         ->whereIn('city_id',[$city->id])
                         ->whereHas('city', function ($q) {$q->where('status',1);})
@@ -380,7 +384,7 @@ class MultiplesRouteController extends Controller
             'city' => $city,
         ]);
     }
-    
+
     public function temoignages()
     {
         return view('user.page.testimonialsite');

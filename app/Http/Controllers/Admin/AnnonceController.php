@@ -23,7 +23,7 @@ class AnnonceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','apioccupation','apioccupationcity']]);
+        $this->middleware('auth',['except' => ['api','apioccupation','apioccupationcity','assignment','assigned']]);
     }
 
     public function api()
@@ -60,14 +60,19 @@ class AnnonceController extends Controller
         return view('admin.annonce.index');
     }
 
+    public function assignment()
+    {
+        return view('admin.annonce.assignment');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
-    public function create()
+    public function assigned()
     {
-        //
+          return view('admin.annonce.assigne');
     }
    
     public function status($id)
@@ -88,6 +93,18 @@ class AnnonceController extends Controller
     {
         //
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     public function show($id)
+     {
+        //
+     }
+ 
 
 
     /**

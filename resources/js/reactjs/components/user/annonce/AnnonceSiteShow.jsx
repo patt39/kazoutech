@@ -31,7 +31,7 @@ class AnnonceSiteShow extends Component {
             errors: [],
 
             annonceinteressebycategoryoccupation:{annoncesinteres:[]},
-            annonce: {user: [], occupation: [],}
+            annonce: {user: [], occupation: [],city:[]}
         };
     }
     handleFieldChange(event) {
@@ -243,6 +243,13 @@ class AnnonceSiteShow extends Component {
 
                                                 {!$guest && (
                                                     <>
+                                                        {$userKazou.my_status === 'active' && (
+                                                            <>
+                                                                <a href={`/dashboard/annonces/tasks/${annonce.occupation.slug}/${annonce.city.slug}/assign/`} className="btn btn-sm btn-info btn-icon">
+                                                                    <span className="btn-inner--text">Assigner la tash</span>
+                                                                </a>
+                                                            </>
+                                                        )}
                                                         {$userKazou.id === annonce.user_id && (
                                                             <>
                                                                 <NavLink

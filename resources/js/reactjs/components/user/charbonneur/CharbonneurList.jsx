@@ -31,7 +31,7 @@ class CharbonneurList extends Component {
                                        <h6 className="card-category text-gray">{this.props.city.name}</h6>
                                    </NavLink>
                                    <NavLink to={`/charbonneurs/${this.props.city.slug}/`}>
-                                       <h6 className="card-category text-gray">{this.props.city.name}</h6>
+                                       <h6 className="title text-gray">{this.props.occupation.name}</h6>
                                    </NavLink>
                                </>
                                 :null}

@@ -55,8 +55,6 @@ class CharbonneurSiteIndex extends Component {
 
                                     <NavoccupationforCharbonneur/>
 
-
-                                    <CharbonneurCityList/>
                                 </div>
                                 <div className="col-lg-8 mx-auto mt-4">
                                     <div className="row">

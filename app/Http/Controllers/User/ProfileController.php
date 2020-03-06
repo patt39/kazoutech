@@ -21,7 +21,7 @@ class ProfileController extends Controller
     {
         $this->middleware('auth',['except' => ['view','profileView']]);
     }
-     
+
 
     public function profileUser()
     {
@@ -63,9 +63,23 @@ class ProfileController extends Controller
 
     }
 
-    public function view($username)
+    public function view(user $user)
     {
-        $user = new UserResource(User::where('username', $username)->firstOrFail());
+        $user = User::where('username', $user->username)->with('city','occupation','profile')
+            ->withCount(['annonces' => function ($q) use ($user){
+                $q->where('status',1)->with('city','user','occupation','categoryoccupation')
+                    ->whereIn('user_id',[$user->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);});
+            }])->with(['annonces' => function ($q) use ($user){
+                $q->where('status',1)->with('city','user','occupation','categoryoccupation')
+                    ->whereIn('user_id',[$user->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);});
+            }])->firstOrFail();
+
 
         return response()->json($user,200);
     }
