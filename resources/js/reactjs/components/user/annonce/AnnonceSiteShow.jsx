@@ -4,7 +4,6 @@ import {Button} from "reactstrap";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
-import AnnoncePostInteresse from "./AnnoncePostInteresse";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -245,7 +244,7 @@ class AnnonceSiteShow extends Component {
                                                     <>
                                                         {$userKazou.my_status === 'active' && (
                                                             <>
-                                                                <a href={`/dashboard/annonces/tasks/${annonce.occupation.slug}/${annonce.city.slug}/assign/`} className="btn btn-sm btn-info btn-icon">
+                                                                <a target="_blank" href={`/dashboard/annonces/tasks/${annonce.occupation.slug}/${annonce.city.slug}/${annonce.slug}/assigned/`} className="btn btn-sm btn-info btn-icon">
                                                                     <span className="btn-inner--text">Assigner la tash</span>
                                                                 </a>
                                                             </>

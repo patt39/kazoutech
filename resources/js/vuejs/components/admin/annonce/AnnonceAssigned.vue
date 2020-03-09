@@ -15,12 +15,12 @@
                                     <div class="card-icon">
                                         <i class="material-icons">assignment</i>
                                     </div>
-                                    <p class="card-category"><b>All Categories Occupations</b>
-                                    <h3 class="card-title" style="color:red;"><b>{{categoryoccupations.length}}</b></h3>
+                                    <p class="card-category"><b>All assignments</b>
+                                    <h3 class="card-title" style="color:red;"><b>{{taskuserassigns.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">assignment</i><b>All Categories occupations</b>
+                                        <i class="material-icons">assignment</i><b>All assignments</b>
                                     </div>
                                 </div>
                             </div>
@@ -36,16 +36,16 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h4 class="card-title">
-                                                <b>Datatables Categories Occupations</b>
+                                                <b>Datatables assignments</b>
                                             </h4>
                                             <p class="card-title">
-                                                Categories Occupations choice for buttons
+                                                 Assignments
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">assignments</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -64,38 +64,43 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Image</b></th>
-                                                <th><b>Name Category</b></th>
+                                                <th><b>Title</b></th>
                                                 <th><b>Occupation</b></th>
-                                                <th><b>Status</b></th>
+                                                <th><b>City</b></th>
+                                                <th><b>Assigned To</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
+                                                <th><b>Periode</b></th>
+                                                <th class="disabled-sorting text-right"><b v-if="( $auth.can('delet-occupation'))">Actions</b></th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Image</b></th>
-                                                <th><b>Name Category</b></th>
+                                                <th><b>Title</b></th>
                                                 <th><b>Occupation</b></th>
-                                                <th><b>Status</b></th>
+                                                <th><b>City</b></th>
+                                                <th><b>Assigned To</b></th>
                                                 <th><b>Edited By</b></th>
-                                                <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
+                                                <th><b>Periode</b></th>
+                                                <th class="text-right"><b v-if="( $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="item in categoryoccupations" :key="item.id">
-                                                <td><img :src="item.photo" style="height: 50px; width: 80px;border-radius: 5px"></td>
-                                                <td><b>{{item.name}}</b></td>
+                                            <tr v-for="item in taskuserassigns" :key="item.id">
+                                                <td><b>{{ (item.title.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.title) | upText }}</b></td>
                                                 <td>
-                                                    <router-link  :to="{ path: `/dashboard/occupations/v/${item.occupation.slug}/` }">
+                                                    <router-link  :to="{ path: `/dashboard/occupations/${item.occupation.slug}` }">
                                                         <b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b>
                                                     </router-link>
                                                 </td>
                                                 <td>
-                                                    <div class="timeline-heading">
-                                                        <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="!item.status"  class="badge badge-danger"><b>Deactive</b></span>
-                                                    </div>
+                                                    <router-link  :to="{ path: `/dashboard/annonces/${item.city.slug}` }">
+                                                        <b>{{ (item.city.name.length > 15 ? item.city.name.substring(0,15)+ "..." : item.city.name) | upText }}</b>
+                                                    </router-link>
+                                                </td>
+                                                 <td>
+                                                    <a href="javascript:void(0)" @click="getUser(item)">
+                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
@@ -104,11 +109,18 @@
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
                                                     </a>
                                                 </td>
+                                               <td><b>{{ (item.periode) }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <router-link :to="{ path: `/dashboard/occupations/v/${item.occupation.slug}/${item.id}/edit/` }" v-if="$auth.can('edit-occupation')"
-                                                                 class="btn btn-link  btn-success btn-round btn-just-icon" title="Edit">
-                                                        <i class="material-icons">edit</i>
-                                                    </router-link>
+                                                    <button v-if="$auth.can('edit-occupation')" type="button" class="togglebutton btn btn-link btn-sm btn-sm">
+                                                        <label>
+                                                            <input type="checkbox" name="status" v-model="item.status"
+                                                                   @change="changeStatus(item)"/>
+                                                            <span class="toggle"/>
+                                                        </label>
+                                                    </button>
+                                                    <button  @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
+                                                        <i class="material-icons">visibility</i>
+                                                    </button>
                                                     <button v-if="$auth.can('delete-occupation')" @click="deleteItem(item.id)"
                                                             class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
@@ -118,29 +130,79 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                     <!-- Modal view annonces -->
+                                    <div class="modal fade" id="viewNew" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addNewLabel"><b>View announce</b></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Title</label>
+                                                                <input v-model="annonce.title" type="text" name="title" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Category</label>
+                                                                <input v-model="annonce.occupation.name" type="text" name="name" maxlength="25" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input v-model="annonce.description" type="text" name="description" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                    <div class="modal-footer">
+                                                    <button class="btn btn-danger" data-dismiss="modal" type="button">
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">clear</i>
+                                                        <b>Close</b>
+                                                    </span>
+                                                    </button>
+                                                      </div>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer-admin/>
+         <footer-admin/>
         </div>
-
     </div>
 </template>
-
 <script>
     import StatusAdmin from "../../inc/admin/StatusAdmin";
     import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
-
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
                 loaded: false,
                 user: {},
-                categoryoccupations: {},
+                annonces: {},
+                annonce: {
+                     title: '',
+                     occupation: '',
+                     description: '',
+                },
             }
         },
         methods: {
@@ -183,11 +245,17 @@
                 //Progres bar
                 this.$Progress.finish()
             },
+            viewItem (item) {
+                //Masquer le modal après la création
+                $("#viewNew").modal("show");
+                //On passe les informations
+                this.annonce = item;
+            },
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete Category Occupation?',
-                    text: "Are you sure you want to delete this category occupation?",
+                    title: 'Delete Assignment?',
+                    text: "Are you sure you want to delete this assignment?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated pulse',
@@ -203,7 +271,7 @@
                         //Start Progress bar
                         this.$Progress.start();
                         //Envoyer la requete au server
-                        let url = route('categoryoccupations.destroy',id);
+                        let url = route('annonces.destroy',id);
                         dyaxios.delete(url).then(() => {
                             Fire.$emit('ItemGetter');
                             /** Alert notify bootstrapp **/
@@ -212,7 +280,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Category deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>Announce deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             /* End alert ***/
                             //End Progress bar
@@ -231,31 +299,49 @@
                     }
                 })
             },
-            loadItems() {
+            /** Ici c'est pour changer le status **/
+            changeStatus(item){
                 //Start Progress bar
                 this.$Progress.start();
-                dyaxios.get(route('categoryoccupations.api')).then(response => {
-                    this.loaded = true;
-                    this.categoryoccupations = response.data;
-                    this.mydatatables()
-                });
-                axios.get("/api/account/user").then(response => {this.user = response.data.data});
-                //End Progress bar
-                this.$Progress.finish();
+                dyaxios.get(route('status_annonce',item.id), {
+                    status: item.status,
+                }).then(res => {
 
+                    $.notify('<strong>Annonce updated Successfully.</strong>', {
+                        allow_dismiss: false,
+                        type: 'info',
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
+                    });
+
+                    Fire.$emit('ItemGetter');
+                    //End Progress bar
+                    this.$Progress.finish();
+                }).catch(() => {
+                    //Failled message
+                    this.$Progress.fail();
+                    //Alert error
+                    $.notify("Ooop! Something wrong. Try later", {
+                        type: 'danger',
+                        animate: {
+                            enter: 'animated bounceInDown',
+                            exit: 'animated bounceOutUp'
+                        }
+                    });
+                })
             },
-            reload(){
-                this.loadItems()
-            },
+            
         },
         created() {
-            this.loadItems();
-            Fire.$on('ItemGetter', () => {
-                this.loadItems();
-            });
+           
         }
     }
-
 </script>
 
 <style scoped>
