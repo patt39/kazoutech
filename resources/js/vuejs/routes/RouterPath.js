@@ -140,8 +140,8 @@ export const routes = [
 
     //Route annonces
     {path: '/dashboard/annonces/', name: 'annonces.index', component: AnnonceIndex},
-    {path: '/dashboard/annonces/assigned', name: 'annonces.assigne', component: AnnonceAssigned},
-    {path: '/dashboard/assigned', name: 'annonces.assignment', component: AnnonceAssignment},
+    {path: '/dashboard/annonces/assigned', name: 'annonces_assigne', component: AnnonceAssigned},
+    {path: '/dashboard/annonces/tasks/:occupation/:city/:annonce/assigned', name: 'annonces_assignment', component: AnnonceAssignment},
 
 
 

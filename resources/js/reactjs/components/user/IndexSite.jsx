@@ -31,6 +31,7 @@ class IndexSite extends Component {
                     <div className="wrapper">
                         <SlideHomeList/>
                     </div>
+                    <br/>
                     <KazouTechSteps/>
                     <AllOccupation/>
                     <div className="section features-7 bg-secondary">

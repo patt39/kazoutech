@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Http\Requests\User\Annonce\AssignedtaskRequest;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
+use App\Http\Resources\User\AssignmentResource;
 use App\Model\admin\annonce;
+use App\Model\admin\taskuserassign;
 use App\Http\Controllers\Controller;
 use App\Model\admin\city;
 use App\Model\admin\occupation;
@@ -23,7 +26,7 @@ class AnnonceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','apioccupation','apioccupationcity','assignment','assigned']]);
+        $this->middleware('auth',['except' => ['api','apioccupation','apiannonceassigned','apioccupationcity','assignment','assigned']]);
     }
 
     public function api()
@@ -33,6 +36,13 @@ class AnnonceController extends Controller
         return response()->json($annonces,200);
     }
 
+    public function apiannonceassigned()
+    {
+        $annoncesassigned = AssignmentResource::collection(taskuserassign::with('user','member','annonce')->latest()->get());
+
+        return response()->json($annoncesassigned,200);
+    }
+
     public function apioccupation($slug)
     {
         $annonceoccupation = new OccupationResource(occupation::whereSlug($slug)->firstOrFail());
@@ -40,14 +50,22 @@ class AnnonceController extends Controller
         return response()->json($annonceoccupation,200);
     }
 
-    public function apioccupationcity(occupation $occupation,$slug)
+
+    public function assignedtask(occupation $occupation,city $city,annonce $annonce)
     {
+        return view('admin.annonce.assignment');
+    }
 
-        $annonces = new AnnonceResource(annonce::whereIn('occupation_id',$occupation)->whereSlug($slug)->get());
+    public function assignedtaskstore(AssignedtaskRequest $request,occupation $occupation,city $city,annonce $annonce)
+    {
+        $taskuserassign = new taskuserassign();
 
-        dd($annonces);
+        $taskuserassign->fill($request->all());
+        $taskuserassign->annonce_id = $annonce->id;
 
-        return response()->json($annonces,200);
+        $taskuserassign->save();
+
+        return response()->json($taskuserassign,200);
     }
 
     /**
@@ -60,11 +78,6 @@ class AnnonceController extends Controller
         return view('admin.annonce.index');
     }
 
-    public function assignment()
-    {
-        return view('admin.annonce.assignment');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -74,7 +87,7 @@ class AnnonceController extends Controller
     {
           return view('admin.annonce.assigne');
     }
-   
+
     public function status($id)
     {
         $annonce = annonce::findOrFail($id);
@@ -104,7 +117,7 @@ class AnnonceController extends Controller
      {
         //
      }
- 
+
 
 
     /**

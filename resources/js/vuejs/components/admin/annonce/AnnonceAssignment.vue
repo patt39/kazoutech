@@ -1,9 +1,8 @@
 <template>
     <div>
         <vue-progress-bar/>
-        <NavAdmin/>
         <div class="main-panel" id="javascriptComponents">
-            <TopNav/>
+            <top-nav></top-nav>
             <div class="content">
                 <div class="container-fluid">
                     <br>
@@ -36,8 +35,8 @@
                                                                         <ul class="nav nav-tabs" data-tabs="tabs">
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'categories.index' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
-                                                                                    <i class="material-icons">create</i>
-                                                                                    <b>all categories</b>
+                                                                                    <i class="material-icons">assignment</i>
+                                                                                    <b>all assignments here</b>
                                                                                 </router-link>
                                                                             </li>
                                                                         </ul>
@@ -50,41 +49,47 @@
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label class="bmd-label-floating">Title</label>
-                                                                                    <input type="text" class="form-control" disabled>
+                                                                                    <label>Charbonneur</label>
+                                                                                    <select name="user_id" v-model="form.user_id" id="user_id" class="form-control"
+                                                                                            :class="{ 'is-invalid': form.errors.has('user_id') }" style="margin-top: 15px;">
+                                                                                        <option value="" disabled>Choose charbonneur</option>
+                                                                                        <option v-for="item in charbonneurs.userbycities" :key="item.id" :value="item.id">{{item.name}}</option>
+                                                                                    </select>
+                                                                                    <br>
+                                                                                    <has-error :form="form" field="user_id"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
+                                                                        <br/>
                                                                         <div class="row">
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label>Name category</label>
-                                                                                    <input v-model="form.name" type="text" name="name"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-                                                                                    <has-error :form="form" field="name"></has-error>
-                                                                                </div>
+                                                                                    <label class="bmd-label-floating">Title</label>
+                                                                                        <input v-model="form.title" type="text" name="title"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('title') }">
+                                                                                    <has-error :form="form" field="title"></has-error>                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label>City</label>
-                                                                                    <input type="text" v-model="form.icon" name="icon"
-                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('icon') }">
-                                                                                    <has-error :form="form" field="icon"></has-error>
+                                                                                    <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
+                                                                                    <br>
+                                                                                    <vue-editor v-model="form.description" :editorToolbar="customToolbar"/>
+                                                                                    <div class="form-check">
+                                                                                        <label class="form-check-label pull-right">
+                                                                                            You can use the
+                                                                                            <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
+                                                                                                Markdown here
+                                                                                            </a>
+                                                                                            <span class="form-check-sign"/>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <has-error :form="form" field="body"/>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
-                                                                        <div class="form-group">
-                                                                            <label>Technician</label>
-                                                                            <select name="color_name" v-model="form.color_name" id="color_name" class="form-control"
-                                                                                    :class="{ 'is-invalid': form.errors.has('color_name') }" style="margin-top: 15px;">
-                                                                                <option value="" disabled>Choose a technician</option>
-                                                                                <option v-for="color in colors" :key="color.id" :value="color.slug">{{color.color_name}}</option>
-                                                                            </select>
-                                                                            <br>
-                                                                            <has-error :form="form" field="color_name"></has-error>
-                                                                        </div>
+
                                                                         <br>
                                                                     </div>
                                                                 </div>
@@ -94,16 +99,16 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'categories.index' }" class="btn btn-primary btn-raised btn-round" data-toggle="tab">
+                                                            <router-link :to="{ name: 'annonces.index' }" class="btn btn-primary btn-raised" data-toggle="tab">
                                                                 <i class="material-icons">forum</i>
-                                                                <b>All categories</b>
+                                                                <b>Back to annonce</b>
                                                             </router-link>
 
-                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                        <span class="btn-label">
-                                            <i class="material-icons">save_alt</i>
-                                        </span>
-                                                                <b class="title_hover">Create category</b>
+                                                            <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                                <span class="btn-label">
+                                                                    <i class="material-icons">save_alt</i>
+                                                                </span>
+                                                                <b class="title_hover">Assigne</b>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -118,49 +123,53 @@
                     </div>
                 </div>
             </div>
-            <FooterAdmin/>
+            <footer-admin></footer-admin>
         </div>
     </div>
 </template>
 
 <script>
     import NavAdmin from "../../inc/admin/NavAdmin";
-    import TopNav from "../../inc/admin/TopNav";
-    import FooterAdmin from "../../inc/admin/FooterAdmin";
     import StatusAdmin from "../../inc/admin/StatusAdmin";
+
     export default {
-        components: {StatusAdmin, FooterAdmin, TopNav, NavAdmin},
+        components: {StatusAdmin, NavAdmin},
         data() {
             return {
-                colors:[],
+                user:[],
+                charbonneurs:[],
                 form: new Form({
-                    id: '',
-                    name: '',
-                    icon: '',
-                    color_name: '',
+                    title: '',
                     user_id: '',
-                    status: '',
-                    slug: ''
-                })
+                    description: '',
+                }),
+                customToolbar: [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'font': [] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'align': [] }],
+                    ['blockquote', 'code-block'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link'],
+                    ['clean'],
+                ]
             }
         },
         methods: {
             getColorCardUser(){
-                let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
-                return colorCard;
+                return 'card-header card-header-icon card-header-' + this.user.color_name;
             },
             getColorHeaderUser(){
-                let colorHeader = 'card-header card-header-' + this.user.color_name;
-                return colorHeader;
-            },
-            getMaterialIcon(color){
-                let icon = 'material-icons text-' + color;
-                return icon;
+                return 'card-header card-header-' + this.user.color_name;
             },
             createItem() {
+                let SlugOccupation = this.$route.params.occupation;
+                let SlugCity = this.$route.params.city;
+                let Slugannonce = this.$route.params.annonce;
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post("/dashboard/categories")
+                this.form.post(route('assignedtaskstore',[SlugOccupation,SlugCity,Slugannonce]))
                     .then(() => {
 
                         //Insertion de l'alert !
@@ -173,10 +182,10 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Category Created Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Annonce assigned Successfully.</strong>', 'progress': 75});
                         }, 2000);
                         //Redirect after create
-                        setTimeout(() => this.$router.push({ name: 'categories.index' }), 2000);
+                        setTimeout(() => this.$router.push({ name: 'annonces.assiged' }), 2000);
                         //Fin insertion de l'alert !
 
                         //End Progress bar
@@ -186,13 +195,21 @@
                     this.$Progress.fail();
                     toastr.error('', 'Ooop! Something wrong. Try later');
                 })
-            }
+            },
+
+            loadItems(){
+                let SlugOccupation = this.$route.params.occupation;
+                let SlugCity = this.$route.params.city;
+                dyaxios.get(route('api_active_charbonneurs_occupation_city.view',[SlugOccupation,SlugCity])).then(response => {this.charbonneurs = response.data});
+
+            },
         },
+
         created() {
             //Start Progress bar
             this.$Progress.start();
-            const urlColors = "/api/colors";
-            axios.get(urlColors).then(({data}) => (this.colors = data.data));
+            this.loadItems();
+            axios.get("/api/account/user").then(response => {this.user = response.data.data});
             //End Progress bar
             this.$Progress.finish();
         }
