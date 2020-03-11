@@ -87,6 +87,16 @@
 .kazouTechAbout-wrapper {
     padding: 3rem 0rem !important;
 }
+.kazouTechOccupationEmpty i.ni {
+    font-size: 60px;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 40px;
+}
+.page-header.page-header-mini {
+    min-height: 60vh !important;
+}
+
 .ni-bold-up::before {
     position: relative;
     left: -3px;
@@ -200,6 +210,13 @@
     }
     .kazouTech-register-right-block {
         top: 0px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-nav .nav-link {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
     }
 }
 
