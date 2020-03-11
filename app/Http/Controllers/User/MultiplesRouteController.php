@@ -125,6 +125,13 @@ class MultiplesRouteController extends Controller
                         ->with('occupation','user','color')
                         ->whereHas('occupation', function ($q) {$q->where('status',1);})
                         ->orderBy('created_at','DESC')->take(3)->distinct()->get()->toArray();},
+                ])->with([
+                'faqoccupations' => function ($q) use ($occupation){
+                    $q->where(['status' => 1])
+                        ->whereIn('occupation_id',[$occupation->id])
+                        ->with('occupation','user')
+                        ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                        ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
                 ])
             ->first();
 

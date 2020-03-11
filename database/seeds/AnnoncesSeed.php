@@ -2,6 +2,7 @@
 
 use App\Model\admin\annonce;
 use App\Model\admin\categoryoccupation;
+use App\Model\admin\faqoccupation;
 use App\Model\admin\occupation;
 use App\Model\admin\taskuserassign;
 use App\Model\user\User;
@@ -28,5 +29,6 @@ class AnnoncesSeed extends Seeder
     {
         factory(annonce::class, 500)->create();
         factory(taskuserassign::class, 3500)->create();
+        factory(faqoccupation::class, 1000)->create();
     }
 }

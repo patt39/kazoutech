@@ -1,9 +1,10 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import OccupationHeader from "./OccupationHeader";
 import CitySite from "../city/CitySite";
+import FaqUserList from "../faq/FaqUserList";
 
 
 class OccupationSiteSlug extends Component {
@@ -11,19 +12,27 @@ class OccupationSiteSlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupation: {categoryoccupations: [], blogs: []},
-        }
+            occupation: { categoryoccupations: [], blogs: [], faqoccupations: [] },
+            visiable: 10,
+        };
+
+        this.loadmoresItem = this.loadmoresItem.bind(this);
     }
 
+    loadmoresItem(){
+        this.setState((old) =>{
+            return {visiable: old.visiable + 6}
+        })
+    }
     // lifecycle method
     componentDidMount() {
         let itemOccupation = this.props.match.params.occupation;
         let url = route('occupations.view', itemOccupation);
-        dyaxios.get(url).then(response => this.setState({occupation: response.data,}));
+        dyaxios.get(url).then(response => this.setState({ occupation: response.data, }));
     }
 
     render() {
-        const {occupation} = this.state;
+        const { occupation,visiable } = this.state;
         const occupationCategories = occupation.categoryoccupations;
         const allblogbyoccupations = occupation.blogs;
         const composantTitle = `${occupation.name || "kazoutech"}`;
@@ -32,11 +41,11 @@ class OccupationSiteSlug extends Component {
         return (
             <>
                 <div className="landing-page">
-                    <NavUserSIte/>
+                    <NavUserSIte />
 
                     <div className="wrapper">
 
-                        <OccupationHeader {...this.props} {...occupation}/>
+                        <OccupationHeader {...this.props} {...occupation} />
 
                         <div className="cd-section" id="accordion">
                             <div className="accordion-1">
@@ -46,25 +55,24 @@ class OccupationSiteSlug extends Component {
                                             <div className="row mb-5">
                                                 <div className="col-md-8 mx-auto">
                                                     <h3 className="title">
-                                                       <b> Nos offres en quelques clicks choisissez le service qui vous intéresse</b>
+                                                        <b> Nos offres en quelques clicks choisissez le service qui vous intéresse</b>
                                                     </h3>
                                                 </div>
                                             </div>
                                             <div className="row align-items-center">
                                                 {occupationCategories.map((item) => (
-                                                    <div key={item.id} className="col-lg-4 mx-auto">
-                                                        <Link  to={`/occupations/${occupation.slug}/${item.slug}/`}>
-                                                            <div className="card card-background"
-                                                                 style={{backgroundImage: "url(" + item.photo + ")"}}>
-                                                                <div className="card-body text-center">
-                                                                    <Link
-                                                                        to={`/occupations/${occupation.slug}/${item.slug}/`}>
-                                                                        <h3 className="card-title">{item.name}</h3>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </Link>
 
+                                                    <div key={item.id} className="col-lg-4 mx-auto">
+                                                        <div className="card card-blog card-background" data-animation="zooming">
+                                                            <div className="full-background" style={{ backgroundImage: "url(" + item.photo + ")" }} />
+                                                            <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
+                                                                <div className="card-body">
+                                                                    <div className="content-bottom">
+                                                                        <h5 className="card-title text-uppercase">{item.name}</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
@@ -72,30 +80,32 @@ class OccupationSiteSlug extends Component {
                                         </div>
 
                                     </div>
-                                    <div className="section features-7">
-                                        <div className="container">
-                                            <div className="row justify-content-center mt-5">
-                                                <div className="col-lg-12">
 
-                                                    <div className="container">
-                                                        <div className="row">
-                                                            <div className="col-md-8 mr-auto ml-auto text-center">
-                                                                <h4 className="title mb-5">Nous sommes plus proche de
-                                                                    vous !</h4>
-                                                            </div>
+                                    <div className="container">
+                                        <div className="row justify-content-center mt-5">
+                                            <div className="col-lg-12">
+
+                                                <div className="container">
+                                                    <div className="row">
+                                                        <div className="col-md-8 mr-auto ml-auto text-center">
+                                                            <h4 className="title mb-5">Nous sommes plus proche de
+                                                                vous !</h4>
                                                         </div>
-                                                        <CitySite/>
+                                                    </div>
+                                                    <CitySite />
+                                                    <br />
 
-                                                        <br/>
-                                                        {allblogbyoccupations.length > 0 && (
+                                                    <div className="row">
+                                                        <div className="col-md-12 mx-auto">
 
-                                                            <div className="row">
-                                                                <div className="col-md-12 mx-auto">
+                                                            {allblogbyoccupations.length > 0 && (
+                                                                <>
                                                                     <h4 className="title">Tous nos articles
-                                                                        sur <strong>{occupation.name} </strong> sont sur
+                                                                            sur <strong>{occupation.name} </strong> sont sur
                                                                         notre
-                                                                        blog</h4>
-                                                                    <br/>
+                                                                            blog</h4>
+                                                                    <br />
+
                                                                     <div className="row">
 
                                                                         {allblogbyoccupations.map((item) => (
@@ -104,7 +114,7 @@ class OccupationSiteSlug extends Component {
                                                                                     <div className="card-image shadow">
                                                                                         <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
                                                                                             <img className="img rounded"
-                                                                                                 src={item.photo}/>
+                                                                                                src={item.photo} />
                                                                                         </Link>
                                                                                     </div>
                                                                                     <div className="card-body">
@@ -119,7 +129,7 @@ class OccupationSiteSlug extends Component {
                                                                                             <Link to={`/blog/${occupation.slug}/${item.slug}/`} >{item.title}</Link>
                                                                                         </h6>
                                                                                         <p className="card-description">
-                                                                                            <b dangerouslySetInnerHTML={{__html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body)}}/>
+                                                                                            <b dangerouslySetInnerHTML={{ __html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body) }} />
                                                                                             <Link to={`/blog/${occupation.slug}/${item.slug}/`} >lire la suite</Link>
                                                                                         </p>
                                                                                     </div>
@@ -128,29 +138,57 @@ class OccupationSiteSlug extends Component {
                                                                         ))}
 
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        )}
+                                                                </>
+                                                            )}
 
 
-                                                        <div className="row">
-                                                            <div className="col-md-12">
-                                                                <div className={'card-description'}
-                                                                    dangerouslySetInnerHTML={{__html: occupation.description}}/>
-                                                            </div>
+                                                            {occupation.faqoccupations.length > 0 && (
+
+                                                                <>
+
+                                                                    <div className={'row'}>
+                                                                        <div className="col-md-8 mx-auto text-center">
+                                                                            <h4 className="title mb-5">Bon à savoir sur <strong>{occupation.name}</strong></h4>
+                                                                        </div>
+
+                                                                        <div className="col-md-12 ml-auto">
+                                                                            <div className="accordion" id="accordionFaqs">
+                                                                                {occupation.faqoccupations.slice(0,visiable).map((item) => (
+                                                                                    <FaqUserList key={item.id} {...item} />
+                                                                                ))}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    {visiable < occupation.faqoccupations.length && (
+                                                                        <div className="row">
+                                                                            <div className="col-md-4 ml-auto mr-auto text-center">
+                                                                                <button type="button" onClick={this.loadmoresItem} className="btn btn-primary">
+                                                                                    <b>Voir plus </b>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    )}
+                                                                </>
+                                                            )}
+                                                            <br/>
+                                                            <br/>
+
+
                                                         </div>
                                                     </div>
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <br/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <FooterUserSite/>
+                    <FooterUserSite />
                 </div>
             </>
 
