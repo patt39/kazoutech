@@ -3,6 +3,7 @@
 namespace App\Model\admin;
 
 use App\Model\user\User;
+use App\Model\admin\annonce;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -29,6 +30,11 @@ class taskuserassign extends Model
         return $this->belongsTo(User::class,'member_id');
     }
 
+    public function city()
+    {
+        return $this->belongsTo(User::class,'city_id');
+    }
+
 
     public function annonce()
     {
@@ -49,10 +55,8 @@ class taskuserassign extends Model
             }
         });
         static::updating(function($model){
-            $myslug = Str::uuid();
             if (auth()->check()){
-                $model->user_id = auth()->id();
-                $model->slug = $myslug;
+                $model->member_id = auth()->id();
             }
         });
     }

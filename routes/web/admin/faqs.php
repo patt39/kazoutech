@@ -7,3 +7,7 @@ Route::get('/dashboard/disable_faqs/{id}', 'FaqController@disable')->name('disab
 Route::get('/dashboard/faqs/v/sites/c/{categoryfaq}','FaqController@catagoryfaqbystatus')->name('faqs.dashboard_sites');
 Route::get('/dashboard/faqs/c/{categoryfaq}', 'FaqController@catagoryfaq')->name('faqs.catagoryfaq');
 
+//Route FAQSOccupation
+Route::get('/dashboard/faqs_occuption/', 'FaqController@faqoccupation')->name('faqsoccuption.index');
+
+

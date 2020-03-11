@@ -150,6 +150,13 @@ class FaqController extends Controller
         return view('admin.faq.index',compact('faqs'));
     }
 
+
+    public function faqoccupation()
+    {
+        
+        return view('admin.faq.faqoccupation.index');
+    }
+
     public function catagoryfaqbystatus($categoryfaq)
     {
         $faqs = categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()

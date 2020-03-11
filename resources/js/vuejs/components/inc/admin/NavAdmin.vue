@@ -277,6 +277,12 @@
                                         <span class="sidebar-normal"><b>FAQs</b></span>
                                     </router-link>
                                 </li>
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'faqsoccuption.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>FO</b></span>
+                                        <span class="sidebar-normal"><b>FAQsOccupation</b></span>
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </li>

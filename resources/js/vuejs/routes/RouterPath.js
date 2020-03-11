@@ -25,6 +25,7 @@ import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
 import FaqEdit from "../components/admin/faq/admin/FaqEdit";
+import FaqOccupationIndex from "../components/admin/faq/faqoccupation/FaqOccupationIndex";
 import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
 import AdministratorDatatableIndex from "../components/admin/administrator/AdministratorDatatableIndex";
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
@@ -164,6 +165,9 @@ export const routes = [
     {path: '/dashboard/faqs/v/sites/', name: 'faqs.dashboard_sites', component: FaqViewSites},
     {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
 
+    //Route FAQS For Occupation
+    {path: '/dashboard/faqs_occuption/', name: 'faqsoccuption.index', component: FaqOccupationIndex},
+    
     //Route Blogs
     {path: '/dashboard/blogs/', name: 'blogs.index', component: BlogIndex},
     {path: '/dashboard/blogs/create', name: 'blogs.create', component: BlogCreate},
