@@ -10,7 +10,7 @@
                 <a href="/" class="simple-text logo-mini">
                     <b>KT</b>
                 </a>
-                <a href="/" class="simple-text logo-normal">
+                <a href="/" target="_blank" class="simple-text logo-normal">
                     <b style="font-size: 80%;">Kazoutech</b>
                 </a>
             </div>
