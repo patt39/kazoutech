@@ -114,7 +114,7 @@
                                                     <button  @click="viewItem(item)" class="btn btn-link btn-warning btn-round btn-just-icon" title="View">
                                                         <i class="material-icons">visibility</i>
                                                     </button>
-                                                    <router-link :to="{ name: 'annonces.assignment' }" class="restore-lk btn btn-primary btn-just-icon btn-sm" title="Assigne task">
+                                                    <router-link :to="{ name: 'assignedtask' }" class="restore-lk btn btn-primary btn-just-icon btn-sm" title="Assigne task">
                                                     <span class="btn-label">
                                                         <i class="material-icons">reply</i>
                                                     </span>

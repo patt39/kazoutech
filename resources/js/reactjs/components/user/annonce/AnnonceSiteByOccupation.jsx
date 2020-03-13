@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./inc/AnnonceList";
 import {Link,NavLink} from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
 
 class AnnonceSiteByOccupation extends Component {
@@ -110,8 +111,8 @@ class AnnonceSiteByOccupation extends Component {
                                     <br/>
                                     <span>Toutes les annonces <b style={{textTransform: "lowercase"}}>{annoncebyoccupation.name}</b> au Cameroun</span>
                                     <br/>
-                                    <span>{annoncebyoccupation.annonces_count} {annoncebyoccupation.annonces_count > 1 ? "annonces" : "annonce"} <b style={{textTransform: "lowercase"}}>{annoncebyoccupation.name}</b> au Cameroun</span> 
-      
+                                    <span>{annoncebyoccupation.annonces_count} {annoncebyoccupation.annonces_count > 1 ? "annonces" : "annonce"} <b style={{textTransform: "lowercase"}}>{annoncebyoccupation.name}</b> au Cameroun</span>
+
                                 </div>
                             </div>
                         </div>
@@ -141,15 +142,23 @@ class AnnonceSiteByOccupation extends Component {
                                                         <div className="card mb-3"><div className="card-header h6" style={{ textTransform: "capitalize" }}>Annonces {annoncebyoccupation.name}</div>
                                                             <div className="card-body">
                                                                 <ul className="list-unstyled">
-                                                                    {annoncebycategoryoccupations.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            {item.status && (
-                                                                                <NavLink to={`/annonces/${annoncebyoccupation.slug}/${item.slug}/`}>
-                                                                                    {item.name}
-                                                                                </NavLink>
-                                                                            )}
-                                                                        </li>
-                                                                    ))}
+                                                                    {annoncebycategoryoccupations.length ?
+                                                                        <>
+                                                                            {annoncebycategoryoccupations.map((item) => (
+                                                                                <li key={item.id} className="mb-2">
+                                                                                    {item.status && (
+                                                                                        <NavLink to={`/annonces/${annoncebyoccupation.slug}/${item.slug}/`}>
+                                                                                            {item.name}
+                                                                                        </NavLink>
+                                                                                    )}
+                                                                                </li>
+                                                                            ))}
+                                                                        </>
+                                                                        :
+                                                                        <NavoccupationSkeleton/>
+
+                                                                    }
+
 
                                                                 </ul>
                                                             </div>

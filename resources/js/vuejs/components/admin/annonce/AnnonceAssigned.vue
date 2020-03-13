@@ -566,7 +566,7 @@ export default {
       this.$Progress.start();
       axios.get(route("annonces_assigned_dashboard.api")).then(response => {
         this.loaded = true;
-        this.taskuserassigns = response.data.data;
+        this.taskuserassigns = response.data;
         this.mydatatables();
       });
       axios.get("/api/account/user").then(response => {

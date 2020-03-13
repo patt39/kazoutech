@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import {Link,NavLink} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
 import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
 
 class CharbonneurSiteByCity extends Component {
@@ -80,13 +81,22 @@ class CharbonneurSiteByCity extends Component {
                                         <div className="card-body">
                                             <ul className="list-unstyled">
 
-                                                {cities.map((item) => (
-                                                    <li key={item.id} className="mb-2">
-                                                        <NavLink to={`/charbonneurs/${charbonneursbyoccupation.slug}/${item.slug}/`}>
-                                                            {item.name}
-                                                        </NavLink>
-                                                    </li>
-                                                ))}
+
+                                                {cities.length ?
+                                                    <>
+                                                        {cities.map((item) => (
+                                                            <li key={item.id} className="mb-2">
+                                                                <NavLink to={`/charbonneurs/${charbonneursbyoccupation.slug}/${item.slug}/`}>
+                                                                    {item.name}
+                                                                </NavLink>
+                                                            </li>
+                                                        ))}
+                                                    </>
+                                                    :
+                                                    <NavoccupationSkeleton/>
+
+                                                }
+
 
                                             </ul>
                                         </div>

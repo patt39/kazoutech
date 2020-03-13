@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Link, NavLink} from "react-router-dom";
 import { Button } from "reactstrap";
 import moment from 'moment'
+import NavoccupationSkeleton from "../../../inc/NavoccupationSkeleton";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -33,13 +34,18 @@ class NavCategoryandOccupation extends Component {
 
               <ul className="list-unstyled">
 
-                  {catagoryoccupations.map((item) => (
-                      <li key={item.id} className="mb-2">
-                          <Link to={`/annonces/${SlugOccupation}/${item.slug}/`}>
-                              {item.name}
-                          </Link>
-                      </li>
-                  ))}
+                  {catagoryoccupations.length ?
+                      <>
+                          {catagoryoccupations.map((item) => (
+                              <li key={item.id} className="mb-2">
+                                  <Link to={`/annonces/${SlugOccupation}/${item.slug}/`}>
+                                      {item.name}
+                                  </Link>
+                              </li>
+                          ))}
+                      </>
+                      :<NavoccupationSkeleton/>}
+
               </ul>
 
           </>

@@ -3,7 +3,6 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {Link} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
-import CharbonneurCityList from "./CharbonneurCityList";
 import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
 
 
@@ -27,6 +26,16 @@ class CharbonneurSiteIndex extends Component {
 
     render() {
         const {charbonneurs} = this.state;
+        const mapCharbonneurs = charbonneurs.length ? (
+            charbonneurs.map(item => {
+                return(
+
+                    <CharbonneurList key={item.id} {...item}/>
+                )
+            })
+        ):(
+            <></>
+        );
         return (
 
             <div className="about-us">
@@ -59,9 +68,7 @@ class CharbonneurSiteIndex extends Component {
                                 <div className="col-lg-8 mx-auto mt-4">
                                     <div className="row">
 
-                                        {charbonneurs.map((item) => (
-                                            <CharbonneurList key={item.id} {...item}/>
-                                        ))}
+                                        {mapCharbonneurs}
 
                                     </div>
                                 </div>
