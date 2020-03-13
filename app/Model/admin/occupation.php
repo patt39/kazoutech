@@ -58,6 +58,7 @@ class occupation extends Model implements Auditable
         static::updating(function($model){
             if (auth()->check()){
                 $model->user_id = auth()->id();
+                $model->slug = str_slug($model->name);
             }
             $model->ip = request()->ip();
         });

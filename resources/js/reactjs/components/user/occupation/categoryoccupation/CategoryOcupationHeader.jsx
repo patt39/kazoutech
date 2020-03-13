@@ -20,6 +20,12 @@ class CategoryOcupationHeader extends Component {
                                     <i className="fa fa-chevron-circle-left"/> Retour {this.props.occupation.name}
                                 </Link>
                             </div>
+                            <br />
+                            <div className="text-white">
+                                <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{this.props.name}</b> au Cameroun</span>
+                                <br />
+                                <span>{this.props.annonces_count} {this.props.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{this.props.name}</b> au Cameroun</span>
+                            </div>
                         </div>
                     </div>
                 </div>

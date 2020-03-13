@@ -3,8 +3,8 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./inc/AnnonceList";
 import AnnonceOccupationList from "./AnnonceOccupationList";
-import AnnonceCityList from "./AnnonceCityList";
 import NavAnnoncesByCities from "./inc/NavAnnoncesByCities";
+import AnnoncesListSkeleton from "../../inc/AnnoncesListSkeleton";
 
 
 class AnnonceSiteIndex extends Component {
@@ -81,6 +81,16 @@ class AnnonceSiteIndex extends Component {
 
     render() {
         const {annonces} = this.state;
+        const mapAnnonces = annonces.length ? (
+            annonces.map(item => {
+                return(
+
+                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
+                )
+            })
+        ):(
+            <AnnoncesListSkeleton/>
+        );
         return (
             <div className="blog-post">
                 <NavUserSIte/>
@@ -146,9 +156,9 @@ class AnnonceSiteIndex extends Component {
                                                         </div>
                                                         <div className="card">
                                                             <div className="card-body">
-                                                                {annonces.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
-                                                                ))}
+
+                                                                {mapAnnonces}
+
                                                             </div>
                                                         </div>
                                                     </div>

@@ -4,6 +4,7 @@ import {Button} from "reactstrap";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
+import Skeleton from "react-loading-skeleton";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -195,13 +196,13 @@ class AnnonceSiteShow extends Component {
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        {annonce.title}
+                                        {annonce.title ||   <Skeleton width={300}/>}
                                     </h4>
                                     <div className="author">
 
-                                        <a href="#" onClick={this.props.history.goBack} className="text-white">
+                                        <Link to={`/annonces/`} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> <b>Retour au annonces </b>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -217,19 +218,27 @@ class AnnonceSiteShow extends Component {
                                 <div className="col-md-8">
                                     <div className="card">
                                         <div className="card-header">
-                                            <h5 className="h3 mb-0">{annonce.title}</h5>
+                                            <h5 className="h3 mb-0">{annonce.title || <Skeleton />}</h5>
                                         </div>
                                         <div className="card-header d-flex align-items-center">
                                             <div className="d-flex align-items-center">
-                                                <NavLink to={`/charbonneur/${annonce.user.username}/`}>
-                                                    <img src={annonce.user.avatar} alt={annonce.user.name}
-                                                         className="avatar"/>
-                                                </NavLink>
-                                                <div className="mx-3">
-                                                    <NavLink to={`/charbonneur/${annonce.user.username}/`}
-                                                             className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
-                                                    <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
-                                                </div>
+                                                {annonce.user.username ?
+                                                    <>
+                                                        <NavLink to={`/charbonneur/${annonce.user.username}/`}>
+                                                            <img src={annonce.user.avatar} alt={annonce.user.name}
+                                                                 className="avatar"/>
+                                                        </NavLink>
+                                                        <div className="mx-3">
+                                                            <NavLink to={`/charbonneur/${annonce.user.username}/`}
+                                                                     className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
+                                                            <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
+                                                        </div>
+                                                    </>
+                                                    :
+                                                    <Skeleton circle={true} height={60} width={60} />
+                                                }
+
+
                                             </div>
                                             <div className="text-right ml-auto">
                                                 {/*
@@ -276,13 +285,18 @@ class AnnonceSiteShow extends Component {
                                         </div>
                                         <div className="card-body">
                                             <p className="mb-4">
-                                                <b dangerouslySetInnerHTML={{__html: (annonce.body)}}/>
+                                                {annonce.body ?
+                                                    <b dangerouslySetInnerHTML={{__html: (annonce.body)}}/>
+                                                    :
+                                                    <Skeleton count={3}/>
+                                                }
                                             </p>
                                             {annonce.photo !== null ?
                                                 <img alt={annonce.photo} src={annonce.photo}
                                                      className="img-fluid rounded"/>
                                                 : null}
-                                            <div className="row align-items-center my-3 pb-3 border-bottom">
+
+                                            {/*     <div className="row align-items-center my-3 pb-3 border-bottom">
                                                 <div className="col-sm-6">
                                                     <div className="icon-actions">
                                                         {$guest ?
@@ -298,7 +312,8 @@ class AnnonceSiteShow extends Component {
                                                         }
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>*/}
+
                                         </div>
                                     </div>
                                 </div>

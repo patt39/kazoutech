@@ -114,6 +114,15 @@ class MultiplesRouteController extends Controller
             ->with([
                 'categoryoccupations' => function ($q) use ($occupation){
                     $q->where(['status' => 1])
+                        ->withCount(['annonces' => function ($q) use ($occupation){
+                            $q->where(['status' => 1])
+                                ->with('user','occupation','city','categoryoccupation')
+                                ->whereIn('occupation_id',[$occupation->id])
+                                ->whereHas('city', function ($q) {$q->where('status',1);})
+                                ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                                ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                                    $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+                        }])
                         ->whereIn('occupation_id',[$occupation->id])
                         ->with('user','occupation','color')
                         ->whereHas('occupation', function ($q) {$q->where('status',1);})
