@@ -174,14 +174,16 @@ class AnnonceController extends Controller
                 ->whereHas('categoryoccupation', function ($q) use ($occupation) {
                     $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
         }])->with([
-            'annonces' => function ($q) use ($occupation,$categoryoccupation){
+            'annonces' => function ($q) use ($occupation,$categoryoccupation,$city){
                 $q->where(['status' => 1])
                     ->with('user','occupation','city','categoryoccupation')
                     ->whereIn('occupation_id',[$occupation->id])
                     ->whereIn('categoryoccupation_id',[$categoryoccupation->id])
+                    ->whereIn('city_id',[$city->id])
                     ->whereHas('city', function ($q) {$q->where('status',1);})
                     ->whereHas('occupation', function ($q) {$q->where('status',1);})
-                    ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                        $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);})
                     ->orderBy('created_at','DESC')->distinct()->paginate(40)->toArray();},
         ])->firstOrFail();
 
