@@ -221,12 +221,20 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function apiblogsoccupation($slug)
+    public function apiblogsoccupation(occupation $occupation)
     {
-        $occupation = new OccupationResource(occupation::where('status',1)
-            ->whereSlug($slug)->firstOrFail());
 
-        return response()->json($occupation,200);
+         $blogbycategories =  occupation::whereSlug($occupation->slug)
+         ->with('user')
+        ->with([
+             'blogs' => function ($q) use ($occupation){
+                 $q->where(['status' => 1])
+                     ->with('user','occupation')
+                     ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                     ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+         ])->first();;
+
+        return response()->json($blogbycategories,200);
     }
 
     public function blogsoccupationslug(occupation $occupation,blog $blog)

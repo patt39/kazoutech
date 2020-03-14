@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import OccupationHeader from "./OccupationHeader";
 import CitySite from "../city/CitySite";
+import OccupationListSkeleton from "../../inc/OccupationListSkeleton";
 import FaqUserList from "../faq/FaqUserList";
 
 
@@ -56,37 +57,31 @@ class OccupationSiteSlug extends Component {
                                                     <h3 className="display-3">Choisissez votre catègorie en quelques clicks parmis nos offres</h3>
                                                 </div>
                                             </div>
-                                            {occupationCategories.length > 0
-                                                ?
-                                                <div className="row align-items-center">
-                                                    {occupationCategories.map((item) => (
 
-                                                        <div key={item.id} className="col-lg-4 mx-auto">
-                                                            <div className="card card-blog card-background" data-animation="zooming">
-                                                                <div className="full-background" style={{ backgroundImage: "url(" + item.photo + ")" }} />
-                                                                <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
-                                                                    <div className="card-body">
-                                                                        <div className="content-bottom">
-                                                                            <h5 className="card-title text-uppercase">{item.name}</h5>
+                                            <div className="row align-items-center">
+                                                {occupationCategories.length ?
+                                                    <>
+                                                        {occupationCategories.map((item) => (
+
+                                                            <div key={item.id} className="col-lg-4 mx-auto">
+                                                                <div className="card card-blog card-background" data-animation="zooming">
+                                                                    <div className="full-background" style={{ backgroundImage: "url(" + item.photo + ")" }} />
+                                                                    <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
+                                                                        <div className="card-body">
+                                                                            <div className="content-bottom">
+                                                                                <h5 className="card-title text-uppercase">{item.name} ({item.annonces_count})</h5>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </Link>
+                                                                    </Link>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                :
-                                                <div className="row align-items-center">
-                                                    <div className="col-md-10 mr-auto ml-auto text-center">
-                                                        <div className="kazouTechOccupationEmpty">
-                                                            <i className="ni ni-settings text-red"></i>
-                                                        </div>
-                                                        <div className="mt-5 mb-5">
-                                                            <h2>Les offres pour la catégorie <span className="display-3">{composantTitle}</span> ne sont pas disponible pour le moment.</h2>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
+                                                        ))}
+                                                    </>
+
+                                                    : <OccupationListSkeleton />}
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +104,7 @@ class OccupationSiteSlug extends Component {
                                                 <div className="col-md-12 mx-auto">
                                                     <h4 className="title">Tous nos articles
                                                             sur <strong>{occupation.name} </strong> sont sur
-                                                        notre
+                                                    notre
                                                             blog</h4>
                                                     <br />
                                                     <div className="row">
