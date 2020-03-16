@@ -1,9 +1,10 @@
-import React, {Component} from "react";
-import {Link, NavLink} from "react-router-dom";
-import {Button} from "reactstrap";
+import React, { Component, Fragment } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Button } from "reactstrap";
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
+import ReadMoreAndLess from 'react-read-more-less';
 import Skeleton from "react-loading-skeleton";
 
 require("moment/min/locales.min");
@@ -30,8 +31,9 @@ class AnnonceSiteShow extends Component {
             remember: true,
             errors: [],
 
-            annonceinteressebycategoryoccupation:{annoncesinteres:[]},
-            annonce: {user: [], occupation: [],city:[]}
+            annonceinteressebycategoryoccupation: { annoncesinteres: [] },
+            annonce: { user: [], occupation: [], city: [] },
+            charbonneurs: { userbycities: [] }
         };
     }
     handleFieldChange(event) {
@@ -53,7 +55,7 @@ class AnnonceSiteShow extends Component {
             )
         }
     }
-    loadItems(){
+    loadItems() {
         let SlugItem = this.props.match.params.annonce;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
@@ -62,12 +64,14 @@ class AnnonceSiteShow extends Component {
          * Ici je recupere l'annonce pour l'afficer
          */
         let url = route('api_annonce_site.view', [SlugOccupation, SlugCategoryoccupation, SlugCity, SlugItem]);
-        dyaxios.get(url).then(response => this.setState({annonce: response.data,}));
+        dyaxios.get(url).then(response => this.setState({ annonce: response.data, }));
         /**
          * Ici je recupere touts les annonces par categoryoccupation pour proposer
          */
         let urlinteress = route('api_annonce_occupation_categoryoccupation_site.view', [SlugOccupation, SlugCategoryoccupation]);
-        dyaxios.get(urlinteress).then(response => this.setState({annonceinteressebycategoryoccupation: response.data,}));
+        dyaxios.get(urlinteress).then(response => this.setState({ annonceinteressebycategoryoccupation: response.data, }));
+        let urluser = route('api_active_charbonneurs_occupation_city.view', [SlugOccupation, SlugCity]);
+        dyaxios.get(urluser).then(response => this.setState({ charbonneurs: response.data, }));
     }
     componentDidMount() {
         this.loadItems();
@@ -77,21 +81,21 @@ class AnnonceSiteShow extends Component {
     likeItem(annonce) {
         //let SlugOccupation = this.props.match.params.occupation;
         //Start Progress bar
-        dyaxios.get(route('annonces_site.like', [annonce.occupation.slug,annonce.id]))
+        dyaxios.get(route('annonces_site.like', [annonce.occupation.slug, annonce.id]))
             .then(() => {
                 this.loadItems();
 
             }).catch(() => {
-            //Failled message
-            $.notify("Ooop! Une erreur est survenue", {
-                allow_dismiss: false,
-                type: 'danger',
-                animate: {
-                    enter: 'animated bounceInDown',
-                    exit: 'animated bounceOutUp'
-                }
+                //Failled message
+                $.notify("Ooop! Une erreur est survenue", {
+                    allow_dismiss: false,
+                    type: 'danger',
+                    animate: {
+                        enter: 'animated bounceInDown',
+                        exit: 'animated bounceOutUp'
+                    }
+                });
             });
-        });
     }
     loginItem(e) {
         e.preventDefault();
@@ -107,18 +111,18 @@ class AnnonceSiteShow extends Component {
                 $('#loginModal').modal('hide');
                 window.location.reload();
             }).catch(error => {
-            this.setState({
-                errors: error.response.data.errors
-            });
-            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
-                allow_dismiss: false,
-                type: 'danger',
-                animate: {
-                    enter: 'animated bounceInDown',
-                    exit: 'animated bounceOutUp'
-                }
-            });
-        })
+                this.setState({
+                    errors: error.response.data.errors
+                });
+                $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+                    allow_dismiss: false,
+                    type: 'danger',
+                    animate: {
+                        enter: 'animated bounceInDown',
+                        exit: 'animated bounceOutUp'
+                    }
+                });
+            })
     }
 
 
@@ -145,9 +149,9 @@ class AnnonceSiteShow extends Component {
                     this.props.history.push('/annonces/');
                     /** Alert notify bootstrapp **/
                     $.notify({
-                            // title: 'Update FAQ',
-                            message: 'Annonce suprimée avec success'
-                        },
+                        // title: 'Update FAQ',
+                        message: 'Annonce suprimée avec success'
+                    },
                         {
                             allow_dismiss: false,
                             type: 'primary',
@@ -179,29 +183,29 @@ class AnnonceSiteShow extends Component {
 
 
     render() {
-        const {annonce,annonceinteressebycategoryoccupation} = this.state;
+        const { annonce, annonceinteressebycategoryoccupation, charbonneurs } = this.state;
         const composantTitle = `${annonce.title || "kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
         const annonceinderesses = annonceinteressebycategoryoccupation.annoncesinteres;
         return (
 
             <div className="landing-page">
-                <NavUserSIte/>
+                <NavUserSIte />
 
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
-                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")"}}/>
+                            style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/photo-15.jpg' + ")" }} />
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
                                     <h4 className="title text-white">
-                                        {annonce.title ||   <Skeleton width={300}/>}
+                                        {annonce.title || <Skeleton width={300} />}
                                     </h4>
                                     <div className="author">
 
                                         <Link to={`/annonces/`} className="text-white">
-                                            <i className="fa fa-chevron-circle-left"/> <b>Retour au annonces </b>
+                                            <i className="fa fa-chevron-circle-left" /> <b>Retour au annonces </b>
                                         </Link>
                                     </div>
                                 </div>
@@ -212,7 +216,7 @@ class AnnonceSiteShow extends Component {
                 <div className="wrapper">
                     <div className="main main-raised">
                         <div className="container">
-                            <br/>
+                            <br />
                             <div className="row">
 
                                 <div className="col-md-8">
@@ -226,11 +230,11 @@ class AnnonceSiteShow extends Component {
                                                     <>
                                                         <NavLink to={`/charbonneur/${annonce.user.username}/`}>
                                                             <img src={annonce.user.avatar} alt={annonce.user.name}
-                                                                 className="avatar"/>
+                                                                className="avatar" />
                                                         </NavLink>
                                                         <div className="mx-3">
                                                             <NavLink to={`/charbonneur/${annonce.user.username}/`}
-                                                                     className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
+                                                                className="text-dark font-weight-600 text-sm">{annonce.user.name}</NavLink>
                                                             <small className="d-block text-muted">{moment(annonce.created_at).fromNow()}</small>
                                                         </div>
                                                     </>
@@ -264,15 +268,15 @@ class AnnonceSiteShow extends Component {
                                                                     to={`/annonces/${annonce.occupation.slug}/p/annonce/${annonce.id}/edit`}
                                                                     className="btn btn-sm btn-success btn-icon">
                                                                     <span className="btn-inner--icon icon-big">
-                                                                        <i className="ni ni-check-bold"/>
+                                                                        <i className="ni ni-check-bold" />
                                                                     </span>
                                                                     <span className="btn-inner--text">editer</span>
                                                                 </NavLink>
                                                                 <Button onClick={() => this.deleteItem(annonce.id)}
-                                                                        className="btn btn-sm btn-danger btn-icon">
-                                                                        <span className="btn-inner--icon icon-big">
-                                                                            <i className="ni ni-fat-remove"/>
-                                                                        </span>
+                                                                    className="btn btn-sm btn-danger btn-icon">
+                                                                    <span className="btn-inner--icon icon-big">
+                                                                        <i className="ni ni-fat-remove" />
+                                                                    </span>
                                                                     <span className="btn-inner--text">Suprimer</span>
                                                                 </Button>{" "}
                                                             </>
@@ -286,14 +290,14 @@ class AnnonceSiteShow extends Component {
                                         <div className="card-body">
                                             <p className="mb-4">
                                                 {annonce.body ?
-                                                    <b dangerouslySetInnerHTML={{__html: (annonce.body)}}/>
+                                                    <b dangerouslySetInnerHTML={{ __html: (annonce.body) }} />
                                                     :
-                                                    <Skeleton count={3}/>
+                                                    <Skeleton count={3} />
                                                 }
                                             </p>
                                             {annonce.photo !== null ?
                                                 <img alt={annonce.photo} src={annonce.photo}
-                                                     className="img-fluid rounded"/>
+                                                    className="img-fluid rounded" />
                                                 : null}
 
                                             {/*     <div className="row align-items-center my-3 pb-3 border-bottom">
@@ -322,71 +326,57 @@ class AnnonceSiteShow extends Component {
                                 <div className="col-md-4 ">
                                     <div className="container">
 
-                                        <div className="submit text-center">
-                                            <a href="#" className="btn btn-icon btn-3 btn-primary" >
-                                                <span className="btn-inner--text">Proposer mes services</span>
-                                            </a>
-                                        </div>
-                                        <br/>
+
+                                        {/**<div className="submit text-center">
+                                            <Link
+                                                to={`/annonces/${annonce.occupation.slug}/p/annonce/new/create/`}
+                                                className="btn btn-primary"
+                                                type="button">
+                                                    Demander un service
+                                            </Link>
+                                        </div> */}
+                                        
+                                        <br />
 
 
                                         <div className="card">
-                                            <div className="card-header d-flex align-items-center">
-                                                <div className="d-flex align-items-center">
-                                                    <a href="#">
-                                                        <img src="/assets/vendor_site/img/pages/photo-15.jpg" className="avatar"/>
-                                                    </a>
-                                                    <div className="mx-3">
-                                                        <Link to={`/`}
-                                                           className="text-dark font-weight-600 text-sm">Informa Koije</Link>
-                                                        <small className="d-block text-muted">3 days ago</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card-body">
-                                                <p className="mb-1">
-                                                    Personal profiles are the perfect way for you to grab their
-                                                    attention and persuade recruiters to continue reading your CV
-                                                </p>
-                                            </div>
-                                            <div className="card-header d-flex align-items-center">
-                                                <div className="d-flex align-items-center">
-                                                    <a href="#">
-                                                        <img src="/assets/vendor_site/img/pages/photo-15.jpg" className="avatar"/>
-                                                    </a>
-                                                    <div className="mx-3">
-                                                        <Link to={`/`}
-                                                           className="text-dark font-weight-600 text-sm">Boclair Temgoua</Link>
-                                                        <small className="d-block text-muted">3 days ago</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card-body">
-                                                <p className="mb-1">
-                                                    Personal profiles are the perfect way for you to grab their
-                                                    attention and persuade recruiters to continue reading your CV
-                                                </p>
-                                            </div>
-                                            <div className="card-header d-flex align-items-center">
-                                                <div className="d-flex align-items-center">
-                                                    <a href="#">
-                                                        <img src="/assets/vendor_site/img/pages/photo-15.jpg" className="avatar"/>
-                                                    </a>
-                                                    <div className="mx-3">
-                                                        <Link to={`/`}
-                                                           className="text-dark font-weight-600 text-sm">Kokiko</Link>
-                                                        <small className="d-block text-muted">3 days ago</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card-body">
-                                                <p className="mb-1">
-                                                    Personal profiles are the perfect way for you to grab their
-                                                    attention and persuade recruiters to continue reading your CV
-                                                </p>
-                                            </div>
-                                        </div>
 
+
+                                            {charbonneurs.userbycities.map((item) => (
+                                                <Fragment key={item.id}>
+
+                                                    <div className="card-header d-flex align-items-center">
+                                                        <div className="d-flex align-items-center">
+                                                            <NavLink to={`/charbonneur/${item.username}/`}>
+                                                                <img src={item.avatar} alt={item.name || ""}
+                                                                    className="avatar" />
+                                                            </NavLink>
+                                                            <div className="mx-3">
+                                                                <Link to={`/charbonneur/${item.username}/`}
+                                                                    className="text-dark font-weight-600 text-sm">{item.name || ""}</Link>
+                                                                <small className="d-block text-muted">{moment(item.created_at).fromNow()}</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body">
+                                                    <div className="text-justify">
+                                                        <ReadMoreAndLess
+                                                            className="read-more-content"
+                                                            charLimit={50}
+                                                            readMoreText="En savoir plus"
+                                                            readLessText="En savoire moin">
+                                                            {item.profile.body || ""}
+                                                        </ReadMoreAndLess>
+                                                    </div>     
+                                                    <br/>            
+                                                     <Link to={`/charbonneur/${item.username}/`} className="btn btn-sm btn-info btn-block">Contacter</Link>
+                                                    </div>
+                                                </Fragment>
+                                            ))}
+
+
+
+                                        </div>
                                     </div>
                                 </div>
 
@@ -408,14 +398,14 @@ class AnnonceSiteShow extends Component {
                                         </div>
                                         <div className="btn-wrapper text-center">
                                             <a href=".." className="btn btn-neutral btn-icon">
-                                            <span className="btn-inner--icon">
-                                              <img src="/assets/site/assets/img/icons/common/github.svg"/>
-                                            </span>
+                                                <span className="btn-inner--icon">
+                                                    <img src="/assets/site/assets/img/icons/common/github.svg" />
+                                                </span>
                                                 <span className="btn-inner--text">Google</span>
                                             </a>
                                             <a href=".." className="btn btn-neutral btn-icon">
                                                 <span className="btn-inner--icon">
-                                                <img src="/assets/site/assets/img/icons/common/google.svg"/>
+                                                    <img src="/assets/site/assets/img/icons/common/google.svg" />
                                                 </span>
                                                 <span className="btn-inner--text">Github</span>
                                             </a>
@@ -431,17 +421,17 @@ class AnnonceSiteShow extends Component {
                                                 <div className="input-group input-group-alternative">
                                                     <div className="input-group-prepend">
                                                         <span className="input-group-text">
-                                                            <i className="ni ni-email-83"/>
+                                                            <i className="ni ni-email-83" />
                                                         </span>
                                                     </div>
 
                                                     <input type="text" placeholder="Pseudo ou votre numero de téléphone" aria-label="Pseudo ou votre numero de téléphone"
-                                                           required="required"
-                                                           id="username"
-                                                           className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
-                                                           name='username'
-                                                           value={this.state.username}
-                                                           onChange={this.handleFieldChange} autoComplete="username" autoFocus />
+                                                        required="required"
+                                                        id="username"
+                                                        className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
+                                                        name='username'
+                                                        value={this.state.username}
+                                                        onChange={this.handleFieldChange} autoComplete="username" autoFocus />
                                                     {this.renderErrorFor('username')}
                                                 </div>
                                             </div>
@@ -449,24 +439,24 @@ class AnnonceSiteShow extends Component {
                                                 <div className="input-group input-group-alternative">
                                                     <div className="input-group-prepend">
                                                         <span className="input-group-text">
-                                                            <i className="ni ni-lock-circle-open"/>
+                                                            <i className="ni ni-lock-circle-open" />
                                                         </span>
                                                     </div>
 
                                                     <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
-                                                           required="required"
-                                                           id="password"
-                                                           className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}
-                                                           name='password'
-                                                           value={this.state.password}
-                                                           onChange={this.handleFieldChange}
-                                                           autoComplete="password" autoFocus/>
+                                                        required="required"
+                                                        id="password"
+                                                        className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}
+                                                        name='password'
+                                                        value={this.state.password}
+                                                        onChange={this.handleFieldChange}
+                                                        autoComplete="password" autoFocus />
                                                     {this.renderErrorFor('password')}
                                                 </div>
                                             </div>
                                             <div className="custom-control custom-control-alternative custom-checkbox">
                                                 <input className="custom-control-input" id="remember" type="checkbox"
-                                                       defaultChecked={this.state.remember} value={this.state.remember} name="remember" onChange={this.handleFieldChange}/>
+                                                    defaultChecked={this.state.remember} value={this.state.remember} name="remember" onChange={this.handleFieldChange} />
                                                 <label className="custom-control-label" htmlFor="remember">
                                                     <span>Se souvenir de moi</span>
                                                 </label>
@@ -493,7 +483,7 @@ class AnnonceSiteShow extends Component {
                         </div>
                     </div>
                 </div>
-                <FooterUserSite/>
+                <FooterUserSite />
             </div>
         )
     }

@@ -395,7 +395,7 @@ class MultiplesRouteController extends Controller
                         ->whereIn('city_id',[$city->id])
                         ->whereHas('city', function ($q) {$q->where('status',1);})
                         ->whereHas('occupation', function ($q) {$q->where('status',1);})
-                        ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+                        ->orderBy('created_at','DESC')->take(3)->distinct()->get()->toArray();},
             ])
             ->firstOrFail();
 

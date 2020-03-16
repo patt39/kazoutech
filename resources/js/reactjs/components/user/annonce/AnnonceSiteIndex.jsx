@@ -97,7 +97,7 @@ class AnnonceSiteIndex extends Component {
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
-                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
+                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/boxed-water.jpg' + ")"}}/>
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">

@@ -85,7 +85,7 @@ class ProfileSiteIndex extends Component {
     render() {
         const {userProfile} = this.state;
         let annonces = userProfile.annonces;
-        const composantTitle = `${userProfile.name}`;
+        const composantTitle = `${userProfile.name || "Profile"}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
 

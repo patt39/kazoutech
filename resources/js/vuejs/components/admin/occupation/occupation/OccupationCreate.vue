@@ -73,12 +73,9 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="media-body">
-                                                                            <label class="bmd-label-floating">Say something<span style="color: red;">*</span></label>
-                                                                            <quill-editor v-model="form.description"
-                                                                                          :class="{ 'is-invalid': form.errors.has('description') }"
-                                                                                          :options="editorOption">
-                                                                            </quill-editor>
-                                                                            <has-error :form="form" field="body"/>
+                                                                           <h2 class="text-center">
+                                                                               La description a été remplaçer par <b><a  href="/dashboard/faqs_occupation">occupationfaqs</a></b>
+                                                                           </h2>
                                                                         </div>
                                                                     </div>
                                                                 </div>

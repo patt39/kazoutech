@@ -36,6 +36,7 @@ class OccupationSiteSlug extends Component {
         const { occupation, visiable } = this.state;
         const occupationCategories = occupation.categoryoccupations;
         const allblogbyoccupations = occupation.blogs;
+        const faqbyoccupations = occupation.faqoccupations;
         const composantTitle = `${occupation.name || "kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
 
@@ -109,7 +110,7 @@ class OccupationSiteSlug extends Component {
                                                     <br />
                                                     <div className="row">
                                                         {allblogbyoccupations.map((item) => (
-                                                            <div className="col-lg-4 col-md-6">
+                                                            <div key={item.id} className="col-lg-4 col-md-6">
                                                                 <div className="card card-blog card-plain">
                                                                     <div className="card-image shadow">
                                                                         <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
@@ -136,11 +137,47 @@ class OccupationSiteSlug extends Component {
                                                         ))}
                                                     </div>
                                                 </div>
+                                            </div>
+                                        )}
+                                        <br />
+                                        {faqbyoccupations.length > 0 && (
+                                            <div className="row">
+                                                <div className="col-md-12 mx-auto text-center">
+                                                    <h4 className="title">Bon à savoire
+                                                            sur <strong>{occupation.name} </strong></h4>
+                                                    <br />
+                                                    <div className="cd-section" id="accordion">
+                                                        <div className="accordion-1">
+                                                            <div className="container">
 
+                                                                <div className={'row'}>
+                                                                    <div className="col-md-12 ml-auto">
+                                                                        <div className="accordion" id="accordionFaqs">
+                                                                            {faqbyoccupations.slice(0, visiable).map((item) => (
+                                                                                <FaqUserList key={item.id} {...item} />
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                                {visiable < faqbyoccupations.length && (
+                                                                        <div className="row">
+                                                                            <div className="col-md-3 mx-auto text-center">
+                                                                                <button type="button" onClick={this.loadmoresItem} className="btn btn-primary">
+                                                                                    <b>Voir plus </b>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    )}
+                                                                <br />
+                                                                <br />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             </div>
                                         )}
-
 
                                     </div>
                                 </div>
