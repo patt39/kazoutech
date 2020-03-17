@@ -17,7 +17,7 @@
             <error-404></error-404>
         </div>
     @endif
-@endsection
+@endsectiona
 
 @section('script')
 

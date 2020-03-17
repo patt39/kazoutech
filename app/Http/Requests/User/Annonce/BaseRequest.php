@@ -38,6 +38,11 @@ class BaseRequest extends Request
                 'address' => 'required|string|min:2|max:100',
                 'categoryoccupation_id' => 'required',
             ];
+        }elseif ($group === 'assignedtaskstore'){
+            $rules = [
+                'title' => 'required|string|min:2|max:100',
+                'user_id' => 'required',
+            ];
         } else { // 'edit'
             $rules = [
                 'title' => 'required|string|min:2|max:100',
@@ -67,6 +72,7 @@ class BaseRequest extends Request
     {
         return [
             'city_id' => 'ville obligatoire',
+            'user_id' => 'charbonneur obligatoire',
             'occupation_id' => 'occupation obligatoire',
             'categoryoccupation_id' => 'category obligatoire',
         ];

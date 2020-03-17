@@ -374,7 +374,7 @@ class DevenirCharbonneurSite extends Component{
                 </div>
                 <div className="row mt-4 mb-3">
                     <div className="col-md-12">
-                        En vous inscrivant vous acceptez <a href="#">les conditions générales</a> et la <a href="#">politique
+                        En vous inscrivant vous acceptez <a href="/condition_utilisation">les conditions générales</a> et la <a href="/politique_confidentialité">politique
                         de confidentialité</a>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import {Link} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
 import CharbonneurCityList from "./CharbonneurCityList";
+import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
 
 
 class CharbonneurSiteIndex extends Component {
@@ -51,7 +52,9 @@ class CharbonneurSiteIndex extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4">
-                                    <CharbonneurCityList/>
+
+                                    <NavoccupationforCharbonneur/>
+
                                 </div>
                                 <div className="col-lg-8 mx-auto mt-4">
                                     <div className="row">

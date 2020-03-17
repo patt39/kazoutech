@@ -22,6 +22,7 @@ Route::get('blog/{occupation}/{blog}','MultiplesRouteController@blogsoccupations
 
 Route::get('annonces','MultiplesRouteController@annonces')->name('annonces');
 Route::get('annonces/{occupation}','MultiplesRouteController@annoncesbyoccupation')->name('annonces_view');
+Route::get('annonces/c/{city}','MultiplesRouteController@annoncesbycityslug')->name('annonces_view_city');
 Route::get('annonces/v/{city}','MultiplesRouteController@annoncesbycity')->name('annonces_view_city');
 Route::get('annonces/{occupation}/{categoryoccupation}','MultiplesRouteController@annoncesbycategoryoccupation')->name('annonces_view_categoryoccupation');
 Route::get('annonces/{occupation}/{categoryoccupation}/{city}','MultiplesRouteController@annoncesbycity')->name('annonces_view_city');
@@ -29,8 +30,8 @@ Route::get('annonces/{occupation}/{categoryoccupation}/{city}/{annonce}','Multip
 Route::get('annonces/{occupation}/v/{city}','MultiplesRouteController@annoncesbyoccupationbycity')->name('occupation.occupation_city');
 
 Route::get('charbonneurs','MultiplesRouteController@charbonneurs')->name('charbonneurs');
-Route::get('charbonneurs/{city}','MultiplesRouteController@charbonneursbycity')->name('charbonneurs_by_city');
-Route::get('charbonneurs/{city}/{occupation}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
+Route::get('charbonneurs/{occupation}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
+Route::get('charbonneurs/{occupation}/{city}','MultiplesRouteController@charbonneursbyoccupation')->name('charbonneurs_by_occupation');
 
 Route::get('temoignages','MultiplesRouteController@temoignages')->name('temoignages');
 

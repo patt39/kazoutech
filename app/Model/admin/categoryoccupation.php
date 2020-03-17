@@ -68,6 +68,12 @@ class categoryoccupation extends Model
         return $this->hasMany(annonce::class,'categoryoccupation_id');
     }
 
+    public function occupations()
+    {
+        return $this->hasMany(occupation::class,'categoryoccupation_id');
+    }
+
+
     use Sluggable;
 
     /**

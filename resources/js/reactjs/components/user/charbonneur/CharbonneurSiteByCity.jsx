@@ -1,37 +1,45 @@
 import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import {Link} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
-import CharbonneurCityList from "./CharbonneurCityList";
+import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
 
 
 class CharbonneurSiteByCity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            charbonneursbycity: {users:[]},
-            occupations:[],
+            charbonneursbycity: {userbycities:[]},
+            charbonneursbyoccupation:[],
+            cities:[],
         }
     }
 
     // lifecycle method
     componentDidMount() {
+        let SlugOccupation = this.props.match.params.occupation;
         let SlugCity = this.props.match.params.city;
-        dyaxios.get(route('api_active_charbonneurs_city.view',[SlugCity]))
-            .then(response =>
-                this.setState({
-                    charbonneursbycity: response.data,
-                }));
-        dyaxios.get(route('api_active.occupations')).then(response =>
-            this.setState({occupations: [...response.data],}));
+        dyaxios.get(route('api_active_charbonneurs_occupation_city.view',[SlugOccupation,SlugCity]))
+            .then(response => this.setState({charbonneursbycity: response.data,}));
+
+        dyaxios.get(route('api_active_charbonneurs_occupation.view',[SlugOccupation])).then(response =>
+            this.setState({
+                charbonneursbyoccupation: response.data,
+            }));
+
+        dyaxios.get(route('api.cities_by_status')).then(response =>
+            this.setState({
+                cities: [...response.data],
+            }));
+
     }
 
     render() {
-        const {charbonneursbycity,occupations} = this.state;
-        const composantTitle = `${charbonneursbycity.name}`;
+        const {charbonneursbycity,charbonneursbyoccupation,cities} = this.state;
+        const composantTitle = `${charbonneursbycity.name || "kazoutech"}`;
         document.title = `Charbonneurs dans la ville de ${composantTitle} | Kazoutech`;
-        let users = charbonneursbycity.users;
+        let userbycities = charbonneursbycity.userbycities;
         return (
 
             <div className="about-us">
@@ -43,12 +51,21 @@ class CharbonneurSiteByCity extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
-                                    <h2 className="display-2 text-white">Charbonneurs dans la ville de {charbonneursbycity.name}</h2>
+                                    <h4 className="text-white">Trouver le meilleur <b style={{ textTransform: "lowercase" }}> {charbonneursbyoccupation.name}</b> à <b style={{ textTransform: "lowercase" }}>{charbonneursbycity.name}</b> </h4>
                                     <div className="description">
                                         <Link to={'/charbonneurs/'} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> Tous les charbonneurs
                                         </Link>
                                     </div>
+                                    <div className="text-white">
+                                        <span>{charbonneursbycity.userbycities_count} {charbonneursbycity.userbycities_count > 1 ? "charbonneurs" : "charbonneur"} <b style={{ textTransform: "lowercase" }}>à {charbonneursbycity.name}</b></span>
+                                    </div>
+                                    <div className="mt-3">
+                                        <Link to={`/occupations/${charbonneursbyoccupation.slug}/${charbonneursbycity.slug}`} className="btn btn-lg btn-primary">
+                                            Demander un service {charbonneursbyoccupation.name} à <b>{charbonneursbycity.name}</b>
+                                        </Link>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -57,18 +74,17 @@ class CharbonneurSiteByCity extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4">
+
                                     <div className="card mb-3">
-                                        <div className="card-header h6">Occupations</div>
+                                        <div className="card-header h6">Les charbonneurs da la Ville de </div>
                                         <div className="card-body">
                                             <ul className="list-unstyled">
 
-                                                {occupations.map((item) => (
+                                                {cities.map((item) => (
                                                     <li key={item.id} className="mb-2">
-                                                        {item.status ?
-                                                            <Link to={`/charbonneurs/${charbonneursbycity.slug}/${item.slug}/`}>
-                                                                {item.name}
-                                                            </Link>
-                                                            :null}
+                                                        <NavLink to={`/charbonneurs/${charbonneursbyoccupation.slug}/${item.slug}/`}>
+                                                            {item.name}
+                                                        </NavLink>
                                                     </li>
                                                 ))}
 
@@ -76,12 +92,13 @@ class CharbonneurSiteByCity extends Component {
                                         </div>
                                     </div>
 
-                                   <CharbonneurCityList/>
+                                    <NavoccupationforCharbonneur/>
+
                                 </div>
                                 <div className="col-lg-8 mx-auto mt-4">
                                     <div className="row">
 
-                                        {users.map((item) => (
+                                        {userbycities.map((item) => (
                                             <CharbonneurList key={item.id} {...item}/>
                                         ))}
 

@@ -231,12 +231,12 @@ class BlogSiteEdit extends Component {
                                                 </div>
                                                 <br />
                                                 <div className="row">
-                                                    <div className="col-md-4 ml-auto mr-auto">
+                                                    <div className="col-md-4 mx-auto">
                                                         <div className="profile text-center">
                                                             <img src={this.state.showDefaultImage ? "https://www.kazoucoin.com/assets/img/photo.jpg" : photo} alt={'name'}/>
                                                             <input id="photo" type="file" onChange={this.updateImage} className={`form-control ${this.hasErrorFor('photo') ? 'is-invalid' : ''} kazouImageCarousel-file-upload`} name="photo"/>
                                                             {this.renderErrorFor('photo')}
-                                                            <div className="cta-submit">
+                                                            <div className="text-center">
                                                                 <label htmlFor="photo" className="btn btn-icon btn-primary">
                                                                     <span className="btn-inner--icon"><i className="ni ni-image"/></span>
                                                                     <span className="btn-inner--text">Add Image</span>

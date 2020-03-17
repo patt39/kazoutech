@@ -14,6 +14,7 @@ Vue.prototype.user = window.user.user;
 Vue.prototype.guest = window.user.guest;
 Vue.prototype.authcheck = window.user.authcheck;
 
+import {dyaxios} from "./axios";
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

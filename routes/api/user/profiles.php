@@ -6,4 +6,4 @@
  * Time: 02:28
  */
 
-Route::get('/user/{username}', 'ProfileController@view')->name('api_profile.view');
+Route::get('/user/{user}', 'ProfileController@view')->name('api_profile.view');

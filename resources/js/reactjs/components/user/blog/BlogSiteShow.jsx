@@ -29,7 +29,7 @@ class BlogSiteShow extends Component {
 
     render() {
         const {blog} = this.state;
-        const composantTitle = `${blog.title}`;
+        const composantTitle = `${blog.title || ""}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
             <>
@@ -51,13 +51,14 @@ class BlogSiteShow extends Component {
                         <div className="main main-raised">
                             <div className="container mt--100 mb-5 upper">
                                 <div className="row">
-                                    <div className="col-lg-12 mx-auto">
+                                    <div className="col-lg-12 ml-auto mr-auto">
                                         <div className="card card-profile" data-image="img-rounded">
-                                            <div className="row justify-content-center pt-100 pb-5">
-                                                <div className="col-lg-11">
+                                            <div className="row justify-content-center ">
+                                                <div className="col-lg-11 ml-auto mr-auto">
                                                     <h3 className="display-3">{blog.title}</h3>
-                                                    <div className="description mb-2 text-justify"
-                                                         dangerouslySetInnerHTML={{__html: blog.body}}/>
+                                                    <div className="description mb-2 text-justify">
+                                                        <p dangerouslySetInnerHTML={{__html: blog.body}}/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

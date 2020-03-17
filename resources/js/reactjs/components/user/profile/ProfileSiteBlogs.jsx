@@ -26,7 +26,7 @@ class ProfileSiteBlogs extends Component {
                         </div>
                         <div className="text">
                             <span className="name">{this.props.user.name}</span>
-                            <div className="meta">{moment(this.props.created_at).fromNow()}</div>
+                          <small className="d-block text-muted">{moment(this.props.created_at).format('LLL')}</small>
                         </div>
                     </div>
 
