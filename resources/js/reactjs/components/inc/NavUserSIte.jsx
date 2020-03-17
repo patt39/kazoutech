@@ -21,7 +21,7 @@ class NavUserSIte extends Component {
 
         return (
             <nav id="navbar-main" className="navbar navbar-main navbar-expand-md navbar-transparent headroom">
-                <div className={'container'}>
+                <div className="container container-devices">
                     <Link to={'/'} className="navbar-brand mr-lg-5">
                         <img src=".." alt={'Kazoutech'}/>
                     </Link>
