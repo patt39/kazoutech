@@ -10,7 +10,7 @@ Route::get(
     'AnnonceController@apiannonces'
 )->name('api_active.annonces');
 
-Route::get('annonces/c/{city}/',
+Route::get('annonces/c/{city}',
     'AnnonceController@apiannoncesbycityslug'
 )->name('api_annonces_by_city_slug_site.view');
 

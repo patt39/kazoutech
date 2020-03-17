@@ -4,6 +4,7 @@ import moment from 'moment'
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import BlogPostInteresse from "./BlogPostInteresse";
+import Skeleton from 'react-loading-skeleton';
 import {Button} from "reactstrap";
 
 require("moment/min/locales.min");
@@ -29,7 +30,7 @@ class BlogSiteShow extends Component {
 
     render() {
         const {blog} = this.state;
-        const composantTitle = `${blog.title || ""}`;
+        const composantTitle = `${blog.title || "Kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
             <>
@@ -43,7 +44,7 @@ class BlogSiteShow extends Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">
-                                        <h4 className="display-4 text-white">{blog.title}</h4>
+                                        <h4 className="display-4 text-white">{blog.title || <Skeleton />}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +58,9 @@ class BlogSiteShow extends Component {
                                                 <div className="col-lg-11 ml-auto mr-auto">
                                                     <h3 className="display-3">{blog.title}</h3>
                                                     <div className="description mb-2 text-justify">
+                                                        
                                                         <p dangerouslySetInnerHTML={{__html: blog.body}}/>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

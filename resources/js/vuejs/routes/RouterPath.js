@@ -25,6 +25,10 @@ import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
 import FaqEdit from "../components/admin/faq/admin/FaqEdit";
+import FaqOccupationIndex from "../components/admin/faq/faqoccupation/FaqOccupationIndex";
+import FaqOccupationCreate from "../components/admin/faq/faqoccupation/FaqOccupationCreate";
+import FaqByOccupationIndex from "../components/admin/faq/faqoccupation/FaqByOccupationIndex";
+import FaqOccupationEdit from "../components/admin/faq/faqoccupation/FaqOccupationEdit";
 import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
 import AdministratorDatatableIndex from "../components/admin/administrator/AdministratorDatatableIndex";
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
@@ -164,6 +168,14 @@ export const routes = [
     {path: '/dashboard/faqs/v/sites/', name: 'faqs.dashboard_sites', component: FaqViewSites},
     {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
 
+    //Route FAQS For Occupation
+    {path: '/dashboard/faqs_occupation/', name: 'faqsoccupation.index', component: FaqOccupationIndex},
+    {path: '/dashboard/faqs_occupation/create', name: 'faqsoccupation.create', component: FaqOccupationCreate},
+    {path: '/dashboard/faqs_occupation/:id/edit', name: 'faqsoccupation.edit', component: FaqOccupationEdit},
+    {path: '/dashboard/faqs_occupation/c/:occupation', name: 'faqs.occupationfaq', component: FaqByOccupationIndex},
+
+
+    
     //Route Blogs
     {path: '/dashboard/blogs/', name: 'blogs.index', component: BlogIndex},
     {path: '/dashboard/blogs/create', name: 'blogs.create', component: BlogCreate},

@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
 import BlogLastPost from "./BlogLastPost";
 import BlogOccupationList from "./BlogOccupationList";
+import OccupationListSkeleton from "../../inc/OccupationListSkeleton";
 import {Link} from "react-router-dom";
 
 
@@ -81,7 +82,7 @@ class BlogSiteByCategoriesOccupation extends Component {
     render() {
         const {blogsbycategy,blogsLast} = this.state;
         const blogsbycategies = blogsbycategy.blogs;
-        const composantTitle = `${blogsbycategy.name}`;
+        const composantTitle = `${blogsbycategy.name || "Kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
             <div className="blog-post">
@@ -108,9 +109,14 @@ class BlogSiteByCategoriesOccupation extends Component {
 
                         <div className="container">
                             <div className="row">
-                                {blogsLast.map((item) => (
+                                {blogsLast.length ? 
+                                    <>
+                                    {blogsLast.map((item) => (
                                     <BlogLastPost key={item.id} {...item}/>
                                 ))}
+                                    </>
+                                :<OccupationListSkeleton />}
+                                
                             </div>
                         </div>
 

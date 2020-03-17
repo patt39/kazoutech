@@ -10,7 +10,7 @@
                 <a href="/" class="simple-text logo-mini">
                     <b>KT</b>
                 </a>
-                <a href="/" class="simple-text logo-normal">
+                <a href="/" target="_blank" class="simple-text logo-normal">
                     <b style="font-size: 80%;">Kazoutech</b>
                 </a>
             </div>
@@ -275,6 +275,12 @@
                                     <router-link  :to="{ name: 'faqs.index' }" class="nav-link">
                                         <span class="sidebar-mini"><b>FQ</b></span>
                                         <span class="sidebar-normal"><b>FAQs</b></span>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'faqsoccupation.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>FO</b></span>
+                                        <span class="sidebar-normal"><b>FAQsOccupation</b></span>
                                     </router-link>
                                 </li>
                             </ul>

@@ -44,6 +44,7 @@ class categoryoccupation extends Model
         static::updating(function($model){
             if (auth()->check()){
                 $model->user_id = auth()->id();
+                $model->slug = str_slug($model->name);
             }
         });
     }

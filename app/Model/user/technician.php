@@ -4,6 +4,7 @@ namespace App\Model\user;
 
 use App\Model\admin\city;
 use App\Model\admin\occupation;
+use App\Model\user\profile;
 use App\Model\admin\partial\diploma;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -85,6 +86,12 @@ class technician extends Model implements Auditable
     {
         return $this->belongsTo(diploma::class);
     }
+
+    public function profile()
+    {
+        return $this->belongsTo(profile::class);
+    }
+
 
 
     public function getRouteKeyName()

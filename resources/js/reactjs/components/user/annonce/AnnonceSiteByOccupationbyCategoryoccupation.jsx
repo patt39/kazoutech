@@ -7,6 +7,7 @@ import AnnonceOccupationList from "./AnnonceOccupationList";
 import moment from "moment";
 import { Button } from "reactstrap";
 import NavCategoryandOccupation from "./inc/NavCategoryandOccupation";
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
 
 class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
@@ -165,21 +166,27 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                             <div className="card-body">
 
                                                                 <ul className="list-unstyled">
-                                                                    {cities.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            <Link
-                                                                                to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
+
+                                                                    {cities.length ?
+                                                                        <>
+                                                                            {cities.map((item) => (
+                                                                                <li key={item.id} className="mb-2">
+                                                                                    <Link
+                                                                                        to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
                                                                                 <span
                                                                                     style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
-                                                                            </Link>
-                                                                        </li>
-                                                                    ))}
+                                                                                    </Link>
+                                                                                </li>
+                                                                            ))}
 
-                                                                    <li className="mb-2">
-                                                                        <Link to={`/all_cities/`}>
-                                                                            Autre ville...
-                                                                        </Link>
-                                                                    </li>
+                                                                            <li className="mb-2">
+                                                                                <Link to={`/all_cities/`}>
+                                                                                    Autre ville...
+                                                                                </Link>
+                                                                            </li>
+                                                                        </>
+                                                                        :<NavoccupationSkeleton/>}
+
                                                                 </ul>
 
 

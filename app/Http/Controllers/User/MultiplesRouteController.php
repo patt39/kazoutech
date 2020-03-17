@@ -114,6 +114,15 @@ class MultiplesRouteController extends Controller
             ->with([
                 'categoryoccupations' => function ($q) use ($occupation){
                     $q->where(['status' => 1])
+                        ->withCount(['annonces' => function ($q) use ($occupation){
+                            $q->where(['status' => 1])
+                                ->with('user','occupation','city','categoryoccupation')
+                                ->whereIn('occupation_id',[$occupation->id])
+                                ->whereHas('city', function ($q) {$q->where('status',1);})
+                                ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                                ->whereHas('categoryoccupation', function ($q) use ($occupation) {
+                                    $q->where('status',1)->whereIn('occupation_id',[$occupation->id]);});
+                        }])
                         ->whereIn('occupation_id',[$occupation->id])
                         ->with('user','occupation','color')
                         ->whereHas('occupation', function ($q) {$q->where('status',1);})
@@ -212,12 +221,20 @@ class MultiplesRouteController extends Controller
         ]);
     }
 
-    public function apiblogsoccupation($slug)
+    public function apiblogsoccupation(occupation $occupation)
     {
-        $occupation = new OccupationResource(occupation::where('status',1)
-            ->whereSlug($slug)->firstOrFail());
 
-        return response()->json($occupation,200);
+         $blogbycategories =  occupation::whereSlug($occupation->slug)
+         ->with('user')
+        ->with([
+             'blogs' => function ($q) use ($occupation){
+                 $q->where(['status' => 1])
+                     ->with('user','occupation')
+                     ->whereHas('occupation', function ($q) {$q->where('status',1);})
+                     ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+         ])->first();;
+
+        return response()->json($blogbycategories,200);
     }
 
     public function blogsoccupationslug(occupation $occupation,blog $blog)
@@ -378,7 +395,7 @@ class MultiplesRouteController extends Controller
                         ->whereIn('city_id',[$city->id])
                         ->whereHas('city', function ($q) {$q->where('status',1);})
                         ->whereHas('occupation', function ($q) {$q->where('status',1);})
-                        ->orderBy('created_at','DESC')->distinct()->get()->toArray();},
+                        ->orderBy('created_at','DESC')->take(3)->distinct()->get()->toArray();},
             ])
             ->firstOrFail();
 

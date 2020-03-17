@@ -3,8 +3,8 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./inc/AnnonceList";
 import AnnonceOccupationList from "./AnnonceOccupationList";
-import AnnonceCityList from "./AnnonceCityList";
 import NavAnnoncesByCities from "./inc/NavAnnoncesByCities";
+import AnnoncesListSkeleton from "../../inc/AnnoncesListSkeleton";
 
 
 class AnnonceSiteIndex extends Component {
@@ -81,13 +81,23 @@ class AnnonceSiteIndex extends Component {
 
     render() {
         const {annonces} = this.state;
+        const mapAnnonces = annonces.length ? (
+            annonces.map(item => {
+                return(
+
+                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
+                )
+            })
+        ):(
+            <AnnoncesListSkeleton/>
+        );
         return (
             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
-                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}/>
+                             style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/boxed-water.jpg' + ")"}}/>
                         <div className="content-center">
                             <div className="row">
                                 <div className="col-md-6 mx-auto text-center">
@@ -146,9 +156,9 @@ class AnnonceSiteIndex extends Component {
                                                         </div>
                                                         <div className="card">
                                                             <div className="card-body">
-                                                                {annonces.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem}/>
-                                                                ))}
+
+                                                                {mapAnnonces}
+
                                                             </div>
                                                         </div>
                                                     </div>

@@ -9,4 +9,5 @@
 Route::get('cities', 'CityController@api')->name('api.cities');
 Route::get('cities/actives', 'CityController@apiactives');
 Route::get('cities_by_status', 'CityController@apibystatus')->name('api.cities_by_status');
+Route::get('annonces_by_cities', 'CityController@apiannoncesbycities')->name('api.annonces_by_cities');
 Route::get('cities_by_vip', 'CityController@apibyvip')->name('api.cities_by_vip');
