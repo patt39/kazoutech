@@ -4,6 +4,8 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./inc/AnnonceList";
 import { Link, NavLink } from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 
 class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
@@ -159,20 +161,27 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                             <div className="card-body">
 
                                                                 <ul className="list-unstyled">
-                                                                    {cities.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            <NavLink
-                                                                                to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
-                                                                                <span style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
-                                                                            </NavLink>
-                                                                        </li>
-                                                                    ))}
+                                                                    {cities.length ?
+                                                                        <>
+                                                                            {cities.map((item) => (
+                                                                                <li key={item.id} className="mb-2">
+                                                                                    <NavLink
+                                                                                        to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
+                                                                                        <span style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
+                                                                                    </NavLink>
+                                                                                </li>
+                                                                            ))}
 
-                                                                    <li className="mb-2">
-                                                                        <Link to={`/all_cities/`}>
-                                                                            Autre ville...
-                                                                        </Link>
-                                                                    </li>
+                                                                            <li className="mb-2">
+                                                                                <Link to={`/all_cities/`}>
+                                                                                    Autre ville...
+                                                                                </Link>
+                                                                            </li>
+                                                                        </>
+                                                                        :
+                                                                        <NavoccupationSkeleton/>
+                                                                    }
+
                                                                 </ul>
 
 
@@ -189,13 +198,18 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                                 <ul className="list-unstyled">
 
-                                                                    {catagoryoccupations.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            <Link to={`/annonces/${SlugOccupation}/${item.slug}/${SlugCity}/`}>
-                                                                                {item.name}
-                                                                            </Link>
-                                                                        </li>
-                                                                    ))}
+                                                                    {catagoryoccupations.length ?
+                                                                        <>
+                                                                            {catagoryoccupations.map((item) => (
+                                                                                <li key={item.id} className="mb-2">
+                                                                                    <Link to={`/annonces/${SlugOccupation}/${item.slug}/${SlugCity}/`}>
+                                                                                        {item.name}
+                                                                                    </Link>
+                                                                                </li>
+                                                                            ))}
+                                                                        </>
+                                                                        :<NavoccupationSkeleton/>}
+
                                                                 </ul>
 
                                                             </div>
@@ -206,7 +220,10 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                     <div className="col-lg-8 col-md-12 mx-auto">
                                                         <h4 className="title">
-                                                            Toutes les annonces <b>{annoncebycategoryoccupation.name}</b>
+                                                            {annoncebycategoryoccupation.name ?
+                                                                <>   Toutes les annonces <b>{annoncebycategoryoccupation.name}</b></>
+                                                                :   <Skeleton />}
+
                                                         </h4>
                                                         <div className="row">
                                                             <div className="col-md-6">

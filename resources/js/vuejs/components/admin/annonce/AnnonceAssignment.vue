@@ -185,7 +185,7 @@
                             notify.update({'type': 'success', 'message': '<strong>Annonce assigned Successfully.</strong>', 'progress': 75});
                         }, 2000);
                         //Redirect after create
-                        setTimeout(() => this.$router.push({ name: 'annonces.assiged' }), 2000);
+                        setTimeout(() => this.$router.push({ name: 'annonces_assigne' }), 2000);
                         //Fin insertion de l'alert !
 
                         //End Progress bar

@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Link,NavLink} from "react-router-dom";
 import moment from 'moment'
+import CharbonneurList from "./CharbonneurList";
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -23,6 +25,19 @@ class CharbonneurCityList extends Component {
 
     render() {
         const {cities} = this.state;
+        const mapCities = cities.length ? (
+            cities.map(item => {
+                return(
+                    <li key={item.id} className="mb-2">
+                        <NavLink to={`/charbonneurs/${this.props.slug}/${item.slug}/`}>
+                            {item.name}
+                        </NavLink>
+                    </li>
+                )
+            })
+        ):(
+            <NavoccupationSkeleton/>
+        );
         return (
 
             <div className="card mb-3">
@@ -30,13 +45,7 @@ class CharbonneurCityList extends Component {
                 <div className="card-body">
                     <ul className="list-unstyled">
 
-                        {cities.map((item) => (
-                            <li key={item.id} className="mb-2">
-                                <NavLink to={`/charbonneurs/${this.props.slug}/${item.slug}/`}>
-                                    {item.name}
-                                </NavLink>
-                            </li>
-                        ))}
+                        {mapCities}
 
                     </ul>
                 </div>

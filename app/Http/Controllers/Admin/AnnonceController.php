@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Requests\User\Annonce\AssignedtaskRequest;
+use App\Http\Requests\User\Annonce\AssignedtaskupdateRequeste;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
@@ -38,7 +39,18 @@ class AnnonceController extends Controller
 
     public function apiannonceassigned()
     {
-        $annoncesassigned = AssignmentResource::collection(taskuserassign::with('user','member','annonce')->latest()->get());
+        $annoncesassigned = taskuserassign::with('member','user','annonce')
+        ->with([
+            'annonce.city' => function ($q){
+                $q->select('id','name','status','slug');},
+            'annonce.occupation' => function ($q){
+                    $q->select('id','name','status','slug');},
+            'annonce.categoryoccupation' => function ($q){
+                        $q->distinct()->get();},
+                    
+        ])
+        //->whereHas('annonce', function ($q) {$q;})
+        ->get();
 
         return response()->json($annoncesassigned,200);
     }
@@ -107,6 +119,16 @@ class AnnonceController extends Controller
         //
     }
 
+    public function assignedtaskupdate(AssignedtaskupdateRequeste $request,$id)
+    {
+        $taskuserassign = taskuserassign::findOrFail($id);
+
+        $taskuserassign->update($request->all());
+
+        return ['message' => 'updated successfully'];
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -118,7 +140,7 @@ class AnnonceController extends Controller
         //
      }
 
-
+     
 
     /**
      * Remove the specified resource from storage.
@@ -139,5 +161,15 @@ class AnnonceController extends Controller
          }else{
              return ['error',"Unauthorized edit this article contact Author."];
          }
+    }
+
+    public function assignedtaskdelete($id)
+    {
+        $taskuserassign = taskuserassign::findOrFail($id);
+
+        $taskuserassign->delete();
+
+        return ['message' => 'Annonce deleted '];
+
     }
 }

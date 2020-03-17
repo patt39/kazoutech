@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import moment from 'moment'
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -20,6 +21,22 @@ class AnnonceOccupationList extends Component {
 
     render() {
         const {occupations} = this.state;
+        const mapOccupations = occupations.length ? (
+            occupations.map(item => {
+                return(
+
+                    <li key={item.id} className="mb-2">
+                        {item.status ?
+                            <Link to={`/annonces/${item.slug}/`}>
+                                {item.name}
+                            </Link>
+                            :null}
+                    </li>
+                )
+            })
+        ):(
+            <NavoccupationSkeleton/>
+        );
         return (
 
             <div className="card mb-3">
@@ -27,15 +44,7 @@ class AnnonceOccupationList extends Component {
                 <div className="card-body">
                     <ul className="list-unstyled">
 
-                        {occupations.map((item) => (
-                            <li key={item.id} className="mb-2">
-                                {item.status ?
-                                    <Link to={`/annonces/${item.slug}/`}>
-                                        {item.name}
-                                    </Link>
-                                    :null}
-                            </li>
-                        ))}
+                        {mapOccupations}
 
                     </ul>
                 </div>

@@ -9,7 +9,12 @@ class faqoccupation extends Model
 {
     protected $table = 'faqoccupations';
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'body',
+        'status',
+        'occupation_id',
+    ];
 
 
     protected $casts = [

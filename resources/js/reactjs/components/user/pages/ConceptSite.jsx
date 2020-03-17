@@ -24,19 +24,12 @@ class ConceptSite extends Component {
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/sections/broofoac.jpg' + ")"}}/>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-10 mx-auto text-center">
-                                        <h3 className="display-2 text-white">Notre Concept ...</h3>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div className="section features features-5">
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-10 text-center mx-auto">
-                                        <h3 className="display-3">Nos Valeurs</h3>
+                                        <h3 className="display-2">Notre concept</h3>
                                         <p className="lead">La capacité de faire confiance a des gens rencontrer sur le net est un atout quon aquiet avec le temp.</p>
                                     </div>
                                 </div>

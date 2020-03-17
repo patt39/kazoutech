@@ -43,7 +43,13 @@ class BaseRequest extends Request
                 'title' => 'required|string|min:2|max:100',
                 'user_id' => 'required',
             ];
-        } else { // 'edit'
+            
+        } elseif ($group === 'assignedtaskupdate'){
+            $rules = [
+                'title' => 'required|string|min:2|max:100',
+            ];
+            
+        }else { // 'edit'
             $rules = [
                 'title' => 'required|string|min:2|max:100',
                 'city_id' => 'required',
