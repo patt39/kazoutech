@@ -35,7 +35,7 @@
     top: 2px;
 }
 .carousel-caption {
-    top: 40%;
+    top: 50%;
 }
 
 
@@ -68,6 +68,9 @@
 }
 .d-block {
     height: inherit;
+}
+.carousel-control-prev, .carousel-control-next {
+    top: 25%;
 }
 .kazouTech-dropdown {
     position: absolute;
@@ -168,16 +171,21 @@
 .btn-wrapper a.btn {
     color: #ffffff;
 }
-
+.count-annonces {
+    border: 1px solid green;
+    padding: 4px 8px;
+    border-radius: 100%;
+    font-size: 15px;
+    background: green;
+}
 .content-top {
-    float: right;
-    top: -30px;
-    position: relative;
-    z-index: 4;
+float: right;
+top: -30px;
+position: relative;
+z-index: 4;
 }
 
 .kazouTech-categories-annonces {
-    color: green !important;
     font-weight: 600;
 }
 
@@ -240,7 +248,7 @@
 
 @media only screen and (max-width: 900px) {
     .carousel-caption {
-        top: 30%;
+        top: 40%;
         left: 5%;
         right: 5%;
     }

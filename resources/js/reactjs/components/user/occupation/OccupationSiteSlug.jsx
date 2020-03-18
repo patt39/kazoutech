@@ -68,7 +68,7 @@ class OccupationSiteSlug extends Component {
                                                                     <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
                                                                         <div className="card-body">
                                                                             <div className="content-top">
-                                                                                <h5 className="card-title kazouTech-categories-annonces">{item.annonces_count} {(item.annonces_count > 1) ? 'Annonces' : 'Annonce'}</h5>
+                                                                                <h5 className="card-title"><span className="count-annonces">{item.annonces_count}</span> {(item.annonces_count > 1) ? 'Annonces' : 'Annonce'}</h5>
                                                                             </div>
                                                                             <div className="content-bottom">
                                                                                 <h5 className="card-title text-uppercase">{item.name}</h5>
@@ -100,7 +100,7 @@ class OccupationSiteSlug extends Component {
                                             <CitySite />
                                             {allblogbyoccupations.length > 0 && (
                                                 <div className="row">
-                                                    <div className="col-md-12 kazouTechOccupations-wrapper mx-auto">
+                                                    <div className="col-md-12 mx-auto">
                                                         <h4 className="title kazouTechOccupations-wrapper">Tous nos articles
                                                         sur <strong>{occupation.name} </strong> sont sur
                                                         notre

@@ -21,7 +21,7 @@ class CitySite extends Component {
     render() {
         const {cities} = this.state;
         return (
-            <div className="row">
+            <div className="row mb-5">
                 {cities.map((item) => (
                     <div key={item.id} className="col-sm-2 col-6 kazouTech-cities" data-animation="zooming">
                         <small
