@@ -58,8 +58,8 @@ class BlogSiteShow extends Component {
                                                 <div className="col-lg-11 ml-auto mr-auto">
                                                     <h3 className="display-3">{blog.title}</h3>
                                                     <div className="description mb-2 text-justify">
-                                                        
-                                                        <p dangerouslySetInnerHTML={{__html: blog.body}}/>
+                                                        {blog.body ?  <p dangerouslySetInnerHTML={{__html: blog.body}}/> :null}
+                                                       
                                                         
                                                     </div>
                                                 </div>

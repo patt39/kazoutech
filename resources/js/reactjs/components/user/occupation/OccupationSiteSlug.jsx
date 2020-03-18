@@ -87,97 +87,99 @@ class OccupationSiteSlug extends Component {
                             </div>
                         </div>
                         <div className="bg-secondary">
-                        <div className="container">
-                            <div className="row justify-content-center">
-                                <div className="col-lg-12">
-                                    <div className="container">
-                                        <div className="row">
-                                            <div className="col-md-8 mr-auto ml-auto text-center">
-                                                <h4 className="kazouTech-red-color display-3 kazouTechOccupations-wrapper">Nous sommes plus proche de
-                                                    vous !</h4>
-                                            </div>
-                                        </div>
-                                        <CitySite />
-                                        {allblogbyoccupations.length > 0 && (
+                            <div className="container">
+                                <div className="row justify-content-center">
+                                    <div className="col-lg-12">
+                                        <div className="container">
                                             <div className="row">
-                                                <div className="col-md-12 kazouTechOccupations-wrapper mx-auto">
-                                                    <h4 className="title kazouTechOccupations-wrapper">Tous nos articles
+                                                <div className="col-md-8 mr-auto ml-auto text-center">
+                                                    <h4 className="kazouTech-red-color display-3 kazouTechOccupations-wrapper">Nous sommes plus proche de
+                                                    vous !</h4>
+                                                </div>
+                                            </div>
+                                            <CitySite />
+                                            {allblogbyoccupations.length > 0 && (
+                                                <div className="row">
+                                                    <div className="col-md-12 kazouTechOccupations-wrapper mx-auto">
+                                                        <h4 className="title kazouTechOccupations-wrapper">Tous nos articles
                                                         sur <strong>{occupation.name} </strong> sont sur
                                                         notre
                                                         blog</h4>
-                                                    <br />
-                                                    <div className="row">
-                                                        {allblogbyoccupations.map((item) => (
-                                                            <div key={item.id} className="col-lg-4 col-md-6">
-                                                                <div className="card card-blog card-plain">
-                                                                    <div className="card-image shadow">
-                                                                        <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
-                                                                            <img className="img rounded"
-                                                                                 src={item.photo} />
-                                                                        </Link>
-                                                                    </div>
-                                                                    <div className="card-body">
-                                                                        <div className="text-center">
-                                                                            <Link to={`/blog/${occupation.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
-                                                                                {occupation.name}
+                                                        <br />
+                                                        <div className="row">
+                                                            {allblogbyoccupations.map((item) => (
+                                                                <div key={item.id} className="col-lg-4 col-md-6">
+                                                                    <div className="card card-blog card-plain">
+                                                                        <div className="card-image shadow">
+                                                                            <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
+                                                                                <img className="img rounded"
+                                                                                    src={item.photo} />
                                                                             </Link>
                                                                         </div>
-                                                                        <h6 className="card-title">
-                                                                            <Link to={`/blog/${occupation.slug}/`} >{item.title}</Link>
-                                                                        </h6>
-                                                                        <p className="card-description">
-                                                                            <b dangerouslySetInnerHTML={{ __html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body) }} />
-                                                                            <Link to={`/blog/${occupation.slug}/${item.slug}/`} >lire la suite</Link>
-                                                                        </p>
+                                                                        <div className="card-body">
+                                                                            <div className="text-center">
+                                                                                <Link to={`/blog/${occupation.slug}/`} className={`btn btn-sm btn-${item.color.name}`}>
+                                                                                    {occupation.name}
+                                                                                </Link>
+                                                                            </div>
+                                                                            <h6 className="card-title">
+                                                                                <Link to={`/blog/${occupation.slug}/`} >{item.title}</Link>
+                                                                            </h6>
+                                                                            {item.body ?
+                                                                                <p className="card-description">
+                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body) }} />
+                                                                                    <Link to={`/blog/${occupation.slug}/${item.slug}/`} >lire la suite</Link>
+                                                                                </p> : null}
+
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        ))}
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        )}
-                                        {faqbyoccupations.length > 0 && (
-                                            <div className="row">
-                                                <div className="col-md-12 mx-auto text-center">
-                                                    <h4 className="title">Bon à savoire
+                                            )}
+                                            {faqbyoccupations.length > 0 && (
+                                                <div className="row">
+                                                    <div className="col-md-12 mx-auto text-center">
+                                                        <h4 className="title">Bon à savoire
                                                         sur <strong>{occupation.name} </strong></h4>
-                                                    <br />
-                                                    <div className="cd-section" id="accordion">
-                                                        <div className="accordion-1">
-                                                            <div className="container">
+                                                        <br />
+                                                        <div className="cd-section" id="accordion">
+                                                            <div className="accordion-1">
+                                                                <div className="container">
 
-                                                                <div className={'row'}>
-                                                                    <div className="col-md-12 ml-auto">
-                                                                        <div className="accordion" id="accordionFaqs">
-                                                                            {faqbyoccupations.slice(0, visiable).map((item) => (
-                                                                                <FaqUserList key={item.id} {...item} />
-                                                                            ))}
+                                                                    <div className={'row'}>
+                                                                        <div className="col-md-12 ml-auto">
+                                                                            <div className="accordion" id="accordionFaqs">
+                                                                                {faqbyoccupations.slice(0, visiable).map((item) => (
+                                                                                    <FaqUserList key={item.id} {...item} />
+                                                                                ))}
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
 
+                                                                    </div>
+                                                                    {visiable < faqbyoccupations.length && (
+                                                                        <div className="row">
+                                                                            <div className="col-md-3 mx-auto text-center">
+                                                                                <button type="button" onClick={this.loadmoresItem} className="btn btn-primary">
+                                                                                    <b>Voir plus </b>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    )}
+                                                                    <br />
+                                                                    <br />
                                                                 </div>
-                                                                {visiable < faqbyoccupations.length && (
-                                                                    <div className="row">
-                                                                        <div className="col-md-3 mx-auto text-center">
-                                                                            <button type="button" onClick={this.loadmoresItem} className="btn btn-primary">
-                                                                                <b>Voir plus </b>
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                )}
-                                                                <br />
-                                                                <br />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        )}
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                     <FooterUserSite />
