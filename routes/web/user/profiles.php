@@ -7,6 +7,7 @@
  */
 
 Route::get('/charbonneur/{username}', 'ProfileController@profileView')->name('profile.view');
+Route::get('/charbonneur/edit/{username}', 'ProfileController@profileEdit')->name('profile.edit');
 Route::get('/user', 'ProfileController@profileUser')->name('profileUser.view');
 Route::get('profiles/u/{id}','ProfileController@show')->name('profiles.show');
 Route::put('profiles/{profile}','ProfileController@update');

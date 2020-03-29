@@ -19,7 +19,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['view','profileView']]);
+        $this->middleware('auth',['except' => ['view','profileView','profileEdit']]);
     }
 
 
@@ -92,6 +92,16 @@ class ProfileController extends Controller
             $user = User::findOrFail(auth()->user()->id);
         }
         return view("user.profile.profileIndex")->withUser($user);
+    }
+
+    public function profileEdit($username)
+    {
+        if($username) {
+            $user = User::where('username', $username)->firstOrFail();
+        } else {
+            $user = User::findOrFail(auth()->user()->id);
+        }
+        return view("user.profile.profileEdit")->withUser($user);
     }
 
     /**

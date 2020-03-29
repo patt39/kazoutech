@@ -32,6 +32,7 @@ import CharbonneurSiteByCity from "../components/user/charbonneur/CharbonneurSit
 import CharbonneurSiteByOccupation from "../components/user/charbonneur/CharbonneurSiteByOccupation";
 import ProfileSiteIndex from "../components/user/profile/ProfileSiteIndex";
 import ProfileUserSiteIndex from "../components/user/profile/ProfileUserSiteIndex";
+import ProfileUserSiteEdit from "../components/user/profile/ProfileUserSiteEdit";
 import LoginSIteIndex from "../components/user/auth/LoginSIteIndex";
 import BlogSiteEdit from "../components/user/blog/traitement/BlogSiteEdit";
 import DevenirCharbonneurSite from "../components/user/auth/DevenirCharbonneurSite";
@@ -49,6 +50,7 @@ const RouterUser = props => (
         <Route exact path="/login" component={LoginSIteIndex}/>
         <Route exact path="/charbonneur/:username/" component={withRouter(ProfileSiteIndex)}/>
         <Route exact path="/user" component={withRouter(ProfileUserSiteIndex)}/>
+        <Route exact path="/charbonneur/edit/:username" component={withRouter(ProfileUserSiteEdit)}/>
         <Route exact path="/occupations/" component={OccupationSiteIndex}/>
         <Route exact path="/occupations/:occupation/" component={OccupationSiteSlug}/>
         <Route exact path="/occupations/:occupation/:categoryoccupation/" component={CategoryOccupationShow}/>
