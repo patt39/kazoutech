@@ -42,6 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
         'avatar',
         'avatarcover',
         'charbonneur',
+        'status_profile_verify',
         'phone',
         'day',
         'month',
@@ -51,6 +52,8 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
         'city_id',
         'occupation_id',
         'sex',
+        'cni',
+        'cni_picture',
         'notifier_plans',
         'notifier_newletter',
     ];

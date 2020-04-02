@@ -302,3 +302,6 @@ z-index: 4;
     position: relative;
     top: -50px;
 }
+.kazouTech-file-upload {
+    display: none;
+}

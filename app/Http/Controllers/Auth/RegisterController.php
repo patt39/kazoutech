@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
 
 class RegisterController extends Controller
@@ -110,7 +111,62 @@ class RegisterController extends Controller
             'notifier_newletter' => $data['notifier_newletter'],
             'password' => Hash::make($data['password']),
         ]);
+    }
 
+    public function devenir_charbonneur_update_register(Request $request, User $profileUser) {
+
+        $profileUser = User::find($profileUser->username);
+
+        $currentAvatar = $profileUser->avatar;
+        $currentCniPicture = $profileUser->cni_picture;
+
+        // Update Avatar Profile
+        if ($request->avatar != $currentAvatar){
+
+            $namefile = sha1(date('YmdHis') . str_random(30));
+
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->avatar,0,strpos
+                ($request->avatar,';')))[1])[1];
+
+            $dir = 'assets/img/avatars/user';
+            if(!file_exists($dir)){
+                mkdir($dir, 0775, true);
+            }
+            Image::make($request->avatar)->save(public_path($dir).$name);
+
+            $request->merge(['avatar' =>  "/assets/img/avatars/user/{$name}"]);
+
+            // Ici on supprime l'avatar existant
+            $oldFilename = $currentAvatar;
+            File::delete(public_path($oldFilename));
+        }
+
+        // Update Cni Profile
+        if ($request->cni_picture != $currentCniPicture){
+
+            $namefile = sha1(date('YmdHis') . str_random(30));
+
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->avatar,0,strpos
+                ($request->avatar,';')))[1])[1];
+
+            $dir = 'assets/img/cni';
+            if(!file_exists($dir)){
+                mkdir($dir, 0775, true);
+            }
+            Image::make($request->cni_picture)->save(public_path($dir).$name);
+
+            $request->merge(['cni_picture' =>  "/assets/img/cni/{$name}"]);
+
+            // Ici on supprime la cni existante
+            $oldFilename = $currentCniPicture;
+            File::delete(public_path($oldFilename));
+        }
+
+        $this->update_charbonneur_validator($request->all())->validate();
+
+        $profileUser->update($request->all());
+
+        return ['message' => 'updated successfully'];
     }
 
     /**
@@ -127,6 +183,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:255','alpha_dash','unique:users'],
             'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'cni' => ['required', 'string', 'max:17', 'confirmed'],
         ]);
     }
 
@@ -151,5 +208,22 @@ class RegisterController extends Controller
     public function index()
     {
         return view('auth.register');
+    }
+
+    private function update_charbonneur_validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string','min:2','max:255'],
+            'username' => ['required', 'string','min:2','max:255','alpha_dash','unique:users'],
+            'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users'],
+            'day' => 'required|numeric|digits:2|min:1|max:31',
+            'month' => 'required|numeric|digits_between:1,2|min:1|max:12',
+            'year' => 'required|digits:4|integer|min:1900|max:'.(date('Y')),
+            'city_id' => 'required',
+            "sex" => "required|in:female,male",
+            'occupation_id' => 'required',
+            'phone' => ['required',new PhoneCmrRule],
+            'cni' => ['required', 'string', 'max:17', 'confirmed'],
+        ]);
     }
 }
