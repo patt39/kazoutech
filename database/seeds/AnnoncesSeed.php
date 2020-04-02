@@ -28,7 +28,7 @@ class AnnoncesSeed extends Seeder
     public function addInfoDatable()
     {
         factory(annonce::class, 500)->create();
-        factory(taskuserassign::class, 3500)->create();
+        factory(taskuserassign::class, 350)->create();
         factory(faqoccupation::class, 1000)->create();
     }
 }

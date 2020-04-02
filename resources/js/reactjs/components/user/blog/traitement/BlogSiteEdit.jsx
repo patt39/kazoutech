@@ -111,6 +111,7 @@ class BlogSiteEdit extends Component {
                         exit: 'animated fadeOutRight'
                     },
                 });
+                this.props.history.push('/blog/');
             }).catch(error => {
                 this.setState({
                     errors: error.response.data.errors
@@ -270,7 +271,7 @@ class BlogSiteEdit extends Component {
                                                 <div className="submit">
                                                     <div className="text-center">
                                                         <button className="btn btn-icon btn-primary" type="submit">
-                                                            <span className="btn-inner--text">Sauvegarder l'article</span>
+                                                            <span className="btn-inner--text">Ajournez l'article</span>
                                                         </button>
                                                     </div>
                                                 </div>

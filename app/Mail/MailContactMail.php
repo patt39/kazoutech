@@ -27,7 +27,7 @@ class MailContactMail extends Mailable implements ShouldQueue
      */
     public function __construct($firstname,$lastname,$subject,$message,$to,$from)
     {
-        $this->firsNname = $firstname;
+        $this->firstNname = $firstname;
         $this->lastName = $lastname;
         $this->subjectMessage = $subject;
         $this->messageContact = $message;

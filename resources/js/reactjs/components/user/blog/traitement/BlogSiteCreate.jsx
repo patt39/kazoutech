@@ -264,7 +264,7 @@ class BlogSiteCreate extends Component {
                                                     <div className="submit">
                                                         <div className="text-center">
                                                             <button className="btn btn-icon btn-primary" type="submit">
-                                                                <span className="btn-inner--text">Sauvegarder l'article</span>
+                                                                <span className="btn-inner--text">Postez l'article</span>
                                                             </button>
                                                         </div>
                                                     </div>

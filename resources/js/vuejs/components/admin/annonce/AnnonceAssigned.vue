@@ -252,17 +252,15 @@
                           <div class="row">
                             <div class="col-md-8 ml-auto mr-auto">
                               <div class="profile text-center">
-                                <img
+                              <router-link
+                              :to="{ path: `/dashboard/technicians/c/${annonceItem.user.username}/` }" >
+                              <img
                                   :src="annonceItem.user.avatar"
                                   :alt="annonceItem.user.username"
                                   style="width: 80px; height: 80px;  top: 30px; left: 30px; border-radius: 100%"
                                 />
-                                <br />
-                                <div
-                                  class="fileinput fileinput-new text-center"
-                                  data-provides="fileinput"
-                                >
-                                  <div class="fileinput-new thumbnail"></div>
+                              </router-link>
+                                <br />                
                                 </div>
                               </div>
                             </div>
@@ -271,13 +269,10 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label>Description</label>
-                                <input
-                                  v-model="annonceItem.description"
-                                  type="text"
-                                  name="description"
-                                  class="form-control"
-                                />
+                                <label class="bl-6">Description</label>
+                                <div class="text-center">
+                                    <p v-html="annonceItem.description"></p>
+                                </div>
                               </div>
                             </div>
                             <div class="modal-footer">

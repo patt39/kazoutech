@@ -30,7 +30,7 @@
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="form-group">
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label>Title <span style="color: red;">*</span></label>
                                                                             <input v-model="form.title" type="text" name="title"
@@ -48,7 +48,18 @@
                                                                             <has-error :form="form" field="occupation_id"/>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <select name="color_id" v-model="form.color_id" id="color_id" class="form-control"
+                                                                                    :class="{ 'is-invalid': form.errors.has('color_id') }">
+                                                                                <option value="" disabled>Choose Color</option>
+                                                                                <option v-for="color in colors" :key="color.id" :value="color.id">{{color.name}}</option>
+                                                                            </select>
+                                                                            <has-error :form="form" field="color_id"/>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
+                                                                <br><br/>
                                                                 <div class="row">
                                                                     <div class="col-md-8 ml-auto mr-auto">
                                                                         <div class="profile text-center">
@@ -133,11 +144,13 @@
                 editmode: false,
                 user: '',
                 occupations: {},
+                colors: {},
                 form: new Form({
                     id: '',
                     title: '',
                     photo: '',
                     occupation_id: '',
+                    color_id: '',
                     body: '',
                 }),
                 editorOption: {
@@ -229,6 +242,7 @@
             this.$Progress.start();
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
             dyaxios.get(route('api.occupations')).then(response => {this.occupations = response.data.data});
+            dyaxios.get("/api/colors").then(response => {this.colors = response.data});
             //End Progress bar
             this.$Progress.finish();
         }

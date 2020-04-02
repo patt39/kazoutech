@@ -10,6 +10,7 @@ use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\User\AssignmentResource;
 use App\Model\admin\annonce;
+use App\Services\admin\MailTaskassigneService;
 use App\Model\admin\taskuserassign;
 use App\Http\Controllers\Controller;
 use App\Model\admin\city;
@@ -76,6 +77,9 @@ class AnnonceController extends Controller
         $taskuserassign->annonce_id = $annonce->id;
 
         $taskuserassign->save();
+
+        MailTaskassigneService::newMailTaskassigne($request);
+
 
         return response()->json($taskuserassign,200);
     }

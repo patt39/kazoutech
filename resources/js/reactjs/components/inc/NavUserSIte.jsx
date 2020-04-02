@@ -89,7 +89,7 @@ class NavUserSIte extends Component {
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         {$userKazou.my_status === 'active' && (
-                                            <a href="/dashboard" className="dropdown-item">
+                                            <a href="/dashboard" target="_blank" className="dropdown-item">
                                                 <i className="ni ni-building text-muted"/>
                                                 Dashboard
                                             </a>

@@ -47,7 +47,7 @@
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane active" id="profile">
                                                                         <div class="row">
-                                                                            <div class="col-md-12">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Charbonneur</label>
                                                                                     <select name="user_id" v-model="form.user_id" id="user_id" class="form-control"
@@ -55,8 +55,16 @@
                                                                                         <option value="" disabled>Choose charbonneur</option>
                                                                                         <option v-for="item in charbonneurs.userbycities" :key="item.id" :value="item.id">{{item.name}}</option>
                                                                                     </select>
-                                                                                    <br>
                                                                                     <has-error :form="form" field="user_id"></has-error>
+                                                                                </div>
+                                                                            </div>
+                                                                             <div class="col-md-6">
+                                                                                <div class="form-group pt-2">
+                                                                                    <label>Duration</label>
+                                                                                     <input v-model="form.periode" type="text" name="title"
+                                                                                     placeholder="Give a duration"
+                                                                                           class="form-control" :class="{ 'is-invalid': form.errors.has('periode') }">
+                                                                                    <has-error :form="form" field="periode"></has-error>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -67,7 +75,8 @@
                                                                                     <label class="bmd-label-floating">Title</label>
                                                                                         <input v-model="form.title" type="text" name="title"
                                                                                            class="form-control" :class="{ 'is-invalid': form.errors.has('title') }">
-                                                                                    <has-error :form="form" field="title"></has-error>                                                                                </div>
+                                                                                    <has-error :form="form" field="title"></has-error>                                                                           
+                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
@@ -99,11 +108,10 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'annonces.index' }" class="btn btn-primary btn-raised" data-toggle="tab">
-                                                                <i class="material-icons">forum</i>
-                                                                <b>Back to annonce</b>
-                                                            </router-link>
-
+                                                        <router-link id="button_hover" :to="{ name: 'annonces.index' }" class="btn btn-danger" data-toggle="tab">
+                                                            <i class="material-icons">chevron_left</i>
+                                                            <b class="title_hover">Back</b>
+                                                        </router-link>
                                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <span class="btn-label">
                                                                     <i class="material-icons">save_alt</i>
@@ -141,6 +149,7 @@
                 form: new Form({
                     title: '',
                     user_id: '',
+                    periode: '',
                     description: '',
                 }),
                 customToolbar: [
