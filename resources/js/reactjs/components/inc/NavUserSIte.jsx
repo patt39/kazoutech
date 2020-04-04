@@ -98,7 +98,7 @@ class NavUserSIte extends Component {
                                             <i className="ni ni-circle-08 text-success"/>
                                             Mon Profil
                                         </Link>
-                                        <Link to={`/charbonneur/edit/${$userKazou.username}`} className="dropdown-item">
+                                        <Link to={`/profile/edit/`} className="dropdown-item">
                                             <i className="ni ni-single-02 text-muted"/>
                                             Editer Profil
                                         </Link>
