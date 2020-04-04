@@ -27,7 +27,6 @@ class TermConditionSite extends Component {
             <>
                 <div className="landing-page">
                     <NavUserSIte/>
-
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image page-header-mini"

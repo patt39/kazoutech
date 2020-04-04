@@ -65,11 +65,11 @@ class CategoryfaqController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+       /**$this->validate($request,[
             'name'=>'required|string|min:2|max:25|unique:categoryfaqs,name',
             'color_name'=>'required',
             'icon'=>'required',
-        ]);
+        ]);*/
 
         $categoryfaq = new categoryfaq;
         $categoryfaq->name = $request->name;

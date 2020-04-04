@@ -86,7 +86,7 @@ class DevenirCharbonneurSite extends Component{
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+            $.notify("Ooop! Quelque chose ne va pas. Essayez plus tard...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -255,8 +255,8 @@ class DevenirCharbonneurSite extends Component{
                             <select  value={this.state.sex} className={`form-control ${this.hasErrorFor('sex') ? 'is-invalid' : ''}`}
                                      onChange={this.handleFieldChange} name="sex"  id="sex" required="required">
                                 <option value="" disabled>Sex</option>
-                                <option value="male">Homme</option>
-                                <option value="female">Femme</option>
+                                <option value="Male">Homme</option>
+                                <option value="Female">Femme</option>
                             </select>
                             {this.renderErrorFor('sex')}
                         </div>

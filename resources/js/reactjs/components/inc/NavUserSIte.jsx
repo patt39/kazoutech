@@ -90,20 +90,24 @@ class NavUserSIte extends Component {
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         {$userKazou.my_status === 'active' && (
                                             <a href="/dashboard" target="_blank" className="dropdown-item">
-                                                <i className="ni ni-building text-muted"/>
+                                                <i className="ni ni-building text-warning"/>
                                                 Dashboard
                                             </a>
                                         )}
-                                        <Link to={`/user/profile/edit/`} className="dropdown-item">
-                                            <i className="ni ni-lock-circle-open text-muted"/>
-                                            Editer mon profile
-                                        </Link>
                                         <Link to={`/charbonneur/${$userKazou.username}/`} className="dropdown-item">
                                             <i className="ni ni-circle-08 text-success"/>
-                                            Mon profile
+                                            Mon Profil
+                                        </Link>
+                                        <Link to={`/charbonneur/edit/${$userKazou.username}`} className="dropdown-item">
+                                            <i className="ni ni-single-02 text-muted"/>
+                                            Editer Profil
+                                        </Link>
+                                        <Link to={`/user/profile/edit/`} className="dropdown-item">
+                                            <i className="ni ni-bullet-list-67 text-danger"/>
+                                            Mes Activités
                                         </Link>
                                         <a className="dropdown-item" onClick={() => this.navLogout()}>
-                                            <i className="ni ni-atom text-info"/>
+                                            <i className="ni ni-user-run text-info"/>
                                             Déconnexion
                                         </a>
                                     </div>

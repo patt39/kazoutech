@@ -78,7 +78,7 @@ class AnnonceController extends Controller
 
         $taskuserassign->save();
 
-        MailTaskassigneService::newMailTaskassigne($request);
+       // MailTaskassigneService::newMailTaskassigne($request);
 
 
         return response()->json($taskuserassign,200);
@@ -88,7 +88,7 @@ class AnnonceController extends Controller
      * Display a listing of the resource.
      *
      * @return Response
-     */
+     *///
     public function index()
     {
         return view('admin.annonce.index');

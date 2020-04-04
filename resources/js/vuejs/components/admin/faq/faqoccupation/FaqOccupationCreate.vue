@@ -73,7 +73,7 @@
                                                     <hr>
                                                     <div class="submit">
                                                         <div class="text-center">
-                                                            <router-link :to="{ name: 'faqs_occupation.index' }" class="btn btn-danger" id="button_hover">
+                                                            <router-link :to="{ name: 'faqsoccupation.index' }" class="btn btn-danger" id="button_hover">
                                                                 <i class="material-icons">chevron_left</i>
                                                                 <b class="title_hover">Back</b>
                                                             </router-link>

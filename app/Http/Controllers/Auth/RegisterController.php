@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
 
 class RegisterController extends Controller
@@ -110,7 +111,6 @@ class RegisterController extends Controller
             'notifier_newletter' => $data['notifier_newletter'],
             'password' => Hash::make($data['password']),
         ]);
-
     }
 
     /**
@@ -127,6 +127,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:255','alpha_dash','unique:users'],
             'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'cni' => ['required', 'string', 'max:17', 'confirmed'],
         ]);
     }
 
@@ -151,5 +152,21 @@ class RegisterController extends Controller
     public function index()
     {
         return view('auth.register');
+    }
+
+    private function update_charbonneur_validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string','min:2','max:255'],
+            'username' => ['required', 'string','min:2','max:255','alpha_dash','unique:users'],
+            'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users'],
+            'day' => 'required|numeric|digits:2|min:1|max:31',
+            'month' => 'required|numeric|digits_between:1,2|min:1|max:12',
+            'year' => 'required|digits:4|integer|min:1900|max:'.(date('Y')),
+            'city_id' => 'required',
+            "sex" => "required|in:Female,Male",
+            'occupation_id' => 'required',
+            'phone' => ['required',new PhoneCmrRule],
+        ]);
     }
 }

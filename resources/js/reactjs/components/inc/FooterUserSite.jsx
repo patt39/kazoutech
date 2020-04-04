@@ -112,7 +112,7 @@ class FooterUserSite extends Component {
                                         </li>
                                         <li>
                                             <a href="#">
-                                                Méccanicien de voitures
+                                                Mecanicien de voitures
                                             </a>
                                         </li>
                                     </ul>
@@ -182,7 +182,7 @@ class FooterUserSite extends Component {
                             <div className="col-md-3">
                                 <div className="dropdown">
                                     Language:
-                                    <div className="btn btn-link text-primary " href="#" role="button"
+                                    <div className="btn btn-link text-primary " role="button"
                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i className="ni ni-chat-round"/>
                                         <span>Français</span>

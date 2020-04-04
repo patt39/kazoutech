@@ -146,7 +146,7 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                     <div className="page-header page-header-mini header-filter">
                         <div className="page-header-image"
                              style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }}/>
-                        <div className="container">
+                        <div className="content-center">
                             <div className="header-body text-center mb-7">
                                 <div className="row justify-content-center">
                                     <div className="col-xl-5 col-lg-6 col-md-8 px-5">

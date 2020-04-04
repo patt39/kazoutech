@@ -6,6 +6,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import moment from 'moment'
 import ReadMoreAndLess from 'react-read-more-less';
 import Skeleton from "react-loading-skeleton";
+import AnnoncePostInteresse from "./AnnoncePostInteresse"
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -186,7 +187,7 @@ class AnnonceSiteShow extends Component {
         const { annonce, annonceinteressebycategoryoccupation, charbonneurs } = this.state;
         const composantTitle = `${annonce.title || "kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
-        const annonceinderesses = annonceinteressebycategoryoccupation.annoncesinteres;
+        const annoncebycategoryoccupations = annonceinteressebycategoryoccupation.annoncesinteres;
         return (
 
             <div className="landing-page">
@@ -319,6 +320,7 @@ class AnnonceSiteShow extends Component {
                                             </div>*/}
 
                                         </div>
+                                       
                                     </div>
                                 </div>
 
@@ -335,7 +337,7 @@ class AnnonceSiteShow extends Component {
                                                     Demander un service
                                             </Link>
                                         </div> */}
-                                        
+
                                         <br />
 
 
@@ -359,17 +361,17 @@ class AnnonceSiteShow extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="card-body">
-                                                    <div className="text-justify">
-                                                        <ReadMoreAndLess
-                                                            className="read-more-content"
-                                                            charLimit={50}
-                                                            readMoreText="En savoir plus"
-                                                            readLessText="En savoire moin">
-                                                            {item.profile.body || ""}
-                                                        </ReadMoreAndLess>
-                                                    </div>     
-                                                    <br/>            
-                                                     <Link to={`/charbonneur/${item.username}/`} className="btn btn-sm btn-info btn-block">Contacter</Link>
+                                                        <div className="text-justify">
+                                                            <ReadMoreAndLess
+                                                                className="read-more-content"
+                                                                charLimit={50}
+                                                                readMoreText="En savoir plus"
+                                                                readLessText="En savoire moin">
+                                                                {item.profile.body || ""}
+                                                            </ReadMoreAndLess>
+                                                        </div>
+                                                        <br />
+                                                        <Link to={`/charbonneur/${item.username}/`} className="btn btn-sm btn-info btn-block">Contacter</Link>
                                                     </div>
                                                 </Fragment>
                                             ))}

@@ -149,7 +149,7 @@
                             <td>
                               <b>
                                 <router-link
-                                  :to="{ name: 'faqs.occupationfaq', params: { occupation: item.occupation.slug  } }"
+                                  :to="{ name: 'faqsoccupation.index', params: { occupation: item.occupation.slug  } }"
                                 >
                                   <b>{{ (item.occupation.name.length > 15 ? item.occupation.name.substring(0,15)+ "..." : item.occupation.name) | upText }}</b>
                                 </router-link>
