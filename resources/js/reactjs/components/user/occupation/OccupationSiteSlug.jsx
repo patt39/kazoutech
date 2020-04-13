@@ -79,8 +79,10 @@ class OccupationSiteSlug extends Component {
                                                             </div>
                                                         ))}
                                                     </>
-                                                    : <OccupationListSkeleton />}
+                                                    : <OccupationListSkeleton />
+                                                }
                                             </div>
+                                            <br/>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +129,7 @@ class OccupationSiteSlug extends Component {
                                                                             </h6>
                                                                             {item.body ?
                                                                                 <p className="card-description">
-                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 164 ? item.body.substring(0, 164) + "..." : item.body) }} />
+                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 150 ? item.body.substring(0, 150) + "..." : item.body) }} />
                                                                                     <Link to={`/blog/${occupation.slug}/${item.slug}/`} >lire la suite</Link>
                                                                                 </p> : null}
 
@@ -168,7 +170,6 @@ class OccupationSiteSlug extends Component {
                                                                             </div>
                                                                         </div>
                                                                     )}
-                                                                    <br />
                                                                     <br />
                                                                 </div>
                                                             </div>

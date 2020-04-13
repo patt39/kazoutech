@@ -135,10 +135,11 @@ class CategoryOccupationShow extends Component {
                                                 Voir toutes les annonces en {categoryoccupation.name}
                                                 <i className="fas fa-chevron-right pl-1 font-size-1"/>
                                             </Link>
+                                            <br/>
+                                            <div className="description mb-2"
+                                                 dangerouslySetInnerHTML={{__html: categoryoccupation.body}}/>
                                         </div>
-                                        <br/>
-                                        <div className="description mb-2"
-                                             dangerouslySetInnerHTML={{__html: categoryoccupation.body}}/>
+
                                     </div>
 
                                 </div>

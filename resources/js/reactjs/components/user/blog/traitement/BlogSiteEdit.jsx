@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import { Button } from "reactstrap";
 import ReactQuill from 'react-quill';
 import NavUserSIte from "../../../inc/NavUserSIte";
@@ -149,7 +149,7 @@ class BlogSiteEdit extends Component {
 
     render() {
         const { occupations,colors,photo} = this.state;
-        const composantTitle = `${this.state.title}`;
+        const composantTitle = `${this.state.title || "Kazoutech"}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
 
@@ -232,7 +232,7 @@ class BlogSiteEdit extends Component {
                                                 </div>
                                                 <br />
                                                 <div className="row">
-                                                    <div className="col-md-4 mx-auto">
+                                                    <div className="col-md-6 mx-auto">
                                                         <div className="profile text-center">
                                                             <img src={this.state.showDefaultImage ? "https://www.kazoucoin.com/assets/img/photo.jpg" : photo} alt={'name'}/>
                                                             <input id="photo" type="file" onChange={this.updateImage} className={`form-control ${this.hasErrorFor('photo') ? 'is-invalid' : ''} kazouImageCarousel-file-upload`} name="photo"/>
@@ -270,6 +270,10 @@ class BlogSiteEdit extends Component {
                                                 </div>
                                                 <div className="submit">
                                                     <div className="text-center">
+                                                        <NavLink to={`/blog/`} className="btn btn-icon btn-secondary" type="submit">
+                                                            <span className="btn-inner--text">Annuler</span>
+                                                        </NavLink>
+
                                                         <button className="btn btn-icon btn-primary" type="submit">
                                                             <span className="btn-inner--text">Ajournez l'article</span>
                                                         </button>

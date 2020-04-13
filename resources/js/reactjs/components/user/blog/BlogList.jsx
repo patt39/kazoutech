@@ -31,11 +31,11 @@ class BlogList extends Component {
                     </div>
                     <div className="col-lg-8">
                         <div className="card-body">
-                            <h3 className="card-title">
+                            <h4 className="card-title">
                                 <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}>
                                     {this.props.title}
                                 </Link>
-                            </h3>
+                            </h4>
                             {this.props.body  ?
                              <p className="card-description">
                              <b dangerouslySetInnerHTML={{__html: (this.props.body.length > 180 ? this.props.body.substring(0, 180) + "..." : this.props.body)}}/>

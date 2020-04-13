@@ -28,7 +28,7 @@ class BlogSiteCreate extends Component {
             colors: [],
             occupations: [],
             errors: [],
-            showDefaultImage: false
+            showDefaultImage: true
         };
         this.modules = {
             toolbar: [
@@ -169,107 +169,105 @@ class BlogSiteCreate extends Component {
                                 <div className="row">
                                     <div className="col-md-10 mx-auto">
                                         <div className="card">
-                                            <div className="card">
-                                                <div className="container">
-                                                    <h3 className="title mt-3">{this.state.title}</h3>
-                                                    <div className="row">
-                                                        <div className="col-md-12">
-                                                            <label className="labels">
-                                                                Titre de votre blog
-                                                                <span className="text-danger">*</span>
-                                                            </label>
-                                                            <input type="text" placeholder="Titre de votre blog" aria-label="Titre du blog"
-                                                                   required={'required'}
-                                                                   className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
-                                                                   name='title'
-                                                                   maxLength="200"
-                                                                   value={this.state.title}
-                                                                   onChange={this.handleFieldChange}
-                                                            />
-                                                            {this.renderErrorFor('title')}
-                                                        </div>
+                                            <div className="container">
+                                                <h3 className="title mt-3">{this.state.title}</h3>
+                                                <div className="row">
+                                                    <div className="col-md-12">
+                                                        <label className="labels">
+                                                            Titre de votre blog
+                                                            <span className="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" placeholder="Titre de votre blog" aria-label="Titre du blog"
+                                                               required={'required'}
+                                                               className={`form-control ${this.hasErrorFor('title') ? 'is-invalid' : ''}`}
+                                                               name='title'
+                                                               maxLength="200"
+                                                               value={this.state.title}
+                                                               onChange={this.handleFieldChange}
+                                                        />
+                                                        {this.renderErrorFor('title')}
                                                     </div>
-                                                    <div className={'row'}>
-
-                                                        <div className="col-md-6">
-                                                            <label className="labels">
-                                                                Category de l'article
-                                                                <span className="text-danger">*</span>
-                                                            </label>
-                                                            <select name={'occupation_id'} value={this.state.occupation_id}
-                                                                    className={`form-control`}
-                                                                    id="occupation_id" onChange={this.handleFieldChange}>
-                                                                <option value="" disabled>Selectioner une category</option>
-                                                                {occupations.map((item) => (
-                                                                    <option key={item.id} value={item.id}>{item.name}</option>
-                                                                ))}
-                                                            </select>
-                                                            {this.renderErrorFor('occupation_id')}
-                                                        </div>
-
-                                                        <div className="col-md-6">
-                                                            <label className="labels">
-                                                                Donner une couleur à l'article
-                                                                <span className="text-danger">*</span>
-                                                            </label>
-                                                            <select name={'color_id'} value={this.state.color_id}
-                                                                    className={`form-control`}
-                                                                    id="color_id" onChange={this.handleFieldChange}>
-                                                                <option value="" disabled>Selectioner une couleur</option>
-                                                                {colors.map((item) => (
-                                                                    <option key={item.id} value={item.id}>{item.name}</option>
-                                                                ))}
-                                                            </select>
-                                                            {this.renderErrorFor('color_id')}
-                                                        </div>
-                                                    </div>
-                                                    <br />
-                                                    <div className="row">
-                                                        <div className="col-md-4 ml-auto mr-auto">
-                                                            <div className="profile text-center">
-                                                                <img src={this.state.showDefaultImage ? "https://www.kazoucoin.com/assets/img/photo.jpg" : photo} alt={'name'}/>
-                                                                <input id="photo" type="file" onChange={this.updateImage} className={`form-control ${this.hasErrorFor('photo') ? 'is-invalid' : ''} kazouImageCarousel-file-upload`} name="photo"/>
-                                                                {this.renderErrorFor('photo')}
-                                                                <div className="cta-submit">
-                                                                    <label htmlFor="photo" className="btn btn-icon btn-primary">
-                                                                        <span className="btn-inner--icon"><i className="ni ni-image"/></span>
-                                                                        <span className="btn-inner--text">Add Image</span>
-                                                                    </label>
-                                                                    <button hidden={this.state.showDefaultImage ? true : false} onClick={this.removeImage} className="btn btn-icon btn-danger">
-                                                                        <span className="btn-inner--icon"><i className="ni ni-fat-remove"/></span>
-                                                                        <span className="btn-inner--text">Remove</span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <br/>
-                                                    <div className="row">
-                                                        <div className="col-md-12">
-                                                            <div className="form-group">
-                                                                <label className="labels">
-                                                                    Description de votre article
-                                                                    <span className="text-danger">*</span>
-                                                                </label>
-                                                                <br />
-                                                                <ReactQuill theme="snow" modules={this.modules}
-                                                                            formats={this.formats}
-                                                                            className={`editor-control ${this.hasErrorFor('body') ? 'is-invalid' : ''}`}
-                                                                            value={this.state.body || ''}
-                                                                            onChange={this.handleChangeBody}/>
-                                                                {this.renderErrorFor('description')}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="submit">
-                                                        <div className="text-center">
-                                                            <button className="btn btn-icon btn-primary" type="submit">
-                                                                <span className="btn-inner--text">Postez l'article</span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <br />
                                                 </div>
+                                                <div className={'row'}>
+
+                                                    <div className="col-md-6">
+                                                        <label className="labels">
+                                                            Category de l'article
+                                                            <span className="text-danger">*</span>
+                                                        </label>
+                                                        <select name={'occupation_id'} value={this.state.occupation_id}
+                                                                className={`form-control`}
+                                                                id="occupation_id" onChange={this.handleFieldChange}>
+                                                            <option value="" disabled>Selectioner une category</option>
+                                                            {occupations.map((item) => (
+                                                                <option key={item.id} value={item.id}>{item.name}</option>
+                                                            ))}
+                                                        </select>
+                                                        {this.renderErrorFor('occupation_id')}
+                                                    </div>
+
+                                                    <div className="col-md-6">
+                                                        <label className="labels">
+                                                            Donner une couleur à l'article
+                                                            <span className="text-danger">*</span>
+                                                        </label>
+                                                        <select name={'color_id'} value={this.state.color_id}
+                                                                className={`form-control`}
+                                                                id="color_id" onChange={this.handleFieldChange}>
+                                                            <option value="" disabled>Selectioner une couleur</option>
+                                                            {colors.map((item) => (
+                                                                <option key={item.id} value={item.id}>{item.name}</option>
+                                                            ))}
+                                                        </select>
+                                                        {this.renderErrorFor('color_id')}
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div className="row">
+                                                    <div className="col-md-6 ml-auto mr-auto">
+                                                        <div className="profile text-center">
+                                                            <img src={this.state.showDefaultImage ? "https://www.kazoucoin.com/assets/img/photo.jpg" : photo} alt={'name'}/>
+                                                            <input id="photo" type="file" onChange={this.updateImage} className={`form-control ${this.hasErrorFor('photo') ? 'is-invalid' : ''} kazouImageCarousel-file-upload`} name="photo"/>
+                                                            {this.renderErrorFor('photo')}
+                                                            <div className="text-center">
+                                                                <label htmlFor="photo" className="btn btn-icon btn-primary">
+                                                                    <span className="btn-inner--icon"><i className="ni ni-image"/></span>
+                                                                    <span className="btn-inner--text">Add Image</span>
+                                                                </label>
+                                                                <button hidden={this.state.showDefaultImage ? true : false} onClick={this.removeImage} className="btn btn-icon btn-danger">
+                                                                    <span className="btn-inner--icon"><i className="ni ni-fat-remove"/></span>
+                                                                    <span className="btn-inner--text">Remove</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div className="row">
+                                                    <div className="col-md-12">
+                                                        <div className="form-group">
+                                                            <label className="labels">
+                                                                Description de votre article
+                                                                <span className="text-danger">*</span>
+                                                            </label>
+                                                            <br />
+                                                            <ReactQuill theme="snow" modules={this.modules}
+                                                                        formats={this.formats}
+                                                                        className={`editor-control ${this.hasErrorFor('body') ? 'is-invalid' : ''}`}
+                                                                        value={this.state.body || ''}
+                                                                        onChange={this.handleChangeBody}/>
+                                                            {this.renderErrorFor('description')}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="submit">
+                                                    <div className="text-center">
+                                                        <button className="btn btn-icon btn-primary" type="submit">
+                                                            <span className="btn-inner--text">Postez l'article</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <br />
                                             </div>
                                         </div>
                                     </div>
