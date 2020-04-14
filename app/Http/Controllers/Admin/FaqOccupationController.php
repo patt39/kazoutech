@@ -27,7 +27,7 @@ class FaqOccupationController extends Controller
     public function api()
     {
         $faqs = FaqOccupationResource::collection(faqoccupation::with('user','occupation')->latest()
-        ->paginate(10));
+        ->distinct()->get());
         
         return response()->json($faqs,200);
     }
