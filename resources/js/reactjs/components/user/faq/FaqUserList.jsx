@@ -21,7 +21,7 @@ class FaqUserList extends Component {
                 </div>
                 <div id={`collapse${this.props.id}`} className="collapse" aria-labelledby={`heading${this.props.id}`}
                      data-parent="#accordionFaqs">
-                    <div className="card-body opacity-8" dangerouslySetInnerHTML={{__html: this.props.body}}/>
+                    <div className="card-body" dangerouslySetInnerHTML={{__html: this.props.body}}/>
                 </div>
             </div>
 

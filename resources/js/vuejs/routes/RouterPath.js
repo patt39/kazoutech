@@ -6,8 +6,8 @@ import AdminChangePassword from "../components/admin/account/AdminChangePassword
 import CategoryIndex from "../components/admin/partial/category/site/CategoryIndex";
 import CategoryCreate from "../components/admin/partial/category/site/CategoryCreate";
 import CategoryEdit from "../components/admin/partial/category/site/CategoryEdit";
-import ContactIndex from "../components/admin/contact/ContactIndex";
-import ContactMessageShow from "../components/admin/contact/ContactMessageShow";
+import ContactIndex from "../components/admin/contact/contactuser/ContactIndex";
+import ContactMessageShow from "../components/admin/contact/contactuser/ContactMessageShow";
 import TagIndex from "../components/admin/partial/tag/TagIndex";
 import TagCreate from "../components/admin/partial/tag/TagCreate";
 import TagEdit from "../components/admin/partial/tag/TagEdit";
@@ -76,7 +76,7 @@ import PolicyprivacyEdit from "../components/admin/info/policyprivacy/Policypriv
 import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
-import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
+import ContactBookmarks from "../components/admin/contact/contactuser/ContactBookmarks";
 import CityActives from "../components/admin/partial/settings/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/admin/FaqByCategoryIndex";
 import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
@@ -101,6 +101,8 @@ import OccupationShowEdit from "../components/admin/occupation/occupation/catego
 import SlidehomeIndex from "../components/admin/slide/slidehome/SlidehomeIndex";
 import SlidehomeEdit from "../components/admin/slide/slidehome/SlidehomeEdit";
 import SlidehomeCreate from "../components/admin/slide/slidehome/SlidehomeCreate";
+import DeviscontactIndex from "../components/admin/contact/deviscontact/DeviscontactIndex";
+import DeviscontactMessageShow from "../components/admin/contact/deviscontact/DeviscontactMessageShow";
 
 
 
@@ -175,7 +177,7 @@ export const routes = [
     {path: '/dashboard/faqs_occupation/c/:occupation', name: 'faqs.occupationfaq', component: FaqByOccupationIndex},
 
 
-    
+
     //Route Blogs
     {path: '/dashboard/blogs/', name: 'blogs.index', component: BlogIndex},
     {path: '/dashboard/blogs/create', name: 'blogs.create', component: BlogCreate},
@@ -222,6 +224,10 @@ export const routes = [
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
     {path: '/dashboard/contacts/bookmarks/', name: 'contacts.bookmarks', component: ContactBookmarks},
     {path: '/dashboard/contacts/msg/:contact/', name: 'contacts.view', component: ContactMessageShow},
+
+    //Route devis contacts
+    {path: '/dashboard/deviscontacts/', name: 'deviscontacts.index', component: DeviscontactIndex},
+    {path: '/dashboard/deviscontacts/msg/:deviscontact/', name: 'deviscontacts_show', component: DeviscontactMessageShow},
 
     //Route subscribers
     {path:'/dashboard/subscribers/',name:'subscribers.index',component:SubscriberIndex},

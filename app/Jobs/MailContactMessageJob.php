@@ -74,7 +74,6 @@ class MailContactMessageJob implements ShouldQueue
      */
     public function failed(Exception $e)
     {
-        dd($e);
         Log::error($e->getMessage());
     }
 }

@@ -360,9 +360,9 @@ class DevenirCharbonneurSite extends Component{
                     </div>
                     <div className="col-md-12">
                         <div className="custom-control custom-checkbox mt-2">
-                            <input className="custom-control-input" id="customCheck2" type="checkbox"
+                            <input className="custom-control-input" id="charbonneur" type="checkbox"
                                     value={this.state.charbonneur} name="charbonneur" onChange={this.toggleChange} checked={isChecked}/>
-                            <label className="custom-control-label" htmlFor="customCheck2">
+                            <label className="custom-control-label" htmlFor="charbonneur">
                                 <span><b>JE CONFIRME DEVENIR CHARBONNEUR</b> (Jobbeur) pour la platte forme kazoutech</span>
                             </label>
                             {this.renderErrorFor('charbonneur')}

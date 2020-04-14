@@ -26,7 +26,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail,Auditable
 {
-    use Notifiable,HasApiTokens,HasRoles,CanFollow,CanLike,CanBeFollowed,AuditableTrait;
+    use Notifiable,HasApiTokens,HasRoles,CanFollow,CanLike,CanBeFollowed,AuditableTrait,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -146,7 +146,7 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     {
         return $this->belongsTo(city::class,'city_id');
     }
- 
+
     public function taskuserassign()
     {
         return $this->belongsTo(city::class,'taskuserassign_id');

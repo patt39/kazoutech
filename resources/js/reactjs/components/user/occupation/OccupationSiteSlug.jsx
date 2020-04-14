@@ -6,6 +6,7 @@ import OccupationHeader from "./OccupationHeader";
 import CitySite from "../city/CitySite";
 import OccupationListSkeleton from "../../inc/OccupationListSkeleton";
 import FaqUserList from "../faq/FaqUserList";
+import OccupationContactForm from "./traitement/OccupationContactForm";
 
 
 class OccupationSiteSlug extends Component {
@@ -102,15 +103,14 @@ class OccupationSiteSlug extends Component {
                                             <CitySite />
                                             {allblogbyoccupations.length > 0 && (
                                                 <div className="row">
-                                                    <div className="col-md-12 mx-auto">
-                                                        <h4 className="title kazouTechOccupations-wrapper">Tous nos articles
-                                                        sur <strong>{occupation.name} </strong> sont sur
-                                                        notre
-                                                        blog</h4>
+                                                    <div className="col-md-12 mr-auto ml-auto text-center">
+                                                        <h4 className="title kazouTechOccupations-wrapper">
+                                                            Tous nos articles sur <strong style={{ textTransform: "lowercase" }}>{occupation.name} </strong> sont sur notre blog
+                                                        </h4>
                                                         <br />
                                                         <div className="row">
                                                             {allblogbyoccupations.map((item) => (
-                                                                <div key={item.id} className="col-lg-4 col-md-6">
+                                                                <div key={item.id} className="col-md-4 mx-auto">
                                                                     <div className="card card-blog card-plain">
                                                                         <div className="card-image shadow">
                                                                             <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
@@ -125,11 +125,11 @@ class OccupationSiteSlug extends Component {
                                                                                 </Link>
                                                                             </div>
                                                                             <h6 className="card-title">
-                                                                                <Link to={`/blog/${occupation.slug}/`} >{item.title}</Link>
+                                                                                <Link to={`/blog/${occupation.slug}/${item.slug}/`} >{item.title}</Link>
                                                                             </h6>
                                                                             {item.body ?
                                                                                 <p className="card-description">
-                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 150 ? item.body.substring(0, 150) + "..." : item.body) }} />
+                                                                                    <b dangerouslySetInnerHTML={{ __html: (item.body.length > 140 ? item.body.substring(0, 140) + "..." : item.body) }} />
                                                                                     <Link to={`/blog/${occupation.slug}/${item.slug}/`} >lire la suite</Link>
                                                                                 </p> : null}
 
@@ -144,8 +144,9 @@ class OccupationSiteSlug extends Component {
                                             {faqbyoccupations.length > 0 && (
                                                 <div className="row">
                                                     <div className="col-md-12 mx-auto text-center">
-                                                        <h4 className="title">Bon à savoire
-                                                        sur <strong>{occupation.name} </strong></h4>
+                                                        <h4 className="title">
+                                                            Bon à savoire sur <strong style={{ textTransform: "lowercase" }}>{occupation.name} </strong>
+                                                        </h4>
                                                         <br />
                                                         <div className="cd-section" id="accordion">
                                                             <div className="accordion-1">
@@ -159,7 +160,6 @@ class OccupationSiteSlug extends Component {
                                                                                 ))}
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
                                                                     {visiable < faqbyoccupations.length && (
                                                                         <div className="row">
@@ -177,6 +177,24 @@ class OccupationSiteSlug extends Component {
                                                     </div>
                                                 </div>
                                             )}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="cd-section" id="accordion">
+                            <div className="accordion-1">
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-md-12 mx-auto">
+                                            <br/>
+                                            <h4 className="title text-center">
+                                                Demander un devis en <strong style={{ textTransform: "lowercase" }}>{occupation.name} </strong>
+                                            </h4>
+
+                                          <OccupationContactForm {...this.props} />
+
                                         </div>
                                     </div>
                                 </div>

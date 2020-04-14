@@ -309,6 +309,12 @@
                         <div class="collapse" id="contactsSettings">
                             <ul class="nav">
                                 <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/deviscontacts/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>DC</b></span>
+                                        <span class="sidebar-normal"><b>Devis Contact</b></span>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
                                     <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>MCP</b></span>
                                         <span class="sidebar-normal"><b>Message Contact Page</b></span>
