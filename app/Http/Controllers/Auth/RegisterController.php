@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'month' => 'required|numeric|digits_between:1,2|min:1|max:12',
             'year' => 'required|digits:4|integer|min:1900|max:'.(date('Y')),
             'city_id' => 'required',
-            "sex" => "required|in:female,male",
+            "sex" => "required|in:Female,Male",
             'occupation_id' => 'required',
             'phone' => ['required',new PhoneCmrRule],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
@@ -164,7 +164,7 @@ class RegisterController extends Controller
             'month' => 'required|numeric|digits_between:1,2|min:1|max:12',
             'year' => 'required|digits:4|integer|min:1900|max:'.(date('Y')),
             'city_id' => 'required',
-            "sex" => "required|in:Female,Male",
+            "sex" => "required",
             'occupation_id' => 'required',
             'phone' => ['required',new PhoneCmrRule],
         ]);
