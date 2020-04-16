@@ -35,7 +35,7 @@ class AboutMemberList extends Component {
                                     <div className="row">
                                         {aboutmenbers.map((item) => (
 
-                                            <div key={item.id} className="col-md-6 col-lg-4">
+                                            <div key={item.id} className="col-md-4 mx-auto">
                                                 <div className="card card-profile" data-image="img-rounded">
                                                     <div className="card-avatar">
                                                         <img className="img" src={item.photo} />

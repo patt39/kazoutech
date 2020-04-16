@@ -222,7 +222,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label>Instagram Username</label>
+                                                                <label>Linkedin Username</label>
                                                                 <input v-model="about.instlink" type="text" name="instlink"
                                                                        class="form-control" placeholder="...">
                                                             </div>

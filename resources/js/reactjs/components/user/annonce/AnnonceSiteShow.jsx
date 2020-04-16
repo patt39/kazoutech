@@ -320,7 +320,7 @@ class AnnonceSiteShow extends Component {
                                             </div>*/}
 
                                         </div>
-                                       
+
                                     </div>
                                 </div>
 
@@ -366,7 +366,7 @@ class AnnonceSiteShow extends Component {
                                                                 className="read-more-content"
                                                                 charLimit={50}
                                                                 readMoreText="En savoir plus"
-                                                                readLessText="En savoire moin">
+                                                                readLessText="En savoir moin">
                                                                 {item.profile.body || ""}
                                                             </ReadMoreAndLess>
                                                         </div>

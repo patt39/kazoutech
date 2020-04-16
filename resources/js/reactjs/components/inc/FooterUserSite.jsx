@@ -22,13 +22,13 @@ class FooterUserSite extends Component {
                                        data-toggle="tooltip" data-original-title="Follow us">
                                         <i className="fab fa-twitter"/>
                                     </a>
-                                    <a target="_blank" href="https://www.facebook.com/creativetim"
+                                    <a target="_blank" href="https://www.facebook.com/Kazoutech-Cameroun-102436558108851"
                                        className="btn btn-sm" data-toggle="tooltip" data-original-title="Like us">
                                         <i className="fab fa-facebook-square"/>
                                     </a>
-                                    <a target="_blank" href="https://dribbble.com/creativetim"
+                                    <a target="_blank" href="https://www.linkedin.com/company/kazoutech-cameroun/?viewAsMember=true"
                                        className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow us">
-                                        <i className="fab fa-slack"/>
+                                        <i className="fab fa-linkedin-square"/>
                                     </a>
                                 </div>
                             </div>

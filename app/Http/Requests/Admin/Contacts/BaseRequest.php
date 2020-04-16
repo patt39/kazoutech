@@ -35,6 +35,14 @@ class BaseRequest extends Request
                 'email'   => 'required|email:rfc,dns',
                 'message'     => 'required|min:2|max:50000',
             ];
+        }elseif ($group === 'avischarbonneursoffline'){
+            $rules = [
+                'confirm_send'    => 'required',
+                'first_name'    => 'required|min:2|max:100',
+                'last_name'    => 'required|min:2|max:100',
+                'email'   => 'required|email:rfc,dns',
+                'message'     => 'required|min:2|max:50000',
+            ];
         }
         else { // 'edit'
             $rules = [

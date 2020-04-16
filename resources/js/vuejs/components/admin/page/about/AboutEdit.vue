@@ -64,7 +64,7 @@
                                                          </div>
                                                          <div class="col-md-4">
                                                              <div class="form-group">
-                                                                 <label>Instagram Username</label>
+                                                                 <label>Linkedin Username</label>
                                                                  <input v-model="form.instlink" type="text" name="instlink"
                                                                         class="form-control" :class="{ 'is-invalid': form.errors.has('instlink') }" placeholder="...">
                                                                  <has-error :form="form" field="instlink"/>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import "../vuejs/axios"
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom';
 import RouterUser from "./router/RouterUser";
 import ScrollToTop from "./components/inc/ScrollToTop";

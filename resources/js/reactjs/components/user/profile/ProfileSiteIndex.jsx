@@ -4,6 +4,7 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import {NavLink} from "react-router-dom";
 import moment from "moment";
 import ProfileSiteAnnonces from "./ProfileSiteAnnonces";
+import ProfileSiteAvisUser from "./ProfileSiteAvisUser";
 
 
 class ProfileSiteIndex extends Component {
@@ -168,6 +169,11 @@ class ProfileSiteIndex extends Component {
                                         <br/>
                                     </div>
 
+
+                                    <ProfileSiteAvisUser {...this.props}/>
+
+
+
                                     {$guest ?
                                         <>
                                             {annonces.length > 0 && (
@@ -182,11 +188,9 @@ class ProfileSiteIndex extends Component {
                                                 </div>
                                             )}
                                         </>
-                                            :null
+                                        :null
 
                                     }
-
-
 
                                 </div>
                             </div>

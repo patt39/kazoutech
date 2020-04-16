@@ -120,8 +120,8 @@ class OccupationContactForm extends Component {
                                             className="kazouTech-red-color">*</span></label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                                                <span className="input-group-text">
-                                                                                    <i className="ni ni-circle-08"></i></span>
+                                                 <span className="input-group-text">
+                                                 <i className="ni ni-circle-08"></i></span>
                                             </div>
                                             <Input type="text" minLength="2" maxLength="100"
                                                    placeholder="Votre Nom et Prènom ..." aria-label="Votre Nom et  Prènom ..."
@@ -141,8 +141,8 @@ class OccupationContactForm extends Component {
                                             className="kazouTech-red-color">*</span></label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                                                <span className="input-group-text">
-                                                                                    <i className="ni ni-mobile-button"></i></span>
+                                                <span className="input-group-text">
+                                                <i className="ni ni-mobile-button"></i></span>
                                             </div>
                                             <Input type="tel" pattern="[0-9]*" inputMode="numeric" placeholder="Votre Numéro de Télephone ..." aria-label="Votre Numéro de Télephone ..."
                                                    required="required"
@@ -156,7 +156,6 @@ class OccupationContactForm extends Component {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
@@ -164,8 +163,8 @@ class OccupationContactForm extends Component {
                                             className="kazouTech-red-color">*</span></label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                                        <span className="input-group-text">
-                                                                            <i className="ni ni-email-83"></i></span>
+                                                <span className="input-group-text">
+                                                <i className="ni ni-email-83"></i></span>
                                             </div>
                                             <Input maxLength="100" minLength="3" type="email" placeholder="Votre E-mail ..." aria-label="Votre E-mail ..."
                                                    required="required"
@@ -178,7 +177,6 @@ class OccupationContactForm extends Component {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Votre Ville <span
@@ -196,8 +194,6 @@ class OccupationContactForm extends Component {
                                     </div>
                                 </div>
                             </div>
-
-
                             <div className="form-group">
                                 <label>Votre Message <span
                                     className="kazouTech-red-color">*</span></label>

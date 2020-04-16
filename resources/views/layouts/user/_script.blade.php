@@ -33,10 +33,6 @@
 <!--
 <script src="/assets/js/kazoutech.js"></script>
 -->
-
-
-
-<script src="{{ mix('/js/vuejs/axios.js') }}"></script>
 <script src="{{ mix('/js/reactjs/app.js') }}"></script>
 <script>
     $(document).ready(function(){
