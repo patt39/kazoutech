@@ -23,7 +23,7 @@ class BlogService
                 mkdir($dir, 0775, true);
             }
             $destinationPath = public_path("assets/img/blog/{$name}");
-            Image::make($request->photo)->fit(800,600)->save($destinationPath);
+            Image::make($request->photo)->fit(880,600)->save($destinationPath);
             //Save Image to database
             $myfilename = "/assets/img/blog/{$name}";
             $blog->photo = $myfilename;
@@ -46,7 +46,7 @@ class BlogService
                 ($request->photo,';')))[1])[1];
             $dir = 'assets/img/blog/';
             if(!file_exists($dir)){mkdir($dir, 0775, true);}
-            Image::make($request->photo)->fit(800,600)->save(public_path('assets/img/blog/').$name);
+            Image::make($request->photo)->fit(880,600)->save(public_path('assets/img/blog/').$name);
             $request->merge(['photo' =>  "/assets/img/blog/{$name}"]);
             $oldFilename = $currentPhoto;
             File::delete(public_path($oldFilename));
