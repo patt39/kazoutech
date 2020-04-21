@@ -336,7 +336,7 @@ class AnnonceSiteByOccupationCreate extends Component {
                                                 <div className="submit">
                                                     <div className="text-center">
                                                         <button className="btn btn-icon btn-primary" type="submit">
-                                                            <span className="btn-inner--text">Mettre à jour l'annonce</span>
+                                                            <span className="btn-inner--text">Sauvegarder</span>
                                                         </button>
                                                     </div>
                                                 </div>

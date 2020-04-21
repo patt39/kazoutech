@@ -376,13 +376,9 @@ class AnnonceSiteShow extends Component {
                                                 </Fragment>
                                             ))}
 
-
-
                                         </div>
                                     </div>
                                 </div>
-
-
 
                             </div>
                         </div>

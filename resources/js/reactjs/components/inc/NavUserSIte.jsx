@@ -60,7 +60,7 @@ class NavUserSIte extends Component {
                                         <a href={'/devenir_charbonneur/'} className="nav-link" role="button">
                                             <i className="ni ni-app d-lg-none"/>
                                             <span className="nav-link-inner--text">
-                                                <b>Dévenir charbonneur</b>
+                                                <b>Devenir charbonneur</b>
                                             </span>
                                         </a>
                                     </li>

@@ -24,8 +24,8 @@ class AboutMemberList extends Component {
                     <div className="row">
                         <div className="col-md-12 ml-auto mr-auto text-center">
                             <h3 className="display-3">Notre Equipe</h3>
-                            <p className="lead">En quelque mots les fondateurs derrière cette ingénieuse imagination se présente.
-                                N'hesitez pas à nous contacter pour mieux en savoir sur nos services.</p>
+                            <p className="lead">En quelques mots, les personnes derrière cette ingénieuse imagination se présentent.
+                                N'hesitez pas à nous contacter pour mieux en savoir sur nous.</p>
                         </div>
                     </div>
                     <div className="section features-4">
@@ -58,9 +58,9 @@ class AboutMemberList extends Component {
                                                                 </a>:null}
 
                                                             {item.instlink ?
-                                                                <a target="_blank" href={`https://www.instagram.com/${item.instlink}`}
+                                                                <a target="_blank" href={`https://www.linkedin.com/${item.instlink}`}
                                                                    className="btn btn-sm" data-toggle="tooltip" data-original-title="Follow me">
-                                                                    <i className="fab fa-instagram"/>
+                                                                    <i className="fab fa-linkedin"/>
                                                                 </a>:null}
                                                         </div>
                                                     </div>

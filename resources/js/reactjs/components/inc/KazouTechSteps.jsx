@@ -14,7 +14,7 @@ class KazouTechSteps extends Component {
                     <div className="row">
                         <div className="col-lg-8 mx-auto text-center my-5">
                             <h3 className="display-3 kazouTech-red-color">Comment ça marche chez KazouTech?</h3>
-                            <p className="lead kazouTech-white-color">3 simples étapes pour devenir charbonneur(euse) sur notre plateforme et vous faire contactez par des demandeurs de services en ligne. </p>
+                            <p className="lead kazouTech-white-color">3 étapes simples pour devenir charbonneur(euse) sur notre plateforme et vous faire contactez par nous pour des eventuel charbons. </p>
                         </div>
                     </div>
                     <div className="row">
@@ -44,11 +44,11 @@ class KazouTechSteps extends Component {
                                     </div>
                                 </Link>
                                 <div className="card-body">
-                                    <h4 className="card-title mt-3">Choisissez votre charbonneur(euse)</h4>
-                                    <p className="card-description">Des jobeurs compétents et proches de votre localité, de chez vous vous proposent leurs services à tout moment.</p>
+                                    <h4 className="card-title mt-3">Demandez un service</h4>
+                                    <p className="card-description">Rédigez votre annonce sur notre formulaire en ligne et des charbonneurs compétents et proches de votre localité, de chez vous vous proposent leurs services à tout moment.</p>
                                     <div className="card-footer">
-                                        <Link to={'/charbonneurs/'} className="btn btn-link text-success">
-                                            <i className="ni ni-bold-right icon-position"/> J'ai besoin d'un charbonneur
+                                        <Link to={'/annonces/'} className="btn btn-link text-success">
+                                            <i className="ni ni-bold-right icon-position"/> Faite votre annonce
                                         </Link>
                                     </div>
                                 </div>
@@ -66,9 +66,9 @@ class KazouTechSteps extends Component {
                                     <p className="card-description">KazouTech s'assure de vous proposez le charbonneur(euse) compétent pour
                                     votre satisfaction, la qualité de la prestation de service attendu et le meilleur prix que vous pouvez débourser pour votre travail.</p>
                                     <div className="card-footer">
-                                        <a href="#" className="btn btn-link text-warning"><i
-                                            className="ni ni-bold-right icon-position"></i> Je sonde
-                                        </a>
+                                        <Link to={'/charbonneurs/'} className="btn btn-link text-success">
+                                            <i className="ni ni-bold-right icon-position"/> Je sonde
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

@@ -130,8 +130,6 @@ class AnnonceSiteByOccupationCity extends Component {
                                                 <br/>
                                                 <div className="row">
 
-
-
                                                     <div className="col-lg-4 col-md-12 mx-auto">
 
                                                         <div className="card mb-3">
