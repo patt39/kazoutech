@@ -21,7 +21,7 @@ class BaseRequest extends Request
             $rules = [
                 'first_name'    => 'required|min:2|max:100',
                 'last_name'    => 'required|max:100',
-                'email'   => 'required|email:rfc,dns',
+                'email'   => 'required|email|min:2|max:200',
                 'subject' => 'required|min:2|max:210',
                 'message'     => 'required|min:2|max:50000',
                 //'recaptcha' => ['required', $recaptcha],
@@ -32,7 +32,7 @@ class BaseRequest extends Request
                 'phone'    => 'required|max:100',
                 'confirm_send'    => 'required',
                 'city_id'    => 'required',
-                'email'   => 'required|email:rfc,dns',
+                'email'   => 'required|email|min:2|max:200',
                 'message'     => 'required|min:2|max:50000',
             ];
         }elseif ($group === 'avischarbonneursoffline'){
@@ -40,7 +40,7 @@ class BaseRequest extends Request
                 'confirm_send'    => 'required',
                 'first_name'    => 'required|min:2|max:100',
                 'last_name'    => 'required|min:2|max:100',
-                'email'   => 'required|email:rfc,dns',
+                'email'   => 'required|email|min:2|max:200',
                 'message'     => 'required|min:2|max:50000',
             ];
         }

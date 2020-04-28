@@ -30,7 +30,6 @@ class BlogService
         }
 
     }
-
     /**
      * Return the permission with the given id, or null if no product is found.
      *
