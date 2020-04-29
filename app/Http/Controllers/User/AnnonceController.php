@@ -190,9 +190,11 @@ class AnnonceController extends Controller
         return response()->json($annoncecity,200);
     }
 
-    public function apiannoncesoccupationshow($occupation,$categoryoccupation,$city,$annonce)
+    public function apiannoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
     {
-        $annonce = new AnnonceResource(annonce::whereSlug($annonce)->firstOrFail());
+        visits($annonce)->seconds(5)->increment();
+
+        $annonce = new AnnonceResource(annonce::whereSlug($annonce->slug)->firstOrFail());
 
         return response()->json($annonce,200);
     }

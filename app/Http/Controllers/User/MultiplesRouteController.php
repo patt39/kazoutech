@@ -239,15 +239,19 @@ class MultiplesRouteController extends Controller
 
     public function blogsoccupationslug(occupation $occupation,blog $blog)
     {
+        visits($blog)->seconds(5)->increment();
+
         return view('user.blog.show',[
             'blog' => $blog,
             'occupation' => $occupation,
         ]);
     }
 
-    public function apiblogsoccupationslug(occupation $occupation,$slug)
+    public function apiblogsoccupationslug(occupation $occupation,blog $blog)
     {
-        $blog = new BlogResource(blog::whereSlug($slug)->first());
+        visits($blog)->seconds(5)->increment();
+
+        $blog = new BlogResource(blog::whereSlug($blog->slug)->first());
         return response()->json($blog,200);
 
     }
