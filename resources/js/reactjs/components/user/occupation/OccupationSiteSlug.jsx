@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import LazyLoad from 'react-lazyload';
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import OccupationHeader from "./OccupationHeader";
@@ -14,7 +15,7 @@ class OccupationSiteSlug extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            occupation: { categoryoccupations: [], blogs: [], faqoccupations: [] },
+            occupation: { categoryoccupations: {user:[]}, blogs: {user:[],occupation:[],color:[]}, faqoccupations: {occupation:[],user:[]} },
             visiable: 10,
         };
 
@@ -60,22 +61,25 @@ class OccupationSiteSlug extends Component {
                                                 </div>
                                             </div>
                                             <div className="row align-items-center">
-                                                {occupationCategories.length ?
+                                                {occupationCategories.length >= 0 ?
                                                     <>
                                                         {occupationCategories.map((item) => (
                                                             <div key={item.id} className="col-lg-4 mx-auto">
                                                                 <div className="card card-blog card-background" data-animation="zooming">
-                                                                    <div className="full-background" style={{ backgroundImage: "url(" + item.photo + ")" }} />
-                                                                    <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
-                                                                        <div className="card-body">
-                                                                            <div className="content-top">
-                                                                                <h5 className="card-title"><span className="count-annonces">{item.annonces_count}</span> {(item.annonces_count > 1) ? 'Annonces' : 'Annonce'}</h5>
+                                                                    <LazyLoad>
+                                                                        <div className="full-background" style={{ backgroundImage: "url(" + item.photo + ")" }} />
+                                                                        <Link to={`/occupations/${occupation.slug}/${item.slug}/`}>
+                                                                            <div className="card-body">
+                                                                                <div className="content-top">
+                                                                                    <h5 className="card-title"><span className="count-annonces">{item.annonces_count}</span> {(item.annonces_count > 1) ? 'Annonces' : 'Annonce'}</h5>
+                                                                                </div>
+                                                                                <div className="content-bottom">
+                                                                                    <h5 className="card-title text-uppercase">{item.name}</h5>
+                                                                                </div>
                                                                             </div>
-                                                                            <div className="content-bottom">
-                                                                                <h5 className="card-title text-uppercase">{item.name}</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </Link>
+                                                                        </Link>
+
+                                                                    </LazyLoad>
                                                                 </div>
                                                             </div>
                                                         ))}
@@ -113,10 +117,13 @@ class OccupationSiteSlug extends Component {
                                                                 <div key={item.id} className="col-md-4 mx-auto">
                                                                     <div className="card card-blog card-plain">
                                                                         <div className="card-image shadow">
-                                                                            <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
-                                                                                <img className="img rounded"
-                                                                                    src={item.photo} />
-                                                                            </Link>
+                                                                            <LazyLoad>
+                                                                                <Link to={`/blog/${occupation.slug}/${item.slug}/`}>
+                                                                                    <img className="img rounded"
+                                                                                         src={item.photo} alt={item.title} />
+                                                                                </Link>
+                                                                            </LazyLoad>
+
                                                                         </div>
                                                                         <div className="card-body">
                                                                             <div className="text-center">

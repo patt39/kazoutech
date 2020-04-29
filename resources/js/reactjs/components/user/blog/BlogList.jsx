@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import {Link, NavLink} from "react-router-dom";
 import moment from 'moment'
 import {Button} from "reactstrap";
+import LazyLoad from 'react-lazyload';
+
 
 require("moment/min/locales.min");
 moment.locale('fr');
@@ -24,8 +26,10 @@ class BlogList extends Component {
                     <div className="col-lg-4">
                         <div className="card-image shadow">
                             <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}>
-                                <img className="img rounded"
-                                     src={this.props.photo}/>
+                                <LazyLoad>
+                                    <img className="img rounded"
+                                         src={this.props.photo}/>
+                                </LazyLoad>
                             </Link>
                         </div>
                     </div>

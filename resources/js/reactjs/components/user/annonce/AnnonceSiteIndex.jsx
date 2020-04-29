@@ -124,7 +124,9 @@ class AnnonceSiteIndex extends Component {
                                                 <div className="row">
                                                     <div className="col-md-4">
                                                         <AnnonceOccupationList/>
+                                                        {/*
                                                         <NavAnnoncesByCities/>
+                                                        */}
                                                     </div>
                                                     <div className="col-lg-8 col-md-10 mx-auto">
                                                         <h3 className="display-3 mb-5"><b>Toutes les annonces</b></h3>

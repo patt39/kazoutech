@@ -40,7 +40,8 @@ class SlideHomeList extends Component {
                                         {item.redirect_link !== null && (
                                             <Link to={`${item.redirect_link}`} className={`btn btn-${item.color_link}`}>{item.text_link}</Link>
                                         )}
-                                        <p className="kazouTech-title-mobile">{item.description}</p>
+                                        {item.description ? <p className="kazouTech-title-mobile" dangerouslySetInnerHTML={{ __html: item.description }} /> : null}
+
                                     </div>
                                 </div>
                             ))}

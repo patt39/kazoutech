@@ -323,7 +323,8 @@ class MultiplesRouteController extends Controller
 
     public function annoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
     {
-        $annonce->visits()->increment();
+        visits($annonce)->seconds(5)->increment();
+
         return view('user.annonce.show',[
             'annonce' => $annonce,
         ]);

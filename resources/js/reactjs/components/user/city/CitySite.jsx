@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import LazyLoad from 'react-lazyload';
 
 
 class CitySite extends Component {
@@ -28,13 +29,15 @@ class CitySite extends Component {
                             className="d-block text-uppercase font-weight-bold mb-4 text-center">
                             <b>{item.name}</b>
                         </small>
-                        <a href="#">
-                            <img
-                                src={item.photo}
-                                alt={item.name}
-                                className="img-fluid rounded shadow"
-                            />
-                        </a>
+                        <LazyLoad>
+                            <a href="#">
+                                <img
+                                    src={item.photo}
+                                    alt={item.name}
+                                    className="img-fluid rounded shadow"
+                                />
+                            </a>
+                        </LazyLoad>
                     </div>
                 ))}
             </div>

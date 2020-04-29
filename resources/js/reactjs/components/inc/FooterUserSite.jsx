@@ -83,11 +83,14 @@ class FooterUserSite extends Component {
                                                 Blog
                                             </Link>
                                         </li>
-                                        <li>
+                                        {/*
+                                           <li>
                                             <Link to={'/temoignages/'}>
                                                 Temoignages
                                             </Link>
                                         </li>
+                                        */}
+
                                     </ul>
                                 </div>
                             </div>
