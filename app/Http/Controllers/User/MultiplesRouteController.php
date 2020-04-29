@@ -239,7 +239,7 @@ class MultiplesRouteController extends Controller
 
     public function blogsoccupationslug(occupation $occupation,blog $blog)
     {
-        visits($blog)->seconds(5)->increment();
+        visits($blog)->seconds(60)->increment();
 
         return view('user.blog.show',[
             'blog' => $blog,
@@ -249,7 +249,7 @@ class MultiplesRouteController extends Controller
 
     public function apiblogsoccupationslug(occupation $occupation,blog $blog)
     {
-        visits($blog)->seconds(5)->increment();
+        visits($blog)->seconds(60)->increment();
 
         $blog = new BlogResource(blog::whereSlug($blog->slug)->first());
         return response()->json($blog,200);
@@ -327,7 +327,7 @@ class MultiplesRouteController extends Controller
 
     public function annoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
     {
-        visits($annonce)->seconds(5)->increment();
+        visits($annonce)->seconds(60)->increment();
 
         return view('user.annonce.show',[
             'annonce' => $annonce,

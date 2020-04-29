@@ -192,7 +192,7 @@ class AnnonceController extends Controller
 
     public function apiannoncesoccupationshow($occupation,$categoryoccupation,$city,annonce $annonce)
     {
-        visits($annonce)->seconds(5)->increment();
+        visits($annonce)->seconds(60)->increment();
 
         $annonce = new AnnonceResource(annonce::whereSlug($annonce->slug)->firstOrFail());
 
