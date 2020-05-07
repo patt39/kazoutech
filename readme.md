@@ -8,15 +8,15 @@ Cloner le fichier puis faire un ``` composer install ``` si vous ete sur window 
 
 Ensuite faite un ``` npm i ``` ou ``` yarn``` et ``` npm run watch ``` ou ``` yarn watch ```
 
-Configurer votre votre fichier ``` .env``` en duplicant celle de ``` .env.example ```
+Configurer votre fichier ``` .env``` en duplicant celle de ``` .env.example ```
 
 Faite ensuite  ``` php artisan key:generate ``` et faire  ``` php artisan serve ```
 
-Vous aurrez ce lien **[http://127.0.0.1:8000](http://127.0.0.1:8000)** 
+Vous aurez ce lien **[http://127.0.0.1:8000](http://127.0.0.1:8000)** 
 
-Apres la configuration de la base de donner  ``` php artisan migrate:fresh --seed```
+Apres la configuration de la base de données  ``` php artisan migrate:fresh --seed```
 
-## Configuration base de donner
+## Configuration base de données
 
 ``` mysql -uroot -p``` entrer votre mot de passe mysql ``` CREATE DATABASE kazoutect;```
 
