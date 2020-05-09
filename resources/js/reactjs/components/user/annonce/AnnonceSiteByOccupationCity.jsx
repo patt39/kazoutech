@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet';
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./inc/AnnonceList";
@@ -92,9 +93,10 @@ class AnnonceSiteByOccupationCity extends Component {
         const {annoncebycity,cities} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
-        document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
         return (
-            <div className="blog-post">
+            <>
+             <Helmet title={`Annonce dans la ville de ${composantTitle || "Kazoutech"} | Kazoutech`}/>
+             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
@@ -224,6 +226,8 @@ class AnnonceSiteByOccupationCity extends Component {
                     <FooterUserSite/>
                 </div>
             </div>
+            </>
+          
         )
     }
 

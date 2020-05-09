@@ -172,52 +172,24 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                             <h3 className="title text-white mt-3">{categoryoccupationdata .name}</h3>
                                             <div className="row">
                                                 <div className="card">
-                                                    <div className="card-body">
-                                                        <div className="media align-items-center">
-                                                            <div className="media-body">
-                                                                <h2 className="h6">Prix</h2>
-                                                                <small className="d-block opacity-8">Prix proposer</small>
-                                                            </div>
-                                                            <div className="media-body text-right">
-                                                                {this.state.price ?
-                                                                    <span><b>{this.state.price} CFA</b></span>
-                                                                    :null}
-                                                            </div>
-                                                        </div>
-                                                        <hr className="line-info mb-3" />
-                                                        <div className="code-validate">
-                                                            <label>Proposez un prix</label>
-                                                            <div className="input-group">
-                                                                <input type="number"  className={`form-control ${this.hasErrorFor('price') ? 'is-invalid' : ''}`}
-                                                                       name="price" placeholder="Proposez un prix"
-                                                                       value={this.state.price}
-                                                                       onChange={this.handleFieldChange}
-                                                                       aria-label="Proposez un prix pour cette annonce" />
-                                                                {this.renderErrorFor('price')}
-                                                            </div>
-                                                        </div>
-                                                        <hr className="line-info mb-3" />
-                                                        <div className="media align-items-center">
-                                                            <h3 className="h6 opacity-8 mr-3">Subtotal</h3>
-                                                            <div className="media-body text-right">
-                                                                <span>$1038</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="media align-items-center">
-                                                            <h3 className="h6 opacity-8 mr-3">Shipping</h3>
-                                                            <div className="media-body text-right">
-                                                                <span>$5.8</span>
-                                                            </div>
-                                                        </div>
-                                                        <hr className="line-info mb-3" />
-                                                        <div className="media align-items-center">
-                                                            <h3 className="h6">Total</h3>
-                                                            <div className="media-body text-right">
-                                                                <span
-                                                                    className="font-weight-semi-bold">$1045.8</span>
-                                                            </div>
-                                                        </div>
+                                                <div className="card-body">
+                                                   <div className="justify-content-center flex-column">
+                                                        <h4 className="display-6 mt-4">Demender un devis pour votre prochain projet</h4>
+                                                        <ul className="nav nav-pills nav-pills-primary my-4" role="tablist">
+                                                            <li className="nav-item">
+                                                                <a className="nav-link active" data-toggle="tab" href="#commercial" role="tablist">
+                                                                    Moins cher
+                                                                </a>
+                                                            </li>
+                                                            <li className="nav-item">
+                                                                <a className="nav-link" data-toggle="tab" href="#personal" role="tablist">
+                                                                    Coûteux
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <p className="lead mt-0"></p>
                                                     </div>
+                                                 </div>
                                                 </div>
                                             </div>
                                         </div>

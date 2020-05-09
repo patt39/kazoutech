@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Helmet } from 'react-helmet';
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "reactstrap";
 import NavUserSIte from "../../inc/NavUserSIte";
@@ -185,12 +186,11 @@ class AnnonceSiteShow extends Component {
 
     render() {
         const { annonce, annonceinteressebycategoryoccupation, charbonneurs } = this.state;
-        const composantTitle = `${annonce.title || "kazoutech"}`;
-        document.title = `${composantTitle} | Kazoutech`;
         const annoncebycategoryoccupations = annonceinteressebycategoryoccupation.annoncesinteres;
         return (
-
-            <div className="landing-page">
+            <>
+              <Helmet title={`${annonce.title || "Kazoutech"} | Kazoutech`}/>
+               <div className="landing-page">
                 <NavUserSIte />
 
                 <div className="wrapper">
@@ -483,6 +483,8 @@ class AnnonceSiteShow extends Component {
                 </div>
                 <FooterUserSite />
             </div>
+
+            </>
         )
     }
 

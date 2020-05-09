@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet';
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
@@ -82,10 +83,10 @@ class BlogSiteByCategoriesOccupation extends Component {
     render() {
         const {blogsbycategy,blogsLast} = this.state;
         const blogsbycategies = blogsbycategy.blogs;
-        const composantTitle = `${blogsbycategy.name || "Kazoutech"}`;
-        document.title = `${composantTitle} | Kazoutech`;
         return (
-            <div className="blog-post">
+            <>
+            <Helmet title={`${blogsbycategy.name || "Kazoutech"} | Kazoutech`}/>
+             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
@@ -164,6 +165,9 @@ class BlogSiteByCategoriesOccupation extends Component {
                     <FooterUserSite/>
                 </div>
             </div>
+            </>
+           
+
         )
     }
 

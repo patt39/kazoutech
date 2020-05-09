@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from 'react-helmet';
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import BlogList from "./BlogList";
@@ -130,8 +131,6 @@ class BlogSiteIndex extends Component {
     }
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Blog une mise a jour des informations  | Kazoutech';
-        document.title = `${composantTitle}`;
         dyaxios.get(route('api_active.blogs')).then(response => this.setState({ blogs: [...response.data], }));
         dyaxios.get(route('api_active_last.blogs')).then(response => this.setState({ blogsLast: [...response.data], }))
     }
@@ -139,7 +138,10 @@ class BlogSiteIndex extends Component {
     render() {
         const { blogs, blogsLast } = this.state;
         return (
-            <div className="blog-post">
+            <>
+            <Helmet title={`Blog une mise a jour des informations  | Kazoutech`}/>
+
+             <div className="blog-post">
                 <NavUserSIte />
                 <div className="wrapper">
                     <div className="page-header kazouTech-page-header-mini header-filter">
@@ -311,6 +313,8 @@ class BlogSiteIndex extends Component {
                     <FooterUserSite />
                 </div>
             </div>
+            </>
+           
         )
     }
 

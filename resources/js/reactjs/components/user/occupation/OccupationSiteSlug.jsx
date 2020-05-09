@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import LazyLoad from 'react-lazyload';
 import NavUserSIte from "../../inc/NavUserSIte";
@@ -39,11 +40,11 @@ class OccupationSiteSlug extends Component {
         const occupationCategories = occupation.categoryoccupations;
         const allblogbyoccupations = occupation.blogs;
         const faqbyoccupations = occupation.faqoccupations;
-        const composantTitle = `${occupation.name || "kazoutech"}`;
-        document.title = `${composantTitle} | Kazoutech`;
 
         return (
             <>
+               <Helmet title={`${occupation.name || "kazoutech"} | Kazoutech`}/>
+
                 <div className="landing-page">
                     <NavUserSIte />
                     <div className="wrapper">

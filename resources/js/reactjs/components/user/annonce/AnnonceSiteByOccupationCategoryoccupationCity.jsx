@@ -105,182 +105,184 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
     render() {
         const { annoncebycity, annoncebycategoryoccupation, cities, catagoryoccupations } = this.state;
         const annoncebycities = annoncebycity.annonces;
-        const composantTitle = `${annoncebycity.name || "kazoutech"}`;
-        document.title = `Annonce ${annoncebycategoryoccupation.name || ""} dans la ville de ${composantTitle} | Kazoutech`;
         let SlugCategoryoccupation = this.props.match.params.catagoryoccupation;
         let SlugOccupation = this.props.match.params.occupation;
         let SlugCity = this.props.match.params.city;
         return (
-            <div className="blog-post">
-                <NavUserSIte />
-                <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
-                        <div className="page-header-image"
-                            style={{ backgroundImage: "url(" + annoncebycity.photo + ")" }} />
-                        <div className="content-center">
-                            <div className="col-md-6 mx-auto text-center">
-                                <h4 className="title text-white">
-                                    Annonces de <b>{annoncebycategoryoccupation.name}</b> à {annoncebycity.name}
-                                </h4>
-                                <div className="author">
-                                    <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/`} className="text-white">
-                                        <i className="fa fa-chevron-circle-left" /> Retour {annoncebycategoryoccupation.name}
-                                    </Link>
-                                </div>
-                                <br />
-                                    <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+            <>
+              <Helmet title={`Annonce ${annoncebycategoryoccupation.name || ""} dans la ville de ${annoncebycity.name || "kazoutech"} | Kazoutech`}/>
+
+                <div className="blog-post">
+                    <NavUserSIte />
+                    <div className="wrapper">
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image"
+                                style={{ backgroundImage: "url(" + annoncebycity.photo + ")" }} />
+                            <div className="content-center">
+                                <div className="col-md-6 mx-auto text-center">
+                                    <h4 className="title text-white">
+                                        Annonces de <b>{annoncebycategoryoccupation.name}</b> à {annoncebycity.name}
+                                    </h4>
+                                    <div className="author">
+                                        <Link to={`/annonces/${SlugOccupation}/${SlugCategoryoccupation}/`} className="text-white">
+                                            <i className="fa fa-chevron-circle-left" /> Retour {annoncebycategoryoccupation.name}
+                                        </Link>
+                                    </div>
                                     <br />
-                                    <span>{annoncebycity.annonces_count} {annoncebycity.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycity.name}</b> au Cameroun</span>
+                                        <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+                                        <br />
+                                        <span>{annoncebycity.annonces_count} {annoncebycity.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycity.name}</b> au Cameroun</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br />
-                    <div className="main main-raised">
+                        <br />
+                        <div className="main main-raised">
 
-                        <div className="container">
-                            <div className="row">
-
-                            </div>
-                        </div>
-                        <section className="section">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-md-12 ml-auto mr-auto">
-                                        <section className="blogs-3">
-                                            <div className="container">
-                                                <br />
-                                                <div className="row">
 
-                                                    <div className="col-lg-4 col-md-12 mx-auto ">
+                                </div>
+                            </div>
+                            <section className="section">
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-md-12 ml-auto mr-auto">
+                                            <section className="blogs-3">
+                                                <div className="container">
+                                                    <br />
+                                                    <div className="row">
 
-                                                        <div className="card mb-3">
+                                                        <div className="col-lg-4 col-md-12 mx-auto ">
 
-                                                            <div className="card-header h6"
-                                                                style={{ textTransform: "capitalize" }}><b>Villes</b>
-                                                            </div>
-                                                            <div className="card-body">
+                                                            <div className="card mb-3">
 
-                                                                <ul className="list-unstyled">
-                                                                    {cities.length ?
-                                                                        <>
-                                                                            {cities.map((item) => (
-                                                                                <li key={item.id} className="mb-2">
-                                                                                    <NavLink
-                                                                                        to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
-                                                                                        <span style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
-                                                                                    </NavLink>
-                                                                                </li>
-                                                                            ))}
+                                                                <div className="card-header h6"
+                                                                    style={{ textTransform: "capitalize" }}><b>Villes</b>
+                                                                </div>
+                                                                <div className="card-body">
 
-                                                                            <li className="mb-2">
-                                                                                <Link to={`/all_cities/`}>
-                                                                                    Autre ville...
-                                                                                </Link>
-                                                                            </li>
-                                                                        </>
-                                                                        :
-                                                                        <NavoccupationSkeleton/>
-                                                                    }
+                                                                    <ul className="list-unstyled">
+                                                                        {cities.length ?
+                                                                            <>
+                                                                                {cities.map((item) => (
+                                                                                    <li key={item.id} className="mb-2">
+                                                                                        <NavLink
+                                                                                            to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
+                                                                                            <span style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
+                                                                                        </NavLink>
+                                                                                    </li>
+                                                                                ))}
 
-                                                                </ul>
-
-
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className="card mb-3">
-
-                                                            <div className="card-header h6"><b>Annonces <span
-                                                                style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
-                                                            </div>
-                                                            <div className="card-body">
-
-                                                                <ul className="list-unstyled">
-
-                                                                    {catagoryoccupations.length ?
-                                                                        <>
-                                                                            {catagoryoccupations.map((item) => (
-                                                                                <li key={item.id} className="mb-2">
-                                                                                    <Link to={`/annonces/${SlugOccupation}/${item.slug}/${SlugCity}/`}>
-                                                                                        {item.name}
+                                                                                <li className="mb-2">
+                                                                                    <Link to={`/all_cities/`}>
+                                                                                        Autre ville...
                                                                                     </Link>
                                                                                 </li>
-                                                                            ))}
-                                                                        </>
-                                                                        :<NavoccupationSkeleton/>}
+                                                                            </>
+                                                                            :
+                                                                            <NavoccupationSkeleton/>
+                                                                        }
 
-                                                                </ul>
+                                                                    </ul>
 
+
+                                                                </div>
                                                             </div>
+
+
+                                                            <div className="card mb-3">
+
+                                                                <div className="card-header h6"><b>Annonces <span
+                                                                    style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
+                                                                </div>
+                                                                <div className="card-body">
+
+                                                                    <ul className="list-unstyled">
+
+                                                                        {catagoryoccupations.length ?
+                                                                            <>
+                                                                                {catagoryoccupations.map((item) => (
+                                                                                    <li key={item.id} className="mb-2">
+                                                                                        <Link to={`/annonces/${SlugOccupation}/${item.slug}/${SlugCity}/`}>
+                                                                                            {item.name}
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                ))}
+                                                                            </>
+                                                                            :<NavoccupationSkeleton/>}
+
+                                                                    </ul>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <AnnonceOccupationList />
                                                         </div>
 
-                                                        <AnnonceOccupationList />
-                                                    </div>
+                                                        <div className="col-lg-8 col-md-12 mx-auto">
+                                                            <h4 className="title">
+                                                                {annoncebycategoryoccupation.name ?
+                                                                    <>   Toutes les annonces <b>{annoncebycategoryoccupation.name}</b></>
+                                                                    :   <Skeleton />}
 
-                                                    <div className="col-lg-8 col-md-12 mx-auto">
-                                                        <h4 className="title">
-                                                            {annoncebycategoryoccupation.name ?
-                                                                <>   Toutes les annonces <b>{annoncebycategoryoccupation.name}</b></>
-                                                                :   <Skeleton />}
-
-                                                        </h4>
-                                                        <div className="row">
-                                                            <div className="col-md-6">
-                                                                <div className="card mb-3 text-center">
-                                                                    <div className="card-body"><p
-                                                                        className="h5 font-weight-normal mb-3 text-success">Vous
-                                                                        avez une annonce?</p>
-                                                                        <Link
-                                                                            to={`/annonces/${SlugOccupation}/p/annonce/new/create/`}
-                                                                            className="btn btn-success mb-2"
-                                                                            type="button" disabled="">
-                                                                            <span
-                                                                                className="spinner-grow spinner-grow-sm"
-                                                                                role="status" aria-hidden="true" />
-                                                                            Annonce
-                                                                        </Link>
+                                                            </h4>
+                                                            <div className="row">
+                                                                <div className="col-md-6">
+                                                                    <div className="card mb-3 text-center">
+                                                                        <div className="card-body"><p
+                                                                            className="h5 font-weight-normal mb-3 text-success">Vous
+                                                                            avez une annonce?</p>
+                                                                            <Link
+                                                                                to={`/annonces/${SlugOccupation}/p/annonce/new/create/`}
+                                                                                className="btn btn-success mb-2"
+                                                                                type="button" disabled="">
+                                                                                <span
+                                                                                    className="spinner-grow spinner-grow-sm"
+                                                                                    role="status" aria-hidden="true" />
+                                                                                Annonce
+                                                                            </Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-md-6">
+                                                                    <div className="card mb-3 text-center">
+                                                                        <div className="card-body"><p
+                                                                            className="h5 font-weight-normal mb-3 text-primary">Envie
+                                                                            de charbonner ?</p><a
+                                                                                className="btn btn-primary btn-break"
+                                                                                href="/devenez_charbonneur">Devenir
+                                                                            Charbonneur</a></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="col-md-6">
-                                                                <div className="card mb-3 text-center">
-                                                                    <div className="card-body"><p
-                                                                        className="h5 font-weight-normal mb-3 text-primary">Envie
-                                                                        de charbonner ?</p><a
-                                                                            className="btn btn-primary btn-break"
-                                                                            href="/devenez_charbonneur">Devenir
-                                                                        Charbonneur</a></div>
+
+
+                                                            <div className="card">
+                                                                <div className="card-body">
+                                                                    {annoncebycities.map((item) => (
+                                                                        <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem} />
+                                                                    ))}
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
-
-
-                                                        <div className="card">
-                                                            <div className="card-body">
-                                                                {annoncebycities.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item} deleteItem={this.deleteItem} />
-                                                                ))}
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </section>
+                                            </section>
 
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
 
 
+                        </div>
+                        <FooterUserSite />
                     </div>
-                    <FooterUserSite />
-                </div>
-            </div>
+                </div> 
+            </>
         )
     }
 

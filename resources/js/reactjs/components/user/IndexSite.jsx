@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
 import PageCitySite from "./city/PageCitySite";
@@ -19,13 +20,14 @@ class IndexSite extends Component {
 
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Technicians services to particulars | Kazoutech';
-        document.title = `${composantTitle}`;
+        //
     }
 
     render() {
         return (
             <>
+                <Helmet title={`Technicians services to particulars | Kazoutech`}/>
+                
                 <div className="landing-page">
                     <NavUserSIte/>
                     <div className="wrapper">

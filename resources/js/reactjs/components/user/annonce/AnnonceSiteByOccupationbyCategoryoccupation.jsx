@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from 'react-helmet';
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AnnonceList from "./inc/AnnonceList";
@@ -96,168 +97,170 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
     render() {
         const { annoncebycategoryoccupation, cities } = this.state;
         const annoncebycategoryoccupations = annoncebycategoryoccupation.annonces;
-        const composantTitle = `${annoncebycategoryoccupation.name || "kazoutech"}`;
-        document.title = `Annonce de ${composantTitle} | Kazoutech`;
         let SlugOccupation = this.props.match.params.occupation;
         return (
-            <div className="blog-post">
-                <NavUserSIte />
-                <div className="wrapper">
-                    <div className="page-header page-header-mini header-filter">
-                        <div className="page-header-image"
-                            style={{ backgroundImage: "url(" + annoncebycategoryoccupation.photo + ")" }} />
-                        <div className="content-center">
-                            <div className="row">
-                                <div className="col-md-6 mx-auto text-center">
-                                    <h4 className="title text-white">
-                                        Annonces de <b>{annoncebycategoryoccupation.name}</b> au Cameroun
-                                    </h4>
-                                    <div className="author">
-                                        <Link to={`/annonces/${SlugOccupation}/`} className="text-white">
-                                            <i className="fa fa-chevron-circle-left" /> Retour aux annonces
-                                        </Link>
-                                    </div>
-                                    <br />
-                                    <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
-                                    <br />
-                                    <span>{annoncebycategoryoccupation.annonces_count} {annoncebycategoryoccupation.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+            <>
+             <Helmet title={`Annonce de ${annoncebycategoryoccupation.name || "Kazoutech"} | Kazoutech`}/>
+                <div className="blog-post">
+                    <NavUserSIte />
+                    <div className="wrapper">
+                        <div className="page-header page-header-mini header-filter">
+                            <div className="page-header-image"
+                                style={{ backgroundImage: "url(" + annoncebycategoryoccupation.photo + ")" }} />
+                            <div className="content-center">
+                                <div className="row">
+                                    <div className="col-md-6 mx-auto text-center">
+                                        <h4 className="title text-white">
+                                            Annonces de <b>{annoncebycategoryoccupation.name}</b> au Cameroun
+                                        </h4>
+                                        <div className="author">
+                                            <Link to={`/annonces/${SlugOccupation}/`} className="text-white">
+                                                <i className="fa fa-chevron-circle-left" /> Retour aux annonces
+                                            </Link>
+                                        </div>
+                                        <br />
+                                        <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+                                        <br />
+                                        <span>{annoncebycategoryoccupation.annonces_count} {annoncebycategoryoccupation.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br />
-                    <div className="main main-raised">
+                        <br />
+                        <div className="main main-raised">
 
-                        <div className="container">
-                            <div className="row">
-
-
-                            </div>
-                        </div>
-                        <section className="section">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-md-12 ml-auto mr-auto">
-                                        <section className="blogs-3">
-                                            <div className="container">
-                                                <br />
-                                                <div className="row">
 
-                                                    <div className="col-md-4">
 
-                                                        <div className="card mb-3">
+                                </div>
+                            </div>
+                            <section className="section">
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-md-12 ml-auto mr-auto">
+                                            <section className="blogs-3">
+                                                <div className="container">
+                                                    <br />
+                                                    <div className="row">
 
-                                                            <div className="card-header h6"><b>Annonces <span
-                                                                style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
+                                                        <div className="col-md-4">
+
+                                                            <div className="card mb-3">
+
+                                                                <div className="card-header h6"><b>Annonces <span
+                                                                    style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
+                                                                </div>
+                                                                <div className="card-body">
+
+                                                                    <NavCategoryandOccupation {...this.props} />
+
+                                                                </div>
                                                             </div>
-                                                            <div className="card-body">
 
-                                                                <NavCategoryandOccupation {...this.props} />
+                                                            <div className="card mb-3">
 
-                                                            </div>
-                                                        </div>
+                                                                <div className="card-header h6"
+                                                                    style={{ textTransform: "capitalize" }}><b>Villes</b>
+                                                                </div>
+                                                                <div className="card-body">
 
-                                                        <div className="card mb-3">
+                                                                    <ul className="list-unstyled">
 
-                                                            <div className="card-header h6"
-                                                                style={{ textTransform: "capitalize" }}><b>Villes</b>
-                                                            </div>
-                                                            <div className="card-body">
+                                                                        {cities.length ?
+                                                                            <>
+                                                                                {cities.map((item) => (
+                                                                                    <li key={item.id} className="mb-2">
+                                                                                        <Link
+                                                                                            to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
+                                                                                    <span
+                                                                                        style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                ))}
 
-                                                                <ul className="list-unstyled">
-
-                                                                    {cities.length ?
-                                                                        <>
-                                                                            {cities.map((item) => (
-                                                                                <li key={item.id} className="mb-2">
-                                                                                    <Link
-                                                                                        to={`/annonces/${SlugOccupation}/${annoncebycategoryoccupation.slug}/${item.slug}/`}>
-                                                                                <span
-                                                                                    style={{ textTransform: "capitalize" }}>{annoncebycategoryoccupation.name}</span> à {item.name}
+                                                                                <li className="mb-2">
+                                                                                    <Link to={`/all_cities/`}>
+                                                                                        Autre ville...
                                                                                     </Link>
                                                                                 </li>
-                                                                            ))}
+                                                                            </>
+                                                                            :<NavoccupationSkeleton/>}
 
-                                                                            <li className="mb-2">
-                                                                                <Link to={`/all_cities/`}>
-                                                                                    Autre ville...
-                                                                                </Link>
-                                                                            </li>
-                                                                        </>
-                                                                        :<NavoccupationSkeleton/>}
-
-                                                                </ul>
+                                                                    </ul>
 
 
+                                                                </div>
                                                             </div>
+
+                                                            <AnnonceOccupationList />
+
                                                         </div>
 
-                                                        <AnnonceOccupationList />
-
-                                                    </div>
-
-                                                    <div className="col-lg-8 col-md-10 mx-auto">
-                                                        <h4 className="title">
-                                                            Toutes les annonces <b>{annoncebycategoryoccupation.name}</b>
-                                                        </h4>
-                                                        <div className="row">
-                                                            <div className="col-md-6">
-                                                                <div className="card mb-3 text-center">
-                                                                    <div className="card-body"><p
-                                                                        className="h5 font-weight-normal mb-3 text-success">Vous
-                                                                        avez une annonce?</p>
-                                                                        <Link
-                                                                            to={`/annonces/${SlugOccupation}/p/annonce/new/create/`}
-                                                                            className="btn btn-success mb-2"
-                                                                            type="button" disabled="">
-                                                                            <span
-                                                                                className="spinner-grow spinner-grow-sm"
-                                                                                role="status" aria-hidden="true" />
-                                                                            Annonce
-                                                                        </Link>
+                                                        <div className="col-lg-8 col-md-10 mx-auto">
+                                                            <h4 className="title">
+                                                                Toutes les annonces <b>{annoncebycategoryoccupation.name}</b>
+                                                            </h4>
+                                                            <div className="row">
+                                                                <div className="col-md-6">
+                                                                    <div className="card mb-3 text-center">
+                                                                        <div className="card-body"><p
+                                                                            className="h5 font-weight-normal mb-3 text-success">Vous
+                                                                            avez une annonce?</p>
+                                                                            <Link
+                                                                                to={`/annonces/${SlugOccupation}/p/annonce/new/create/`}
+                                                                                className="btn btn-success mb-2"
+                                                                                type="button" disabled="">
+                                                                                <span
+                                                                                    className="spinner-grow spinner-grow-sm"
+                                                                                    role="status" aria-hidden="true" />
+                                                                                Annonce
+                                                                            </Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-md-6">
+                                                                    <div className="card mb-3 text-center">
+                                                                        <div className="card-body"><p
+                                                                            className="h5 font-weight-normal mb-3 text-primary">Envie
+                                                                            de charbonner ?</p><a
+                                                                                className="btn btn-primary btn-break"
+                                                                                href="/devenez_charbonneur">Devenir
+                                                                            Charbonneur</a></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="col-md-6">
-                                                                <div className="card mb-3 text-center">
-                                                                    <div className="card-body"><p
-                                                                        className="h5 font-weight-normal mb-3 text-primary">Envie
-                                                                        de charbonner ?</p><a
-                                                                            className="btn btn-primary btn-break"
-                                                                            href="/devenez_charbonneur">Devenir
-                                                                        Charbonneur</a></div>
+
+
+                                                            <div className="card">
+                                                                <div className="card-body">
+                                                                    {annoncebycategoryoccupations.map((item) => (
+                                                                        <AnnonceList key={item.id} {...item}
+                                                                            deleteItem={this.deleteItem} />
+                                                                    ))}
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
-
-
-                                                        <div className="card">
-                                                            <div className="card-body">
-                                                                {annoncebycategoryoccupations.map((item) => (
-                                                                    <AnnonceList key={item.id} {...item}
-                                                                        deleteItem={this.deleteItem} />
-                                                                ))}
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </section>
+                                            </section>
 
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
 
 
+                        </div>
+                        <FooterUserSite />
                     </div>
-                    <FooterUserSite />
                 </div>
-            </div>
+            </>
+          
         )
     }
 

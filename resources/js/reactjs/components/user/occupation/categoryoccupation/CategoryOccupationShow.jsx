@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet';
 import NavUserSIte from "../../../inc/NavUserSIte";
 import {Link, NavLink} from 'react-router-dom';
 import FooterUserSite from "../../../inc/FooterUserSite";
@@ -83,13 +84,13 @@ class CategoryOccupationShow extends Component {
 
     render() {
         const {categoryoccupation} = this.state;
-        const composantTitle = `${categoryoccupation.name || "kazoutech"}`;
         const annoncebycategoryoccupations = categoryoccupation.annonces;
         let itemoccupation = this.props.match.params.occupation;
-        document.title = `${composantTitle} | Kazoutech`;
         return (
 
             <>
+                <Helmet title={`${categoryoccupation.name || "kazoutech"} | Kazoutech`}/>
+
                 <div className="landing-page">
                     <NavUserSIte/>
 
