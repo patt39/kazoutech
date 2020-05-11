@@ -114,8 +114,8 @@
 </template>
 
 <script>
-    import StatusAdmin from "../../inc/admin/StatusAdmin";
-    import LoaderLdsDefault from "../../inc/animation/LoaderLds-default";
+    import StatusAdmin from "../../../inc/admin/StatusAdmin";
+    import LoaderLdsDefault from "../../../inc/animation/LoaderLds-default";
     export default {
         components: {LoaderLdsDefault, StatusAdmin},
         data() {

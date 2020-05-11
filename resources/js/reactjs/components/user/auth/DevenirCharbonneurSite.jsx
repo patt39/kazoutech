@@ -86,7 +86,7 @@ class DevenirCharbonneurSite extends Component{
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+            $.notify("Ooop! Quelque chose ne va pas. Essayez plus tard...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -255,8 +255,8 @@ class DevenirCharbonneurSite extends Component{
                             <select  value={this.state.sex} className={`form-control ${this.hasErrorFor('sex') ? 'is-invalid' : ''}`}
                                      onChange={this.handleFieldChange} name="sex"  id="sex" required="required">
                                 <option value="" disabled>Sex</option>
-                                <option value="male">Homme</option>
-                                <option value="female">Femme</option>
+                                <option value="Male">Homme</option>
+                                <option value="Female">Femme</option>
                             </select>
                             {this.renderErrorFor('sex')}
                         </div>
@@ -360,9 +360,9 @@ class DevenirCharbonneurSite extends Component{
                     </div>
                     <div className="col-md-12">
                         <div className="custom-control custom-checkbox mt-2">
-                            <input className="custom-control-input" id="customCheck2" type="checkbox"
+                            <input className="custom-control-input" id="charbonneur" type="checkbox"
                                     value={this.state.charbonneur} name="charbonneur" onChange={this.toggleChange} checked={isChecked}/>
-                            <label className="custom-control-label" htmlFor="customCheck2">
+                            <label className="custom-control-label" htmlFor="charbonneur">
                                 <span><b>JE CONFIRME DEVENIR CHARBONNEUR</b> (Jobbeur) pour la platte forme kazoutech</span>
                             </label>
                             {this.renderErrorFor('charbonneur')}
@@ -374,7 +374,7 @@ class DevenirCharbonneurSite extends Component{
                 </div>
                 <div className="row mt-4 mb-3">
                     <div className="col-md-12">
-                        En vous inscrivant vous acceptez <a href="#">les conditions générales</a> et la <a href="#">politique
+                        En vous inscrivant vous acceptez <a href="/condition_utilisation">les conditions générales</a> et la <a href="/politique_confidentialité">politique
                         de confidentialité</a>
                     </div>
                 </div>

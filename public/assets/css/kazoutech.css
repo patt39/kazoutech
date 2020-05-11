@@ -35,7 +35,7 @@
     top: 2px;
 }
 .carousel-caption {
-    top: 40%;
+    top: 50%;
 }
 
 
@@ -46,15 +46,17 @@
     outline: 0;
     background: linear-gradient(to top, #172b4d, #6273d0);
 }
-/**
+
 .navbar-expand-lg .navbar-collapse {
     position: absolute;
     float: right;
     right: 50px;
 }
+/*
 .navbar.navbar-main {
     height: 100px;
 }
+ */
 .carousel-caption h1 {
     color: #ffffff;
 }
@@ -67,6 +69,9 @@
 .d-block {
     height: inherit;
 }
+.carousel-control-prev, .carousel-control-next {
+    top: 25%;
+}
 .kazouTech-dropdown {
     position: absolute;
     transform: translate3d(0px, 42px, 0px);
@@ -74,7 +79,7 @@
     left: 0px;
     will-change: transform;
 }
- */
+
 .kazouTech-carousel-image {
     min-height: 100vh;
     object-fit: fill;
@@ -82,11 +87,20 @@
 .kazouTechSubscribe-wrapper {
     background-color: #d12420 !important;
 }
-.kazouTechSteps-wrapper,
 .kazouTechOccupations-wrapper,
 .kazouTechAbout-wrapper {
     padding: 3rem 0rem !important;
 }
+.kazouTechOccupationEmpty i.ni {
+    font-size: 60px;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 40px;
+}
+.page-header.page-header-mini {
+    min-height: 60vh !important;
+}
+
 .ni-bold-up::before {
     position: relative;
     left: -3px;
@@ -104,12 +118,12 @@
     border-bottom: 1px solid #ffffff;
 }
 .kazouTech-register-divider {
-     background-color: inherit;
-     margin-top: 1em;
-     line-height: 1.5;
-     margin: 30px 0;
-     color: #6c747e;
- }
+    background-color: inherit;
+    margin-top: 1em;
+    line-height: 1.5;
+    margin: 30px 0;
+    color: #6c747e;
+}
 .kazouTech-register-divider:before {
     content: '';
     border-bottom: 0.0625em solid #e3e5e8;
@@ -153,15 +167,31 @@
     z-index: 2;
     position: relative;
 }
-/*
+
 .btn-wrapper a.btn {
     color: #ffffff;
 }
- */
+.count-annonces {
+    border: 1px solid green;
+    padding: 4px 8px;
+    border-radius: 100%;
+    font-size: 15px;
+    background: green;
+}
+.content-top {
+float: right;
+top: -30px;
+position: relative;
+z-index: 4;
+}
+
+.kazouTech-categories-annonces {
+    font-weight: 600;
+}
 
 /*** RESPONSIVE DEVICE ***/
 /************************/
-/*
+
 @media (min-width: 768px) {
     .navbar-transparent .navbar-brand {
         position: relative;
@@ -170,19 +200,25 @@
     }
 }
 
+@media (min-width: 900px) and (max-width: 1440px) {
+    .container-devices {
+        max-width: 720px;
+    }
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .navbar-transparent .navbar-brand {
         left: 0%;
     }
 }
 @media only screen and (min-width: 1024px) {
+    .kazouTechSteps-wrapper {
+        padding: 13rem 0rem 3rem !important;
+    }
     #navbar_global {
         margin: 0px -170px 0px;
         position: relative;
     }
 }
-
- */
 
 @media only screen and (max-width: 768px) {
     .carousel-indicators {
@@ -203,9 +239,16 @@
     }
 }
 
+@media (min-width: 992px) {
+    .navbar-nav .nav-link {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     .carousel-caption {
-        top: 30%;
+        top: 40%;
         left: 5%;
         right: 5%;
     }
@@ -258,4 +301,7 @@
 .kazouTech-register-right-block {
     position: relative;
     top: -50px;
+}
+.kazouTech-file-upload {
+    display: none;
 }

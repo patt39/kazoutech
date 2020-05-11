@@ -4,18 +4,17 @@ import NavUserSIte from "../../inc/NavUserSIte";
 import {NavLink} from "react-router-dom";
 import moment from "moment";
 import ProfileSiteAnnonces from "./ProfileSiteAnnonces";
-import ProfileSiteBlogs from "./ProfileSiteBlogs";
+import ProfileSiteAvisUser from "./ProfileSiteAvisUser";
 
 
 class ProfileSiteIndex extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userProfile : {annonces:[],blogs:[],city:[]},
+            userProfile : {annonces:[],city:[]},
         };
 
         this.deleteAnnonce = this.deleteAnnonce.bind(this);
-        this.deleteBlog = this.deleteBlog.bind(this);
     }
 
     deleteAnnonce(id) {
@@ -72,60 +71,6 @@ class ProfileSiteIndex extends Component {
         });
     }
 
-    deleteBlog(id) {
-        Swal.fire({
-            text: 'Etes vous sure de vouloir suprimer cette article du blog?',
-            animation: false,
-            customClass: 'animated pulse',
-            buttonsStyling: false,
-            confirmButtonClass: "btn btn-success btn-sm",
-            cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'Non annuler',
-            showCancelButton: true,
-            reverseButtons: true
-        }).then((result) => {
-            if (result.value) {
-
-                const url = route('blogs.destroy',id);
-                //Envoyer la requet au server
-                dyaxios.delete(url).then(() => {
-
-                    //Redirect after create
-                    this.loadItem();
-                    /** Alert notify bootstrapp **/
-                    $.notify({
-                            // title: 'Update FAQ',
-                            message: 'Annonce suprimée avec success'
-                        },
-                        {
-                            allow_dismiss: false,
-                            type: 'primary',
-                            placement: {
-                                from: 'bottom',
-                                align: 'right'
-                            },
-                            animate: {
-                                enter: 'animated fadeInRight',
-                                exit: 'animated fadeOutRight'
-                            },
-                        });
-                    /** End alert ***/
-                }).catch(() => {
-                    //Failled message
-                    $.notify("Ooopss! Une erreur est survenue", {
-                        allow_dismiss: false,
-                        type: 'danger',
-                        animate: {
-                            enter: 'animated bounceInDown',
-                            exit: 'animated bounceOutUp'
-                        }
-                    });
-                })
-            }
-        });
-    }
-
     loadItem() {
         let Username = this.props.match.params.username;
         dyaxios.get(route('api_profile.view',[Username])).then(response =>
@@ -141,8 +86,7 @@ class ProfileSiteIndex extends Component {
     render() {
         const {userProfile} = this.state;
         let annonces = userProfile.annonces;
-        let blogs = userProfile.blogs;
-        const composantTitle = `${userProfile.name}`;
+        const composantTitle = `${userProfile.name || "Profile"}`;
         document.title = `${composantTitle} | Kazoutech`;
         return (
 
@@ -193,10 +137,7 @@ class ProfileSiteIndex extends Component {
                                         </div>
                                         <div className="col-lg-4 order-lg-1">
                                             <div className="card-profile-stats d-flex justify-content-center">
-                                                <div>
-                                                    <span className="heading">{blogs.length}</span>
-                                                    <span className="description" title={'Aticles de blog'}>Blog</span>
-                                                </div>
+
                                                 <div>
                                                     <span className="heading">{annonces.length}</span>
                                                     <span className="description" title={'Toutes les annonces'}>Annonces</span>
@@ -228,32 +169,28 @@ class ProfileSiteIndex extends Component {
                                         <br/>
                                     </div>
 
-                                    {annonces.length > 0 && (
-                                        <div className="mt-5 py-5 border-top text-left">
-                                            <div className="row">
 
-                                                {annonces.map((item) => (
-                                                    <ProfileSiteAnnonces key={item.id} {...item} deleteAnnonce={this.deleteAnnonce}/>
-                                                ))}
+                                    <ProfileSiteAvisUser {...this.props}/>
 
-                                            </div>
-                                        </div>
-                                    )}
 
-                                    {blogs.length > 0 && (
-                                        <div className="mt-5 py-5 border-top text-center">
-                                            <div className="row justify-content-center">
-                                                <div className="row">
 
-                                                    {blogs.map((item) => (
-                                                        <ProfileSiteBlogs key={item.id} {...item} deleteBlog={this.deleteBlog}/>
-                                                    ))}
+                                    {$guest ?
+                                        <>
+                                            {annonces.length > 0 && (
+                                                <div className="mt-5 py-5 border-top text-left">
+                                                    <div className="row">
 
+                                                        {annonces.map((item) => (
+                                                            <ProfileSiteAnnonces key={item.id} {...item} deleteAnnonce={this.deleteAnnonce}/>
+                                                        ))}
+
+                                                    </div>
                                                 </div>
+                                            )}
+                                        </>
+                                        :null
 
-                                            </div>
-                                        </div>
-                                    )}
+                                    }
 
                                 </div>
                             </div>

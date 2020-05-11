@@ -73,13 +73,9 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="media-body">
-                                                                            <label class="bmd-label-floating">Tell about for you<span style="color: red;">*</span></label>
-                                                                            <vue-editor v-model="form.description"
-                                                                                        :editorToolbar="customToolbar"
-                                                                                        :class="{ 'is-invalid': form.errors.has('description') }">
-
-                                                                            </vue-editor>
-                                                                            <has-error :form="form" field="body"/>
+                                                                           <h2 class="text-center">
+                                                                               La description a été remplaçer par <b><a  href="/dashboard/faqs_occupation">occupationfaqs</a></b>
+                                                                           </h2>
                                                                         </div>
                                                                     </div>
                                                                 </div>

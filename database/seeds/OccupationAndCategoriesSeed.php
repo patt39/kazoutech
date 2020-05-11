@@ -103,7 +103,7 @@ class OccupationAndCategoriesSeed extends Seeder
         foreach($occupations as $item)
             occupation::create($item);
 
-        factory(User::class, 3)->create();
+        factory(User::class, 1000)->create();
 
         factory(categoryoccupation::class, 30)->create();
 

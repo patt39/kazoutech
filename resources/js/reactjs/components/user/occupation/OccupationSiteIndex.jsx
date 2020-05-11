@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet';
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import AllOccupation from "./AllOccupation";
@@ -16,21 +17,23 @@ class OccupationSiteIndex extends Component {
 
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Occupations et services à la personne : trouver un charbonneur facilement kazoutech';
-        document.title = `${composantTitle} | Kazoutech`;
+        //
     }
 
     render() {
 
         return (
             <>
+            
+                <Helmet title={`Occupations et services à la personne : trouver un charbonneur facilement kazoutech | Kazoutech`}/>
+
                 <div className="landing-page">
                     <NavUserSIte/>
                     <div className="wrapper">
                         <div className="section-shaped my-0 skew-separator skew-mini">
                             <div className="page-header page-header-mini header-filter">
                                 <div className="page-header-image"
-                                     style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")"}}>
+                                     style={{backgroundImage: "url(" + '/assets/vendor_site/img/pages/kevin-grieve.jpg' + ")"}}>
                                 </div>
                                 <div className="container">
                                     <div className="header-body text-center mb-7">

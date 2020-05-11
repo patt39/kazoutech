@@ -1,9 +1,8 @@
 @extends('inc.user._main')
-<?php $usernameTag = htmlspecialchars($user->name); ?>
-@section('title',"- $usernameTag")
+<?php $item = htmlspecialchars(config('app.name'));?>
+@section('title', $user->name.' | '.$item)
 
 @section('style')
-
 @endsection
 
 @section('init')
@@ -11,7 +10,9 @@
 @endsection
 
 @section('content')
-    <div id="app">
-        <router-view></router-view>
-    </div>
+    <div id="app_kazoutech"></div>
+@endsection
+
+@section('script')
+
 @endsection

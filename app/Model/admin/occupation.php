@@ -58,6 +58,7 @@ class occupation extends Model implements Auditable
         static::updating(function($model){
             if (auth()->check()){
                 $model->user_id = auth()->id();
+                $model->slug = str_slug($model->name);
             }
             $model->ip = request()->ip();
         });
@@ -119,5 +120,15 @@ class occupation extends Model implements Auditable
     public function userbycities()
     {
         return $this->hasMany(User::class,'city_id');
+    }
+
+    public function userbyoccupations()
+    {
+        return $this->hasMany(User::class,'occupation_id');
+    }
+
+    public function faqoccupations()
+    {
+        return $this->hasMany(faqoccupation::class,'occupation_id');
     }
 }

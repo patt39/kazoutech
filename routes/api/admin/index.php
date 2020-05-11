@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Admin'], function(){
     require(__DIR__ . DIRECTORY_SEPARATOR . 'annonces.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'blog.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'faqs.php');
+    require(__DIR__ . DIRECTORY_SEPARATOR . 'faqsoccupation.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'roles.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'users.php');
     require(__DIR__ . DIRECTORY_SEPARATOR . 'permissions.php');

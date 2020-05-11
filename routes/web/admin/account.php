@@ -8,7 +8,7 @@ Route::group(['namespace' => 'Partial'], function(){
 
     Route::post('auth/register', 'AccountController@register');
     Route::get('api/account/user', 'AccountController@user');
-    Route::get('api/account/profile', 'AccountController@userEdit');
+    Route::get('api/account/profile', 'AccountController@userEdit')->name('api.account_profile');
 
 
     Route::get('/dashboard/myprofile', 'AccountController@index')->name('admin.account');

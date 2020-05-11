@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet';
 import NavUserSIte from "../../../inc/NavUserSIte";
 import {Link, NavLink} from 'react-router-dom';
 import FooterUserSite from "../../../inc/FooterUserSite";
@@ -20,7 +21,7 @@ class CategoryOccupationShow extends Component {
             password: '',
             remember: true,
             errors: [],
-            categoryoccupation: {user: [], occupation: [], annoncesinteres: []}
+            categoryoccupation: {user: [], occupation: [], annonces: []}
         }
     }
 
@@ -83,18 +84,18 @@ class CategoryOccupationShow extends Component {
 
     render() {
         const {categoryoccupation} = this.state;
-        const composantTitle = `${categoryoccupation.name}`;
-        const annoncebycategoryoccupations = categoryoccupation.annoncesinteres;
+        const annoncebycategoryoccupations = categoryoccupation.annonces;
         let itemoccupation = this.props.match.params.occupation;
-        document.title = `${composantTitle} | Kazoutech`;
         return (
 
             <>
+                <Helmet title={`${categoryoccupation.name || "kazoutech"} | Kazoutech`}/>
+
                 <div className="landing-page">
                     <NavUserSIte/>
 
                     <div className="wrapper">
-                        <CategoryOcupationHeader {...categoryoccupation} />
+                        <CategoryOcupationHeader {...this.props} {...categoryoccupation} />
                         <div className="container">
 
                             <div className={'row'}>
@@ -135,10 +136,11 @@ class CategoryOccupationShow extends Component {
                                                 Voir toutes les annonces en {categoryoccupation.name}
                                                 <i className="fas fa-chevron-right pl-1 font-size-1"/>
                                             </Link>
+                                            <br/>
+                                            <div className="description mb-2"
+                                                 dangerouslySetInnerHTML={{__html: categoryoccupation.body}}/>
                                         </div>
-                                        <br/>
-                                        <div className="description mb-2"
-                                             dangerouslySetInnerHTML={{__html: categoryoccupation.body}}/>
+
                                     </div>
 
                                 </div>

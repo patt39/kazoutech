@@ -15,39 +15,39 @@ class OccupationResource extends JsonResource
     public function toArray($request)
     {
 
-        $categoryoccupationsadmin =  $this->categoryoccupations()->with('occupation','user','color')
-            ->whereIn('occupation_id',[$this->id])->distinct()->get()->toArray();
+       // $categoryoccupationsadmin =  $this->categoryoccupations()->with('occupation','user','color')
+       //     ->whereIn('occupation_id',[$this->id])->distinct()->get()->toArray();
 
 
-        $categoryoccupations =  $this->categoryoccupations()->with('occupation','user','color')
-            ->whereIn('occupation_id',[$this->id])
-            ->where(function ($q) {
-                $q->where('status',1);
-            })->distinct()->get()->toArray();
+       // $categoryoccupations =  $this->categoryoccupations()->with('occupation','user','color')
+       //     ->whereIn('occupation_id',[$this->id])
+       //     ->where(function ($q) {
+       //         $q->where('status',1);
+       //     })->distinct()->get()->toArray();
 
 
-        $blogbycategories =  $this->blogs()->with('occupation','user','color')
-            ->whereIn('occupation_id',[$this->id])
-            ->where(function ($q) {
-                $q->where('status',1);
-            })->distinct()->get()->toArray();
+       // $blogbycategories =  $this->blogs()->with('occupation','user','color')
+       //     ->whereIn('occupation_id',[$this->id])
+       //     ->where(function ($q) {
+       //         $q->where('status',1);
+       //     })->distinct()->get()->toArray();
 
-        $blogbyoccupations =  $this->blogs()->with('occupation','user','color')
-            ->whereIn('occupation_id',[$this->id])->orderBy('created_at','DESC')->take(3)
-            ->where(function ($q) {
-                $q->where('status',1);
-            })->distinct()->get()->toArray();
-
-
-        $annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
-            ->whereIn('occupation_id',[$this->id])
-            ->where(function ($q) {
-                $q->where('status',1);
-            })->distinct()->get()->toArray();
+       // $blogbyoccupations =  $this->blogs()->with('occupation','user','color')
+       //     ->whereIn('occupation_id',[$this->id])->orderBy('created_at','DESC')->take(3)
+       //     ->where(function ($q) {
+       //         $q->where('status',1);
+       //     })->distinct()->get()->toArray();
 
 
-        $users =  $this->userbycities()->with('city')
-            ->distinct()->get()->toArray();
+       // $annonces =  $this->annonces()->with('user','occupation','city','categoryoccupation')
+       //     ->whereIn('occupation_id',[$this->id])
+       //     ->where(function ($q) {
+       //         $q->where('status',1);
+       //     })->distinct()->get()->toArray();
+
+
+       // $users =  $this->userbycities()->with('city')
+       //     ->distinct()->get()->toArray();
 
         return [
             'id' => $this->id,
@@ -56,13 +56,13 @@ class OccupationResource extends JsonResource
             'slug' => $this->slug,
             'photo' => $this->photo,
             'description' => $this->description,
-            'users' => $users,
-            'categoryoccupations' => $categoryoccupations,
-            'categoryoccupationsadmin' => $categoryoccupationsadmin,
-            'blogs' => $blogbycategories,
-            'blogbyoccupations' => $blogbyoccupations,
-            'annonces' => $annonces,
-            'user' => $this->user,
+            //'users' => $users,
+            //'categoryoccupations' => $categoryoccupations,
+            //'categoryoccupationsadmin' => $categoryoccupationsadmin,
+            //'blogs' => $blogbycategories,
+            //'blogbyoccupations' => $blogbyoccupations,
+            //'annonces' => $annonces,
+            //'user' => $this->user,
             'statusOnline' => $this->user->isOnline(),
             'technician_count' => $this->technicians()->get()->count(),
             'created_at' => (string) $this->created_at,

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import NavUserSIte from "../inc/NavUserSIte";
 import FooterUserSite from "../inc/FooterUserSite";
 import PageCitySite from "./city/PageCitySite";
@@ -19,13 +20,14 @@ class IndexSite extends Component {
 
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Technicians services to particulars | Kazoutech';
-        document.title = `${composantTitle}`;
+        //
     }
 
     render() {
         return (
             <>
+                <Helmet title={`Technicians services to particulars | Kazoutech`}/>
+                
                 <div className="landing-page">
                     <NavUserSIte/>
                     <div className="wrapper">
@@ -37,8 +39,8 @@ class IndexSite extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-10 text-center mx-auto">
-                                    <h3 className="display-3">Le service entre particuliers jamais aussi façile</h3>
-                                    <p className="lead">Pour tout vos bésoins immediat des service d'un technicien(ne) en un
+                                    <h3 className="display-3">Le service entre particuliers jamais aussi facile</h3>
+                                    <p className="lead">Pour tout vos bésoins immédiat des service d'un technicien(ne) en un
                                         domaine spécifique n'hesitez plus. Des prestataires
                                         de services proche de vous que jamais lançez vous et profitez en.</p>
                                 </div>
@@ -53,10 +55,10 @@ class IndexSite extends Component {
                                                         className="icon icon-shape icon-shape-primary rounded-circle mb-4">
                                                         <i className="ni ni-check-bold"/>
                                                     </div>
-                                                    <h6 className="text-primary text-uppercase">Des profile évalués</h6>
-                                                    <p className="description mt-3">Les profiles de nos prestataires
+                                                    <h6 className="text-primary text-uppercase">Des profils évalués</h6>
+                                                    <p className="description mt-3">Les profils de nos prestataires
                                                         sont controller et évaluer en permenance pour vous rassurer et
-                                                        vous apporter le meilleur qui sois en cequi conçerne leur
+                                                        vous apporter seulement les meilleur qui sois en ce qui conçerne leur
                                                         service
                                                         et nous nous assurons aussi de leur bonne moralité donc ne vous
                                                         mefiez pas.</p>
@@ -74,11 +76,11 @@ class IndexSite extends Component {
                                                     <h6 className="text-success text-uppercase">Kazoutech le
                                                         meilleur</h6>
                                                     <p className="description mt-3">Kazoutech est une plateform vrai
-                                                        nous avons un siege sociale des bureaux et une licence des
+                                                        nous avons un siége sociale, des bureaux et une licence. Des
                                                         personnes de bonne moralité toujours prés a vous
-                                                        rendre le meilleur donc pour tout vos problemes contactez ou
-                                                        rapprochez vous de nos locaux nous serons ravis de vous reçevoir
-                                                        et d'effaçer vos doutes.</p>
+                                                        rendre le meilleur. Donc, pour tout vos problemes contactez ou
+                                                        rapprochez vous de nos locaux nous serons ravis de vous recevoir
+                                                        et d'éffacer vos doutes.</p>
                                                     <Link to={'/contacts/'} className="btn btn-success mt-4">Contactez nous</Link>
                                                 </div>
                                             </div>
@@ -93,7 +95,7 @@ class IndexSite extends Component {
                                                     <h6 className="text-warning text-uppercase">Des utilisateurs
                                                         comblés</h6>
                                                     <p className="description mt-3">Des personnes nous on fait confiance
-                                                        et en parlent vous savez le bouche à bouche a été la prémiere
+                                                        et en parlent. Vous savez le bouche à bouche a été la prémiere
                                                         forme de marketing et nous
                                                         nous en passons pas écoutez cequon dit à propos de kazoutech et
                                                         faite nous confiance</p>

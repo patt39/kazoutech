@@ -21,7 +21,7 @@ class NavUserSIte extends Component {
 
         return (
             <nav id="navbar-main" className="navbar navbar-main navbar-expand-md navbar-transparent headroom">
-                <div className={'container'}>
+                <div className="container container-devices">
                     <Link to={'/'} className="navbar-brand mr-lg-5">
                         <img src=".." alt={'Kazoutech'}/>
                     </Link>
@@ -60,7 +60,7 @@ class NavUserSIte extends Component {
                                         <a href={'/devenir_charbonneur/'} className="nav-link" role="button">
                                             <i className="ni ni-app d-lg-none"/>
                                             <span className="nav-link-inner--text">
-                                                <b>Dévenir charbonneur</b>
+                                                <b>Devenir charbonneur</b>
                                             </span>
                                         </a>
                                     </li>
@@ -89,21 +89,25 @@ class NavUserSIte extends Component {
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         {$userKazou.my_status === 'active' && (
-                                            <a href="/dashboard" className="dropdown-item">
-                                                <i className="ni ni-building text-muted"/>
+                                            <a href="/dashboard" target="_blank" className="dropdown-item">
+                                                <i className="ni ni-building text-warning"/>
                                                 Dashboard
                                             </a>
                                         )}
-                                        <Link to={`/user/profile/edit/`} className="dropdown-item">
-                                            <i className="ni ni-lock-circle-open text-muted"/>
-                                            Editer mon profile
-                                        </Link>
                                         <Link to={`/charbonneur/${$userKazou.username}/`} className="dropdown-item">
                                             <i className="ni ni-circle-08 text-success"/>
-                                            Mon profile
+                                            Mon Profil
+                                        </Link>
+                                        <Link to={`/profile/edit/`} className="dropdown-item">
+                                            <i className="ni ni-single-02 text-muted"/>
+                                            Editer Profil
+                                        </Link>
+                                        <Link to={`/user/profile/edit/`} className="dropdown-item">
+                                            <i className="ni ni-bullet-list-67 text-danger"/>
+                                            Mes Activités
                                         </Link>
                                         <a className="dropdown-item" onClick={() => this.navLogout()}>
-                                            <i className="ni ni-atom text-info"/>
+                                            <i className="ni ni-user-run text-info"/>
                                             Déconnexion
                                         </a>
                                     </div>

@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Http\Requests\User\Annonce\AssignedtaskRequest;
+use App\Http\Requests\User\Annonce\AssignedtaskupdateRequeste;
 use App\Http\Resources\OccupationResource;
 use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
+use App\Http\Resources\User\AssignmentResource;
 use App\Model\admin\annonce;
+use App\Services\admin\MailTaskassigneService;
+use App\Model\admin\taskuserassign;
 use App\Http\Controllers\Controller;
 use App\Model\admin\city;
 use App\Model\admin\occupation;
@@ -23,7 +28,7 @@ class AnnonceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api','apioccupation','apioccupationcity']]);
+        $this->middleware('auth',['except' => ['api','apioccupation','apiannonceassigned','apioccupationcity','assignment','assigned']]);
     }
 
     public function api()
@@ -33,6 +38,24 @@ class AnnonceController extends Controller
         return response()->json($annonces,200);
     }
 
+    public function apiannonceassigned()
+    {
+        $annoncesassigned = taskuserassign::with('member','user','annonce')
+        ->with([
+            'annonce.city' => function ($q){
+                $q->select('id','name','status','slug');},
+            'annonce.occupation' => function ($q){
+                    $q->select('id','name','status','slug');},
+            'annonce.categoryoccupation' => function ($q){
+                        $q->distinct()->get();},
+                    
+        ])
+        //->whereHas('annonce', function ($q) {$q;})
+        ->get();
+
+        return response()->json($annoncesassigned,200);
+    }
+
     public function apioccupation($slug)
     {
         $annonceoccupation = new OccupationResource(occupation::whereSlug($slug)->firstOrFail());
@@ -40,21 +63,32 @@ class AnnonceController extends Controller
         return response()->json($annonceoccupation,200);
     }
 
-    public function apioccupationcity(occupation $occupation,$slug)
+
+    public function assignedtask(occupation $occupation,city $city,annonce $annonce)
     {
+        return view('admin.annonce.assignment');
+    }
 
-        $annonces = new AnnonceResource(annonce::whereIn('occupation_id',$occupation)->whereSlug($slug)->get());
+    public function assignedtaskstore(AssignedtaskRequest $request,occupation $occupation,city $city,annonce $annonce)
+    {
+        $taskuserassign = new taskuserassign();
 
-        dd($annonces);
+        $taskuserassign->fill($request->all());
+        $taskuserassign->annonce_id = $annonce->id;
 
-        return response()->json($annonces,200);
+        $taskuserassign->save();
+
+       // MailTaskassigneService::newMailTaskassigne($request);
+
+
+        return response()->json($taskuserassign,200);
     }
 
     /**
      * Display a listing of the resource.
      *
      * @return Response
-     */
+     *///
     public function index()
     {
         return view('admin.annonce.index');
@@ -65,11 +99,11 @@ class AnnonceController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function assigned()
     {
-        //
+          return view('admin.annonce.assigne');
     }
-   
+
     public function status($id)
     {
         $annonce = annonce::findOrFail($id);
@@ -89,6 +123,28 @@ class AnnonceController extends Controller
         //
     }
 
+    public function assignedtaskupdate(AssignedtaskupdateRequeste $request,$id)
+    {
+        $taskuserassign = taskuserassign::findOrFail($id);
+
+        $taskuserassign->update($request->all());
+
+        return ['message' => 'updated successfully'];
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     public function show($id)
+     {
+        //
+     }
+
+     
 
     /**
      * Remove the specified resource from storage.
@@ -109,5 +165,15 @@ class AnnonceController extends Controller
          }else{
              return ['error',"Unauthorized edit this article contact Author."];
          }
+    }
+
+    public function assignedtaskdelete($id)
+    {
+        $taskuserassign = taskuserassign::findOrFail($id);
+
+        $taskuserassign->delete();
+
+        return ['message' => 'Annonce deleted '];
+
     }
 }

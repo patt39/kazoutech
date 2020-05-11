@@ -44,9 +44,9 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">how_to_reg</i>
-                                </span>
+                                                <span>
+                                                    <i id="tooltipSize" class="material-icons">how_to_reg</i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

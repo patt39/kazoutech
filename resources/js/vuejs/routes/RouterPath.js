@@ -6,8 +6,8 @@ import AdminChangePassword from "../components/admin/account/AdminChangePassword
 import CategoryIndex from "../components/admin/partial/category/site/CategoryIndex";
 import CategoryCreate from "../components/admin/partial/category/site/CategoryCreate";
 import CategoryEdit from "../components/admin/partial/category/site/CategoryEdit";
-import ContactIndex from "../components/admin/contact/ContactIndex";
-import ContactMessageShow from "../components/admin/contact/ContactMessageShow";
+import ContactIndex from "../components/admin/contact/contactuser/ContactIndex";
+import ContactMessageShow from "../components/admin/contact/contactuser/ContactMessageShow";
 import TagIndex from "../components/admin/partial/tag/TagIndex";
 import TagCreate from "../components/admin/partial/tag/TagCreate";
 import TagEdit from "../components/admin/partial/tag/TagEdit";
@@ -19,10 +19,16 @@ import MessageSend from "../components/admin/user/message/MessageSend";
 import MessageView from "../components/admin/user/message/MessageView";
 import OccupationIndex from "../components/admin/occupation/occupation/OccupationIndex";
 import AnnonceIndex from "../components/admin/annonce/AnnonceIndex"
+import AnnonceAssigned from "../components/admin/annonce/AnnonceAssigned"
+import AnnonceAssignment from "../components/admin/annonce/AnnonceAssignment"
 import CategoryFaqIndex from "../components/admin/faq/admin/CategoryFaqIndex";
 import FaqIndex from "../components/admin/faq/admin/FaqIndex";
 import FaqCreate from "../components/admin/faq/admin/FaqCreate";
 import FaqEdit from "../components/admin/faq/admin/FaqEdit";
+import FaqOccupationIndex from "../components/admin/faq/faqoccupation/FaqOccupationIndex";
+import FaqOccupationCreate from "../components/admin/faq/faqoccupation/FaqOccupationCreate";
+import FaqByOccupationIndex from "../components/admin/faq/faqoccupation/FaqByOccupationIndex";
+import FaqOccupationEdit from "../components/admin/faq/faqoccupation/FaqOccupationEdit";
 import AdministratorIndex from "../components/admin/administrator/AdministratorIndex";
 import AdministratorDatatableIndex from "../components/admin/administrator/AdministratorDatatableIndex";
 import AdministratorEdit from "../components/admin/administrator/AdministratorEdit";
@@ -70,7 +76,7 @@ import PolicyprivacyEdit from "../components/admin/info/policyprivacy/Policypriv
 import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
-import ContactBookmarks from "../components/admin/contact/ContactBookmarks";
+import ContactBookmarks from "../components/admin/contact/contactuser/ContactBookmarks";
 import CityActives from "../components/admin/partial/settings/city/CityActives";
 import FaqByCategoryIndex from "../components/admin/faq/admin/FaqByCategoryIndex";
 import ColorAuditing from "../components/admin/partial/settings/color/ColorAuditing";
@@ -95,6 +101,8 @@ import OccupationShowEdit from "../components/admin/occupation/occupation/catego
 import SlidehomeIndex from "../components/admin/slide/slidehome/SlidehomeIndex";
 import SlidehomeEdit from "../components/admin/slide/slidehome/SlidehomeEdit";
 import SlidehomeCreate from "../components/admin/slide/slidehome/SlidehomeCreate";
+import DeviscontactIndex from "../components/admin/contact/deviscontact/DeviscontactIndex";
+import DeviscontactMessageShow from "../components/admin/contact/deviscontact/DeviscontactMessageShow";
 
 
 
@@ -138,6 +146,10 @@ export const routes = [
 
     //Route annonces
     {path: '/dashboard/annonces/', name: 'annonces.index', component: AnnonceIndex},
+    {path: '/dashboard/annonces/assigned', name: 'annonces_assigne', component: AnnonceAssigned},
+    {path: '/dashboard/annonces/tasks/:occupation/:city/:annonce/assigned', name: 'annonces_assignment', component: AnnonceAssignment},
+
+
 
 
     //Route diplomas
@@ -157,6 +169,14 @@ export const routes = [
     {path: '/dashboard/faqs/:id/edit/', name: 'faqs.edit', component: FaqEdit},
     {path: '/dashboard/faqs/v/sites/', name: 'faqs.dashboard_sites', component: FaqViewSites},
     {path: '/dashboard/faqs/c/:categoryfaq', name: 'faqs.catagoryfaq', component: FaqByCategoryIndex},
+
+    //Route FAQS For Occupation
+    {path: '/dashboard/faqs_occupation/', name: 'faqsoccupation.index', component: FaqOccupationIndex},
+    {path: '/dashboard/faqs_occupation/create', name: 'faqsoccupation.create', component: FaqOccupationCreate},
+    {path: '/dashboard/faqs_occupation/:id/edit', name: 'faqsoccupation.edit', component: FaqOccupationEdit},
+    {path: '/dashboard/faqs_occupation/c/:occupation', name: 'faqs.occupationfaq', component: FaqByOccupationIndex},
+
+
 
     //Route Blogs
     {path: '/dashboard/blogs/', name: 'blogs.index', component: BlogIndex},
@@ -204,6 +224,10 @@ export const routes = [
     {path: '/dashboard/contacts/', name: 'contacts.index', component: ContactIndex},
     {path: '/dashboard/contacts/bookmarks/', name: 'contacts.bookmarks', component: ContactBookmarks},
     {path: '/dashboard/contacts/msg/:contact/', name: 'contacts.view', component: ContactMessageShow},
+
+    //Route devis contacts
+    {path: '/dashboard/deviscontacts/', name: 'deviscontacts.index', component: DeviscontactIndex},
+    {path: '/dashboard/deviscontacts/msg/:deviscontact/', name: 'deviscontacts_show', component: DeviscontactMessageShow},
 
     //Route subscribers
     {path:'/dashboard/subscribers/',name:'subscribers.index',component:SubscriberIndex},

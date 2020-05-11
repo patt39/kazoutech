@@ -24,7 +24,7 @@ class AboutSite extends Component {
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image page-header-mini"
-                                style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nathan-dumlao.jpg' + ")" }} />
+                                style={{ backgroundImage: "url(" + '/assets/vendor_site/img/pages/nicolas-prieto.jpg' + ")" }} />
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-10 mx-auto text-center">

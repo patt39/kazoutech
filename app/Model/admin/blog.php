@@ -76,6 +76,11 @@ class blog extends Model implements Auditable
         return 'slug';
     }
 
+    public function visits()
+    {
+        return visits($this);
+    }
+
     use Sluggable;
 
     /**

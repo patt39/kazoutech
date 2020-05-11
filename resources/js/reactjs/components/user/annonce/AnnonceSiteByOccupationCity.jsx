@@ -1,9 +1,11 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet';
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
-import AnnonceList from "./AnnonceList";
+import AnnonceList from "./inc/AnnonceList";
 import {Link} from "react-router-dom";
 import AnnonceOccupationList from "./AnnonceOccupationList";
+import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
 
 class AnnonceSiteByOccupationCity extends Component {
@@ -91,9 +93,10 @@ class AnnonceSiteByOccupationCity extends Component {
         const {annoncebycity,cities} = this.state;
         const annoncebycities = annoncebycity.annonces;
         const composantTitle = `${annoncebycity.name}`;
-        document.title = `Annonce dans la ville de ${composantTitle} | Kazoutech`;
         return (
-            <div className="blog-post">
+            <>
+             <Helmet title={`Annonce dans la ville de ${composantTitle || "Kazoutech"} | Kazoutech`}/>
+             <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
                     <div className="page-header page-header-mini header-filter">
@@ -129,26 +132,34 @@ class AnnonceSiteByOccupationCity extends Component {
                                                 <br/>
                                                 <div className="row">
 
-                                                    <div className="col-md-4">
+                                                    <div className="col-lg-4 col-md-12 mx-auto">
 
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Villes</div>
                                                             <div className="card-body">
                                                                 <ul className="list-unstyled">
 
-                                                                    {cities.map((item) => (
-                                                                        <li key={item.id} className="mb-2">
-                                                                            <a href={`/annonces/${this.props.match.params.occupation}/v/${item.slug}/`}>
-                                                                                {item.name}
-                                                                            </a>
-                                                                        </li>
-                                                                    ))}
+                                                                    {cities.length ?
+                                                                        <>
+                                                                            {cities.map((item) => (
+                                                                                <li key={item.id} className="mb-2">
+                                                                                    <a href={`/annonces/${this.props.match.params.occupation}/v/${item.slug}/`}>
+                                                                                        {item.name}
+                                                                                    </a>
+                                                                                </li>
+                                                                            ))}
 
-                                                                    <li className="mb-2">
-                                                                        <Link to={`/all_cities/`} >
-                                                                          Autre ville...
-                                                                        </Link>
-                                                                    </li>
+                                                                            <li className="mb-2">
+                                                                                <Link to={`/all_cities/`} >
+                                                                                    Autre ville...
+                                                                                </Link>
+                                                                            </li>
+                                                                        </>
+                                                                        :
+                                                                        <NavoccupationSkeleton/>
+
+                                                                    }
+
                                                                 </ul>
 
                                                             </div>
@@ -158,8 +169,9 @@ class AnnonceSiteByOccupationCity extends Component {
 
                                                     </div>
 
-                                                    <div className="col-lg-8 col-md-10 mx-auto">
+                                                    <div className="col-lg-8 col-md-12 mx-auto">
                                                         <h3 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h3>
+
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
@@ -198,6 +210,7 @@ class AnnonceSiteByOccupationCity extends Component {
 
 
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </section>
@@ -213,6 +226,8 @@ class AnnonceSiteByOccupationCity extends Component {
                     <FooterUserSite/>
                 </div>
             </div>
+            </>
+          
         )
     }
 

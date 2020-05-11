@@ -65,7 +65,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label>Instagram Username</label>
+                                                                <label>Linkedin Username</label>
                                                                 <input v-model="form.instlink" type="text" name="instlink"
                                                                        class="form-control" :class="{ 'is-invalid': form.errors.has('instlink') }" placeholder="...">
                                                                 <has-error :form="form" field="instlink"/>
@@ -129,26 +129,20 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card-body">
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane active" id="profile">
-                                                                        <div class="form-group">
-                                                                            <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
-                                                                            <br>
-                                                                            <vue-editor v-model="form.description" :editorToolbar="customToolbar"/>
-                                                                            <div class="form-check">
-                                                                                <label class="form-check-label pull-right">
-                                                                                    You can use the
-                                                                                    <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
-                                                                                        Markdown here
-                                                                                    </a>
-                                                                                    <span class="form-check-sign"/>
-                                                                                </label>
-                                                                            </div>
-                                                                            <has-error :form="form" field="description"/>
-                                                                        </div>
-                                                                    </div>
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Description <span style="color:red;">*</span></label>
+                                                                <br>
+                                                                <vue-editor v-model="form.description" :editorToolbar="customToolbar"/>
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label pull-right">
+                                                                        You can use the
+                                                                        <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" class="text-danger" target="_blank">
+                                                                            Markdown here
+                                                                        </a>
+                                                                        <span class="form-check-sign"/>
+                                                                    </label>
                                                                 </div>
+                                                                <has-error :form="form" field="description"/>
                                                             </div>
                                                         </div>
                                                     </div>

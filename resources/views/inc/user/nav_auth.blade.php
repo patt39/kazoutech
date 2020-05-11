@@ -1,5 +1,5 @@
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent headroom">
-    <div class="container">
+    <div class="container container-devices">
         <a class="navbar-brand mr-lg-5" href="/">
             <img src=".." alt="Kazoutech">
         </a>

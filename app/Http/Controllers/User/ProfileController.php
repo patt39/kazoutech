@@ -9,6 +9,7 @@ use App\Model\user\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\User\Profile\UpdateprofileRequest;
 
 class ProfileController extends Controller
 {
@@ -21,7 +22,7 @@ class ProfileController extends Controller
     {
         $this->middleware('auth',['except' => ['view','profileView']]);
     }
-     
+
 
     public function profileUser()
     {
@@ -63,9 +64,23 @@ class ProfileController extends Controller
 
     }
 
-    public function view($username)
+    public function view(user $user)
     {
-        $user = new UserResource(User::where('username', $username)->firstOrFail());
+        $user = User::where('username', $user->username)->with('city','occupation','profile')
+            ->withCount(['annonces' => function ($q) use ($user){
+                $q->where('status',1)->with('city','user','occupation','categoryoccupation')
+                    ->whereIn('user_id',[$user->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);});
+            }])->with(['annonces' => function ($q) use ($user){
+                $q->where('status',1)->with('city','user','occupation','categoryoccupation')
+                    ->whereIn('user_id',[$user->id])
+                    ->whereHas('city', function ($q) {$q->where('status',1);})
+                    ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
+                    ->whereHas('occupation', function ($q) {$q->where('status',1);});
+            }])->firstOrFail();
+
 
         return response()->json($user,200);
     }
@@ -78,6 +93,68 @@ class ProfileController extends Controller
             $user = User::findOrFail(auth()->user()->id);
         }
         return view("user.profile.profileIndex")->withUser($user);
+    }
+
+    public function profileEdit()
+    {
+        $user = auth()->user();
+
+        return view("user.profile.profileEdit")->withUser($user);
+    }
+
+
+    public function devenir_charbonneur_update_register(UpdateprofileRequest $request, User $profileUser) {
+
+        $profileUser = auth()->user();
+
+        $currentAvatar = $profileUser->avatar;
+        $currentCniPicture = $profileUser->cni_picture;
+
+        // Update Avatar Profile
+        if ($request->avatar != $currentAvatar){
+
+            $namefile = sha1(date('YmdHis') . str_random(30));
+
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->avatar,0,strpos
+                ($request->avatar,';')))[1])[1];
+
+            $dir = 'assets/img/avatars/user';
+            if(!file_exists($dir)){
+                mkdir($dir, 0775, true);
+            }
+            Image::make($request->avatar)->save(public_path($dir).$name);
+
+            $request->merge(['avatar' =>  "/assets/img/avatars/user/{$name}"]);
+
+            // Ici on supprime l'avatar existant
+            $oldFilename = $currentAvatar;
+            File::delete(public_path($oldFilename));
+        }
+
+        // Update Cni Profile
+        if ($request->cni_picture != $currentCniPicture){
+
+            $namefile = sha1(date('YmdHis') . str_random(30));
+
+            $name =   $namefile.'.' . explode('/',explode(':',substr($request->avatar,0,strpos
+                ($request->avatar,';')))[1])[1];
+
+            $dir = 'assets/img/cni';
+            if(!file_exists($dir)){
+                mkdir($dir, 0775, true);
+            }
+            Image::make($request->cni_picture)->save(public_path($dir).$name);
+
+            $request->merge(['cni_picture' =>  "/assets/img/cni/{$name}"]);
+
+            // Ici on supprime la cni existante
+            $oldFilename = $currentCniPicture;
+            File::delete(public_path($oldFilename));
+        }
+
+        $profileUser->update($request->all());
+
+        return ['message' => 'updated successfully'];
     }
 
     /**

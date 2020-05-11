@@ -10,7 +10,7 @@
                 <a href="/" class="simple-text logo-mini">
                     <b>KT</b>
                 </a>
-                <a href="/" class="simple-text logo-normal">
+                <a href="/" target="_blank" class="simple-text logo-normal">
                     <b style="font-size: 80%;">Kazoutech</b>
                 </a>
             </div>
@@ -123,13 +123,6 @@
                                     <router-link  :to="{ name: 'testimonials.index' }" class="nav-link">
                                         <span class="sidebar-mini"><b>TS</b></span>
                                         <span class="sidebar-normal"><b>Testimonials</b></span>
-                                    </router-link>
-                                </li>
-                                 <!--Registration-->
-                                <li class="nav-item">
-                                    <router-link  :to="{ path: '/dashboard/registrations/' }" class="nav-link">
-                                        <span class="sidebar-mini"><b>RI</b></span>
-                                        <span class="sidebar-normal"><b>Registration Infos</b></span>
                                     </router-link>
                                 </li>
                                 <!--Blog-->
@@ -277,6 +270,12 @@
                                         <span class="sidebar-normal"><b>FAQs</b></span>
                                     </router-link>
                                 </li>
+                                <li class="nav-item">
+                                    <router-link  :to="{ name: 'faqsoccupation.index' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>FO</b></span>
+                                        <span class="sidebar-normal"><b>FAQsOccupation</b></span>
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -310,6 +309,12 @@
                         <div class="collapse" id="contactsSettings">
                             <ul class="nav">
                                 <li class="nav-item">
+                                    <router-link  :to="{ path: '/dashboard/deviscontacts/' }" class="nav-link">
+                                        <span class="sidebar-mini"><b>DC</b></span>
+                                        <span class="sidebar-normal"><b>Devis Contact</b></span>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
                                     <router-link  :to="{ path: '/dashboard/contacts/' }" class="nav-link">
                                         <span class="sidebar-mini"><b>MCP</b></span>
                                         <span class="sidebar-normal"><b>Message Contact Page</b></span>
@@ -336,6 +341,12 @@
                         <router-link  :to="{ path: '/dashboard/annonces/' }" class="nav-link">
                             <i class="material-icons">all_out</i>
                             <p><b>Annonces</b></p>
+                        </router-link>
+                    </li>
+                     <li class="nav-item">
+                        <router-link  :to="{ path: '/dashboard/annonces/assigned' }" class="nav-link">
+                            <i class="material-icons">assignment</i>
+                            <p><b>Annonces assigned</b></p>
                         </router-link>
                     </li>
                     <!-- Documentation -->

@@ -22,11 +22,13 @@ class PageCitySite extends Component {
                                     </div>
                                 </div>
                                 <CitySite/>
-                                <Link to={'/toutes-les-villes/'}
+
+                                {/**<Link to={'/toutes-les-villes/'}
                                       className="font-size-3 font-weight-medium d-block mt-5">
                                     Voir toutes les villes
                                     <i className="fas fa-chevron-right pl-1 font-size-1"/>
-                                </Link>
+                                </Link>*/}
+                                
                             </div>
                         </div>
                     </div>

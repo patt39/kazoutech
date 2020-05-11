@@ -19,12 +19,29 @@ class BaseRequest extends Request
     {
         if ($group == 'store') {
             $rules = [
-                'first_name'    => 'required|max:100',
+                'first_name'    => 'required|min:2|max:100',
                 'last_name'    => 'required|max:100',
-                'email'   => 'required|email:rfc,dns',
+                'email'   => 'required|email|min:2|max:200',
                 'subject' => 'required|min:2|max:210',
                 'message'     => 'required|min:2|max:50000',
                 //'recaptcha' => ['required', $recaptcha],
+            ];
+        }elseif ($group === 'deviscontacts'){
+            $rules = [
+                'full_name'    => 'required|min:2|max:100',
+                'phone'    => 'required|max:100',
+                'confirm_send'    => 'required',
+                'city_id'    => 'required',
+                'email'   => 'required|email|min:2|max:200',
+                'message'     => 'required|min:2|max:50000',
+            ];
+        }elseif ($group === 'avischarbonneursoffline'){
+            $rules = [
+                'confirm_send'    => 'required',
+                'first_name'    => 'required|min:2|max:100',
+                'last_name'    => 'required|min:2|max:100',
+                'email'   => 'required|email|min:2|max:200',
+                'message'     => 'required|min:2|max:50000',
             ];
         }
         else { // 'edit'
@@ -49,7 +66,7 @@ class BaseRequest extends Request
     public function attributes()
     {
         return [
-            //
+            'city_id' => 'ville obligatoire',
         ];
     }
 

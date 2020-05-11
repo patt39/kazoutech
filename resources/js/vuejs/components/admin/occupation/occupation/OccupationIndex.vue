@@ -77,7 +77,6 @@
                                                 <th><b>Image</b></th>
                                                 <th><b>Name occupations</b></th>
                                                 <th><b>Status</b></th>
-                                                <th><b>Edited By</b></th>
                                                 <th><b>Technicians</b></th>
                                                 <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
@@ -87,7 +86,6 @@
                                                 <th><b>Image</b></th>
                                                 <th><b>Name occupations</b></th>
                                                 <th><b>Status</b></th>
-                                                <th><b>Edited By</b></th>
                                                 <th><b>Technicians</b></th>
                                                 <th class="text-right"><b v-if="($auth.can('publish-occupation') || $auth.can('edit-occupation') || $auth.can('delete-occupation'))">Actions</b></th>
                                             </tr>
@@ -105,13 +103,6 @@
                                                         <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
                                                         <span v-else-if="!item.status"  class="badge badge-danger"><b>Deactive</b></span>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button" class="btn btn-success btn-round btn-just-icon btn-sm" title="Administrator Online"/>
-                                                        <button v-else="item.statusOnline" type="button" class="btn btn-danger btn-round btn-just-icon btn-sm" title="Administrator Offline"/>
-                                                        {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+ "..." : item.user.name) | upText }}
-                                                    </a>
                                                 </td>
                                                 <td><b v-html="item.technician_count"/></td>
                                                 <td class="td-actions text-right">

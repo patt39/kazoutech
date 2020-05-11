@@ -24,19 +24,12 @@ class ConceptSite extends Component {
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image" style={{backgroundImage: "url(" + '/assets/vendor_site/img/sections/broofoac.jpg' + ")"}}/>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-10 mx-auto text-center">
-                                        <h3 className="display-2 text-white">Notre Concept ...</h3>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div className="section features features-5">
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-10 text-center mx-auto">
-                                        <h3 className="display-3">Nos Valeurs</h3>
+                                        <h3 className="display-2">Notre concept</h3>
                                         <p className="lead">La capacité de faire confiance a des gens rencontrer sur le net est un atout quon aquiet avec le temp.</p>
                                     </div>
                                 </div>
@@ -50,7 +43,7 @@ class ConceptSite extends Component {
                                                             <i className="ni ni-atom"></i>
                                                         </div>
                                                         <h5 className="display-5">Confidentialité et sécurité</h5>
-                                                        <p>La confaince est à la base meme de notre bussiness plan.</p>
+                                                        <p>La confaince est à la base même de notre bussiness plan.</p>
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
@@ -72,7 +65,7 @@ class ConceptSite extends Component {
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <p className="mb-0">Taches suivit du debut à la fin</p>
+                                                                        <p className="mb-0">Tâches suivit du debut à la fin</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -99,7 +92,7 @@ class ConceptSite extends Component {
                                                             <i className="ni ni-money-coins"></i>
                                                         </div>
                                                         <h5 className="display-5">Meilleur prix</h5>
-                                                        <p>Une fois le Charbonneurs(euse) mis en relation, le devi de la tache est decider entre deux</p>
+                                                        <p>Une fois le Charbonneurs(euse) mis en relation, le devis de la tâche est decider entre deux</p>
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
@@ -133,7 +126,7 @@ class ConceptSite extends Component {
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <p className="mb-0">Et des avantage selon votre activité sur le site</p>
+                                                                        <p className="mb-0">Et des avantages selon votre activité sur le site</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -150,7 +143,7 @@ class ConceptSite extends Component {
                                                             <i className="ni ni-support-16"></i>
                                                         </div>
                                                         <h5 className="display-5">Sponsor</h5>
-                                                        <p>Des sponsors, mercenes et tuteurs reconnu pour booster le services et toujour apporter le meilleur</p>
+                                                        <p>Des sponsors, mécenes et tuteurs reconnu pour booster le services et toujours apporter les meilleurs</p>
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
@@ -199,7 +192,7 @@ class ConceptSite extends Component {
                                                             <i className="ni ni-laptop"></i>
                                                         </div>
                                                         <h5 className="display-5">Meilleur services</h5>
-                                                        <p>Le jobbing jamais ausi façile et jamis aussi utile.</p>
+                                                        <p>Le jobbing jamais aussi facile et jamais aussi utile.</p>
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
@@ -251,7 +244,7 @@ class ConceptSite extends Component {
                                         <div className="col-lg-10">
                                             <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour Charbonneurs (Jobbeurs)</span></h3>
                                             <p className="lead text-white">Le jobbing n'as jamais été facile mais pour vous apportez le meilleurs des services et assurez votre sécurité et integrité,
-                                                voiçi quelques conseils pratique.</p>
+                                                voici quelques conseils pratique.</p>
                                         </div>
                                     </div>
                                     <div className="row row-grid mt-5">
@@ -262,8 +255,8 @@ class ConceptSite extends Component {
                                                 </div>
                                                 <div className="description pl-4">
                                                     <h5 className="text-info">Respect de l'heure</h5>
-                                                    <p>Honorer toujours a vos rendez-vous en arrivant a l'heure chez votre clients et fixer préalablement avec se dernier toutes les taches à accomplir et a la fin verifiez bien quelles ont été
-                                                        accomplit come il le fallait pour éviter des mal-entendu cela fait partit du professionalisme.</p>
+                                                    <p>Honorer toujours à vos rendez-vous en arrivant a l'heure chez votre clients et fixer préalablement avec se dernier toutes les tâches à accomplir et a la fin vérifiez bien qu'elles ont été
+                                                        accomplis comme il le fallait pour éviter des mal-entendu car cela fait partie du professionalisme.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -274,7 +267,7 @@ class ConceptSite extends Component {
                                                 </div>
                                                 <div className="description pl-4">
                                                     <h5 className="text-warning">Equipement</h5>
-                                                    <p>votre équipement fait partit de l'extension de votre talent donc n'hesitez pas de toujours vous munir du meilleur materiel pour chaque tache sans oublier votre équipement de sécurité
+                                                    <p>votre équipement fait parti de l'extension de votre talent donc n'hesitez pas de toujours vous munir du meilleur materiel pour chaque tâche sans oublier votre équipement de sécurité
                                                         pour faciliter votre travail et vous permettre de rester en forme pour votre prochain job.</p>
 
                                                 </div>
@@ -289,7 +282,7 @@ class ConceptSite extends Component {
                                                 </div>
                                                 <div className="description pl-4">
                                                     <h5 className="text-danger">Rémuneration</h5>
-                                                    <p>Assurez-vous que la rémuneration établit avec votre client sois claire pour éviter des malentendu après le travail accomplit en cas d'heure supplementaire définissez avec votre client cequi vous revient de droit.</p>
+                                                    <p>Assurez-vous que la rémuneration établit avec votre client sois claire pour éviter des malentendu après le travail accompli. En cas d'heure supplementaire définissez avec votre client ce qui vous revient de droit.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -300,8 +293,8 @@ class ConceptSite extends Component {
                                                 </div>
                                                 <div className="description pl-4">
                                                     <h5 className="text-success">Réalisation</h5>
-                                                    <p>Offrez toujours le meilleur de vos service pendant vos job cela boostera votre notorieté a la fois sur la plateforme et sur le marché du jobbing n'hesitez pas de nettoyer
-                                                         votre site aprés le job accomplit et demander a votre client de vous évaluez sur le site pour booster votre profile.</p>
+                                                    <p>Offrez toujours le meilleur de vos service pendant vos jobs cela boostera votre notorieté à la fois sur la plateforme et sur le marché du jobbing. N'oubliez pas de nettoyer
+                                                         votre site aprés le job accompli et de demander à votre client de vous évaluez sur le site pour booster votre profile.</p>
                                                 </div>
                                             </div>
                                         </div>

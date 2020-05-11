@@ -44,6 +44,7 @@ class categoryoccupation extends Model
         static::updating(function($model){
             if (auth()->check()){
                 $model->user_id = auth()->id();
+                $model->slug = str_slug($model->name);
             }
         });
     }
@@ -67,6 +68,12 @@ class categoryoccupation extends Model
     {
         return $this->hasMany(annonce::class,'categoryoccupation_id');
     }
+
+    public function occupations()
+    {
+        return $this->hasMany(occupation::class,'categoryoccupation_id');
+    }
+
 
     use Sluggable;
 

@@ -3,6 +3,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
+<meta name="author" content="{{ config('app.author') }}">
+<meta name="keywords" content="{{ config('app.keywords') }}">
+<meta name="description" content="{{ isset($description) ? $description : config('app.description') }}"/>
+<meta name="user-name" content="{{Auth::check() ? Auth::user()->first_name : 'name' }}">
+
+<meta property="og:type" name="og:type" content="site"/>
+<meta property="og:country" content="{{ config('app.country') }}"/>
+<meta property="og:url" name="og:url" content="{{ request()->url() }}"/>
+<meta property="og:title" name="og:title" content="{{ isset($title) ? $title : config('app.title') }}">
+<meta property="og:description" name="og:description" content="{{ isset($description) ? $description : config('app.description') }}">
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @auth
@@ -35,10 +45,13 @@
 <link href="/assets/vendor_site/css/nucleo-svg.css" rel="stylesheet" />
 <!-- Argon CSS Files -->
 <link rel="stylesheet" href="/assets/dashboard/assets/css/plugins/animate.css">
-<link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.0" rel="stylesheet" />
+<link href="/assets/vendor_site/css/argon-design-system.css?v=1.0.2" rel="stylesheet" />
 <!-- Customize KazouTech Styles -->
 
+
 <link href="/assets/css/kazoutech.css" rel="stylesheet" />
+
+
 
 
 

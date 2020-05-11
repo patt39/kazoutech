@@ -38,7 +38,18 @@ class BaseRequest extends Request
                 'address' => 'required|string|min:2|max:100',
                 'categoryoccupation_id' => 'required',
             ];
-        } else { // 'edit'
+        }elseif ($group === 'assignedtaskstore'){
+            $rules = [
+                'title' => 'required|string|min:2|max:100',
+                'user_id' => 'required',
+            ];
+            
+        } elseif ($group === 'assignedtaskupdate'){
+            $rules = [
+                'title' => 'required|string|min:2|max:100',
+            ];
+            
+        }else { // 'edit'
             $rules = [
                 'title' => 'required|string|min:2|max:100',
                 'city_id' => 'required',
@@ -67,6 +78,7 @@ class BaseRequest extends Request
     {
         return [
             'city_id' => 'ville obligatoire',
+            'user_id' => 'charbonneur obligatoire',
             'occupation_id' => 'occupation obligatoire',
             'categoryoccupation_id' => 'category obligatoire',
         ];
