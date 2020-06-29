@@ -102,7 +102,7 @@ class BlogSiteCreate extends Component {
 
                 //Redirect after create
                 this.props.history.push('/blog/');
-                $.notify('<strong>Blog créer avec success...</strong>', {
+                $.notify('<strong>Article créer avec succès...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -118,7 +118,7 @@ class BlogSiteCreate extends Component {
                 this.setState({
                     errors: error.response.data.errors
                 });
-                $.notify("Ooop! Something wrong. Try later...", {
+                $.notify("Ooopss! Something wrong. Try later...", {
                     allow_dismiss: false,
                     type: 'danger',
                     animate: {
@@ -140,7 +140,7 @@ class BlogSiteCreate extends Component {
     }
 
     render() {
-        const composantTitle = `Nouvelle article de blog`;
+        const composantTitle = `Nouvel article de blog`;
         document.title = `${composantTitle} | Kazoutech`;
         const { occupations,colors,photo} = this.state;
         return (
@@ -192,13 +192,13 @@ class BlogSiteCreate extends Component {
 
                                                     <div className="col-md-6">
                                                         <label className="labels">
-                                                            Category de l'article
+                                                            Catégorie de l'article
                                                             <span className="text-danger">*</span>
                                                         </label>
                                                         <select name={'occupation_id'} value={this.state.occupation_id}
                                                                 className={`form-control`}
                                                                 id="occupation_id" onChange={this.handleFieldChange}>
-                                                            <option value="" disabled>Selectioner une category</option>
+                                                            <option value="" disabled>Selectioner une catégorie</option>
                                                             {occupations.map((item) => (
                                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                                             ))}

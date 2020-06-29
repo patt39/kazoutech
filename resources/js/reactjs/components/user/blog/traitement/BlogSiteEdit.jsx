@@ -99,7 +99,7 @@ class BlogSiteEdit extends Component {
         };
         dyaxios.put(route('blogs.update',Id), item)
             .then(() => {
-                $.notify('<strong>Blog mise à jour avec success...</strong>', {
+                $.notify('<strong>Blog mis à jour avec succès...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -116,7 +116,7 @@ class BlogSiteEdit extends Component {
                 this.setState({
                     errors: error.response.data.errors
                 });
-                $.notify("Ooop! Something wrong. Try later...", {
+                $.notify("Ooopss! Something wrong. Try later...", {
                     allow_dismiss: false,
                     type: 'danger',
                     animate: {
@@ -197,16 +197,15 @@ class BlogSiteEdit extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="row">
-
                                                     <div className="col-md-6">
                                                         <label className="labels">
-                                                            Category de l'article
+                                                            Catégorie de l'article
                                                             <span className="text-danger">*</span>
                                                         </label>
                                                         <select name={'occupation_id'} value={this.state.occupation_id}
                                                                 className={`form-control`}
                                                                 id="occupation_id" onChange={this.handleFieldChange}>
-                                                            <option value="" disabled>Selectioner une category</option>
+                                                            <option value="" disabled>Selectioner une catégorie</option>
                                                             {occupations.map((item) => (
                                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                                             ))}

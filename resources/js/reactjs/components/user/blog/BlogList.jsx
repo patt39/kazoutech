@@ -22,7 +22,6 @@ class BlogList extends Component {
             <div key={this.props.id}
                  className="card card-blog card-plain blog-horizontal mb-5">
                 <div className="row">
-
                     <div className="col-lg-4">
                         <div className="card-image shadow">
                             <Link to={`/blog/${this.props.occupation.slug}/${this.props.slug}/`}>
@@ -66,7 +65,7 @@ class BlogList extends Component {
                                                     <span className="btn-inner--icon icon-big">
                                                         <i className="ni ni-check-bold" />
                                                     </span>
-                                                        <span className="btn-inner--text">editer</span>
+                                                        <span className="btn-inner--text">Editer</span>
                                                     </NavLink>
                                                     <Button onClick={() => this.props.deleteItem(this.props.id)}
                                                             className="btn btn-sm btn-danger btn-icon">
@@ -82,7 +81,6 @@ class BlogList extends Component {
                                     )}
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

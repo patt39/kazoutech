@@ -94,7 +94,7 @@ class AnnonceSiteByOccupationCreate extends Component {
         };
         dyaxios.post(route('annonces_site.update', [SlugOccupationcreate]), item)
             .then(() => {
-                $.notify('<strong>Annonce mise à jour avec success...</strong>', {
+                $.notify('<strong>Annonce mis à jour avec success...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -301,7 +301,7 @@ class AnnonceSiteByOccupationCreate extends Component {
                                                     <div className="col-md-5">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Telephone
+                                                                Téléphone
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="tel" className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}

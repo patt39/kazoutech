@@ -19,13 +19,13 @@ class ProfileSiteIndex extends Component {
 
     deleteAnnonce(id) {
         Swal.fire({
-            text: 'Etes vous sure de vouloir suprimer cette annonce?',
+            text: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
+            confirmButtonText: 'Oui supprimer',
             cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
@@ -41,7 +41,7 @@ class ProfileSiteIndex extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                             // title: 'Update FAQ',
-                            message: 'Annonce suprimée avec success'
+                            message: 'Annonce supprimée avec succès'
                         },
                         {
                             allow_dismiss: false,
@@ -58,7 +58,7 @@ class ProfileSiteIndex extends Component {
                     /** End alert ***/
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -169,10 +169,7 @@ class ProfileSiteIndex extends Component {
                                         <br/>
                                     </div>
 
-
                                     <ProfileSiteAvisUser {...this.props}/>
-
-
 
                                     {$guest ?
                                         <>

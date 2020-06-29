@@ -42,7 +42,7 @@ class ProfileSiteBlogs extends Component {
                                         <Link to={`/blog/p/${this.props.id}/edit/`} className="btn btn-icon-only btn-outline-secondary btn-sm" title={`Editer ${this.props.title}`}>
                                             <i className="fa fa-edit"/>
                                         </Link>
-                                        <button onClick={() => this.props.deleteBlog(this.props.id)} title={'Suprimer cette article'}
+                                        <button onClick={() => this.props.deleteBlog(this.props.id)} title={'Supprimer cette article'}
                                                 className="btn btn-icon-only btn-outline-secondary btn-sm">
                                             <i className="fa fa-trash"/>
                                         </button>{" "}

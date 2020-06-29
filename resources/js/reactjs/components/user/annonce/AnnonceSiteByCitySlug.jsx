@@ -20,14 +20,14 @@ class AnnonceSiteByCitySlug extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -86,7 +86,7 @@ class AnnonceSiteByCitySlug extends Component {
         const composantTitle = `${annoncebycity.name}`;
         return (
             <>
-                <Helmet title={`Annonce dans la ville de ${annoncebyoccupation.name || "Kazoutech"} | Kazoutech`} />
+                <Helmet title={`Annonces dans la ville de ${annoncebyoccupation.name || "Kazoutech"} | Kazoutech`} />
                 <div className="blog-post">
                     <NavUserSIte />
                     <div className="wrapper">
@@ -110,7 +110,6 @@ class AnnonceSiteByCitySlug extends Component {
                         </div>
                         <br />
                         <div className="main main-raised">
-
                             <div className="container">
                                 <div className="row">
 
@@ -125,8 +124,6 @@ class AnnonceSiteByCitySlug extends Component {
                                                     <br />
                                                     <div className="row">
                                                         <div className="col-md-4">
-
-
 
                                                             <NavAnnoncesByCities />
 
@@ -161,7 +158,6 @@ class AnnonceSiteByCitySlug extends Component {
                                                                 </div>
                                                             </div>
 
-
                                                             <div className="card">
                                                                 <div className="card-body">
                                                                     {annoncebycities.map((item) => (
@@ -173,14 +169,10 @@ class AnnonceSiteByCitySlug extends Component {
                                                     </div>
                                                 </div>
                                             </section>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </section>
-
-
                         </div>
                         <FooterUserSite />
                     </div>

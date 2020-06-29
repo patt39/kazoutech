@@ -22,14 +22,14 @@ class AnnonceSiteByOccupationCity extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -44,7 +44,7 @@ class AnnonceSiteByOccupationCity extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                             // title: 'Update FAQ',
-                            message: 'Annonce suprimée avec success'
+                            message: 'Annonce supprimée avec succès'
                         },
                         {
                             allow_dismiss: false,
@@ -62,7 +62,7 @@ class AnnonceSiteByOccupationCity extends Component {
 
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -95,7 +95,7 @@ class AnnonceSiteByOccupationCity extends Component {
         const composantTitle = `${annoncebycity.name}`;
         return (
             <>
-             <Helmet title={`Annonce dans la ville de ${composantTitle || "Kazoutech"} | Kazoutech`}/>
+             <Helmet title={`Annonces dans la ville de ${composantTitle || "Kazoutech"} | Kazoutech`}/>
              <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">
@@ -131,9 +131,7 @@ class AnnonceSiteByOccupationCity extends Component {
                                             <div className="container">
                                                 <br/>
                                                 <div className="row">
-
                                                     <div className="col-lg-4 col-md-12 mx-auto">
-
                                                         <div className="card mb-3">
                                                             <div className="card-header h6">Villes</div>
                                                             <div className="card-body">
@@ -171,7 +169,6 @@ class AnnonceSiteByOccupationCity extends Component {
 
                                                     <div className="col-lg-8 col-md-12 mx-auto">
                                                         <h3 className="display-3 mb-5"><b>Toutes les annonces de {annoncebycity.name}</b></h3>
-
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="card mb-3 text-center">
@@ -199,7 +196,6 @@ class AnnonceSiteByOccupationCity extends Component {
                                                             </div>
                                                         </div>
 
-
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 {annoncebycities.map((item) => (
@@ -207,21 +203,15 @@ class AnnonceSiteByOccupationCity extends Component {
                                                                 ))}
                                                             </div>
                                                         </div>
-
-
                                                     </div>
 
                                                 </div>
                                             </div>
                                         </section>
-
-
                                     </div>
                                 </div>
                             </div>
                         </section>
-
-
                     </div>
                     <FooterUserSite/>
                 </div>

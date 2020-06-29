@@ -59,7 +59,7 @@ class OccupationContactForm extends Component {
             .then(() => {
 
                 //Redirect after create
-                $.notify('<strong>Message envoyé avec success...</strong>', {
+                $.notify('<strong>Message envoyé avec succès...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -85,7 +85,7 @@ class OccupationContactForm extends Component {
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Something wrong. Try later...", {
+            $.notify("Ooopss! Something wrong. Try later...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -124,7 +124,7 @@ class OccupationContactForm extends Component {
                                                  <i className="ni ni-circle-08"></i></span>
                                             </div>
                                             <Input type="text" minLength="2" maxLength="100"
-                                                   placeholder="Votre Nom et Prènom ..." aria-label="Votre Nom et  Prènom ..."
+                                                   placeholder="Votre Nom et Prénom ..." aria-label="Votre Nom et  Prènom ..."
                                                    required="required"
                                                    id="full_name"
                                                    className={`form-control ${this.hasErrorFor('full_name') ? 'is-invalid' : ''}`}

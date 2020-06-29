@@ -63,7 +63,7 @@ class AnnonceList extends Component {
                                                     <span className="btn-inner--icon icon-big">
                                                         <i className="ni ni-check-bold" />
                                                     </span>
-                                                    <span className="btn-inner--text">editer</span>
+                                                    <span className="btn-inner--text">Editer</span>
                                                 </NavLink>
                                                 <Button onClick={() => this.props.deleteItem(this.props.id)}
                                                         className="btn btn-sm btn-danger btn-icon">

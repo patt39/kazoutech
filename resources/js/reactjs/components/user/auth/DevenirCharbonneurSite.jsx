@@ -285,7 +285,7 @@ class DevenirCharbonneurSite extends Component{
                     </div>
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Votre Numéro de Télephone</label>
+                            <label>Votre Numéro de Téléphone</label>
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">
@@ -363,7 +363,7 @@ class DevenirCharbonneurSite extends Component{
                             <input className="custom-control-input" id="charbonneur" type="checkbox"
                                     value={this.state.charbonneur} name="charbonneur" onChange={this.toggleChange} checked={isChecked}/>
                             <label className="custom-control-label" htmlFor="charbonneur">
-                                <span><b>JE CONFIRME DEVENIR CHARBONNEUR</b> (Jobbeur) pour la platte forme kazoutech</span>
+                                <span><b>JE CONFIRME DEVENIR CHARBONNEUR</b> (Jobbeur) pour la plateforme kazoutech</span>
                             </label>
                             {this.renderErrorFor('charbonneur')}
                         </div>

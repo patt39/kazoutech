@@ -65,7 +65,6 @@ class CharbonneurSiteByOccupation extends Component {
 
                                   <NavoccupationforCharbonneur/>
 
-
                                 </div>
                                 <div className="col-md-8 ">
                                     <div className="row">

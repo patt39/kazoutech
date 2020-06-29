@@ -20,14 +20,14 @@ class BlogSiteByCategoriesOccupation extends Component {
 
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette article de blog?',
+            title: 'Etes vous sure de vouloir supprimer cette article de blog?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -42,7 +42,7 @@ class BlogSiteByCategoriesOccupation extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                             // title: 'Update FAQ',
-                            message: 'Article de blog suprimé avec success'
+                            message: 'Article de blog supprimé avec succès'
                         },
                         {
                             allow_dismiss: false,
@@ -107,7 +107,6 @@ class BlogSiteByCategoriesOccupation extends Component {
                     </div>
                     <br/>
                     <div className="main main-raised">
-
                         <div className="container">
                             <div className="row">
                                 {blogsLast.length ? 
@@ -120,7 +119,6 @@ class BlogSiteByCategoriesOccupation extends Component {
                                 
                             </div>
                         </div>
-
 
                         <section className="section">
                             <div className="container">
@@ -150,7 +148,6 @@ class BlogSiteByCategoriesOccupation extends Component {
 
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,15 +156,12 @@ class BlogSiteByCategoriesOccupation extends Component {
                                 </div>
                             </div>
                         </section>
-
-
                     </div>
                     <FooterUserSite/>
                 </div>
             </div>
             </>
-           
-
+            
         )
     }
 

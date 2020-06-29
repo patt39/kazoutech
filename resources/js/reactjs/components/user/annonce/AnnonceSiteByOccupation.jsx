@@ -22,14 +22,14 @@ class AnnonceSiteByOccupation extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -44,7 +44,7 @@ class AnnonceSiteByOccupation extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                         // title: 'Update FAQ',
-                        message: 'Annonce suprimée avec success'
+                        message: 'Annonce supprimée avec succès'
                     },
                         {
                             allow_dismiss: false,
@@ -62,7 +62,7 @@ class AnnonceSiteByOccupation extends Component {
 
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooops! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -137,9 +137,7 @@ class AnnonceSiteByOccupation extends Component {
                                                 <div className="container">
                                                     <br />
                                                     <div className="row">
-
                                                         <div className="col-lg-4 col-md-12 mx-auto">
-
                                                             <div className="card mb-3"><div className="card-header h6" style={{ textTransform: "capitalize" }}>Annonces {annoncebyoccupation.name}</div>
                                                                 <div className="card-body">
                                                                     <ul className="list-unstyled">
@@ -210,20 +208,14 @@ class AnnonceSiteByOccupation extends Component {
 
                                                                 </div>
                                                             </div>
-
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </section>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </section>
-
-
                         </div>
                         <FooterUserSite />
                     </div>

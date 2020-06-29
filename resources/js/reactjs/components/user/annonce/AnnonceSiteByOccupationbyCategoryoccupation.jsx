@@ -25,14 +25,14 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -47,7 +47,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                         // title: 'Update FAQ',
-                        message: 'Annonce suprimée avec success'
+                        message: 'Annonce supprimée avec succès'
                     },
                         {
                             allow_dismiss: false,
@@ -144,11 +144,8 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                 <div className="container">
                                                     <br />
                                                     <div className="row">
-
                                                         <div className="col-md-4">
-
                                                             <div className="card mb-3">
-
                                                                 <div className="card-header h6"><b>Annonces <span
                                                                     style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
                                                                 </div>
@@ -160,7 +157,6 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                             </div>
 
                                                             <div className="card mb-3">
-
                                                                 <div className="card-header h6"
                                                                     style={{ textTransform: "capitalize" }}><b>Villes</b>
                                                                 </div>
@@ -189,7 +185,6 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                             :<NavoccupationSkeleton/>}
 
                                                                     </ul>
-
 
                                                                 </div>
                                                             </div>
@@ -241,20 +236,14 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                     ))}
                                                                 </div>
                                                             </div>
-
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </section>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </section>
-
-
                         </div>
                         <FooterUserSite />
                     </div>

@@ -19,14 +19,14 @@ class AnnonceSiteIndex extends Component {
     }
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
             confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -43,7 +43,7 @@ class AnnonceSiteIndex extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                             // title: 'Update FAQ',
-                            message: 'Annonce suprimée avec success'
+                            message: 'Annonce supprimée avec succès'
                         },
                         {
                             allow_dismiss: false,
@@ -61,7 +61,7 @@ class AnnonceSiteIndex extends Component {
 
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -92,7 +92,7 @@ class AnnonceSiteIndex extends Component {
         );
         return (
             <>
-             <Helmet title={`Annonce toutes les annonces | Kazoutech`}/>
+             <Helmet title={`Tous les annonces | Kazoutech`}/>
              
                     <div className="blog-post">
                     <NavUserSIte/>

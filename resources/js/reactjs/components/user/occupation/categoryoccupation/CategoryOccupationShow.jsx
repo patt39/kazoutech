@@ -97,9 +97,7 @@ class CategoryOccupationShow extends Component {
                     <div className="wrapper">
                         <CategoryOcupationHeader {...this.props} {...categoryoccupation} />
                         <div className="container">
-
                             <div className={'row'}>
-
                                 <div className="container">
                                     <div className="row mb-5">
                                         <div className="col-lg-12 mr-auto mb-2">
@@ -140,11 +138,8 @@ class CategoryOccupationShow extends Component {
                                             <div className="description mb-2"
                                                  dangerouslySetInnerHTML={{__html: categoryoccupation.body}}/>
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
 
@@ -205,7 +200,7 @@ class CategoryOccupationShow extends Component {
                                                         </span>
                                                             </div>
 
-                                                            <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
+                                                            <input type="password" placeholder="Mot de passe" aria-label="Mot de passe"
                                                                    required="required"
                                                                    id="password"
                                                                    className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}

@@ -75,12 +75,9 @@ class ProfileSiteAnnonces extends Component {
                                     </>
 
                                     :null}
-
-
+                                    
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>

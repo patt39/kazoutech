@@ -35,7 +35,9 @@ class CharbonneurList extends Component {
                                    </NavLink>
                                </>
                                 :null}
+
                             <h4 className="card-title">{this.props.name}</h4>
+                            
                             <p className="card-description">
                                 Don't be scared of the truth because we need to restart the
                                 human foundation in truth And I love you...
@@ -43,7 +45,6 @@ class CharbonneurList extends Component {
 
                             <Link to={`/charbonneur/${this.props.username}/`} className="btn btn-lg btn-info btn-block">Voire le profile</Link>
                         </div>
-
                     </div>
                 </div>
 

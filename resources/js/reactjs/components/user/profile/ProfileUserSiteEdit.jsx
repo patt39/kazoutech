@@ -224,7 +224,7 @@ class ProfileUserSiteEdit extends Component {
                                                     <div className="alert alert-primary text-small" role="alert">
                                                         <i className="icon-shield"></i>
                                                         <span className="text-justify">
-                                                            Veiullez compléter vote profil avec une photo de votre CNI (Carte Nationalité d'Identité).
+                                                            Veuillez compléter vote profil avec une photo de votre CNI (Carte Nationalité d'Identité).
                                                         </span>
                                                     </div>
                                                     <div className="fileinput fileinput-new text-center"

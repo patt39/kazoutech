@@ -74,7 +74,7 @@ class ProfileSiteAvisUser extends Component {
             .then(() => {
 
                 //Redirect after create
-                $.notify('<strong>Avis enregistré avec success...</strong>', {
+                $.notify('<strong>Avis enregistré avec succès...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -100,7 +100,7 @@ class ProfileSiteAvisUser extends Component {
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Something wrong. Try later...", {
+            $.notify("Ooopss! Something wrong. Try later...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -122,7 +122,7 @@ class ProfileSiteAvisUser extends Component {
             .then(() => {
 
                 //Redirect after create
-                $.notify('<strong>Avis enregistré avec success...</strong>', {
+                $.notify('<strong>Avis enregistré avec succès...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -144,7 +144,7 @@ class ProfileSiteAvisUser extends Component {
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Something wrong. Try later...", {
+            $.notify("Ooopss! Something wrong. Try later...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -192,7 +192,6 @@ class ProfileSiteAvisUser extends Component {
            <>
 
                <div className="card-body">
-
                    <div className="mb-1">
 
                        {avischarbonneurs.length > 0 && (
@@ -269,7 +268,7 @@ class ProfileSiteAvisUser extends Component {
                                        </div>
                                        <div className="col-md-6">
                                            <div className="form-group">
-                                               <label>Prènom <span
+                                               <label>Prénom <span
                                                    className="kazouTech-red-color">*</span></label>
                                                <div className="input-group">
                                                    <div className="input-group-prepend">
@@ -277,7 +276,7 @@ class ProfileSiteAvisUser extends Component {
                                                  <i className="ni ni-circle-08"></i></span>
                                                    </div>
                                                    <Input type="text" minLength="2" maxLength="100"
-                                                          placeholder="Votre Prènom ..." aria-label="Votre Prènom ..."
+                                                          placeholder="Votre Prénom ..." aria-label="Votre Prènom ..."
                                                           required="required"
                                                           id="last_name"
                                                           className={`form-control ${this.hasErrorFor('last_name') ? 'is-invalid' : ''}`}
@@ -292,7 +291,7 @@ class ProfileSiteAvisUser extends Component {
                                    <div className="row">
                                        <div className="col-md-6">
                                            <div className="form-group">
-                                               <label>Email address <span
+                                               <label>Adresse email <span
                                                    className="kazouTech-red-color">*</span></label>
                                                <div className="input-group">
                                                    <div className="input-group-prepend">

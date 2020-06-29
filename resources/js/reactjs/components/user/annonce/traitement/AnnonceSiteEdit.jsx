@@ -95,7 +95,7 @@ class AnnonceSiteEdit extends Component {
         };
         dyaxios.put(route('annonces_site.update', [SlugOccupation, Id]), item)
             .then(() => {
-                $.notify('<strong>Annonce mise à jour avec success...</strong>', {
+                $.notify('<strong>Annonce mis à jour avec succès...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -221,8 +221,6 @@ class AnnonceSiteEdit extends Component {
 
                                     <div className="col-md-8 mx-auto">
                                         <div className="card">
-
-
                                             <div className="container">
                                                 <h3 className="title mt-3">{this.state.title}</h3>
                                                 <div className="row">
@@ -252,7 +250,7 @@ class AnnonceSiteEdit extends Component {
                                                             <select name={'city_id'} value={this.state.city_id}
                                                                 className={`form-control`} data-trigger
                                                                 id="city_id" onChange={this.handleFieldChange}>
-                                                                <option value="" disabled>Selectioner une ville</option>
+                                                                <option value="" disabled>Selectionez une ville</option>
                                                                 {cities.map((item) => (
                                                                     <option key={item.id} value={item.id}>{item.name}</option>
                                                                 ))}
@@ -263,13 +261,13 @@ class AnnonceSiteEdit extends Component {
                                                     <div className="col-md-6">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Category
+                                                                Catégorie
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <select name={'categoryoccupation_id'} value={this.state.categoryoccupation_id}
                                                                 className={`form-control ${this.hasErrorFor('categoryoccupation_id') ? 'is-invalid' : ''}`}
                                                                 id="categoryoccupation_id" onChange={this.handleFieldChange}>
-                                                                <option value="" disabled>Selectioner une Category</option>
+                                                                <option value="" disabled>Selectioner une Catégorie</option>
                                                                 {categoryoccupations.map((item) => (
                                                                     <option key={item.id} value={item.id}>{item.name}</option>
                                                                 ))}
@@ -283,7 +281,7 @@ class AnnonceSiteEdit extends Component {
                                                     <div className="col-md-7">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Votre addresse de residance
+                                                                Votre adresse de residance
                                                                     <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="text"
@@ -300,11 +298,11 @@ class AnnonceSiteEdit extends Component {
                                                     <div className="col-md-5">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Telephone
+                                                                Téléphone
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="tel" className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}
-                                                                placeholder="Numero de telephone valide"
+                                                                placeholder="Numéro de téléphone valide"
                                                                 aria-label="Numero de telephone valide"
                                                                 name={'phone'}
                                                                 value={this.state.phone}

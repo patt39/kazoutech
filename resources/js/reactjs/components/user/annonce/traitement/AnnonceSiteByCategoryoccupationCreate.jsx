@@ -240,12 +240,12 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                     <div className="col-md-7">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Votre addresse de residance
+                                                                Votre adresse de residance
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="text"
                                                                    className={`form-control ${this.hasErrorFor('address') ? 'is-invalid' : ''}`}
-                                                                   name="address"
+                                                                   name="adresse"
                                                                    placeholder="Biyem-Assi"
                                                                    aria-label="420 Long Beach, CA" required="required"
                                                                    defaultValue={this.state.address}
@@ -257,11 +257,11 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                     <div className="col-md-5">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Telephone
+                                                                Téléphone
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="tel" className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}
-                                                                   placeholder="Numero de telephone valide"
+                                                                   placeholder="Numero de téléphone valide"
                                                                    aria-label="Numero de telephone valide"
                                                                    name={'phone'}
                                                                    value={this.state.phone}

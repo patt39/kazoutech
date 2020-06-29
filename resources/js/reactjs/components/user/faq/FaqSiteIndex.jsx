@@ -36,7 +36,7 @@ class FaqSiteIndex extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
-                                    <h2 className="display-2 text-white">Frequently Asked Questions (FAQs)</h2>
+                                    <h2 className="display-2 text-white">Foire Aux Questions (FAQs)</h2>
                                 </div>
                             </div>
                         </div>

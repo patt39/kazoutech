@@ -25,14 +25,14 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
     // handle delete
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -47,7 +47,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                         // title: 'Update FAQ',
-                        message: 'Annonce suprimée avec success'
+                        message: 'Annonce supprimée avec succès'
                     },
                         {
                             allow_dismiss: false,
@@ -65,7 +65,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -111,7 +111,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
         let SlugCity = this.props.match.params.city;
         return (
             <>
-              <Helmet title={`Annonce ${annoncebycategoryoccupation.name || ""} dans la ville de ${annoncebycity.name || "kazoutech"} | Kazoutech`}/>
+              <Helmet title={`Annonces ${annoncebycategoryoccupation.name || ""} dans la ville de ${annoncebycity.name || "kazoutech"} | Kazoutech`}/>
 
                 <div className="blog-post">
                     <NavUserSIte />
@@ -152,11 +152,8 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                 <div className="container">
                                                     <br />
                                                     <div className="row">
-
                                                         <div className="col-lg-4 col-md-12 mx-auto ">
-
                                                             <div className="card mb-3">
-
                                                                 <div className="card-header h6"
                                                                     style={{ textTransform: "capitalize" }}><b>Villes</b>
                                                                 </div>
@@ -186,18 +183,14 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
 
                                                                     </ul>
 
-
                                                                 </div>
                                                             </div>
 
-
                                                             <div className="card mb-3">
-
                                                                 <div className="card-header h6"><b>Annonces <span
                                                                     style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</span></b>
                                                                 </div>
                                                                 <div className="card-body">
-
                                                                     <ul className="list-unstyled">
 
                                                                         {catagoryoccupations.length ?

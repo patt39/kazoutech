@@ -211,9 +211,9 @@ class RegisterUserSite extends Component{
                                                 <label>Addresse E-mail .</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend">
-                                                                <span className="input-group-text">
-                                                                    <i className="ni ni-email-83"/>
-                                                                </span>
+                                                        <span className="input-group-text">
+                                                             <i className="ni ni-email-83"/>
+                                                        </span>
                                                     </div>
                                                     <input type="email" placeholder="Votre E-mail ..." aria-label="Votre E-mail ..."
                                                            required="required"
@@ -226,12 +226,12 @@ class RegisterUserSite extends Component{
                                                 </div>
                                             </div>
                                             <div className="form-group">
-                                                <label>Votre Numéro de Télephone</label>
+                                                <label>Votre Numéro de Téléphone</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend">
-                                                                <span className="input-group-text">
-                                                                    <i className="ni ni-mobile-button"/>
-                                                                </span>
+                                                        <span className="input-group-text">
+                                                           <i className="ni ni-mobile-button"/>
+                                                        </span>
                                                     </div>
                                                     <input type="tel" pattern="[0-9]*" inputMode="numeric" placeholder="Votre Numéro de Télephone ..." aria-label="Votre Numéro de Télephone ..."
                                                            required="required"

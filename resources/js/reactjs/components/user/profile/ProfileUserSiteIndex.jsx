@@ -15,8 +15,6 @@ class ProfileUserSiteIndex extends Component {
 
 
     render() {
-
-
         return (
 
             <div className="profile-page">

@@ -58,7 +58,7 @@ class OccupationSiteSlug extends Component {
                                         <div className="container text-center">
                                             <div className="row mb-5">
                                                 <div className="col-md-8 mx-auto mt-5">
-                                                    <h3 className="display-3">Choisissez votre catègorie en quelques clicks parmis nos offres</h3>
+                                                    <h3 className="display-3">Choisissez votre catégorie en quelques clicks parmis nos offres</h3>
                                                 </div>
                                             </div>
                                             <div className="row align-items-center">

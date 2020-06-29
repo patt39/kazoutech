@@ -196,8 +196,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +208,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -368,7 +365,7 @@
             },
         },
         created() {
-         axios.get("/api/account/user").then(response => {this.user = response.data.data});
+         axios.get("/api/user").then(response => {this.user = response.data.data});
          axios.get("/api/colors").then(({data}) => (this.colors = data.data));
         }
     }

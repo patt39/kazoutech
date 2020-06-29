@@ -89,7 +89,7 @@ class AnnonceSiteShow extends Component {
 
             }).catch(() => {
                 //Failled message
-                $.notify("Ooop! Une erreur est survenue", {
+                $.notify("Ooopss! Une erreur est survenue", {
                     allow_dismiss: false,
                     type: 'danger',
                     animate: {
@@ -116,7 +116,7 @@ class AnnonceSiteShow extends Component {
                 this.setState({
                     errors: error.response.data.errors
                 });
-                $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+                $.notify("Ooopss! Quelque chose ne va pas. Essayer plus tard...", {
                     allow_dismiss: false,
                     type: 'danger',
                     animate: {
@@ -130,14 +130,14 @@ class AnnonceSiteShow extends Component {
 
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette annonce?',
+            title: 'Etes vous sure de vouloir supprimer cette annonce?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
             confirmButtonClass: "btn btn-success btn-sm",
             cancelButtonClass: 'btn btn-danger btn-sm',
-            confirmButtonText: 'Oui suprimer',
-            cancelButtonText: 'No annuler',
+            confirmButtonText: 'Oui supprimer',
+            cancelButtonText: 'Non annuler',
             showCancelButton: true,
             reverseButtons: true
         }).then((result) => {
@@ -152,7 +152,7 @@ class AnnonceSiteShow extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                         // title: 'Update FAQ',
-                        message: 'Annonce suprimée avec success'
+                        message: 'Annonce supprimée avec succès'
                     },
                         {
                             allow_dismiss: false,
@@ -169,7 +169,7 @@ class AnnonceSiteShow extends Component {
                     /** End alert ***/
                 }).catch(() => {
                     //Failled message
-                    $.notify("Ooop! Une erreur est survenue", {
+                    $.notify("Ooopss! Une erreur est survenue", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -219,7 +219,6 @@ class AnnonceSiteShow extends Component {
                         <div className="container">
                             <br />
                             <div className="row">
-
                                 <div className="col-md-8">
                                     <div className="card">
                                         <div className="card-header">
@@ -259,7 +258,7 @@ class AnnonceSiteShow extends Component {
                                                         {$userKazou.my_status === 'active' && (
                                                             <>
                                                                 <a target="_blank" href={`/dashboard/annonces/tasks/${annonce.occupation.slug}/${annonce.city.slug}/${annonce.slug}/assigned/`} className="btn btn-sm btn-info btn-icon">
-                                                                    <span className="btn-inner--text">Assigner la tash</span>
+                                                                    <span className="btn-inner--text">Assigner la tâche</span>
                                                                 </a>
                                                             </>
                                                         )}
@@ -271,7 +270,7 @@ class AnnonceSiteShow extends Component {
                                                                     <span className="btn-inner--icon icon-big">
                                                                         <i className="ni ni-check-bold" />
                                                                     </span>
-                                                                    <span className="btn-inner--text">editer</span>
+                                                                    <span className="btn-inner--text">Editer</span>
                                                                 </NavLink>
                                                                 <Button onClick={() => this.deleteItem(annonce.id)}
                                                                     className="btn btn-sm btn-danger btn-icon">
@@ -379,7 +378,6 @@ class AnnonceSiteShow extends Component {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

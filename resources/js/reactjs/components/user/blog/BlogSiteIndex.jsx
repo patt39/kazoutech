@@ -64,7 +64,7 @@ class BlogSiteIndex extends Component {
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+            $.notify("Ooopss! Quelque chose ne va pas. Essayer plus tard...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -76,7 +76,7 @@ class BlogSiteIndex extends Component {
     }
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir suprimer cette article de blog?',
+            title: 'Etes vous sure de vouloir supprimer cette article de blog?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -99,7 +99,7 @@ class BlogSiteIndex extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                         // title: 'Update FAQ',
-                        message: 'Article de blog suprimé avec success'
+                        message: 'Article de blog suprimé avec succès'
                     },
                         {
                             allow_dismiss: false,
@@ -202,7 +202,6 @@ class BlogSiteIndex extends Component {
                                                                 ))}
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,7 +251,7 @@ class BlogSiteIndex extends Component {
                                                         </span>
                                                         </div>
 
-                                                        <input type="text" placeholder="Pseudo ou votre numero de téléphone" aria-label="Pseudo ou votre numero de téléphone"
+                                                        <input type="text" placeholder="Pseudo ou votre numéro de téléphone" aria-label="Pseudo ou votre numero de téléphone"
                                                                required="required"
                                                                id="username"
                                                                className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
@@ -270,7 +269,7 @@ class BlogSiteIndex extends Component {
                                                         </span>
                                                         </div>
 
-                                                        <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
+                                                        <input type="password" placeholder="Mot de passe" aria-label="Mot de passe"
                                                                required="required"
                                                                id="password"
                                                                className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}
