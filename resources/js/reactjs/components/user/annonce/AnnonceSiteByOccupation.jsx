@@ -91,7 +91,7 @@ class AnnonceSiteByOccupation extends Component {
         const annoncebycategoryoccupations = annoncebyoccupation.categoryoccupations;
         return (
             <>
-                <Helmet title={`${annoncebyoccupation.name || "Kazoutech"} | Kazoutech`} />
+                <Helmet title={`Tous les annonces en ${annoncebyoccupation.name || "Kazoutech"} | Kazoutech`} />
                 <div className="blog-post">
                     <NavUserSIte />
                     <div className="wrapper">
@@ -197,7 +197,6 @@ class AnnonceSiteByOccupation extends Component {
                                                                     </div>
                                                                 </div>
                                                             </div>
-
 
                                                             <div className="card">
                                                                 <div className="card-body">

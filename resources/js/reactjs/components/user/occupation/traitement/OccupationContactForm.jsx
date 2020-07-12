@@ -116,7 +116,7 @@ class OccupationContactForm extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label>Nom complete <span
+                                        <label>Nom complet <span
                                             className="kazouTech-red-color">*</span></label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">
@@ -159,7 +159,7 @@ class OccupationContactForm extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label>Email address <span
+                                        <label>Adresse e-amail <span
                                             className="kazouTech-red-color">*</span></label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">

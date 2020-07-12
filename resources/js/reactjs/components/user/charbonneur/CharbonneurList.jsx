@@ -43,7 +43,7 @@ class CharbonneurList extends Component {
                                 human foundation in truth And I love you...
                             </p>
 
-                            <Link to={`/charbonneur/${this.props.username}/`} className="btn btn-lg btn-info btn-block">Voire le profile</Link>
+                            <Link to={`/charbonneur/${this.props.username}/`} className="btn btn-lg btn-info btn-block">Voire le profil</Link>
                         </div>
                     </div>
                 </div>

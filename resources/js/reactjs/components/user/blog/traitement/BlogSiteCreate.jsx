@@ -189,7 +189,6 @@ class BlogSiteCreate extends Component {
                                                     </div>
                                                 </div>
                                                 <div className={'row'}>
-
                                                     <div className="col-md-6">
                                                         <label className="labels">
                                                             Catégorie de l'article
@@ -205,7 +204,6 @@ class BlogSiteCreate extends Component {
                                                         </select>
                                                         {this.renderErrorFor('occupation_id')}
                                                     </div>
-
                                                     <div className="col-md-6">
                                                         <label className="labels">
                                                             Donner une couleur à l'article

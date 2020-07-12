@@ -159,7 +159,6 @@ class OccupationSiteSlug extends Component {
                                                         <div className="cd-section" id="accordion">
                                                             <div className="accordion-1">
                                                                 <div className="container">
-
                                                                     <div className={'row'}>
                                                                         <div className="col-md-12 ml-auto">
                                                                             <div className="accordion" id="accordionFaqs">

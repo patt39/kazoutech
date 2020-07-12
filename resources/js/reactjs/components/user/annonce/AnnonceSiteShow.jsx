@@ -277,7 +277,7 @@ class AnnonceSiteShow extends Component {
                                                                     <span className="btn-inner--icon icon-big">
                                                                         <i className="ni ni-fat-remove" />
                                                                     </span>
-                                                                    <span className="btn-inner--text">Suprimer</span>
+                                                                    <span className="btn-inner--text">Supprimer</span>
                                                                 </Button>{" "}
                                                             </>
                                                         )}
@@ -344,8 +344,8 @@ class AnnonceSiteShow extends Component {
 
 
                                             {charbonneurs.userbycities.map((item) => (
+                                                
                                                 <Fragment key={item.id}>
-
                                                     <div className="card-header d-flex align-items-center">
                                                         <div className="d-flex align-items-center">
                                                             <NavLink to={`/charbonneur/${item.username}/`}>
@@ -439,7 +439,7 @@ class AnnonceSiteShow extends Component {
                                                         </span>
                                                     </div>
 
-                                                    <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
+                                                    <input type="password" placeholder="Mot de passe" aria-label="Mot de passe"
                                                         required="required"
                                                         id="password"
                                                         className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}

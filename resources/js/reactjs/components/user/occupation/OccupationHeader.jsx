@@ -16,16 +16,15 @@ class OccupationHeader extends Component {
                             <h2 className="display-2 text-white">{this.props.name}</h2>
                             <div className="author">
                                 <Link to={'/occupations/'} className="text-white">
-                                    <i className="fa fa-chevron-circle-left"/> Retour Occupations
+                                    <i className="fa fa-chevron-circle-left"/> Retour au catégories
                                 </Link>
                             </div>
                             <br />
                             <div className="text-white">
-                                <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{this.props.name}</b> au Cameroun</span>
+                                <span>Tous les annonces en <b style={{ textTransform: "lowercase" }}>{this.props.name}</b> au Cameroun</span>
                                 <br />
                                 <span>{this.props.annonces_count} {this.props.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{this.props.name}</b> au Cameroun</span>
                             </div>
-
                         </div>
                     </div>
                 </div>

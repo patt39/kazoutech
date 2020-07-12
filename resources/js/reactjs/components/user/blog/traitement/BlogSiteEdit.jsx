@@ -284,7 +284,6 @@ class BlogSiteEdit extends Component {
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <FooterUserSite />

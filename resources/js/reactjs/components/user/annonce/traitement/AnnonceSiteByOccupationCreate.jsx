@@ -264,7 +264,7 @@ class AnnonceSiteByOccupationCreate extends Component {
                                                     <div className="col-md-6">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Category
+                                                                Catégorie
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <select name={'categoryoccupation_id'} value={this.state.categoryoccupation_id}
@@ -284,7 +284,7 @@ class AnnonceSiteByOccupationCreate extends Component {
                                                     <div className="col-md-7">
                                                         <div className="js-form-message">
                                                             <label className="labels">
-                                                                Votre addresse de residance
+                                                                Votre adresse de residance
                                                                     <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="text"
@@ -305,7 +305,7 @@ class AnnonceSiteByOccupationCreate extends Component {
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="tel" className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}
-                                                                placeholder="Numero de telephone valide"
+                                                                placeholder="Numéro de téléphone valide"
                                                                 aria-label="Numero de telephone valide"
                                                                 name={'phone'}
                                                                 value={this.state.phone}

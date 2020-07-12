@@ -204,7 +204,6 @@ class AnnonceSiteByOccupationCity extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </section>

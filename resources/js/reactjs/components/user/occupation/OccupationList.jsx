@@ -21,6 +21,7 @@ class OccupationList extends Component {
                                 </div>
                             </div>
                         </Link>
+                        
                     </LazyLoad>
                 </div>
             </div>

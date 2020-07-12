@@ -3,6 +3,7 @@ import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {Link,NavLink} from "react-router-dom";
 import CharbonneurList from "./CharbonneurList";
+import { Helmet } from 'react-helmet';
 import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
 import NavoccupationSkeleton from "../../inc/NavoccupationSkeleton";
 
@@ -38,10 +39,11 @@ class CharbonneurSiteByCity extends Component {
 
     render() {
         const {charbonneursbycity,charbonneursbyoccupation,cities} = this.state;
-        const composantTitle = `${charbonneursbycity.name || "kazoutech"}`;
-        document.title = `Charbonneurs dans la ville de ${composantTitle} | Kazoutech`;
         let userbycities = charbonneursbycity.userbycities;
         return (
+
+            <>
+        <Helmet title={`${charbonneursbyoccupation.name} dans la ville de ${charbonneursbycity.name} au Cameroun | Kazoutech`}/>
 
             <div className="about-us">
                 <NavUserSIte/>
@@ -76,7 +78,7 @@ class CharbonneurSiteByCity extends Component {
                             <div className="row">
                                 <div className="col-md-4">
                                     <div className="card mb-3">
-                                        <div className="card-header h6">Les charbonneurs da la Ville de </div>
+                                        <div className="card-header h6">Les charbonneurs dans la Ville de </div>
                                         <div className="card-body">
                                             <ul className="list-unstyled">
 
@@ -118,6 +120,7 @@ class CharbonneurSiteByCity extends Component {
                     <FooterUserSite/>
                 </div>
             </div>
+            </>
         )
     }
 

@@ -111,7 +111,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
         let SlugCity = this.props.match.params.city;
         return (
             <>
-              <Helmet title={`Annonces ${annoncebycategoryoccupation.name || ""} dans la ville de ${annoncebycity.name || "kazoutech"} | Kazoutech`}/>
+              <Helmet title={`Annonces en ${annoncebycategoryoccupation.name || ""} dans la ville de ${annoncebycity.name || "kazoutech"} au Cameroun | Kazoutech`}/>
 
                 <div className="blog-post">
                     <NavUserSIte />
@@ -130,7 +130,7 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                         </Link>
                                     </div>
                                     <br />
-                                        <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+                                        <span>Tous les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
                                         <br />
                                         <span>{annoncebycity.annonces_count} {annoncebycity.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycity.name}</b> au Cameroun</span>
                                 </div>
@@ -250,7 +250,6 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                 </div>
                                                             </div>
 
-
                                                             <div className="card">
                                                                 <div className="card-body">
                                                                     {annoncebycities.map((item) => (
@@ -258,20 +257,14 @@ class AnnonceSiteByOccupationCategoryoccupationCity extends Component {
                                                                     ))}
                                                                 </div>
                                                             </div>
-
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </section>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </section>
-
-
                         </div>
                         <FooterUserSite />
                     </div>

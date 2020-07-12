@@ -93,7 +93,7 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
         };
         dyaxios.post(route('annonces_site.save_by_catgoryoccupation', [SlugOccupationcreate,SlugCategoryocupationcreate]), item)
             .then(() => {
-                $.notify('<strong>Annonce creé avec success...</strong>', {
+                $.notify('<strong>Annonce créée avec success...</strong>', {
                     allow_dismiss: false,
                     type: 'success',
                     placement: {
@@ -109,7 +109,7 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                 this.setState({
                     errors: error.response.data.errors
                 });
-                $.notify("Ooop! Something wrong. Try later...", {
+                $.notify("Ooops! Something wrong. Try later...", {
                     allow_dismiss: false,
                     type: 'danger',
                     animate: {
@@ -155,7 +155,7 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                         </Link>
                                         <div className="author">
                                             <a style={{cursor : "pointer"}}  className="text-white" onClick={this.props.history.goBack}>
-                                                <i className="fa fa-chevron-circle-left"/> Retour {categoryoccupationdata.name}
+                                                <i className="fa fa-chevron-circle-left"/> Rétour {categoryoccupationdata.name}
                                             </a>
                                         </div>
                                     </div>
@@ -261,7 +261,7 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <input type="tel" className={`form-control ${this.hasErrorFor('phone') ? 'is-invalid' : ''}`}
-                                                                   placeholder="Numero de téléphone valide"
+                                                                   placeholder="Numéro de téléphone valide"
                                                                    aria-label="Numero de telephone valide"
                                                                    name={'phone'}
                                                                    value={this.state.phone}

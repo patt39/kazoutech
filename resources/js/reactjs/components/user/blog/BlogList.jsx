@@ -72,7 +72,7 @@ class BlogList extends Component {
                                                         <span className="btn-inner--icon icon-big">
                                                             <i className="ni ni-fat-remove" />
                                                         </span>
-                                                        <span className="btn-inner--text">Suprimer</span>
+                                                        <span className="btn-inner--text">Supprimer</span>
                                                     </Button>{" "}
                                                 </>
                                             )}

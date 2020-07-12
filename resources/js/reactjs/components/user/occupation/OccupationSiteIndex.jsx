@@ -25,7 +25,7 @@ class OccupationSiteIndex extends Component {
         return (
             <>
             
-                <Helmet title={`Occupations et services à la personne : trouver un charbonneur facilement kazoutech | Kazoutech`}/>
+                <Helmet title={`Catégories technique: trouver un technicien en Soudure, Maçon, Electricité... au Cameroun facilement sur kazoutech | Kazoutech`}/>
 
                 <div className="landing-page">
                     <NavUserSIte/>
@@ -39,7 +39,7 @@ class OccupationSiteIndex extends Component {
                                     <div className="header-body text-center mb-7">
                                         <div className="row justify-content-center">
                                             <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                                <h3 className="display-2 text-white">Occupations</h3>
+                                                <h3 className="display-2 text-white">Catégories</h3>
                                                 <p className="text-lead text-white">Du service à la personne et du main
                                                     à main entre particuliers</p>
                                             </div>

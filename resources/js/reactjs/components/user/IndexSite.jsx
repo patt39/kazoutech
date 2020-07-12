@@ -26,7 +26,7 @@ class IndexSite extends Component {
     render() {
         return (
             <>
-                <Helmet title={`Technicians services to particulars | Kazoutech`}/>
+                <Helmet title={`Trouver des techniciens au Cameroun pour vous rendre des services chez vous | Kazoutech`}/>
                 
                 <div className="landing-page">
                     <NavUserSIte/>
@@ -58,7 +58,7 @@ class IndexSite extends Component {
                                                     <h6 className="text-primary text-uppercase">Des profils évalués</h6>
                                                     <p className="description mt-3">Les profils de nos prestataires
                                                         sont controller et évaluer en permenance pour vous rassurer et
-                                                        vous apporter seulement les meilleur qui sois en ce qui conçerne leur
+                                                        vous apporter seulement les meilleurs qui soit en ce qui conçerne leur
                                                         service
                                                         et nous nous assurons aussi de leur bonne moralité donc ne vous
                                                         mefiez pas.</p>
@@ -75,7 +75,7 @@ class IndexSite extends Component {
                                                     </div>
                                                     <h6 className="text-success text-uppercase">Kazoutech le
                                                         meilleur</h6>
-                                                    <p className="description mt-3">Kazoutech est une plateform vrai
+                                                    <p className="description mt-3">Kazoutech est une plateforme vrai
                                                         nous avons un siége sociale, des bureaux et une licence. Des
                                                         personnes de bonne moralité toujours prés a vous
                                                         rendre le meilleur. Donc, pour tout vos problemes contactez ou

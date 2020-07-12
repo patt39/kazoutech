@@ -99,7 +99,7 @@ class BlogSiteIndex extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                         // title: 'Update FAQ',
-                        message: 'Article de blog suprimé avec succès'
+                        message: 'Article de blog supprimé avec succès'
                     },
                         {
                             allow_dismiss: false,
@@ -139,7 +139,7 @@ class BlogSiteIndex extends Component {
         const { blogs, blogsLast } = this.state;
         return (
             <>
-            <Helmet title={`Blog une mise a jour des informations  | Kazoutech`}/>
+            <Helmet title={`Conseils et astuces techniques au Cameroun  | Kazoutech`}/>
 
              <div className="blog-post">
                 <NavUserSIte />

@@ -48,7 +48,7 @@ class BlogSiteShow extends Component {
                                         <h4 className="display-4 text-white">{blog.title || <Skeleton />}</h4>
                                         <div className="author">
                                             <Link to={'/blog/'} className="text-white">
-                                                <i className="fa fa-chevron-circle-left" /> Retour au blogs
+                                                <i className="fa fa-chevron-circle-left" /> Retour au articles
                                              </Link>
                                         </div>
                                     </div>

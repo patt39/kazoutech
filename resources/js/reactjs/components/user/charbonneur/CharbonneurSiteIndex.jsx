@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {Link} from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import CharbonneurList from "./CharbonneurList";
 import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
 
@@ -15,9 +16,6 @@ class CharbonneurSiteIndex extends Component {
     }
     // lifecycle method
     componentDidMount() {
-        const composantTitle = 'Charbonneurs | Kazoutech';
-        document.title = `${composantTitle}`;
-
         dyaxios.get(route('api_active_charbonneurs')).then(response =>
             this.setState({
                 charbonneurs: [...response.data],
@@ -37,6 +35,9 @@ class CharbonneurSiteIndex extends Component {
             <></>
         );
         return (
+
+            <>
+            <Helmet title={`Techniciens au Cameroun | Kazoutech`}/>
 
             <div className="about-us">
                 <NavUserSIte/>
@@ -78,6 +79,7 @@ class CharbonneurSiteIndex extends Component {
                     <FooterUserSite/>
                 </div>
             </div>
+            </>
         )
     }
 

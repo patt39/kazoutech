@@ -64,7 +64,7 @@ class CategoryOccupationShow extends Component {
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+            $.notify("Ooopss! Quelque chose ne va pas. Essayer plus tard...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -131,7 +131,7 @@ class CategoryOccupationShow extends Component {
                                             </div>
                                             <Link to={`/annonces/${itemoccupation}/${categoryoccupation.slug}/`}
                                                   className="font-size-3 font-weight-medium d-block">
-                                                Voir toutes les annonces en {categoryoccupation.name}
+                                                Voir tous les annonces en {categoryoccupation.name}
                                                 <i className="fas fa-chevron-right pl-1 font-size-1"/>
                                             </Link>
                                             <br/>
@@ -181,7 +181,6 @@ class CategoryOccupationShow extends Component {
                                                             <i className="ni ni-email-83"/>
                                                         </span>
                                                             </div>
-
                                                             <input type="text" placeholder="Pseudo ou votre numero de téléphone" aria-label="Pseudo ou votre numero de téléphone"
                                                                    required="required"
                                                                    id="username"
@@ -199,7 +198,6 @@ class CategoryOccupationShow extends Component {
                                                             <i className="ni ni-lock-circle-open"/>
                                                         </span>
                                                             </div>
-
                                                             <input type="password" placeholder="Mot de passe" aria-label="Mot de passe"
                                                                    required="required"
                                                                    id="password"

@@ -31,7 +31,7 @@ class BlogPostInteresse extends Component {
                 {blogsinteresse.length > 0 && (
 
                     <div className="text-center">
-                        <h4 className="title">Ces postes peuvent vous interesser </h4>
+                        <h4 className="title">Ces postes peuvent vous intéresser </h4>
                     </div>
                 )}
 

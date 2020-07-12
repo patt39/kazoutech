@@ -32,9 +32,9 @@ class BlogOccupationList extends Component {
                                  className="btn btn-outline-primary ">
                             {item.name}
                         </NavLink>
-                    ))}</>:<Skeleton count={2}/>}
-                  
-
+                      ))}
+                    </>:<Skeleton count={2}/>}
+            
                 </div>
             </div>
 

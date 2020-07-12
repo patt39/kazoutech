@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import {Link} from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import CharbonneurList from "./CharbonneurList";
 import CharbonneurCityList from "./CharbonneurCityList";
 import NavoccupationforCharbonneur from "./NavoccupationforCharbonneur";
@@ -25,9 +26,11 @@ class CharbonneurSiteByOccupation extends Component {
 
     render() {
         const {charbonneursbyoccupation} = this.state;
-        document.title = `Charbonneurs en ${charbonneursbyoccupation.name || "kazoutech"} | Kazoutech`;
         let users = charbonneursbyoccupation.userbyoccupations;
         return (
+
+            <>
+            <Helmet title={`Techniciens en ${charbonneursbyoccupation.name || "kazoutech"} au Cameroun | Kazoutech`}/>
 
             <div className="about-us">
                 <NavUserSIte/>
@@ -81,6 +84,7 @@ class CharbonneurSiteByOccupation extends Component {
                     <FooterUserSite/>
                 </div>
             </div>
+            </>
         )
     }
 

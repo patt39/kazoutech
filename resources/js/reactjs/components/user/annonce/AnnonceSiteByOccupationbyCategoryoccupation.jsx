@@ -100,7 +100,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
         let SlugOccupation = this.props.match.params.occupation;
         return (
             <>
-             <Helmet title={`Annonce de ${annoncebycategoryoccupation.name || "Kazoutech"} | Kazoutech`}/>
+             <Helmet title={`Annonce de ${annoncebycategoryoccupation.name || "Kazoutech"} au Cameroun | Kazoutech`}/>
                 <div className="blog-post">
                     <NavUserSIte />
                     <div className="wrapper">
@@ -119,7 +119,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                             </Link>
                                         </div>
                                         <br />
-                                        <span>Toutes les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
+                                        <span>Tous les annonces <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
                                         <br />
                                         <span>{annoncebycategoryoccupation.annonces_count} {annoncebycategoryoccupation.annonces_count > 1 ? "annonces" : "annonce"} <b style={{ textTransform: "lowercase" }}>{annoncebycategoryoccupation.name}</b> au Cameroun</span>
 
@@ -161,7 +161,6 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                     style={{ textTransform: "capitalize" }}><b>Villes</b>
                                                                 </div>
                                                                 <div className="card-body">
-
                                                                     <ul className="list-unstyled">
 
                                                                         {cities.length ?
@@ -195,7 +194,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
 
                                                         <div className="col-lg-8 col-md-10 mx-auto">
                                                             <h4 className="title">
-                                                                Toutes les annonces <b>{annoncebycategoryoccupation.name}</b>
+                                                                Tous les annonces en <b>{annoncebycategoryoccupation.name}</b>
                                                             </h4>
                                                             <div className="row">
                                                                 <div className="col-md-6">
@@ -226,7 +225,6 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
                                                                     </div>
                                                                 </div>
                                                             </div>
-
 
                                                             <div className="card">
                                                                 <div className="card-body">

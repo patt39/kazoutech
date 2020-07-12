@@ -104,7 +104,7 @@ class AnnonceSiteIndex extends Component {
                                 <div className="row">
                                     <div className="col-md-6 mx-auto text-center">
                                         <h2 className="text-white">
-                                            Restez à l'affût de toutes les annonces sur KazouTech
+                                            Restez à l'affût de tous les annonces sur KazouTech
                                         </h2>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@ class AnnonceSiteIndex extends Component {
                                                             */}
                                                         </div>
                                                         <div className="col-lg-8 col-md-10 mx-auto">
-                                                            <h3 className="display-3 mb-5"><b>Toutes les annonces</b></h3>
+                                                            <h3 className="display-3 mb-5"><b>Tous les annonces</b></h3>
                                                             <div className="row">
                                                                 <div className="col-md-6">
                                                                     <div className="card mb-3 text-center">

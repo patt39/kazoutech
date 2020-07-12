@@ -65,7 +65,7 @@ class ProfileSiteAnnonces extends Component {
                                                         </NavLink>
 
                                                         <a style={{cursor : "pointer"}} className="dropdown-item"  onClick={() => this.props.deleteAnnonce(this.props.id)}>
-                                                             <i className="ni ni-fat-remove"/> Suprimer
+                                                             <i className="ni ni-fat-remove"/> Supprimer
                                                         </a>
                                                     </div>
                                                 </div>
