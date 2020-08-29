@@ -85,7 +85,7 @@ class BlogSiteByCategoriesOccupation extends Component {
         const blogsbycategies = blogsbycategy.blogs;
         return (
             <>
-            <Helmet title={`Conseils et astuces en ${blogsbycategy.name || "Kazoutech"} au Cameroun | Kazoutech`}/>
+            <Helmet title={`Conseils et astuces en ${blogsbycategy.name || "Kazoutech"} | Kazoutech Cameroun`}/>
              <div className="blog-post">
                 <NavUserSIte/>
                 <div className="wrapper">

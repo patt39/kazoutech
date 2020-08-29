@@ -31,6 +31,7 @@ class AnnonceController extends Controller
             }])->orderBy('annonces_count','desc')->take(6)->distinct()->get();
         return response()->json($annonces,200);
     }
+    
     public function apiannonces()
     {
         $annonces = AnnonceResource::collection(annonce::where('status',1)

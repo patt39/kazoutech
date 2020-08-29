@@ -37,7 +37,7 @@ class CharbonneurSiteIndex extends Component {
         return (
 
             <>
-            <Helmet title={`Techniciens au Cameroun | Kazoutech`}/>
+            <Helmet title={`Tous les techniciens | Kazoutech Cameroun`}/>
 
             <div className="about-us">
                 <NavUserSIte/>

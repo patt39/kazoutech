@@ -122,7 +122,7 @@ class ProfileSiteIndex extends Component {
                                                 {!$guest && (
                                                   <>
                                                       {$userKazou.id === userProfile.id  && (
-                                                          <a href="#" className="btn btn-sm btn-info mr-4">Editer mon profile</a>
+                                                          <a href="#" className="btn btn-sm btn-info mr-4">Editer mon profil</a>
                                                       )}
                                                   </>
 

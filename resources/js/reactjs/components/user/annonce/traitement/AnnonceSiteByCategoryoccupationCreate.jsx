@@ -137,7 +137,7 @@ class AnnonceSiteByCategoryoccupationCreate extends Component {
         const { cities, categoryoccupationdata } = this.state;
         const composantTitle = `${categoryoccupationdata.name}`;
         let SlugOccupation = this.props.match.params.occupation;
-        document.title = `Nouvelle annonce de ${composantTitle} | Kazoutech`;
+        document.title = `Nouvelle annonce en ${composantTitle} | Kazoutech`;
         return (
 
             <div className="checkout-page">

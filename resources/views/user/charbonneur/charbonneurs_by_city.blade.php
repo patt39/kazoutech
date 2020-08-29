@@ -1,6 +1,6 @@
 @extends('inc.user._main')
 <?php $item = htmlspecialchars(config('app.name'));?>
-@section('title', 'Charbonneurs dans la ville de '.$city->name.' | '.$item)
+@section('title', 'Techniciens en ' '.$occupation->name.' dans la ville de '.$city->name.' | '.$item)
 
 @section('style')
 @endsection

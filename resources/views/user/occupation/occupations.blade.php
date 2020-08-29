@@ -1,6 +1,6 @@
 @extends('inc.user._main')
 <?php $item = htmlspecialchars(config('app.name'));?>
-@section('title', 'Occupations et services à la persone : trouver un jobber facillement kazoutech | '.$item)
+@section('title', 'Trouver un technicien en Soudure, Maçonnerie, Electricité... facilement au Cameroun | '.$item)
 
 @section('style')
 @endsection

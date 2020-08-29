@@ -25,7 +25,7 @@ class OccupationSiteIndex extends Component {
         return (
             <>
             
-                <Helmet title={`Catégories technique: trouver un technicien en Soudure, Maçon, Electricité... au Cameroun facilement sur kazoutech | Kazoutech`}/>
+                <Helmet title={`Trouver un technicien en Soudure, Maçonnerie, Electricité... facilement au Cameroun | Kazoutech`}/>
 
                 <div className="landing-page">
                     <NavUserSIte/>

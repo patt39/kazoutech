@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Services\Admin;
-
 
 use App\Jobs\MailContactMessageJob;
 use App\Model\user\User;

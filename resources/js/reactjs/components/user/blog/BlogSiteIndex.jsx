@@ -139,7 +139,7 @@ class BlogSiteIndex extends Component {
         const { blogs, blogsLast } = this.state;
         return (
             <>
-            <Helmet title={`Conseils et astuces techniques au Cameroun  | Kazoutech`}/>
+            <Helmet title={`Conseils et astuces dans tous domaine techniques au Cameroun  | Kazoutech`}/>
 
              <div className="blog-post">
                 <NavUserSIte />

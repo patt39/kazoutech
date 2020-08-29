@@ -26,7 +26,7 @@ class IndexSite extends Component {
     render() {
         return (
             <>
-                <Helmet title={`Trouver des techniciens au Cameroun pour vous rendre des services chez vous | Kazoutech`}/>
+                <Helmet title={`Trouver des techniciens de tout domaine au cameroun pour vous rendre des service à domocile | Kazoutech`}/>
                 
                 <div className="landing-page">
                     <NavUserSIte/>

@@ -100,7 +100,7 @@ class AnnonceSiteByOccupationbyCategoryoccupation extends Component {
         let SlugOccupation = this.props.match.params.occupation;
         return (
             <>
-             <Helmet title={`Annonce de ${annoncebycategoryoccupation.name || "Kazoutech"} au Cameroun | Kazoutech`}/>
+             <Helmet title={`Annonce en ${annoncebycategoryoccupation.name || "Kazoutech"} | Kazoutech Cameroun`}/>
                 <div className="blog-post">
                     <NavUserSIte />
                     <div className="wrapper">

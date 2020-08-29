@@ -43,7 +43,7 @@ class CharbonneurSiteByCity extends Component {
         return (
 
             <>
-        <Helmet title={`${charbonneursbyoccupation.name} dans la ville de ${charbonneursbycity.name} au Cameroun | Kazoutech`}/>
+        <Helmet title={`${charbonneursbyoccupation.name} dans la ville de ${charbonneursbycity.name} | Kazoutech`}/>
 
             <div className="about-us">
                 <NavUserSIte/>

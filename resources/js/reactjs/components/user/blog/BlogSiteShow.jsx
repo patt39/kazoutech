@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import moment from 'moment'
+import { Helmet } from 'react-helmet';
 import NavUserSIte from "../../inc/NavUserSIte";
 import FooterUserSite from "../../inc/FooterUserSite";
 import BlogPostInteresse from "./BlogPostInteresse";
@@ -30,13 +31,13 @@ class BlogSiteShow extends Component {
 
     render() {
         const { blog } = this.state;
-        const composantTitle = `${blog.title || "Kazoutech"}`;
-        document.title = `${composantTitle} | Kazoutech`;
+        
         return (
             <>
+        <Helmet title={`${blog.title || "Kazoutech"}  | Kazoutech Cameroun`}/>
+
                 <div className="landing-page">
                     <NavUserSIte />
-
                     <div className="wrapper">
                         <div className="page-header page-header-mini header-filter">
                             <div className="page-header-image page-header-mini"
