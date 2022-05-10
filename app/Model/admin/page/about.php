@@ -16,7 +16,7 @@ class about extends Model implements Auditable
      *
      * @var array
      */
-    use LogsActivity,\OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     protected $fillable = ['first_name',
         'twlink',
@@ -92,7 +92,7 @@ class about extends Model implements Auditable
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 
 class faq extends Model implements Auditable
 {
@@ -16,6 +18,14 @@ class faq extends Model implements Auditable
 
   protected $fillable = ['body','title','categoryfaq_id','status'];
   protected static $logAttributes = ['user_id','body','title','categoryfaq_id','ip','status'];
+
+  public function getActivitylogOptions(): LogOptions
+  {
+      return LogOptions::defaults()
+      ->logOnly(['body']);
+        logOnlyDirty()
+      ->dontSubmitEmptyLogs();    
+  }
 
     /**
      * @return array
@@ -74,7 +84,7 @@ class faq extends Model implements Auditable
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class documentation extends Model implements Auditable
 {
@@ -49,6 +50,14 @@ class documentation extends Model implements Auditable
         return Cache::has('user-is-online-' . $this->id);
     }
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name']);
+          logOnlyDirty()
+        ->dontSubmitEmptyLogs();    
+    }
+
 
     use Sluggable;
     /**
@@ -56,7 +65,7 @@ class documentation extends Model implements Auditable
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

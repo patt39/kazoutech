@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
+
 
 class color extends Model implements Auditable
 {
@@ -23,6 +26,15 @@ class color extends Model implements Auditable
     protected static $logAttributes = ['name','user_id','ip','status'];
 
     protected $table = 'colors';
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name']);
+          logOnlyDirty()
+        ->dontSubmitEmptyLogs();    
+    }
+
     /**
      * @return array
      */
@@ -80,7 +92,7 @@ class color extends Model implements Auditable
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'color_name' => [

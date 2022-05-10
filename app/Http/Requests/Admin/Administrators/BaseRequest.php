@@ -10,14 +10,14 @@ use Waavi\Sanitizer\Laravel\SanitizesInput;
 
 abstract class BaseRequest extends FormRequest
 {
-    use  SanitizesInput;
+   // use  SanitizesInput;
     /**
      * For more sanitizer rule check https://github.com/Waavi/Sanitizer
      */
-    public function validateResolved()
+     public function validateResolved()
     {
         {
-            $this->sanitize();
+            //$this->sanitize();
             parent::validateResolved();
         }
     }

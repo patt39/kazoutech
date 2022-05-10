@@ -8,6 +8,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 
 class diploma extends Model
 {
@@ -20,6 +22,14 @@ class diploma extends Model
 
     protected $fillable = ['name','user_id','ip','status'];
     protected static $logAttributes = ['name','user_id','ip','status'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['body']);
+          logOnlyDirty()
+        ->dontSubmitEmptyLogs();    
+    }
 
     public function user()
     {
@@ -59,7 +69,7 @@ class diploma extends Model
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
 

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class technician extends Model implements Auditable
 {
@@ -41,6 +42,14 @@ class technician extends Model implements Auditable
         'occupation_id',
         'status'
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['speciality']);
+          logOnlyDirty()
+        ->dontSubmitEmptyLogs();    
+    }
 
 
     public function member()

@@ -11,7 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class condition extends Model implements Auditable
 {
-    use LogsActivity,\OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     protected $table = 'conditions';
     protected $fillable = ['title', 'body','status'];
@@ -69,7 +69,7 @@ class condition extends Model implements Auditable
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

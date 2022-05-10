@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class categoryfaq extends Model
 {
@@ -19,7 +20,14 @@ class categoryfaq extends Model
 
     protected $fillable = ['name','user_id','ip','status'];
     protected static $logAttributes = ['name','user_id','ip','status'];
-
+    
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name']);
+          logOnlyDirty()
+        ->dontSubmitEmptyLogs();    
+    }
 
     public function user()
     {
@@ -66,7 +74,7 @@ class categoryfaq extends Model
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

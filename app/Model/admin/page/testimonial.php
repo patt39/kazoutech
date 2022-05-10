@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class testimonial extends Model implements Auditable
 {
@@ -16,6 +17,15 @@ class testimonial extends Model implements Auditable
     protected static $logAttributes = ['body', 'ip', 'user_id','status'];
 
     protected $fillable = ['body','user_id','ip','status'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['body']);
+          logOnlyDirty()
+        ->dontSubmitEmptyLogs();    
+    }
+
     /**
      * @return array
      */
@@ -61,7 +71,7 @@ class testimonial extends Model implements Auditable
      *
      * @return array
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
