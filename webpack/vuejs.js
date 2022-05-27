@@ -6,6 +6,6 @@ module.exports = output => {
 
     mix.js(path_from + '/app.js', output + '/js/vuejs')
         .js(path_from + '/axios.js', output + '/js/vuejs')
-        .sourceMaps();
+        .vue();
 
 };
