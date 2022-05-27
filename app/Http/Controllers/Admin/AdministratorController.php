@@ -116,7 +116,7 @@ class AdministratorController extends Controller
 
         $user->save();
 
-        return ['message' => 'user has ben updated'];
+        return ['message' => 'User has been updated'];
     }
 
     /**

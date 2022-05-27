@@ -159,7 +159,7 @@ class OccupationController extends Controller
         $occupation->update([
             'status' => 0,
             ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
 
@@ -188,7 +188,7 @@ class OccupationController extends Controller
 
         $occupation->update($request->all());
 
-        return ['message' => 'Occupation has ben updated'];
+        return ['message' => 'Occupation has been updated'];
     }
 
     /**
@@ -204,6 +204,6 @@ class OccupationController extends Controller
         File::delete(public_path($oldFilename));
         $occupation->delete();
 
-        return ['message' => 'color deleted '];
+        return ['message' => 'Occupation deleted '];
     }
 }

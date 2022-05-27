@@ -60,7 +60,6 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(\request()->all()); // pour tester les donner qui entre dans la base de donner
         $this->validate($request,[
             'body' => 'required',
             'role' => 'required|string|max:100',
@@ -131,7 +130,7 @@ class TestimonialController extends Controller
 
         $testimonial->save();
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**

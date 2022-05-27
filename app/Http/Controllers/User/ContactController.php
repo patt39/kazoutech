@@ -165,7 +165,7 @@ class ContactController extends Controller
             'status' => 1,
             'user_id' => auth()->user()->id,
         ]);
-        return response('Deactivated message read',Response::HTTP_ACCEPTED);
+        return response('Disabled message',Response::HTTP_ACCEPTED);
     }
 
     public function bookmark(contact $contact, $id)
@@ -175,7 +175,7 @@ class ContactController extends Controller
             'bookmark' => 1,
             'user_id' => auth()->user()->id,
         ]);
-        return response('Message bookmark',Response::HTTP_ACCEPTED);
+        return response('Message bookmarked',Response::HTTP_ACCEPTED);
     }
 
     public function unbookmark(contact $contact, $id)
@@ -207,12 +207,12 @@ class ContactController extends Controller
     {
         $contact = contact::findOrFail($id);
         try {
-            // Delete user
+            // Delete contact message
             $contact->delete();
-            return ['message' => 'message contact deleted '];
+            return ['message' => 'contact message deleted '];
         } catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
-            return ['message' => "Error message contact don't deleted"];
+            return ['message' => "Error contact message undeleted"];
         }
     }
 

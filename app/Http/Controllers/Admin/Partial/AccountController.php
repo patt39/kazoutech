@@ -127,7 +127,7 @@ class AccountController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return ['message' => 'user has ben create'];
+        return ['message' => 'User has been created'];
 
 
     }
@@ -201,7 +201,7 @@ class AccountController extends Controller
             'password',
             'country_id'
         ));
-        return ['message' => 'user has ben updated'];
+        return ['message' => 'User has been updated'];
     }
 
 }

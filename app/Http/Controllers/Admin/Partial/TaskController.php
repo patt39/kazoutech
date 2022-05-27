@@ -183,6 +183,6 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->delete();
 
-        return ['message' => 'note deleted '];
+        return ['message' => 'Task deleted '];
     }
 }

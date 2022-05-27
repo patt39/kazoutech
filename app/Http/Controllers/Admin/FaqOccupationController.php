@@ -138,7 +138,7 @@ class FaqOccupationController extends Controller
 
         $faqoccupation->update($request->all());;
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
     /**
      * Remove the specified resource from storage.

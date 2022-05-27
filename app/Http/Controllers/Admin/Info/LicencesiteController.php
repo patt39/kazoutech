@@ -80,7 +80,7 @@ class LicencesiteController extends Controller
             'status' => 0,
             'user_id' => auth()->user()->id,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active(licencesite $licencesite, $id)
@@ -90,7 +90,7 @@ class LicencesiteController extends Controller
             'status' => 1,
             'user_id' => auth()->user()->id,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Activated',Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -149,7 +149,7 @@ class LicencesiteController extends Controller
 
         $licencesite->save();
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**
@@ -163,6 +163,6 @@ class LicencesiteController extends Controller
         $licencesite = Licencesite::findOrfail($id);
         $licencesite -> delete();
 
-        return ['message' => 'licence deleted'];
+        return ['message' => 'Licence deleted'];
     }
 }

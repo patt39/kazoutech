@@ -86,7 +86,7 @@ class NoteController extends Controller
         $note->update([
             'status' => 1,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active(note $note, $id)
@@ -140,7 +140,7 @@ class NoteController extends Controller
 
         $note->save();
 
-        return ['message' => 'note has ben updated'];
+        return ['message' => 'Note updated'];
     }
 
     /**

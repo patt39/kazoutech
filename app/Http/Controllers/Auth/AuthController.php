@@ -38,7 +38,7 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($loginData)){
-            return ['message' => 'Data invalid'];
+            return ['message' => 'Invalid data'];
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;

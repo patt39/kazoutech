@@ -164,7 +164,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return ['message' => 'user has ben updated'];
+        return ['message' => 'User updated'];
     }
 
     /**
@@ -178,7 +178,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return ['message' => 'Deleted successfully '];
+        return ['message' => 'User deleted successfully '];
     }
 
     /**
@@ -190,9 +190,9 @@ class UserController extends Controller
     {
         $user = User::onlyTrashed()->find($id);
         if ($user->restore()){
-            return ['message' => 'Restore successfully '];
+            return ['message' => 'Restored successfully '];
         }else{
-            return ['message' => 'Oppp errore '];
+            return ['message' => 'Oppps error '];
         }
 
     }

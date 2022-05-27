@@ -89,18 +89,6 @@ class TechnicianController extends Controller
     }
 
     /**
-     * Ici je recupere les technicians par occupation
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
-    public function viewdiploma($slug)
-    {
-        $technicians = TechnicianResource::collection(diploma::whereSlug($slug)->firstOrFail()->technicians()
-            ->with('user','member','city','occupation','diploma')
-            ->latest()->get());
-        return $technicians;
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -218,10 +206,10 @@ class TechnicianController extends Controller
 
         if(auth()->user()->id === $technician->user_id) {
             $technician->update($request->all());
-            return ['message' => 'technician has been updated'];
+            return ['message' => 'Technician updated'];
         }else{
             return back()
-                ->with('error',"Unauthorized edit this article contact Author.");
+                ->with('error',"Unauthorized editing this article contact Author.");
         }
     }
 
@@ -239,6 +227,6 @@ class TechnicianController extends Controller
         $technician = technician::findOrFail($id);
         $technician->delete();
 
-        return ['message' => 'technician deleted '];
+        return ['message' => 'Technician deleted '];
     }
 }

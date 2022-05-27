@@ -96,7 +96,7 @@ class DeviscontactsController extends Controller
         $deviscontact->update([
             'status' => 0,
         ]);
-        return response('Deactivated message read',Response::HTTP_ACCEPTED);
+        return response('Disabled message',Response::HTTP_ACCEPTED);
     }
 
     public function active(deviscontact $contact, $id)
@@ -126,10 +126,10 @@ class DeviscontactsController extends Controller
         try {
             // Delete user
             $deviscontact->delete();
-            return ['message' => 'message contact deleted '];
+            return ['message' => 'message deleted '];
         } catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
-            return ['message' => "Error message contact don't deleted"];
+            return ['message' => "Error can't delete message"];
         }
     }
 }

@@ -86,7 +86,7 @@ class PolicyprivacyController extends Controller
             'status' => 0,
             'user_id' => auth()->user()->id,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active(policyprivacy $policyprivacy, $id)
@@ -96,7 +96,7 @@ class PolicyprivacyController extends Controller
             'status' => 1,
             'user_id' => auth()->user()->id,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Activated',Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -160,7 +160,7 @@ class PolicyprivacyController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
         }
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**
@@ -174,6 +174,6 @@ class PolicyprivacyController extends Controller
        $policyprivacy = Policyprivacy::findOrfail($id);
        $policyprivacy -> delete();
 
-       return ['message' => 'policyprivacy deleted'];
+       return ['message' => 'Policy deleted'];
     }
 }

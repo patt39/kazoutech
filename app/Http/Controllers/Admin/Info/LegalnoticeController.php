@@ -84,7 +84,7 @@ class LegalnoticeController extends Controller
                 'status' => 0,
                 'user_id' => auth()->user()->id,
             ]);
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active($id)

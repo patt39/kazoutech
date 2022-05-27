@@ -115,7 +115,7 @@ class FaqController extends Controller
         $faq->update([
             'status' => 0,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active(faq $faq, $id)
@@ -202,7 +202,7 @@ class FaqController extends Controller
 
         $faq->save();
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**

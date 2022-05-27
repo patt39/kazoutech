@@ -69,7 +69,7 @@ class PermissionController extends Controller
         $permission = Permission::findOrFail($id);
         $permission->update($request->all());
 
-        return ['message' => 'permission has ben updated'];
+        return ['message' => 'Permission updated'];
     }
 
     /**
@@ -83,6 +83,6 @@ class PermissionController extends Controller
         $permission = Permission::findOrFail($id);
         $permission->delete();
 
-        return ['message' => 'permission deleted '];
+        return ['message' => 'Permission deleted '];
     }
 }

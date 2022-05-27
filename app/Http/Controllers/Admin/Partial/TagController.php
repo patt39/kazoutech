@@ -120,7 +120,7 @@ class TagController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active($id)
@@ -156,7 +156,7 @@ class TagController extends Controller
 
         $tag->save();
 
-        return ['message' => 'tag has ben updated'];
+        return ['message' => 'Tag updated'];
     }
 
     /**
@@ -170,6 +170,6 @@ class TagController extends Controller
         $tag = tag::findOrFail($id);
         $tag->delete();
 
-        return ['message' => 'Deleted successfully'];
+        return ['message' => 'Tag deleted successfully'];
     }
 }

@@ -38,7 +38,7 @@ class AdmininviteController extends Controller
         Mail::to($request->get('email'))->send(new InviteAdministrator($invite));
 
         // redirect back where we came from
-        return response('Invitation successfully', Response::HTTP_CREATED);
+        return response('Invitation sent successfully', Response::HTTP_CREATED);
     }
 
     public function accept($token,User $user)

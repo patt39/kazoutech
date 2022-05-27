@@ -92,7 +92,7 @@ class CategoryfaqController extends Controller
         $categoryfaq->update([
             'status' => 0,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
     /**
      * Active
@@ -163,7 +163,7 @@ class CategoryfaqController extends Controller
 
         $categoryfaq->save();
 
-        return ['message' => 'category faq has ben updated'];
+        return ['message' => 'Category faq updated'];
     }
 
     /**
@@ -178,6 +178,6 @@ class CategoryfaqController extends Controller
         $categoryfaq = categoryfaq::findOrFail($id);
         $categoryfaq->delete();
 
-        return ['message' => 'category faq deleted '];
+        return ['message' => 'Category faq deleted '];
     }
 }

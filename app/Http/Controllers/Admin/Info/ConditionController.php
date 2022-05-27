@@ -81,7 +81,7 @@ class ConditionController extends Controller
                 'user_id' => auth()->user()->id,
                 ]);
         
-        return response('deactivated', Response::HTTP_ACCEPTED);
+        return response('disactivated', Response::HTTP_ACCEPTED);
     }
 
     public function active_condition($id)
@@ -149,11 +149,10 @@ class ConditionController extends Controller
         ]);
 
         $condition = Condition::find($id);
-
     
         $condition->update($request->all());
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**
@@ -170,6 +169,6 @@ class ConditionController extends Controller
 
        $condition -> delete();
 
-       return ['message' => 'condition deleted'];
+       return ['message' => 'Condition deleted'];
     }
 }

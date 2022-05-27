@@ -80,14 +80,14 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
 
-        if ( ! User::where('username', $request->username)->first() ) {
+        if ( !User::where('username', $request->username)->first() ) {
             throw ValidationException::withMessages([
                 $this->username() => Lang::get('auth.username'),
             ]);
         }
 
 
-        if ( ! User::where('username', $request->username)->where('password', bcrypt($request->password))->first() ) {
+        if ( !User::where('username', $request->username)->where('password', bcrypt($request->password))->first() ) {
             throw ValidationException::withMessages([
                 $this->username() => Lang::get('auth.username'),
             ]);

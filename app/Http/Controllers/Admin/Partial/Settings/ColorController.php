@@ -79,8 +79,6 @@ class ColorController extends Controller
        $color->name = $request->name;
        $color->color_name = $request->color_name;
 
-
-
        $color->save();
 
        return response('Created',Response::HTTP_CREATED);
@@ -92,7 +90,7 @@ class ColorController extends Controller
         $color->update([
             'status' => 0,
         ]);
-        return response('Deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
 
@@ -153,7 +151,7 @@ class ColorController extends Controller
 
         $color->save();
 
-        return ['message' => 'color has been updated'];
+        return ['message' => 'Color has been updated'];
     }
 
     /**
@@ -167,6 +165,6 @@ class ColorController extends Controller
         $color = color::findOrFail($id);
         $color->delete();
 
-        return ['message' => 'color deleted '];
+        return ['message' => 'Color deleted '];
     }
 }

@@ -137,7 +137,7 @@ class BlogController extends Controller
             $blog->delete();
             return ['message' => 'Blog post deleted '];
         }else{
-            return ['error',"Unauthorized edit this article contact Author."];
+            return ['Error',"Unauthorized editing this article contact Author."];
         }
     }
 }

@@ -58,7 +58,7 @@ class AvischarbonneurController extends Controller
         $avischarbonneur->message = $request->message;
         $avischarbonneur->save();
 
-        return response('Created', Response::HTTP_CREATED);
+        return response('Created', Response::HTTP_CREATED)->json(201);
 
     }
 
@@ -67,12 +67,12 @@ class AvischarbonneurController extends Controller
     {
         $avischarbonneur = avischarbonneur::findOrFail($id);
         try {
-            // Delete user
+            // Delete message
             $avischarbonneur->delete();
             return ['message' => 'avis deleted '];
         } catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
-            return ['message' => "Error avis don't deleted"];
+            return ['message' => "Error try again"];
         }
     }
 }

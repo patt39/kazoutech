@@ -143,7 +143,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return ['message' => 'Rle deleted '];
+        return ['message' => 'Role deleted '];
     }
 
     public function deleteMultiple(Request $request)

@@ -70,7 +70,7 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(\request()->all()); // pour tester les donner qui entre dans la base de donner
+        //dd(\request()->all()); // pour tester les données qui entrent dans la base de données
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -183,14 +183,14 @@ class AboutController extends Controller
 
             $request->merge(['photo' =>  "/assets/img/about/{$name}"]);
 
-            // Ici on suprime l'image existant
+            // Ici on suprime l'image existante
             $oldFilename = $currentPhoto;
             File::delete(public_path($oldFilename));
         }
 
         $about->update($request->all());
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**

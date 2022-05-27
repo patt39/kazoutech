@@ -107,7 +107,7 @@ class CategoryController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
-        return response('deactivated',Response::HTTP_ACCEPTED);
+        return response('Disactivated',Response::HTTP_ACCEPTED);
     }
 
     public function active($id)
@@ -146,7 +146,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return ['message' => 'color has ben updated'];
+        return ['message' => 'Category has been updated'];
     }
 
     /**
@@ -160,6 +160,6 @@ class CategoryController extends Controller
         $category = category::findOrFail($id);
         $category->delete();
 
-        return ['message' => 'color deleted '];
+        return ['message' => 'Category deleted '];
     }
 }

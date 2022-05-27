@@ -58,7 +58,7 @@ class ProfileController extends Controller
             ]);
         }else{
             return back()
-                ->with('error',"Unauthorized edit this article contact Author.");
+                ->with('Error',"Unauthorized editing this is not your account.");
         }
 
 
@@ -80,7 +80,6 @@ class ProfileController extends Controller
                     ->whereHas('categoryoccupation', function ($q) {$q->where('status',1);})
                     ->whereHas('occupation', function ($q) {$q->where('status',1);});
             }])->firstOrFail();
-
 
         return response()->json($user,200);
     }

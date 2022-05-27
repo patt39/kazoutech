@@ -48,7 +48,7 @@ class SubscriberController extends Controller
             'user_email' => 'required|string|email',
         ]);
 
-        if ( ! Newsletter::isSubscribed($request->user_email) ) {
+        if ( !Newsletter::isSubscribed($request->user_email) ) {
             Newsletter::subscribe($request->user_email);
 
             $subscriber= new subscriber;
@@ -57,7 +57,7 @@ class SubscriberController extends Controller
 
             $subscriber->save();
 
-            return response('Thank you for subscribing to our newsletters',Response::HTTP_CREATED);
+            return response('Thank you for subscribing to our newsletter',Response::HTTP_CREATED);
         }
 
         return response('You are already subscribed',Response::HTTP_CREATED);

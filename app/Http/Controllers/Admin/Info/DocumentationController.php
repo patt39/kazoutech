@@ -152,7 +152,7 @@ class DocumentationController extends Controller
             dd($e);
         }
 
-        return ['message' => 'condition deleted'];
+        return ['message' => 'Document deleted'];
     }
 
 

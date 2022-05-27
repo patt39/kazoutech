@@ -198,7 +198,7 @@ class CityController extends Controller
 
         $city->update($request->all());
 
-        return ['message' => 'city has ben updated'];
+        return ['message' => 'City updated'];
     }
 
     /**
@@ -212,6 +212,6 @@ class CityController extends Controller
         $city = city::findOrFail($id);
         $city->delete();
 
-        return ['message' => 'city deleted '];
+        return ['message' => 'City deleted '];
     }
 }

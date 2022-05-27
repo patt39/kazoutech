@@ -94,7 +94,7 @@ class MultiplesRouteTraitementController extends Controller
                 'annonce' => $annonce,
             ]);
         }else{
-            return ['error',"Unauthorized edit this article contact Author."];
+            return ['Error',"Unauthorized editing this article contact Author."];
         }
     }
 
@@ -132,7 +132,7 @@ class MultiplesRouteTraitementController extends Controller
                 'blog' => $blog,
             ]);
         }else{
-            return ['error',"Unauthorized edit this article contact Author."];
+            return ['Error',"Unauthorized editing this article please contact Author."];
         }
     }
 }

@@ -47,7 +47,6 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(\request()->all()); // pour tester les donner qui entre dans la base de donner
         $this->validate($request,[
             'name'=>'required|string|unique:countries',
             'code'=>'required|string|unique:countries',
@@ -133,6 +132,6 @@ class CountryController extends Controller
 
         $country->delete();
 
-        return ['message' => 'Deleted successfully'];
+        return ['message' => 'Country deleted successfully'];
     }
 }
