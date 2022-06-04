@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">color_lens</i>
                                     </div>
-                                    <p class="card-category"><b>All Colors</b>
+                                    <p class="card-category"><b>All Colors</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{colors.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +44,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">color_lens</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +62,9 @@
                                     <div v-if="$auth.can('create-color')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
-                                     <span class="btn-label">
-                                        <i class="material-icons">color_lens</i>
-                                    </span>
+                                                <span class="btn-label">
+                                                    <i class="material-icons">color_lens</i>
+                                                </span>
                                                 <b class="title_hover">New Color</b>
                                             </button>
                                         </div>
@@ -194,7 +194,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -343,7 +342,7 @@
                         //Failled message
                         this.$Progress.fail();
                         //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',
@@ -392,7 +391,7 @@
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -428,7 +427,7 @@
                     Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -443,7 +442,7 @@
                 this.$Progress.start();
                 axios.get('/dashboard/disable_color/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Color desactivated successfully.</strong>', {
+                    $.notify('<strong>Color disactivated successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'primary',
                         placement: {
@@ -463,7 +462,7 @@
                     Fire.$emit('ItemGetter');
                 }).catch(() => {
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

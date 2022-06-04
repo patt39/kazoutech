@@ -22,9 +22,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">color_lens</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -142,7 +141,7 @@
 
             deleteItem(item) {
                 Swal.fire({
-                    title: 'Delete Message Contact?',
+                    title: 'Delete Quotation Message?',
                     text: "Are you sure you want to delete this message?",
                     type: 'warning',
                     animation: false,
@@ -162,7 +161,7 @@
                         dyaxios.delete(route('deviscontacts.destroy',[item.id])).then(() => {
 
                             /** Alert notify bootstrapp **/
-                            $.notify('<strong>Message devis deleted successfully.</strong>', {
+                            $.notify('<strong>Quotation message deleted successfully.</strong>', {
                                 allow_dismiss: false,
                                 type: 'success',
                                 placement: {
@@ -183,7 +182,7 @@
                             //Failled message
                             this.$Progress.fail();
 
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -210,7 +209,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

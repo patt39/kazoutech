@@ -16,7 +16,7 @@
                                         <div class="card-icon">
                                             <i class="material-icons">supervised_user_circle</i>
                                         </div>
-                                        <p class="card-category"><b>All Administrators</b>
+                                        <p class="card-category"><b>All Administrators</b></p>
                                         <h3 class="card-title" style="color:red;"><b>{{users.length}}</b></h3>
                                     </div>
                                     <div class="card-footer">
@@ -214,16 +214,16 @@
                                                             <div class="modal-footer">
                                                                 <div class="text-center">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
-                                                                    </button>
-                                                                    <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">alternate_email</i>
-                                                            <b>Yes, Invite</b>
-                                                        </span>
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">clear</i>
+                                                                            <b>Close</b>
+                                                                        </span>
+                                                                                    </button>
+                                                                                    <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">alternate_email</i>
+                                                                            <b>Yes, Invite</b>
+                                                                        </span>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -359,7 +359,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Administrator invite Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Administrator invited successfully.</strong>', 'progress': 75});
                         }, 2000);
 
                         //End Progress bar
@@ -368,7 +368,7 @@
                     //Failled message
                     this.$Progress.fail();
 
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Please try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

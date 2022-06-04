@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">forum</i>
                                     </div>
-                                    <p class="card-category"><b>All Categories FAQs</b>
+                                    <p class="card-category"><b>All Categories FAQs</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{categoryfaqs.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +44,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">forum</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">forum</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -187,31 +187,31 @@
                                                                    required/>
                                                             <has-error :form="form" field="name"></has-error>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <div class="text-center">
-                                                                <button type="button" class="btn btn-danger"
-                                                                        data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
-                                                                </button>
-                                                                <button v-show="!editmode" type="submit"
-                                                                        class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">check</i>
-                                                            <b>Yes, Save</b>
-                                                        </span>
-                                                                </button>
-                                                                <button v-show="editmode" type="submit"
-                                                                        class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">save_alt</i>
-                                                            <b>Yes, Update</b>
-                                                        </span>
-                                                                </button>
+                                                            <div class="modal-footer">
+                                                                <div class="text-center">
+                                                                    <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">
+                                                            <span class="btn-label">
+                                                                <i class="material-icons">clear</i>
+                                                                <b>Close</b>
+                                                            </span>
+                                                                    </button>
+                                                                    <button v-show="!editmode" type="submit"
+                                                                            class="btn btn-success btn-raised">
+                                                            <span class="btn-label">
+                                                                <i class="material-icons">check</i>
+                                                                <b>Yes, Save</b>
+                                                            </span>
+                                                                    </button>
+                                                                    <button v-show="editmode" type="submit"
+                                                                            class="btn btn-success btn-raised">
+                                                            <span class="btn-label">
+                                                                <i class="material-icons">save_alt</i>
+                                                                <b>Yes, Update</b>
+                                                            </span>
+                                                                    </button>
+                                                                </div>
                                                             </div>
-                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -225,7 +225,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -337,7 +336,7 @@
                     //Failled message
                     this.$Progress.fail();
 
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -385,7 +384,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -436,7 +435,7 @@
                             //Failled message
                             this.$Progress.fail();
 
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -488,7 +487,7 @@
                 this.$Progress.start();
                 this.form.get('/dashboard/disable_category-faqs/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Category Faq desactivated successfully.</strong>', {
+                    $.notify('<strong>Category Faq disactivated successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'primary',
                         placement: {
@@ -510,7 +509,7 @@
                     //Failled message
                     this.$Progress.fail();
 
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

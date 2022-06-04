@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">keyboard_capslock</i>
                                     </div>
-                                    <p class="card-category"><b>All Activities Logs</b>
+                                    <p class="card-category"><b>All Activities Logs</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{activities.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -40,9 +40,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">keyboard_capslock</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">keyboard_capslock</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 

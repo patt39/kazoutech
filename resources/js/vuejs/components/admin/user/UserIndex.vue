@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">account_box</i>
                                     </div>
-                                    <p class="card-category"><b>All Users</b>
+                                    <p class="card-category"><b>All Users</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{users.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -367,7 +367,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>User banish successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>User banished successfully.</strong>', 'progress': 75});
                             }, 2000);
 
                             //End Progress bar
@@ -378,7 +378,7 @@
                             //Failled message
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',

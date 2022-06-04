@@ -98,7 +98,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 <script>
@@ -159,7 +158,7 @@
                             showProgressbar: true
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Information updated successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>FAQ updated successfully.</strong>', 'progress': 75});
                         }, 2000);
                         setTimeout(() => this.$router.push({ name: 'faqs.index' }));
                         /** Fin alert **/
@@ -170,7 +169,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

@@ -128,7 +128,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -165,7 +164,7 @@
                 axios.get(`/dashboard/contacts/unbookmark/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify("Bookmark cancel successfully", {
+                    $.notify("Bookmark cancelled successfully", {
                         type: 'success',
                         animate: {
                             enter: 'animated bounceIn',
@@ -178,7 +177,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -194,7 +193,7 @@
                 axios.get(`/dashboard/contacts/bookmark/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify("Bookmark successfully", {
+                    $.notify("Bookmarked successfully", {
                         type: 'success',
                         animate: {
                             enter: 'animated bounceIn',
@@ -208,7 +207,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -220,7 +219,7 @@
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete Message Contact-us?',
+                    title: 'Delete Contact Message?',
                     text: "Are you sure you want to delete this message?",
                     type: 'warning',
                     animation: false,
@@ -244,7 +243,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>Contact message deleted successfully</strong>', 'progress': 75});
                             }, 2000);
                             //Redirect after create
                             setTimeout(() => this.$router.push({ name: 'contacts.index' }));
@@ -255,7 +254,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            toastr.error('', 'Ooops! Something wrong. Try later');
                         })
                     }
                 })
@@ -268,7 +267,7 @@
                 axios.get(`/dashboard/contacts/discard_red/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact read.</strong>', {
+                    $.notify('<strong>Contact message red.</strong>', {
                         allow_dismiss: false,
                         type: 'success',
                         placement: {
@@ -289,7 +288,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
@@ -300,7 +299,7 @@
                 axios.get(`/dashboard/contacts/red_confirm/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact unread.</strong>', {
+                    $.notify('<strong>Contact message unred.</strong>', {
                         allow_dismiss: false,
                         type: 'info',
                         placement: {
@@ -320,7 +319,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later...", {
+                    $.notify("Ooops! Something wrong. Try later...", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {

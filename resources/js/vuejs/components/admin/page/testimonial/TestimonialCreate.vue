@@ -85,7 +85,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -150,7 +149,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Testimonial Created Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Testimonial added Successfully.</strong>', 'progress': 75});
                         }, 2000);
                         setTimeout(() => this.$router.push({ name: 'testimonials.index' }));
 
@@ -159,7 +158,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                     type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

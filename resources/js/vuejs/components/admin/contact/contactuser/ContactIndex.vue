@@ -27,9 +27,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">email</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">email</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +109,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -143,7 +142,7 @@
 
                 axios.delete(`/dashboard/contacts/${item.id}`).then(() => {
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact-us deleted successfully.</strong>', {
+                    $.notify('<strong>Contact message deleted successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'success',
                         placement: {
@@ -163,7 +162,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -187,7 +186,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

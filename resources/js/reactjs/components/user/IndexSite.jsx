@@ -40,7 +40,7 @@ class IndexSite extends Component {
                             <div className="row">
                                 <div className="col-md-10 text-center mx-auto">
                                     <h3 className="display-3">Le service entre particuliers jamais aussi facile</h3>
-                                    <p className="lead">Pour tout vos bésoins immédiat des service d'un technicien(ne) en un
+                                    <p className="lead">Pour tout vos bésoins immédiat des services d'un technicien(ne) en un
                                         domaine spécifique n'hesitez plus. Des prestataires
                                         de services proche de vous que jamais lançez vous et profitez en.</p>
                                 </div>
@@ -77,7 +77,7 @@ class IndexSite extends Component {
                                                         meilleur</h6>
                                                     <p className="description mt-3">Kazoutech est une plateforme vrai
                                                         nous avons un siége sociale, des bureaux et une licence. Des
-                                                        personnes de bonne moralité toujours prés a vous
+                                                        personnes de bonne moralité toujours prét a vous
                                                         rendre le meilleur. Donc, pour tout vos problemes contactez ou
                                                         rapprochez vous de nos locaux nous serons ravis de vous recevoir
                                                         et d'éffacer vos doutes.</p>

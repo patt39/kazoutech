@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">chat</i>
                                     </div>
-                                    <p class="card-category"><b>All Testimonial Page</b>
+                                    <p class="card-category"><b>All Testimonial Page</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{testimonials.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -155,7 +155,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -258,7 +257,7 @@
                             //Failled message
                             this.$Progress.fail();
                             //Alert
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -297,7 +296,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

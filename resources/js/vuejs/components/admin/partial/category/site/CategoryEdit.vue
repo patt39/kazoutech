@@ -185,7 +185,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
         },

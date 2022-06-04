@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">forum</i>
                                     </div>
-                                    <p class="card-category"><b>All FAQs</b>
+                                    <p class="card-category"><b>All FAQs</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{faqs.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -43,9 +43,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">forum</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">forum</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +180,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +189,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -298,7 +296,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -335,7 +333,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -350,7 +348,7 @@
                 this.$Progress.start();
                 axios.get('/dashboard/disable_faqs/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Faq desactivated Successfully.</strong>', {
+                    $.notify('<strong>Faq disactivated Successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'primary',
                         placement: {
@@ -372,7 +370,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

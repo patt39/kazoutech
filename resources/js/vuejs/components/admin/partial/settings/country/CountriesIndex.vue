@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">flag</i>
                                     </div>
-                                    <p class="card-category"><b>All Countries</b>
+                                    <p class="card-category"><b>All Countries</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{countries.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -43,9 +43,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">flag</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">flag</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -324,7 +323,7 @@
                         //Failled message
                         this.$Progress.fail();
                         //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',
@@ -367,7 +366,7 @@
                         //Failled message
                         this.$Progress.fail();
                         //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',
@@ -416,7 +415,7 @@
                             //Failled message
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',

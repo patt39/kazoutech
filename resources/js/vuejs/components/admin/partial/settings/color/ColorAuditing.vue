@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">color_lens</i>
                                     </div>
-                                    <p class="card-category"><b>All Colors</b>
+                                    <p class="card-category"><b>All Colors</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{colors.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +44,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">color_lens</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 

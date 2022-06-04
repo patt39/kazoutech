@@ -16,7 +16,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">forum</i>
                                     </div>
-                                    <p class="card-category"><b>All Categories</b>
+                                    <p class="card-category"><b>All Categories</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{categories.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -45,9 +45,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">forum</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">forum</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +131,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -242,7 +241,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            toastr.error('', 'Ooops! Something wrong. Try later');
                         })
                     }
                 })
@@ -268,7 +267,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
             /* Ici c'est la desactivation de la couleur **/
@@ -282,7 +281,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Category desactivated successfully.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Category disactivated successfully.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert **/
 
@@ -293,7 +292,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
             loadItems() {

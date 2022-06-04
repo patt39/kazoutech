@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">assignment</i>
                                     </div>
-                                    <p class="card-category"><b>All Occupations</b>
+                                    <p class="card-category"><b>All Occupations</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{occupations.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -43,9 +43,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">color_lens</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +62,9 @@
                                     <div v-if="$auth.can('create-occupation')" class="toolbar">
                                         <div class="submit text-center">
                                             <router-link :to="{ name: 'occupations.create' }" class="btn btn-success btn-raised " >
-                                     <span class="btn-label">
-                                        <i class="material-icons">assignment</i>
-                                    </span>
+                                                <span class="btn-label">
+                                                    <i class="material-icons">assignment</i>
+                                                </span>
                                                 <b class="title_hover">New Occupations</b>
                                             </router-link>
                                         </div>
@@ -101,7 +101,7 @@
                                                 <td>
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status" class="badge badge-info"><b>Active</b></span>
-                                                        <span v-else-if="!item.status"  class="badge badge-danger"><b>Deactive</b></span>
+                                                        <span v-else-if="!item.status"  class="badge badge-danger"><b>Disactive</b></span>
                                                     </div>
                                                 </td>
                                                 <td><b v-html="item.technician_count"/></td>
@@ -135,7 +135,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -229,7 +228,7 @@
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -265,7 +264,7 @@
                     this.$Progress.finish();
                 }).catch(() => {
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -280,7 +279,7 @@
                 this.$Progress.start();
                 axios.get('/dashboard/disable_occupations/' + id).then(() => {
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Occupations desactivated Successfully.</strong>', {
+                    $.notify('<strong>Occupations disactivated Successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'primary',
                         placement: {
@@ -300,7 +299,7 @@
                     Fire.$emit('LoadItems');
                 }).catch(() => {
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

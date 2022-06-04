@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">http</i>
                                     </div>
-                                    <p class="card-category"><b>All Colors</b>
+                                    <p class="card-category"><b>All Colors</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{links.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -178,7 +178,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -262,7 +261,7 @@
                             showProgressbar: true
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Color updated successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>link updated successfully.</strong>', 'progress': 75});
                         }, 2000);
                         /** Fin alert **/
 
@@ -275,7 +274,7 @@
                         //Failled message
                         this.$Progress.fail();
                         //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',
@@ -337,7 +336,7 @@
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -379,7 +378,7 @@
                     .catch(() => {
                         this.$Progress.fail();
                         //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',

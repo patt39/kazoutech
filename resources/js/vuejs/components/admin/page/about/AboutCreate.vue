@@ -172,7 +172,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 <script>
@@ -247,7 +246,7 @@
                     this.$Progress.fail();
                     Swal.fire({
                         type: 'error',
-                        title: 'Your image is verry big',
+                        title: 'Your image is very big',
                         buttonsStyling: false,
                         confirmButtonClass: "btn btn-success",
                     });
@@ -270,7 +269,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Member Created Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Member Added Successfully.</strong>', 'progress': 75});
                         }, 2000);
                         setTimeout(() => this.$router.push({ name: 'abouts.index' }));
 
@@ -279,7 +278,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

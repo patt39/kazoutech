@@ -160,7 +160,7 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="media-body">
-                                                                                        <label class="bmd-label-floating">Tell about for you</label>
+                                                                                        <label class="bmd-label-floating">Tell about you</label>
                                                                                         <quill-editor v-model="form.body"
                                                                                                       :class="{ 'is-invalid': form.errors.has('body') }"
                                                                                                       :options="editorOption">
@@ -267,7 +267,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>profile updated Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Profile updated successfully.</strong>', 'progress': 75});
                         }, 2000);
                         //setTimeout(() =>  location.replace(`/dashboard/account/profile`), 2000);
                         //setTimeout(() => this.$router.push({ name: 'admin.account' }), 2000);
@@ -277,7 +277,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Please try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

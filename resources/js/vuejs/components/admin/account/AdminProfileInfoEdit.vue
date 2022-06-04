@@ -77,13 +77,13 @@
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.edit_profile' }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">info</i>
-                                                                                    <b>Personal info</b>
+                                                                                    <b>Personal infos</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <router-link :to="{ name: 'admin.profiles_edit', params: { id: form.id  } }" class="nav-link" style="cursor:pointer;" data-toggle="tab">
                                                                                     <i class="material-icons">create</i>
-                                                                                    <b>Editer le profile</b>
+                                                                                    <b>Editer le profil</b>
                                                                                 </router-link>
                                                                             </li>
                                                                             <li class="nav-item">
@@ -263,7 +263,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>profile updated Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Profile updated successfully.</strong>', 'progress': 75});
                         }, 2000);
                         //setTimeout(() =>  location.replace(`/dashboard/account/profile`), 2000);
                         setTimeout(() => this.$router.push({ name: 'admin.account' }), 2000);

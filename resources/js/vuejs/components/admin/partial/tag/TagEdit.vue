@@ -76,9 +76,9 @@
                                                             </router-link>
 
                                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                        <span class="btn-label">
-                                            <i class="material-icons">save_alt</i>
-                                        </span>
+                                                                <span class="btn-label">
+                                                                    <i class="material-icons">save_alt</i>
+                                                                </span>
                                                                 <b class="title_hover">Update tag</b>
                                                             </button>
                                                         </div>
@@ -96,7 +96,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -154,7 +153,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

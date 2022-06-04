@@ -16,7 +16,7 @@
                                         <div class="card-icon">
                                             <i class="material-icons">visibility</i>
                                         </div>
-                                        <p class="card-category"><b>All Permissions</b>
+                                        <p class="card-category"><b>All Permissions</b></p>
                                         <h3 class="card-title" style="color:red;"><b>{{permissions.length}}</b></h3>
                                     </div>
                                     <div class="card-footer">
@@ -45,9 +45,9 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">visibility</i>
-                                </span>
+                                                <span>
+                                                    <i id="tooltipSize" class="material-icons">visibility</i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -62,9 +62,9 @@
                                             </div>
                                             <div class="submit text-center">
                                                 <button id="button_hover" class="btn btn-success btn-raised btn-round" @click="newModal">
-                                    <span class="btn-label">
-                                        <i class="material-icons">playlist_add_check</i>
-                                    </span>
+                                                    <span class="btn-label">
+                                                        <i class="material-icons">playlist_add_check</i>
+                                                    </span>
                                                     <b class="title_hover">New Permission</b>
                                                 </button>
                                             </div>
@@ -131,22 +131,22 @@
                                                             <div class="modal-footer">
                                                                 <div class="text-center">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
-                                                                    </button>
-                                                                    <button v-show="!editmode" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">check</i>
-                                                            <b>Yes, Save</b>
-                                                        </span>
-                                                                    </button>
-                                                                    <button v-show="editmode" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">save_alt</i>
-                                                            <b>Yes, Update</b>
-                                                        </span>
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">clear</i>
+                                                                            <b>Close</b>
+                                                                        </span>
+                                                                                    </button>
+                                                                                    <button v-show="!editmode" type="submit" class="btn btn-success btn-raised">
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">check</i>
+                                                                            <b>Yes, Save</b>
+                                                                        </span>
+                                                                                    </button>
+                                                                                    <button v-show="editmode" type="submit" class="btn btn-success btn-raised">
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">save_alt</i>
+                                                                            <b>Yes, Update</b>
+                                                                        </span>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -253,7 +253,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -289,7 +289,7 @@
                     }).catch(() => {
                         //Failled message
                         this.$Progress.fail();
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',
@@ -352,7 +352,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',

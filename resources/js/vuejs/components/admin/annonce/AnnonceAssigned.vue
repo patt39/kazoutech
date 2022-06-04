@@ -369,7 +369,6 @@
       </div>
       <footer-admin />
     </div>
-  </div>
 </template>
 <script>
 import StatusAdmin from "../../inc/admin/StatusAdmin";

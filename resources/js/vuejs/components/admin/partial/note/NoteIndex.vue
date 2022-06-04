@@ -249,7 +249,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -341,7 +340,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -376,7 +375,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 });
             },
             editItem(item) {
@@ -437,7 +436,7 @@
                             //Failled message
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -459,7 +458,7 @@
                           showProgressbar: true
                       });
                       setTimeout(function() {
-                          notify.update({'type': 'success', 'message': '<strong>Note not done successfully.</strong>', 'progress': 75});
+                          notify.update({'type': 'success', 'message': '<strong>Note not done yet.</strong>', 'progress': 75});
                       }, 2000);
 
                     //End Progress bar
@@ -470,7 +469,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -503,7 +502,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

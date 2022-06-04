@@ -291,7 +291,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -367,7 +366,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Progress Task updated successfully.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Task Progression updated successfully.</strong>', 'progress': 75});
                     }, 2000);
                     /** Fin alert **/
 
@@ -380,7 +379,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -404,7 +403,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Description Task updated successfully.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Task Description updated successfully.</strong>', 'progress': 75});
                     }, 2000);
                     /** Fin alert **/
 
@@ -417,7 +416,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! description required", {
+                    $.notify("Ooops! description required", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

@@ -34,7 +34,6 @@
                                 <div class="row">
                                     <div class="col-md-11 ml-auto mr-auto">
                                         <div id="accordion" role="tablist">
-
                                             <div  v-for="(item,index) in faqs" :key="item.id" class="card card-collapse">
                                                 <div class="card-header" role="tab" :id="HeadingFaq(item)">
                                                     <h5 class="mb-0">
@@ -67,7 +66,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 

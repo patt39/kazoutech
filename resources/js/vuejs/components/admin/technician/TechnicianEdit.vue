@@ -101,7 +101,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 <script>
@@ -165,7 +164,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! This action is unauthorized.", {
+                    $.notify("Ooops! This action is unauthorized.", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

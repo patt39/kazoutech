@@ -82,7 +82,6 @@
                                                                             <b class="title_hover">Reply message</b>
                                                                         </a>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -100,7 +99,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -178,7 +176,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            toastr.error('', 'Ooops! Something wrong. Try later');
                         })
                     }
                 })
@@ -196,7 +194,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message read.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Message red.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert **/
 
@@ -207,7 +205,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
             /** Ici c'est la désactivation de la couleur **/
@@ -223,7 +221,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message unread.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Message unred.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert **/
 
@@ -233,7 +231,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
             loadItems() {

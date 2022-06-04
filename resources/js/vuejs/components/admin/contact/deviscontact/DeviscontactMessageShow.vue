@@ -26,7 +26,6 @@
                                                        class="btn btn-danger btn-round btn-just-icon btn-sm" title="Delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </a>
-
                                                     <a  href="javascript:void(0)" v-if="deviscontact.status" @click="disableItem(deviscontact.id)" class="btn btn-success btn-round btn-just-icon btn-sm" title="Mask as unread">
                                                         <i class="material-icons">done_all</i>
                                                     </a>
@@ -128,7 +127,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -157,7 +155,7 @@
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete Message Contact?',
+                    title: 'Delete Quotation Message?',
                     text: "Are you sure you want to delete this message?",
                     type: 'warning',
                     animation: false,
@@ -181,7 +179,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>Quotation Message deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             //Redirect after create
                             setTimeout(() => this.$router.push({ name: 'deviscontacts.index' }));
@@ -192,7 +190,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            $.notify("Ooop! Something wrong. Try later...", {
+                            $.notify("Ooops! Something wrong. Try later...", {
                                 allow_dismiss: false,
                                 type: 'danger',
                                 animate: {
@@ -212,7 +210,7 @@
                 dyaxios.get(route('deviscontacts.active',id)).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact read.</strong>', {
+                    $.notify('<strong>Message red.</strong>', {
                         allow_dismiss: false,
                         type: 'success',
                         placement: {
@@ -233,7 +231,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later...", {
+                    $.notify("Ooops! Something wrong. Try later...", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {
@@ -251,7 +249,7 @@
                 dyaxios.get(route('deviscontacts.disable',id)).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify('<strong>Message contact unread.</strong>', {
+                    $.notify('<strong>Message unred.</strong>', {
                         allow_dismiss: false,
                         type: 'info',
                         placement: {
@@ -271,7 +269,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later...", {
+                    $.notify("Ooops! Something wrong. Try later...", {
                         allow_dismiss: false,
                         type: 'danger',
                         animate: {

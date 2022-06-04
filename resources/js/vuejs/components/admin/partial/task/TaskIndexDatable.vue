@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <vue-progress-bar/>
         <div class="main-panel">
             <top-nav></top-nav>
@@ -16,23 +15,16 @@
                                         <div class="toolbar">
                                            <!--  -->
                                         </div>
-
                                         <ul v-if="tasks">
-
-
                                             <li v-for="item in tasks" :key="item.id">
                                                 <strong>Date mise a jour:</strong> {{ item.updated_at | myDate }}
                                             </li>
-
-
                                         </ul>
-
                                         <div class="pagination">
                                             <button :disabled="! prevPage" @click.prevent="goToPrev">Previous</button>
                                             {{ paginationCount }}
                                             <button :disabled="! nextPage" @click.prevent="goToNext">Next</button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

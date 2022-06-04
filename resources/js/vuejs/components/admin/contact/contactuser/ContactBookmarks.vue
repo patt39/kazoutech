@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">email</i>
                                     </div>
-                                    <p class="card-category"><b>All Messages Contact Us</b>
+                                    <p class="card-category"><b>All Messages Contact Us</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{contacts.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -56,9 +56,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">email</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">email</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -199,7 +198,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Contact message updated successfully</strong>', 'progress': 75});
                     }, 2000);
                     /* End alert ***/
 
@@ -210,7 +209,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -232,7 +231,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact read.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Contact message red.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert **/
 
@@ -244,7 +243,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -266,7 +265,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Message contact unread.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Contact message unred.</strong>', 'progress': 75});
                     }, 2000);
                     /** End alert **/
 
@@ -277,7 +276,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -302,7 +301,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -318,7 +317,7 @@
                 axios.get(`/dashboard/contacts/unbookmark/${id}`).then(() => {
 
                     /** Alert notify bootstrapp **/
-                    $.notify("Bookmark cancel successfully", {
+                    $.notify("Bookmark cancelled successfully", {
                         type: 'success',
                         animate: {
                             enter: 'animated bounceIn',
@@ -331,7 +330,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

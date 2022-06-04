@@ -325,7 +325,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -402,7 +401,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Progress Task updated successfully.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Task Progression updated successfully.</strong>', 'progress': 75});
                     }, 2000);
                     /** Fin alert **/
 
@@ -415,7 +414,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -439,7 +438,7 @@
                         showProgressbar: true
                     });
                     setTimeout(function() {
-                        notify.update({'type': 'success', 'message': '<strong>Description Task updated successfully.</strong>', 'progress': 75});
+                        notify.update({'type': 'success', 'message': '<strong>Task Description updated successfully.</strong>', 'progress': 75});
                     }, 2000);
                     /** Fin alert **/
 
@@ -451,7 +450,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! description required", {
+                    $.notify("Ooops! description required", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -522,7 +521,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -534,7 +533,7 @@
             deleteItem(id) {
                 Swal.fire({
                     title: 'Delete Task?',
-                    text: "Are you sure you want to delete task faq?",
+                    text: "Are you sure you want to delete this task?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated shake',
@@ -573,7 +572,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',

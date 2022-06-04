@@ -171,7 +171,6 @@
              </div>
              <footer-admin></footer-admin>
          </div>
-
     </div>
 </template>
 <script>
@@ -243,7 +242,7 @@
                     this.$Progress.fail();
                     Swal.fire({
                         type: 'error',
-                        title: 'Your image is verry big',
+                        title: 'Your image is very big',
                         buttonsStyling: false,
                         confirmButtonClass: "btn btn-success",
                     });
@@ -272,7 +271,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

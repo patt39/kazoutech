@@ -100,9 +100,9 @@
                                                             </router-link>
 
                                                             <button id="button_hover" :disabled="form.busy" type="submit" class="btn btn-success btn-raised btn-round">
-                                        <span class="btn-label">
-                                            <i class="material-icons">save_alt</i>
-                                        </span>
+                                                                <span class="btn-label">
+                                                                    <i class="material-icons">save_alt</i>
+                                                                </span>
                                                                 <b class="title_hover">Create category</b>
                                                             </button>
                                                         </div>
@@ -184,7 +184,7 @@
                     }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             }
         },

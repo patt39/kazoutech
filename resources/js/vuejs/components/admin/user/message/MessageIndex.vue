@@ -40,9 +40,9 @@
                                             </h4>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">email</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">email</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -155,8 +155,6 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="text-center">
-
-
                                                                 <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
                                                                 <span class="btn-label">
                                                                     <b>Send</b>
@@ -177,7 +175,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -288,7 +285,7 @@
                                 showProgressbar: true
                             });
                             setTimeout(function() {
-                                notify.update({'type': 'success', 'message': '<strong>Message contact-us deleted successfully.</strong>', 'progress': 75});
+                                notify.update({'type': 'success', 'message': '<strong>Message deleted successfully.</strong>', 'progress': 75});
                             }, 2000);
                             /* End alert ***/
 
@@ -299,7 +296,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            toastr.error('', 'Ooops! Something wrong. Try later');
                         })
                     }
                 })
@@ -325,7 +322,7 @@
                 }).catch(() => {
                     //Failled message
                     this.$Progress.fail();
-                    toastr.error('', 'Ooop! Something wrong. Try later');
+                    toastr.error('', 'Ooops! Something wrong. Try later');
                 })
             },
             loadItems() {
@@ -366,7 +363,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>Message send Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>Message sent Successfully.</strong>', 'progress': 75});
                         }, 2000);
 
                         //End Progress bar
@@ -374,7 +371,7 @@
                     })
                     .catch(() => {
                         this.$Progress.fail();
-                        toastr.error('', 'Ooop! Something wrong. Try later');
+                        toastr.error('', 'Ooops! Something wrong. Try later');
                     })
             }
         },

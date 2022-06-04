@@ -250,7 +250,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -316,7 +315,7 @@
                             },
                         });
                         setTimeout(function() {
-                            notify.update({'type': 'success', 'message': '<strong>profile updated Successfully.</strong>', 'progress': 75});
+                            notify.update({'type': 'success', 'message': '<strong>User profile updated Successfully.</strong>', 'progress': 75});
                         }, 2000);
                         setTimeout(() => this.$router.push({ name: 'users.index' }), 1000);
                         //End Progress bar
@@ -325,7 +324,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

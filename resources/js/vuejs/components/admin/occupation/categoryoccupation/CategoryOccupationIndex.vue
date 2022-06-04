@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">assignment</i>
                                     </div>
-                                    <p class="card-category"><b>All Categories Occupations</b>
+                                    <p class="card-category"><b>All Categories Occupations</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{categoryoccupations.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -43,9 +43,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">color_lens</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">color_lens</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,6 @@
             </div>
             <footer-admin/>
         </div>
-
     </div>
 </template>
 
@@ -230,7 +229,7 @@
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',

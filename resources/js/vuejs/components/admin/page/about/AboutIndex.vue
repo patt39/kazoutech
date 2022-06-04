@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">person_outline</i>
                                     </div>
-                                    <p class="card-category"><b>All Team Members</b>
+                                    <p class="card-category"><b>All Team Members</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{abouts.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -105,7 +105,7 @@
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
                                                         <span v-else-if="item.status === 0"
-                                                              class="badge badge-danger"><b>Deactive</b></span>
+                                                              class="badge badge-danger"><b>Disactive</b></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -271,7 +271,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -390,7 +389,7 @@
                             //Failled message
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -410,7 +409,7 @@
                     status: item.status,
                 }).then(res => {
 
-                    $.notify('<strong>Member update Successfully.</strong>', {
+                    $.notify('<strong>Member activated Successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'info',
                         placement: {
@@ -430,7 +429,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">location_city</i>
                                     </div>
-                                    <p class="card-category"><b>All Cities</b>
+                                    <p class="card-category"><b>All Cities</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{cities.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -43,9 +43,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">location_city</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">location_city</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -256,7 +256,6 @@
             </div>
             <footer-admin/>
         </div>
-
     </div>
 </template>
 
@@ -369,7 +368,7 @@
                         setTimeout(function () {
                             notify.update({
                                 'type': 'success',
-                                'message': '<strong>Color updated successfully.</strong>',
+                                'message': '<strong>City updated successfully.</strong>',
                                 'progress': 75
                             });
                         }, 2000);
@@ -434,7 +433,7 @@
                         }).catch(() => {
                             this.$Progress.fail();
                             //Alert error
-                            $.notify("Ooop! Something wrong. Try later", {
+                            $.notify("Ooops! Something wrong. Try later", {
                                 type: 'danger',
                                 animate: {
                                     enter: 'animated bounceInDown',
@@ -452,7 +451,7 @@
                     status: item.status,
                 }).then(res => {
 
-                    $.notify('<strong>City update Successfully.</strong>', {
+                    $.notify('<strong>City updated Successfully.</strong>', {
                         allow_dismiss: false,
                         type: 'info',
                         placement: {
@@ -472,7 +471,7 @@
                     //Failled message
                     this.$Progress.fail();
                     //Alert error
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

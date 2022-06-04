@@ -113,16 +113,16 @@
                                                             <div class="modal-footer">
                                                                 <div class="text-center">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">clear</i>
+                                                                            <b>Close</b>
+                                                                        </span>
                                                                     </button>
                                                                     <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">mail</i>
-                                                            <b>Yes, Send</b>
-                                                        </span>
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">mail</i>
+                                                                            <b>Yes, Send</b>
+                                                                        </span>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -178,16 +178,16 @@
                                                             <div class="modal-footer">
                                                                 <div class="text-center">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">clear</i>
-                                                            <b>Close</b>
-                                                        </span>
-                                                                    </button>
-                                                                    <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
-                                                        <span class="btn-label">
-                                                            <i class="material-icons">alternate_email</i>
-                                                            <b>Yes, Invite</b>
-                                                        </span>
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">clear</i>
+                                                                            <b>Close</b>
+                                                                        </span>
+                                                                                    </button>
+                                                                                    <button :disabled="form.busy" type="submit" class="btn btn-success btn-raised">
+                                                                        <span class="btn-label">
+                                                                            <i class="material-icons">alternate_email</i>
+                                                                            <b>Yes, Invite</b>
+                                                                        </span>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -284,7 +284,7 @@
                         $('#addNew').modal('hide');
 
                         //Insertion de l'alert !
-                        $.notify('<strong>Administrator invite Successfully.</strong>', {
+                        $.notify('<strong>Administrator invited successfully.</strong>', {
                             allow_dismiss: false,
                             type: 'success',
                             placement: {
@@ -302,7 +302,7 @@
                     //Failled message
                     this.$Progress.fail();
 
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',
@@ -339,7 +339,7 @@
                     //Failled message
                     this.$Progress.fail();
 
-                    $.notify("Ooop! Something wrong. Try later", {
+                    $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',
                         animate: {
                             enter: 'animated bounceInDown',

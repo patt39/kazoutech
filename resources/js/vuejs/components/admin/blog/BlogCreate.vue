@@ -70,17 +70,17 @@
                                                                                 </div>
                                                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                                                 <div>
-                                                                                                <span class="btn btn-raised btn-success btn-file">
-                                                                                                  <span class="fileinput-new" style="cursor: pointer">
-                                                                                                       <i class="material-icons">insert_photo</i>
-                                                                                                           <b>Add Slide</b>
-                                                                                                    </span>
-                                                                                                   <span class="fileinput-exists" style="cursor: pointer">
-                                                                                                       <i class="material-icons">photo_library</i>
-                                                                                                       <b>Change</b>
-                                                                                                    </span>
-                                                                                                    <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
-                                                                                                </span>
+                                                                                    <span class="btn btn-raised btn-success btn-file">
+                                                                                        <span class="fileinput-new" style="cursor: pointer">
+                                                                                            <i class="material-icons">insert_photo</i>
+                                                                                                <b>Add Slide</b>
+                                                                                        </span>
+                                                                                        <span class="fileinput-exists" style="cursor: pointer">
+                                                                                            <i class="material-icons">photo_library</i>
+                                                                                            <b>Change</b>
+                                                                                        </span>
+                                                                                        <input id="photo" @change="updateImage" type="file" class="form-control" name="photo">
+                                                                                    </span>
                                                                                     <a href="#pablo" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
                                                                                         <i class="material-icons">cancel</i>
                                                                                         <b>Remove</b>
@@ -227,7 +227,7 @@
                     .catch(() => {
                         this.$Progress.fail();
                         //Alert error
-                        $.notify("Ooop! Something wrong. Try later", {
+                        $.notify("Ooops! Something wrong. Try later", {
                             type: 'danger',
                             animate: {
                                 enter: 'animated bounceInDown',

@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">meeting_room</i>
                                     </div>
-                                    <p class="card-category">All Technicians<b></b>
+                                    <p class="card-category">All Technicians<b></b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{technicians.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +44,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">meeting_room</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">meeting_room</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -224,16 +224,15 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-danger" data-dismiss="modal" type="button">
-                                        <span class="btn-label">
-                                            <i class="material-icons">clear</i>
-                                            <b>Close</b>
-                                        </span>
+                                                        <span class="btn-label">
+                                                            <i class="material-icons">clear</i>
+                                                            <b>Close</b>
+                                                        </span>
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -242,7 +241,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 

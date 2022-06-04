@@ -16,7 +16,7 @@
                                         <div class="card-icon">
                                             <i class="material-icons">how_to_reg</i>
                                         </div>
-                                        <p class="card-category"><b>All Roles</b>
+                                        <p class="card-category"><b>All Roles</b></p>
                                         <h3 class="card-title" style="color:red;"><b>{{roles.length}}</b></h3>
                                     </div>
                                     <div class="card-footer">
@@ -112,12 +112,10 @@
                     <div v-else="$auth.can('view-role-permission')" class="container-fluid">
                         <alert-permission/>
                     </div>
-
                 </div>
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -204,7 +202,7 @@
                         }).catch(() => {
                             //Failled message
                             this.$Progress.fail();
-                            toastr.error('', 'Ooop! Something wrong. Try later');
+                            toastr.error('', 'Ooops! Something wrong. Try later');
                         })
                     }
                 })
