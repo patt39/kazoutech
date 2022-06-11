@@ -4,7 +4,6 @@ import {Link, NavLink} from 'react-router-dom';
 class NavUserSIte extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
         this.navLogout = this.navLogout.bind(this);
     }
 
@@ -13,7 +12,7 @@ class NavUserSIte extends Component {
             .then(() => {
                 window.location.reload();
             }).catch(() => {
-            //
+               console.error(e, "something went wrong")
         });
     }
 
@@ -48,19 +47,19 @@ class NavUserSIte extends Component {
                             </div>
                         </div>
                         <ul className="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-                            <li className={'nav-item'}>
+                            {/* <li className={'nav-item'}>
                                 <Link to={'/occupations/'} className="nav-link" role="button">
                                     <i className="ni ni-app d-lg-none"/>
                                     <span className="nav-link-inner--text"><b>Demander un service</b></span>
                                 </Link>
-                            </li>
+                            </li> */}
                             {$guest ?
                                 <>
                                     <li className={'nav-item'}>
                                         <a href={'/devenir_charbonneur/'} className="nav-link" role="button">
                                             <i className="ni ni-app d-lg-none"/>
                                             <span className="nav-link-inner--text">
-                                                <b>Devenir charbonneur</b>
+                                                <b>Devenir collaborateur</b>
                                             </span>
                                         </a>
                                     </li>

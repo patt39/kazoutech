@@ -102,7 +102,7 @@ class CategoryOccupationShow extends Component {
                                     <div className="row mb-5">
                                         <div className="col-lg-12 mr-auto mb-2">
                                             <br/>
-                                            <h4 className="display-3">Pour tout vos
+                                            <h4 className="display-3">Pour tous vos
                                                 bésoin <b>{categoryoccupation.name}</b></h4>
                                             <div className="description mb-2"
                                                  dangerouslySetInnerHTML={{__html: categoryoccupation.description}}/>
@@ -154,9 +154,9 @@ class CategoryOccupationShow extends Component {
                                                 </div>
                                                 <div className="btn-wrapper text-center">
                                                     <a href=".." className="btn btn-neutral btn-icon">
-                                            <span className="btn-inner--icon">
-                                              <img src="/assets/site/assets/img/icons/common/github.svg"/>
-                                            </span>
+                                                        <span className="btn-inner--icon">
+                                                           <img src="/assets/site/assets/img/icons/common/github.svg"/>
+                                                        </span>
                                                         <span className="btn-inner--text">Google</span>
                                                     </a>
                                                     <a href=".." className="btn btn-neutral btn-icon">
@@ -181,7 +181,7 @@ class CategoryOccupationShow extends Component {
                                                             <i className="ni ni-email-83"/>
                                                         </span>
                                                             </div>
-                                                            <input type="text" placeholder="Pseudo ou votre numero de téléphone" aria-label="Pseudo ou votre numero de téléphone"
+                                                            <input type="text" placeholder="Nom de l'entreprise ou email" aria-label="Nom de l'entreprise ou email"
                                                                    required="required"
                                                                    id="username"
                                                                    className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}

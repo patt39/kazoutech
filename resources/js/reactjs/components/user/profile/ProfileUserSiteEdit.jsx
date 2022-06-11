@@ -148,7 +148,7 @@ class ProfileUserSiteEdit extends Component {
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayez plus tard ...", {
+            $.notify("Ooopss! Quelque chose ne va pas. Essayez plus tard ...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -161,7 +161,7 @@ class ProfileUserSiteEdit extends Component {
 
     render() {
         const {cities, occupations} = this.state;
-        document.title = `${this.state.name || "profile"} | Edition Profil`;
+        document.title = `${this.state.name || "profil"} | Edition Profil`;
         return (
             <div className="profile-page">
                 <NavUserSIte/>
@@ -235,7 +235,7 @@ class ProfileUserSiteEdit extends Component {
                                                         <div className="fileinput-preview fileinput-exists thumbnail"></div>
                                                         <div>
                                                             <span className="btn btn-round btn-file mt-2">
-                                                              <span className="fileinput-new">Selectioner votre CNI</span>
+                                                              <span className="fileinput-new">Sélectioner votre CNI</span>
                                                               <span className="fileinput-exists">Echanger</span>
                                                               <input
                                                                   id="cni_picture"
@@ -324,7 +324,7 @@ class ProfileUserSiteEdit extends Component {
                                             </div>
                                             <div className="col-md-5 pl-2">
                                                 <div className="form-group">
-                                                    <label>Votre Pseudo</label>
+                                                    <label>Nom de votre entreprise</label>
                                                     <div className="input-group">
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">
@@ -332,8 +332,8 @@ class ProfileUserSiteEdit extends Component {
                                                             </span>
                                                         </div>
                                                         <Input type="text"
-                                                               placeholder="Votre Pseudo ..."
-                                                               aria-label="Votre Pseudo ..."
+                                                               placeholder="Votre entreprise ..."
+                                                               aria-label="Votre entreprise ..."
                                                                required="required"
                                                                id="username"
                                                                className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}

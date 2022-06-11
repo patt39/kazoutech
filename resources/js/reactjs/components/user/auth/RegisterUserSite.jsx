@@ -114,7 +114,7 @@ class RegisterUserSite extends Component{
                                     <a href="/devenir_charbonneur/">
                                         <div className="card-body">
                                             <div className="content-bottom">
-                                                <h5 className="card-title">Devenir Charbonneur</h5>
+                                                <h5 className="card-title">Devenir Collaborateur</h5>
                                                 <h6 className="card-category text-white opacity-8">Augmentez vos revenus en
                                                     rendant service près de chez vous</h6>
                                             </div>

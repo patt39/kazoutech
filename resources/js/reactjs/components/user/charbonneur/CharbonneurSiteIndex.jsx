@@ -48,7 +48,7 @@ class CharbonneurSiteIndex extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 mx-auto text-center">
-                                    <h4 className="display-2 text-white">Les Charbonneurs</h4>
+                                    <h4 className="display-2 text-white">Les Collaborateurs</h4>
                                     <div className="description">
                                         <Link to={'/'} className="text-white">
                                             <i className="fa fa-chevron-circle-left"/> Retour à l'accueil

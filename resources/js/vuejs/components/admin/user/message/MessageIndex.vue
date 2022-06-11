@@ -131,7 +131,7 @@
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating"></label>
                                                             <v-select :options="users" label="name" v-model="form.to_id" :class="{ 'is-invalid': form.errors.has('to_id') }">
-                                                                <template slot="item.id" v-model="form.to_id" slot-scope="item">
+                                                                <template slot="item.id">
                                                                     <!--<span class="fa" :class="option.icon"></span>-->
                                                                     {{ item.name }}
                                                                 </template>

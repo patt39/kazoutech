@@ -3,10 +3,6 @@ import {Link} from "react-router-dom";
 
 class KazouTechSteps extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="kazouTechSteps-wrapper bg-default">
@@ -14,7 +10,7 @@ class KazouTechSteps extends Component {
                     <div className="row">
                         <div className="col-lg-8 mx-auto text-center my-5">
                             <h3 className="display-3 kazouTech-red-color">Comment ça marche chez KazouTech?</h3>
-                            <p className="lead kazouTech-white-color">3 étapes simples pour devenir charbonneur(euse) sur notre plateforme et vous faire contactez par nous pour des eventuel charbons. </p>
+                            <p className="lead kazouTech-white-color">3 étapes simples pour devenir collaborateur et booster le chiffre d'affaire de votre entreprise rapidement </p>
                         </div>
                     </div>
                     <div className="row">
@@ -27,7 +23,8 @@ class KazouTechSteps extends Component {
                                 </a>
                                 <div className="card-body">
                                     <h4 className="card-title mt-3">Créez votre profil</h4>
-                                    <p className="card-description">Remplissez le formulaire d'inscription en ligne en précisant vos informations personnelles pour vous faire boostez par les entreprises qui valoriseront vos prestations de services.</p>
+                                    <p className="card-description">Remplissez le formulaire d'inscription en ligne en renseignant vos informations personnelles et celle de votre entreprise 
+                                       pour la validation et la confirmation de votre profil </p>
                                     <div className="card-footer">
                                         <a href="/register" className="btn btn-link text-primary">
                                             <i className="ni ni-bold-right icon-position"/> Je m'inscris
@@ -44,11 +41,11 @@ class KazouTechSteps extends Component {
                                     </div>
                                 </Link>
                                 <div className="card-body">
-                                    <h4 className="card-title mt-3">Demandez un service</h4>
-                                    <p className="card-description">Rédigez votre annonce sur notre formulaire en ligne et des charbonneurs compétents et proches de votre localité, de chez vous vous proposent leurs services à tout moment.</p>
+                                    <h4 className="card-title mt-3">Signez votre contrat</h4>
+                                    <p className="card-description">Patientez qu'un de nos commerciaux vous contact pour une prise de rendez-vous pour la signature de notre contrat de collaboration</p>
                                     <div className="card-footer">
                                         <Link to={'/annonces/'} className="btn btn-link text-success">
-                                            <i className="ni ni-bold-right icon-position"/> Faite votre annonce
+                                            <i className="ni ni-bold-right icon-position"/> Je visite
                                         </Link>
                                     </div>
                                 </div>
@@ -63,11 +60,11 @@ class KazouTechSteps extends Component {
                                 </a>
                                 <div className="card-body">
                                     <h4 className="card-title mt-3">Satisfaction Totale</h4>
-                                    <p className="card-description">KazouTech s'assure de vous proposez le charbonneur(euse) compétent pour
-                                    votre satisfaction, la qualité de la prestation de service attendu et le meilleur prix que vous pouvez débourser pour votre travail.</p>
+                                    <p className="card-description">KazouTech s'assure de mettre en avant votre entreprise sur notre plateforme et d'assurer une communication effective sur nos reseaux sociaux pour vous apporter 
+                                        le plus de prospect possible et vous donner la possibilité de vendre plus et booster votre chiffre d'affaire</p>
                                     <div className="card-footer">
                                         <Link to={'/charbonneurs/'} className="btn btn-link text-success">
-                                            <i className="ni ni-bold-right icon-position"/> Je sonde
+                                            <i className="ni ni-bold-right icon-position"/> Je me rassure
                                         </Link>
                                     </div>
                                 </div>

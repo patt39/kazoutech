@@ -57,7 +57,7 @@ class CharbonneurSiteByCity extends Component {
                                     <h4 className="text-white">Trouver le meilleur <b style={{ textTransform: "lowercase" }}> {charbonneursbyoccupation.name}</b> à <b style={{ textTransform: "lowercase" }}>{charbonneursbycity.name}</b> </h4>
                                     <div className="description">
                                         <Link to={'/charbonneurs/'} className="text-white">
-                                            <i className="fa fa-chevron-circle-left"/> Tous les charbonneurs
+                                            <i className="fa fa-chevron-circle-left"/> Tous les collaborateurs
                                         </Link>
                                     </div>
                                     <div className="text-white">
@@ -78,7 +78,7 @@ class CharbonneurSiteByCity extends Component {
                             <div className="row">
                                 <div className="col-md-4">
                                     <div className="card mb-3">
-                                        <div className="card-header h6">Les charbonneurs dans la Ville de </div>
+                                        <div className="card-header h6">Les collaborateurs dans la Ville de </div>
                                         <div className="card-body">
                                             <ul className="list-unstyled">
 

@@ -238,7 +238,7 @@ class ProfileSiteAvisUser extends Component {
 
 
                        <br/>
-                       <h5 className="text-center"><b>Laisser un avis à ce charbonneur</b></h5>
+                       <h5 className="text-center"><b>Laisser un avis sur ce collaborateur</b></h5>
 
                        {$guest ?
                            <Form id="contact-form" method="post" onSubmit={this.saveofflineItem}>
@@ -329,7 +329,6 @@ class ProfileSiteAvisUser extends Component {
                                        </div>
                                    </div>
                                    <div className="form-group">
-                                       <label>Your message</label>
                                        <label>Votre avis <span
                                            className="kazouTech-red-color">*</span></label>
                                        <Input minLength="5" name="message" value={this.state.message}
@@ -389,9 +388,6 @@ class ProfileSiteAvisUser extends Component {
 
                            </div>
                        }
-
-
-
 
                    </div>
                </div>

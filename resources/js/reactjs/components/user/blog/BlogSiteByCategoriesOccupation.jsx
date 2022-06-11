@@ -20,7 +20,7 @@ class BlogSiteByCategoriesOccupation extends Component {
 
     deleteItem(id) {
         Swal.fire({
-            title: 'Etes vous sure de vouloir supprimer cette article de blog?',
+            title: 'Etes vous sure de vouloir supprimer cette article?',
             animation: false,
             customClass: 'animated shake',
             buttonsStyling: false,
@@ -42,7 +42,7 @@ class BlogSiteByCategoriesOccupation extends Component {
                     /** Alert notify bootstrapp **/
                     $.notify({
                             // title: 'Update FAQ',
-                            message: 'Article de blog supprimé avec succès'
+                            message: 'Article supprimé avec succès'
                         },
                         {
                             allow_dismiss: false,
@@ -135,7 +135,7 @@ class BlogSiteByCategoriesOccupation extends Component {
 
                                                         {!$guest &&(
                                                             <Link to={`/blog/p/new/create/`} className="btn btn-primary btn-center btn-larg">
-                                                                Ajouter un nouveau article de blog
+                                                                Ajouter une nouvelle article de blog
                                                             </Link>
                                                         )}
                                                         <br/><br/>

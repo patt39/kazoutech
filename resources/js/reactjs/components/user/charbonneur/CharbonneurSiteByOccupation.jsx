@@ -44,7 +44,7 @@ class CharbonneurSiteByOccupation extends Component {
                                     <h4 className="title text-white">Trouver le meilleur <b style={{ textTransform: "lowercase" }}> {charbonneursbyoccupation.name}</b> au Cameroun </h4>
                                     <div className="description">
                                         <Link to={'/charbonneurs/'} className="text-white">
-                                            <i className="fa fa-chevron-circle-left"/> Tous les charbonneurs
+                                            <i className="fa fa-chevron-circle-left"/> Tous les collaborateurs
                                         </Link>
                                     </div>
                                     <div className="text-white">

@@ -245,7 +245,7 @@ class BlogSiteCreate extends Component {
                                                     <div className="col-md-12">
                                                         <div className="form-group">
                                                             <label className="labels">
-                                                                Description de votre article
+                                                                Description de l'article
                                                                 <span className="text-danger">*</span>
                                                             </label>
                                                             <br />

@@ -187,11 +187,11 @@ class BlogSiteIndex extends Component {
 
                                                         {$guest ?
                                                         <a href="#"  className="btn btn-primary" data-toggle="modal" data-target="#loginblogModal">
-                                                            Ajouter un nouveau article de blog
+                                                            Ajouter une nouvelle article de blog
                                                         </a>
                                                             :
                                                         <Link to={`/blog/p/new/create/`} className="btn btn-primary">
-                                                            Ajouter un nouveau article de blog
+                                                            Ajouter une nouvelle article de blog
                                                         </Link>
                                                         }
                                                         <br/><br/>
@@ -251,7 +251,7 @@ class BlogSiteIndex extends Component {
                                                         </span>
                                                         </div>
 
-                                                        <input type="text" placeholder="Pseudo ou votre numéro de téléphone" aria-label="Pseudo ou votre numero de téléphone"
+                                                        <input type="text" placeholder="Nom de l'entreprise ou email" aria-label="Nom de l'entreprise ou email"
                                                                required="required"
                                                                id="username"
                                                                className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}

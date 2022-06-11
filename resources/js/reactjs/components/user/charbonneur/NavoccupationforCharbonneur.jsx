@@ -40,7 +40,7 @@ class NavoccupationforCharbonneur extends Component {
         return (
 
             <div className="card mb-3">
-                <div className="card-header h6"><b>Profils des charbonneurs</b> </div>
+                <div className="card-header h6"><b>Profils des collaborateurs</b> </div>
                 <div className="card-body">
                     <ul className="list-unstyled">
 

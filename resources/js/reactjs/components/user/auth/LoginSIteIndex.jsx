@@ -55,7 +55,7 @@ class LoginSIteIndex extends Component{
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayer plus tard...", {
+            $.notify("Ooops! Quelque chose ne va pas. Essayer plus tard...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -81,8 +81,7 @@ class LoginSIteIndex extends Component{
                                     <i className="ni ni-email-83"/>
                                 </span>
                             </div>
-
-                            <input type="text" placeholder="Pseudo, email ou numero de téléphone" aria-label="Pseudo, email ou votre numero de téléphone"
+                            <input type="text" placeholder="Nom de l'entreprise ou email" aria-label="Nom de l'entreprise ou email"
                                    required="required"
                                    id="username"
                                    className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
@@ -99,8 +98,7 @@ class LoginSIteIndex extends Component{
                                     <i className="ni ni-lock-circle-open"/>
                                 </span>
                             </div>
-
-                            <input type="password" placeholder="Mot de pass" aria-label="Mot de passe"
+                            <input type="password" placeholder="Mot de passe" aria-label="Mot de passe"
                                    required="required"
                                    id="password"
                                    className={`form-control ${this.hasErrorFor('password') ? 'is-invalid' : ''}`}

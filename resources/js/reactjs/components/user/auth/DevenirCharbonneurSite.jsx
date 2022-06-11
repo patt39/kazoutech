@@ -86,7 +86,7 @@ class DevenirCharbonneurSite extends Component{
             this.setState({
                 errors: error.response.data.errors
             });
-            $.notify("Ooop! Quelque chose ne va pas. Essayez plus tard...", {
+            $.notify("Ooops! Quelque chose ne va pas. Essayez plus tard...", {
                 allow_dismiss: false,
                 type: 'danger',
                 animate: {
@@ -112,7 +112,7 @@ class DevenirCharbonneurSite extends Component{
         return(
             <form role="form" id="contact-form" method="post" onSubmit={this.saveItem}>
                 <div className="row">
-                    <div className="col-md-7">
+                    <div className="col-md-6">
                         <div className="form-group">
                             <label>Nom et Prènom</label>
                             <div className="input-group mb-4">
@@ -133,18 +133,17 @@ class DevenirCharbonneurSite extends Component{
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-5 pl-2">
+                    <div className="col-md-6 pl-2">
                         <div className="form-group">
-                            <label>Votre Pseudo</label>
+                            <label>Nom de votre entreprise</label>
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">
                                         <i className="ni ni-collection"/>
                                     </span>
                                 </div>
-
                                 <input type="text"
-                                       placeholder="Votre Pseudo ..." aria-label="Votre Pseudo ..."
+                                       placeholder="Nom de l'entreprise" aria-label="Nom de l'entreprise"
                                        required="required"
                                        id="username"
                                        className={`form-control ${this.hasErrorFor('username') ? 'is-invalid' : ''}`}
@@ -157,16 +156,16 @@ class DevenirCharbonneurSite extends Component{
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-4">
-                        <label>Jour de Naissance</label>
+                    <div className="col-md-6">
+                        <label>Localisation de l'entreprise</label>
                         <div className="input-group">
                             <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <i className="ni ni-calendar-grid-58"/>
-                                    </span>
+                                <span className="input-group-text">
+                                    <i className="ni ni-calendar-grid-58"/>
+                                </span>
                             </div>
                             <input type="number"
-                                   placeholder="Exemple:(02,10) ..." aria-label="Jour de Naissance ..."
+                                   placeholder="Exemple:Rue Douala manga bell" aria-label="Localisation de l'entreprise ..."
                                    required="required"
                                    id="day" maxLength="2"
                                    className={`form-control ${this.hasErrorFor('day') ? 'is-invalid' : ''}`}
@@ -176,7 +175,7 @@ class DevenirCharbonneurSite extends Component{
                             {this.renderErrorFor('day')}
                         </div>
                     </div>
-                    <div className="col-md-4 align-self-center">
+                    {/* <div className="col-md-4 align-self-center">
                         <label>Mois de Naissance</label>
                         <div className="form-group">
                             <select  value={this.state.month} className={`form-control ${this.hasErrorFor('month') ? 'is-invalid' : ''}`} onChange={this.handleFieldChange}
@@ -197,19 +196,18 @@ class DevenirCharbonneurSite extends Component{
                             </select>
                         </div>
                         {this.renderErrorFor('month')}
-                    </div>
-                    <div className="col-md-4">
+                    </div> */}
+                    <div className="col-md-6">
                         <div className="form-group">
-                            <label>Année de Naissance</label>
+                            <label>Année de Création</label>
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">
                                         <i className="ni ni-calendar-grid-58"/>
                                     </span>
                                 </div>
-
                                 <input type="number"
-                                       placeholder="Année de naissance ..." aria-label="Année de naissance ..."
+                                       placeholder="Année de création ..." aria-label="Année de création ..."
                                        required="required"
                                        id="year" maxLength="4"
                                        className={`form-control ${this.hasErrorFor('year') ? 'is-invalid' : ''}`}
@@ -223,12 +221,12 @@ class DevenirCharbonneurSite extends Component{
                 </div>
                 <div className="row">
                     <div className="col-md-4">
-                        <label>Votre Profession</label>
+                        <label>Secteur d'activités</label>
                         <div className="form-group">
                             <select value={this.state.occupation_id} className={`form-control ${this.hasErrorFor('occupation_id') ? 'is-invalid' : ''}`}
                                     onChange={this.handleFieldChange}
                                     name="occupation_id" required="required">
-                                <option value="" disabled>Votre occupation</option>
+                                <option value="" disabled>Votre secteur d'activités</option>
                                 {occupations.map((item) => (
                                     <option key={item.id} value={item.id}>{item.name}</option>
                                 ))}
@@ -242,21 +240,24 @@ class DevenirCharbonneurSite extends Component{
                             <select value={this.state.city_id} className={`form-control ${this.hasErrorFor('city_id') ? 'is-invalid' : ''}`}
                                     onChange={this.handleFieldChange} name="city_id" required="required">
                                 <option value="" disabled>Votre ville</option>
-                                {cities.map((item) => (
+                               {cities.map((item) => (
                                     <option key={item.id} value={item.id}>{item.name}</option>
-                                ))}
+                               ))}
                             </select>
                             {this.renderErrorFor('city_id')}
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <label>Sex</label>
+                        <label>Nombre d'employés</label>
                         <div className="form-group">
                             <select  value={this.state.sex} className={`form-control ${this.hasErrorFor('sex') ? 'is-invalid' : ''}`}
                                      onChange={this.handleFieldChange} name="sex"  id="sex" required="required">
-                                <option value="" disabled>Sex</option>
-                                <option value="Male">Homme</option>
-                                <option value="Female">Femme</option>
+                                <option value="" disabled>Employés</option>
+                                <option value={'1-10'}>1-10</option>
+                                <option value={'10-40'}>10-40</option>
+                                <option value={'50-100'}>50-100</option>
+                                <option value={'200++'}>200+</option>
+
                             </select>
                             {this.renderErrorFor('sex')}
                         </div>

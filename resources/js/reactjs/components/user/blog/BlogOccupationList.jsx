@@ -34,7 +34,6 @@ class BlogOccupationList extends Component {
                         </NavLink>
                       ))}
                     </>:<Skeleton count={2}/>}
-            
                 </div>
             </div>
 

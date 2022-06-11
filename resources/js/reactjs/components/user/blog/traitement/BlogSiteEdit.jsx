@@ -205,14 +205,13 @@ class BlogSiteEdit extends Component {
                                                         <select name={'occupation_id'} value={this.state.occupation_id}
                                                                 className={`form-control`}
                                                                 id="occupation_id" onChange={this.handleFieldChange}>
-                                                            <option value="" disabled>Selectioner une catégorie</option>
+                                                            <option value="" disabled>Sélectioner une catégorie</option>
                                                             {occupations.map((item) => (
                                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                                             ))}
                                                         </select>
                                                         {this.renderErrorFor('occupation_id')}
                                                     </div>
-
                                                     <div className="col-md-6">
                                                         <label className="labels">
                                                             Donner une couleur à l'article
@@ -221,7 +220,7 @@ class BlogSiteEdit extends Component {
                                                         <select name={'color_id'} value={this.state.color_id}
                                                                 className={`form-control`}
                                                                 id="color_id" onChange={this.handleFieldChange}>
-                                                            <option value="" disabled>Selectioner une couleur</option>
+                                                            <option value="" disabled>Sélectioner une couleur</option>
                                                             {colors.map((item) => (
                                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                                             ))}

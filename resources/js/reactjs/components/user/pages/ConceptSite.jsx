@@ -53,7 +53,7 @@ class ConceptSite extends Component {
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <p className="mb-0">Charbonneurs controller et confirmer</p>
+                                                                        <p className="mb-0">Collaborateurs controller et confirmer</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -77,7 +77,7 @@ class ConceptSite extends Component {
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <p className="mb-0">Obligations du respect des consigns de sécurité</p>
+                                                                        <p className="mb-0">Obbligations du respect des consignes de sécurité</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -92,7 +92,7 @@ class ConceptSite extends Component {
                                                             <i className="ni ni-money-coins"></i>
                                                         </div>
                                                         <h5 className="display-5">Meilleur prix</h5>
-                                                        <p>Une fois le Charbonneurs(euse) mis en relation, le devis de la tâche est decider entre deux</p>
+                                                        <p>Une fois le Collaborateur mis en relation, le devis de la tâche est decider entre deux</p>
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
@@ -143,7 +143,7 @@ class ConceptSite extends Component {
                                                             <i className="ni ni-support-16"></i>
                                                         </div>
                                                         <h5 className="display-5">Sponsor</h5>
-                                                        <p>Des sponsors, mécenes et tuteurs reconnu pour booster le services et toujours apporter les meilleurs</p>
+                                                        <p>Des sponsors, mécenes et tuteurs reconnu pour booster le services et toujours apporter le meilleur</p>
                                                         <ul className="list-unstyled">
                                                             <li>
                                                                 <div className="d-flex align-items-center">
@@ -202,7 +202,7 @@ class ConceptSite extends Component {
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <p className="mb-0">Des Charbonneurs évaluer et identifier</p>
+                                                                        <p className="mb-0">Des Collaborateurs évalués et identifiés</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -242,7 +242,7 @@ class ConceptSite extends Component {
                                 <div className="container">
                                     <div className="row text-center justify-content-center">
                                         <div className="col-lg-10">
-                                            <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour Charbonneurs (Jobbeurs)</span></h3>
+                                            <h3 className="display-3 text-white">Quelques conseils jobbing<span className="text-success">Pour Collaborateurs (Jobbeurs)</span></h3>
                                             <p className="lead text-white">Le jobbing n'as jamais été facile mais pour vous apportez le meilleurs des services et assurez votre sécurité et integrité,
                                                 voici quelques conseils pratique.</p>
                                         </div>
