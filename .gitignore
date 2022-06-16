@@ -14,3 +14,5 @@ yarn-error.log
 .vagrant
 .phpintel
 .phpunit.result.cache
+.DS_Store
+.rnd
