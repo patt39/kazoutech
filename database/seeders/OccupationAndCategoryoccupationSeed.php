@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Model\admin\annonce;
 use App\Model\admin\blog;
 use App\Model\admin\categoryoccupation;
@@ -11,6 +10,8 @@ use App\Model\user\User;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 
 
 class OccupationAndCategoryoccupationSeed extends Seeder
@@ -37,7 +38,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
         $faker = Faker::create();
         $name = 'name';
         $description = $faker->realText(rand(100, 1000));
-       // $user =  User::inRandomOrder()->first()->id;
+        //$user =  User::inRandomOrder()->first()->id;
         $occupations = [
             [
                 $name  => 'Electricité',

@@ -18,11 +18,14 @@ class categoryfaqFactory extends Factory
      *
      * @return array<string, mixed>
      */
+      
+     protected $model = categoryfaq::class;
+
     public function definition()
     {
         return [
-            'name' => $faker->unique()->userName,
-            'status' => $faker->boolean,
+            'name' => $this->faker->unique()->userName,
+            'status' => $this->faker->boolean,
             'color_name' => function () {
                 return color::inRandomOrder()->first()->slug;
             },

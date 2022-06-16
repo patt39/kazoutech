@@ -80,9 +80,9 @@ class categoryoccupation extends Model
 
 
     protected static function newFactory()
-{
-    return categoryoccupationFactory::new();
-}
+    {
+        return categoryoccupationFactory::new();
+    }
 
 
     use Sluggable;

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Database\Factories\admin\categoryfaqFactory;
 //use Spatie\Activitylog\LogOptions;
 
 class categoryfaq extends Model
@@ -33,6 +34,11 @@ class categoryfaq extends Model
     //       logOnlyDirty()
     //     ->dontSubmitEmptyLogs();    
     // }
+
+    protected static function newFactory()
+    {
+        return categoryfaqFactory::new();
+    }
 
     public function user()
     {

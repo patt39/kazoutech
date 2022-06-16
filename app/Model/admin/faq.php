@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Database\Factories\admin\faqFactory;
 //use Spatie\Activitylog\LogOptions;
 
 
@@ -35,6 +36,7 @@ class faq extends Model implements Auditable
     /**
      * @return array
      */
+
     public function generateTags(): array
     {
         return [
@@ -68,6 +70,11 @@ class faq extends Model implements Auditable
             }
             $model->ip = request()->ip();
         });
+    }
+
+    protected static function newFactory()
+    {
+        return faqFactory::new();
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\admin;
 
 use App\Model\admin\categoryfaq;
 use App\Model\admin\faq;
@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Str;
 
-class FaqFactory extends Factory {
+class faqFactory extends Factory {
 
     protected $model = faq::class;
 

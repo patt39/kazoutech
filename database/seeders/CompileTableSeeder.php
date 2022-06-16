@@ -84,9 +84,9 @@ class CompileTableSeeder extends Seeder
         $admin_user->syncRoles('super-admin');
 
         
-        // $categoryfaq = \App\Model\admin\categoryfaq::factory(1)->create();
-        // $faq = faq::factory(2)->create();
-        // $slidehome = slidehome::factory(3)->create();
+        categoryfaq::factory(10)->create();
+        //faq::factory(2)->create();
+        slidehome::factory(3)->create();
 
 
         // Output
