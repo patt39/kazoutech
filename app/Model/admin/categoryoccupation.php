@@ -6,9 +6,13 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Database\Factories\admin\categoryoccupationFactory;
+
 
 class categoryoccupation extends Model
 {
+    use HasFactory;
 
 
     protected $guarded = [];
@@ -73,6 +77,12 @@ class categoryoccupation extends Model
     {
         return $this->hasMany(occupation::class,'categoryoccupation_id');
     }
+
+
+    protected static function newFactory()
+{
+    return categoryoccupationFactory::new();
+}
 
 
     use Sluggable;

@@ -6,16 +6,18 @@ use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class category extends Model
 {
-
+     
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    use LogsActivity;
+    use LogsActivity, HasFactory;
 
     protected $fillable = ['name', 'ip','color_name','icon','status'];
     protected static $logAttributes = ['name', 'ip','color_name','icon','status'];

@@ -9,23 +9,28 @@ use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+//use Spatie\Activitylog\LogOptions;
 
 
 class faq extends Model implements Auditable
 {
-   use LogsActivity,AuditableTrait;
+   use AuditableTrait, HasApiTokens, HasFactory, Notifiable;
 
   protected $fillable = ['body','title','categoryfaq_id','status'];
-  protected static $logAttributes = ['user_id','body','title','categoryfaq_id','ip','status'];
+//   protected static $logAttributes = ['user_id','body','title','categoryfaq_id','ip','status'];
 
-  public function getActivitylogOptions(): LogOptions
-  {
-      return LogOptions::defaults()
-      ->logOnly(['body']);
-        logOnlyDirty()
-      ->dontSubmitEmptyLogs();    
-  }
+//   public function getActivitylogOptions(): LogOptions
+//   {
+//       return LogOptions::defaults()
+//       ->logOnly(['body']);
+//         logOnlyDirty()
+//       ->dontSubmitEmptyLogs();    
+//   }
 
     /**
      * @return array

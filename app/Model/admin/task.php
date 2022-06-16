@@ -6,17 +6,17 @@ use App\Model\user\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\Activitylog\Traits\LogsActivity;
+// use Spatie\Activitylog\Traits\LogsActivity;
 
 class task extends Model implements Auditable
 {
 
-    use LogsActivity,\OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     protected $table = 'tasks';
 
     protected $fillable = ['user_id','administrator_id','progress','ip','progress','description'];
-    protected static $logAttributes = ['user_id','administrator_id','progress','ip','progress','description'];
+    // protected static $logAttributes = ['user_id','administrator_id','progress','ip','progress','description'];
 
     protected static function boot()
     {

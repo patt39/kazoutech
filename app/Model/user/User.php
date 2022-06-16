@@ -9,6 +9,7 @@ use App\Model\admin\city;
 use App\Model\admin\country;
 use App\Model\admin\occupation;
 use App\Model\admin\task;
+use App\Model\user\technician;
 use App\Model\admin\taskuserassign;
 use App\Notifications\VerifyEmailUsers;
 use Illuminate\Database\Eloquent\SoftDeletes;

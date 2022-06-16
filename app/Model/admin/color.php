@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 
 
 
@@ -20,20 +22,13 @@ class color extends Model implements Auditable
      *
      * @var array
      */
-    use LogsActivity;
+
+    use HasFactory, HasApiTokens;
+
 
     protected $fillable = ['name','user_id','ip','status','slug','color_name'];
-    protected static $logAttributes = ['name','user_id','ip','status'];
 
     protected $table = 'colors';
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->logOnly(['name']);
-          logOnlyDirty()
-        ->dontSubmitEmptyLogs();    
-    }
 
     /**
      * @return array

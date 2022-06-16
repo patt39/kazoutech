@@ -10,12 +10,12 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
+// use Spatie\Activitylog\Traits\LogsActivity;
+// use Spatie\Activitylog\LogOptions;
 
 class technician extends Model implements Auditable
 {
-    use LogsActivity,\OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
         'district',
@@ -43,13 +43,13 @@ class technician extends Model implements Auditable
         'status'
     ];
 
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->logOnly(['speciality']);
-          logOnlyDirty()
-        ->dontSubmitEmptyLogs();    
-    }
+    // public function getActivitylogOptions(): LogOptions
+    // {
+    //     return LogOptions::defaults()
+    //     ->logOnly(['speciality']);
+    //       logOnlyDirty()
+    //     ->dontSubmitEmptyLogs();    
+    // }
 
 
     public function member()

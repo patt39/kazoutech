@@ -9,15 +9,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Database\Factories\admin\BlogFactory;
+
+
 
 class blog extends Model implements Auditable
 {
-    use AuditableTrait;
+    use AuditableTrait, HasFactory;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+    protected static function newFactory()
+    {
+        return BlogFactory::new();
+    }
 
     protected $guarded = [];
 

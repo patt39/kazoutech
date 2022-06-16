@@ -114,7 +114,7 @@ class DevenirCharbonneurSite extends Component{
                 <div className="row">
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Nom et Prènom</label>
+                            <label>Nom et Prénom</label>
                             <div className="input-group mb-4">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">
@@ -122,7 +122,7 @@ class DevenirCharbonneurSite extends Component{
                                     </span>
                                 </div>
                                 <input type="text"
-                                       placeholder="Votre Nom et Prènom ..." aria-label="Votre Nom et  Prènom ..."
+                                       placeholder="Votre Nom et Prénom ..." aria-label="Votre Nom et Prènom ..."
                                        required="required"
                                        id="name"
                                        className={`form-control ${this.hasErrorFor('name') ? 'is-invalid' : ''}`}
@@ -164,10 +164,10 @@ class DevenirCharbonneurSite extends Component{
                                     <i className="ni ni-calendar-grid-58"/>
                                 </span>
                             </div>
-                            <input type="number"
+                            <input type="text"
                                    placeholder="Exemple:Rue Douala manga bell" aria-label="Localisation de l'entreprise ..."
                                    required="required"
-                                   id="day" maxLength="2"
+                                   id="day"
                                    className={`form-control ${this.hasErrorFor('day') ? 'is-invalid' : ''}`}
                                    name='day'
                                    value={this.state.day}
