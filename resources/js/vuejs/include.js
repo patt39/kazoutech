@@ -1,6 +1,5 @@
 
 import Vue from 'vue'
-window.Vue = require('vue');
 Vue.use(require('vue-resource'));
 
 import 'es6-promise/auto';

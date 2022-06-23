@@ -1,7 +1,5 @@
 window._ = require('lodash');
 
-
-window.Vue = require('vue');
 import Vue from 'vue'
 window.bus = new Vue();
 
