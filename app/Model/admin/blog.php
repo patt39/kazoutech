@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Database\Factories\admin\BlogFactory;
+use Database\Factories\admin\blogFactory;
 
 
 
@@ -25,7 +25,7 @@ class blog extends Model implements Auditable
 
     protected static function newFactory()
     {
-        return BlogFactory::new();
+        return blogFactory::new();
     }
 
     protected $guarded = [];

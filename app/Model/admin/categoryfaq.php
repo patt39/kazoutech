@@ -6,14 +6,12 @@ use App\Model\user\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\admin\categoryfaqFactory;
-//use Spatie\Activitylog\LogOptions;
 
 class categoryfaq extends Model
 {
@@ -25,15 +23,6 @@ class categoryfaq extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = ['name','user_id','ip','status'];
-    // protected static $logAttributes = ['name','user_id','ip','status'];
-    
-    // public function getActivitylogOptions(): LogOptions
-    // {
-    //     return LogOptions::defaults()
-    //     ->logOnly(['name']);
-    //       logOnlyDirty()
-    //     ->dontSubmitEmptyLogs();    
-    // }
 
     protected static function newFactory()
     {

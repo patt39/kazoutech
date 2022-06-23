@@ -12,18 +12,20 @@ use Faker\Generator as Faker;
 
 class blogFactory extends Factory {
 
+
+    //Protected model for recognitioin
        protected $model = blog::class;
 
        public function definition() {
-        $title  = $faker->realText(rand(10,30));
+        $title  = $this->faker->realText(rand(10,30));
 
         return [
             'title' => $title,
-            'status' => $faker->boolean,
+            'status' => $this->faker->boolean,
             'slug' => str_slug($title),
             'color_id' => color::inRandomOrder()->first()->id,
-            'photo' => $faker->imageUrl($width = 1000, $height = 900),
-            'body' => $faker->realText(rand(10000, 40000)),
+            'photo' => $this->faker->imageUrl($width = 1000, $height = 900),
+            'body' => $this->faker->realText(rand(10000, 40000)),
             'occupation_id' => occupation::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
         ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\user;
 
 use App\Model\admin\city;
 use App\Model\admin\color;
@@ -16,15 +16,15 @@ class UserFactory extends Factory{
 
     public function definition(){
         return [
-            'username' => $faker->unique()->userName,
+            'username' => $this->faker->unique()->userName,
             //'first_name' => $faker->firstName,
-            'avatar' => $faker->imageUrl($width = 400, $height = 400),
-            'avatarcover' => $faker->imageUrl,
+            'avatar' => $this->faker->imageUrl($width = 400, $height = 400),
+            'avatarcover' => $this->faker->imageUrl,
             'occupation_id' => occupation::inRandomOrder()->first()->id,
-            'name' => $faker->firstName,
-            'charbonneur' => $faker->boolean,
-            'status_profile_verify' => $faker->boolean,
-            'email' => $faker->unique()->safeEmail,
+            'name' => $this->faker->firstName,
+            'charbonneur' => $this->faker->boolean,
+            'status_profile_verify' => $this->faker->boolean,
+            'email' => $this->faker->unique()->safeEmail,
             'color_name' => color::inRandomOrder()->first()->name,
             'city_id' => city::inRandomOrder()->first()->id,
             //'phone' => $faker->unique()->numerify('+393#########'),

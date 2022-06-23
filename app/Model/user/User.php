@@ -24,10 +24,12 @@ use Overtrue\LaravelFollow\Traits\CanLike;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Database\Factories\user\UserFactory;
 
 class User extends Authenticatable implements MustVerifyEmail,Auditable
 {
-    use Notifiable,HasApiTokens,HasRoles,CanFollow,CanLike,CanBeFollowed,AuditableTrait,SoftDeletes;
+    use Notifiable,HasApiTokens,HasRoles,CanFollow,CanLike,CanBeFollowed,AuditableTrait,SoftDeletes,HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -85,6 +87,11 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
                 'slug' => $user->username,
             ]);
         });
+    }
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 
     /**

@@ -38,7 +38,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
         $faker = Faker::create();
         $name = 'name';
         $description = $faker->realText(rand(100, 1000));
-        //$user =  User::inRandomOrder()->first()->id;
+        $user =  User::inRandomOrder()->first()->id;
         $occupations = [
             [
                 $name  => 'Electricité',
@@ -46,7 +46,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Méccanique',
@@ -54,7 +54,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Soudure',
@@ -62,7 +62,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Maçonnerie',
@@ -70,7 +70,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Menuiserie',
@@ -78,7 +78,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Charpenterie',
@@ -86,7 +86,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Menagerie',
@@ -94,7 +94,7 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Démenagement',
@@ -102,21 +102,22 @@ class OccupationAndCategoryoccupationSeed extends Seeder
                 'description' =>$description,
                 'status' => true,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
             [
                 $name  => 'Location Multiple',
                 'slug' =>str_slug('Location Multiple'),
                 'description' =>$description,
                 'photo' => $faker->imageUrl($width = 1000, $height = 900),
-                //'user_id' => $user
+                'user_id' => $user
             ],
         ];
         foreach($occupations as $item)
             occupation::create($item);
 
             //factory(User::class)->create();
+            User::factory(40)->create();
             categoryoccupation::factory(100)->create();
-            //blog::factory()->create();
+            blog::factory(20)->create();
     }
 }
