@@ -2,7 +2,7 @@ window._ = require('lodash');
 
 
 window.Vue = require('vue');
-
+import Vue from 'vue'
 window.bus = new Vue();
 
 /* Ici je recupere tous les information lier a l'utilisateur connecter */

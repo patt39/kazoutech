@@ -78,7 +78,6 @@ class faq extends Model implements Auditable
     }
 
 
-
     public function categoryfaq()
     {
         return $this->belongsTo(Categoryfaq::class);
