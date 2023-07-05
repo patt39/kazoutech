@@ -276,7 +276,7 @@
                         //End Progress bar
                         this.$Progress.finish();
                     }).catch(() => {
-                    //Failled message
+                    //Failed message
                     this.$Progress.fail();
                     $.notify("Ooops! Something wrong. Try later", {
                         type: 'danger',

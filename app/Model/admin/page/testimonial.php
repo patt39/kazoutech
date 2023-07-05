@@ -7,13 +7,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\Activitylog\Traits\LogsActivity;
+//use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class testimonial extends Model implements Auditable
+class testimonial extends Model 
 {
 
-    use LogsActivity,\OwenIt\Auditing\Auditable;
+    //use LogsActivity,\OwenIt\Auditing\Auditable;
     protected static $logAttributes = ['body', 'ip', 'user_id','status'];
 
     protected $fillable = ['body','user_id','ip','status'];

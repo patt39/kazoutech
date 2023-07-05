@@ -55,4 +55,4 @@ Route::get(
 
 //User Route Contact
 Route::get('/contacts', 'ContactController@contatPage')->name('contact_cm');
-Route::post('contacts', 'ContactController@store')->name('contact.save');
+Route::post('/contacts', 'ContactController@store')->name('contact.save');

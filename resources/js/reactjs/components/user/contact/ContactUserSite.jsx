@@ -73,6 +73,7 @@ class ContactUserSite extends Component {
                     subject: "",
                     message: "",
                 });
+                console.log(first_name, last_name, email)
             }).catch(error => {
             this.setState({
                 errors: error.response.data.errors

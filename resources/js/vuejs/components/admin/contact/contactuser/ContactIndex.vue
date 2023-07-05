@@ -65,7 +65,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr v-for="(item,index) in contacts" :key="item.id">
+                                            <tr v-for="(item) in contacts" :key="item.id">
                                                 <td>
                                                     <span v-if="item.status === 1" class="badge badge-success">Read</span>
                                                     <span v-else-if="item.status === 0"  class="badge badge-rose">New</span>
@@ -97,7 +97,7 @@
                                     <div class="toolbar">
                                         <div class="submit text-center" >
                                             <infinite-loading spinner="waveDots" @infinite="infiniteHandler">
-                                            <span slot="no-more">No results :(</span>
+                                            <span slot="no-more">No more results :(</span>
                                             </infinite-loading>
                                         </div>
                                     </div>

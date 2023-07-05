@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">slideshow</i>
                                     </div>
-                                    <p class="card-category"><b>All Slide Home page</b>
+                                    <p class="card-category"><b>All Slide Home page</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{slidehomes.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">

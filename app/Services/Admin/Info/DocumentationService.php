@@ -11,7 +11,7 @@ class DocumentationService
 
     public static function uploadDocumentation($path, $file, $old_filename)
     {
-        $disk = Storage::disk('public');
+        $disk = Storage::disk('public')->put($path, $file);
 
         $old_path = $path . $old_filename;
         if($disk->exists($old_path))

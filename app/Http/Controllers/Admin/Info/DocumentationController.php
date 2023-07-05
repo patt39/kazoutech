@@ -50,22 +50,31 @@ class DocumentationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required|string',
+            'name'=>'required|string|',
+            'name_doc' => 'required',
         ]);
 
-        $inputs = $request->all();
+        $documentation = new documentation();
+        $documentation->name = $request->name;
 
         try{
-            $documentation = new documentation();
-            $documentation->fill($inputs);
-            $documentation->save();
 
-            if(isset($inputs['name_doc'])) {
-                $file_name_doc = $inputs['name_doc'];
-                $file_name_doc_name = DocumentationService::uploadDocumentation($documentation->getUploadPath(), $file_name_doc,  $documentation->name_doc);
-                $documentation->name_doc = $file_name_doc_name;
+            if ($request->name_doc) {
+                $documentation->name_doc = $request->name_doc;            
+                foreach ($request->name_doc as $file) {
+                    if ($file->isValid()) {
+                        $name = time() . str_random(5) . '.' . $file->getClientOriginalExtension();
+                        Storage::disk('public')->put($name, $file);
+                        $files[] = $name;
+                    }
+                }
+            
+                if (count($files) > 0) {
+                    $response->assets = json_encode($files);
+                }
             }
             $documentation->save();
+            
 
         }catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
@@ -140,17 +149,22 @@ class DocumentationController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy(Request $request, documentation $documentation)
+    public function destroy(Request $request, $id)
     {
-        try {
-            Storage::disk('public')->delete($documentation->getUploadPath().$documentation->name_doc);
-            // Delete user
-            $documentation->delete();
 
-        } catch (\Illuminate\Database\QueryException $e) {
-            Log::error($e);
-            dd($e);
-        }
+        $documentation = documentation::findOrFail($id);
+       
+        $documentation->delete();
+
+        // try {
+        //     Storage::disk('public')->delete($documentation->getUploadPath().$documentation->name_doc);
+        //     // Delete user
+        //     $documentation->delete();
+
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     Log::error($e);
+        //     //dd($e);
+        // }
 
         return ['message' => 'Document deleted'];
     }

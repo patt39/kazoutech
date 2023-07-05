@@ -75,6 +75,7 @@ import PolicyprivacyCreate from "../components/admin/info/policyprivacy/Policypr
 import PolicyprivacyEdit from "../components/admin/info/policyprivacy/PolicyprivacyEdit";
 import PolicyprivacyView from "../components/admin/info/policyprivacy/PolicyprivacyView";
 import DocumentationIndex from "../components/admin/info/documentation/DocumentationIndex";
+import DocumentationCreate from "../components/admin/info/documentation/DocumentationCreate";
 import AdminProfileInfoEdit from "../components/admin/account/AdminProfileInfoEdit";
 import ContactBookmarks from "../components/admin/contact/contactuser/ContactBookmarks";
 import CityActives from "../components/admin/partial/settings/city/CityActives";
@@ -270,6 +271,7 @@ export const routes = [
 
     /* Legal Mention route  */
     { path: '/dashboard/documentations', name: 'documentations.index', component: DocumentationIndex },
+    { path: '/dashboard/documentations/create', name: 'documentations.create', component: DocumentationCreate },
     { path: '/dashboard/licence_site', name: 'licence_site.index', component: LicenceIndex },
     { path: '/dashboard/licence_site/create/', name: 'licence_site.create', component: LicenceCreate },
     { path: '/dashboard/licence_site/:id/edit', name: 'licence_site.edit', component: LicenceEdit },

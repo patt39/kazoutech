@@ -7692,10 +7692,10 @@ language-tags@^1.0.5:
   dependencies:
     language-subtag-registry "~0.3.2"
 
-laravel-echo@^1.11.7:
-  version "1.11.7"
-  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.11.7.tgz#f9e4e6ce8069eaeca0b41924dd237629bf9f4bcb"
-  integrity sha512-LhEZp/RbdtdMlhptJyn452+aXfz+A1UW2bhJM7NROgXhnNgj+6P9BkG9JcPCBMernp5TGkOGI6A0NPbkAWYWGg==
+laravel-echo@^1.12.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.15.0.tgz#fe06cea1804cb336339690cc599c00dbc6263825"
+  integrity sha512-q5YaEw2NFu9xra6sYUfh/FX2YotN5iY1nMeKz90J3W3Vpa+5WjK3/DYeEzkTfBZz8Oq1Dv9vWNE4IUvt7kxYIg==
 
 laravel-mix@^6.0.43:
   version "6.0.49"
@@ -10692,10 +10692,10 @@ sass-loader@^8.0.2:
     schema-utils "^2.6.1"
     semver "^6.3.0"
 
-sass@^1.52.1:
-  version "1.52.3"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.52.3.tgz#b7cc7ffea2341ccc9a0c4fd372bf1b3f9be1b6cb"
-  integrity sha512-LNNPJ9lafx+j1ArtA7GyEJm9eawXN8KlA1+5dF6IZyoONg1Tyo/g+muOsENWJH/2Q1FHbbV4UwliU0cXMa/VIA==
+sass@^1.53.0:
+  version "1.58.3"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.58.3.tgz#2348cc052061ba4f00243a208b09c40e031f270d"
+  integrity sha512-Q7RaEtYf6BflYrQ+buPudKR26/lH+10EmO9bBqbmPh/KeLqv8bjpTNqxe71ocONqXq+jYiCbpPUmQMS+JJPk4A==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"

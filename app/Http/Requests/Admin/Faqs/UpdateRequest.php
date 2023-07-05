@@ -11,7 +11,7 @@ class UpdateRequest extends BaseRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class UpdateRequest extends BaseRequest
             'categoryfaq_id'=>'required',
         ];
     }
-    public function messages()
+    public function messages() : array
     {
         return [
             'categoryfaq_id.required' => 'Le champ categorie est obligatoire',

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\User;
 
 
-use App\Http\Requests\Contacts\StoreRequest;
+use App\Http\Requests\Admin\Contacts\StorePostRequest;
 use App\Http\Resources\User\ContactResource;
 use App\Model\admin\contact;
 use App\Rules\Recaptcha;
-use App\Services\Admin\MailContactService;
+use App\Services\MailContactService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -88,7 +88,7 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(StoreRequest $request,Recaptcha $recaptcha)
+    public function store(StorePostRequest $request,Recaptcha $recaptcha)
     {
 
         $contact = new contact;

@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">sort</i>
                                     </div>
-                                    <p class="card-category"><b>All Diplomas</b>
+                                    <p class="card-category"><b>All Diplomas</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{diplomas.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +44,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">sort</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">sort</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +62,9 @@
                                     <div v-if="$auth.can('create-diploma')" class="toolbar">
                                         <div class="submit text-center">
                                             <button id="button_hover" class="btn btn-success btn-raised btn-round " @click="newModal">
-                                     <span class="btn-label">
-                                        <i class="material-icons">sort</i>
-                                    </span>
+                                                <span class="btn-label">
+                                                    <i class="material-icons">sort</i>
+                                                </span>
                                                 <b class="title_hover">New Diploma</b>
                                             </button>
                                         </div>
@@ -183,7 +183,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 

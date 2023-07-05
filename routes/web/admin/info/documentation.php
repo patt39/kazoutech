@@ -46,7 +46,7 @@ Route::group(['namespace' => 'Info'], function(){
 
 
     Route::delete(
-        '/dashboard/documentations/{documentation}',
+        '/dashboard/documentations/{id}',
         'DocumentationController@destroy'
     )->name('documentations.destroy');
 

@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">verified_user</i>
                                     </div>
-                                    <p class="card-category"><b>All Licences site</b>
+                                    <p class="card-category"><b>All Licences site</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{licencesites.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -166,7 +166,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 

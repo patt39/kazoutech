@@ -98,8 +98,8 @@
                                                 <td><img :src="item.photo"
                                                          style="width: 50px; height: 50px;  top: 15px; left: 15px; border-radius: 50%">
                                                 </td>
-                                                <td>{{ (item.last_name.length > 15 ? item.last_name.substring(0,15)+
-                                                    "..." : item.last_name) | upText }}
+                                                <td><strong style="font-weight: bold,">{{ (item.last_name.length > 15 ? item.last_name.substring(0,15)+
+                                                    "..." : item.last_name) | upText }} {{ (item.first_name) | upText }} </strong> 
                                                 </td>
                                                 <td>
                                                     <div class="timeline-heading">
@@ -445,6 +445,7 @@
                 axios.get("/api/abouts").then(response => {
                     vm.loaded = true;
                     vm.abouts = response.data.data;
+                    console.log(abouts)
                     vm.mydatatables();
                     //End Progress bar
                     vm.$Progress.finish();

@@ -18,7 +18,7 @@ class diploma extends Model
      *
      * @var array
      */
-    use LogsActivity;
+    // use LogsActivity;
 
     protected $fillable = ['name','user_id','ip','status'];
     protected static $logAttributes = ['name','user_id','ip','status'];

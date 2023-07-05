@@ -15,7 +15,7 @@
                                     <div class="card-icon">
                                         <i class="material-icons">assignment_ind</i>
                                     </div>
-                                    <p class="card-category"><b>All Documentations</b>
+                                    <p class="card-category"><b>All Documentations</b></p>
                                     <h3 class="card-title" style="color:red;"><b>{{documentations.length}}</b></h3>
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +44,9 @@
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                <span>
-                                    <i id="tooltipSize" class="material-icons">assignment_ind</i>
-                                </span>
+                                            <span>
+                                                <i id="tooltipSize" class="material-icons">assignment_ind</i>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -61,12 +61,13 @@
                                     </div>
                                     <div v-if="$auth.can('create-documentation')" class="toolbar">
                                         <div class="submit text-center">
-                                            <a href="/dashboard/documentations/create" id="button_hover" class="btn btn-success btn-raised btn-round">
-                                                  <span class="btn-label">
+                                            <router-link :to="{ name: 'documentations.create' }" id="button_hover"
+                                                class="btn btn-success btn-raised btn-round">
+                                                <span class="btn-label">
                                                     <i class="material-icons">assignment_ind</i>
-                                                  </span>
-                                                <b class="title_hover">New Documentation</b>
-                                            </a>
+                                                </span>
+                                                    <b class="title_hover">New Documentation</b>
+                                                </router-link>
                                         </div>
                                     </div>
                                     <div class="material-datatables">
@@ -74,7 +75,7 @@
                                                cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                             <tr>
-                                                <th><b>Name</b></th>
+                                                <th><b>Doc Name</b></th>
                                                 <th><b>File</b></th>
                                                 <th><b>Last Update</b></th>
                                                 <th class="disabled-sorting text-right"><b v-if="($auth.can('publish-documentation') || $auth.can('edit-documentation') || $auth.can('delete-documentation'))">Actions</b></th>
@@ -82,7 +83,7 @@
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th><b>Name</b></th>
+                                                <th><b>Doc Name</b></th>
                                                 <th><b>File</b></th>
                                                 <th><b>Last Update</b></th>
                                                 <th class="text-right"><b v-if="($auth.can('publish-documentation') || $auth.can('edit-documentation') || $auth.can('delete-documentation'))">Actions</b></th>
@@ -90,7 +91,7 @@
                                             </tfoot>
                                             <tbody>
                                             <tr v-for="item in orderByItems" :key="item.id">
-                                                <td>{{ item.name | upText }}</td>
+                                                <td style="font-weight: bold;">{{ item.name | upText }}</td>
                                                 <td>{{ item.name_doc }}</td>
                                                 <td><b>{{ item.updated_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
@@ -120,7 +121,6 @@
             </div>
             <footer-admin></footer-admin>
         </div>
-
     </div>
 </template>
 
@@ -187,8 +187,8 @@
             deleteItem(id) {
                 //Alert delete
                 Swal.fire({
-                    title: 'Delete Documentations?',
-                    text: "Are you sure you want to delete this documentations?",
+                    title: 'Delete Documentation?',
+                    text: "Are you sure you want to delete this documentation?",
                     type: 'warning',
                     animation: false,
                     customClass: 'animated shake',
@@ -269,16 +269,9 @@
         },
         created() {
             this.loadItems();
-            this.$storage.setOptions({
-                prefix: 'app_',
-                driver: 'local',
-                ttl: 60 * 60 * 24 * 1000 // 24 hours
-            });
-            Fire.$on('AfterCreate', () => {
+            Fire.$on('ItemGetter', () => {
                 this.loadItems();
             });
-            // Run the intervalFetchData function once to set the interval time for later refresh
-            this.intervalFetchData();
         },
         //get order bay
         computed: {

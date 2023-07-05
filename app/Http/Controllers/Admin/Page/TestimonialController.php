@@ -139,7 +139,7 @@ class TestimonialController extends Controller
      * @param  int $id
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request, $id)
     {
         $testimonial = Testimonial::findOrFail($id);
 
