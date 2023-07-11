@@ -12,7 +12,7 @@ class AboutResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id' => $this->id,
@@ -26,7 +26,6 @@ class AboutResource extends JsonResource
             'last_name' => $this->last_name,
             'description' => $this->description,
             'slug' => $this->slug,
-            'statusOnline' => $this->user->isOnline(),
             'user' => $this->user,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

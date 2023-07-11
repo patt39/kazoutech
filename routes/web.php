@@ -63,5 +63,3 @@ Route::group(['namespace' => 'User'], function () {
 
     Route::get('dashboard/chat', 'MessageController@chat')->name('messages.chat');
 });
-
-Route::resource('/dashboard/tests', 'DownloadcvController');

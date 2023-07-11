@@ -110,10 +110,10 @@
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button"
+                                                        <button v-if="item.user.my_status" type="button"
                                                                 class="btn btn-success btn-round btn-just-icon btn-sm"
                                                                 title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button"
+                                                        <button v-else="item.user.my_status" type="button"
                                                                 class="btn btn-danger btn-round btn-just-icon btn-sm"
                                                                 title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+

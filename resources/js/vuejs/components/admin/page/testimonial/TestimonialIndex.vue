@@ -99,10 +99,10 @@
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" @click="getUser(item)">
-                                                        <button v-if="item.statusOnline" type="button"
+                                                        <button v-if="item.user.my_status" type="button"
                                                                 class="btn btn-success btn-round btn-just-icon btn-sm"
                                                                 title="Administrator Online"></button>
-                                                        <button v-else="item.statusOnline" type="button"
+                                                        <button v-else="item.user.my_status" type="button"
                                                                 class="btn btn-danger btn-round btn-just-icon btn-sm"
                                                                 title="Administrator Offline"></button>
                                                         {{ (item.user.name.length > 15 ? item.user.name.substring(0,15)+
@@ -114,7 +114,7 @@
                                                     <div class="timeline-heading">
                                                         <span v-if="item.status === 1" class="badge badge-info"><b>Active</b></span>
                                                         <span v-else-if="item.status === 0"
-                                                              class="badge badge-danger"><b>Deactive</b></span>
+                                                              class="badge badge-danger"><b>Disactive</b></span>
                                                     </div>
                                                 </td>
                                                 <td class="td-actions text-right">

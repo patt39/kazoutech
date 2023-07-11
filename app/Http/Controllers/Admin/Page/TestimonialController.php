@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Page;
 use App\Http\Resources\Page\TestimonialResource;
 use App\Model\admin\page\testimonial;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -33,16 +34,16 @@ class TestimonialController extends Controller
 
     public function api()
     {
-        return TestimonialResource::collection(Testimonial::with('user')->latest()->get());
+        return TestimonialResource::collection(testimonial::with('user')->latest()->get());
     }
 
     public function show($id)
     {
-        $testimonial = new TestimonialResource(testimonial::where('id',$id)->firstOrFail());
+        $testimonial = new testimonialResource(testimonial::where('id',$id)->firstOrFail());
         return $testimonial;
     }
 
-    public function create()
+    public function create(): View
     {
         return view('admin.page.testimonial.create');
     }
@@ -65,7 +66,7 @@ class TestimonialController extends Controller
             'role' => 'required|string|max:100',
         ]);
 
-        $testimonial = new Testimonial;
+        $testimonial = new testimonial;
 
         $testimonial->body = $request->body;
         $testimonial->role = $request->role;
@@ -79,7 +80,7 @@ class TestimonialController extends Controller
      * @param testimonial $testimonial
      * @return \Illuminate\Http\JsonResponse
      */
-    public function status(testimonial $testimonial,$id)
+    public function status(testimonial $testimonial, $id)
     {
         $testimonial = testimonial::where('id', $id)->findOrFail($id);
         $testimonial->update(['status' => !$testimonial->status]);
@@ -95,7 +96,7 @@ class TestimonialController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function vector(testimonial $testimonial)
+    public function vector($testimonial): View
     {
         return view('admin.page.testimonial.view', [
             'testimonial' => $testimonial,
@@ -104,7 +105,7 @@ class TestimonialController extends Controller
 
     public function view($slug)
     {
-        $testimonial = new TestimonialResource(testimonial::where('slug',$slug)->firstOrFail());
+        $testimonial = new testimonialResource(testimonial::where('slug',$slug)->firstOrFail());
         return $testimonial;
     }
 
@@ -115,14 +116,14 @@ class TestimonialController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): JSONResponse
     {
         $this->validate($request,[
             'body' => 'required',
             'role' => 'required|string|max:100',
         ]);
 
-        $testimonial = Testimonial::findOrFail($id);
+        $testimonial = testimonial::findOrFail($id);
 
         $testimonial->body = $request->body;
         $testimonial->role = $request->role;
@@ -130,7 +131,7 @@ class TestimonialController extends Controller
 
         $testimonial->save();
 
-        return ['message' => 'Updated successfully'];
+        return JSONResponse(200, ['message' => 'Updated successfully']);
     }
 
     /**
@@ -141,10 +142,10 @@ class TestimonialController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $testimonial = Testimonial::findOrFail($id);
+        $testimonial = testimonial::findOrFail($id);
 
         $testimonial->delete();
 
-        return ['message' => 'Deleted successfully'];
+        return Response(200, ['message' => 'Updated successfully']);
     }
 }

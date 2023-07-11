@@ -258,7 +258,6 @@
                 // Submit the form via a POST request
                 this.form.post("/dashboard/abouts")
                     .then(() => {
-
                         //Insertion de l'alert !
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {
                             allow_dismiss: false,

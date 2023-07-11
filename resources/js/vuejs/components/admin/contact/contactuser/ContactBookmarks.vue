@@ -8,24 +8,6 @@
                     <br>
                     <StatusAdmin/>
                     <br>
-                    <div v-if="loaded" class="row">
-                        <div class="col-md-12 expo">
-                            <div class="card card-stats">
-                                <div :class="getColorCardUser()">
-                                    <div class="card-icon">
-                                        <i class="material-icons">email</i>
-                                    </div>
-                                    <p class="card-category"><b>All Messages Contact Us</b></p>
-                                    <h3 class="card-title" style="color:red;"><b>{{contacts.length}}</b></h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">email</i><b>All Messages Contact Us</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <errored-loading v-if="errored"/>
                     <div v-if="!loaded" class="submit">
                         <LoaderLdsDefault/>
@@ -99,7 +81,7 @@
                                                     <span v-if="item.status === 1" class="badge badge-success">Read</span>
                                                     <span v-else-if="item.status === 0"  class="badge badge-rose">New</span>
                                                 </td>
-                                                <td>{{ (item.first_name.length > 15 ? item.first_name.substring(0,15)+ "..." : item.first_name) | upText }}</td>
+                                                <td>{{ (item.first_name.length > 15 ? item.first_name.substring(0,15)+ "..." : item.first_name) | upText }} {{ (item.last_name) | upText }}</td>
                                                 <td>{{ item.email}}</td>
                                                 <td><b>{{ item.created_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">

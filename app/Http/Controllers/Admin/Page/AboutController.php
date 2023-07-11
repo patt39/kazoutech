@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Resources\Page\AboutResource;
 use App\Model\admin\page\about;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
@@ -23,15 +25,14 @@ class AboutController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api','aboutmember']]);
-        // Middleware lock account
-        //$this->middleware('auth.lock');
+       
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.page.about.index');
     }
@@ -57,7 +58,7 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.page.about.create');
     }
@@ -71,7 +72,15 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         //dd(\request()->all()); // pour tester les données qui entrent dans la base de données
-        $this->validate($request, [
+        // $this->validate($request, [
+        //     'first_name' => 'required|string|max:255',
+        //     'last_name' => 'required|string|max:255',
+        //     'description' => 'required',
+        //     'role' => 'required',
+        //     'photo' => 'required',
+        // ]);
+
+        $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'description' => 'required',
@@ -130,7 +139,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return AboutResource|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $id, about $bout)
     {
         $about = new AboutResource(about::where('id', $id)->findOrFail($id));
         return $about;
@@ -141,7 +150,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(string $id, about $about): View
     {
         $about = about::where('id', $id)->findOrFail($id);
         return view('admin.page.about.edit', compact('about'));
@@ -199,7 +208,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $about = about::findOrFail($id);
         $oldFilename = $about->photo;

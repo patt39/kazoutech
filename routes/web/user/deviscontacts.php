@@ -23,7 +23,7 @@ Route::get(
 Route::get(
     'dashboard/deviscontacts/view/{slug}',
     'DeviscontactsController@view'
-)->name('deviscontacts.view');
+)->name('deviscontacts.viewSlug');
 
 Route::get(
     '/dashboard/deviscontacts/red_confirm/{id}',

@@ -58,7 +58,7 @@ class ProfileController extends Controller
             ]);
         }else{
             return back()
-                ->with('Error',"Unauthorized editing this is not your account.");
+                ->with(['Error' => 403, "Unauthorized editing this is not your account."]);
         }
 
 

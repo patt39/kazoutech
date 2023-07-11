@@ -10,6 +10,24 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12 expo">
+                            <div class="card card-stats">
+                                <div :class="getColorCardUser()">
+                                    <div class="card-icon">
+                                        <i class="material-icons">email</i>
+                                    </div>
+                                    <p class="card-category"><b>All Messages From Contact Us page</b></p>
+                                    <h3 class="card-title" style="color:red;"><b>{{contacts.length}}</b></h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                    <i class="material-icons">email</i><b>All Messages</b>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 expo">
                             <div class="card">
                                 <div :class="getColorHeaderUser()">
                                     <div class="row">
@@ -25,11 +43,6 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2 text-right">
-                                            <span>
-                                                <i id="tooltipSize" class="material-icons">email</i>
-                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -67,10 +80,10 @@
                                             <tbody>
                                             <tr v-for="(item) in contacts" :key="item.id">
                                                 <td>
-                                                    <span v-if="item.status === 1" class="badge badge-success">Read</span>
+                                                    <span v-if="item.status === 1" class="badge badge-success">Red</span>
                                                     <span v-else-if="item.status === 0"  class="badge badge-rose">New</span>
                                                 </td>
-                                                <td>{{ (item.first_name.length > 15 ? item.first_name.substring(0,15)+ "..." : item.first_name) | upText }}</td>
+                                                <td>{{ (item.first_name.length > 15 ? item.first_name.substring(0,15)+ "..." : item.first_name) | upText }}  {{ (item.last_name) | upText }}</td>
                                                 <td>{{ item.email}}</td>
                                                 <td><b>{{ item.created_at | dateAgo }}</b></td>
                                                 <td class="td-actions text-right">
@@ -119,6 +132,7 @@
         components: {LoaderLdsDefault, StatusAdmin},
         data() {
             return {
+                loaded: false,
                 page: 1,
                 contacts: [],
                 user: {},
@@ -128,6 +142,10 @@
             axios.get("/api/account/user").then(response => {this.user = response.data.data});
         },
         methods: {
+            getMaterialIcon(color) {
+                let icon = 'material-icons text-' + color;
+                return icon;
+            },
             getColorCardUser(){
                 let colorCard = 'card-header card-header-icon card-header-' + this.user.color_name;
                 return colorCard;
