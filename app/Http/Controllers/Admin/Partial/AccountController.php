@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Partial;
 use App\Http\Requests\User\Account\UpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Model\user\User;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():View
     {
         $user = Auth::user();
         return view('admin.account.profile',compact('user'));
@@ -76,7 +77,7 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(): View
     {
         $user = Auth::user();
         return view('admin.account.edit_profile',compact('user'));

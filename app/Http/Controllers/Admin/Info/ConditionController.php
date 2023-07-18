@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\ConditionResource;
 use App\Model\admin\info\condition;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\File;
 
@@ -28,14 +29,14 @@ class ConditionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.info.condition.index');
     }
 
     public function api()
     {
-        return ConditionResource::collection(Condition::with('user')->latest()->get());
+        return ConditionResource::collection(condition::with('user')->latest()->get());
     }
 
     /**
@@ -43,7 +44,7 @@ class ConditionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.info.condition.create');
     }
@@ -81,7 +82,7 @@ class ConditionController extends Controller
                 'user_id' => auth()->user()->id,
                 ]);
         
-        return response('disactivated', Response::HTTP_ACCEPTED);
+        return response('Disactivated', Response::HTTP_ACCEPTED);
     }
 
     public function active_condition($id)
@@ -93,7 +94,7 @@ class ConditionController extends Controller
                 'user_id' => auth()->user()->id,
                 ]);
         
-        return response('activated', Response::HTTP_ACCEPTED);
+        return response('Activated', Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -116,13 +117,13 @@ class ConditionController extends Controller
      */
     public function edit($id)
     {
-       $condition = Condition::where('id', $id) ->first();
+       $condition = condition::where('id', $id) ->findOrFail($id);
        return view('admin.info.condition.edit', compact('condition'));
     }
 
     public function view($slug)
     {
-        $condition = new ConditionResource(condition::where('slug',$slug)->firstOrFail());
+        $condition = new ConditionResource(condition::where('slug', $slug)->firstOrFail());
         return $condition;
     }
 
@@ -148,11 +149,11 @@ class ConditionController extends Controller
             'title'=>'required',
         ]);
 
-        $condition = Condition::find($id);
+        $condition = condition::find($id);
     
         $condition->update($request->all());
 
-        return ['message' => 'Updated successfully'];
+        return Response(['message' => 'Updated successfully']);
     }
 
     /**
@@ -169,6 +170,6 @@ class ConditionController extends Controller
 
        $condition -> delete();
 
-       return ['message' => 'Condition deleted'];
+       return Response(['message' => 'Condition deleted']);
     }
 }

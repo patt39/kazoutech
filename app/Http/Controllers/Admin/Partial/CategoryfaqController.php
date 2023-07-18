@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Partial;
 use App\Http\Resources\Category\CategoryfaqResource;
 use App\Model\admin\categoryfaq;
 use Carbon\Carbon;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -29,7 +30,7 @@ class CategoryfaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.faq.categoryfaq');
     }

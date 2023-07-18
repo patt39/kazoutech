@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Resources\UserResource;
 use App\Model\user\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
@@ -27,12 +28,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.user.datatables');
     }
     
-    public function datatables()
+    public function datatables(): view
     {
         return view('admin.user.datatables');
     }

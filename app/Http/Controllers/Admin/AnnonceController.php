@@ -10,6 +10,7 @@ use App\Http\Resources\Partial\CityResource;
 use App\Http\Resources\User\AnnonceResource;
 use App\Http\Resources\User\AssignmentResource;
 use App\Model\admin\annonce;
+use Illuminate\View\View;
 use App\Services\admin\MailTaskassigneService;
 use App\Model\admin\taskuserassign;
 use App\Http\Controllers\Controller;
@@ -89,7 +90,7 @@ class AnnonceController extends Controller
      *
      * @return Response
      *///
-    public function index()
+    public function index(): View
     {
         return view('admin.annonce.index');
     }
@@ -99,7 +100,7 @@ class AnnonceController extends Controller
      *
      * @return Response
      */
-    public function assigned()
+    public function assigned(): view
     {
           return view('admin.annonce.assigne');
     }

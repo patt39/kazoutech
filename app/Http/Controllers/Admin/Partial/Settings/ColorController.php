@@ -9,6 +9,7 @@ use App\Http\Resources\AuditResource;
 use App\Http\Resources\Partial\ColorResource;
 use App\Model\admin\audit;
 use App\Model\admin\color;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class ColorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //$trash = color::onlyTrashed()->get();
         return view('admin.partial.color.index');
@@ -111,9 +112,9 @@ class ColorController extends Controller
      */
     public function show($id)
     {
-        $color = Color::findOrFail($id);
+        $color = color::findOrFail($id);
 
-        return view('admin.partial.color.show', ['color' => $color]);
+        return view('admin.partial.color.show', compact('color'));
     }
 
     public function auditing($color)
@@ -146,8 +147,7 @@ class ColorController extends Controller
 
         $color->color_name = $request->color_name;
         $color->name = $request->name;
-        $color->color_name = null;
-        $color->slug = null;
+        
 
         $color->save();
 

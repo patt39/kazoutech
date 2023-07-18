@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Partial;
 use App\Http\Resources\CategoryResource;
 use App\Model\admin\category;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //$trash = color::onlyTrashed()->get();
         return view('admin.partial.category.index');
@@ -43,7 +44,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.partial.category.create');
     }

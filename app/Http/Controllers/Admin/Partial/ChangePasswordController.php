@@ -6,6 +6,7 @@ use App\Http\Requests\User\Account\PasswordRequest;
 use App\Model\user\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +32,7 @@ class ChangePasswordController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showChangePasswordForm()
+    public function showChangePasswordForm():View
     {
         $user = auth()->user();
         return view('admin.account.change_password', compact('user'));
@@ -42,13 +43,13 @@ class ChangePasswordController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showResetPasswordForm()
+    public function showResetPasswordForm(): View
     {
         $user = auth()->user();
         return view('admin.account.reset_password', compact('user'));
     }
 
-    public function showChangePasswordFormUser()
+    public function showChangePasswordFormUser():View
     {
         $user = auth()->user();
         return view('site.user.change_password', compact('user'));

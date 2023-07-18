@@ -9,6 +9,7 @@ use App\Services\Admin\BlogService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BlogResource;
 use App\Model\admin\blog;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use File;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +30,7 @@ class BlogController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.blog.index');
     }
@@ -45,7 +46,7 @@ class BlogController extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.blog.create');
     }

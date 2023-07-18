@@ -110,7 +110,6 @@
                                                                             <b class="title_hover">Reply message</b>
                                                                         </a>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -7,6 +7,7 @@ use App\Http\Resources\Partial\TaskResource;
 use App\Jobs\MailTaskEmailJob;
 use App\Model\admin\task;
 use App\Model\user\User;
+use Illuminate\View\View;
 use App\Services\Admin\MailTaskService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,13 +31,13 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.partial.task.index');
     }
 
 
-    public function databases()
+    public function databases():View
     {
         return view('admin.partial.task.tasksDatable');
     }
@@ -45,7 +46,7 @@ class TaskController extends Controller
     {
         $tasks = TaskResource::collection(task::with('user','administrator','note')
                 ->orderBy('created_at','DESC')->paginate(6));
-        return $tasks;
+        return response()->json($task, 200);
     }
 
     /**

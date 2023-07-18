@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\info;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\LegalnoticeResource;
 use App\Model\admin\info\legalnotice;
-use Carbon\Carbon;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,21 +30,21 @@ class LegalnoticeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(): View
     {
         return view('admin.info.legal_notice.index');
     }
 
     public function api()
     {
-        return LegalnoticeResource::collection(Legalnotice::with('user')->latest()->get());
+        return LegalnoticeResource::collection(legalnotice::with('user')->latest()->get());
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view( 'admin.info.legal_notice.create');
     }
@@ -61,7 +61,7 @@ class LegalnoticeController extends Controller
             'body'=>'required',
         ]);
 
-        $legalnotice = new Legalnotice;
+        $legalnotice = new legalnotice;
         $legalnotice->body = $request->body;
         $legalnotice->user_id = auth()->user()->id;
         $legalnotice->status = '0';
@@ -156,7 +156,7 @@ class LegalnoticeController extends Controller
 
         $legalnotice->save();
 
-        return ['message' => 'updated successfully'];
+        return ['message' => 'Updated successfully'];
     }
 
     /**
@@ -167,7 +167,7 @@ class LegalnoticeController extends Controller
      */
     public function destroy(Request $request,$id)
     {
-        $legalnotice = Legalnotice::findOrFail($id);
+        $legalnotice = legalnotice::findOrFail($id);
         $legalnotice->delete();
 
         return ['message' => 'Deleted successfully '];

@@ -63,4 +63,18 @@ class SubscriberController extends Controller
         return response('You are already subscribed',Response::HTTP_CREATED);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Model\admin\howtoregister  $howtoregister
+     * @return array|\Illuminate\Http\Response
+     */
+    public function destroy(Request $request,$id)
+    {
+        $subscriber = subscriber::findOrFail($id);
+        $subscriber->delete();
+
+        return ['message' => 'Deleted successfully '];
+    }
+
 }

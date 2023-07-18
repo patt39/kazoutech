@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Partial;
 use App\Http\Resources\Partial\TagResource;
 use App\Model\user\tag;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():View
     {
         return view('admin.partial.tag.index');
     }
@@ -45,7 +46,7 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.partial.tag.create');
     }

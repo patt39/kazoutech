@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Partial;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Partial\NoteResource;
 use App\Model\admin\note;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -27,7 +28,7 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.partial.note.index');
     }
@@ -152,7 +153,7 @@ class NoteController extends Controller
 
     public function destroy($id)
     {
-        $note = Note::findOrFail($id);
+        $note = note::findOrFail($id);
         $note->delete();
 
         return ['message' => 'note deleted '];

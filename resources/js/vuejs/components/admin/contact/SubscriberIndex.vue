@@ -75,9 +75,13 @@
                                                 <td>{{ item.ip }}</td>
                                                 <td><b>{{ item.created_at | dateCalendar }}</b></td>
                                                 <td class="td-actions text-right">
-                                                    <a href="javascript:void(0)" class="btn btn-link  btn-warning btn-round btn-just-icon" title="Edit">
-                                                        <i class="material-icons">visibility</i>
+                                                    <a :href="`mailto:${item.email}`" class="btn  btn-dribbble btn-round btn-just-icon btn-sm" title="reply">
+                                                            <i class="material-icons">reply</i>
                                                     </a>
+                                                    <button @click="deleteItem(item.id)"
+                                                            class="btn btn-link btn-danger btn-round btn-just-icon" title="Delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -138,12 +142,66 @@
                 let colorHeader = 'card-header card-header-' + this.user.color_name;
                 return colorHeader;
             },
+            deleteItem(id) {
+                //Alert delete
+                Swal.fire({
+                    title: 'Delete Subscriber?',
+                    text: "Are you sure you want to delete this Subscriber?",
+                    type: 'warning',
+                    animation: false,
+                    customClass: 'animated shake',
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                    cancelButtonClass: 'btn btn-danger',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No',
+                    showCancelButton: true,
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        //Start Progress bar
+                        this.$Progress.start();
+
+                        //Envoyer la requete au server
+                        axios.delete('/dashboard/subscribers/' + id).then(() => {
+                            // /** Alert notify bootstrapp **/
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                    });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Subscriber deleted successfully.</strong>', 'progress': 75});
+                        }, 2000);
+                        /** End alert **/
+
+                        //End Progress bar
+                        this.$Progress.finish();
+
+                        Fire.$emit('AfterCreate');
+
+                        }).catch(() => {
+                            this.$Progress.fail();
+                            //Alert error
+                            $.notify("Ooop! Something wrong. Try later", {
+                                type: 'danger',
+                                animate: {
+                                    enter: 'animated bounceInDown',
+                                    exit: 'animated bounceOutUp'
+                                }
+                            });
+                        })
+                    }
+                })
+            },
         },
+
         created() {
             axios.get("/api/account/user").then(response => {
                 this.user = response.data.data
             });
         },
+
+       
         beforeRouteEnter (to, from, next) {
 
             try {
@@ -160,6 +218,7 @@
             }
 
         },
+
     }
 </script>
 

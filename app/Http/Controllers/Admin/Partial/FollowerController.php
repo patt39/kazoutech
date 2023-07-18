@@ -29,7 +29,7 @@ class FollowerController extends Controller
     {
         $user = User::find($request->id);
         $response = auth()->user()->toggleFollow($user);
-        return response()->json(['success' => $response]);
+        return response()->json(['success' => $response], 200);
 
     }
 

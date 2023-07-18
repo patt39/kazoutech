@@ -7,6 +7,7 @@ use App\Http\Requests\SlideHomes\StoreRequest;
 use App\Http\Requests\SlideHomes\UpdateRequest;
 use App\Http\Resources\Slide\SlideHomeResource;
 use App\Model\admin\slide\slidehome;
+use Illuminate\View\View;
 use App\Services\Admin\SlidehomeService;
 use File;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,7 @@ class SlidehomeController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.slide.slidehome.index');
     }
@@ -50,7 +51,7 @@ class SlidehomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.slide.slidehome.create');
     }
@@ -125,7 +126,7 @@ class SlidehomeController extends Controller
 
         $slidehome->update($request->all());
 
-        return response()->json($slidehome,200);
+        return response()->json(['message'=> 'Updated'], $slidehome,200);
     }
 
     /**

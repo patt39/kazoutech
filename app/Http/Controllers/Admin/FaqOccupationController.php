@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\FaqOccupationResource;
 use App\Model\admin\faqoccupation;
 use App\Model\admin\occupation;
+use Illuminate\View\View;
 use App\Http\Requests\Admin\FaqOccupation\StoreRequest;
 use App\Http\Requests\Admin\FaqOccupation\UpdateRequest;
 use Illuminate\Http\Request;
+
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -48,7 +50,7 @@ class FaqOccupationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.faq.faqoccupation.index');
     }
@@ -58,7 +60,7 @@ class FaqOccupationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.faq.faqoccupation.create');
 

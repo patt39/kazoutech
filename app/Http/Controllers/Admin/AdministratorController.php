@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\Administrators\StoreRequest;
 use App\Http\Resources\UserResource;
 use App\Model\user\User;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Administrators\UpdateRequest;
@@ -26,7 +27,7 @@ class AdministratorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.administrator.index');
     }
@@ -46,7 +47,7 @@ class AdministratorController extends Controller
         ->where('my_status','active')
         ->orderBy('updated_at','DESC')->get());
 
-        return $users;
+        return response()->json($users,200);
     }
     /**
      * Show the form for creating a new resource.
@@ -88,7 +89,7 @@ class AdministratorController extends Controller
     public function edit($id)
     {
         $user = user::where('id', $id)->findOrFail($id);
-        return view('admin.administrator.edit', compact('user'));
+        return view('admin.administrator.edit', ['user' => $user]);
     }
 
     /**

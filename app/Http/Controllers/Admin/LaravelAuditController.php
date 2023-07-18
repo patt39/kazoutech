@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Resources\AuditResource;
 use App\Model\admin\audit;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
 class LaravelAuditController extends Controller
@@ -20,7 +21,7 @@ class LaravelAuditController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.audit.index');
     }

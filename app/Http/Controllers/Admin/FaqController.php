@@ -33,12 +33,12 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.faq.index');
     }
 
-    public function sites()
+    public function sites(): View
     {
         return view('admin.faq.index');
     }
@@ -55,7 +55,7 @@ class FaqController extends Controller
     {
         $faqs = FaqResource::collection(categoryfaq::whereSlug($categoryfaq)->firstOrFail()->faqs()
         ->with('user','categoryfaq')->latest()->get());
-        return $faqs;
+        return response()->json($faqs, 200);
     }
 
 
@@ -80,7 +80,7 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.faq.create');
     }

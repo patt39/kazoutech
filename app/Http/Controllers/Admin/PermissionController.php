@@ -6,6 +6,7 @@ use App\Http\Resources\PermissionResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,7 +28,7 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(): View
     {
         return view('admin.permission.index');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Partial\Settings;
 use App\Http\Resources\Partial\CountryResource;
 use App\Model\admin\country;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -29,7 +30,7 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Resources\Json\
      */
 
-    public function index()
+    public function index():View
     {
         return view('admin.country.index');
     }

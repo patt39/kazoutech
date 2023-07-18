@@ -9,10 +9,10 @@ use App\Http\Requests\CategoryOccupations\UpdateRequest;
 use App\Http\Resources\CategoryOccupationResource;
 use App\Model\admin\categoryoccupation;
 use App\Model\admin\occupation;
+use Illuminate\View\View;
 use App\Services\Admin\CategoryOccupationService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Response;
-use Illuminate\View\View;
 
 class CategoryOccupationController extends Controller
 {

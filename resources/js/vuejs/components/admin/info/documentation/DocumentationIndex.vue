@@ -206,27 +206,20 @@
 
                         //Envoyer la requete au server
                         axios.delete('/dashboard/documentations/' + id).then(() => {
-                            /** Alert notify bootstrapp **/
-                            //var notify = $.notify('<strong>Please wait a moment</strong> ...', {
-                            //    allow_dismiss: false,
-                            //    showProgressbar: true
-                            //});
-                            //setTimeout(function() {
-                            //    notify.update({'type': 'success', 'message': '<strong>Documentations deleted successfully.</strong>', 'progress': 75});
-                            //}, 2000);
-                            $.notify({
-                                icon: "add_alert",
-                                message: "<strong>Documentations deleted successfully.</strong>."
+                            // /** Alert notify bootstrapp **/
+                        var notify = $.notify('<strong>Please wait a moment</strong> ...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                    });
+                        setTimeout(function() {
+                            notify.update({'type': 'success', 'message': '<strong>Document deleted successfully.</strong>', 'progress': 75});
+                        }, 2000);
+                        /** End alert **/
 
-                            }, {
-                                type: 'success',
-                                timer: 3000,
-                            });
-                            /* End alert ***/
+                        //End Progress bar
+                        this.$Progress.finish();
 
-                            //End Progress bar
-                            this.$Progress.finish();
-                            Fire.$emit('AfterCreate');
+                        Fire.$emit('AfterCreate');
 
                         }).catch(() => {
                             this.$Progress.fail();

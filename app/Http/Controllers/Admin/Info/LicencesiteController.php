@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\LicencesiteResource;
 use App\Model\admin\info\licencesite;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,7 +26,7 @@ class LicencesiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.info.licence.index');
     }
@@ -35,14 +36,14 @@ class LicencesiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.info.licence.create');
     }
  
     public function api()
     {
-        return LicencesiteResource::collection(Licencesite::with('user')->latest()->get());
+        return LicencesiteResource::collection(licencesite::with('user')->latest()->get());
     }
     /**
      * Store a newly created resource in storage.
@@ -56,7 +57,7 @@ class LicencesiteController extends Controller
             'body'=>'required|string'
         ]);
         
-        $licencesite = new Licencesite;
+        $licencesite = new licencesite;
         $licencesite->body = $request->body;
         $slug = sha1(date('YmdHis') . str_random(30));
         $licencesite->slug = $slug;
@@ -113,7 +114,7 @@ class LicencesiteController extends Controller
      */
     public function edit($id)
     {
-        $licencesite = Licencesite::where('id',$id)->first();
+        $licencesite = licencesite::where('id',$id)->first();
         return view('admin.info.licence.edit', compact('licencesite'));
     }
 
@@ -149,7 +150,7 @@ class LicencesiteController extends Controller
 
         $licencesite->save();
 
-        return ['message' => 'Updated successfully'];
+        return Response(['message' => 'Updated successfully']);
     }
 
     /**
@@ -160,9 +161,9 @@ class LicencesiteController extends Controller
      */
     public function destroy($id)
     {
-        $licencesite = Licencesite::findOrfail($id);
+        $licencesite = licencesite::findOrfail($id);
         $licencesite -> delete();
 
-        return ['message' => 'Licence deleted'];
+        return Response(['message' => 'Licence deleted']);
     }
 }

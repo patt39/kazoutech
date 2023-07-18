@@ -8,9 +8,9 @@ use App\Model\admin\city;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\File;
@@ -56,7 +56,7 @@ class CityController extends Controller
             ->where('status',1)
             ->orderBy('name','asc')
             ->get());
-        return $cities;
+        return response()->json(['status' => 200], $cities);
     }
 
     public function apibystatus()
@@ -150,7 +150,7 @@ class CityController extends Controller
     {
         $city = city::findOrFail($id);
 
-        return view('admin.partial.city.show', ['city' => $city]);
+        return view('admin.partial.city.show', compact('city'));
     }
 
     /**

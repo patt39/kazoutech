@@ -6,6 +6,7 @@ use App\Http\Resources\Info\DocumentationResource;
 use App\Model\admin\info\documentation;
 use App\Services\Admin\Info\DocumentationService;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -19,7 +20,7 @@ class DocumentationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.info.documentation.index');
     }
@@ -36,7 +37,7 @@ class DocumentationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.info.documentation.create');
     }
@@ -51,7 +52,7 @@ class DocumentationController extends Controller
     {
         $this->validate($request,[
             'name'=>'required|string|',
-            'name_doc' => 'required',
+            //'name_doc' => 'required',
         ]);
 
         $documentation = new documentation();
@@ -63,22 +64,20 @@ class DocumentationController extends Controller
                 $documentation->name_doc = $request->name_doc;            
                 foreach ($request->name_doc as $file) {
                     if ($file->isValid()) {
-                        $name = time() . str_random(5) . '.' . $file->getClientOriginalExtension();
-                        Storage::disk('public')->put($name, $file);
+                        $fileExtension = $file->getClientOriginalExtention();
+                        $name = time() . str_random(5) . '.' .  $fileExtension;
+                        Storage::disk('public')->put($name, $fileExtension);
                         $files[] = $name;
                     }
                 }
-            
-                if (count($files) > 0) {
-                    $response->assets = json_encode($files);
-                }
             }
-            $documentation->save();
             
 
         }catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
         }
+
+        $documentation->save();
         return redirect()->route('documentations.index');
     }
 

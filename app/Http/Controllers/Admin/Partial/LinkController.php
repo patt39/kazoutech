@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Partial;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 use App\Http\Resources\Partial\LinkResource;
 use App\Model\admin\partial\link;
 
@@ -26,7 +27,7 @@ class LinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.partial.link.index');
     }

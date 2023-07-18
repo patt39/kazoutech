@@ -151,7 +151,8 @@
         },
         methods: {
             getDocumentsave(){
-                let name_doc = (this.form.name_doc.length > 200) ? this.form.name_doc : this.form.name_doc;
+                let name_doc = this.form.name_doc;
+                console.log(name_doc);
                 return name_doc;
             },
             getColorCardUser(){
@@ -161,12 +162,12 @@
                 this.form.name_doc = this.$refs.name_doc   
             },
             createItem() {
+                 let form = this.form.name_doc;
+                 let formData = new FormData(form);
                 //Start Progress bar
                 this.$Progress.start();
                 // Submit the form via a POST request
-                const formData = new FormData();
-                formData.append('name_doc', this.form.name_doc);
-                this.form.post("/dashboard/documentations")
+                this.form.post("/dashboard/documentations", formData)
                     .then(() => {
                         //Insertion de l'alert !
                         var notify = $.notify('<strong>Please wait a moment</strong> ...', {

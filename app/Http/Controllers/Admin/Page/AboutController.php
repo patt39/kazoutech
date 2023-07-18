@@ -25,7 +25,8 @@ class AboutController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['api','aboutmember']]);
-       
+        // Middleware lock account
+        //$this->middleware('auth.lock');
     }
     /**
      * Display a listing of the resource.
@@ -139,7 +140,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return AboutResource|\Illuminate\Http\Response
      */
-    public function show(string $id, about $bout)
+    public function show($id, about $about)
     {
         $about = new AboutResource(about::where('id', $id)->findOrFail($id));
         return $about;
@@ -208,7 +209,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return array|\Illuminate\Http\Response
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $about = about::findOrFail($id);
         $oldFilename = $about->photo;

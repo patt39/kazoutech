@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Info\PolicyprivacyResource;
 use App\Model\admin\info\policyprivacy;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -28,7 +29,7 @@ class PolicyprivacyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.info.policyprivacy.index');
     }
@@ -38,14 +39,14 @@ class PolicyprivacyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.info.policyprivacy.create');
     }
 
     public function api()
     {
-        return PolicyprivacyResource::collection(Policyprivacy::with('user')->latest()->get());
+        return PolicyprivacyResource::collection(policyprivacy::with('user')->latest()->get());
     }
     /**
      * Store a newly created resource in storage.
@@ -70,7 +71,7 @@ class PolicyprivacyController extends Controller
             } catch (\Illuminate\Database\QueryException $e) {
                 Log::error($e);
             }
-        return response('Created',Response::HTTP_CREATED);
+        return Response(['message' => 'Created']);
     }
 
     /**
@@ -119,7 +120,7 @@ class PolicyprivacyController extends Controller
      */
     public function edit($id)
     {
-        $policyprivacy = Policyprivacy::where('id',$id)->first();
+        $policyprivacy = policyprivacy::where('id',$id)->first();
         return view('admin.info.policyprivacy.edit', compact('policyprivacy'));
     }
 
@@ -160,7 +161,7 @@ class PolicyprivacyController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             Log::error($e);
         }
-        return ['message' => 'Updated successfully'];
+        return Response(['message' => 'Updated']);
     }
 
     /**
@@ -171,9 +172,9 @@ class PolicyprivacyController extends Controller
      */
     public function destroy($id)
     {
-       $policyprivacy = Policyprivacy::findOrfail($id);
+       $policyprivacy = policyprivacy::findOrfail($id);
        $policyprivacy -> delete();
 
-       return ['message' => 'Policy deleted'];
+       return Response(['message' => 'Deleted']);
     }
 }
