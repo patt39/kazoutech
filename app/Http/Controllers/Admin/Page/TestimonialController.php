@@ -18,7 +18,7 @@ class TestimonialController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['api']]);
+        $this->middleware('auth',['except' => ['api', 'apitestimonialmembers']]);
         // Middleware lock account
         //$this->middleware('auth.lock');
     }
@@ -27,14 +27,21 @@ class TestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.page.testimonial.index');
     }
 
     public function api()
     {
-        return TestimonialResource::collection(testimonial::with('user')->latest()->get());
+        return TestimonialResource::collection(testimonial::with('user')->orderBy('created_at','asc')->get());
+    }
+
+    public function apitestimonialmembers()
+    {
+        $testimonials = TestimonialResource::collection(testimonial::with('user') 
+        ->where('status',1)->orderBy('created_at','asc')->get());
+        return response()->json($testimonials, 200);
     }
 
     public function show($id)

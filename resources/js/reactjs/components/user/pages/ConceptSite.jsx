@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FooterUserSite from "../../inc/FooterUserSite";
 import NavUserSIte from "../../inc/NavUserSIte";
 import SubscribeLine from "../SubscribeLine";
+import TestimonialList from "./TestimonialList";
 
 
 class ConceptSite extends Component {
@@ -302,7 +303,8 @@ class ConceptSite extends Component {
                                 </div>
                             </div>
                         </div>
-                        <SubscribeLine/>
+                        <TestimonialList />
+                        <SubscribeLine />
                         <FooterUserSite />
                     </div>
                 </div>

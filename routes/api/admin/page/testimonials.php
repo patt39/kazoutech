@@ -8,5 +8,7 @@
 
 Route::group(['namespace' => 'Page'], function(){
 
-    Route::get('testimonials', 'TestimonialController@api');
+    Route::get('testimonials', 'TestimonialController@api')->name('api.testimonial');
+    Route::get('testimonials_members', 'TestimonialController@apitestimonialmembers')->name('api_active.testimonials');
+
 });

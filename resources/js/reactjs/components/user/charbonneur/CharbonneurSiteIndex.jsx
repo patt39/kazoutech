@@ -26,8 +26,7 @@ class CharbonneurSiteIndex extends Component {
         const {charbonneurs} = this.state;
         const mapCharbonneurs = charbonneurs.length ? (
             charbonneurs.map(item => {
-                return(
-
+                return (
                     <CharbonneurList key={item.id} {...item}/>
                 )
             })

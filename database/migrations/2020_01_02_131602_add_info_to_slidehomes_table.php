@@ -15,7 +15,7 @@ class AddInfoToSlidehomesTable extends Migration
     {
         Schema::table('slidehomes', function (Blueprint $table) {
             $table->string('redirect_link')->nullable()->after('description');
-            $table->string('color_link')->default('primary')->after('description');
+            $table->string('color_link')->nullable()->default('primary')->after('description');
             $table->string('text_link')->nullable()->after('description');
         });
     }

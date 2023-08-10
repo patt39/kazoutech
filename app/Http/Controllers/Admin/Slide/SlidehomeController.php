@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin\Slide;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SlideHomes\StoreRequest;
-use App\Http\Requests\SlideHomes\UpdateRequest;
+//use App\Http\Requests\SlideHomes\StoreRequest;
+//use App\Http\Requests\SlideHomes\UpdateRequest;
 use App\Http\Resources\Slide\SlideHomeResource;
 use App\Model\admin\slide\slidehome;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Services\Admin\SlidehomeService;
 use File;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,8 +63,15 @@ class SlidehomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required',
+            'photo' => 'required',
+        ]);
+
         $slidehome= new slidehome();
         $slidehome->fill($request->all());;
 
@@ -71,7 +79,7 @@ class SlidehomeController extends Controller
 
         $slidehome->save();
 
-        return response('Created',Response::HTTP_CREATED);
+        return response('Created', Response::HTTP_CREATED);
     }
 
 
@@ -118,7 +126,7 @@ class SlidehomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $slidehome = slidehome::findOrFail($id);
 
@@ -126,7 +134,7 @@ class SlidehomeController extends Controller
 
         $slidehome->update($request->all());
 
-        return response()->json(['message'=> 'Updated'], $slidehome,200);
+        return response()->json($slidehome,200);
     }
 
     /**
