@@ -498,7 +498,7 @@
             loadItems() {
                 //Start Progress bar
                 this.$Progress.start();
-                const url = "/api/cities/actives";
+                const url = "/api/cities";
                 axios.get(url).then(response => {
                     this.loaded = true;
                     this.cities = response.data.data;

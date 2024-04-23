@@ -77,7 +77,7 @@ class color extends Model implements Auditable
 
     public function isOnline()
     {
-        return Cache::has('user-is-online-' . $this->id);
+        return Cache::put('user-is-online-' . $this->id);
     }
 
     use Sluggable;
