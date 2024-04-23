@@ -52,7 +52,7 @@ class ColorController extends Controller
     {
         $colors = AuditResource::collection(color::whereSlug($color)->firstOrFail()->auditings()
             ->latest()->get());
-        return $colors;
+        return response()->json($colors, 200);
     }
 
 
